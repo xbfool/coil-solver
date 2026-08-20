@@ -14,7 +14,7 @@
 
 ## 当前进展（详见 notes.md）
 
-- **最好成绩：30 秒/关 → 第 237 关**（v20-probing，PROBE=8000，官方 evaluate.py 口径，零 FAIL）
+- **最好成绩：30 秒/关 → 第 237 关**（v23-adaptive，官方 evaluate.py 口径，零 FAIL，最慢的关 22.1 秒）
 - 官方 results.md 用的是 **600 秒/关**：各家模型 47～117，最高 kimi 2.6 的 264。还没跑 600 秒口径。
 - 这一轮从 175 涨到 221，五步：
   1. **v13** 修掉 v11 的并行失效 bug（`emit()` 写了却从没被调用，父进程不 kill 其余子进程，
@@ -78,7 +78,7 @@ wsl -e bash -lc "cd /mnt/d/works/coil-solver && ./bench --start 1 --timeout 60"
 
 ## 版本
 
-每个版本单独一个文件，`./bench <版本名>` 直接对比。当前最好的是 `v20-probing.c`。
+每个版本单独一个文件，`./bench <版本名>` 直接对比。当前最好的是 `v23-adaptive.c`。实验脚本的索引见 `experiments/README.md`。
 
 `versions/v1-dfs.c` — 滑动 DFS：
 
@@ -89,5 +89,5 @@ wsl -e bash -lc "cd /mnt/d/works/coil-solver && ./bench --start 1 --timeout 60"
 - **起点排序**：度数小的格子优先（度 1 的格子必然是路径端点）
 - **迭代放宽**：先给每个起点浅搜（30 万节点），全失败再把上限 ×8 重来，避免卡死在坏起点上
 
-每个版本单独一个文件放在 `versions/`（`v1-dfs.c`、`v2-*.c` …），跑 `./bench <版本名>` 直接对比，
+每个版本单独一个文件，`./bench <版本名>` 直接对比。当前最好的是 `v23-adaptive.c`。实验脚本的索引见 `experiments/README.md`。
 不用翻 git 历史。成绩表和迭代观察见 `notes.md`。
