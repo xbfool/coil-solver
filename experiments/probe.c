@@ -458,6 +458,22 @@ static void report(const char *tag, unsigned char *truth) {
            tag, forced / 2, 100.0 * forced / 2 / tot, banned / 2, 100.0 * banned / 2 / tot,
            undec / 2, 100.0 * undec / 2 / tot, bad ? "  **矛盾**" : "");
     if (truth) printf("  soundness: %s", unsound ? "**不成立**" : "OK");
+    // Tron 的口径是「**格子**里还不确定用哪两条边的比例」，不是边的比例。
+    // 一个格子只要 2 条边被定为必用，它就「确定」了（其余边自然禁用）。
+    // 度 2 的格子传播能直接锁死两条边，所以格子口径的数字会比边口径高不少 —— 要对齐才能比。
+    {
+        int det = 0, nfree = 0;
+        for (int c = 0; c < N; ++c) {
+            if (!g0[c]) continue;
+            ++nfree;
+            int u = 0;
+            for (int d = 0; d < 4; ++d)
+                if (g0[c + delta[d]] && estate[c * 4 + d] == 1) ++u;
+            if (u == 2) ++det;
+        }
+        printf("  [格子口径] 已确定用哪两条边: %d/%d = %.1f%%  (还不确定 %.1f%%，Tron 是 0.3%%)",
+               det, nfree, 100.0 * det / nfree, 100.0 * (nfree - det) / nfree);
+    }
     printf("\n");
 }
 
