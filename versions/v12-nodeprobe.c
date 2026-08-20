@@ -143,7 +143,7 @@ static int reach_ok(int p, int remaining) {
 
 static int in_probe = 0;                 // 探针内部不再套探针
 static int probe_depth = 14;             // 只在前 N 个决策点做（早期错误的子树最大最贵）
-static long long probe_nodes = 30000;    // 每个候选给多少节点
+static long long probe_nodes = 30000;    // 每个候选给多少节点（PDEPTH/PNODES 可调，用来调参）
 
 static int dfs(int p, int remaining, int depth) {
     if (remaining < best_rem) best_rem = remaining;
@@ -198,9 +198,12 @@ static int dfs(int p, int remaining, int depth) {
         for (int k = 0, q = p; k < len; ++k) { q += dd; mark(q); }
         path[path_len++] = DCH[cand[i].dir];
         int r = dfs(c, remaining - len, depth + 1);
-        if (r) return r;
+        if (r == 1) return 1;
+        // 注意：-1（预算用尽）也必须先撤销再上抛。v5 里可以不撤，因为每换起点都会 memcpy 重置盘面；
+        // 但 v12 把 -1 当探针结果用在搜索**内部**，返回后还要接着搜，不撤销盘面就脏了。
         --path_len;
         for (int k = 0, back = c; k < len; ++k, back -= dd) unmark(back);
+        if (r == -1) return -1;
     }
     return 0;
 }
@@ -298,6 +301,8 @@ int main(int argc, char **argv) {
 
     // ---- 第一段：探针，证伪 + 打分 ----
     long long probe = getenv("PROBE") ? atoll(getenv("PROBE")) : 2000;
+    if (getenv("PDEPTH")) probe_depth = atoi(getenv("PDEPTH"));
+    if (getenv("PNODES")) probe_nodes = atoll(getenv("PNODES"));
     int *sc = malloc(sizeof(int) * (size_t)ns);
     int keep = 0;
     for (int i = 0; i < ns; ++i) {
