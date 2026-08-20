@@ -1,3 +1,6 @@
+// Coil solver — v21: 分层探针（小预算 -> 大预算 -> 无限搜），propagate_strong 只算一次
+//
+// 以下是 v20 的说明。
 // Coil solver — v20: v19 + probing（failed literal），只在正式搜索阶段的起点上做
 //
 // 以下是 v19 的说明。
@@ -882,40 +885,84 @@ int main(int argc, char **argv) {
     }
   child_work:;
 
-    // ---- 第一段：探针，证伪 + 打分 ----
+    // ---- 分层探针 ----
+    // v20 里 propagate_strong（传播 + probing，每起点约 0.05 秒）被算了两遍：
+    // 探针阶段一遍、正式搜之前又一遍。**把它缓存下来**，中间就能白捡一层大预算的筛选：
+    //
+    //   第一层：propagate_strong + 小预算(PROBE)   —— 便宜地干掉大部分起点
+    //   第二层：复用缓存的 estate + 大预算(PROBE2) —— 不用重算 probing，纯赚
+    //   第三层：复用缓存的 estate + 无限搜         —— 搜穷即永久剔除
+    //
+    // 为什么要分层：探针预算的最优值**因关而异**，而且差得离谱
+    // （L217 在 PROBE=2000 要 18.6 秒、PROBE=16000 只要 0.28 秒；L223 反过来 PROBE=8000 最好）。
+    // 单一预算总会在某些关上踩空，分层等于同时吃到小预算的便宜和大预算的证伪力。
+    // 注意第三层的「无限搜」必须保留 —— v15 那次纯迭代加深之所以惨败（L193 7s→174s），
+    // 就是因为错起点永远搜不穷、被反复重搜，而搜穷一次就能永久剔除才是真正的投资。
     long long probe = getenv("PROBE") ? atoll(getenv("PROBE")) : 8000;
+    long long probe2 = getenv("PROBE2") ? atoll(getenv("PROBE2")) : 24000;
     int *sc = malloc(sizeof(int) * (size_t)ns);
+    unsigned char **est_save = malloc(sizeof(unsigned char *) * (size_t)ns);
     int keep = 0;
+
     for (int i = 0; i < ns; ++i) {
         if (i % nshard != shard) continue;                 // 只做自己这一片
         int s = starts[i];
+        if (!(probe_all ? propagate_strong(s) : propagate(s))) continue;
         memcpy(g, g0, N);
         cnt[0] = cnt[1] = 0; low_cnt = zero_cnt = 0;
         for (int c = 0; c < N; ++c) if (g[c]) ++cnt[col[c]];
         for (int c = 0; c < N; ++c) if (g[c]) { deg[c] = freedeg(c);
             if (deg[c] <= 1) ++low_cnt; if (deg[c] == 0) ++zero_cnt; }
-        // PROBEALL=1 时探针阶段也做 probing：贵（每起点 0.05s）但换来更强的 estate_ok 剪枝
-        if (!(probe_all ? propagate_strong(s) : propagate(s))) continue;
         mark(s);
-        // 归纳的底座：局部检查靠「上一层的剩余区域连通」，起点这一层得自己验。
-        // 起点若是割点，去掉它剩余区域就断了。顺带白捡一条起点剪枝。
-        if (!reach_ok(s, total_free - 1)) continue;
+        if (!reach_ok(s, total_free - 1)) continue;        // 起点是割点，整盘直接不连通
         path_len = 0; nodes = 0; node_limit = probe; best_rem = total_free;
         int r = dfs(s, total_free - 1, 0);
         if (r == 1) { path[path_len] = 0; emit(s, path); }
-        if (r == 0) continue;                          // 搜穷了仍无解 => 此起点被证伪，永久剔除
-        starts[keep] = s; sc[keep] = best_rem; ++keep;
+        if (r == 0) continue;                              // 搜穷仍无解 => 永久剔除
+        starts[keep] = s; sc[keep] = best_rem;
+        est_save[keep] = malloc((size_t)N * 4);
+        memcpy(est_save[keep], estate, (size_t)N * 4);      // 缓存，后两层直接复用
+        ++keep;
     }
-    // 幸存者按探到的深度排序。对照实验：关掉排序反而更慢（L137 4.1s→23.5s，L171 26s→92s），
-    // 说明排序是有信息量的；NORANK=1 可关掉做对照。
+
     if (!getenv("NORANK")) for (int i = 1; i < keep; ++i) {
-        int vs = starts[i], vc = sc[i], j = i;
-        while (j > 0 && sc[j - 1] > vc) { starts[j] = starts[j - 1]; sc[j] = sc[j - 1]; --j; }
-        starts[j] = vs; sc[j] = vc;
+        int vs = starts[i], vc = sc[i], j2 = i;
+        unsigned char *ve = est_save[i];
+        while (j2 > 0 && sc[j2 - 1] > vc) {
+            starts[j2] = starts[j2 - 1]; sc[j2] = sc[j2 - 1]; est_save[j2] = est_save[j2 - 1]; --j2;
+        }
+        starts[j2] = vs; sc[j2] = vc; est_save[j2] = ve;
     }
+
+    // 第二层：大预算再筛一遍，estate 直接复用，probing 不重算
+    int keep2 = 0;
+    for (int i = 0; i < keep; ++i) {
+        int s = starts[i];
+        memcpy(estate, est_save[i], (size_t)N * 4);
+        memcpy(g, g0, N);
+        cnt[0] = cnt[1] = 0; low_cnt = zero_cnt = 0;
+        for (int c = 0; c < N; ++c) if (g[c]) ++cnt[col[c]];
+        for (int c = 0; c < N; ++c) if (g[c]) { deg[c] = freedeg(c);
+            if (deg[c] <= 1) ++low_cnt; if (deg[c] == 0) ++zero_cnt; }
+        mark(s);
+        path_len = 0; nodes = 0; node_limit = probe2; best_rem = total_free;
+        int r = dfs(s, total_free - 1, 0);
+        if (r == 1) { path[path_len] = 0; emit(s, path); }
+        if (r == 0) { free(est_save[i]); continue; }
+        starts[keep2] = s; sc[keep2] = best_rem; est_save[keep2] = est_save[i]; ++keep2;
+    }
+    if (!getenv("NORANK")) for (int i = 1; i < keep2; ++i) {
+        int vs = starts[i], vc = sc[i], j2 = i;
+        unsigned char *ve = est_save[i];
+        while (j2 > 0 && sc[j2 - 1] > vc) {
+            starts[j2] = starts[j2 - 1]; sc[j2] = sc[j2 - 1]; est_save[j2] = est_save[j2 - 1]; --j2;
+        }
+        starts[j2] = vs; sc[j2] = vc; est_save[j2] = ve;
+    }
+    keep = keep2;
     fprintf(stderr, "probe: %d/%d 起点被证伪，剩 %d\n", ns - keep, ns, keep);
 
-    // ---- 第二段：按顺序正式搜 ----
+    // ---- 第三层：按顺序正式搜 ----
     node_limit = (long long)1 << 62;
     for (int i = 0; i < keep; ++i) {
         int s = starts[i];
@@ -927,7 +974,7 @@ int main(int argc, char **argv) {
             if (deg[c] <= 1) ++low_cnt;
             if (deg[c] == 0) ++zero_cnt;
         }
-        if (!propagate_strong(s)) continue;   // 正式搜之前多花 0.05s 把边定死到 35%
+        memcpy(estate, est_save[i], (size_t)N * 4);   // 复用第一层缓存好的 estate，不重算
         mark(s);
         // 归纳的底座：局部检查靠「上一层的剩余区域连通」，起点这一层得自己验。
         // 起点若是割点，去掉它剩余区域就断了。顺带白捡一条起点剪枝。

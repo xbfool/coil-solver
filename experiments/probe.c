@@ -483,11 +483,13 @@ int main(int argc, char **argv) {
     int rounds = 4;
     int assume = 0;   // 用解文件里的真起点做「假定起点」，看更紧的基础上 probing 能推多远
     int do_all = 0;   // 对每个候选起点跑「假定起点 + probing」，量证伪率
+    int sxq = -1, syq = -1;   // --startxy：给定起点打分，用来找更好的起点排序信号
     for (int i = 2; i < argc; ++i) {
         if (!strcmp(argv[i], "--sol") && i + 1 < argc) solpath = argv[++i];
         else if (!strcmp(argv[i], "--rounds") && i + 1 < argc) rounds = atoi(argv[++i]);
         else if (!strcmp(argv[i], "--assume")) assume = 1;
         else if (!strcmp(argv[i], "--all")) do_all = 1;
+        else if (!strcmp(argv[i], "--startxy") && i + 2 < argc) { sxq = atoi(argv[i+1]); syq = atoi(argv[i+2]); i += 2; }
     }
 
     char *buf = slurp(argv[1]);
@@ -541,6 +543,28 @@ int main(int argc, char **argv) {
 
     printf("%s: %dx%d, 自由格 %d (%s)\n", argv[1], w, h, total_free,
            (total_free & 1) ? "奇" : "偶");
+
+    // --startxy：对指定起点跑「传播 + probing」，输出它能定死多少 —— 看这个量能不能区分真假起点
+    if (sxq >= 0) {
+        int s = (syq + 1) * W + (sxq + 1);
+        base_init();
+        int ok = !bad;
+        if (ok) { mark_endpoint(s); run_queue(); ok = !bad; }
+        if (ok) { probing(rounds); ok = !bad; }
+        int forced = 0, det = 0, nfree = 0;
+        for (int c = 0; c < N; ++c) {
+            if (!g0[c]) continue;
+            ++nfree;
+            int u = 0;
+            for (int d = 0; d < 4; ++d) {
+                if (!g0[c + delta[d]]) continue;
+                if (estate[c * 4 + d] == 1) { ++u; ++forced; }
+            }
+            if (u == 2) ++det;
+        }
+        printf("%d %d %d %d %d %d\n", sxq, syq, ok, forced / 2, det, nfree);
+        return 0;
+    }
 
     if (do_all) {
         int need_col = -1;

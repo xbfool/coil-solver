@@ -1,3 +1,6 @@
+// Coil solver — v22: 预算 portfolio（把核分成几档，每档一个探针预算，每档都覆盖全部起点）
+//
+// 以下是 v20 的说明。
 // Coil solver — v20: v19 + probing（failed literal），只在正式搜索阶段的起点上做
 //
 // 以下是 v19 的说明。
@@ -883,11 +886,28 @@ int main(int argc, char **argv) {
   child_work:;
 
     // ---- 第一段：探针，证伪 + 打分 ----
-    long long probe = getenv("PROBE") ? atoll(getenv("PROBE")) : 8000;
+    // ---- 预算 portfolio ----
+    // 探针预算的最优值**因关而异，而且差得离谱**：L217 在 PROBE=2000 要 18.6 秒、
+    // PROBE=16000 只要 0.28 秒（66 倍）；L223 反过来是 8000 最好，48000 就炸。
+    // 单一预算总会在某些关上踩空，而分层（v21）实测是负作用 —— 它让每个起点都多付一遍钱。
+    //
+    // 换个打法：把核分成 G 档，每档用一个预算，**每档内部覆盖全部起点**。
+    // 于是正确起点会被 G 种预算各处理一次，只要有一档对上就赢（谁先解出谁写管道）。
+    // 代价是每档只剩 nshard/G 个核来分起点，单档的起点数变成 G 倍 ——
+    // 拿「起点要多等 G 倍」去换「预算不会踩空」，赌的是那 66 倍的参数敏感度。
+    long long probe_base = getenv("PROBE") ? atoll(getenv("PROBE")) : 2000;
+    int ngrp = getenv("NGRP") ? atoi(getenv("NGRP")) : 4;
+    if (ngrp > nshard) ngrp = nshard;
+    int per = nshard / ngrp;
+    if (per < 1) per = 1;
+    int grp = shard / per, sub = shard % per;
+    if (grp >= ngrp) { grp = ngrp - 1; }
+    long long probe = probe_base << grp;
+    fprintf(stderr, "shard %d: 档 %d/%d, 预算 %lld, 起点分片 %d/%d\n", shard, grp, ngrp, probe, sub, per);
     int *sc = malloc(sizeof(int) * (size_t)ns);
     int keep = 0;
     for (int i = 0; i < ns; ++i) {
-        if (i % nshard != shard) continue;                 // 只做自己这一片
+        if (i % per != sub) continue;                      // 档内分片：每档都覆盖全部起点
         int s = starts[i];
         memcpy(g, g0, N);
         cnt[0] = cnt[1] = 0; low_cnt = zero_cnt = 0;
