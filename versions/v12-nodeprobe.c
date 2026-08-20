@@ -26,6 +26,7 @@
 #include <stdint.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <signal.h>
 
 static int shard = 0, nshard = 1;      // 本进程负责 starts 里下标 % nshard == shard 的那些
 static int out_fd = -1;                // 子进程把答案写这里

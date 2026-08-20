@@ -1,3 +1,39 @@
+// Coil solver — v16: 把每节点的全盘洪水填充换成等价的「局部」连通性检查
+//
+// v13 的每个搜索节点，对每个候选方向都做一次 reach_ok —— 从落点洪水填充整个剩余区域，
+// 数够不够 remaining 个。这是最强的一条剪枝，但也是 O(剩余格数)：L195 开局就是三千格，
+// 一个节点最多四个候选，光这一项就是每节点上万次访存。
+//
+// 但它可以严格等价地做成局部的。进入某节点时剩余区域 R 已知连通（上一层验过），
+// 本次滑行吃掉的只是一条直线 S，新剩余 R' = R \ S。R' 要被切开，切口必然紧贴 S；
+// 又因为 R 连通，R' 里任何一点都能在 R' 内走到某个「S 的自由邻居」。于是
+//
+//     R' 连通  ⟺  S 的自由邻居两两连通
+//
+// 这些邻居一旦连上就能立刻收工，不用把剩余区域数完。滑行终点 c 也在 S 里，
+// 它的自由邻居同属这个集合，所以「从 c 出发能到全部剩余格」一并被保证。
+//
+// 归纳的底座要单独打：起点处剩余区域是「全盘去掉起点」，起点若是割点就不连通了，
+// 所以每个起点开搜前照旧做一次完整的 reach_ok（顺带白捡一条起点剪枝）。
+//
+// 以下是 v13 的说明。
+// Coil solver — v13: 修掉 v11 的并行失效 bug（emit() 写了却从未被调用）
+//
+// v11 的意图是「谁先解出就把答案写进管道退出，父进程收第一个成功的并杀掉其余」，为此写了
+// emit()——但两处解出的地方走的都是 printf + return 0，emit 一次都没被调用（编译警告
+// 'emit' defined but not used 就是证据）。后果：
+//   · 子进程把答案直接打进继承来的 stdout，所以校验能过，成绩看着是对的；
+//   · 父进程从管道只读到 0 字节，于是**不 kill 其余子进程**；
+//   · evaluate.py 用 capture_output 抓 stdout，必须等所有持有该 fd 的进程退出才返回。
+// 所以 v11 的实测耗时 = 最慢的那个 shard 把自己那片起点全部搜穷，而不是「最快找到解」。
+// 28 核并行的收益基本被这一个 bug 吃掉了。
+//
+// 本版只改这一件事，好单独量出它值多少分：
+//   (a) 两处解出都改走 emit()（写管道 + _exit(0)）；
+//   (b) 子进程 fork 后关掉所有不属于自己的管道端；
+//   (c) 父进程从 wait() 改成 poll()，第一个写出答案的孩子赢，立刻 kill 其余。
+//
+// 以下是 v11 的原始说明。
 // Coil solver — v11: v10 + 起点分片并行（fork），32 核直接打在「起点彩票」这个瓶颈上
 //
 // 实测打脸：真实关卡的解极少（常常唯一），穷举整棵树也不大——L139 全枚举才 1680 万节点，
@@ -27,6 +63,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <signal.h>
+#include <poll.h>
 
 static int shard = 0, nshard = 1;      // 本进程负责 starts 里下标 % nshard == shard 的那些
 static int out_fd = -1;                // 子进程把答案写这里
@@ -50,6 +87,9 @@ static int path_len;
 static int total_free;
 static int *fstack;
 static int32_t *seen;
+static int32_t *srcmark;   // 标记「S 的自由邻居」，配 src_id 使用
+static int32_t src_id;
+static int *srcbuf;
 static int32_t seen_id;
 static long long nodes, node_limit;
 static int best_rem;
@@ -142,6 +182,49 @@ static int reach_ok(int p, int remaining) {
     return count == remaining;
 }
 
+// 局部连通性：跟 reach_ok 严格等价，但通常只探一小片就能收工。
+//
+// 归纳前提：进入本节点时剩余区域 R 是连通的（每个节点都验过，起点处另做一次完整验证）。
+// 本次滑行吃掉的是一条直线 S，新剩余 R' = R \ S。R' 若被切开，切口必然紧贴 S；
+// 而 R 连通意味着 R' 里任一点 x 都能在 R' 内走到某个「S 的自由邻居」
+// （x 到 S-邻居的 R-路径若碰到 S，进入 S 之前的最后一点就是一个 S-邻居）。
+// 所以 **R' 连通 ⟺ S 的自由邻居两两连通**——它们一连上就能立刻返回，
+// 不必像 reach_ok 那样把整个剩余区域数一遍。滑行终点 c 属于 S，它的自由邻居也在这个集合里，
+// 所以「从 c 出发全部可达」同时被保证。
+//
+// 代价：成功时 = 把这些邻居连起来所需探索的范围（通常就在 S 附近）；
+// reach_ok 则不管怎样都是 O(剩余格数)，开局就是三千格。
+static int reach_local(int first, int dd, int len, int c, int rem2) {
+    if (rem2 == 0) return 1;
+    if (freedeg(c) == 0) return 0;                 // 滑到死胡同，后面没得走
+
+    ++src_id;
+    int nsrc = 0;
+    for (int k = 0, q = first; k < len; ++k, q += dd)
+        for (int d = 0; d < 4; ++d) {
+            int n = q + delta[d];
+            if (g[n] && srcmark[n] != src_id) { srcmark[n] = src_id; srcbuf[nsrc++] = n; }
+        }
+    if (nsrc == 0) return 0;                       // 还有格子没走，却没有一个挨着 S => 到不了
+    if (nsrc == 1) return 1;                       // 只有一个邻居，两两连通平凡成立
+
+    ++seen_id;
+    int top = 0, found = 1;
+    fstack[top++] = srcbuf[0]; seen[srcbuf[0]] = seen_id;
+    while (top) {
+        int q = fstack[--top];
+        for (int d = 0; d < 4; ++d) {
+            int n = q + delta[d];
+            if (g[n] && seen[n] != seen_id) {
+                seen[n] = seen_id;
+                if (srcmark[n] == src_id && ++found == nsrc) return 1;
+                fstack[top++] = n;
+            }
+        }
+    }
+    return 0;
+}
+
 static int dfs(int p, int remaining) {
     if (remaining < best_rem) best_rem = remaining;
     if (remaining == 0) return 1;
@@ -156,7 +239,7 @@ static int dfs(int p, int remaining) {
         int c = p, len = 0;
         while (g[c + dd]) { c += dd; mark(c); ++len; }
         int rem2 = remaining - len;
-        if (rem2 == 0 || (cheap_ok(c, rem2) && reach_ok(c, rem2))) {
+        if (rem2 == 0 || (cheap_ok(c, rem2) && reach_local(p + dd, dd, len, c, rem2))) {
             cand[nc].dir = d; cand[nc].endp = c; cand[nc].len = len;
             cand[nc].score = freedeg(c);
             ++nc;
@@ -216,6 +299,8 @@ int main(int argc, char **argv) {
     path = malloc(total_free + 8);
     fstack = malloc(sizeof(int) * (size_t)N);
     seen = calloc(N, sizeof(int32_t));
+    srcmark = calloc(N, sizeof(int32_t));
+    srcbuf = malloc(sizeof(int) * (size_t)N);
 
     int *starts = malloc(sizeof(int) * (size_t)total_free);
     int ns = 0;
@@ -242,31 +327,43 @@ int main(int argc, char **argv) {
         for (int k = 0; k < nshard; ++k) {
             pid_t pid = fork();
             if (pid == 0) {                                 // 子进程
-                for (int j = 0; j <= k; ++j) close(pfd[j * 2]);
+                // 管道在 fork 之前就全建好了，这个孩子继承了「所有」管道的两端。
+                // 不属于自己的必须全关，否则别人的写端被我攥着，父进程永远收不到那条管道的 EOF。
+                for (int j = 0; j < nshard; ++j) {
+                    close(pfd[j * 2]);
+                    if (j != k) close(pfd[j * 2 + 1]);
+                }
                 shard = k; out_fd = pfd[k * 2 + 1];
                 goto child_work;
             }
             kids[k] = pid;
             close(pfd[k * 2 + 1]);
         }
-        // 父进程：等第一个成功退出的孩子
-        for (int done = 0; done < nshard; ++done) {
-            int st = 0;
-            pid_t p2 = wait(&st);
-            if (p2 <= 0) break;
-            int k = -1;
-            for (int j = 0; j < nshard; ++j) if (kids[j] == p2) k = j;
-            if (k >= 0 && WIFEXITED(st) && WEXITSTATUS(st) == 0) {
-                char buf[1 << 22];
-                ssize_t n2 = read(pfd[k * 2], buf, sizeof buf - 1);
-                if (n2 > 0) {
-                    buf[n2] = 0;
-                    fputs(buf, stdout);
-                    for (int j = 0; j < nshard; ++j) if (kids[j] != p2) kill(kids[j], 9);
+        // 父进程：poll 所有读端。孩子有解就写管道；无解就自己退出，读端报 EOF。
+        // 用 poll 而不是 wait，是因为大盘的解可能撑爆管道 64KB 缓冲——孩子会阻塞在 write 上
+        // 等人来读，而 wait() 里的父进程要等它退出才读，那就互相等死了。
+        struct pollfd *pf = malloc(sizeof(struct pollfd) * (size_t)nshard);
+        for (int k = 0; k < nshard; ++k) { pf[k].fd = pfd[k * 2]; pf[k].events = POLLIN; }
+        static char rbuf[1 << 22];
+        int alive = nshard;
+        while (alive > 0) {
+            if (poll(pf, (nfds_t)nshard, -1) < 0) break;
+            for (int k = 0; k < nshard; ++k) {
+                if (pf[k].fd < 0 || pf[k].revents == 0) continue;
+                size_t len = 0;
+                ssize_t r;
+                while ((r = read(pf[k].fd, rbuf + len, sizeof rbuf - 1 - len)) > 0) len += (size_t)r;
+                if (len > 0) {                              // 这个 shard 赢了
+                    rbuf[len] = 0;
+                    fputs(rbuf, stdout);
+                    fflush(stdout);
+                    for (int j2 = 0; j2 < nshard; ++j2) if (kids[j2] > 0) kill(kids[j2], SIGKILL);
                     return 0;
                 }
+                close(pf[k].fd); pf[k].fd = -1; --alive;    // 这片搜穷了，无解
             }
         }
+        for (int j2 = 0; j2 < nshard; ++j2) if (kids[j2] > 0) kill(kids[j2], SIGKILL);
         fprintf(stderr, "no solution found\n");
         return 1;
     }
@@ -285,10 +382,12 @@ int main(int argc, char **argv) {
         for (int c = 0; c < N; ++c) if (g[c]) { deg[c] = freedeg(c);
             if (deg[c] <= 1) ++low_cnt; if (deg[c] == 0) ++zero_cnt; }
         mark(s);
+        // 归纳的底座：局部检查靠「上一层的剩余区域连通」，起点这一层得自己验。
+        // 起点若是割点，去掉它剩余区域就断了。顺带白捡一条起点剪枝。
+        if (!reach_ok(s, total_free - 1)) continue;
         path_len = 0; nodes = 0; node_limit = probe; best_rem = total_free;
         int r = dfs(s, total_free - 1);
-        if (r == 1) { path[path_len] = 0;
-            printf("x=%d&y=%d&path=%s\n", (s % W) - 1, (s / W) - 1, path); return 0; }
+        if (r == 1) { path[path_len] = 0; emit(s, path); }
         if (r == 0) continue;                          // 搜穷了仍无解 => 此起点被证伪，永久剔除
         starts[keep] = s; sc[keep] = best_rem; ++keep;
     }
@@ -314,13 +413,12 @@ int main(int argc, char **argv) {
             if (deg[c] == 0) ++zero_cnt;
         }
         mark(s);
+        // 归纳的底座：局部检查靠「上一层的剩余区域连通」，起点这一层得自己验。
+        // 起点若是割点，去掉它剩余区域就断了。顺带白捡一条起点剪枝。
+        if (!reach_ok(s, total_free - 1)) continue;
 
         path_len = 0; nodes = 0;
-        if (dfs(s, total_free - 1) == 1) {
-            path[path_len] = 0;
-            printf("x=%d&y=%d&path=%s\n", (s % W) - 1, (s / W) - 1, path);
-            return 0;
-        }
+        if (dfs(s, total_free - 1) == 1) { path[path_len] = 0; emit(s, path); }
     }
     fprintf(stderr, "no solution found\n");
     return 1;

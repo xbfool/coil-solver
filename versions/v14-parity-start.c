@@ -1,3 +1,29 @@
+// Coil solver — v14: v13 + 奇偶排除起点
+//
+// 路径在棋盘两色间严格交替。自由格共 n 个时：n 为奇数 => 路径位置 0..n-1 中偶数位同色，
+// 两个端点（位置 0 和 n-1，都是偶数位）必然同色，且该色是多数色。所以 n 为奇数的关，
+// 少数色的格子直接不可能是起点——起点候选砍掉约一半，探针开销随之减半。
+// n 为偶数时两端点异色，这条规则无信息。
+// 官方关卡里两种情况各占约一半（墙在两色上数量相等，所以 n 的奇偶跟 w*h 的奇偶一致）。
+//
+// 以下是 v13 的说明。
+// Coil solver — v13: 修掉 v11 的并行失效 bug（emit() 写了却从未被调用）
+//
+// v11 的意图是「谁先解出就把答案写进管道退出，父进程收第一个成功的并杀掉其余」，为此写了
+// emit()——但两处解出的地方走的都是 printf + return 0，emit 一次都没被调用（编译警告
+// 'emit' defined but not used 就是证据）。后果：
+//   · 子进程把答案直接打进继承来的 stdout，所以校验能过，成绩看着是对的；
+//   · 父进程从管道只读到 0 字节，于是**不 kill 其余子进程**；
+//   · evaluate.py 用 capture_output 抓 stdout，必须等所有持有该 fd 的进程退出才返回。
+// 所以 v11 的实测耗时 = 最慢的那个 shard 把自己那片起点全部搜穷，而不是「最快找到解」。
+// 28 核并行的收益基本被这一个 bug 吃掉了。
+//
+// 本版只改这一件事，好单独量出它值多少分：
+//   (a) 两处解出都改走 emit()（写管道 + _exit(0)）；
+//   (b) 子进程 fork 后关掉所有不属于自己的管道端；
+//   (c) 父进程从 wait() 改成 poll()，第一个写出答案的孩子赢，立刻 kill 其余。
+//
+// 以下是 v11 的原始说明。
 // Coil solver — v11: v10 + 起点分片并行（fork），32 核直接打在「起点彩票」这个瓶颈上
 //
 // 实测打脸：真实关卡的解极少（常常唯一），穷举整棵树也不大——L139 全枚举才 1680 万节点，
@@ -27,6 +53,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <signal.h>
+#include <poll.h>
 
 static int shard = 0, nshard = 1;      // 本进程负责 starts 里下标 % nshard == shard 的那些
 static int out_fd = -1;                // 子进程把答案写这里
@@ -220,7 +247,18 @@ int main(int argc, char **argv) {
     int *starts = malloc(sizeof(int) * (size_t)total_free);
     int ns = 0;
     memcpy(g, g0, N);
-    for (int c = 0; c < N; ++c) if (g0[c]) starts[ns++] = c;
+    // 奇偶排除起点：路径在棋盘两色间严格交替。设自由格共 n 个，若 n 为奇数，则路径的
+    // 第 0、2、…、n-1 个位置同色，两个端点都落在这一色上，而这一色恰好是多数色
+    // （数量 (n+1)/2）。于是少数色的格子当场全部排除——起点候选直接砍掉约一半。
+    // n 为偶数时两端点异色，这条给不出信息。已在 11 个已知真解上验证过。
+    int need_col = -1;
+    {
+        int c0 = 0, c1 = 0;
+        for (int c = 0; c < N; ++c) if (g0[c]) { if (col[c]) ++c1; else ++c0; }
+        if ((c0 + c1) & 1) need_col = (c0 > c1) ? 0 : 1;
+    }
+    for (int c = 0; c < N; ++c) if (g0[c] && (need_col < 0 || col[c] == need_col)) starts[ns++] = c;
+    fprintf(stderr, "奇偶: need_col=%d, 起点 %d/%d\n", need_col, ns, total_free);
     for (int i = 1; i < ns; ++i) {
         int v = starts[i], dv = freedeg(v), j = i;
         while (j > 0 && freedeg(starts[j - 1]) > dv) { starts[j] = starts[j - 1]; --j; }
@@ -242,31 +280,43 @@ int main(int argc, char **argv) {
         for (int k = 0; k < nshard; ++k) {
             pid_t pid = fork();
             if (pid == 0) {                                 // 子进程
-                for (int j = 0; j <= k; ++j) close(pfd[j * 2]);
+                // 管道在 fork 之前就全建好了，这个孩子继承了「所有」管道的两端。
+                // 不属于自己的必须全关，否则别人的写端被我攥着，父进程永远收不到那条管道的 EOF。
+                for (int j = 0; j < nshard; ++j) {
+                    close(pfd[j * 2]);
+                    if (j != k) close(pfd[j * 2 + 1]);
+                }
                 shard = k; out_fd = pfd[k * 2 + 1];
                 goto child_work;
             }
             kids[k] = pid;
             close(pfd[k * 2 + 1]);
         }
-        // 父进程：等第一个成功退出的孩子
-        for (int done = 0; done < nshard; ++done) {
-            int st = 0;
-            pid_t p2 = wait(&st);
-            if (p2 <= 0) break;
-            int k = -1;
-            for (int j = 0; j < nshard; ++j) if (kids[j] == p2) k = j;
-            if (k >= 0 && WIFEXITED(st) && WEXITSTATUS(st) == 0) {
-                char buf[1 << 22];
-                ssize_t n2 = read(pfd[k * 2], buf, sizeof buf - 1);
-                if (n2 > 0) {
-                    buf[n2] = 0;
-                    fputs(buf, stdout);
-                    for (int j = 0; j < nshard; ++j) if (kids[j] != p2) kill(kids[j], 9);
+        // 父进程：poll 所有读端。孩子有解就写管道；无解就自己退出，读端报 EOF。
+        // 用 poll 而不是 wait，是因为大盘的解可能撑爆管道 64KB 缓冲——孩子会阻塞在 write 上
+        // 等人来读，而 wait() 里的父进程要等它退出才读，那就互相等死了。
+        struct pollfd *pf = malloc(sizeof(struct pollfd) * (size_t)nshard);
+        for (int k = 0; k < nshard; ++k) { pf[k].fd = pfd[k * 2]; pf[k].events = POLLIN; }
+        static char rbuf[1 << 22];
+        int alive = nshard;
+        while (alive > 0) {
+            if (poll(pf, (nfds_t)nshard, -1) < 0) break;
+            for (int k = 0; k < nshard; ++k) {
+                if (pf[k].fd < 0 || pf[k].revents == 0) continue;
+                size_t len = 0;
+                ssize_t r;
+                while ((r = read(pf[k].fd, rbuf + len, sizeof rbuf - 1 - len)) > 0) len += (size_t)r;
+                if (len > 0) {                              // 这个 shard 赢了
+                    rbuf[len] = 0;
+                    fputs(rbuf, stdout);
+                    fflush(stdout);
+                    for (int j2 = 0; j2 < nshard; ++j2) if (kids[j2] > 0) kill(kids[j2], SIGKILL);
                     return 0;
                 }
+                close(pf[k].fd); pf[k].fd = -1; --alive;    // 这片搜穷了，无解
             }
         }
+        for (int j2 = 0; j2 < nshard; ++j2) if (kids[j2] > 0) kill(kids[j2], SIGKILL);
         fprintf(stderr, "no solution found\n");
         return 1;
     }
@@ -287,8 +337,7 @@ int main(int argc, char **argv) {
         mark(s);
         path_len = 0; nodes = 0; node_limit = probe; best_rem = total_free;
         int r = dfs(s, total_free - 1);
-        if (r == 1) { path[path_len] = 0;
-            printf("x=%d&y=%d&path=%s\n", (s % W) - 1, (s / W) - 1, path); return 0; }
+        if (r == 1) { path[path_len] = 0; emit(s, path); }
         if (r == 0) continue;                          // 搜穷了仍无解 => 此起点被证伪，永久剔除
         starts[keep] = s; sc[keep] = best_rem; ++keep;
     }
@@ -316,11 +365,7 @@ int main(int argc, char **argv) {
         mark(s);
 
         path_len = 0; nodes = 0;
-        if (dfs(s, total_free - 1) == 1) {
-            path[path_len] = 0;
-            printf("x=%d&y=%d&path=%s\n", (s % W) - 1, (s / W) - 1, path);
-            return 0;
-        }
+        if (dfs(s, total_free - 1) == 1) { path[path_len] = 0; emit(s, path); }
     }
     fprintf(stderr, "no solution found\n");
     return 1;

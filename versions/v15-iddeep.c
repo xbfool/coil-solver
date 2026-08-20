@@ -1,3 +1,23 @@
+// Coil solver — v15: v13 + 起点迭代加深（取代「固定预算探针 + 逐个无限搜」两段式）
+//
+// 以下是 v13 的说明。
+// Coil solver — v13: 修掉 v11 的并行失效 bug（emit() 写了却从未被调用）
+//
+// v11 的意图是「谁先解出就把答案写进管道退出，父进程收第一个成功的并杀掉其余」，为此写了
+// emit()——但两处解出的地方走的都是 printf + return 0，emit 一次都没被调用（编译警告
+// 'emit' defined but not used 就是证据）。后果：
+//   · 子进程把答案直接打进继承来的 stdout，所以校验能过，成绩看着是对的；
+//   · 父进程从管道只读到 0 字节，于是**不 kill 其余子进程**；
+//   · evaluate.py 用 capture_output 抓 stdout，必须等所有持有该 fd 的进程退出才返回。
+// 所以 v11 的实测耗时 = 最慢的那个 shard 把自己那片起点全部搜穷，而不是「最快找到解」。
+// 28 核并行的收益基本被这一个 bug 吃掉了。
+//
+// 本版只改这一件事，好单独量出它值多少分：
+//   (a) 两处解出都改走 emit()（写管道 + _exit(0)）；
+//   (b) 子进程 fork 后关掉所有不属于自己的管道端；
+//   (c) 父进程从 wait() 改成 poll()，第一个写出答案的孩子赢，立刻 kill 其余。
+//
+// 以下是 v11 的原始说明。
 // Coil solver — v11: v10 + 起点分片并行（fork），32 核直接打在「起点彩票」这个瓶颈上
 //
 // 实测打脸：真实关卡的解极少（常常唯一），穷举整棵树也不大——L139 全枚举才 1680 万节点，
@@ -27,6 +47,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <signal.h>
+#include <poll.h>
 
 static int shard = 0, nshard = 1;      // 本进程负责 starts 里下标 % nshard == shard 的那些
 static int out_fd = -1;                // 子进程把答案写这里
@@ -242,85 +263,93 @@ int main(int argc, char **argv) {
         for (int k = 0; k < nshard; ++k) {
             pid_t pid = fork();
             if (pid == 0) {                                 // 子进程
-                for (int j = 0; j <= k; ++j) close(pfd[j * 2]);
+                // 管道在 fork 之前就全建好了，这个孩子继承了「所有」管道的两端。
+                // 不属于自己的必须全关，否则别人的写端被我攥着，父进程永远收不到那条管道的 EOF。
+                for (int j = 0; j < nshard; ++j) {
+                    close(pfd[j * 2]);
+                    if (j != k) close(pfd[j * 2 + 1]);
+                }
                 shard = k; out_fd = pfd[k * 2 + 1];
                 goto child_work;
             }
             kids[k] = pid;
             close(pfd[k * 2 + 1]);
         }
-        // 父进程：等第一个成功退出的孩子
-        for (int done = 0; done < nshard; ++done) {
-            int st = 0;
-            pid_t p2 = wait(&st);
-            if (p2 <= 0) break;
-            int k = -1;
-            for (int j = 0; j < nshard; ++j) if (kids[j] == p2) k = j;
-            if (k >= 0 && WIFEXITED(st) && WEXITSTATUS(st) == 0) {
-                char buf[1 << 22];
-                ssize_t n2 = read(pfd[k * 2], buf, sizeof buf - 1);
-                if (n2 > 0) {
-                    buf[n2] = 0;
-                    fputs(buf, stdout);
-                    for (int j = 0; j < nshard; ++j) if (kids[j] != p2) kill(kids[j], 9);
+        // 父进程：poll 所有读端。孩子有解就写管道；无解就自己退出，读端报 EOF。
+        // 用 poll 而不是 wait，是因为大盘的解可能撑爆管道 64KB 缓冲——孩子会阻塞在 write 上
+        // 等人来读，而 wait() 里的父进程要等它退出才读，那就互相等死了。
+        struct pollfd *pf = malloc(sizeof(struct pollfd) * (size_t)nshard);
+        for (int k = 0; k < nshard; ++k) { pf[k].fd = pfd[k * 2]; pf[k].events = POLLIN; }
+        static char rbuf[1 << 22];
+        int alive = nshard;
+        while (alive > 0) {
+            if (poll(pf, (nfds_t)nshard, -1) < 0) break;
+            for (int k = 0; k < nshard; ++k) {
+                if (pf[k].fd < 0 || pf[k].revents == 0) continue;
+                size_t len = 0;
+                ssize_t r;
+                while ((r = read(pf[k].fd, rbuf + len, sizeof rbuf - 1 - len)) > 0) len += (size_t)r;
+                if (len > 0) {                              // 这个 shard 赢了
+                    rbuf[len] = 0;
+                    fputs(rbuf, stdout);
+                    fflush(stdout);
+                    for (int j2 = 0; j2 < nshard; ++j2) if (kids[j2] > 0) kill(kids[j2], SIGKILL);
                     return 0;
                 }
+                close(pf[k].fd); pf[k].fd = -1; --alive;    // 这片搜穷了，无解
             }
         }
+        for (int j2 = 0; j2 < nshard; ++j2) if (kids[j2] > 0) kill(kids[j2], SIGKILL);
         fprintf(stderr, "no solution found\n");
         return 1;
     }
   child_work:;
 
-    // ---- 第一段：探针，证伪 + 打分 ----
-    long long probe = getenv("PROBE") ? atoll(getenv("PROBE")) : 2000;
+    // ---- 起点迭代加深 ----
+    // v13 是两段式：先给每个起点 2000 节点的探针，然后按排序对幸存者逐个「无限搜」。
+    // 病灶在大盘上暴露得很清楚：L195（3028 自由格）里 2000 节点的探针只能证伪 ~15% 的起点，
+    // 剩下的全靠第二段硬搜；而第二段一旦排在前面的那个错起点子树巨大，本片就被它焊死了
+    // ——偏偏正确起点可能就在它后面。L195 49s / L197 105s / L199 0.88s 的非单调正是这个。
+    //
+    // 改成：轮次预算 B, 2B, 4B, ...，每轮给每个存活起点 B 个节点。
+    //   搜穷仍无解 => 永久剔除（这是证明，不是启发式）；预算用尽 => 留到下一轮。
+    // 几何增长保证重复劳动不超过 2 倍，换来的是没有任何单个起点能把本片焊死。
+    // 每轮结束按探到的最深处重排，好起点下一轮先试。
+    long long budget = getenv("PROBE") ? atoll(getenv("PROBE")) : 2000;
+    long long grow = getenv("GROW") ? atoll(getenv("GROW")) : 2;
+    int *mine = malloc(sizeof(int) * (size_t)ns);
     int *sc = malloc(sizeof(int) * (size_t)ns);
-    int keep = 0;
-    for (int i = 0; i < ns; ++i) {
-        if (i % nshard != shard) continue;                 // 只做自己这一片
-        int s = starts[i];
-        memcpy(g, g0, N);
-        cnt[0] = cnt[1] = 0; low_cnt = zero_cnt = 0;
-        for (int c = 0; c < N; ++c) if (g[c]) ++cnt[col[c]];
-        for (int c = 0; c < N; ++c) if (g[c]) { deg[c] = freedeg(c);
-            if (deg[c] <= 1) ++low_cnt; if (deg[c] == 0) ++zero_cnt; }
-        mark(s);
-        path_len = 0; nodes = 0; node_limit = probe; best_rem = total_free;
-        int r = dfs(s, total_free - 1);
-        if (r == 1) { path[path_len] = 0;
-            printf("x=%d&y=%d&path=%s\n", (s % W) - 1, (s / W) - 1, path); return 0; }
-        if (r == 0) continue;                          // 搜穷了仍无解 => 此起点被证伪，永久剔除
-        starts[keep] = s; sc[keep] = best_rem; ++keep;
-    }
-    // 幸存者按探到的深度排序。对照实验：关掉排序反而更慢（L137 4.1s→23.5s，L171 26s→92s），
-    // 说明排序是有信息量的；NORANK=1 可关掉做对照。
-    if (!getenv("NORANK")) for (int i = 1; i < keep; ++i) {
-        int vs = starts[i], vc = sc[i], j = i;
-        while (j > 0 && sc[j - 1] > vc) { starts[j] = starts[j - 1]; sc[j] = sc[j - 1]; --j; }
-        starts[j] = vs; sc[j] = vc;
-    }
-    fprintf(stderr, "probe: %d/%d 起点被证伪，剩 %d\n", ns - keep, ns, keep);
+    int nm = 0;
+    for (int i = 0; i < ns; ++i) if (i % nshard == shard) mine[nm++] = starts[i];
 
-    // ---- 第二段：按顺序正式搜 ----
-    node_limit = (long long)1 << 62;
-    for (int i = 0; i < keep; ++i) {
-        int s = starts[i];
-        memcpy(g, g0, N);
-        cnt[0] = cnt[1] = 0; low_cnt = zero_cnt = 0;
-        for (int c = 0; c < N; ++c) if (g[c]) ++cnt[col[c]];
-        for (int c = 0; c < N; ++c) if (g[c]) {
-            deg[c] = freedeg(c);
-            if (deg[c] <= 1) ++low_cnt;
-            if (deg[c] == 0) ++zero_cnt;
+    while (nm > 0) {
+        int keep = 0;
+        for (int i = 0; i < nm; ++i) {
+            int s = mine[i];
+            memcpy(g, g0, N);
+            cnt[0] = cnt[1] = 0; low_cnt = zero_cnt = 0;
+            for (int c = 0; c < N; ++c) if (g[c]) ++cnt[col[c]];
+            for (int c = 0; c < N; ++c) if (g[c]) {
+                deg[c] = freedeg(c);
+                if (deg[c] <= 1) ++low_cnt;
+                if (deg[c] == 0) ++zero_cnt;
+            }
+            mark(s);
+            path_len = 0; nodes = 0; node_limit = budget; best_rem = total_free;
+            int r = dfs(s, total_free - 1);
+            if (r == 1) { path[path_len] = 0; emit(s, path); }
+            if (r == 0) continue;                  // 子树被搜穷仍无解 => 此起点被证伪，永久剔除
+            mine[keep] = s; sc[keep] = best_rem; ++keep;
         }
-        mark(s);
-
-        path_len = 0; nodes = 0;
-        if (dfs(s, total_free - 1) == 1) {
-            path[path_len] = 0;
-            printf("x=%d&y=%d&path=%s\n", (s % W) - 1, (s / W) - 1, path);
-            return 0;
+        nm = keep;
+        if (!getenv("NORANK")) for (int i = 1; i < nm; ++i) {
+            int vs = mine[i], vc = sc[i], j2 = i;
+            while (j2 > 0 && sc[j2 - 1] > vc) { mine[j2] = mine[j2 - 1]; sc[j2] = sc[j2 - 1]; --j2; }
+            mine[j2] = vs; sc[j2] = vc;
         }
+        fprintf(stderr, "shard %d: budget %lld -> alive %d\n", shard, budget, nm);
+        if (budget > (1LL << 55)) break;
+        budget *= grow;
     }
     fprintf(stderr, "no solution found\n");
     return 1;
