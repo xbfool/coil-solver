@@ -222,54 +222,44 @@ static int probing(int max_rounds) {
     return !bad;
 }
 
-// ===== 有向层：必用边链的定向（从 propagate.c 搬来）=====
-// probing 把必用边从 25% 推到 35%，链因此更长——链越长，链内可判先后的拐点越多。
-static int *chain_id, *chain_pos, *chain_len_of, *seqbuf;
-// strict=1 用于**含起点的那条链**：它是路径的第一段，占据位置 0..k-1，
-// 所以任何不在它上面的格子位置都 >= k，绝不可能比链上的拐弯点更早。
-// 于是前方那格只剩两种合法可能：是墙，或者就在本链上且位置更早。
-static int chain_dir_ok(const int *seq, int k, int rev, int cid, int strict) {
-    for (int i = 1; i + 1 < k; ++i) {
-        int prev = rev ? seq[i + 1] : seq[i - 1];
-        int next = rev ? seq[i - 1] : seq[i + 1];
-        if (next - seq[i] == seq[i] - prev) continue;      // 直穿，滑行规则没意见
-        int f = seq[i] + (seq[i] - prev);                  // 拐弯时「前方」那一格
-        if (!g0[f]) continue;                              // 前方是墙，拐弯天然合法
-        if (chain_id[f] != cid) { if (strict) return 0; continue; }
-        int tf = rev ? (k - 1 - chain_pos[f]) : chain_pos[f];
-        int ti = rev ? (k - 1 - i) : i;
-        if (tf > ti) return 0;                             // 前方那格更晚 => 这个方向不可能
-    }
-    return 1;
-}
+static int *chain_id, *chain_pos;
+// ===== 有向层 v2：链定向 + 跨链时序偏序 + 环检测 =====
+//
+// 必用边拼成的每条链都是路径的一个**连续段**，所以链与链之间存在一个**全序**。
+// 之前只用了链内的信息（拐弯点的前方格若在本链且位置更晚 => 这个定向不可能），
+// 前方格落在**别的链**上的情形一律放过了 —— 那其实是一条偏序边：
+//
+//     链 Li 在某个定向下，某个拐弯点的前方格落在链 Lj 上
+//       => 那一格必须更早被访问
+//       => 链是连续段，所以 **Lj 整体早于 Li**
+//
+// 把这些偏序边攒起来，**有环就是矛盾**（全序不可能有环）。
+// 再加两条锚：含起点的链必须是全序的第一段（任何指向它的偏序边都是矛盾，
+// 而且它自己的前方格只能落在本链上或是墙）；这条之前就有，现在并进同一套框架。
+static int *ch_start, *ch_len, *allseq;
+static int *ch_feas, *bef_start, *bef_cnt, *bef_all;
+static int *ch_dir;                 // -1 未定, 0/1 已定向
+static int nchain;
+// 偏序图（静态邻接表）：e_to[e] 是被指向的链，边的含义是「e_to 的前驱更早」
+static int *e_head, *e_next, *e_to, e_cnt;
+static int *dfs_state, *dfs_stack, *dfs_iter;
+static int *bef_buf;
 
-// 起点的第一次滑行是在空盘面上做的，撞不到任何已访问格，所以**必然一路滑到墙**。
-// 含起点的链开头那一段因此必须是直线，直到撞墙才允许拐。
-static int first_run_ok(const int *seq, int k) {
-    if (k < 2) return 1;
-    int e = seq[1] - seq[0];
-    int limit = 1;
-    while (g0[seq[0] + (limit + 1) * e]) ++limit;          // 从起点沿 e 能滑到第几格
-    if (limit > k - 1) limit = k - 1;
-    for (int i = 1; i < limit; ++i)
-        if (seq[i + 1] - seq[i] != e) return 0;            // 没撞墙就拐了
-    return 1;
-}
-
-// 返回 0 = 矛盾（这个起点被证伪）。oriented/total 回填被定死方向的链数。
-static int orient_chains(int s, int *oriented, int *total) {
+static void build_chains(void) {
     for (int c = 0; c < N; ++c) chain_id[c] = -1;
-    int nchain = 0, ndet = 0;
-
+    nchain = 0;
+    int pos = 0;
     for (int c0 = 0; c0 < N; ++c0) {
         if (!g0[c0] || chain_id[c0] >= 0) continue;
         int fdeg = 0;
-        for (int d = 0; d < 4; ++d) if (g0[c0 + delta[d]] && estate[c0 * 4 + d] == 1) ++fdeg;
-        if (fdeg != 1) continue;                           // 只从链端起步（环已被传播禁掉）
-
-        int k = 0, cur = c0, from = -1;
+        for (int d = 0; d < 4; ++d)
+            if (g0[c0 + delta[d]] && estate[c0 * 4 + d] == 1) ++fdeg;
+        if (fdeg != 1) continue;                     // 只从链端起步（环已被传播禁掉）
+        ch_start[nchain] = pos;
+        int cur = c0, from = -1;
         for (;;) {
-            seqbuf[k] = cur; chain_id[cur] = nchain; chain_pos[cur] = k; ++k;
+            allseq[pos] = cur; chain_id[cur] = nchain; chain_pos[cur] = pos - ch_start[nchain];
+            ++pos;
             int nxt = -1;
             for (int d = 0; d < 4; ++d) {
                 int n = cur + delta[d];
@@ -278,33 +268,164 @@ static int orient_chains(int s, int *oriented, int *total) {
             if (nxt < 0) break;
             from = cur; cur = nxt;
         }
-        if (k < 3) { ++nchain; continue; }                 // 太短，没有内部拐点可查
-
-        int has_s = (chain_id[s] == nchain);
-        int ok0 = chain_dir_ok(seqbuf, k, 0, nchain, has_s && seqbuf[0] == s);
-        int ok1 = chain_dir_ok(seqbuf, k, 1, nchain, has_s && seqbuf[k - 1] == s);
-        // 含起点的链方向是硬的：起点只挂 1 条边，必是链端，且路径从它出发
-        if (seqbuf[0] == s)     ok1 = 0;
-        if (seqbuf[k - 1] == s) ok0 = 0;
-        if (has_s) {
-            int rev[4096];
-            const int *sq = seqbuf;
-            if (seqbuf[k - 1] == s) {                      // 让 s 排在序列开头再查第一段
-                int kk = k < 4096 ? k : 4096;
-                for (int t = 0; t < kk; ++t) rev[t] = seqbuf[k - 1 - t];
-                sq = rev;
-                if (!first_run_ok(sq, kk)) return 0;
-            } else if (!first_run_ok(sq, k)) return 0;
-        }
-        if (!ok0 && !ok1) return 0;                        // 两个方向都走不通 => 矛盾
-        if (!ok0 && !ok1) return 0;                        // 两个方向都走不通 => 矛盾
-        if (ok0 != ok1) ++ndet;
+        ch_len[nchain] = pos - ch_start[nchain];
         ++nchain;
     }
-    *oriented = ndet; *total = nchain;
+}
+
+// 扫链 i 在给定定向下的所有拐弯点。
+// 返回 0 = 这个定向不可行。否则把「必须早于 Li」的那些链号写进 bef_buf，个数回填 nbef。
+// strict = 这是含起点的链：它是全序第一段，前方格不在本链上就一律矛盾。
+static long long st_turn, st_wall, st_same, st_cross, st_none;
+static int chain_scan(int i, int rev, int strict, int *nbef) {
+    const int *seq = allseq + ch_start[i];
+    int k = ch_len[i];
+    *nbef = 0;
+    for (int t = 1; t + 1 < k; ++t) {
+        int prev = rev ? seq[t + 1] : seq[t - 1];
+        int next = rev ? seq[t - 1] : seq[t + 1];
+        if (next - seq[t] == seq[t] - prev) continue;    // 直穿，滑行规则没意见
+        ++st_turn;
+        int f = seq[t] + (seq[t] - prev);                // 拐弯时「前方」那一格
+        if (!g0[f]) { ++st_wall; continue; }             // 前方是墙，拐弯天然合法
+        int cf = chain_id[f];
+        if (cf == i) ++st_same; else if (cf >= 0) ++st_cross; else ++st_none;
+        if (cf == i) {                                   // 同链：直接比位置
+            int tf = rev ? (k - 1 - chain_pos[f]) : chain_pos[f];
+            int tt = rev ? (k - 1 - t) : t;
+            if (tf > tt) return 0;
+        } else if (strict) {
+            return 0;                                    // 含起点的链，前方格只能在本链或是墙
+        } else if (cf >= 0) {
+            bef_buf[(*nbef)++] = cf;                     // 跨链：Lcf 必须整体早于 Li
+        }
+        // cf < 0（前方格还不在任何链上）：先后未知，放过
+    }
     return 1;
 }
 
+static void add_edge(int from_chain, int to_chain) {
+    e_to[e_cnt] = to_chain;
+    e_next[e_cnt] = e_head[from_chain];
+    e_head[from_chain] = e_cnt++;
+}
+
+// 偏序图里有环 => 矛盾。迭代式 DFS 三色，避免深递归。
+static int has_cycle(void) {
+    for (int i = 0; i < nchain; ++i) dfs_state[i] = 0;
+    for (int s0 = 0; s0 < nchain; ++s0) {
+        if (dfs_state[s0]) continue;
+        int top = 0;
+        dfs_stack[top] = s0; dfs_iter[top] = e_head[s0]; dfs_state[s0] = 1;
+        while (top >= 0) {
+            int v = dfs_stack[top], e = dfs_iter[top];
+            if (e < 0) { dfs_state[v] = 2; --top; continue; }
+            dfs_iter[top] = e_next[e];
+            int w = e_to[e];
+            if (dfs_state[w] == 1) return 1;             // 回边 => 有环
+            if (dfs_state[w] == 0) {
+                dfs_state[w] = 1;
+                ++top; dfs_stack[top] = w; dfs_iter[top] = e_head[w];
+            }
+        }
+    }
+    return 0;
+}
+
+// 起点的第一次滑行是在空盘面上做的，必然一路滑到墙 —— 含起点的链开头那段必须是直线
+static int first_run_ok(const int *seq, int k) {
+    if (k < 2) return 1;
+    int e = seq[1] - seq[0], limit = 1;
+    while (g0[seq[0] + (limit + 1) * e]) ++limit;
+    if (limit > k - 1) limit = k - 1;
+    for (int i = 1; i < limit; ++i)
+        if (seq[i + 1] - seq[i] != e) return 0;
+    return 1;
+}
+
+// 从链 from 出发，沿偏序边能不能走到 to（用来判断「再加一条 a->i 的边会不会成环」）
+static int reach(int from, int to) {
+    if (from == to) return 1;
+    for (int i = 0; i < nchain; ++i) dfs_state[i] = 0;
+    int top = 0;
+    dfs_stack[top++] = from; dfs_state[from] = 1;
+    while (top) {
+        int v = dfs_stack[--top];
+        for (int e = e_head[v]; e >= 0; e = e_next[e]) {
+            int w = e_to[e];
+            if (w == to) return 1;
+            if (!dfs_state[w]) { dfs_state[w] = 1; dfs_stack[top++] = w; }
+        }
+    }
+    return 0;
+}
+
+// 返回 0 = 矛盾（这个起点被证伪）。oriented/total 回填定死方向的链数 / 总链数。
+static int orient_chains(int s, int *oriented, int *total) {
+    build_chains();
+    e_cnt = 0;
+    for (int i = 0; i < nchain; ++i) { e_head[i] = -1; ch_dir[i] = -1; }
+
+    // 第一遍：每条链两个方向各扫一次，记下「哪些链必须早于我」
+    int bpos = 0;
+    for (int i = 0; i < nchain; ++i) {
+        int k = ch_len[i];
+        const int *seq = allseq + ch_start[i];
+        ch_feas[i] = 3;                                   // bit0 = 正向可行, bit1 = 反向可行
+        for (int d = 0; d < 2; ++d) { bef_start[i * 2 + d] = bpos; bef_cnt[i * 2 + d] = 0; }
+        if (k < 3) { ch_feas[i] = 0; continue; }           // 太短，没有内部拐点，不参与推理
+
+        int head_s = (seq[0] == s), tail_s = (seq[k - 1] == s);
+        if (head_s && !first_run_ok(seq, k)) return 0;     // 第一次滑行必须一路滑到墙
+        if (tail_s) {
+            static int rv[8192];
+            int kk = k < 8192 ? k : 8192;
+            for (int t = 0; t < kk; ++t) rv[t] = seq[k - 1 - t];
+            if (!first_run_ok(rv, kk)) return 0;
+        }
+        if (head_s) ch_feas[i] &= ~2;                      // 起点必是链端，路径从它出发
+        if (tail_s) ch_feas[i] &= ~1;
+
+        for (int d = 0; d < 2; ++d) {
+            if (!(ch_feas[i] & (1 << d))) continue;
+            int nb = 0;
+            int strict = d ? tail_s : head_s;              // 含起点的链：全序第一段，要求最严
+            if (!chain_scan(i, d, strict, &nb)) { ch_feas[i] &= ~(1 << d); continue; }
+            bef_start[i * 2 + d] = bpos;
+            for (int t = 0; t < nb; ++t) bef_all[bpos++] = bef_buf[t];
+            bef_cnt[i * 2 + d] = nb;
+        }
+        if (ch_feas[i] == 0) return 0;                     // 两个方向都走不通
+    }
+
+    // 第二遍：不动点迭代。链是路径的连续段 => 链之间是全序，偏序图里不许有环。
+    // 某个定向会让图成环，那个定向就不可能；只剩一个定向的链就此定死，它的偏序边永久加入，
+    // 又可能让别的链的某个定向成环 —— 滚到不动点为止。
+    int ndet = 0;
+    for (int round = 0; round < 8; ++round) {
+        int changed = 0;
+        for (int i = 0; i < nchain; ++i) {
+            if (ch_dir[i] >= 0 || ch_feas[i] == 0) continue;
+            for (int d = 0; d < 2; ++d) {
+                if (!(ch_feas[i] & (1 << d))) continue;
+                int st = bef_start[i * 2 + d], n = bef_cnt[i * 2 + d];
+                for (int t = 0; t < n; ++t)
+                    if (reach(i, bef_all[st + t])) { ch_feas[i] &= ~(1 << d); break; }
+            }
+            if (ch_feas[i] == 0) return 0;                 // 两个方向都成环 => 矛盾
+            if (ch_feas[i] == 1 || ch_feas[i] == 2) {      // 只剩一个方向 => 定死，边永久加入
+                int d = (ch_feas[i] == 1) ? 0 : 1;
+                ch_dir[i] = d; ++ndet; changed = 1;
+                int st = bef_start[i * 2 + d], n = bef_cnt[i * 2 + d];
+                for (int t = 0; t < n; ++t) add_edge(bef_all[st + t], i);
+            }
+        }
+        if (!changed) break;
+    }
+
+    *oriented = ndet; *total = nchain;
+    return !has_cycle();
+}
 
 
 static char *slurp(const char *path) {
@@ -369,7 +490,15 @@ int main(int argc, char **argv) {
     pq = malloc(sizeof(int) * (size_t)(N + 1)); inq = malloc((size_t)N);
     is_ep = malloc((size_t)N); not_ep = malloc((size_t)N);
     chain_id = malloc(sizeof(int)*(size_t)N); chain_pos = malloc(sizeof(int)*(size_t)N);
-    seqbuf = malloc(sizeof(int)*(size_t)N);
+    allseq = malloc(sizeof(int)*(size_t)N); ch_start = malloc(sizeof(int)*(size_t)N);
+    ch_len = malloc(sizeof(int)*(size_t)N); ch_dir = malloc(sizeof(int)*(size_t)N);
+    e_head = malloc(sizeof(int)*(size_t)N); e_next = malloc(sizeof(int)*(size_t)N*4);
+    e_to = malloc(sizeof(int)*(size_t)N*4); bef_buf = malloc(sizeof(int)*(size_t)N);
+    dfs_state = malloc(sizeof(int)*(size_t)N); dfs_stack = malloc(sizeof(int)*(size_t)N);
+    dfs_iter = malloc(sizeof(int)*(size_t)N);
+    ch_feas = malloc(sizeof(int)*(size_t)N);
+    bef_start = malloc(sizeof(int)*(size_t)N*2); bef_cnt = malloc(sizeof(int)*(size_t)N*2);
+    bef_all = malloc(sizeof(int)*(size_t)N*4);
     bk_estate = malloc((size_t)N * 4); bk_dsu = malloc(sizeof(int) * (size_t)N);
     bk_isep = malloc((size_t)N); bk_notep = malloc((size_t)N); bk_inq = malloc((size_t)N);
 
@@ -432,6 +561,10 @@ int main(int argc, char **argv) {
         mark_endpoint(start_cell);
         run_queue();
         report("假定起点后", truth);
+        { int od = 0, tot = 0; int ok = orient_chains(start_cell, &od, &tot);
+          printf("    chains=%d oriented=%d cross_edges=%d %s | turns=%lld wall=%lld same=%lld cross=%lld notinchain=%lld\n",
+                 tot, od, e_cnt, ok ? "acyclic" : "CYCLE(bug!)",
+                 st_turn, st_wall, st_same, st_cross, st_none); }
     }
     report("全局传播(不假定起点)", truth);
     printf("    端点名额 [%d,%d], 已定端点 [%d,%d], 候选 [%d,%d], 用时 %.3fs\n",
