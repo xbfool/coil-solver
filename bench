@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# 编译某个版本 → 装进 coilbench → 跑官方评测
+#
+#   ./bench                      # 用最新版本，跑公开(奇数)关
+#   ./bench v1-dfs --timeout 30  # 指定版本
+#   ./bench v2-xxx --start 1 --end 201 --timeout 60
+#
+# 第一个参数不以 - 开头就当版本名（versions/<名>.c）。
+set -euo pipefail
+
+HERE="$(cd "$(dirname "$0")" && pwd)"
+BENCH="${COILBENCH_DIR:-/mnt/d/works/coilbench}"
+[ -d "$BENCH" ] || { echo "找不到 coilbench：$BENCH（可用 COILBENCH_DIR 指定）" >&2; exit 1; }
+
+VER=""
+if [ $# -gt 0 ] && [ "${1#-}" = "$1" ]; then VER="$1"; shift; fi
+if [ -z "$VER" ]; then
+  VER="$(basename "$(ls "$HERE"/versions/*.c | sort -V | tail -1)" .c)"
+fi
+
+SRC="$HERE/versions/$VER.c"
+[ -f "$SRC" ] || { echo "没有版本 $VER，现有：" >&2; ls "$HERE/versions" >&2; exit 1; }
+
+mkdir -p "$HERE/bin"
+cc -std=c99 -O2 -Wall -Wextra "$SRC" -o "$HERE/bin/$VER"
+[ -x "$BENCH/coil_check/check" ] || make -C "$BENCH/coil_check"
+
+cp "$HERE/bin/$VER" "$BENCH/solver"      # run_solver 优先跑 ./solver
+cd "$BENCH"
+echo "== $VER =="
+exec ./evaluate.py "$@"
