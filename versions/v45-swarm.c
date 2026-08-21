@@ -1488,7 +1488,9 @@ int main(int argc, char **argv) {
     // L195 9.5s->4.9s，中小关全部持平。
     // **凡是「最优常数」，都要在底层改动之后重扫一遍**，这已经是同一个坑踩第二次了。
     long long probe = getenv("PROBE") ? atoll(getenv("PROBE")) : 2000;
-    long long probe2 = getenv("PROBE2") ? atoll(getenv("PROBE2")) : 24000;
+    long long probe2 = getenv("PROBE2") ? atoll(getenv("PROBE2")) : 48000;
+    // PROBE2 的最优点也搬家了（第三次验证「底层一动就重扫常数」）：v23 时代 48000 会让
+    // L239 炸到 316s，BFS 版下它反而是甜点 —— L389 35s->10.6s，L377/L257 也更快，其余持平。
     int *sc = malloc(sizeof(int) * (size_t)ns);
     unsigned char **est_save = malloc(sizeof(unsigned char *) * (size_t)ns);
     unsigned char **tc_save = malloc(sizeof(unsigned char *) * (size_t)ns);
