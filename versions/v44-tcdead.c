@@ -867,7 +867,12 @@ static int do_flow(int s) {
         if (v == FSRC || v == FSNK) continue;
         int c2 = v - 3;
         if (c2 < 0 || c2 >= N || !g0[c2]) continue;
-        int possible = (fscc[FDUM] == fscc[v]) || (fcap[e] <= 0);   // 同 SCC 可换，或当前就是它
+        // v32 的老坑第三次出现：奇数关（终点色 == 起点色）时哑点挂在**汇侧**，
+        // 弧是 cell→FDUM，从 fhead[FDUM] 遍历到的是**反向弧**，fcap 记的是已用流量 ——
+        // 「这条弧用没用」的判据和偶数关（源侧，正向弧）正好相反。
+        // 这段之前只算 end_cand 当展示，错了没人看出来；v44 拿它当剪枝，L39（奇）当场 FAIL。
+        int used_arc = (prop_endcol != col[prop_start]) ? (fcap[e] <= 0) : (fcap[e] > 0);
+        int possible = (fscc[FDUM] == fscc[v]) || used_arc;   // 同 SCC 可换，或当前就是它
         if (possible) { ++end_cand; tcand[c2] = 1; }
     }
 
