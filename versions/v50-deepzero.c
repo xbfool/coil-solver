@@ -1,3 +1,6 @@
+// Coil solver — v50: 传播深度初值恒深层，降档交给 DYNMIN 自测（零信息类 22 倍）
+//
+// 以下是 v48 的说明。
 // Coil solver — v47: 分支点上的流可行性检查（把最强的规则搬进搜索的浅层）
 //
 // 以下是 v45 的说明。
@@ -1491,32 +1494,22 @@ int main(int argc, char **argv) {
         if (g0[c + delta[d]] && g_estate[c * 4 + d]) ++gfix_total;
     fprintf(stderr, "全局阶段：固定 %lld 条边，起点候选 %lld / %d (%.1f%%)\n",
             gfix_total, gfilter_kept, total_free, 100.0 * gfilter_kept / total_free);
-    // ===== 自适应传播深度（v48）=====
-    // 分支点传播的威力完全取决于 estate 的密度：L413 全局定死 71% 的边，全深度传播把它
-    // 从 >600s 打到 0.54s（千倍）；而 L389 型（全局 0 条）传播无信息，全深度纯付成本
-    // （11s -> 19s）。用全局定死边比例当开关：>=10% 上全深度，否则只做前 2 个决策。
+    // ===== 自适应传播深度（v50 重做）=====
+    // v48 用「全局定死边比例 >=10%」当开关：达标上全深度，否则只做前 2 个决策。
+    // 那个规则把传播零信息类误杀了：L414 的 gfix=0 但探针阶段 DYN 证伪率 19~21%，
+    // 全深度把死树从 ~10M 节点剪到 ~15K（600 倍），655s -> 30s。
+    // estate 密度只是传播威力的一个来源；零信息类里传播吃的是**残余区域自身的窄缩**，
+    // 全局边定不下来不代表分支点传播没肉。真正可靠的判据是 DYNMIN 自测
+    // （探针阶段实测证伪率 <15% 才降浅层，L389 型由它兜底），初值恒为全深度。
     if (prop_depth < 0) {
-        long long te = 0;
-        for (int c = 0; c < N; ++c) if (g0[c]) for (int d = 2; d < 4; ++d)
-            if (g0[c + delta[d]]) ++te;
-        prop_depth = (te > 0 && gfix_total * 100 >= te * 10) ? 999999 : 2;
-        fprintf(stderr, "adaptive PROPDEPTH=%d (fixed %lld / %lld edges)\n", prop_depth, gfix_total, te);
+        prop_depth = 999999;
+        fprintf(stderr, "adaptive PROPDEPTH=deep (gfix %lld; DYNMIN 自测负责降档)\n", gfix_total);
     }
 
     int *starts = malloc(sizeof(int) * (size_t)total_free);
     int ns = 0;
     memcpy(g, g0, N);
     for (int c = 0; c < N; ++c) if (g0[c] && end_ok[c]) starts[ns++] = c;
-    if (getenv("STARTXY")) {                       // 实验用：只留指定起点（游戏坐标 x,y），ns=1 会自动触发 swarm portfolio
-        int sx, sy;
-        if (sscanf(getenv("STARTXY"), "%d,%d", &sx, &sy) == 2) {
-            int want = (sx + 1) + (sy + 1) * W;
-            int w2 = 0;
-            for (int i = 0; i < ns; ++i) if (starts[i] == want) starts[w2++] = want;
-            ns = w2;
-            fprintf(stderr, "STARTXY: (%d,%d) -> %d candidates\n", sx, sy, ns);
-        }
-    }
     for (int i = 1; i < ns; ++i) {
         int v = starts[i], dv = freedeg(v), j = i;
         while (j > 0 && freedeg(starts[j - 1]) > dv) { starts[j] = starts[j - 1]; --j; }
@@ -1711,7 +1704,6 @@ int main(int argc, char **argv) {
         tc_on = 0; live_end = -1;
         if (r == 1) { path[path_len] = 0; emit(s, path); }
         if (r == 0) { drop2[i] = 1; continue; }
-        if (!getenv("NOSC2")) sc[i] = best_rem;   // 深探针的信号比第一层准，回填给第三层排序用
         (void)keep2;
     }
     {   // 轮转遍历后再顺序压缩（压缩不能在轮转循环里做，会把没跑到的项挤掉）
@@ -1777,10 +1769,7 @@ int main(int argc, char **argv) {
                     if (g[c2] && deg[c2] <= 1 && !tcand[c2]) ++ntc_low;
             }
         }
-        int t3r = dfs(s, total_free - 1, 0);
-        if (getenv("TREELOG")) fprintf(stderr, "T3 shard%d #%d cell=(%d,%d) sc=%d nodes=%lld r=%d\n",
-            shard, i0, s % W - 1, s / W - 1, sc[i], nodes, t3r);
-        if (t3r == 1) { path[path_len] = 0; emit(s, path); }
+        if (dfs(s, total_free - 1, 0) == 1) { path[path_len] = 0; emit(s, path); }
         tc_on = 0; live_end = -1;
     }
     fprintf(stderr, "no solution found\n");

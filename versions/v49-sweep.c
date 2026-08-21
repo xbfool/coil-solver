@@ -1,3 +1,6 @@
+// Coil solver — v49: 传播零信息类的第三层多轮递增预算扫荡（软柿子先收割，死树不再垄断）
+//
+// 以下是 v48 的说明。
 // Coil solver — v47: 分支点上的流可行性检查（把最强的规则搬进搜索的浅层）
 //
 // 以下是 v45 的说明。
@@ -1507,16 +1510,6 @@ int main(int argc, char **argv) {
     int ns = 0;
     memcpy(g, g0, N);
     for (int c = 0; c < N; ++c) if (g0[c] && end_ok[c]) starts[ns++] = c;
-    if (getenv("STARTXY")) {                       // 实验用：只留指定起点（游戏坐标 x,y），ns=1 会自动触发 swarm portfolio
-        int sx, sy;
-        if (sscanf(getenv("STARTXY"), "%d,%d", &sx, &sy) == 2) {
-            int want = (sx + 1) + (sy + 1) * W;
-            int w2 = 0;
-            for (int i = 0; i < ns; ++i) if (starts[i] == want) starts[w2++] = want;
-            ns = w2;
-            fprintf(stderr, "STARTXY: (%d,%d) -> %d candidates\n", sx, sy, ns);
-        }
-    }
     for (int i = 1; i < ns; ++i) {
         int v = starts[i], dv = freedeg(v), j = i;
         while (j > 0 && freedeg(starts[j - 1]) > dv) { starts[j] = starts[j - 1]; --j; }
@@ -1711,7 +1704,6 @@ int main(int argc, char **argv) {
         tc_on = 0; live_end = -1;
         if (r == 1) { path[path_len] = 0; emit(s, path); }
         if (r == 0) { drop2[i] = 1; continue; }
-        if (!getenv("NOSC2")) sc[i] = best_rem;   // 深探针的信号比第一层准，回填给第三层排序用
         (void)keep2;
     }
     {   // 轮转遍历后再顺序压缩（压缩不能在轮转循环里做，会把没跑到的项挤掉）
@@ -1743,11 +1735,22 @@ int main(int argc, char **argv) {
             prop_depth = 2;
     }
 
-    // ---- 第三层：按顺序正式搜 ----
-    node_limit = (long long)1 << 62;
+    // ---- 第三层：按顺序正式搜（v49：零信息类改多轮递增预算扫荡）----
+    // 传播零信息类里死树的搜穷成本极高，无限搜让死树垄断时间；可解树反而常是
+    // 软柿子（L414 单核 5~22s）。多轮递增预算：低预算轮先收割软柿子，
+    // 死树每轮最多烧一份预算；搜穷（r==0）永久剔除的投资语义保留。
+    long long sweep0 = getenv("SWEEP") ? atoll(getenv("SWEEP")) : 500000;
+    int sweep_mul = getenv("SWEEPMUL") ? atoi(getenv("SWEEPMUL")) : 8;
+    int zero_class = (gfix_total == 0) && !getenv("NOSWEEP");
+    int nrounds3 = zero_class ? 4 : 1;
+    unsigned char *dead3 = calloc((size_t)(keep > 0 ? keep : 1), 1);
+    for (int round3 = 0; round3 < nrounds3; ++round3) {
+    long long budget3 = (round3 == nrounds3 - 1) ? ((long long)1 << 62) : sweep0;
+    for (int r2 = 0; r2 < round3; ++r2) budget3 *= sweep_mul;
     int srot3 = swarm && keep > 0 ? (shard % keep) : 0;
     for (int i0 = 0; i0 < keep; ++i0) {
         int i = (i0 + srot3) % keep;
+        if (dead3[i]) continue;
         int s = starts[i];
         memcpy(g, g0, N);
         cnt[0] = cnt[1] = 0; low_cnt = zero_cnt = 0;
@@ -1765,7 +1768,7 @@ int main(int argc, char **argv) {
         // 起点若是割点，去掉它剩余区域就断了。顺带白捡一条起点剪枝。
         if (!reach_ok(s, total_free - 1)) continue;
 
-        path_len = 0; nodes = 0;
+        path_len = 0; nodes = 0; node_limit = budget3;
         live_end = -1; tc_on = 0; ntc_low = 0;
         if (use_flow && tcand_for == s) {
             live_end = 0;
@@ -1778,10 +1781,11 @@ int main(int argc, char **argv) {
             }
         }
         int t3r = dfs(s, total_free - 1, 0);
-        if (getenv("TREELOG")) fprintf(stderr, "T3 shard%d #%d cell=(%d,%d) sc=%d nodes=%lld r=%d\n",
-            shard, i0, s % W - 1, s / W - 1, sc[i], nodes, t3r);
         if (t3r == 1) { path[path_len] = 0; emit(s, path); }
+        if (t3r == 0) dead3[i] = 1;
         tc_on = 0; live_end = -1;
+    }
+    if (zero_class) fprintf(stderr, "sweep shard%d round%d done (budget %lld)\n", shard, round3, budget3);
     }
     fprintf(stderr, "no solution found\n");
     return 1;
