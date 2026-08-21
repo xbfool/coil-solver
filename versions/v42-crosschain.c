@@ -1,4 +1,4 @@
-// Coil solver — v41: v40 + CHAINSTAT（查 L239/L257 的链为什么杀不动起点）
+// Coil solver — v42: 跨链时序偏序 + 环检测（新底座重做；旧底座上跨链引用为 0 所以当时失败）
 //
 // 以下是 v40 的说明。
 // Coil solver — v40: 去掉 probing（流已经覆盖了它，而它烧掉 89% 的时间证伪 0）
@@ -95,7 +95,6 @@
 static int shard = 0, nshard = 1;      // 本进程负责 starts 里下标 % nshard == shard 的那些
 static int out_fd = -1;                // 子进程把答案写这里
 static void emit(int s, const char *pathstr);
-static void chain_dump(void);
 
 #ifndef FF_MAX
 #define FF_MAX 1200                  // 剩余格数 <= 此值才做精确连通性检查
@@ -123,8 +122,10 @@ static long long nodes, node_limit;
 static int best_rem;
 
 // 找到解就写进管道（子进程）或直接打印（单进程模式）
+extern long long xc_edges, xc_calls, xc_kill_cycle, xc_dirfix;
 static void emit(int s, const char *pathstr) {
-    chain_dump();
+    if (getenv("XCSTAT") && xc_calls)
+        fprintf(stderr, "XC shard%d: %lld calls | edges %.1f/call | cyclekill %lld | dirfix %lld\n", shard, xc_calls, (double)xc_edges / xc_calls, xc_kill_cycle, xc_dirfix);
     static char obuf[1 << 22];
     int n = snprintf(obuf, sizeof obuf, "x=%d&y=%d&path=%s\n", (s % W) - 1, (s / W) - 1, pathstr);
     if (out_fd >= 0) { ssize_t wr = write(out_fd, obuf, (size_t)n); (void)wr; _exit(0); }
@@ -348,20 +349,86 @@ static int first_run_ok(const int *seq, int k) {
     return 1;
 }
 
-static long long oc_kill_frun, oc_kill_startchain, oc_kill_other, oc_startchain_len, oc_startchain_n;
+// ===== 跨链时序偏序 + 环检测（v42 重做）=====
+//
+// v41 的证伪路径统计把三个瓶颈关分开了：L223 的 1290 个证伪全部来自「某条链两个方向都不可行」，
+// 而 L239/L257 上这条几乎为 0 —— 它们的每条链都至少留了一个可行方向，单链层面杀不动。
+// 但「方向被定死的链」在它们身上应该不少（双否的前身），而链是路径的连续段，链间有全序：
+//
+//     链 Li 定向后，其拐弯点的前方格 f 落在链 Lj 上 => f 必须更早 => **Lj 整段早于 Li**
+//
+// 把这些偏序边攒起来，有环 => 矛盾 => 起点被证伪。再配不动点：某链的某个方向会造成环，
+// 那个方向就被排除；只剩一个方向的链就此定向、其偏序边永久加入，可能又让别的链成环。
+//
+// 这条 2026-08-21 凌晨在旧底座上测过一次，一条跨链边都加不进去 —— 那会儿必用边只有 25%，
+// 拐弯点的跨链引用几乎为 0。现在必用边 46~59%，每次调用有 80~100 个跨链引用，值得重测。
+static int *ch_start2, *ch_len2, *ch_feas2, *ch_es, *ch_ec, *ch_eall;
+static int *eh2, *en2, *et2, ecnt2;
+static int *dstate2;
+static int nchain2;
+long long xc_edges, xc_calls, xc_kill_cycle, xc_dirfix;
+
+// 链 i 在方向 rev 下扫内部拐点。strict = 含起点的链（全序第一段，前方格必须在本链或是墙）。
+// 返回 0 = 不可行；否则把「必须早于本链」的链号写进 bef，个数回填 *nb。
+static int chain_scan2(const int *seq, int k, int rev, int cid, int strict, int *bef, int *nb) {
+    *nb = 0;
+    for (int t = 1; t + 1 < k; ++t) {
+        int prev = rev ? seq[t + 1] : seq[t - 1];
+        int next = rev ? seq[t - 1] : seq[t + 1];
+        if (next - seq[t] == seq[t] - prev) continue;
+        int f = seq[t] + (seq[t] - prev);
+        if (!g0[f]) continue;
+        int cf = chain_id[f];
+        if (cf == cid) {
+            int tf = rev ? (k - 1 - chain_pos[f]) : chain_pos[f];
+            int tt = rev ? (k - 1 - t) : t;
+            if (tf > tt) return 0;
+        } else if (strict) {
+            return 0;
+        } else if (cf >= 0) {
+            if (*nb < 500) bef[(*nb)++] = cf;
+        }
+    }
+    return 1;
+}
+
+// 偏序图上 from 能否走到 to（加边 from->to 前查环用；图稀疏，DFS 够用）
+static int reach2(int from, int to) {
+    if (from == to) return 1;
+    for (int i = 0; i < nchain2; ++i) dstate2[i] = 0;
+    static int stk[8192];
+    int top = 0;
+    stk[top++] = from; dstate2[from] = 1;
+    while (top) {
+        int v = stk[--top];
+        for (int e = eh2[v]; e >= 0; e = en2[e]) {
+            int w = et2[e];
+            if (w == to) return 1;
+            if (!dstate2[w] && top < 8190) { dstate2[w] = 1; stk[top++] = w; }
+        }
+    }
+    return 0;
+}
+
+static void eadd2(int a, int b) {
+    et2[ecnt2] = b; en2[ecnt2] = eh2[a]; eh2[a] = ecnt2++;
+}
+
 static int orient_chains(int s) {
+    ++xc_calls;
     for (int c = 0; c < N; ++c) chain_id[c] = -1;
-    int nchain = 0;
+    nchain2 = 0;
+    int pos = 0;
     for (int c0 = 0; c0 < N; ++c0) {
         if (!g0[c0] || chain_id[c0] >= 0) continue;
         int fdeg = 0;
         for (int d = 0; d < 4; ++d)
             if (g0[c0 + delta[d]] && estate[c0 * 4 + d] == 1) ++fdeg;
-        if (fdeg != 1) continue;                            // 只从链端起步（环已被传播禁掉）
-
-        int k = 0, cur = c0, from = -1;
+        if (fdeg != 1) continue;
+        ch_start2[nchain2] = pos;
+        int cur = c0, from = -1;
         for (;;) {
-            seqbuf[k] = cur; chain_id[cur] = nchain; chain_pos[cur] = k; ++k;
+            seqbuf[pos] = cur; chain_id[cur] = nchain2; chain_pos[cur] = pos - ch_start2[nchain2]; ++pos;
             int nxt = -1;
             for (int d = 0; d < 4; ++d) {
                 int n = cur + delta[d];
@@ -370,26 +437,75 @@ static int orient_chains(int s) {
             if (nxt < 0) break;
             from = cur; cur = nxt;
         }
-        if (k < 3) { ++nchain; continue; }                  // 太短，没有内部拐点可查
+        ch_len2[nchain2] = pos - ch_start2[nchain2];
+        ++nchain2;
+    }
 
-        int head_s = (seqbuf[0] == s), tail_s = (seqbuf[k - 1] == s);
-        int ok0 = chain_dir_ok(seqbuf, k, 0, nchain, head_s);
-        int ok1 = chain_dir_ok(seqbuf, k, 1, nchain, tail_s);
-        if (head_s) ok1 = 0;                                // 起点只挂 1 条边，必是链端，路径从它出发
-        if (tail_s) ok0 = 0;
-        if (head_s && !first_run_ok(seqbuf, k)) { ++oc_kill_frun; return 0; }
+    // 第一遍：每条链两个方向各扫一次，攒下偏序边的候选
+    int bpos = 0;
+    ecnt2 = 0;
+    for (int i = 0; i < nchain2; ++i) { eh2[i] = -1; ch_feas2[i] = 0; }
+    for (int i = 0; i < nchain2; ++i) {
+        const int *seq = seqbuf + ch_start2[i];
+        int k = ch_len2[i];
+        if (k < 3) { ch_feas2[i] = 3; ch_ec[i*2] = ch_ec[i*2+1] = 0; continue; }
+        int head_s = (seq[0] == s), tail_s = (seq[k - 1] == s);
+        if (head_s && !first_run_ok(seq, k)) return 0;
         if (tail_s) {
+            static int rv[8192];
             int kk = k < 8192 ? k : 8192;
-            static int rev[8192];
-            for (int t = 0; t < kk; ++t) rev[t] = seqbuf[k - 1 - t];
-            if (!first_run_ok(rev, kk)) { ++oc_kill_frun; return 0; }
+            for (int t = 0; t < kk; ++t) rv[t] = seq[k - 1 - t];
+            if (!first_run_ok(rv, kk)) return 0;
         }
-        if (!ok0 && !ok1) {
-            if (head_s || tail_s) ++oc_kill_startchain; else ++oc_kill_other;
-            return 0;
+        int feas = 0;
+        for (int d = 0; d < 2; ++d) {
+            if ((d == 1 && head_s) || (d == 0 && tail_s)) { ch_ec[i*2+d] = 0; continue; }
+            int nb = 0;
+            static int bef[512];
+            int strict = d ? tail_s : head_s;
+            if (!chain_scan2(seq, k, d, i, strict, bef, &nb)) { ch_ec[i*2+d] = 0; continue; }
+            feas |= 1 << d;
+            ch_es[i*2+d] = bpos; ch_ec[i*2+d] = nb;
+            for (int t = 0; t < nb && bpos < 4 * N; ++t) ch_eall[bpos++] = bef[t];
         }
-        if (head_s || tail_s) { oc_startchain_len += k; ++oc_startchain_n; }
-        ++nchain;
+        if (!feas) return 0;                                 // 两个方向都不可行（v41 里 L223 的主杀伤）
+        ch_feas2[i] = feas;
+    }
+
+    // 不动点：定向的链提交偏序边；会成环的方向被排除；两个方向都排除 => 矛盾
+    for (int round = 0; round < 6; ++round) {
+        int changed = 0;
+        for (int i = 0; i < nchain2; ++i) {
+            int f2 = ch_feas2[i];
+            if ((f2 & 3) != 1 && (f2 & 3) != 2) continue;    // 只处理已定向的
+            if (f2 & 4) continue;                            // 已提交过
+            int d = ((f2 & 3) == 1) ? 0 : 1;
+            int st = ch_es[i*2+d], n = ch_ec[i*2+d];
+            for (int t = 0; t < n; ++t) {
+                int b = ch_eall[st + t];
+                if (b == i) return 0;
+                if (reach2(i, b)) { ++xc_kill_cycle; return 0; } // Lb 必须早于 Li，但 Li 已可达 Lb => 环
+                eadd2(b, i); ++xc_edges;
+            }
+            ch_feas2[i] |= 4; changed = 1;
+        }
+        if (!changed) break;
+        // 未定向的链：某个方向的偏序边会造成环 => 排除该方向
+        for (int i = 0; i < nchain2; ++i) {
+            int f2 = ch_feas2[i] & 3;
+            if (f2 != 3) continue;
+            for (int d = 0; d < 2; ++d) {
+                int st = ch_es[i*2+d], n = ch_ec[i*2+d];
+                int bad2 = 0;
+                for (int t = 0; t < n && !bad2; ++t)
+                    if (reach2(i, ch_eall[st + t])) bad2 = 1;
+                if (bad2) {
+                    ++xc_dirfix;
+                    ch_feas2[i] &= ~(1 << d);
+                    if (!(ch_feas2[i] & 3)) return 0;        // 两个方向都成环 => 矛盾
+                }
+            }
+        }
     }
     return 1;
 }
@@ -524,6 +640,7 @@ static int *fhead, *fnext, *fto, *fcap, *flevel, *fiter, *fq, *fmap;
 static int fcnt, fnodes;
 static long long flow_bans = 0, flow_uses = 0, flow_refute = 0;
 static int use_flow = 1;
+static int use_chain = 1;   // CHAIN=0 关掉链定向做消融对照
 
 static void fadd(int u, int v, int cap) {
     fto[fcnt] = v; fcap[fcnt] = cap; fnext[fcnt] = fhead[u]; fhead[u] = fcnt++;
@@ -844,6 +961,12 @@ static int do_flow(int s) {
         if (possible) ++end_cand;
     }
 
+    if (getenv("ECSTAT")) {
+        static long long ec_sum, ec_n;
+        ec_sum += end_cand; ++ec_n;
+        if (ec_n % 400 == 0)
+            fprintf(stderr, "EC shard%d: %lld starts, avg endcand %.1f\n", shard, ec_n, (double)ec_sum/ec_n);
+    }
     prun_queue();
     if (prop_bad) return 0;
 
@@ -959,79 +1082,10 @@ static int do_probing(int rounds) {
 // **教训（比这次提速更值钱）：加了新规则之后，要回头量旧规则还剩多少边际贡献。**
 // 这个仓库里的规则是一层层叠上去的，从没做过反向检查 —— probing 白烧了 89% 的时间
 // 烧了整整 10 个版本。PROBEROUNDS>0 可以把它开回来做对照。
-// CHAINSTAT=1：查 L239/L257 的起点为什么连链定向都杀不动。
-// L223 是 998 次调用证伪 976（98%），L257 是 1319 次调用只证伪 3 —— 同样是「全局过滤失效」的关，
-// 规则的杀伤力差了两个数量级。链定向靠的是**必用边拼成的链**（链是路径的连续段，
-// 链上拐弯点的前方格若落在本链更晚就矛盾），所以最可能的解释是这些关的必用边太少、链太短，
-// 短链里根本没有内部拐点可查（chain_dir_ok 要求 k>=3）。
-// 拐弯点的「前方格」分类 —— 链定向的杀伤力全取决于这个分布：
-//   wall     前方是墙，拐弯天然合法，无信息
-//   self     前方落在本链上（链定向唯一能判定的情形：更晚 => 该定向被否）
-//   other    前方落在别的链上（跨链偏序才能用，本层放过）
-//   free     前方在未定区域（无信息）
-static long long cs_calls, cs_forced, cs_chains, cs_len3, cs_maxlen;
-static long long cs_turn, cs_wall, cs_self, cs_other, cs_free;
-static void chain_stat(void) {
-    ++cs_calls;
-    int f = 0;
-    for (int c = 0; c < N; ++c) if (g0[c])
-        for (int d = 2; d < 4; ++d)
-            if (g0[c + delta[d]] && estate[c * 4 + d] == 1) ++f;
-    cs_forced += f;
-    static int *cid = 0, *seq2 = 0;
-    if (!cid) { cid = malloc(sizeof(int) * (size_t)N); seq2 = malloc(sizeof(int) * (size_t)N); }
-    for (int c = 0; c < N; ++c) cid[c] = -1;
-    int nch = 0;
-    for (int c0 = 0; c0 < N; ++c0) {
-        if (!g0[c0] || cid[c0] >= 0) continue;
-        int fd = 0;
-        for (int d = 0; d < 4; ++d) if (g0[c0 + delta[d]] && estate[c0 * 4 + d] == 1) ++fd;
-        if (fd != 1) continue;
-        int k = 0, cur = c0, from = -1;
-        for (;;) {
-            cid[cur] = nch; seq2[k++] = cur;
-            int nx = -1;
-            for (int d = 0; d < 4; ++d) {
-                int n = cur + delta[d];
-                if (g0[n] && estate[cur * 4 + d] == 1 && n != from) { nx = n; break; }
-            }
-            if (nx < 0) break;
-            from = cur; cur = nx;
-        }
-        ++cs_chains; ++nch;
-        if (k >= 3) ++cs_len3;
-        if (k > cs_maxlen) cs_maxlen = k;
-        // 数内部拐弯点的前方格分类（正向走一遍就够，反向对称）
-        for (int t = 1; t + 1 < k; ++t) {
-            int prev = seq2[t - 1], nxt = seq2[t + 1];
-            if (nxt - seq2[t] == seq2[t] - prev) continue;      // 直穿
-            ++cs_turn;
-            int fw = seq2[t] + (seq2[t] - prev);
-            if (!g0[fw]) ++cs_wall;
-            else if (cid[fw] == cid[seq2[t]]) ++cs_self;
-            else if (cid[fw] >= 0) ++cs_other;
-            else ++cs_free;
-        }
-    }
-}
-static void chain_dump(void) {
-    if (!getenv("CHAINSTAT") || !cs_calls) return;
-    long long t = cs_turn ? cs_turn : 1;
-    fprintf(stderr, "CHAIN shard%d: %lld 次 | 链 %.0f 条 (>=3: %.0f, 最长 %lld) | "
-            "拐点 %.1f/次: 墙 %.0f%%, 本链 %.1f%%, 他链 %.1f%%, 未定 %.1f%%\n",
-            shard, cs_calls, (double)cs_chains / cs_calls, (double)cs_len3 / cs_calls, cs_maxlen,
-            (double)cs_turn / cs_calls, 100.0 * cs_wall / t, 100.0 * cs_self / t,
-            100.0 * cs_other / t, 100.0 * cs_free / t);
-    fprintf(stderr, "KILL shard%d: 首滑 %lld, 起点链双否 %lld, 他链双否 %lld | 存活时起点链均长 %.1f (n=%lld)\n",
-            shard, oc_kill_frun, oc_kill_startchain, oc_kill_other,
-            oc_startchain_n ? (double)oc_startchain_len / oc_startchain_n : 0.0, oc_startchain_n);
-    (void)cs_forced;
-}
 static int propagate_strong(int s) {
     if (!propagate(s)) return 0;                 // 第 1 层：最便宜
     if (!do_flow(s)) return 0;                   // 第 2 层：一次 max-flow
-    if (getenv("CHAINSTAT")) chain_stat();
-    if (!orient_chains(s)) return 0;             // 第 3 层：0.3% 的代价，98% 的证伪
+    if (use_chain && !orient_chains(s)) return 0; // 第 3 层：0.3% 的代价，98% 的证伪
     if (probe_rounds <= 0) return 1;             // 默认到此为止
     if (!do_probing(probe_rounds)) return 0;
     if (!do_flow(s)) return 0;
@@ -1293,6 +1347,16 @@ int main(int argc, char **argv) {
     chain_id = malloc(sizeof(int) * (size_t)N);
     chain_pos = malloc(sizeof(int) * (size_t)N);
     seqbuf = malloc(sizeof(int) * (size_t)N);
+    ch_start2 = malloc(sizeof(int) * (size_t)N);
+    ch_len2 = malloc(sizeof(int) * (size_t)N);
+    ch_feas2 = malloc(sizeof(int) * (size_t)N);
+    ch_es = malloc(sizeof(int) * (size_t)N * 2);
+    ch_ec = malloc(sizeof(int) * (size_t)N * 2);
+    ch_eall = malloc(sizeof(int) * (size_t)N * 4);
+    eh2 = malloc(sizeof(int) * (size_t)N);
+    en2 = malloc(sizeof(int) * (size_t)N * 4);
+    et2 = malloc(sizeof(int) * (size_t)N * 4);
+    dstate2 = malloc(sizeof(int) * (size_t)N);
     estate2 = malloc((size_t)N * 4);
     dsu2 = malloc(sizeof(int) * (size_t)N);
     pq2 = malloc(sizeof(int) * (size_t)(N + 1));
@@ -1311,6 +1375,7 @@ int main(int argc, char **argv) {
         hedge = malloc(sizeof(int) * (size_t)(N + 8));
     }
     if (getenv("FLOW")) use_flow = atoi(getenv("FLOW"));
+    if (getenv("CHAIN")) use_chain = atoi(getenv("CHAIN"));
     if (getenv("SUBTOUR")) use_subtour = atoi(getenv("SUBTOUR"));
     bk_estate = malloc((size_t)N * 4);
     bk_dsu = malloc(sizeof(int) * (size_t)N);
@@ -1467,7 +1532,12 @@ int main(int argc, char **argv) {
     // 单一预算总会在某些关上踩空，分层等于同时吃到小预算的便宜和大预算的证伪力。
     // 注意第三层的「无限搜」必须保留 —— v15 那次纯迭代加深之所以惨败（L193 7s→174s），
     // 就是因为错起点永远搜不穷、被反复重搜，而搜穷一次就能永久剔除才是真正的投资。
-    long long probe = getenv("PROBE") ? atoll(getenv("PROBE")) : 8000;
+    // PROBE 的最优值**第二次翻转**了。历史：v13 时代 2000 最优 -> v20 加了 probing 之后
+    // 8000 最优（+16 关）-> 现在 v40 去掉 probing，又变回 2000。
+    // 每次底层一变，这个常数的最优点就跟着搬家：L239 23.9s->15.8s，L257 73.9s->54.9s，
+    // L195 9.5s->4.9s，中小关全部持平。
+    // **凡是「最优常数」，都要在底层改动之后重扫一遍**，这已经是同一个坑踩第二次了。
+    long long probe = getenv("PROBE") ? atoll(getenv("PROBE")) : 2000;
     long long probe2 = getenv("PROBE2") ? atoll(getenv("PROBE2")) : 24000;
     int *sc = malloc(sizeof(int) * (size_t)ns);
     unsigned char **est_save = malloc(sizeof(unsigned char *) * (size_t)ns);

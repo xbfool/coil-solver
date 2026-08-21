@@ -1,4 +1,4 @@
-// Coil solver — v41: v40 + CHAINSTAT（查 L239/L257 的链为什么杀不动起点）
+// Coil solver — v43: 终点候选剪枝（终点候选平均只剩 ~40 格，但这信息一直没进搜索）
 //
 // 以下是 v40 的说明。
 // Coil solver — v40: 去掉 probing（流已经覆盖了它，而它烧掉 89% 的时间证伪 0）
@@ -95,7 +95,6 @@
 static int shard = 0, nshard = 1;      // 本进程负责 starts 里下标 % nshard == shard 的那些
 static int out_fd = -1;                // 子进程把答案写这里
 static void emit(int s, const char *pathstr);
-static void chain_dump(void);
 
 #ifndef FF_MAX
 #define FF_MAX 1200                  // 剩余格数 <= 此值才做精确连通性检查
@@ -124,7 +123,6 @@ static int best_rem;
 
 // 找到解就写进管道（子进程）或直接打印（单进程模式）
 static void emit(int s, const char *pathstr) {
-    chain_dump();
     static char obuf[1 << 22];
     int n = snprintf(obuf, sizeof obuf, "x=%d&y=%d&path=%s\n", (s % W) - 1, (s / W) - 1, pathstr);
     if (out_fd >= 0) { ssize_t wr = write(out_fd, obuf, (size_t)n); (void)wr; _exit(0); }
@@ -151,7 +149,20 @@ static inline int freedeg(int c) {
     return g[c + delta[0]] + g[c + delta[1]] + g[c + delta[2]] + g[c + delta[3]];
 }
 
+// ===== 终点候选剪枝（v43）=====
+// per-start 的流在 Régin/SCC 过滤时顺带把「谁还可能当终点」算了出来（哑弧两端不同 SCC
+// 且无流量 => 那格绝不可能是终点）。实测在**恰恰是瓶颈**的那几关上，终点候选平均只剩
+// ~40 个格子（L223 32 / L239 40 / L257 48，占自由格的 0.8~0.9%）—— 但这信息一直没进搜索。
+//
+// 用法：路径的终点必然是「当前还没访问的格子」之一（remaining>0 时），而终点必在候选集里。
+// 于是维护 live_end = 未访问的候选数，mark/unmark 各一次 O(1) 增量，**清零即剪枝**。
+// soundness：候选集是在比当前更松的约束下算的（起点一定就定了），真解的终点必在其中。
+static unsigned char *tcand;
+static int tcand_for = -1;                       // tcand 是为哪个起点算的（防串台）
+static int live_end = -1;                        // <0 = 本起点没有候选信息，剪枝关闭
+
 static inline void mark(int c) {                 // 未访问 -> 已访问
+    if (live_end >= 0 && tcand[c]) --live_end;
     if (deg[c] <= 1) --low_cnt;
     if (deg[c] == 0) --zero_cnt;
     g[c] = 0; --cnt[col[c]];
@@ -166,6 +177,7 @@ static inline void mark(int c) {                 // 未访问 -> 已访问
 }
 
 static inline void unmark(int c) {               // 已访问 -> 未访问（严格 LIFO 回滚）
+    if (live_end >= 0 && tcand[c]) ++live_end;
     g[c] = 1; ++cnt[col[c]];
     for (int d = 0; d < 4; ++d) {
         int n = c + delta[d];
@@ -348,7 +360,6 @@ static int first_run_ok(const int *seq, int k) {
     return 1;
 }
 
-static long long oc_kill_frun, oc_kill_startchain, oc_kill_other, oc_startchain_len, oc_startchain_n;
 static int orient_chains(int s) {
     for (int c = 0; c < N; ++c) chain_id[c] = -1;
     int nchain = 0;
@@ -377,18 +388,14 @@ static int orient_chains(int s) {
         int ok1 = chain_dir_ok(seqbuf, k, 1, nchain, tail_s);
         if (head_s) ok1 = 0;                                // 起点只挂 1 条边，必是链端，路径从它出发
         if (tail_s) ok0 = 0;
-        if (head_s && !first_run_ok(seqbuf, k)) { ++oc_kill_frun; return 0; }
+        if (head_s && !first_run_ok(seqbuf, k)) return 0;
         if (tail_s) {
             int kk = k < 8192 ? k : 8192;
             static int rev[8192];
             for (int t = 0; t < kk; ++t) rev[t] = seqbuf[k - 1 - t];
-            if (!first_run_ok(rev, kk)) { ++oc_kill_frun; return 0; }
+            if (!first_run_ok(rev, kk)) return 0;
         }
-        if (!ok0 && !ok1) {
-            if (head_s || tail_s) ++oc_kill_startchain; else ++oc_kill_other;
-            return 0;
-        }
-        if (head_s || tail_s) { oc_startchain_len += k; ++oc_startchain_n; }
+        if (!ok0 && !ok1) return 0;                         // 两个方向都走不通 => 矛盾
         ++nchain;
     }
     return 1;
@@ -524,6 +531,7 @@ static int *fhead, *fnext, *fto, *fcap, *flevel, *fiter, *fq, *fmap;
 static int fcnt, fnodes;
 static long long flow_bans = 0, flow_uses = 0, flow_refute = 0;
 static int use_flow = 1;
+static int use_chain = 1;   // CHAIN=0 关掉链定向做消融对照
 
 static void fadd(int u, int v, int cap) {
     fto[fcnt] = v; fcap[fcnt] = cap; fnext[fcnt] = fhead[u]; fhead[u] = fcnt++;
@@ -834,6 +842,8 @@ static int do_flow(int s) {
     // 就说明**不存在任何度可行解让 c 当终点** => c 被排除出终点候选。
     // 我们本来就在算 SCC，之前只看了网格边，这些哑弧一直没查。
     end_cand = 0;
+    memset(tcand, 0, (size_t)N);                 // 每次 do_flow 重算：后面的调用约束更紧，候选只会更小
+    tcand_for = prop_start;
     for (int e = fhead[FDUM]; e != -1; e = fnext[e]) {
         if (fcap[e] == 0 && fcap[e ^ 1] == 0) continue;          // 不是 z 的正向弧
         int v = fto[e];
@@ -841,7 +851,7 @@ static int do_flow(int s) {
         int c2 = v - 3;
         if (c2 < 0 || c2 >= N || !g0[c2]) continue;
         int possible = (fscc[FDUM] == fscc[v]) || (fcap[e] <= 0);   // 同 SCC 可换，或当前就是它
-        if (possible) ++end_cand;
+        if (possible) { ++end_cand; tcand[c2] = 1; }
     }
 
     prun_queue();
@@ -959,79 +969,10 @@ static int do_probing(int rounds) {
 // **教训（比这次提速更值钱）：加了新规则之后，要回头量旧规则还剩多少边际贡献。**
 // 这个仓库里的规则是一层层叠上去的，从没做过反向检查 —— probing 白烧了 89% 的时间
 // 烧了整整 10 个版本。PROBEROUNDS>0 可以把它开回来做对照。
-// CHAINSTAT=1：查 L239/L257 的起点为什么连链定向都杀不动。
-// L223 是 998 次调用证伪 976（98%），L257 是 1319 次调用只证伪 3 —— 同样是「全局过滤失效」的关，
-// 规则的杀伤力差了两个数量级。链定向靠的是**必用边拼成的链**（链是路径的连续段，
-// 链上拐弯点的前方格若落在本链更晚就矛盾），所以最可能的解释是这些关的必用边太少、链太短，
-// 短链里根本没有内部拐点可查（chain_dir_ok 要求 k>=3）。
-// 拐弯点的「前方格」分类 —— 链定向的杀伤力全取决于这个分布：
-//   wall     前方是墙，拐弯天然合法，无信息
-//   self     前方落在本链上（链定向唯一能判定的情形：更晚 => 该定向被否）
-//   other    前方落在别的链上（跨链偏序才能用，本层放过）
-//   free     前方在未定区域（无信息）
-static long long cs_calls, cs_forced, cs_chains, cs_len3, cs_maxlen;
-static long long cs_turn, cs_wall, cs_self, cs_other, cs_free;
-static void chain_stat(void) {
-    ++cs_calls;
-    int f = 0;
-    for (int c = 0; c < N; ++c) if (g0[c])
-        for (int d = 2; d < 4; ++d)
-            if (g0[c + delta[d]] && estate[c * 4 + d] == 1) ++f;
-    cs_forced += f;
-    static int *cid = 0, *seq2 = 0;
-    if (!cid) { cid = malloc(sizeof(int) * (size_t)N); seq2 = malloc(sizeof(int) * (size_t)N); }
-    for (int c = 0; c < N; ++c) cid[c] = -1;
-    int nch = 0;
-    for (int c0 = 0; c0 < N; ++c0) {
-        if (!g0[c0] || cid[c0] >= 0) continue;
-        int fd = 0;
-        for (int d = 0; d < 4; ++d) if (g0[c0 + delta[d]] && estate[c0 * 4 + d] == 1) ++fd;
-        if (fd != 1) continue;
-        int k = 0, cur = c0, from = -1;
-        for (;;) {
-            cid[cur] = nch; seq2[k++] = cur;
-            int nx = -1;
-            for (int d = 0; d < 4; ++d) {
-                int n = cur + delta[d];
-                if (g0[n] && estate[cur * 4 + d] == 1 && n != from) { nx = n; break; }
-            }
-            if (nx < 0) break;
-            from = cur; cur = nx;
-        }
-        ++cs_chains; ++nch;
-        if (k >= 3) ++cs_len3;
-        if (k > cs_maxlen) cs_maxlen = k;
-        // 数内部拐弯点的前方格分类（正向走一遍就够，反向对称）
-        for (int t = 1; t + 1 < k; ++t) {
-            int prev = seq2[t - 1], nxt = seq2[t + 1];
-            if (nxt - seq2[t] == seq2[t] - prev) continue;      // 直穿
-            ++cs_turn;
-            int fw = seq2[t] + (seq2[t] - prev);
-            if (!g0[fw]) ++cs_wall;
-            else if (cid[fw] == cid[seq2[t]]) ++cs_self;
-            else if (cid[fw] >= 0) ++cs_other;
-            else ++cs_free;
-        }
-    }
-}
-static void chain_dump(void) {
-    if (!getenv("CHAINSTAT") || !cs_calls) return;
-    long long t = cs_turn ? cs_turn : 1;
-    fprintf(stderr, "CHAIN shard%d: %lld 次 | 链 %.0f 条 (>=3: %.0f, 最长 %lld) | "
-            "拐点 %.1f/次: 墙 %.0f%%, 本链 %.1f%%, 他链 %.1f%%, 未定 %.1f%%\n",
-            shard, cs_calls, (double)cs_chains / cs_calls, (double)cs_len3 / cs_calls, cs_maxlen,
-            (double)cs_turn / cs_calls, 100.0 * cs_wall / t, 100.0 * cs_self / t,
-            100.0 * cs_other / t, 100.0 * cs_free / t);
-    fprintf(stderr, "KILL shard%d: 首滑 %lld, 起点链双否 %lld, 他链双否 %lld | 存活时起点链均长 %.1f (n=%lld)\n",
-            shard, oc_kill_frun, oc_kill_startchain, oc_kill_other,
-            oc_startchain_n ? (double)oc_startchain_len / oc_startchain_n : 0.0, oc_startchain_n);
-    (void)cs_forced;
-}
 static int propagate_strong(int s) {
     if (!propagate(s)) return 0;                 // 第 1 层：最便宜
     if (!do_flow(s)) return 0;                   // 第 2 层：一次 max-flow
-    if (getenv("CHAINSTAT")) chain_stat();
-    if (!orient_chains(s)) return 0;             // 第 3 层：0.3% 的代价，98% 的证伪
+    if (use_chain && !orient_chains(s)) return 0; // 第 3 层：0.3% 的代价，98% 的证伪
     if (probe_rounds <= 0) return 1;             // 默认到此为止
     if (!do_probing(probe_rounds)) return 0;
     if (!do_flow(s)) return 0;
@@ -1208,6 +1149,7 @@ static int reach_local(int first, int dd, int len, int c, int rem2) {
 }
 
 static int dfs(int p, int remaining, int depth) {
+    if (live_end == 0 && remaining > 0) return 0;    // 终点候选全被走掉了，后面必然收不了尾
     if (remaining < best_rem) best_rem = remaining;
     if (remaining == 0) return 1;
     if (nodes++ >= node_limit) return -1;
@@ -1311,6 +1253,7 @@ int main(int argc, char **argv) {
         hedge = malloc(sizeof(int) * (size_t)(N + 8));
     }
     if (getenv("FLOW")) use_flow = atoi(getenv("FLOW"));
+    if (getenv("CHAIN")) use_chain = atoi(getenv("CHAIN"));
     if (getenv("SUBTOUR")) use_subtour = atoi(getenv("SUBTOUR"));
     bk_estate = malloc((size_t)N * 4);
     bk_dsu = malloc(sizeof(int) * (size_t)N);
@@ -1320,6 +1263,7 @@ int main(int argc, char **argv) {
     prop_depth = getenv("PROPDEPTH") ? atoi(getenv("PROPDEPTH")) : 2;
 
     end_ok = malloc((size_t)N); g_estate = calloc((size_t)N * 4, 1);
+    tcand = calloc((size_t)N, 1);
     blk = malloc(sizeof(int) * (size_t)N);
 
     // ---- --verify <解文件>：拿已知真解逐步验证两层传播的 soundness ----
@@ -1467,10 +1411,16 @@ int main(int argc, char **argv) {
     // 单一预算总会在某些关上踩空，分层等于同时吃到小预算的便宜和大预算的证伪力。
     // 注意第三层的「无限搜」必须保留 —— v15 那次纯迭代加深之所以惨败（L193 7s→174s），
     // 就是因为错起点永远搜不穷、被反复重搜，而搜穷一次就能永久剔除才是真正的投资。
-    long long probe = getenv("PROBE") ? atoll(getenv("PROBE")) : 8000;
+    // PROBE 的最优值**第二次翻转**了。历史：v13 时代 2000 最优 -> v20 加了 probing 之后
+    // 8000 最优（+16 关）-> 现在 v40 去掉 probing，又变回 2000。
+    // 每次底层一变，这个常数的最优点就跟着搬家：L239 23.9s->15.8s，L257 73.9s->54.9s，
+    // L195 9.5s->4.9s，中小关全部持平。
+    // **凡是「最优常数」，都要在底层改动之后重扫一遍**，这已经是同一个坑踩第二次了。
+    long long probe = getenv("PROBE") ? atoll(getenv("PROBE")) : 2000;
     long long probe2 = getenv("PROBE2") ? atoll(getenv("PROBE2")) : 24000;
     int *sc = malloc(sizeof(int) * (size_t)ns);
     unsigned char **est_save = malloc(sizeof(unsigned char *) * (size_t)ns);
+    unsigned char **tc_save = malloc(sizeof(unsigned char *) * (size_t)ns);
     int keep = 0;
 
     for (int i = 0; i < ns; ++i) {
@@ -1485,22 +1435,31 @@ int main(int argc, char **argv) {
         mark(s);
         if (!reach_ok(s, total_free - 1)) continue;        // 起点是割点，整盘直接不连通
         path_len = 0; nodes = 0; node_limit = probe; best_rem = total_free;
+        live_end = -1;
+        if (use_flow && tcand_for == s) {            // 候选集必须是**本起点**的，串台就关闭
+            live_end = 0;
+            for (int c2 = 0; c2 < N; ++c2) if (g[c2] && tcand[c2]) ++live_end;
+            if (live_end == 0) live_end = -1;        // 流没跑成或候选为空就关掉，别误杀
+        }
         int r = dfs(s, total_free - 1, 0);
         if (r == 1) { path[path_len] = 0; emit(s, path); }
         if (r == 0) continue;                              // 搜穷仍无解 => 永久剔除
         starts[keep] = s; sc[keep] = best_rem;
         est_save[keep] = malloc((size_t)N * 4);
         memcpy(est_save[keep], estate, (size_t)N * 4);      // 缓存，后两层直接复用
+        tc_save[keep] = malloc((size_t)N);
+        memcpy(tc_save[keep], tcand, (size_t)N);            // 终点候选集也要随起点缓存，串台会误杀真解
         ++keep;
     }
 
     if (!getenv("NORANK")) for (int i = 1; i < keep; ++i) {
         int vs = starts[i], vc = sc[i], j2 = i;
-        unsigned char *ve = est_save[i];
+        unsigned char *ve = est_save[i], *vt = tc_save[i];
         while (j2 > 0 && sc[j2 - 1] > vc) {
-            starts[j2] = starts[j2 - 1]; sc[j2] = sc[j2 - 1]; est_save[j2] = est_save[j2 - 1]; --j2;
+            starts[j2] = starts[j2 - 1]; sc[j2] = sc[j2 - 1];
+            est_save[j2] = est_save[j2 - 1]; tc_save[j2] = tc_save[j2 - 1]; --j2;
         }
-        starts[j2] = vs; sc[j2] = vc; est_save[j2] = ve;
+        starts[j2] = vs; sc[j2] = vc; est_save[j2] = ve; tc_save[j2] = vt;
     }
 
     // 只在**需要**的时候才上第二层。
@@ -1522,6 +1481,8 @@ int main(int argc, char **argv) {
     for (int i = 0; i < keep; ++i) {
         int s = starts[i];
         memcpy(estate, est_save[i], (size_t)N * 4);
+        memcpy(tcand, tc_save[i], (size_t)N);
+        tcand_for = s;
         memcpy(g, g0, N);
         cnt[0] = cnt[1] = 0; low_cnt = zero_cnt = 0;
         for (int c = 0; c < N; ++c) if (g[c]) ++cnt[col[c]];
@@ -1529,18 +1490,26 @@ int main(int argc, char **argv) {
             if (deg[c] <= 1) ++low_cnt; if (deg[c] == 0) ++zero_cnt; }
         mark(s);
         path_len = 0; nodes = 0; node_limit = probe2; best_rem = total_free;
+        live_end = -1;
+        if (use_flow && tcand_for == s) {            // 候选集必须是**本起点**的，串台就关闭
+            live_end = 0;
+            for (int c2 = 0; c2 < N; ++c2) if (g[c2] && tcand[c2]) ++live_end;
+            if (live_end == 0) live_end = -1;        // 流没跑成或候选为空就关掉，别误杀
+        }
         int r = dfs(s, total_free - 1, 0);
         if (r == 1) { path[path_len] = 0; emit(s, path); }
-        if (r == 0) { free(est_save[i]); continue; }
-        starts[keep2] = s; sc[keep2] = best_rem; est_save[keep2] = est_save[i]; ++keep2;
+        if (r == 0) { free(est_save[i]); free(tc_save[i]); continue; }
+        starts[keep2] = s; sc[keep2] = best_rem;
+        est_save[keep2] = est_save[i]; tc_save[keep2] = tc_save[i]; ++keep2;
     }
     if (!getenv("NORANK")) for (int i = 1; i < keep2; ++i) {
         int vs = starts[i], vc = sc[i], j2 = i;
-        unsigned char *ve = est_save[i];
+        unsigned char *ve = est_save[i], *vt = tc_save[i];
         while (j2 > 0 && sc[j2 - 1] > vc) {
-            starts[j2] = starts[j2 - 1]; sc[j2] = sc[j2 - 1]; est_save[j2] = est_save[j2 - 1]; --j2;
+            starts[j2] = starts[j2 - 1]; sc[j2] = sc[j2 - 1];
+            est_save[j2] = est_save[j2 - 1]; tc_save[j2] = tc_save[j2 - 1]; --j2;
         }
-        starts[j2] = vs; sc[j2] = vc; est_save[j2] = ve;
+        starts[j2] = vs; sc[j2] = vc; est_save[j2] = ve; tc_save[j2] = vt;
     }
     keep = keep2;
     }
@@ -1559,12 +1528,20 @@ int main(int argc, char **argv) {
             if (deg[c] == 0) ++zero_cnt;
         }
         memcpy(estate, est_save[i], (size_t)N * 4);   // 复用第一层缓存好的 estate，不重算
+        memcpy(tcand, tc_save[i], (size_t)N);
+        tcand_for = s;
         mark(s);
         // 归纳的底座：局部检查靠「上一层的剩余区域连通」，起点这一层得自己验。
         // 起点若是割点，去掉它剩余区域就断了。顺带白捡一条起点剪枝。
         if (!reach_ok(s, total_free - 1)) continue;
 
         path_len = 0; nodes = 0;
+        live_end = -1;
+        if (use_flow && tcand_for == s) {
+            live_end = 0;
+            for (int c2 = 0; c2 < N; ++c2) if (g[c2] && tcand[c2]) ++live_end;
+            if (live_end == 0) live_end = -1;
+        }
         if (dfs(s, total_free - 1, 0) == 1) { path[path_len] = 0; emit(s, path); }
     }
     fprintf(stderr, "no solution found\n");
