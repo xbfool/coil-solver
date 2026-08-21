@@ -172,6 +172,66 @@ cave 分区法的图文详解：怎么切、为什么某些开口是**强制的*
 
 ---
 
+## 六点五、第二轮深挖（2026-08-21）：定标、结案、两条正确性警告
+
+### ⭐ 最重要的一条：定标
+
+| 人 | 到哪 | 参考耗时 |
+| --- | --- | --- |
+| **Tron** | 1206（通关） | **L910 只要 90 秒**；L1058 3m10s；L1206 (2000×2000) 37 分钟 |
+| ericgopak（代码可查） | ~332 | L165 要 2 小时 |
+| **我们（v23）** | **287** | L287 220 秒 |
+| Hippo（论坛技术贴最多的那位） | **卡在 233** | — |
+
+关卡尺寸校准：**L741 已经是 250×250，L1000 是 337×336**。
+
+**所以：我们已经超过 Hippo，逼近公开代码最高的 ericgopak；但和 Tron 之间不是常数因子，是算法代差。**
+他在 L910（比我们大一个数量级的盘）上只花 90 秒。
+
+### 差距被量化了：传播的判定率
+
+| | 判定率 | 出处 |
+| --- | --- | --- |
+| Tron | **99.7%**（"cannot determine which two sides are used, to about 0.3%"） | p20026 |
+| 我们（传播+probing+配对） | **~48%**（L215 5215 条边判定 2538） | v28 实测 |
+
+**他的搜索几乎不用搜（0.3% 未定后跑朴素递归），我们的搜索要面对一半未定的边。**
+这就是全部差距所在，比任何单条剪枝规则都重要。
+
+### 任务一正式结案：Tron 没留下更多
+
+子代理把 **Tron 全部 30 个帖子** + Mortal Coil 子版 **全部 38 个主题**都读完了。
+**全站只有 p20026 那一段描述求解器内部结构，没有第二处；论坛上不存在任何一个具体的
+「这条边不可能」的模式实例。** local / recursive patterns 和 bounded brute force 他从未展开。
+（论坛全文搜索索引是坏的，只能靠作者搜索逐帖遍历——这条路走到头了。）
+
+### ⚠️ 两条正确性警告
+
+**一、死端剪枝必须允许恰好 1 个。** gfoot 2008（[p7812](https://www.hacker.org/f3/viewtopic.php?p=7812#p7812)）：
+> "creating a dead-end, because **that dead-end might be the one you're meant to end on**"
+
+**我们已审计：`cheap_ok` 里是 `low_cnt - adj_low + adj_zero <= 1`，允许 1 个，没问题。**
+ericgopak 也是这么做的（Solver.cpp:74 `temporaryEnds.size() > 1` 才剪）。
+
+**二、朴素分区法是错的，mask 不是优化而是正确性条件。** brazzy 2008（[p7803](https://www.hacker.org/f3/viewtopic.php?p=7803#p7803)）：
+> "an entry point into such a territory **can be eliminated by the coil passing it**"
+
+区域入口会被路径「滑过」而消灭。ericgopak 的 `mustBeBlockedMask`/`mustBeFreeMask` 正是对这个的解答——
+每条区域解显式记录它依赖哪些出口此刻仍空/哪些已被占，再用两次位运算核验。
+**要做分区就必须带这两个 mask。**
+
+### 新增的可用信息
+
+- **T 型路口才是真决策点**：Tron 的 qpath 压缩格式（[p19597](https://www.hacker.org/f3/viewtopic.php?p=19597#p19597)）只在 T-crossing 记方向、
+  拐角处省略——因为**撞墙后只有一侧能转时那是强制走法，不是分支**。
+  （我们的 DFS 在 nc==1 时本来就不分支，这条已经满足。）
+- **奇偶排除起点彻底死了**：实测 5 关（L100/200/280/300/330）**黑白格数差全部为 0**，
+  只能推出「两端点异色」，推不出任何起点排除。Hippo 说的 "parity excluding starts at **some** levels"
+  指的是不平衡的关卡，tails 这个生成器产的不是。（但 |黑−白| > 1 ⇒ 无解 是 O(n) 白送的检查。）
+- **「先定端点」有三方独立背书**：tails、Hippo、ericgopak 的 SPECIAL component 机制。
+- **conditional shortcut 别碰**：Hippo 自述「几乎用不上」，还给了坑关 L88。
+- **置换表不划算**：brazzy 实测重复模式太罕见。
+
 ## 七、下一步该做什么（按性价比）
 
 1. **重做 v9：边约束传播，但按路径建模、消除对象改成有向的「进入方向」**。
