@@ -57,6 +57,27 @@
   下一步是 2-level probing（Tron 说的 "bounded brute force" 多半就是这个量级），
   需要先把原型 C 化并做增量传播才付得起。
 
+## 换台机器（一条命令）
+
+```bash
+wsl -e bash -lc "cd /mnt/d/works/coil-solver && ./setup.sh"
+```
+
+拉 coilbench、修 CRLF、编译校验器、装全部 **1207 关**（奇数关明文 + 偶数关归档 + 解出的 `levels_all/`）。
+
+关卡不进 git：奇 148MB + 偶 150MB ≈ 300MB，而上游 release 有 47MB 压缩包，就地重建更划算。
+（上游把偶数关加密是**防 LLM 训练集污染**；我们是从零写求解器、从不看答案，这条顾虑对我们不适用，
+所以脚本直接把偶数关也解出来用。）
+
+## 两种评测口径 —— 别混
+
+| 命令 | 跑什么 | 用途 |
+| --- | --- | --- |
+| `./bench <版本> --timeout 600` | **只跑奇数关**（evaluate.py） | 日常迭代 |
+| `COIL_FULL_PASSWORD=local ./bench-full <版本>` | **奇+偶全量**（evaluate_full.py） | 对标官方榜 |
+
+奇数关口径会**偏乐观**：中间任何一关偶数关卡住都测不出来。要跟 results.md 对标得用全量。
+
 ## 用法
 
 需要 WSL（Windows 侧没有 C 编译器，且上游脚本是 POSIX sh）：

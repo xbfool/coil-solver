@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# 全量口径评测（奇数关 + 偶数关）—— 上游的 evaluate_full.py，比 ./bench 严格。
+#
+#   COIL_FULL_PASSWORD=local ./bench-full v23-adaptive --timeout 600
+#
+# 为什么要跑这个：./bench 用的 evaluate.py **只跑奇数关**，报出来的最高关号会偏乐观——
+# 中间任何一关偶数关卡住都测不出来。要跟官方榜/results.md 对标，得用全量口径。
+set -euo pipefail
+
+HERE="$(cd "$(dirname "$0")" && pwd)"
+BENCH="${COILBENCH_DIR:-$HERE/../coilbench}"
+[ -d "$BENCH" ] || BENCH="/mnt/d/works/coilbench"
+[ -d "$BENCH" ] || { echo "找不到 coilbench，先跑 ./setup.sh" >&2; exit 1; }
+
+VER=""
+if [ $# -gt 0 ] && [ "${1#-}" = "$1" ]; then VER="$1"; shift; fi
+if [ -z "$VER" ]; then VER="$(basename "$(ls "$HERE"/versions/*.c | sort -V | tail -1)" .c)"; fi
+SRC="$HERE/versions/$VER.c"
+[ -f "$SRC" ] || { echo "没有版本 $VER" >&2; ls "$HERE/versions" >&2; exit 1; }
+
+mkdir -p "$HERE/bin"
+cc -std=gnu99 -O2 -Wall -Wextra "$SRC" -o "$HERE/bin/$VER"
+[ -x "$BENCH/coil_check/check" ] || make -C "$BENCH/coil_check"
+cp "$HERE/bin/$VER" "$BENCH/solver"
+
+export COIL_FULL_PASSWORD="${COIL_FULL_PASSWORD:-local}"
+cd "$BENCH"
+echo "== $VER（全量：奇+偶）=="
+exec ./evaluate_full.py "$@"
