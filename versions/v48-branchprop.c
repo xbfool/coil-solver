@@ -1571,7 +1571,10 @@ int main(int argc, char **argv) {
     }
   child_work:;
 
-    swarm = (ns <= nshard * 4) && (nshard > 1 || force_shard_identity >= 0);
+    {
+        int swx = getenv("SWARMX") ? atoi(getenv("SWARMX")) : 6;   // L473 有 138 个候选卡在旧阈值 112 外面：87s -> 12.5s（7 倍）
+        swarm = (ns <= nshard * swx) && (nshard > 1 || force_shard_identity >= 0);
+    }
     swarm_depth = getenv("SWDEPTH") ? atoi(getenv("SWDEPTH")) : 3;
     { int ident = force_shard_identity >= 0 ? force_shard_identity : shard;
       shard_seed = swarm ? (unsigned int)(ident * 2654435761u) : 0u; }
