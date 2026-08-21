@@ -1,3 +1,6 @@
+// Coil solver — v51: 传播深度三段式（gfix强类深层｜浅探存活率>=45%升深层｜DYNMIN降档兜底）
+//
+// 以下是 v50 的说明。
 // Coil solver — v50: 传播深度初值恒深层，降档交给 DYNMIN 自测（零信息类 22 倍）
 //
 // 以下是 v48 的说明。
@@ -1503,8 +1506,11 @@ int main(int argc, char **argv) {
     // 全局边定不下来不代表分支点传播没肉。真正可靠的判据是 DYNMIN 自测
     // （探针阶段实测证伪率 <15% 才降浅层，L389 型由它兜底），初值恒为全深度。
     if (prop_depth < 0) {
-        prop_depth = 999999;
-        fprintf(stderr, "adaptive PROPDEPTH=deep (gfix %lld; DYNMIN 自测负责降档)\n", gfix_total);
+        long long te = 0;
+        for (int c = 0; c < N; ++c) if (g0[c]) for (int d = 2; d < 4; ++d)
+            if (g0[c + delta[d]]) ++te;
+        prop_depth = (te > 0 && gfix_total * 100 >= te * 10) ? 999999 : 2;
+        fprintf(stderr, "adaptive PROPDEPTH=%d (fixed %lld / %lld edges; 第一层存活率>=SURVDEEP%%再升深层)\n", prop_depth, gfix_total, te);
     }
 
     int *starts = malloc(sizeof(int) * (size_t)total_free);
@@ -1667,6 +1673,17 @@ int main(int argc, char **argv) {
     for (int i = 0; i < ns; ++i) if (i % nshard == shard) ++mine_total;
     int thresh = getenv("TIER2") ? atoi(getenv("TIER2")) : 30;   // 存活率(%)超过它才上第二层
     int use_tier2 = (mine_total > 0 && keep * 100 > mine_total * thresh);
+    // v51：零信息类的真判据是「浅层探针杀不杀得动」——存活率高说明每棵树都巨大，
+    // 深层传播的每节点成本能靠 600 倍的剪树回本（L414 死树 10M -> 15K 节点）。
+    // 存活率低说明树本来就小（L381 浅层 6.5s 通关），深层纯付成本。
+    {
+        int sdthr = getenv("SURVDEEP") ? atoi(getenv("SURVDEEP")) : 45;
+        if (prop_depth <= 2 && mine_total > 0 && keep * 100 >= mine_total * sdthr) {
+            prop_depth = 999999;
+            fprintf(stderr, "shard %d: 第一层存活 %d%% >= %d%%，升全深度传播\n",
+                    shard, keep * 100 / mine_total, sdthr);
+        }
+    }
     fprintf(stderr, "shard %d: 第一层存活 %d/%d = %d%%%%, 第二层 %s\n",
             shard, keep, mine_total, mine_total ? keep * 100 / mine_total : 0,
             use_tier2 ? "开" : "跳过");
