@@ -1,3 +1,6 @@
+// Coil solver — v41: v40 + CHAINSTAT（查 L239/L257 的链为什么杀不动起点）
+//
+// 以下是 v40 的说明。
 // Coil solver — v40: 去掉 probing（流已经覆盖了它，而它烧掉 89% 的时间证伪 0）
 //
 // 以下是 v39 的说明。
@@ -92,6 +95,7 @@
 static int shard = 0, nshard = 1;      // 本进程负责 starts 里下标 % nshard == shard 的那些
 static int out_fd = -1;                // 子进程把答案写这里
 static void emit(int s, const char *pathstr);
+static void chain_dump(void);
 
 #ifndef FF_MAX
 #define FF_MAX 1200                  // 剩余格数 <= 此值才做精确连通性检查
@@ -120,6 +124,7 @@ static int best_rem;
 
 // 找到解就写进管道（子进程）或直接打印（单进程模式）
 static void emit(int s, const char *pathstr) {
+    chain_dump();
     static char obuf[1 << 22];
     int n = snprintf(obuf, sizeof obuf, "x=%d&y=%d&path=%s\n", (s % W) - 1, (s / W) - 1, pathstr);
     if (out_fd >= 0) { ssize_t wr = write(out_fd, obuf, (size_t)n); (void)wr; _exit(0); }
@@ -949,9 +954,55 @@ static int do_probing(int rounds) {
 // **教训（比这次提速更值钱）：加了新规则之后，要回头量旧规则还剩多少边际贡献。**
 // 这个仓库里的规则是一层层叠上去的，从没做过反向检查 —— probing 白烧了 89% 的时间
 // 烧了整整 10 个版本。PROBEROUNDS>0 可以把它开回来做对照。
+// CHAINSTAT=1：查 L239/L257 的起点为什么连链定向都杀不动。
+// L223 是 998 次调用证伪 976（98%），L257 是 1319 次调用只证伪 3 —— 同样是「全局过滤失效」的关，
+// 规则的杀伤力差了两个数量级。链定向靠的是**必用边拼成的链**（链是路径的连续段，
+// 链上拐弯点的前方格若落在本链更晚就矛盾），所以最可能的解释是这些关的必用边太少、链太短，
+// 短链里根本没有内部拐点可查（chain_dir_ok 要求 k>=3）。
+static long long cs_calls, cs_forced, cs_chains, cs_len3, cs_maxlen, cs_turn;
+static void chain_stat(void) {
+    ++cs_calls;
+    int f = 0;
+    for (int c = 0; c < N; ++c) if (g0[c])
+        for (int d = 2; d < 4; ++d)
+            if (g0[c + delta[d]] && estate[c * 4 + d] == 1) ++f;
+    cs_forced += f;
+    // 数链：从「只挂一条必用边」的格子起步走
+    static int *mark2 = 0;
+    if (!mark2) mark2 = malloc(sizeof(int) * (size_t)N);
+    for (int c = 0; c < N; ++c) mark2[c] = 0;
+    for (int c0 = 0; c0 < N; ++c0) {
+        if (!g0[c0] || mark2[c0]) continue;
+        int fd = 0;
+        for (int d = 0; d < 4; ++d) if (g0[c0 + delta[d]] && estate[c0 * 4 + d] == 1) ++fd;
+        if (fd != 1) continue;
+        int k = 0, cur = c0, from = -1;
+        for (;;) {
+            mark2[cur] = 1; ++k;
+            int nx = -1;
+            for (int d = 0; d < 4; ++d) {
+                int n = cur + delta[d];
+                if (g0[n] && estate[cur * 4 + d] == 1 && n != from) { nx = n; break; }
+            }
+            if (nx < 0) break;
+            from = cur; cur = nx;
+        }
+        ++cs_chains;
+        if (k >= 3) ++cs_len3;
+        if (k > cs_maxlen) cs_maxlen = k;
+    }
+}
+static void chain_dump(void) {
+    if (!getenv("CHAINSTAT") || !cs_calls) return;
+    fprintf(stderr, "CHAIN shard%d: %lld 次 | 平均必用边 %.0f | 平均链数 %.1f | 长度>=3 的链 %.1f | 最长链 %lld\n",
+            shard, cs_calls, (double)cs_forced / cs_calls, (double)cs_chains / cs_calls,
+            (double)cs_len3 / cs_calls, cs_maxlen);
+    (void)cs_turn;
+}
 static int propagate_strong(int s) {
     if (!propagate(s)) return 0;                 // 第 1 层：最便宜
     if (!do_flow(s)) return 0;                   // 第 2 层：一次 max-flow
+    if (getenv("CHAINSTAT")) chain_stat();
     if (!orient_chains(s)) return 0;             // 第 3 层：0.3% 的代价，98% 的证伪
     if (probe_rounds <= 0) return 1;             // 默认到此为止
     if (!do_probing(probe_rounds)) return 0;
@@ -1388,12 +1439,7 @@ int main(int argc, char **argv) {
     // 单一预算总会在某些关上踩空，分层等于同时吃到小预算的便宜和大预算的证伪力。
     // 注意第三层的「无限搜」必须保留 —— v15 那次纯迭代加深之所以惨败（L193 7s→174s），
     // 就是因为错起点永远搜不穷、被反复重搜，而搜穷一次就能永久剔除才是真正的投资。
-    // PROBE 的最优值**第二次翻转**了。历史：v13 时代 2000 最优 -> v20 加了 probing 之后
-    // 8000 最优（+16 关）-> 现在 v40 去掉 probing，又变回 2000。
-    // 每次底层一变，这个常数的最优点就跟着搬家：L239 23.9s->15.8s，L257 73.9s->54.9s，
-    // L195 9.5s->4.9s，中小关全部持平。
-    // **凡是「最优常数」，都要在底层改动之后重扫一遍**，这已经是同一个坑踩第二次了。
-    long long probe = getenv("PROBE") ? atoll(getenv("PROBE")) : 2000;
+    long long probe = getenv("PROBE") ? atoll(getenv("PROBE")) : 8000;
     long long probe2 = getenv("PROBE2") ? atoll(getenv("PROBE2")) : 24000;
     int *sc = malloc(sizeof(int) * (size_t)ns);
     unsigned char **est_save = malloc(sizeof(unsigned char *) * (size_t)ns);
