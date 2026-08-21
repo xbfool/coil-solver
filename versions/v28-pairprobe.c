@@ -1,15 +1,19 @@
+// Coil solver — v28: 同格配对 probing —— 专门产出「禁用」，补传播的不对称
+//
+// 诊断：传播/probing 判定出来的边**必用 : 禁用 ≈ 7 : 1**（L215 是 2186 : 342），
+// 而真解里约 29% 的边是不被使用的 —— 禁用这一侧有大片没开发。
+// 机制上的原因：单边 probing 里「假设禁用」很容易矛盾（最小度 2 的图禁一条边就造出度 1 格，
+// 连锁到成环/奇偶），所以产出的是必用；而「假设必用」很少矛盾——加一条必用边很少能让某格饱和。
+//
+// 对策：**同时假设两条必用**就容易饱和/成环了。而且不必做 O(m²)——
+// 每格恰好用 2 条边，所以只在**同一格的相邻边之间**配对就够：
+//     若含 e 的所有配对都矛盾  =>  e 不可能在被选中的那两条里  =>  **禁用 e**
+// 每条边最多 3 次探测（度 ≤ 4），代价可控。PAIR=0 可关掉做对照。
+//
+// 以下是 v23 的说明。
 // Coil solver — v23: 自适应分层（只在第一层存活率高时才上第二层大预算）
 //
 // 以下是 v21 的说明。
-// Coil solver — v24: v23 + **动态桥规则**（可用边图里的桥必然被使用）
-//
-// 昨晚测到「初始网格图上一条桥都没有」（这批盘面 2 边连通）就把这条规则搁置了，
-// 但传播禁掉一批边之后，剩余的**可用边图**上会冒出桥。而桥有一条比 in 方向蕴含式
-// 更直接的用法：**可用边图里的桥必然被路径使用**——去掉它图就断成两块，
-// 哈密顿路径要覆盖两边所有格子，唯一能跨过去的可用边就是它。
-// 这条直接就是 estate=1，不需要 in 变量，能塞进现有的边传播，而且正是缺的那种「种子」。
-// BRIDGE=0 可关掉做对照。
-//
 // Coil solver — v21: 分层探针（小预算 -> 大预算 -> 无限搜），propagate_strong 只算一次
 //
 // 以下是 v20 的说明。
@@ -413,55 +417,6 @@ static int force_first_line(int s, int d) {
 
 
 // 返回 0 表示传播出矛盾 => 这个起点被证伪（是证明，不是启发式）
-// ===== 动态桥规则 =====
-// 在「未被禁用的边」构成的图上找桥。每找到一条未定的桥就判它必用。
-// 迭代式 Tarjan（盘面可达 260 万格，递归会爆栈）。
-static int *bdisc, *blow, *bstk_v, *bstk_pd, *bstk_di;
-static int use_bridge = 1;
-static long long bridges_found = 0;   // 统计用
-
-static int bridge_pass(void) {
-    if (!use_bridge || prop_bad) return 0;
-    ++seen_id;
-    int found = 0, timer = 0;
-    for (int root = 0; root < N; ++root) {
-        if (!g0[root] || seen[root] == seen_id) continue;
-        seen[root] = seen_id; bdisc[root] = blow[root] = timer++;
-        bstk_v[0] = root; bstk_pd[0] = -1; bstk_di[0] = 0;
-        int sp = 1;
-        while (sp) {
-            int v = bstk_v[sp - 1];
-            if (bstk_di[sp - 1] < 4) {
-                int d = bstk_di[sp - 1]++;
-                if (estate[v * 4 + d] == 2) continue;        // 已禁用的边不在图里
-                int u = v + delta[d];
-                if (!g0[u]) continue;
-                if (seen[u] != seen_id) {
-                    seen[u] = seen_id; bdisc[u] = blow[u] = timer++;
-                    bstk_v[sp] = u; bstk_pd[sp] = d ^ 2; bstk_di[sp] = 0; ++sp;
-                } else if (d != bstk_pd[sp - 1]) {           // 回父亲那条边不算回边
-                    if (bdisc[u] < blow[v]) blow[v] = bdisc[u];
-                }
-            } else {
-                --sp;
-                if (sp) {
-                    int par = bstk_v[sp - 1];
-                    if (blow[v] < blow[par]) blow[par] = blow[v];
-                    if (blow[v] > bdisc[par]) {              // (par, v) 是桥
-                        int d = bstk_pd[sp] ^ 2;             // par -> v 的方向
-                        if (estate[par * 4 + d] == 0) {
-                            set_edge(par, d, 1);
-                            ++found; ++bridges_found;
-                            if (prop_bad) return found;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    return found;
-}
-
 static void prun_queue(void) {
     while (qhead != qtail && !prop_bad) {
         int c = pq[qhead++];
@@ -481,10 +436,6 @@ static int propagate(int s) {
 
     for (int c = 0; c < N; ++c) if (g0[c]) ppush(c);
     prun_queue();
-    for (int it = 0; it < 6 && !prop_bad; ++it) {          // 桥 -> 传播 -> 可能又冒出新桥
-        if (!bridge_pass()) break;
-        prun_queue();
-    }
 
     for (int round = 0; round < 8 && !prop_bad; ++round) {
         int nok = 0, okd = -1;
@@ -493,10 +444,6 @@ static int propagate(int s) {
         if (nok > 1) break;                                 // 还有得选，推不动了
         if (!force_first_line(s, okd)) break;               // 没有新信息，稳定了
         prun_queue();
-        for (int it = 0; it < 6 && !prop_bad; ++it) {
-            if (!bridge_pass()) break;
-            prun_queue();
-        }
     }
     if (prop_bad) return 0;
     return orient_chains(s);
@@ -548,6 +495,50 @@ static int try_edge(int c, int d, int v) {
     return r;
 }
 
+// 同时假设两条边必用，看是否矛盾
+static int try_pair(int c, int d1, int d2) {
+    psnapshot();
+    set_edge(c, d1, 1);
+    if (!prop_bad) { prun_queue(); }
+    if (!prop_bad) { set_edge(c, d2, 1); prun_queue(); }
+    int r = prop_bad;
+    prestore();
+    return r;
+}
+
+static long long pair_bans = 0;
+static int use_pair = 1;
+
+// 每格恰好用 2 条边：若含 e 的所有同格配对都矛盾，e 就不可能入选 => 禁用
+static int do_pair_probing(void) {
+    if (!use_pair) return !prop_bad;
+    for (int c = 0; c < N && !prop_bad; ++c) {
+        if (!g0[c]) continue;
+        int und[4], nu = 0, nfixed = 0;
+        for (int d = 0; d < 4; ++d) {
+            if (!g0[c + delta[d]]) continue;
+            if (estate[c * 4 + d] == 1) ++nfixed;
+            else if (estate[c * 4 + d] == 0) und[nu++] = d;
+        }
+        if (nfixed + nu <= 2 || nu < 2) continue;      // 已经没得选，或不够配对
+        int need = 2 - nfixed;                         // 还要从 und 里选出 need 条
+        if (need != 2) continue;                       // 只处理「还要选两条」这个干净情形
+        for (int i = 0; i < nu && !prop_bad; ++i) {
+            int all_bad = 1;
+            for (int j = 0; j < nu; ++j) {
+                if (j == i) continue;
+                if (!try_pair(c, und[i], und[j])) { all_bad = 0; break; }
+            }
+            if (all_bad) {                             // 含 und[i] 的配对全矛盾 => 它不可能被选
+                set_edge(c, und[i], 2); prun_queue(); ++pair_bans;
+                if (prop_bad) return 0;
+                break;                                 // estate 变了，本格重新来过
+            }
+        }
+    }
+    return !prop_bad;
+}
+
 static int do_probing(int rounds) {
     for (int r = 0; r < rounds && !prop_bad; ++r) {
         int changed = 0;
@@ -576,6 +567,8 @@ static int do_probing(int rounds) {
 static int propagate_strong(int s) {
     if (!propagate(s)) return 0;
     if (!do_probing(probe_rounds)) return 0;
+    if (!do_pair_probing()) return 0;
+    if (!do_probing(1)) return 0;                      // 新禁用边再喂回单边 probing 滚一轮
     return orient_chains(s);
 }
 
@@ -830,10 +823,6 @@ int main(int argc, char **argv) {
     dsu = malloc(sizeof(int) * (size_t)N);
     pq = malloc(sizeof(int) * (size_t)(N + 1));
     inq = malloc((size_t)N);
-    bdisc = malloc(sizeof(int) * (size_t)N); blow = malloc(sizeof(int) * (size_t)N);
-    bstk_v = malloc(sizeof(int) * (size_t)(N + 4)); bstk_pd = malloc(sizeof(int) * (size_t)(N + 4));
-    bstk_di = malloc(sizeof(int) * (size_t)(N + 4));
-    if (getenv("BRIDGE")) use_bridge = atoi(getenv("BRIDGE"));
     chain_id = malloc(sizeof(int) * (size_t)N);
     chain_pos = malloc(sizeof(int) * (size_t)N);
     seqbuf = malloc(sizeof(int) * (size_t)N);
@@ -841,6 +830,7 @@ int main(int argc, char **argv) {
     dsu2 = malloc(sizeof(int) * (size_t)N);
     pq2 = malloc(sizeof(int) * (size_t)(N + 1));
     inq2 = malloc((size_t)N);
+    if (getenv("PAIR")) use_pair = atoi(getenv("PAIR"));
     bk_estate = malloc((size_t)N * 4);
     bk_dsu = malloc(sizeof(int) * (size_t)N);
     bk_inq = malloc((size_t)N);
@@ -865,16 +855,14 @@ int main(int argc, char **argv) {
         int strong = getenv("STRONG") ? atoi(getenv("STRONG")) : 0;
         int pok = strong ? propagate_strong(s) : propagate(s);
         printf("静态传播: %s\n", pok ? "无矛盾 (对)" : "**矛盾 —— 静态层不 sound**");
-        {   // 传播产出统计：判定了多少条边，其中多少条是桥规则贡献的
-            long long nedge = 0, ndet = 0, nuse = 0, nban = 0;
+        {   long long nedge = 0, nuse = 0, nban = 0;
             for (int c = 0; c < N; ++c) if (g0[c])
-                for (int d = 2; d < 4; ++d) if (g0[c + delta[d]]) {   // 只数 R/D 免得重复
+                for (int d = 2; d < 4; ++d) if (g0[c + delta[d]]) {
                     ++nedge;
-                    if (estate[c * 4 + d] == 1) { ++ndet; ++nuse; }
-                    else if (estate[c * 4 + d] == 2) { ++ndet; ++nban; }
+                    if (estate[c * 4 + d] == 1) ++nuse; else if (estate[c * 4 + d] == 2) ++nban;
                 }
-            printf("边 %lld，判定 %lld (%.1f%%)：必用 %lld，禁用 %lld；其中桥规则判出 %lld 条\n",
-                   nedge, ndet, 100.0 * ndet / (nedge ? nedge : 1), nuse, nban, bridges_found);
+            printf("边 %lld：必用 %lld，禁用 %lld（其中配对 probing 判出 %lld）\n",
+                   nedge, nuse, nban, pair_bans);
         }
 
         memcpy(g, g0, N);
