@@ -3,6 +3,10 @@
 // 以下是 v21 的说明。
 // Coil solver — v26: v25 的出方向版 —— 再挖一层白捡的有向信息
 //
+// ⚠ v25 有个 bug 在这里修掉了：第二/三层复用缓存的 estate 时没有同步重算 pins，
+//   于是上一个起点的钉死方向被套到别的起点的搜索上（pins 是起点相关的），把真起点误剪掉。
+//   表现是 L195 直接 FAIL 而 v23 能解 —— 而单起点的 --verify 验不出来，因为那里只有一个起点。
+//
 // v25 只用了「进入方向」。链定向同时也确定了每格的**后继方向** pin_out[c]，而滑行有两条强性质：
 //   · run 的**中间格必须直穿**（进出同向）=> pin_out[q] 若不等于滑行方向，矛盾
 //   · run 的**落点必然转弯或收尾**（前方已被挡住）=> pin_out[c] 若等于滑行方向，矛盾
@@ -1096,6 +1100,9 @@ int main(int argc, char **argv) {
     for (int i = 0; i < keep; ++i) {
         int s = starts[i];
         memcpy(estate, est_save[i], (size_t)N * 4);
+        // pins 是**起点相关**的（orient_chains 用 head_s/tail_s 定向），复用 estate 时必须跟着重算，
+        // 否则上一个起点的钉死方向会被套到这个起点的搜索上，把真起点误剪掉。
+        if (use_pin && !orient_chains(s)) { free(est_save[i]); continue; }
         memcpy(g, g0, N);
         cnt[0] = cnt[1] = 0; low_cnt = zero_cnt = 0;
         for (int c = 0; c < N; ++c) if (g[c]) ++cnt[col[c]];
@@ -1133,6 +1140,7 @@ int main(int argc, char **argv) {
             if (deg[c] == 0) ++zero_cnt;
         }
         memcpy(estate, est_save[i], (size_t)N * 4);   // 复用第一层缓存好的 estate，不重算
+        if (use_pin && !orient_chains(s)) continue;   // 同上：pins 必须按本起点重算
         mark(s);
         // 归纳的底座：局部检查靠「上一层的剩余区域连通」，起点这一层得自己验。
         // 起点若是割点，去掉它剩余区域就断了。顺带白捡一条起点剪枝。
