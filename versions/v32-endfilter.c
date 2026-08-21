@@ -543,6 +543,115 @@ static long long sub_uses = 0, sub_refute = 0;
 static long long end_cand = 0;
 static int hfind(int x) { while (hdsu[x] != x) { hdsu[x] = hdsu[hdsu[x]]; x = hdsu[x]; } return x; }
 
+// ===== 全局端点过滤（开局跑一次，不假定起点）=====
+//
+// 起点必然是路径的两个端点之一。上面 per-start 的流已经证明「端点在度约束松弛下是被强约束的」
+// （固定起点后终点候选只剩 0.9~2.4%）。那就把起点也放开：两个端点都用哑点表示，跑**一次**流，
+// 再用 Régin 过滤淘汰「不可能当端点」的格子 —— 活下来的才需要进起点循环。
+//
+// 建模（自由格两色计数 c0/c1，|c0−c1| > 1 直接无解）：
+//   c0 == c1（偶数格）：两端点异色，左右各挂一个哑点，各带 1 个单位
+//   c0 == c1+1（奇数格，颜色 0 是多数）：两端点同为颜色 0，右侧哑点带 2 个单位
+//   c1 == c0+1：镜像
+static unsigned char *end_ok;
+static long long gfilter_kept = 0;
+static int use_gfilter = 1;
+#define FDUM2 (N + 3)
+
+static int filter_endpoints(void) {
+    if (!use_gfilter) { for (int c = 0; c < N; ++c) end_ok[c] = 1; return 1; }
+    int c0 = 0, c1 = 0;
+    for (int c = 0; c < N; ++c) if (g0[c]) { if (col[c]) ++c1; else ++c0; }
+    if (c0 - c1 > 1 || c1 - c0 > 1) return 0;             // |黑−白| > 1 => 无解
+
+    fnodes = N + 4;
+    for (int i = 0; i < fnodes; ++i) fhead[i] = -1;
+    fcnt = 0;
+    long long needL = 0, needR = 0;
+
+    for (int c = 0; c < N; ++c) {
+        if (!g0[c]) continue;
+        if (col[c] == 0) { fadd(FSRC, FCELL(c), 2); needL += 2; }
+        else             { fadd(FCELL(c), FSNK, 2); needR += 2; }
+    }
+    if (c0 == c1) {                                       // 两端点异色，各挂一个
+        fadd(FSRC, FDUM, 1); needL += 1;
+        for (int c = 0; c < N; ++c) if (g0[c] && col[c]) fadd(FDUM, FCELL(c), 1);
+        fadd(FDUM2, FSNK, 1); needR += 1;
+        for (int c = 0; c < N; ++c) if (g0[c] && !col[c]) fadd(FCELL(c), FDUM2, 1);
+    } else if (c0 > c1) {                                 // 两端点同为颜色 0
+        fadd(FDUM2, FSNK, 2); needR += 2;
+        for (int c = 0; c < N; ++c) if (g0[c] && !col[c]) fadd(FCELL(c), FDUM2, 1);
+    } else {                                              // 两端点同为颜色 1
+        fadd(FSRC, FDUM, 2); needL += 2;
+        for (int c = 0; c < N; ++c) if (g0[c] && col[c]) fadd(FDUM, FCELL(c), 1);
+    }
+    for (int c = 0; c < N; ++c) {                         // 网格边：颜色 0 -> 颜色 1
+        if (!g0[c] || col[c]) continue;
+        for (int d = 0; d < 4; ++d) {
+            int n = c + delta[d];
+            if (!g0[n]) { fmap[c * 4 + d] = -1; continue; }
+            fmap[c * 4 + d] = fcnt;
+            fadd(FCELL(c), FCELL(n), 1);
+        }
+    }
+    if (needL != needR) return 0;
+
+    long long flow = 0;
+    while (fbfs()) {
+        for (int i = 0; i < fnodes; ++i) fiter[i] = fhead[i];
+        int f;
+        while ((f = fdfs(FSRC, 1 << 30)) > 0) flow += f;
+    }
+    if (flow != needL) return 0;                          // 度约束松弛都无解 => 整关无解
+
+    for (int i = 0; i < fnodes; ++i) { fdfn[i] = -1; fscc[i] = -1; fon[i] = 0; }
+    int timer = 0, sp = 0, nscc = 0, csp;
+    for (int root = 0; root < fnodes; ++root) {
+        if (fdfn[root] >= 0) continue;
+        fcv[0] = root; fce[0] = fhead[root]; csp = 1;
+        fdfn[root] = flow2[root] = timer++; fstk[sp++] = root; fon[root] = 1;
+        while (csp) {
+            int u = fcv[csp - 1];
+            if (fce[csp - 1] != -1) {
+                int e = fce[csp - 1]; fce[csp - 1] = fnext[e];
+                if (fcap[e] <= 0) continue;
+                int v = fto[e];
+                if (fdfn[v] < 0) {
+                    fdfn[v] = flow2[v] = timer++; fstk[sp++] = v; fon[v] = 1;
+                    fcv[csp] = v; fce[csp] = fhead[v]; ++csp;
+                } else if (fon[v] && fdfn[v] < flow2[u]) flow2[u] = fdfn[v];
+            } else {
+                --csp;
+                if (csp) { int p = fcv[csp - 1]; if (flow2[u] < flow2[p]) flow2[p] = flow2[u]; }
+                if (flow2[u] == fdfn[u]) {
+                    for (;;) { int w = fstk[--sp]; fon[w] = 0; fscc[w] = nscc; if (w == u) break; }
+                    ++nscc;
+                }
+            }
+        }
+    }
+
+    for (int c = 0; c < N; ++c) end_ok[c] = 0;
+    // 哑点的弧：当前有流量 => 它就是这个解里的端点；无流量但同 SCC => 换得过来，也可能
+    for (int dum = 0; dum < 2; ++dum) {
+        int dn = dum ? FDUM2 : FDUM;
+        for (int e = fhead[dn]; e != -1; e = fnext[e]) {
+            int v = fto[e];
+            if (v == FSRC || v == FSNK) continue;
+            int c2 = v - 3;
+            if (c2 < 0 || c2 >= N || !g0[c2]) continue;
+            // FDUM 侧遍历的是**正向**弧（容量 1，用掉后 fcap 变 0）；
+            // FDUM2 侧遍历的是**反向**弧，它的 fcap 记的是**已用流量**（用掉后变 1）——两边判据相反。
+            int used = dum ? (fcap[e] > 0) : (fcap[e] <= 0);
+            if (used || fscc[dn] == fscc[v]) end_ok[c2] = 1;
+        }
+    }
+    gfilter_kept = 0;
+    for (int c = 0; c < N; ++c) if (g0[c] && end_ok[c]) ++gfilter_kept;
+    return 1;
+}
+
 static int do_flow(int s) {
     if (!use_flow || prop_bad) return !prop_bad;
     int X = col[s];
@@ -1084,10 +1193,16 @@ int main(int argc, char **argv) {
     }
 
 
+    end_ok = malloc((size_t)N);
+    if (getenv("GFILTER")) use_gfilter = atoi(getenv("GFILTER"));
+    if (!filter_endpoints()) { fprintf(stderr, "全局端点过滤：度约束松弛无解\n"); return 1; }
+    fprintf(stderr, "全局端点过滤：起点候选 %lld / %d (%.1f%%)\n",
+            gfilter_kept, total_free, 100.0 * gfilter_kept / total_free);
+
     int *starts = malloc(sizeof(int) * (size_t)total_free);
     int ns = 0;
     memcpy(g, g0, N);
-    for (int c = 0; c < N; ++c) if (g0[c]) starts[ns++] = c;
+    for (int c = 0; c < N; ++c) if (g0[c] && end_ok[c]) starts[ns++] = c;
     for (int i = 1; i < ns; ++i) {
         int v = starts[i], dv = freedeg(v), j = i;
         while (j > 0 && freedeg(starts[j - 1]) > dv) { starts[j] = starts[j - 1]; --j; }
