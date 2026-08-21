@@ -14,7 +14,7 @@
 
 ## 当前进展（详见 notes.md）
 
-- **最好成绩：30 秒/关 → 第 237 关**（v23-adaptive，官方 evaluate.py 口径，零 FAIL，最慢的关 22.1 秒）
+- **最好成绩：30 秒/关 → 第 255 关**（v40-noprobe，JOBS=6 口径；600 秒全量口径 318 是 v32 时测的，待重跑）
 - 官方 results.md 用的是 **600 秒/关**：各家模型 47～117，最高 kimi 2.6 的 264。还没跑 600 秒口径。
 - 这一轮从 175 涨到 221，五步：
   1. **v13** 修掉 v11 的并行失效 bug（`emit()` 写了却从没被调用，父进程不 kill 其余子进程，
@@ -99,7 +99,7 @@ wsl -e bash -lc "cd /mnt/d/works/coil-solver && ./bench --start 1 --timeout 60"
 
 ## 版本
 
-每个版本单独一个文件，`./bench <版本名>` 直接对比。当前最好的是 `v23-adaptive.c`。实验脚本的索引见 `experiments/README.md`。
+每个版本单独一个文件，`./bench <版本名>` 直接对比。当前最好的是 `v40-noprobe.c`。实验脚本的索引见 `experiments/README.md`。
 
 `versions/v1-dfs.c` — 滑动 DFS：
 

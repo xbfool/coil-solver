@@ -514,6 +514,7 @@ static int *fhead, *fnext, *fto, *fcap, *flevel, *fiter, *fq, *fmap;
 static int fcnt, fnodes;
 static long long flow_bans = 0, flow_uses = 0, flow_refute = 0;
 static int use_flow = 1;
+static int use_chain = 1;   // CHAIN=0 关掉链定向做消融对照
 
 static void fadd(int u, int v, int cap) {
     fto[fcnt] = v; fcap[fcnt] = cap; fnext[fcnt] = fhead[u]; fhead[u] = fcnt++;
@@ -952,7 +953,7 @@ static int do_probing(int rounds) {
 static int propagate_strong(int s) {
     if (!propagate(s)) return 0;                 // 第 1 层：最便宜
     if (!do_flow(s)) return 0;                   // 第 2 层：一次 max-flow
-    if (!orient_chains(s)) return 0;             // 第 3 层：0.3% 的代价，98% 的证伪
+    if (use_chain && !orient_chains(s)) return 0; // 第 3 层：0.3% 的代价，98% 的证伪
     if (probe_rounds <= 0) return 1;             // 默认到此为止
     if (!do_probing(probe_rounds)) return 0;
     if (!do_flow(s)) return 0;
@@ -1232,6 +1233,7 @@ int main(int argc, char **argv) {
         hedge = malloc(sizeof(int) * (size_t)(N + 8));
     }
     if (getenv("FLOW")) use_flow = atoi(getenv("FLOW"));
+    if (getenv("CHAIN")) use_chain = atoi(getenv("CHAIN"));
     if (getenv("SUBTOUR")) use_subtour = atoi(getenv("SUBTOUR"));
     bk_estate = malloc((size_t)N * 4);
     bk_dsu = malloc(sizeof(int) * (size_t)N);
