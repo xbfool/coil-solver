@@ -1164,6 +1164,8 @@ int main(int argc, char **argv) {
     probe_all = getenv("PROBEALL") ? atoi(getenv("PROBEALL")) : 1;
     prop_depth = getenv("PROPDEPTH") ? atoi(getenv("PROPDEPTH")) : 2;
 
+    end_ok = malloc((size_t)N); g_estate = calloc((size_t)N * 4, 1);
+
     // ---- --verify <解文件>：拿已知真解逐步验证两层传播的 soundness ----
     // 沿真解走一遍，每个滑行落点上跑一次传播。真解是可行的，所以传播**永远不许报矛盾**，
     // 静态那层的 estate_ok 也**永远不许否掉真解实际走的那个方向**。
@@ -1222,7 +1224,6 @@ int main(int argc, char **argv) {
     }
 
 
-    end_ok = malloc((size_t)N); g_estate = calloc((size_t)N * 4, 1);
     if (getenv("GFILTER")) use_gfilter = atoi(getenv("GFILTER"));
     if (!global_fixpoint()) { fprintf(stderr, "全局阶段：度约束松弛无解\n"); return 1; }
     for (int c = 0; c < N; ++c) if (g0[c]) for (int d = 2; d < 4; ++d)

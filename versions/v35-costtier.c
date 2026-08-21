@@ -915,17 +915,16 @@ static int do_probing(int rounds) {
 }
 
 // 正式搜索阶段用的加强版：传播 + probing + 再过一遍链定向
+// 按**规则代价**分层（不是按预算）：诊断显示慢关的瓶颈不在起点数量
+// （L223 探针证伪掉 3892/3992 = 97.5%，只剩 100 个），而在为了筛掉那 3892 个所付的代价。
+// 而 do_probing 是最贵的一环（几千次 try_edge，每次 O(N) 快照/恢复），do_flow 只是一次 max-flow
+// 却同样能证伪。所以把流提到 probing 前面：绝大多数起点在便宜的两层就死了，
+// 根本不该付 probing 的钱。
 static int propagate_strong(int s) {
-    if (!propagate(s)) return 0;
-    if (!do_probing(probe_rounds)) return 0;
-    // 流 GAC 滚到不动点：它判出的新边会改变每格的剩余度数和图结构，可能让下一轮又判出新的
-    {   int rounds = getenv("FLOWIT") ? atoi(getenv("FLOWIT")) : 3;
-        for (int i = 0; i < rounds; ++i) {
-            long long before = flow_bans + flow_uses;
-            if (!do_flow(s)) return 0;                  // 流不可行 => 起点被证伪
-            if (flow_bans + flow_uses == before) break; // 没新东西，停
-        }
-    }
+    if (!propagate(s)) return 0;                 // 第 1 层：最便宜
+    if (!do_flow(s)) return 0;                   // 第 2 层：一次 max-flow，强证伪
+    if (!do_probing(probe_rounds)) return 0;     // 第 3 层：最贵，只有活下来的才付
+    if (!do_flow(s)) return 0;                   // probing 产出的新边喂回流，再滚一次
     if (!do_probing(1)) return 0;                       // 新判定的边喂回单边 probing 再滚一轮
     return orient_chains(s);
 }
