@@ -107,6 +107,8 @@ static int shard = 0, nshard = 1;
 // 谁先撞到解谁赢（管道协议不变）。顺序多样性在针尖搜索上经常有超线性收益，
 // 且这些核本来就是白扔的。shard 0 保持确定性顺序当保底。
 static int swarm = 0;
+static int force_shard_identity = -1;   // FORCESHARD：单进程复现指定 shard（gprof 用）
+static inline int sident(void) { return force_shard_identity >= 0 ? force_shard_identity : shard; }
 static int swarm_depth = 3;
 static unsigned int shard_seed = 0;      // 本进程负责 starts 里下标 % nshard == shard 的那些
 static int out_fd = -1;                // 子进程把答案写这里
@@ -139,7 +141,7 @@ static int best_rem;
 
 // 找到解就写进管道（子进程）或直接打印（单进程模式）
 static void emit(int s, const char *pathstr) {
-    if (swarm) fprintf(stderr, "WINNER shard %d tier %d\n", shard, shard & 3);
+    if (swarm) fprintf(stderr, "WINNER shard %d tier %d nodes %lld\n", shard, shard & 3, nodes);
     static char obuf[1 << 22];
     int n = snprintf(obuf, sizeof obuf, "x=%d&y=%d&path=%s\n", (s % W) - 1, (s / W) - 1, pathstr);
     if (out_fd >= 0) { ssize_t wr = write(out_fd, obuf, (size_t)n); (void)wr; _exit(0); }
@@ -1167,17 +1169,21 @@ static int reach_local(int first, int dd, int len, int c, int rem2) {
     if (nsrc == 0) return 0;                       // 还有格子没走，却没有一个挨着 S => 到不了
     if (nsrc == 1) return 1;                       // 只有一个邻居，两两连通平凡成立
 
+    // BFS 而不是 DFS（v45.1）：gprof 实测 reach_local 占全部时间的 95.7%（1.2 亿次调用）。
+    // 栈序洪水找「几个源是否连通」会乱走远路 —— 源们通常就在滑行线两侧、绕线头几步就接上了，
+    // DFS 却可能先冲到盘面另一头。换队列序后，成功情形只探「最远源的距离」那个半径的区域，
+    // 失败情形（真断开）和原来同价（都要灌满整块）。L319 实测 41s -> 10s（4 倍）。
     ++seen_id;
-    int top = 0, found = 1;
-    fstack[top++] = srcbuf[0]; seen[srcbuf[0]] = seen_id;
-    while (top) {
-        int q = fstack[--top];
+    int head = 0, tail = 0, found = 1;
+    fstack[tail++] = srcbuf[0]; seen[srcbuf[0]] = seen_id;
+    while (head < tail) {
+        int q = fstack[head++];
         for (int d = 0; d < 4; ++d) {
             int n = q + delta[d];
             if (g[n] && seen[n] != seen_id) {
                 seen[n] = seen_id;
                 if (srcmark[n] == src_id && ++found == nsrc) return 1;
-                fstack[top++] = n;
+                fstack[tail++] = n;
             }
         }
     }
@@ -1211,7 +1217,7 @@ static int dfs(int p, int remaining, int depth) {
                 //   1 档: Warnsdorff + 同分抖动（原 v45 行为）
                 //   2 档: 大幅抖动（允许翻转相邻名次）
                 //   3 档: 纯哈希序（完全抛开 Warnsdorff，赌一个形状完全不同的树）
-                int tier = swarm ? (shard == 0 ? 0 : (shard <= 7 ? 1 : (shard <= 21 ? 2 : 3))) : 0;
+                int tier = swarm ? (sident() == 0 ? 0 : (sident() <= 7 ? 1 : (sident() <= 21 ? 2 : 3))) : 0;
                 unsigned int h = shard_seed ^ (unsigned int)c * 2654435761u ^ (unsigned int)depth * 40503u;
                 h ^= h >> 13; h *= 0x5bd1e995u; h ^= h >> 15;
                 int sc2;
@@ -1401,6 +1407,7 @@ int main(int argc, char **argv) {
 
     // ---- 分叉：起点分片，各干各的 ----
     nshard = getenv("JOBS") ? atoi(getenv("JOBS")) : (int)sysconf(_SC_NPROCESSORS_ONLN);
+    if (getenv("FORCESHARD")) { force_shard_identity = atoi(getenv("FORCESHARD")); nshard = 1; shard = 0; }
     if (nshard < 1) nshard = 1;
     if (nshard > ns) nshard = ns;
     int *pfd = malloc(sizeof(int) * (size_t)nshard * 2);
@@ -1456,9 +1463,10 @@ int main(int argc, char **argv) {
     }
   child_work:;
 
-    swarm = (ns <= nshard * 4) && nshard > 1;
+    swarm = (ns <= nshard * 4) && (nshard > 1 || force_shard_identity >= 0);
     swarm_depth = getenv("SWDEPTH") ? atoi(getenv("SWDEPTH")) : 3;
-    shard_seed = swarm ? (unsigned int)(shard * 2654435761u) : 0u;   // shard 0 => 0 => 确定性
+    { int ident = force_shard_identity >= 0 ? force_shard_identity : shard;
+      shard_seed = swarm ? (unsigned int)(ident * 2654435761u) : 0u; }
     if (swarm) fprintf(stderr, "shard %d: swarm 模式（%d 个候选全员上，随机顺序）\n", shard, ns);
 
     // ---- 分层探针 ----

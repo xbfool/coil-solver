@@ -23,7 +23,7 @@ SRC="$HERE/versions/$VER.c"
 [ -f "$SRC" ] || { echo "没有版本 $VER，现有：" >&2; ls "$HERE/versions" >&2; exit 1; }
 
 mkdir -p "$HERE/bin"
-cc -std=gnu99 -O2 -Wall -Wextra "$SRC" -o "$HERE/bin/$VER"
+cc -std=gnu99 -O3 -march=native -funroll-loops -Wall -Wextra "$SRC" -o "$HERE/bin/$VER"
 [ -x "$BENCH/coil_check/check" ] || make -C "$BENCH/coil_check"
 
 cp "$HERE/bin/$VER" "$BENCH/solver"      # run_solver 优先跑 ./solver
