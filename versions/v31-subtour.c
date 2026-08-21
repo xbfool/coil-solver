@@ -537,6 +537,10 @@ static int fdfs(int u, int f) {
 }
 
 static int *fscc, *flow2, *fdfn, *fstk, *fon, *fcv, *fce;
+static int *hdsu, *hcross, *hedge;
+static int use_subtour = 1;
+static long long sub_uses = 0, sub_refute = 0;
+static int hfind(int x) { while (hdsu[x] != x) { hdsu[x] = hdsu[hdsu[x]]; x = hdsu[x]; } return x; }
 
 static int do_flow(int s) {
     if (!use_flow || prop_bad) return !prop_bad;
@@ -625,6 +629,64 @@ static int do_flow(int s) {
         }
     }
     prun_queue();
+    if (prop_bad) return 0;
+
+    // ===== 连通性加强（subtour elimination）=====
+    // 度约束松弛上的 GAC 已经做到头了（迭代 3 轮就收敛，50~55%）。要再往上必须加强松弛本身，
+    // 最自然的加强是**连通性**：流解出来的子图 H（必用边 ∪ 流量为 1 的边）是若干路径和圈的并。
+    // 真解是一条覆盖全盘的路径，所以对 H 的每个连通块 C：
+    //     跨出 C 的边必须 >= 2 条（C 里含一个端点则 >= 1 条，含两个则可以 0 条）
+    // 于是（记 a = 跨出 C 的**待定**边数；必用边不会跨块，否则两块早连上了）：
+    //     a == 0            => 矛盾（C 永远连不出去）
+    //     a == 1            => 那条边**必用**；且 C 必然含端点（否则要 2 条）
+    //     两个这样的块      => 矛盾（终点只有一个；起点那块另算）
+    // 「C 必含端点」这一条顺带**定位终点** —— 正是我们最大的瓶颈。
+    if (use_subtour) {
+        for (int c = 0; c < N; ++c) hdsu[c] = c;
+        for (int c = 0; c < N; ++c) {                    // 按 H 的边合并
+            if (!g0[c]) continue;
+            for (int d = 2; d < 4; ++d) {
+                int n = c + delta[d];
+                if (!g0[n]) continue;
+                int inH = (estate[c * 4 + d] == 1);
+                if (!inH && col[c] == X) { int e = fmap[c * 4 + d]; inH = (e >= 0 && fcap[e] <= 0); }
+                if (!inH && col[c] != X) { int e = fmap[n * 4 + (d ^ 2)]; inH = (e >= 0 && fcap[e] <= 0); }
+                if (!inH) continue;
+                int ra = hfind(c), rb2 = hfind(n);
+                if (ra != rb2) hdsu[ra] = rb2;
+            }
+        }
+        // 统计每个块跨出去的待定边；顺手记下唯一那条，便于强制
+        for (int c = 0; c < N; ++c) { hcross[c] = 0; hedge[c] = -1; }
+        int nfreeroot = -1, nroots = 0;
+        for (int c = 0; c < N; ++c) if (g0[c] && hfind(c) == c) { ++nroots; nfreeroot = c; }
+        if (nroots > 1) {                                 // 只有一个块就没什么可推的
+            for (int c = 0; c < N; ++c) {
+                if (!g0[c]) continue;
+                for (int d = 0; d < 4; ++d) {
+                    int n = c + delta[d];
+                    if (!g0[n] || estate[c * 4 + d] != 0) continue;
+                    if (hfind(c) == hfind(n)) continue;   // 不跨块
+                    int r = hfind(c);
+                    ++hcross[r];
+                    if (hcross[r] == 1) hedge[r] = c * 4 + d;
+                }
+            }
+            int need_end = 0;
+            for (int c = 0; c < N && !prop_bad; ++c) {
+                if (!g0[c] || hfind(c) != c) continue;
+                int sInC = (hfind(prop_start) == c);
+                if (hcross[c] == 0) { prop_bad = 1; ++sub_refute; break; }   // 连不出去
+                if (hcross[c] == 1) {
+                    int cc = hedge[c] >> 2, dd2 = hedge[c] & 3;
+                    if (estate[cc * 4 + dd2] == 0) { set_edge(cc, dd2, 1); ++sub_uses; }
+                    if (!sInC && ++need_end > 1) { prop_bad = 1; ++sub_refute; break; } // 终点只有一个
+                }
+            }
+            prun_queue();
+        }
+        (void)nfreeroot;
+    }
     return !prop_bad;
 }
 
@@ -936,8 +998,11 @@ int main(int argc, char **argv) {
         fdfn = malloc(sizeof(int) * (size_t)(N + 8)); fstk = malloc(sizeof(int) * (size_t)(N + 8));
         fon = malloc(sizeof(int) * (size_t)(N + 8));
         fcv = malloc(sizeof(int) * (size_t)(N + 8)); fce = malloc(sizeof(int) * (size_t)(N + 8));
+        hdsu = malloc(sizeof(int) * (size_t)(N + 8)); hcross = malloc(sizeof(int) * (size_t)(N + 8));
+        hedge = malloc(sizeof(int) * (size_t)(N + 8));
     }
     if (getenv("FLOW")) use_flow = atoi(getenv("FLOW"));
+    if (getenv("SUBTOUR")) use_subtour = atoi(getenv("SUBTOUR"));
     bk_estate = malloc((size_t)N * 4);
     bk_dsu = malloc(sizeof(int) * (size_t)N);
     bk_inq = malloc((size_t)N);
@@ -968,8 +1033,10 @@ int main(int argc, char **argv) {
                     ++ne;
                     if (estate[c * 4 + d] == 1) ++nu; else if (estate[c * 4 + d] == 2) ++nb;
                 }
-            printf("边 %lld：必用 %lld，禁用 %lld，判定率 %.1f%%（流 GAC 贡献：禁用 %lld / 必用 %lld）\n",
-                   ne, nu, nb, 100.0 * (nu + nb) / (ne ? ne : 1), flow_bans, flow_uses);
+            printf("边 %lld：必用 %lld，禁用 %lld，判定率 %.1f%%（流GAC 禁用%lld/必用%lld；"
+                   "连通性加强 必用%lld 证伪%lld）\n",
+                   ne, nu, nb, 100.0 * (nu + nb) / (ne ? ne : 1),
+                   flow_bans, flow_uses, sub_uses, sub_refute);
         }
 
         memcpy(g, g0, N);
