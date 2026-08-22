@@ -1,0 +1,19 @@
+L305: T3 shard26 r0 #1 cell=(47,27) sc=6661 nodes=6081 r=1
+L338: T3 shard21 r0 #0 cell=(78,4) sc=7875 nodes=6875 r=1
+L356: T3 shard26 r0 #0 cell=(114,88) sc=9009 nodes=530577 r=1
+L362: T3 shard25 r0 #0 cell=(108,14) sc=9052 nodes=13541 r=1
+L374: T3 shard16 r0 #20 cell=(22,35) sc=10108 nodes=178365 r=1
+L377: T3 shard8 r0 #16 cell=(68,61) sc=10049 nodes=11247 r=1
+L381: T3 shard7 r0 #7 cell=(42,71) sc=10083 nodes=10481 r=1
+L389: T3 shard25 r0 #14 cell=(15,75) sc=10430 nodes=27304 r=1
+L411: T3 shard18 r0 #0 cell=(60,86) sc=12328 nodes=987721 r=1
+L414: 
+L424: T3 shard20 r0 #1 cell=(106,115) sc=12961 nodes=68698 r=1
+L431: T3 shard15 r0 #0 cell=(102,87) sc=13416 nodes=815035 r=1
+L432: T3 shard11 r0 #16 cell=(99,140) sc=13431 nodes=194003 r=1
+L446: T3 shard20 r0 #8 cell=(82,83) sc=14238 nodes=386232 r=1
+L464: T3 shard18 r0 #4 cell=(25,4) sc=15363 nodes=40006 r=1
+L474: T3 shard20 r0 #4 cell=(31,2) sc=15824 nodes=40307 r=1
+L101: T3 shard25 r0 #0 cell=(14,15) sc=295 nodes=1559 r=1
+L141: 
+ALLDONE
