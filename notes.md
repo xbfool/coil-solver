@@ -2490,3 +2490,37 @@ L501 需要的是 10~100 倍量级的树塌缩，而不是 2 倍的搜索加速�
 | L475 | 102s | 112s | **72s** | 80s |
 
 诊断依据：赢家树 2.17M 节点，3M 预算让它在第 0 轮就被收割。距 30s 还差 2.4 倍。
+
+## 研究地图：这个问题在学术上是什么、跳变想法可能藏在哪（2026-08-23 检索）
+
+**学科定位**：CP（约束编程）× TSP 多面体组合优化 × 网格图组合学的交叉。
+没有论文正面处理滑动规则；我们的传播栈 = 一台手写 CP 求解器
+（Régin 1994 流+SCC 过滤、failed literal probing、circuit constraint 思想）。
+
+**矿脉 1：TSP 分支切割的高阶割平面**（最正统的跳变候选）
+- 我们的流松弛 = 分数 2-匹配；零信息类 = 「2-匹配 + 子回路消除都切不掉」的实例
+- 教科书下一层：**comb 不等式 / blossom 割**（齿全为 2 点的 comb 即 blossom），
+  对 cycle 多面体 facet-defining。分离算法见 Letchford 平面图 comb 分离
+  （lancaster.ac.uk/staff/letchfoa/articles/2000-planar-comb.pdf——平面图上多项式！
+  网格图是平面图，这条正好用得上）、Kobeaga 2021 收缩+精确子回路分离
+  （arxiv.org/pdf/2004.14574）
+- CP 侧对应物：Proof Logging for the Circuit Constraint（Springer 2024）
+
+**矿脉 2：FHCP / 实战哈密顿环求解器**
+- FHCP Challenge Set：1001 个「难在结构不在规模」的 HCP 实例（和我们的零信息类
+  哲学同源！）——sites.flinders.edu.au/flinders-hamiltonian-cycle-project
+- Snakes-and-Ladders Heuristic（SLH，arxiv 1902.10337）：Lin-Kernighan 思想的 HCP 版，
+  ≤5000 点实例全胜。**移植警告**：滑动规则破坏任意改接路径类技巧（Pósa 旋转同理），
+  但「圈上排序 + 蛇梯分类」的框架可能有变体空间
+- 网格图理论：Itai–Papadimitriou–Szwarcfiter（SIAM 1982，矩形网格充要条件+一般网格
+  NP 完全）；C-shaped/supergrid 各类特殊形状有线性算法（arxiv 1602.07407 等）——
+  对「分治到特殊形状子区域」的思路可能有用
+
+**矿脉 3：AI coding 做算法研究的实践（用户要求调研）**
+- AlphaEvolve（DeepMind 2025，arxiv 2506.13131）：LLM 进化整个代码库 + 自动评测器
+  反馈闭环；FunSearch 的全面升级。开源复刻：OpenEvolve / CodeEvolve（arxiv 2510.14150）
+- Effective Harness Engineering for Algorithm Discovery（arxiv 2605.15221）：
+  **每次生成想得更深 > 生成更多个体**；评测函数必须防 hack（模型越强越会钻空子）
+- 观察：我们这两天的方法论（每改动带预测、负结果入档、soundness 用真解校验、
+  测量前清机器）和这批文献的「evidence-driven + falsifiable edits」高度一致——
+  值得补的是他们的「每次编辑显式记录预测影响并在下次评测时对账」
