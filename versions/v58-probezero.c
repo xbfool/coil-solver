@@ -134,6 +134,7 @@ static int out_fd = -1;                // 子进程把答案写这里
 static void emit(int s, const char *pathstr);
 extern long long flowdyn_calls, flowdyn_refute;
 static long long dyn_calls, dyn_refutes;
+static long long dth_liveend, dth_estate, dth_reach, dth_dyn, dth_flow, dth_geom;
 extern int flow_depth;
 
 #ifndef FF_MAX
@@ -1471,10 +1472,14 @@ static int reach_local(int first, int dd, int len, int c, int rem2) {
 }
 
 static int dfs(int p, int remaining, int depth) {
-    if (live_end == 0 && remaining > 0) return 0;    // 终点候选全被走掉了，后面必然收不了尾
+    if (live_end == 0 && remaining > 0) { ++dth_liveend; return 0; }    // 终点候选全被走掉了，后面必然收不了尾
     if (remaining < best_rem) best_rem = remaining;
     if (remaining == 0) return 1;
     if (nodes++ >= node_limit) return -1;
+    if ((nodes & 0x7FFFFF) == 0 && getenv("DEATHSTAT"))
+        fprintf(stderr, "DEATH sh%d liveend=%lld estate=%lld reach=%lld dyn=%lld flow=%lld geom=%lld\n",
+                shard, dth_liveend, dth_estate, dth_reach, dth_dyn, dth_flow, dth_geom);
+
 
     struct move { int dir, endp, len, score; } cand[4];
     int nc = 0;
@@ -1484,10 +1489,12 @@ static int dfs(int p, int remaining, int depth) {
         if (!g[p + dd]) continue;
         int c = p, len = 0;
         while (g[c + dd]) { c += dd; ++len; }              // 先只量出滑到哪，不动盘面
-        if (!estate_ok(p, d, dd, len, c)) continue;        // 传播定死的边直接否掉这个方向
+        if (!estate_ok(p, d, dd, len, c)) { ++dth_estate; continue; }        // 传播定死的边直接否掉这个方向
         for (int k = 0, q = p; k < len; ++k) { q += dd; mark(q); }
         int rem2 = remaining - len;
-        if (rem2 == 0 || (cheap_ok(c, rem2) && reach_local(p + dd, dd, len, c, rem2))) {
+        int rok = (rem2 == 0 || (cheap_ok(c, rem2) && reach_local(p + dd, dd, len, c, rem2)));
+        if (!rok) ++dth_reach;
+        if (rok) {
             cand[nc].dir = d; cand[nc].endp = c; cand[nc].len = len;
             {
                 // swarm 的策略梯队：温和抖动只把 271s 压到 84s 就见顶了 —— 真起点的树
@@ -1528,9 +1535,9 @@ static int dfs(int p, int remaining, int depth) {
                     ++dyn_calls;
                     int fe = getenv("FULLEVERY") ? atoi(getenv("FULLEVERY")) : 0;
                     int fullseed = seed_full || (fe > 0 && depth % fe == 0);
-                    if (!propagate_dyn(c, rem2, p + dd, dd, fullseed ? -1 : len)) { ok = 0; ++dyn_refutes; }
+                    if (!propagate_dyn(c, rem2, p + dd, dd, fullseed ? -1 : len)) { ok = 0; ++dyn_refutes; ++dth_dyn; }
                 }
-                if (ok && depth < flow_depth && !do_flow_dyn(c, rem2)) ok = 0;
+                if (ok && depth < flow_depth && !do_flow_dyn(c, rem2)) { ok = 0; ++dth_flow; }
             }
             for (int k = 0, back = c; k < len; ++k, back -= dd) unmark(back);
             if (ok) cand[w++] = cand[i];
@@ -1539,6 +1546,7 @@ static int dfs(int p, int remaining, int depth) {
         if (nc == 0) return 0;
     }
 
+    if (nc == 0) ++dth_geom;
     for (int i = 1; i < nc; ++i)
         for (int j = i; j > 0 && cand[j].score < cand[j - 1].score; --j) {
             struct move t = cand[j]; cand[j] = cand[j - 1]; cand[j - 1] = t;
@@ -2095,6 +2103,8 @@ int main(int argc, char **argv) {
     free(drop2);
     }
     fprintf(stderr, "probe: %d/%d 起点被证伪，剩 %d\n", ns - keep, ns, keep);
+    if (getenv("DEATHSTAT")) fprintf(stderr, "DEATH liveend=%lld estate=%lld reach=%lld dyn=%lld flow=%lld geom=%lld\n",
+        dth_liveend, dth_estate, dth_reach, dth_dyn, dth_flow, dth_geom);
     if (dyn_calls > 50) {
         fprintf(stderr, "DYN shard%d: %lld calls, %lld refuted (%.0f%%)\n", shard, dyn_calls, dyn_refutes, 100.0 * dyn_refutes / dyn_calls);
         // 自测式自适应：探针阶段的分支传播证伪率太低 => 正式搜索降回浅层，别再付这个钱
