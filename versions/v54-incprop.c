@@ -1238,6 +1238,9 @@ static int propagate_dyn(int p, int remaining, int sfirst, int sdd, int slen) {
 
     g[p] = 1;                                  // p 已经走过了，但在路径上还欠一条出边
     ppush2(p);
+    if (slen < 0) {                            // 全量播种：恢复跨滑行组合结论（仍带 estate 底座）
+        for (int c = 0; c < N; ++c) if (g[c]) ppush2(c);
+    } else
     for (int k = 0, q = sfirst; k < slen; ++k, q += sdd)   // 只播刚滑过的线的自由邻居
         for (int d2 = 0; d2 < 4; ++d2) {
             int n2 = q + delta[d2];
@@ -1361,7 +1364,9 @@ static int dfs(int p, int remaining, int depth) {
             if (rem2 > 0) {
                 if (depth < prop_depth) {
                     ++dyn_calls;
-                    if (!propagate_dyn(c, rem2, p + dd, dd, len)) { ok = 0; ++dyn_refutes; }
+                    int fe = getenv("FULLEVERY") ? atoi(getenv("FULLEVERY")) : 8;
+                    int fullseed = fe > 0 && depth % fe == 0;
+                    if (!propagate_dyn(c, rem2, p + dd, dd, fullseed ? -1 : len)) { ok = 0; ++dyn_refutes; }
                 }
                 if (ok && depth < flow_depth && !do_flow_dyn(c, rem2)) ok = 0;
             }
