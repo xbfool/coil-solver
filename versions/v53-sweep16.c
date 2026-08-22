@@ -1,3 +1,6 @@
+// Coil solver — v53: 升档目标 PD=16（平台点）+ 升档分片第三层多轮限额扫荡（怪物不再垄断队列）
+//
+// 以下是 v52 的说明。
 // Coil solver — v52: 升档时第 1.5 层深层重探（复现 v50 的杀集与排序，成本只花在幸存者上）
 //
 // 以下是 v51 的说明。
@@ -1675,6 +1678,7 @@ int main(int argc, char **argv) {
     int mine_total = 0;
     for (int i = 0; i < ns; ++i) if (i % nshard == shard) ++mine_total;
     int thresh = getenv("TIER2") ? atoi(getenv("TIER2")) : 30;   // 存活率(%)超过它才上第二层
+    int sweep3 = 0;
     int use_tier2 = (mine_total > 0 && keep * 100 > mine_total * thresh);
     // v51：零信息类的真判据是「浅层探针杀不杀得动」——存活率高说明每棵树都巨大，
     // 深层传播的每节点成本能靠 600 倍的剪树回本（L414 死树 10M -> 15K 节点）。
@@ -1682,9 +1686,10 @@ int main(int argc, char **argv) {
     {
         int sdthr = getenv("SURVDEEP") ? atoi(getenv("SURVDEEP")) : 38;
         if (prop_depth <= 2 && mine_total > 0 && keep * 100 >= mine_total * sdthr) {
-            prop_depth = 999999;
-            fprintf(stderr, "shard %d: 第一层存活 %d%% >= %d%%，升全深度传播\n",
-                    shard, keep * 100 / mine_total, sdthr);
+            prop_depth = getenv("PDPROMO") ? atoi(getenv("PDPROMO")) : 16;   // 平台在 16：更深只付 O(N) 成本不涨肉
+            sweep3 = 1;                                                      // 升档分片的第三层用限额扫荡
+            fprintf(stderr, "shard %d: 第一层存活 %d%% >= %d%%，升深度传播(PD=%d)\n",
+                    shard, keep * 100 / mine_total, sdthr, prop_depth);
             // ---- 第 1.5 层：深层重探幸存者（v52）----
             // 浅层第一层的 sc/杀集在大树类上质量差（v51 的 L475 200s->400s+ 未解出）。
             // 用同样的 PROBE 预算深层重探一遍：深层证伪 ⊇ 浅层证伪、estate 缓存两者通用，
@@ -1806,11 +1811,21 @@ int main(int argc, char **argv) {
             prop_depth = 2;
     }
 
-    // ---- 第三层：按顺序正式搜 ----
-    node_limit = (long long)1 << 62;
+    // ---- 第三层：按顺序正式搜（v53：升档分片用多轮限额扫荡）----
+    // L501@PD16 的树成本重尾（中位 ~15 万节点、尾部 3.5 亿）：无限搜让怪物垄断队列，
+    // 而可解树往往便宜（L414 赢家 2 万节点）。低预算轮先收割软柿子，
+    // r==0 搜穷永久剔除，-1 预算尽留下一轮，最后一轮无限搜保底。
+    long long sweep0 = getenv("SWEEP") ? atoll(getenv("SWEEP")) : 2000000;
+    int sweep_mul = getenv("SWEEPMUL") ? atoi(getenv("SWEEPMUL")) : 8;
+    int nrounds3 = (sweep3 && !getenv("NOSWEEP")) ? 4 : 1;
+    unsigned char *dead3 = calloc((size_t)(keep > 0 ? keep : 1), 1);
+    for (int round3 = 0; round3 < nrounds3; ++round3) {
+    long long budget3 = ((long long)1 << 62);
+    if (round3 < nrounds3 - 1) { budget3 = sweep0; for (int r2 = 0; r2 < round3; ++r2) budget3 *= sweep_mul; }
     int srot3 = swarm && keep > 0 ? (shard % keep) : 0;
     for (int i0 = 0; i0 < keep; ++i0) {
         int i = (i0 + srot3) % keep;
+        if (dead3[i]) continue;
         int s = starts[i];
         memcpy(g, g0, N);
         cnt[0] = cnt[1] = 0; low_cnt = zero_cnt = 0;
@@ -1828,7 +1843,7 @@ int main(int argc, char **argv) {
         // 起点若是割点，去掉它剩余区域就断了。顺带白捡一条起点剪枝。
         if (!reach_ok(s, total_free - 1)) continue;
 
-        path_len = 0; nodes = 0;
+        path_len = 0; nodes = 0; node_limit = budget3;
         live_end = -1; tc_on = 0; ntc_low = 0;
         if (use_flow && tcand_for == s) {
             live_end = 0;
@@ -1841,10 +1856,13 @@ int main(int argc, char **argv) {
             }
         }
         int t3r = dfs(s, total_free - 1, 0);
-        if (getenv("TREELOG")) fprintf(stderr, "T3 shard%d #%d cell=(%d,%d) sc=%d nodes=%lld r=%d\n",
-            shard, i0, s % W - 1, s / W - 1, sc[i], nodes, t3r);
+        if (getenv("TREELOG")) fprintf(stderr, "T3 shard%d r%d #%d cell=(%d,%d) sc=%d nodes=%lld r=%d\n",
+            shard, round3, i0, s % W - 1, s / W - 1, sc[i], nodes, t3r);
         if (t3r == 1) { path[path_len] = 0; emit(s, path); }
+        if (t3r == 0) dead3[i] = 1;
         tc_on = 0; live_end = -1;
+    }
+    if (nrounds3 > 1) fprintf(stderr, "sweep shard%d round%d done (budget %lld)\n", shard, round3, budget3);
     }
     fprintf(stderr, "no solution found\n");
     return 1;
