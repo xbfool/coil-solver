@@ -1778,6 +1778,35 @@ int main(int argc, char **argv) {
         starts[j] = v;
     }
 
+    // ---- STARTORD：外部起点排序注入（PROBEDUMP 普查输出直喂）----
+    // OK 行按 F 升序重排（真起点 F 异常低：81 关中位升序位 16.8%），REF 行可靠证伪直接剔除。
+    if (getenv("STARTORD")) {
+        FILE *sof = fopen(getenv("STARTORD"), "r");
+        if (sof) {
+            long long *fval = malloc(sizeof(long long) * (size_t)N);
+            for (int c = 0; c < N; ++c) fval[c] = (1LL << 60);
+            char lbuf[128];
+            long long banned = 0;
+            while (fgets(lbuf, sizeof lbuf, sof)) {
+                long long cc, ff;
+                if (sscanf(lbuf, "OK %lld %lld", &cc, &ff) == 2) { if (cc >= 0 && cc < N) fval[cc] = ff; }
+                else if (sscanf(lbuf, "REF %lld", &cc) == 1) { if (cc >= 0 && cc < N) { fval[cc] = -1; ++banned; } }
+            }
+            fclose(sof);
+            int w2 = 0;
+            for (int i = 0; i < ns; ++i) if (fval[starts[i]] >= 0) starts[w2++] = starts[i];
+            ns = w2;
+            for (int i = 1; i < ns; ++i) {
+                int v = starts[i], j = i;
+                long long fv = fval[v];
+                while (j > 0 && fval[starts[j - 1]] > fv) { starts[j] = starts[j - 1]; --j; }
+                starts[j] = v;
+            }
+            fprintf(stderr, "STARTORD: F 升序就位（%d 起点，证伪剔除 %lld）\n", ns, banned);
+            free(fval);
+        }
+    }
+
     // ---- 分叉：起点分片，各干各的 ----
     nshard = getenv("JOBS") ? atoi(getenv("JOBS")) : (int)sysconf(_SC_NPROCESSORS_ONLN);
     if (getenv("FORCESHARD")) { force_shard_identity = atoi(getenv("FORCESHARD")); nshard = 1; shard = 0; }
