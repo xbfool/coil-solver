@@ -1794,7 +1794,8 @@ int main(int argc, char **argv) {
             }
             fclose(sof);
             int w2 = 0;
-            for (int i = 0; i < ns; ++i) if (fval[starts[i]] >= 0) starts[w2++] = starts[i];
+            long long thr = getenv("STARTONLY") ? ((1LL << 60) - 1) : (1LL << 60);
+            for (int i = 0; i < ns; ++i) if (fval[starts[i]] >= 0 && fval[starts[i]] <= thr) starts[w2++] = starts[i];
             ns = w2;
             for (int i = 1; i < ns; ++i) {
                 int v = starts[i], j = i;
@@ -2085,6 +2086,12 @@ int main(int argc, char **argv) {
         starts[j2] = vs; sc[j2] = vc; est_save[j2] = ve; tc_save[j2] = vt;
     }
     keep = keep2;
+    if (getenv("FUNNELDUMP")) {
+        char fdn[512];
+        snprintf(fdn, sizeof fdn, "%s.%d", getenv("FUNNELDUMP"), shard);
+        FILE *fdf = fopen(fdn, "w");
+        if (fdf) { for (int i = 0; i < keep; ++i) fprintf(fdf, "%d\n", starts[i]); fclose(fdf); }
+    }
     free(drop2);
     }
     fprintf(stderr, "probe: %d/%d 起点被证伪，剩 %d\n", ns - keep, ns, keep);
