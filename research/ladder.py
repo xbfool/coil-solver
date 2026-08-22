@@ -55,7 +55,7 @@ for (c, d) in edges:
 
 def run(forced):
     fe = ";".join(f"{c}:{d}:{v}" for ((c, d), v) in forced.items())
-    env = {"STRONG": "1", "PROBEROUNDS": "3", "FORCEEDGES": fe, "PATH": "/usr/bin:/bin"}
+    env = {"STRONG": "1", "PROBEROUNDS": "3", "XCHAIN": __import__("os").environ.get("XCHAIN", "0"), "FORCEEDGES": fe, "PATH": "/usr/bin:/bin"}
     r = subprocess.run(["./bin/v58-probezero", f"/mnt/d/workspace/coilbench/levels_all/{LV}",
                         "--verify", f"solutions/{LV}.sol"],
                        capture_output=True, text=True, timeout=120, env=env,

@@ -77,6 +77,22 @@ for (x, y) in free:
         nslide += 1
 print(f"滑动子句 {nslide} 条", flush=True)
 
+# v2：缝合线约束（起终点 L1<=25，19/19 实证）+ 方向对称破除
+import os
+if os.environ.get("SEAMCON", "1") == "1":
+    xs = m.NewIntVar(0, w - 1, "xs"); ys = m.NewIntVar(0, h - 1, "ys")
+    xe = m.NewIntVar(0, w - 1, "xe"); ye = m.NewIntVar(0, h - 1, "ye")
+    m.Add(xs == sum(free[c][0] * arc[(V, c)] for c in range(n)))
+    m.Add(ys == sum(free[c][1] * arc[(V, c)] for c in range(n)))
+    m.Add(xe == sum(free[c][0] * arc[(c, V)] for c in range(n)))
+    m.Add(ye == sum(free[c][1] * arc[(c, V)] for c in range(n)))
+    dx_ = m.NewIntVar(-w, w, "dx"); dy_ = m.NewIntVar(-h, h, "dy")
+    m.Add(dx_ == xs - xe); m.Add(dy_ == ys - ye)
+    adx = m.NewIntVar(0, w, "adx"); ady = m.NewIntVar(0, h, "ady")
+    m.AddAbsEquality(adx, dx_); m.AddAbsEquality(ady, dy_)
+    m.Add(adx + ady <= int(os.environ.get("SEAMR2", "25")))
+    print("缝合线约束已加", flush=True)
+
 solver = cp_model.CpSolver()
 solver.parameters.max_time_in_seconds = TL
 solver.parameters.num_workers = NW

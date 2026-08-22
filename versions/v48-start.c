@@ -1744,7 +1744,7 @@ int main(int argc, char **argv) {
     }
 
     // ---- 第三层：按顺序正式搜 ----
-    node_limit = (long long)1 << 62;
+    node_limit = getenv("T3LIMIT") ? atoll(getenv("T3LIMIT")) : ((long long)1 << 62);
     int srot3 = swarm && keep > 0 ? (shard % keep) : 0;
     for (int i0 = 0; i0 < keep; ++i0) {
         int i = (i0 + srot3) % keep;
@@ -1778,8 +1778,8 @@ int main(int argc, char **argv) {
             }
         }
         int t3r = dfs(s, total_free - 1, 0);
-        if (getenv("TREELOG")) fprintf(stderr, "T3 shard%d #%d cell=(%d,%d) sc=%d nodes=%lld r=%d\n",
-            shard, i0, s % W - 1, s / W - 1, sc[i], nodes, t3r);
+        if (getenv("TREELOG")) fprintf(stderr, "T3 shard%d #%d cell=(%d,%d) sc=%d nodes=%lld r=%d bestrem=%d\n",
+            shard, i0, s % W - 1, s / W - 1, sc[i], nodes, t3r, best_rem);
         if (t3r == 1) { path[path_len] = 0; emit(s, path); }
         tc_on = 0; live_end = -1;
     }

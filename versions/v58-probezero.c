@@ -507,6 +507,21 @@ static int propagate(int s) {
     prop_bad = 0; prop_forced_end = -1; prop_start = s;
     prop_endcol = (total_free & 1) ? col[s] : (col[s] ^ 1);
 
+    if (getenv("FORCEEDGES")) {                 // 研究注入口：外部假设边
+        static char febuf[1 << 16];
+        strncpy(febuf, getenv("FORCEEDGES"), sizeof febuf - 1);
+        char *tok = strtok(febuf, ";");
+        while (tok && !prop_bad) {
+            int fc, fd, fv;
+            if (sscanf(tok, "%d:%d:%d", &fc, &fd, &fv) == 3 && g0[fc] && g0[fc + delta[fd]]) {
+                unsigned char *ea = &estate[fc * 4 + fd];
+                unsigned char *eb = &estate[(fc + delta[fd]) * 4 + (fd ^ 2)];
+                if (*ea != 0 && *ea != fv) { prop_bad = 1; break; }
+                if (*ea == 0) { *ea = *eb = (unsigned char)fv; ppush(fc); ppush(fc + delta[fd]); }
+            }
+            tok = strtok(NULL, ";");
+        }
+    }
     for (int c = 0; c < N; ++c) if (g0[c]) ppush(c);
     prun_queue();
 
@@ -1036,10 +1051,149 @@ static int do_probing(int rounds) {
 // **教训（比这次提速更值钱）：加了新规则之后，要回头量旧规则还剩多少边际贡献。**
 // 这个仓库里的规则是一层层叠上去的，从没做过反向检查 —— probing 白烧了 89% 的时间
 // 烧了整整 10 个版本。PROBEROUNDS>0 可以把它开回来做对照。
+
+// ===== 跨链时序偏序 + 环检测（v42 复活，XCHAIN=1 启用）=====
+static int *xc_start, *xc_len, *xc_feas, *xc_es, *xc_ec, *xc_eall;
+static int *xc_eh, *xc_en, *xc_et, xc_ecnt;
+static unsigned char *xc_seen;
+static int xc_nchain;
+
+static int xc_scan(const int *seq, int k, int rev, int cid, int strict, int *bef, int *nb) {
+    *nb = 0;
+    for (int t = 1; t + 1 < k; ++t) {
+        int prev = rev ? seq[t + 1] : seq[t - 1];
+        int next = rev ? seq[t - 1] : seq[t + 1];
+        if (next - seq[t] == seq[t] - prev) continue;      // 直穿，非拐点
+        int f = seq[t] + (seq[t] - prev);                  // 拐点前方格
+        if (!g0[f]) continue;
+        int cf = chain_id[f];
+        if (cf == cid) {
+            int tf = rev ? (k - 1 - chain_pos[f]) : chain_pos[f];
+            int tt = rev ? (k - 1 - t) : t;
+            if (tf > tt) return 0;                         // 同链内前方格更晚 ⇒ 此方向不可行
+        } else if (strict) {
+            return 0;
+        } else if (cf >= 0) {
+            if (*nb < 500) bef[(*nb)++] = cf;
+        }
+    }
+    return 1;
+}
+
+static int xc_reach(int from, int to) {
+    if (from == to) return 1;
+    for (int i = 0; i < xc_nchain; ++i) xc_seen[i] = 0;
+    static int stk[8192];
+    int top = 0;
+    stk[top++] = from; xc_seen[from] = 1;
+    while (top) {
+        int v = stk[--top];
+        for (int e = xc_eh[v]; e >= 0; e = xc_en[e]) {
+            int w2 = xc_et[e];
+            if (w2 == to) return 1;
+            if (!xc_seen[w2] && top < 8190) { xc_seen[w2] = 1; stk[top++] = w2; }
+        }
+    }
+    return 0;
+}
+
+static int xchain_check(int s) {
+    if (!xc_start) {
+        xc_start = malloc(sizeof(int) * (size_t)N); xc_len = malloc(sizeof(int) * (size_t)N);
+        xc_feas = malloc(sizeof(int) * (size_t)N);
+        xc_es = malloc(sizeof(int) * (size_t)N * 2); xc_ec = malloc(sizeof(int) * (size_t)N * 2);
+        xc_eall = malloc(sizeof(int) * (size_t)N * 4);
+        xc_eh = malloc(sizeof(int) * (size_t)N);
+        xc_en = malloc(sizeof(int) * (size_t)N * 4); xc_et = malloc(sizeof(int) * (size_t)N * 4);
+        xc_seen = malloc((size_t)N);
+    }
+    for (int c = 0; c < N; ++c) chain_id[c] = -1;
+    xc_nchain = 0;
+    int pos = 0;
+    for (int c0 = 0; c0 < N; ++c0) {
+        if (!g0[c0] || chain_id[c0] >= 0) continue;
+        int fdeg = 0;
+        for (int d = 0; d < 4; ++d)
+            if (g0[c0 + delta[d]] && estate[c0 * 4 + d] == 1) ++fdeg;
+        if (fdeg != 1) continue;                            // 链端点起走
+        xc_start[xc_nchain] = pos;
+        int cur = c0, from = -1;
+        for (;;) {
+            seqbuf[pos] = cur; chain_id[cur] = xc_nchain; chain_pos[cur] = pos - xc_start[xc_nchain]; ++pos;
+            int nxt = -1;
+            for (int d = 0; d < 4; ++d) {
+                int n = cur + delta[d];
+                if (g0[n] && estate[cur * 4 + d] == 1 && n != from) { nxt = n; break; }
+            }
+            if (nxt < 0) break;
+            from = cur; cur = nxt;
+        }
+        xc_len[xc_nchain] = pos - xc_start[xc_nchain];
+        ++xc_nchain;
+    }
+    if (xc_nchain < 2) return 1;
+    int bpos = 0;
+    xc_ecnt = 0;
+    for (int i = 0; i < xc_nchain; ++i) { xc_eh[i] = -1; xc_feas[i] = 0; }
+    for (int i = 0; i < xc_nchain; ++i) {
+        const int *seq = seqbuf + xc_start[i];
+        int k = xc_len[i];
+        if (k < 3) { xc_feas[i] = 3; xc_ec[i * 2] = xc_ec[i * 2 + 1] = 0; continue; }
+        int head_s = (seq[0] == s), tail_s = (seq[k - 1] == s);
+        int feas = 0;
+        for (int d = 0; d < 2; ++d) {
+            if ((d == 1 && head_s) || (d == 0 && tail_s)) { xc_ec[i * 2 + d] = 0; continue; }
+            int nb = 0;
+            static int bef[512];
+            int strict = d ? tail_s : head_s;
+            if (!xc_scan(seq, k, d, i, strict, bef, &nb)) { xc_ec[i * 2 + d] = 0; continue; }
+            feas |= 1 << d;
+            xc_es[i * 2 + d] = bpos; xc_ec[i * 2 + d] = nb;
+            for (int t = 0; t < nb && bpos < 4 * N; ++t) xc_eall[bpos++] = bef[t];
+        }
+        if (!feas) return 0;                                // 两方向皆不可行
+        xc_feas[i] = feas;
+    }
+    for (int round = 0; round < 6; ++round) {
+        int changed = 0;
+        for (int i = 0; i < xc_nchain; ++i) {
+            int f2 = xc_feas[i];
+            if ((f2 & 3) != 1 && (f2 & 3) != 2) continue;
+            if (f2 & 4) continue;
+            int d = ((f2 & 3) == 1) ? 0 : 1;
+            int st = xc_es[i * 2 + d], n = xc_ec[i * 2 + d];
+            for (int t = 0; t < n; ++t) {
+                int b = xc_eall[st + t];
+                if (b == i) return 0;
+                if (xc_reach(i, b)) return 0;               // 成环 ⇒ 矛盾
+                xc_et[xc_ecnt] = i; xc_en[xc_ecnt] = xc_eh[b]; xc_eh[b] = xc_ecnt++;
+            }
+            xc_feas[i] |= 4; changed = 1;
+        }
+        if (!changed) break;
+        for (int i = 0; i < xc_nchain; ++i) {
+            int f2 = xc_feas[i] & 3;
+            if (f2 != 3) continue;
+            for (int d = 0; d < 2; ++d) {
+                int st = xc_es[i * 2 + d], n = xc_ec[i * 2 + d];
+                int bad2 = 0;
+                for (int t = 0; t < n && !bad2; ++t)
+                    if (xc_reach(i, xc_eall[st + t])) bad2 = 1;
+                if (bad2) {
+                    xc_feas[i] &= ~(1 << d);
+                    if (!(xc_feas[i] & 3)) return 0;
+                }
+            }
+        }
+    }
+    return 1;
+}
+
 static int propagate_strong(int s) {
     if (!propagate(s)) return 0;                 // 第 1 层：最便宜
     if (!do_flow(s)) return 0;                   // 第 2 层：一次 max-flow
     if (use_chain && !orient_chains(s)) return 0; // 第 3 层：0.3% 的代价，98% 的证伪
+    if (getenv("XCHAIN") && !xchain_check(s)) return 0;   // 第 3.5 层：跨链时序偏序（v42 复活）
     if (probe_rounds <= 0) return 1;             // 默认到此为止
     if (!do_probing(probe_rounds)) return 0;
     if (!do_flow(s)) return 0;
@@ -1501,6 +1655,25 @@ int main(int argc, char **argv) {
         printf("真起点 (%d,%d), 自由格 %d\n", sx, sy, total_free);
         int strong = getenv("STRONG") ? atoi(getenv("STRONG")) : 0;
         int pok = strong ? propagate_strong(s) : propagate(s);
+        fprintf(stderr, "PROPOK %d\n", pok);
+        {   // 每起点确定率普查（多项式路线的靶场刻度）
+            long long te2 = 0, f1 = 0, f2 = 0;
+            for (int c = 0; c < N; ++c) if (g0[c]) for (int d = 2; d < 4; ++d) {
+                if (!g0[c + delta[d]]) continue;
+                ++te2;
+                if (estate[c * 4 + d] == 1) ++f1;
+                else if (estate[c * 4 + d] == 2) ++f2;
+            }
+            fprintf(stderr, "PERSTART 判定率 %.1f%%（必用 %lld 禁用 %lld / %lld 边）\n",
+                    te2 ? 100.0 * (f1 + f2) / te2 : 0.0, f1, f2, te2);
+            if (getenv("FIXDUMP")) {
+                for (int c = 0; c < N; ++c) if (g0[c]) for (int d = 2; d < 4; ++d) {
+                    if (!g0[c + delta[d]]) continue;
+                    if (estate[c * 4 + d])
+                        fprintf(stderr, "FIX %d %d %d\n", c, d, estate[c * 4 + d]);
+                }
+            }
+        }
         printf("静态传播: %s\n", pok ? "无矛盾 (对)" : "**矛盾 —— 静态层不 sound**");
         {   long long ne = 0, nu = 0, nb = 0;
             for (int c = 0; c < N; ++c) if (g0[c])

@@ -6,7 +6,7 @@ import os
 DD = {"L": (-1, 0), "U": (0, -1), "R": (1, 0), "D": (0, 1)}
 for fn in sorted(os.listdir("solutions"), key=lambda s: int(s.split(".")[0])):
     L = fn.split(".")[0]
-    if int(L) > 45:
+    if int(L) > 140:
         continue
     raw = open(f"/mnt/d/workspace/coilbench/levels_all/{L}").read()
     w = int(re.search(r"x=(\d+)", raw).group(1))
