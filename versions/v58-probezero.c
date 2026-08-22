@@ -1643,6 +1643,37 @@ int main(int argc, char **argv) {
     // 沿真解走一遍，每个滑行落点上跑一次传播。真解是可行的，所以传播**永远不许报矛盾**，
     // 静态那层的 estate_ok 也**永远不许否掉真解实际走的那个方向**。
     // 任何一次报警都说明规则本身是错的（而不是「运气不好」），必须先修再谈性能。
+    // ---- PROBEDUMP：逐起点传播普查（不需要已知解）。REF=可靠证伪，OK=幸存；
+    // 幸存者 estate 取交集 => GFIX 全局边事实（对一切解成立）。STRONG=1 用强传播。
+    if (getenv("PROBEDUMP")) {
+        unsigned char *i1 = malloc((size_t)N * 4), *i2 = malloc((size_t)N * 4);
+        memset(i1, 1, (size_t)N * 4); memset(i2, 1, (size_t)N * 4);
+        int strongp = getenv("STRONG") ? atoi(getenv("STRONG")) : 0;
+        int nok = 0, nref = 0;
+        for (int s0 = 0; s0 < N; ++s0) {
+            if (!g0[s0]) continue;
+            int pok = strongp ? propagate_strong(s0) : propagate(s0);
+            if (!pok) { ++nref; printf("REF %d\n", s0); continue; }
+            ++nok;
+            long long fs = 0;
+            for (int c = 0; c < N; ++c) if (g0[c]) for (int d = 2; d < 4; ++d) {
+                if (!g0[c + delta[d]]) continue;
+                if (estate[c * 4 + d]) ++fs;
+                if (estate[c * 4 + d] != 1) i1[c * 4 + d] = 0;
+                if (estate[c * 4 + d] != 2) i2[c * 4 + d] = 0;
+            }
+            printf("OK %d %lld\n", s0, fs);
+            if ((nok & 2047) == 0) fprintf(stderr, "...ok=%d ref=%d\n", nok, nref);
+        }
+        long long nf1 = 0, nf2 = 0;
+        for (int c = 0; c < N; ++c) if (g0[c]) for (int d = 2; d < 4; ++d) {
+            if (!g0[c + delta[d]]) continue;
+            if (i1[c * 4 + d]) { printf("GFIX %d %d 1\n", c, d); ++nf1; }
+            else if (i2[c * 4 + d]) { printf("GFIX %d %d 2\n", c, d); ++nf2; }
+        }
+        fprintf(stderr, "PROBEDUMP: ok=%d ref=%d 必用=%lld 禁用=%lld\n", nok, nref, nf1, nf2);
+        return 0;
+    }
     if (argc > 3 && !strcmp(argv[2], "--verify")) {
         FILE *sf = fopen(argv[3], "r");
         if (!sf) { fprintf(stderr, "打不开 %s\n", argv[3]); return 1; }
