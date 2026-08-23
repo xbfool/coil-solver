@@ -864,6 +864,45 @@ static int global_fixpoint(void) {
         fprintf(stderr, "  分治：%d 块 %d 对，可行 %d 对，整块淘汰掉 %d 格\n", K, npair, nok, killed);
     }
     memcpy(g_estate, estate, (size_t)N * 4);
+
+    // ---- SAC 测量（SACPROBE=1）：逐条未定边假设"必走"，传播看矛盾 => 全局禁边 ----
+    // 目的：量 SAC 能否找出基础全局传播漏掉的新禁边（硬关全局仅 ~7 条）。纯测量，不改主流程。
+    if (getenv("SACPROBE")) {
+        unsigned char *snap = malloc((size_t)N * 4);
+        int *dsnap = malloc(sizeof(int) * N);
+        // 用当前必用边重建 dsu（全局阶段后 dsu 状态不可信）
+        for (int c = 0; c < N; ++c) dsu[c] = c;
+        for (int c = 0; c < N; ++c) if (g0[c]) for (int d = 0; d < 2; ++d)
+            if (g0[c + delta[d]] && g_estate[c * 4 + d] == 1) {
+                int ra = dfind(c), rb = dfind(c + delta[d]);
+                if (ra != rb) dsu[ra] = rb;
+            }
+        long long tested = 0, newban = 0, base = 0;
+        for (int c = 0; c < N; ++c) if (g0[c]) for (int d = 0; d < 4; ++d) {
+            if (!g0[c + delta[d]]) continue;
+            if (g_estate[c * 4 + d]) { if (d < 2) ++base; continue; }   // 已定，跳过
+            if (d >= 2) continue;                                        // 每条无向边只测一次（右/下）
+            ++tested;
+            memcpy(snap, estate, (size_t)N * 4);
+            memcpy(dsnap, dsu, sizeof(int) * N);
+            memset(inq, 0, (size_t)N); qhead = qtail = 0; prop_bad = 0;
+            set_edge(c, d, 1);
+            if (!prop_bad) prun_queue();
+            int bad = prop_bad;
+            if (getenv("SACDIAG") && tested < 5) {
+                long long chg = 0;
+                for (int cc = 0; cc < N * 4; ++cc) if (estate[cc] != snap[cc]) ++chg;
+                fprintf(stderr, "  SACDIAG edge(%d,%d)=1 => cascade %lld bad=%d\n", c, d, chg, bad);
+            }
+            memcpy(estate, snap, (size_t)N * 4);
+            memcpy(dsu, dsnap, sizeof(int) * N);
+            prop_bad = 0;
+            if (bad) ++newban;
+            if ((tested & 8191) == 0) fprintf(stderr, "  SAC progress %lld tested, %lld newban\n", tested, newban);
+        }
+        fprintf(stderr, "SACPROBE: base_used %lld, tested %lld undetermined, SAC_new_forbidden %lld\n", base, tested, newban);
+        free(snap); free(dsnap);
+    }
     return 1;
 }
 
