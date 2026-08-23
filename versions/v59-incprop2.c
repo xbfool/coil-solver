@@ -1347,6 +1347,7 @@ static int *e2tr; static int e2trn;          // estate2 写入trail（存索引�
 static int *d2tr; static int d2trn;          // dsu2 union trail（存被挂走的根，回滚复位）
 static int trailing = 0;                      // 开关：>0 时 set_edge2 记trail
 static int *incseeds;                         // 增量种子缓冲(堆,防溢出)
+static int persist_active = 0;                // INCPROP=2：路径持久化生效中
 static int dfind2(int x) { while (dsu2[x] != x) x = dsu2[x]; return x; }   // 无压缩，配按size合并 O(log n)
 
 static int dfind0(int x) { while (dsu0[x] != x) { dsu0[x] = dsu0[dsu0[x]]; x = dsu0[x]; } return x; }
@@ -1696,22 +1697,8 @@ static int dfs(int p, int remaining, int depth) {
     if (incprop < 0) incprop = getenv("INCPROP") ? atoi(getenv("INCPROP")) : 0;
     if (nc > 1 && (depth < prop_depth || depth < flow_depth)) {
         int w = 0;
-        int base_ready = 0;
-        if (incprop && seed_mode != 0 && depth < prop_depth) {
-            // 基座：路径到 p 的全播不动点，算一次，候选间复用
-            if (!dsu0_valid) build_dsu0();
-            memcpy(estate2, estate, (size_t)N * 4);
-            memcpy(dsu2, dsu0, sizeof(int) * (size_t)N);
-            for (int c9 = 0; c9 < N; ++c9) dsz2[c9] = 1;
-            for (int c9 = 0; c9 < N; ++c9) if (dsu2[c9] != c9) dsz2[dfind2(c9)]++;
-            q2h = q2t = 0; p2_bad = 0; p2_start = p; p2_endcol = col[p] ^ (remaining & 1);
-            trailing = 0;
-            for (int c9 = 0; c9 < N; ++c9) if (g[c9]) ppush2(c9);
-            while (q2h != q2t && !p2_bad) { int cc = pq2[q2h++]; if (q2h == N + 1) q2h = 0; inq2[cc] = 0; pprocess2(cc); }
-            while (q2h != q2t) { inq2[pq2[q2h++]] = 0; if (q2h == N + 1) q2h = 0; }
-            base_ready = !p2_bad;                 // 基座本身矛盾 => 本节点死（罕见，父应已排除）
-            trailing = 1; e2trn = d2trn = 0;
-        }
+        int use_inc = (incprop == 2 && persist_active && seed_mode != 0);   // 持久模式：estate2已反映路径到p
+        if (use_inc) trailing = 1;
         for (int i = 0; i < nc; ++i) {
             int dd = delta[cand[i].dir], len = cand[i].len, c = cand[i].endp;
             for (int k = 0, q = p; k < len; ++k) { q += dd; mark(q); }
@@ -1722,17 +1709,24 @@ static int dfs(int p, int remaining, int depth) {
                     ++dyn_calls;
                     int fe = getenv("FULLEVERY") ? atoi(getenv("FULLEVERY")) : 0;
                     int fullseed = seed_full || (fe > 0 && depth % fe == 0);
-                    if (incprop && base_ready && !fullseed == 0) {   // 增量路径（fullseed 等价）
-                        int em = e2trn, dm = d2trn;
-                        int ns = 0;
+                    if (use_inc) {   // 增量：在持久estate2上只推这一步的delta，查完回滚
+                        int em = e2trn, dm = d2trn, ns = 0;
                         g[c] = 1; incseeds[ns++] = c;
                         for (int k = 0, q = p + dd; k < len; ++k, q += dd)
                             for (int d2 = 0; d2 < 4; ++d2) { int n2 = q + delta[d2]; if (g[n2]) incseeds[ns++] = n2; }
-                        if (!propagate_delta(c, rem2, incseeds, ns)) { ok = 0; ++dyn_refutes; ++dth_dyn; }
+                        int ok2 = propagate_delta(c, rem2, incseeds, ns);
                         g[c] = 0;
                         trail_rollback(em, dm);
-                    } else if (incprop && !base_ready && seed_mode != 0 && depth < prop_depth) {
-                        ok = 0; ++dyn_refutes; ++dth_dyn;   // 基座已矛盾
+                        if (getenv("VALIDATE")) {   // 对拍：从头算的判决
+                            int save_trail = trailing; trailing = 0;
+                            int ref = propagate_dyn(c, rem2, p + dd, dd, -1);
+                            trailing = save_trail;
+                            static long long vn = 0, vmis = 0;
+                            ++vn;
+                            if ((ref != 0) != (ok2 != 0)) { ++vmis; if (vmis <= 5) fprintf(stderr, "VALMISS #%lld depth=%d inc=%d scratch=%d\n", vn, depth, ok2, ref); }
+                            if ((vn & 0xFFFFF) == 0) fprintf(stderr, "VAL %lld calls, mismatch %lld\n", vn, vmis);
+                        }
+                        if (!ok2) { ok = 0; ++dyn_refutes; ++dth_dyn; }
                     } else {
                         if (!propagate_dyn(c, rem2, p + dd, dd, fullseed ? -1 : len)) { ok = 0; ++dyn_refutes; ++dth_dyn; }
                     }
@@ -1763,7 +1757,19 @@ static int dfs(int p, int remaining, int depth) {
         int dd = delta[cand[i].dir], len = cand[i].len, c = cand[i].endp;
         for (int k = 0, q = p; k < len; ++k) { q += dd; mark(q); }
         path[path_len++] = DCH[cand[i].dir];
+        int pem = e2trn, pdm = d2trn, committed = 0;
+        if (persist_active && depth < prop_depth && remaining - len > 0) {
+            // 提交增量：把这一步的滑行线累积进持久 estate2（记trail，返回后撤销）
+            int ns = 0; g[c] = 1; incseeds[ns++] = c;
+            for (int k = 0, q = p + dd; k < len; ++k, q += dd)
+                for (int d2 = 0; d2 < 4; ++d2) { int n2 = q + delta[d2]; if (g[n2]) incseeds[ns++] = n2; }
+            propagate_delta(c, remaining - len, incseeds, ns);
+            g[c] = 0; committed = 1;
+            // committed 提交时若矛盾，正常不该发生(候选已过滤)，稳妥起见回滚跳过
+            if (p2_bad) { trail_rollback(pem, pdm); committed = 0; --path_len; for (int k = 0, bk = c; k < len; ++k, bk -= dd) unmark(bk); continue; }
+        }
         int r = dfs(c, remaining - len, depth + (nc > 1 ? 1 : 0));   // depth = 分支决策数，强制步不计
+        if (committed) trail_rollback(pem, pdm);
         if (r) return r;
         --path_len;
         for (int k = 0, back = c; k < len; ++k, back -= dd) unmark(back);
@@ -2383,7 +2389,26 @@ int main(int argc, char **argv) {
                     if (g[c2] && deg[c2] <= 1 && !tcand[c2]) ++ntc_low;
             }
         }
-        int t3r = dfs(s, total_free - 1, 0);
+        static int incprop_t3 = -1;
+        if (incprop_t3 < 0) incprop_t3 = getenv("INCPROP") ? atoi(getenv("INCPROP")) : 0;
+        if (incprop_t3 == 2 && seed_mode != 0) {
+            // 持久化初始化：起点 s 的全播不动点灌进 estate2/dsu2
+            if (!dsu0_valid) build_dsu0();
+            memcpy(estate2, estate, (size_t)N * 4);
+            memcpy(dsu2, dsu0, sizeof(int) * (size_t)N);
+            for (int c9 = 0; c9 < N; ++c9) dsz2[c9] = 1;
+            for (int c9 = 0; c9 < N; ++c9) if (dsu2[c9] != c9) dsz2[dfind2(c9)]++;
+            q2h = q2t = 0; p2_bad = 0; p2_start = s; p2_endcol = col[s] ^ ((total_free - 1) & 1);
+            trailing = 0; e2trn = d2trn = 0;
+            g[s] = 1;                    // 起点欠一条出边，传播时当自由格（同 propagate_dyn 的 g[p]=1）
+            for (int c9 = 0; c9 < N; ++c9) if (g[c9]) ppush2(c9);
+            while (q2h != q2t && !p2_bad) { int cc = pq2[q2h++]; if (q2h == N + 1) q2h = 0; inq2[cc] = 0; pprocess2(cc); }
+            while (q2h != q2t) { inq2[pq2[q2h++]] = 0; if (q2h == N + 1) q2h = 0; }
+            g[s] = 0;
+            persist_active = !p2_bad;    // 初始就矛盾则本起点死
+        }
+        int t3r = persist_active ? dfs(s, total_free - 1, 0) : (incprop_t3 == 2 && seed_mode != 0 ? 0 : dfs(s, total_free - 1, 0));
+        persist_active = 0; trailing = 0;
         if (getenv("TREELOG")) fprintf(stderr, "T3[t=%llds] shard%d r%d #%d cell=(%d,%d) sc=%d nodes=%lld r=%d\n",
             (long long)(time(0) - wall_t0), shard, round3, i0, s % W - 1, s / W - 1, sc[i], nodes, t3r);
         if (t3r == 1) { path[path_len] = 0; emit(s, path); }
