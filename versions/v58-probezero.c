@@ -108,6 +108,7 @@
 // 零重构。子进程 i 只处理下标 ≡ i (mod P) 的起点（探针和正式搜索都只做自己那份），
 // 谁先解出就把答案写进自己的管道并退出 0，父进程收到第一个成功的就打印并杀掉其余。
 #include <stdio.h>
+#include <time.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
@@ -166,6 +167,7 @@ static int seed_mode = 1;  // v56 portfolio：0=v52语义(空底全播) 1=v54(�
 static long long nodes, node_limit;
 static int best_rem;
 
+static time_t wall_t0;
 static long long dth_liveend, dth_estate, dth_reach, dth_dyn, dth_flow, dth_geom;
 // 找到解就写进管道（子进程）或直接打印（单进程模式）
 static void emit(int s, const char *pathstr) {
@@ -1205,8 +1207,17 @@ static int xchain_check(int s) {
     return 1;
 }
 
+static long long plainF_last;      // FRANK：纯传播层的 F（与 PROBEDUMP 普查同口径）
 static int propagate_strong(int s) {
     if (!propagate(s)) return 0;                 // 第 1 层：最便宜
+    {   // F 采样点：必须在 flow/probing 改写 estate 之前，保证与普查 F 逐位相等
+        long long fp = 0;
+        for (int c9 = 0; c9 < N; ++c9) if (g0[c9]) for (int d9 = 2; d9 < 4; ++d9) {
+            if (!g0[c9 + delta[d9]]) continue;
+            if (estate[c9 * 4 + d9]) ++fp;
+        }
+        plainF_last = fp;
+    }
     if (!do_flow(s)) return 0;                   // 第 2 层：一次 max-flow
     if (use_chain && !orient_chains(s)) return 0; // 第 3 层：0.3% 的代价，98% 的证伪
     if (getenv("XCHAIN") && !xchain_check(s)) return 0;   // 第 3.5 层：跨链时序偏序（v42 复活）
@@ -1808,6 +1819,7 @@ int main(int argc, char **argv) {
         fprintf(stderr, "adaptive PROPDEPTH=%d (fixed %lld / %lld edges; 第一层存活率>=SURVDEEP%%再升深层)\n", prop_depth, gfix_total, te);
     }
 
+    if (!wall_t0) wall_t0 = time(0);
     int *starts = malloc(sizeof(int) * (size_t)total_free);
     int ns = 0;
     memcpy(g, g0, N);
@@ -1945,6 +1957,7 @@ int main(int argc, char **argv) {
     // PROBE2 的最优点也搬家了（第三次验证「底层一动就重扫常数」）：v23 时代 48000 会让
     // L239 炸到 316s，BFS 版下它反而是甜点 —— L389 35s->10.6s，L377/L257 也更快，其余持平。
     int *sc = malloc(sizeof(int) * (size_t)ns);
+    long long *fsv = calloc((size_t)ns, sizeof(long long));
     unsigned char **est_save = malloc(sizeof(unsigned char *) * (size_t)ns);
     unsigned char **tc_save = malloc(sizeof(unsigned char *) * (size_t)ns);
     int keep = 0;
@@ -1976,6 +1989,7 @@ int main(int argc, char **argv) {
         tc_on = 0; live_end = -1;
         if (r == 1) { path[path_len] = 0; emit(s, path); }
         if (r == 0) continue;                              // 搜穷仍无解 => 永久剔除
+        fsv[keep] = plainF_last;
         starts[keep] = s; sc[keep] = best_rem;
         est_save[keep] = malloc((size_t)N * 4);
         memcpy(est_save[keep], estate, (size_t)N * 4);      // 缓存，后两层直接复用
@@ -1984,7 +1998,23 @@ int main(int argc, char **argv) {
         ++keep;
     }
 
-    if (!getenv("NORANK")) for (int i = 1; i < keep; ++i) {
+    // FRANK：跑内 F 排序（1=降序 2=升序 3=奇偶分片双向对冲 F 双峰）
+    int frank_mode = getenv("FRANK") ? atoi(getenv("FRANK")) : 0;
+    int frank_desc = (frank_mode == 1) || (frank_mode == 3 && (shard & 1) == 0);
+    if (frank_mode) {
+        int desc = frank_desc;
+        for (int i = 1; i < keep; ++i) {
+            int vs = starts[i], vc = sc[i], j2 = i;
+            long long vf = fsv[i];
+            unsigned char *ve = est_save[i], *vt = tc_save[i];
+            while (j2 > 0 && (desc ? (fsv[j2 - 1] < vf) : (fsv[j2 - 1] > vf))) {
+                starts[j2] = starts[j2 - 1]; sc[j2] = sc[j2 - 1]; fsv[j2] = fsv[j2 - 1];
+                est_save[j2] = est_save[j2 - 1]; tc_save[j2] = tc_save[j2 - 1]; --j2;
+            }
+            starts[j2] = vs; sc[j2] = vc; fsv[j2] = vf; est_save[j2] = ve; tc_save[j2] = vt;
+        }
+        fprintf(stderr, "FRANK shard%d: %s" "\n", shard, desc ? "F降序" : "F升序");
+    } else if (!getenv("NORANK")) for (int i = 1; i < keep; ++i) {
         int vs = starts[i], vc = sc[i], j2 = i;
         unsigned char *ve = est_save[i], *vt = tc_save[i];
         while (j2 > 0 && sc[j2 - 1] > vc) {
@@ -2047,19 +2077,20 @@ int main(int argc, char **argv) {
                 tc_on = 0; live_end = -1;
                 if (r15 == 1) { path[path_len] = 0; emit(s, path); }
                 if (r15 == 0) { free(est_save[i]); free(tc_save[i]); continue; }
-                starts[keep15] = s; sc[keep15] = best_rem;
+                starts[keep15] = s; sc[keep15] = best_rem; fsv[keep15] = fsv[i];
                 est_save[keep15] = est_save[i]; tc_save[keep15] = tc_save[i];
                 ++keep15;
             }
             keep = keep15;
-            if (!getenv("NORANK")) for (int i = 1; i < keep; ++i) {
+            if (frank_mode || !getenv("NORANK")) for (int i = 1; i < keep; ++i) {
                 int vs = starts[i], vc = sc[i], j2 = i;
+                long long vf = fsv[i];
                 unsigned char *ve = est_save[i], *vt = tc_save[i];
-                while (j2 > 0 && sc[j2 - 1] > vc) {
-                    starts[j2] = starts[j2 - 1]; sc[j2] = sc[j2 - 1];
+                while (j2 > 0 && (frank_mode ? (frank_desc ? fsv[j2 - 1] < vf : fsv[j2 - 1] > vf) : sc[j2 - 1] > vc)) {
+                    starts[j2] = starts[j2 - 1]; sc[j2] = sc[j2 - 1]; fsv[j2] = fsv[j2 - 1];
                     est_save[j2] = est_save[j2 - 1]; tc_save[j2] = tc_save[j2 - 1]; --j2;
                 }
-                starts[j2] = vs; sc[j2] = vc; est_save[j2] = ve; tc_save[j2] = vt;
+                starts[j2] = vs; sc[j2] = vc; fsv[j2] = vf; est_save[j2] = ve; tc_save[j2] = vt;
             }
             fprintf(stderr, "shard %d: 1.5 层深层重探后剩 %d\n", shard, keep);
             use_tier2 = (mine_total > 0 && keep * 100 > mine_total * thresh);
@@ -2111,19 +2142,20 @@ int main(int argc, char **argv) {
         int w = 0;
         for (int i = 0; i < keep; ++i) {
             if (drop2[i]) { free(est_save[i]); free(tc_save[i]); continue; }
-            starts[w] = starts[i]; sc[w] = sc[i];
+            starts[w] = starts[i]; sc[w] = sc[i]; fsv[w] = fsv[i];
             est_save[w] = est_save[i]; tc_save[w] = tc_save[i]; ++w;
         }
         keep2 = w;
     }
-    if (!getenv("NORANK")) for (int i = 1; i < keep2; ++i) {
+    if (frank_mode || !getenv("NORANK")) for (int i = 1; i < keep2; ++i) {
         int vs = starts[i], vc = sc[i], j2 = i;
+        long long vf = fsv[i];
         unsigned char *ve = est_save[i], *vt = tc_save[i];
-        while (j2 > 0 && sc[j2 - 1] > vc) {
-            starts[j2] = starts[j2 - 1]; sc[j2] = sc[j2 - 1];
+        while (j2 > 0 && (frank_mode ? (frank_desc ? fsv[j2 - 1] < vf : fsv[j2 - 1] > vf) : sc[j2 - 1] > vc)) {
+            starts[j2] = starts[j2 - 1]; sc[j2] = sc[j2 - 1]; fsv[j2] = fsv[j2 - 1];
             est_save[j2] = est_save[j2 - 1]; tc_save[j2] = tc_save[j2 - 1]; --j2;
         }
-        starts[j2] = vs; sc[j2] = vc; est_save[j2] = ve; tc_save[j2] = vt;
+        starts[j2] = vs; sc[j2] = vc; fsv[j2] = vf; est_save[j2] = ve; tc_save[j2] = vt;
     }
     keep = keep2;
     if (getenv("FUNNELDUMP")) {
@@ -2134,7 +2166,7 @@ int main(int argc, char **argv) {
     }
     free(drop2);
     }
-    fprintf(stderr, "probe: %d/%d 起点被证伪，剩 %d\n", ns - keep, ns, keep);
+    fprintf(stderr, "probe[t=%llds]: %d/%d 起点被证伪，剩 %d\n", (long long)(time(0) - wall_t0), ns - keep, ns, keep);
     if (getenv("DEATHSTAT")) fprintf(stderr, "DEATH liveend=%lld estate=%lld reach=%lld dyn=%lld flow=%lld geom=%lld\n",
         dth_liveend, dth_estate, dth_reach, dth_dyn, dth_flow, dth_geom);
     if (dyn_calls > 50) {
@@ -2189,8 +2221,8 @@ int main(int argc, char **argv) {
             }
         }
         int t3r = dfs(s, total_free - 1, 0);
-        if (getenv("TREELOG")) fprintf(stderr, "T3 shard%d r%d #%d cell=(%d,%d) sc=%d nodes=%lld r=%d\n",
-            shard, round3, i0, s % W - 1, s / W - 1, sc[i], nodes, t3r);
+        if (getenv("TREELOG")) fprintf(stderr, "T3[t=%llds] shard%d r%d #%d cell=(%d,%d) sc=%d nodes=%lld r=%d\n",
+            (long long)(time(0) - wall_t0), shard, round3, i0, s % W - 1, s / W - 1, sc[i], nodes, t3r);
         if (t3r == 1) { path[path_len] = 0; emit(s, path); }
         if (t3r == 0) dead3[i] = 1;
         tc_on = 0; live_end = -1;
