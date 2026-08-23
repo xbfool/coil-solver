@@ -287,6 +287,39 @@ static int reach_ok(int p, int remaining) {
             if (g[n] && seen[n] != seen_id) { seen[n] = seen_id; fstack[top++] = n; }
         }
     }
+    // CHAMBERSTAT：连通死亡的隔断集测量（抽样 1/64）。
+    // 死区 U = 未被 BFS 摸到的自由格；隔断 = 与 U 相邻的已访问格（g==0 的非墙格）。
+    if (count != remaining && getenv("CHAMBERSTAT")) {
+        static long long cs_n, cs_hist[9];   // 隔断大小 1..8+
+        if ((++cs_n & 63) == 0) {
+            ++seen_id;
+            int t2 = 0, usz = 0;
+            for (int c = 0; c < N; ++c)
+                if (g[c] && seen[c] != seen_id) { /* 标记法重跑一遍拿摸到集 */ }
+            // 上面留空：直接用上一次 BFS 的 seen（同 seen_id-1 不可用），改为重跑：
+            --seen_id; ++seen_id;
+            int sep = 0;
+            static int *ub = 0; if (!ub) ub = malloc(sizeof(int) * (size_t)N);
+            int un = 0;
+            for (int c = 0; c < N; ++c) if (g[c] && seen[c] != seen_id - 1) ub[un++] = c;
+            (void)usz; (void)t2;
+            // 数隔断：死区格的邻居中「非墙且已访问」的格（去重粗略：计边不去重，上界）
+            for (int i2 = 0; i2 < un; ++i2) {
+                int c = ub[i2];
+                for (int d2 = 0; d2 < 4; ++d2) {
+                    int nn = c + delta[d2];
+                    if (!g[nn] && g0 && g0[nn]) ++sep;
+                }
+            }
+            if (un > 0) {
+                int k = sep < 1 ? 1 : (sep > 8 ? 8 : sep);
+                ++cs_hist[k];
+                if ((cs_n >> 6) % 8 == 1)
+                    fprintf(stderr, "CHAMBER n=%lld hist(1..8+):%lld %lld %lld %lld %lld %lld %lld %lld usz=%d\n",
+                        cs_n, cs_hist[1], cs_hist[2], cs_hist[3], cs_hist[4], cs_hist[5], cs_hist[6], cs_hist[7], cs_hist[8], un);
+            }
+        }
+    }
     return count == remaining;
 }
 
@@ -1462,6 +1495,34 @@ static int propagate_dyn(int p, int remaining, int sfirst, int sdd, int slen) {
 //
 // 代价：成功时 = 把这些邻居连起来所需探索的范围（通常就在 S 附近）；
 // reach_ok 则不管怎样都是 O(剩余格数)，开局就是三千格。
+// CHAMBERSTAT 诊断：连通死亡现场做全量 BFS，量死区与隔断（学习可行性测量，只在抽样时调用）
+static void chamber_diag(int head) {
+    static long long cs_n, cs_sep[10], cs_usz;
+    if ((++cs_n & 3) != 0) return;                 // 抽样 1/16
+    ++seen_id;
+    int top = 0, cnt = 0;
+    seen[head] = seen_id;
+    for (int d = 0; d < 4; ++d) { int c = head + delta[d]; if (g[c] && seen[c] != seen_id) { seen[c] = seen_id; fstack[top++] = c; } }
+    while (top) { int c = fstack[--top]; ++cnt; for (int d = 0; d < 4; ++d) { int n = c + delta[d]; if (g[n] && seen[n] != seen_id) { seen[n] = seen_id; fstack[top++] = n; } } }
+    long long un = 0, sep = 0;
+    for (int c = 0; c < N; ++c) if (g[c] && seen[c] != seen_id) {
+        ++un;
+        for (int d = 0; d < 4; ++d) { int n = c + delta[d]; if (!g[n] && g0[n]) ++sep; }
+    }
+    static long long cs_un0;
+    if (un == 0) {
+        if ((++cs_un0 & 1023) == 1) fprintf(stderr, "CHAMBER-UN0 %lld (局部口袋死,全局连通)\n", cs_un0);
+        return;
+    }
+    cs_usz += un;
+    int k = sep > 9 ? 9 : (int)sep;
+    ++cs_sep[k];
+    if ((cs_n >> 4) % 64 == 1)
+        fprintf(stderr, "CHAMBER n=%lld sep(0..9+):%lld %lld %lld %lld %lld %lld %lld %lld %lld %lld 平均死区 %lld\n",
+            cs_n, cs_sep[0], cs_sep[1], cs_sep[2], cs_sep[3], cs_sep[4], cs_sep[5], cs_sep[6], cs_sep[7], cs_sep[8], cs_sep[9],
+            cs_usz / (cs_n >> 4));
+}
+
 static int reach_local(int first, int dd, int len, int c, int rem2) {
     if (rem2 == 0) return 1;
     if (freedeg(c) == 0) return 0;                 // 滑到死胡同，后面没得走
@@ -1519,7 +1580,7 @@ static int dfs(int p, int remaining, int depth) {
         for (int k = 0, q = p; k < len; ++k) { q += dd; mark(q); }
         int rem2 = remaining - len;
         int rok = (rem2 == 0 || (cheap_ok(c, rem2) && reach_local(p + dd, dd, len, c, rem2)));
-        if (!rok) ++dth_reach;
+        if (!rok) { ++dth_reach; static int cs_on = -1; if (cs_on < 0) cs_on = getenv("CHAMBERSTAT") != 0; if (cs_on) chamber_diag(c); }
         if (rok) {
             cand[nc].dir = d; cand[nc].endp = c; cand[nc].len = len;
             {
