@@ -2098,9 +2098,12 @@ int main(int argc, char **argv) {
         ++keep;
     }
 
-    // FRANK：跑内 F 排序（1=降序 2=升序 3=奇偶分片双向对冲 F 双峰）
-    int frank_mode = getenv("FRANK") ? atoi(getenv("FRANK")) : 0;
-    int frank_desc = (frank_mode == 1) || (frank_mode == 3 && (shard & 1) == 0);
+    // FRANK：跑内 F 排序（1=降序 2=升序 3=奇偶双向对冲 4=自适应方向）
+    // 自适应默认：大盘(n>=18000)系统性偏坏尾用降序(501-663全实证)，小盘用升序(L475升序31s)
+    int frank_mode = getenv("FRANK") ? atoi(getenv("FRANK")) : 4;
+    int frank_desc = (frank_mode == 1)
+        || (frank_mode == 3 && (shard & 1) == 0)
+        || (frank_mode == 4 && total_free >= 18000);
     if (frank_mode) {
         int desc = frank_desc;
         for (int i = 1; i < keep; ++i) {
@@ -2140,7 +2143,7 @@ int main(int argc, char **argv) {
     {
         int sdthr = getenv("SURVDEEP") ? atoi(getenv("SURVDEEP")) : 38;
         if (prop_depth <= 2 && mine_total > 0 && keep * 100 >= mine_total * sdthr) {
-            prop_depth = getenv("PDPROMO") ? atoi(getenv("PDPROMO")) : 16;   // 平台在 16：更深只付 O(N) 成本不涨肉
+            prop_depth = getenv("PDPROMO") ? atoi(getenv("PDPROMO")) : (total_free >= 18000 ? 64 : 16);   // 自适应：大盘路径长需更深窗口(501+实测64)，小盘16是平台
             sweep3 = 1;                                                      // 升档分片的第三层用限额扫荡
             seed_full = 1;                                                   // 零类的证伪吃跨滑行组合结论，末滑行播种亏 1/3 证伪率
             fprintf(stderr, "shard %d: 第一层存活 %d%% >= %d%%，升深度传播(PD=%d)\n",
@@ -2280,7 +2283,7 @@ int main(int argc, char **argv) {
     // L501@PD16 的树成本重尾（中位 ~15 万节点、尾部 3.5 亿）：无限搜让怪物垄断队列，
     // 而可解树往往便宜（L414 赢家 2 万节点）。低预算轮先收割软柿子，
     // r==0 搜穷永久剔除，-1 预算尽留下一轮，最后一轮无限搜保底。
-    long long sweep0 = getenv("SWEEP") ? atoll(getenv("SWEEP")) : 3000000;   // v58：L475 赢家树 2.17M，3M 让它第 0 轮被收割
+    long long sweep0 = getenv("SWEEP") ? atoll(getenv("SWEEP")) : (total_free >= 18000 ? (long long)(total_free - 18000) * 5000 + 3000000 : 3000000);   // 自适应：大盘赢家树随n暴涨(570→~18M,664→~78M实测标定)，小盘3M收割L475的2.17M
     int sweep_mul = getenv("SWEEPMUL") ? atoi(getenv("SWEEPMUL")) : 8;
     int nrounds3 = (sweep3 && !getenv("NOSWEEP")) ? 4 : 1;
     unsigned char *dead3 = calloc((size_t)(keep > 0 ? keep : 1), 1);
