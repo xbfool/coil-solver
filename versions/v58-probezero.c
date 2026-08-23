@@ -134,7 +134,7 @@ static int out_fd = -1;                // 子进程把答案写这里
 static void emit(int s, const char *pathstr);
 extern long long flowdyn_calls, flowdyn_refute;
 static long long dyn_calls, dyn_refutes;
-static long long dth_liveend, dth_estate, dth_reach, dth_dyn, dth_flow, dth_geom;
+
 extern int flow_depth;
 
 #ifndef FF_MAX
@@ -166,8 +166,11 @@ static int seed_mode = 1;  // v56 portfolio：0=v52语义(空底全播) 1=v54(�
 static long long nodes, node_limit;
 static int best_rem;
 
+static long long dth_liveend, dth_estate, dth_reach, dth_dyn, dth_flow, dth_geom;
 // 找到解就写进管道（子进程）或直接打印（单进程模式）
 static void emit(int s, const char *pathstr) {
+    if (getenv("DEATHSTAT")) fprintf(stderr, "DEATH@WIN sh%d liveend=%lld estate=%lld reach=%lld dyn=%lld flow=%lld geom=%lld nodes=%lld\n",
+        shard, dth_liveend, dth_estate, dth_reach, dth_dyn, dth_flow, dth_geom, nodes);
     if (flow_depth > 0)
         fprintf(stderr, "FLOWDYN shard%d: %lld calls, %lld refuted\n", shard, flowdyn_calls, flowdyn_refute);
     if (swarm) fprintf(stderr, "WINNER shard %d tier %d nodes %lld\n", shard, shard & 3, nodes);
@@ -934,6 +937,18 @@ static int do_flow(int s) {
         // 这段之前只算 end_cand 当展示，错了没人看出来；v44 拿它当剪枝，L39（奇）当场 FAIL。
         int used_arc = (prop_endcol != col[prop_start]) ? (fcap[e] <= 0) : (fcap[e] > 0);
         int possible = (fscc[FDUM] == fscc[v]) || used_arc;   // 同 SCC 可换，或当前就是它
+        if (possible) {
+            // 缝定律注入（SEAMR>=0 启用）：真解是近环（82/82 实证，L1 中位 7 最大 41），
+            // 终点候选只留起点 L1<=SEAMR 球内的。远处 deg<=1 格随之变 ntc_low，牙口更硬。
+            static int seamr = -2;
+            if (seamr == -2) seamr = getenv("SEAMR") ? atoi(getenv("SEAMR")) : -1;
+            if (seamr >= 0) {
+                int ddx = c2 % W - prop_start % W, ddy = c2 / W - prop_start / W;
+                if (ddx < 0) ddx = -ddx;
+                if (ddy < 0) ddy = -ddy;
+                if (ddx + ddy > seamr) possible = 0;
+            }
+        }
         if (possible) { ++end_cand; tcand[c2] = 1; }
     }
 
@@ -1523,6 +1538,23 @@ static int dfs(int p, int remaining, int depth) {
     // 付一次 O(N) 传播（强制链几百格长），实测 3~4 倍变慢。正确形态是：候选生成完、
     // 确认这**真是个分支点**（nc>1）之后，才对每个候选补跑传播/流过滤 ——
     // 强制步一分钱不付，真决策点上每个选项都被重锤。
+    // FULLREACH：传播窗口外的分支点也做全局连通检查（怪物树深层裸奔的补刀）
+    static int fullreach = -2;
+    if (fullreach == -2) fullreach = getenv("FULLREACH") ? atoi(getenv("FULLREACH")) : 0;
+    if (fullreach && nc > 1 && depth >= prop_depth) {
+        int w = 0;
+        for (int i = 0; i < nc; ++i) {
+            int dd = delta[cand[i].dir], len = cand[i].len, c = cand[i].endp;
+            for (int k = 0, q = p; k < len; ++k) { q += dd; mark(q); }
+            int rem2 = remaining - len;
+            int ok = (rem2 == 0) || reach_ok(c, rem2);
+            for (int k = 0, back = c; k < len; ++k, back -= dd) unmark(back);
+            if (!ok) ++dth_reach;
+            if (ok) cand[w++] = cand[i];
+        }
+        nc = w;
+        if (nc == 0) return 0;
+    }
     if (nc > 1 && (depth < prop_depth || depth < flow_depth)) {
         int w = 0;
         for (int i = 0; i < nc; ++i) {
