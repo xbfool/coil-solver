@@ -2268,6 +2268,10 @@ int main(int argc, char **argv) {
                     ns ? "命中，只跑这一个起点" : "**该起点已被全局过滤剔除**");
         }
     }
+    // 热启动是「一次固定开销（建流基座）换每起点省一次从零增广」，起点少的时候摊不回来：
+    // L664 钉住真起点单跑，冷 9s 而热 12s。所以起点少就自动关掉（PINSTART/--verify 都吃这条）。
+    if (ns < 64 && !getenv("WARMFLOW")) use_warmflow = 0;
+
     for (int i = 1; i < ns; ++i) {
         int v = starts[i], dv = freedeg(v), j = i;
         while (j > 0 && freedeg(starts[j - 1]) > dv) { starts[j] = starts[j - 1]; --j; }
