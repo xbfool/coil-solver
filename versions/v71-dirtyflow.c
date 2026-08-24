@@ -1082,6 +1082,15 @@ static int global_fixpoint(void) {
 #define AK_D2SNK 6    // FDUM -> FSNK
 static long long warm_cancel, warm_aug, warm_broken;   // 退流单位数 / 热启动后还需增广的单位数 / **退流走断次数(必须恒为 0)**
 
+// 全程分层账（含二三层）。第一层结束时那次 PROPSTAT 只覆盖漏斗第一层，
+// 而二三层同样会反复调 do_flow —— 端到端的差异很可能就藏在那里，所以退出时再 dump 一次。
+static void dump_timers(void) {
+    if (!getenv("PROPSTAT")) return;
+    fprintf(stderr, "TIMERS shard %d 全程: prop %.2fs(%lld) flow %.2fs(%lld) [build %.2f 增广 %.2f SCC %.2f] chain %.2fs probe %.2fs | 退流 %lld 热增广 %lld 走断 %lld\n",
+            shard, t_prop, n_prop, t_flow, n_flow, t_fbuild, t_fmax, t_fscc,
+            t_chain, t_probe, warm_cancel, warm_aug, warm_broken);
+}
+
 // 退掉 1 个单位流：图是 4 层 DAG，从弧 e 的两端各走一跳就到 FSRC/FSNK。
 // 正向弧是偶数下标，反向弧是奇数下标；fcap[e^1] 就是弧 e 上的流量。
 static void fcancel_unit(int e) {
@@ -2406,6 +2415,7 @@ int main(int argc, char **argv) {
                     if (j != k) close(pfd[j * 2 + 1]);
                 }
                 shard = k; out_fd = pfd[k * 2 + 1];
+                atexit(dump_timers);   // 第一层结束时那次打印看不到二三层的 flow 开销，退出时再 dump 一次
                 seed_mode = getenv("SEEDMODE") ? atoi(getenv("SEEDMODE")) : (k % 3);
                 goto child_work;
             }
