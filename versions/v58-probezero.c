@@ -2283,7 +2283,7 @@ int main(int argc, char **argv) {
     // L501@PD16 的树成本重尾（中位 ~15 万节点、尾部 3.5 亿）：无限搜让怪物垄断队列，
     // 而可解树往往便宜（L414 赢家 2 万节点）。低预算轮先收割软柿子，
     // r==0 搜穷永久剔除，-1 预算尽留下一轮，最后一轮无限搜保底。
-    long long sweep0 = getenv("SWEEP") ? atoll(getenv("SWEEP")) : (total_free >= 18000 ? (long long)(total_free - 18000) * 5000 + 3000000 : 3000000);   // 自适应：大盘赢家树随n暴涨(570→~18M,664→~78M实测标定)，小盘3M收割L475的2.17M
+    long long sweep0 = getenv("SWEEP") ? atoll(getenv("SWEEP")) : 3000000;   // v58fix(学v63)：首轮固定3M收割小树赢家(PINSTART证赢家树仅29万节点),放大交给倍增阶梯。原(n-18000)*5000+3M是bug——标定在怪物树非赢家树,大盘首轮80M致怪物垄断针够不到。
     int sweep_mul = getenv("SWEEPMUL") ? atoi(getenv("SWEEPMUL")) : 8;
     int nrounds3 = (sweep3 && !getenv("NOSWEEP")) ? 4 : 1;
     unsigned char *dead3 = calloc((size_t)(keep > 0 ? keep : 1), 1);
