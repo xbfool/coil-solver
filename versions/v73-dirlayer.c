@@ -346,7 +346,35 @@ static unsigned char *inq;
 static int qhead, qtail;
 static int prop_bad, prop_start, prop_endcol, prop_forced_end;
 
-static int dfind(int x) { while (dsu[x] != x) { dsu[x] = dsu[dsu[x]]; x = dsu[x]; } return x; }
+// ===== v73：无向层的 trail（让有向试探能安全地驱动无向传播）=====
+//
+// 为什么必须做这个：有向 probing 的价值在于「假设走了这一步 => 那条边必用 => 触发无向层级联」。
+// 没有这条通路，试探只在薄薄的有向层里打转，找不到矛盾（实测判定率因此只有 8%）。
+// 上一版试过用 psnapshot/prestore 混着来，结果 119/120 关全灭 —— 存档语义和 trail 撤销互相踩。
+//
+// ⚠ 难点在并查集：`dfind` 的**路径压缩会改写 dsu**，所以「只记 union、撤销时把根还原」是不够的
+//   —— 被压缩过的结点仍指向合并后的根。解法是把 dsu 的**每一次写入**都记进 trail，
+//   包括压缩写。写入次数不多，代价可以接受。
+static int *etrail; static int netrail;                 // estate: (下标<<2)|旧值
+static int *utrail_i, *utrail_v; static int nutrail;    // dsu: 下标 + 旧值
+static int e_trial;                                     // 1 = 正在试探，记 trail
+
+static inline void est_set(int idx, int v) {
+    if (e_trial) etrail[netrail++] = (idx << 2) | estate[idx];
+    estate[idx] = (unsigned char)v;
+}
+static inline void dsu_set(int i, int v) {
+    if (e_trial) { utrail_i[nutrail] = i; utrail_v[nutrail] = dsu[i]; ++nutrail; }
+    dsu[i] = v;
+}
+
+static int dfind(int x) {
+    // ⚠ 试探期**关掉路径压缩**：压缩的写次数无界（每次 dfind 都可能写好几个结点），
+    //   按 4N 分配的 trail 会溢出（第一版就是这么段错误的）。关掉后只有 union 写 dsu，次数 <= N。
+    if (e_trial) { while (dsu[x] != x) x = dsu[x]; return x; }
+    while (dsu[x] != x) { dsu[x] = dsu[dsu[x]]; x = dsu[x]; }
+    return x;
+}
 
 static void ppush(int c) {
     if (inq[c]) return;
@@ -362,9 +390,10 @@ static void set_edge(int c, int d, int v) {
     if (v == 1) {
         int ra = dfind(c), rb = dfind(n);
         if (ra == rb) { prop_bad = 1; return; }   // 闭成环，而 Coil 的解是路径
-        dsu[ra] = rb;
+        dsu_set(ra, rb);
     }
-    *a = *b = (unsigned char)v;
+    est_set(c * 4 + d, v); est_set(n * 4 + (d ^ 2), v);
+    (void)a; (void)b;
     ppush(c); ppush(n);
 }
 
@@ -731,7 +760,7 @@ static void dprocess(int c) {
             if (dirv[n * 4 + (e ^ 2)] == 2 && dirv[c * 4 + e] == 0) set_dir(c, e, 1);
             if (dir_bad) return;
         } else {                                              // 未定边：两向都否 => 这条边用不上
-            if (!dir_trial && dirv[c * 4 + e] == 2 && dirv[n * 4 + (e ^ 2)] == 2 && estate[c * 4 + e] == 0) {
+            if (dirv[c * 4 + e] == 2 && dirv[n * 4 + (e ^ 2)] == 2 && estate[c * 4 + e] == 0) {
                 set_edge(c, e, 2); ++dir_newban;   // 试探期不碰 estate（它没有 trail，会和 prestore 打架）               // ← 有向层反哺无向层
                 if (prop_bad) { dir_bad = 1; return; }
             }
@@ -836,21 +865,41 @@ static void drun(void) {
 static long long dirprobe_kill;
 
 static int try_dir(int c, int e) {          // 假设「路径从 c 走向 c+e」，返回是否矛盾
-    ndtrail = 0; dir_trial = 1;
-    int qh0 = dqh, qt0 = dqt;
-    dqh = dqt = 0;
+    int qh0 = dqh, qt0 = dqt, ph0 = qhead, pt0 = qtail;
+    int sb = prop_bad, sfe = prop_forced_end;
+    ndtrail = 0; netrail = 0; nutrail = 0;
+    dir_trial = 1; e_trial = 1;
+    dqh = dqt = 0; qhead = qtail = 0;
+
     set_dir(c, e, 1);
     drun();
-    int r = dir_bad;
+    // ⚠ 这里**不能**调 prun_queue()：它执行的 pprocess 用的是 prop_start / prop_endcol，
+    //   而全局相里这两个是"上一次某个起点留下的值"。拿起点专属的推理去做全局证伪 => 不可靠。
+    //   实测开了之后 1~120 关里 18 关被全部证伪（no solution found），消融确认是 probing 本身，
+    //   与 end_ok 规则无关（DIRLAYER=1/2 均 10/10 正常，只有 =3 变成 1/10）。
+    //   要打开这条通路，得先给 pprocess 做一个"不假定起点"的模式 —— 见下方 TODO。
+    int r = dir_bad || prop_bad;
+
+    // 逐条回退：dirv / estate / dsu，顺序无关（都是独立下标的旧值）
     while (ndtrail) { int t = dtrail[--ndtrail]; dirv[t >> 2] = (unsigned char)(t & 3); }
-    while (dqh != dqt) { dinq[dqbuf[dqh++]] = 0; if (dqh == N + 1) dqh = 0; }  // 只清残留
-    dqh = qh0; dqt = qt0;
-    dir_trial = 0; dir_bad = 0;
+    while (netrail) { int t = etrail[--netrail]; estate[t >> 2] = (unsigned char)(t & 3); }
+    while (nutrail) { --nutrail; dsu[utrail_i[nutrail]] = utrail_v[nutrail]; }
+    while (dqh != dqt) { dinq[dqbuf[dqh++]] = 0; if (dqh == N + 1) dqh = 0; }   // 清队列残留
+    while (qhead != qtail) { inq[pq[qhead++]] = 0; if (qhead == N + 1) qhead = 0; }
+
+    dqh = qh0; dqt = qt0; qhead = ph0; qtail = pt0;
+    prop_bad = sb; prop_forced_end = sfe; dsu0_valid = 0;
+    dir_trial = 0; e_trial = 0; dir_bad = 0;
     return r;
 }
 
 static void dir_probe(void) {
-    if (!dtrail) dtrail = malloc((size_t)N * 4 * sizeof(int));
+    if (!dtrail) {
+        dtrail   = malloc((size_t)N * 4 * sizeof(int));
+        etrail   = malloc((size_t)(N * 4 + 64) * sizeof(int));
+        utrail_i = malloc((size_t)(N + 64) * sizeof(int));
+        utrail_v = malloc((size_t)(N + 64) * sizeof(int));
+    }
     for (int c = 0; c < N && !dir_bad; ++c) {
         if (!g0[c]) continue;
         for (int e = 0; e < 4; ++e) {
@@ -881,7 +930,25 @@ static long long g_dirdet;
 static void dir_global_precompute(void) {
     if (!dirv) { dirv = malloc((size_t)N * 4); dqbuf = malloc((size_t)(N + 2) * sizeof(int)); dinq = malloc((size_t)N); }
     if (!g_dirv) g_dirv = malloc((size_t)N * 4);
-    if (!dtrail) dtrail = malloc((size_t)N * 4 * sizeof(int));
+    if (!dtrail) {          // ⚠ 四个 trail 必须一起分配 —— 这里原来只分配了 dtrail，
+        dtrail   = malloc((size_t)N * 4 * sizeof(int));       //   于是 dir_probe 的 if(!dtrail) 判定为"已分配"，
+        etrail   = malloc((size_t)(N * 4 + 64) * sizeof(int));//   另外三个永远是 NULL => 空指针写入段错误。
+        utrail_i = malloc((size_t)(N + 64) * sizeof(int));
+        utrail_v = malloc((size_t)(N + 64) * sizeof(int));
+    }
+    // ⚠ 并查集是每个起点在 propagate() 里重建的，**全局相没走那条路，dsu 是未初始化的**
+    //   （第一版因此在 dfind 里读越界段错误）。不能简单清成单位元 —— 那会丢掉已定必用边的
+    //   连通信息，环检测就废了。按当前 estate 重建。
+    for (int c = 0; c < N; ++c) dsu[c] = c;
+    for (int c = 0; c < N; ++c) {
+        if (!g0[c]) continue;
+        for (int d = 2; d < 4; ++d) {                 // 每条边只处理一次
+            int n = c + delta[d];
+            if (!g0[n] || estate[c * 4 + d] != 1) continue;
+            int ra = dfind(c), rb = dfind(n);
+            if (ra != rb) dsu[ra] = rb;
+        }
+    }
     memset(dirv, 0, (size_t)N * 4);
     memset(dinq, 0, (size_t)N);
     dqh = dqt = 0; dir_bad = 0; dir_global = 1;
