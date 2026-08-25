@@ -391,7 +391,48 @@ static void ppush(int c) {
     if (qtail == N + 1) qtail = 0;
 }
 
+// ===== 可靠性探针（REFSOL=<解文件>）=====
+//
+// 用户的判据：**筛选必须被证明有效，"经验上有效"不算。**
+// 完整证明要逐条规则写论证（有些规则至今只有注释、没有论证 —— 见 notes 里的盘点）。
+// 在那之前，术上能做的最强检查是把断言下沉到**每一次消除发生的当场**：
+//
+//   给定已知真解，在「某条边被禁用 / 被强制」「某个走向被消除」「某个起点被证伪」的**那一刻**，
+//   断言被消除的东西真解没用到。
+//
+// 这比 --verify 细得多（那个只看最终结果，而且覆盖不到 propagate_strong ——
+// 703 的 8 个候选恰恰是它筛出来的），能把不可靠的规则**在第一次犯错的现场抓住**。
+//
+// ⚠ 试探期（probing）的消除是假设性的，不适用；树内子问题的前缀一般不等于真解，也不适用。
+//   所以只在**非试探的外层**断言。
+static unsigned char *ref_used;      // ref_used[c*4+d] = 真解是否用了这条边
+static int ref_start = -1, ref_on = 0;
+static long long ref_violations = 0;
+
+static void ref_flag(const char *what, int c, int d) {
+    ++ref_violations;
+    if (ref_violations <= 20)
+        fprintf(stderr, "‼ 可靠性违例[%s]：格(%d,%d) 方向%d —— **真解用到了它，却被消除**\n",
+                what, (c % W) - 1, (c / W) - 1, d);
+}
+
+// ref_suspend：试探期（probing）的消除是假设性的、树内子问题的前缀一般不等于真解，
+// 两种情形都不适用断言。由这些场景自己置位，避免探针依赖后面才声明的变量。
+// ⚠ 断言只对**全局相**成立：全局相的推论声称"对一切解成立"，与真解冲突就是真 bug。
+//   而每起点传播是在"假设 s 是起点"之下推的 —— 对非真起点的 s，推出真解没用到的边完全正常，
+//   不是不可靠。（第一版没区分，四关全报违例，全是假警报。）
+//   所以默认挂起，只在 global_fixpoint 里放开。
+static int ref_suspend = 1;
+
+static void ref_check_edge(int c, int d, int v) {
+    if (!ref_on || ref_suspend) return;
+    int u = ref_used[c * 4 + d];
+    if (v == 2 && u)  ref_flag("全局禁边", c, d);      // 真解用了这条边，全局相却说"任何解都不用"
+    if (v == 1 && !u) ref_flag("全局必用边", c, d);    // 真解没用这条边，全局相却说"任何解都必用"
+}
+
 static void set_edge(int c, int d, int v) {
+    ref_check_edge(c, d, v);
     int n = c + delta[d];
     unsigned char *a = &estate[c * 4 + d], *b = &estate[n * 4 + (d ^ 2)];
     if (*a == v) return;
@@ -962,7 +1003,7 @@ static int try_dir_v(int c, int e, int v, int *cap, int *ncap) {
     int qh0 = dqh, qt0 = dqt, ph0 = qhead, pt0 = qtail;
     int sb = prop_bad, sfe = prop_forced_end;
     ndtrail = 0; netrail = 0; nutrail = 0;
-    dir_trial = 1; e_trial = 1;
+    dir_trial = 1; e_trial = 1; ref_suspend = 1;
     dqh = dqt = 0; qhead = qtail = 0;
 
     int spg = prop_global, sps = prop_start, sfe2 = prop_forced_end;
@@ -991,7 +1032,7 @@ static int try_dir_v(int c, int e, int v, int *cap, int *ncap) {
 
     dqh = qh0; dqt = qt0; qhead = ph0; qtail = pt0;
     prop_bad = sb; prop_forced_end = sfe; dsu0_valid = 0;
-    dir_trial = 0; e_trial = 0; dir_bad = 0;
+    dir_trial = 0; e_trial = 0; ref_suspend = 0; dir_bad = 0;
     return r;
 }
 
@@ -1048,13 +1089,13 @@ static void dir_probe(void) {
 // 滑行规则里"前方是否已访问"从析取变成查表：前方已访问(g==0)或是墙 => 转弯自由，无需时序约束。
 static int dir_layer_dyn(void) {
     if (!dirv || !use_dirlayer) return 1;
-    D_mode = 1;
+    D_mode = 1; ref_suspend = 1;
     memset(dirv, 0, (size_t)N * 4);
     memset(dinq, 0, (size_t)N);
     dqh = dqt = 0; dir_bad = 0;
     for (int c = 0; c < N; ++c) if (g[c]) dpush(c);
     drun();
-    D_mode = 0;
+    D_mode = 0; ref_suspend = 0;
     return !dir_bad && !p2_bad;
 }
 
@@ -1328,6 +1369,7 @@ static int filter_endpoints(void) {
 
 // 全局阶段滚到不动点：流 -> 固定网格边 -> 再流 …… 这些推论对所有起点都成立，算一次全局复用
 static int global_fixpoint(void) {
+    ref_suspend = 0;                 // 全局相：放开可靠性断言
     memset(estate, 0, (size_t)N * 4);
     for (int it = 0; it < 8; ++it) {
         if (!filter_endpoints()) return 0;
@@ -1390,6 +1432,7 @@ static int global_fixpoint(void) {
             }
         }
     }
+    ref_suspend = 1;                 // 全局相结束，之后是每起点语境，断言不再适用
     memcpy(g_estate, estate, (size_t)N * 4);
 
     // ---- SAC 测量（SACPROBE=1）：逐条未定边假设"必走"，传播看矛盾 => 全局禁边 ----
@@ -1807,7 +1850,16 @@ static int xchain_check(int s) {
 }
 
 static long long plainF_last;      // FRANK：纯传播层的 F（与 PROBEDUMP 普查同口径）
+static int propagate_strong_inner(int s);
 static int propagate_strong(int s) {
+    int ref_prev = ref_suspend;
+    if (ref_on) ref_suspend = (s != ref_start);
+    int r = propagate_strong_inner(s);
+    ref_suspend = ref_prev;
+    if (ref_on && s == ref_start && !r) { ++ref_violations; fprintf(stderr, "!! REFSOL: true start REFUTED by propagate_strong\n"); }
+    return r;
+}
+static int propagate_strong_inner(int s) {
     if (!propagate(s)) return 0;                 // 第 1 层：最便宜
     {   // F 采样点：必须在 flow/probing 改写 estate 之前，保证与普查 F 逐位相等
         long long fp = 0;
@@ -2428,6 +2480,37 @@ int main(int argc, char **argv) {
 
 
     if (getenv("GFILTER")) use_gfilter = atoi(getenv("GFILTER"));
+    // ---- REFSOL=<解文件>：装载已知真解，开启逐条消除的可靠性断言 ----
+    if (getenv("REFSOL")) {
+        FILE *rf = fopen(getenv("REFSOL"), "r");
+        if (!rf) { fprintf(stderr, "REFSOL open failed\n"); return 1; }
+        static char rbuf[1 << 22];
+        size_t rn = fread(rbuf, 1, sizeof rbuf - 1, rf); rbuf[rn] = 0; fclose(rf);
+        int rx, ry; char *pp = strstr(rbuf, "path=");
+        if (sscanf(rbuf, "x=%d&y=%d", &rx, &ry) != 2 || !pp) { fprintf(stderr, "REFSOL bad format\n"); return 1; }
+        pp += 5;
+        ref_used = calloc((size_t)N * 4, 1);
+        unsigned char *vis = calloc((size_t)N, 1);
+        int cur = (ry + 1) * W + (rx + 1);
+        ref_start = cur; vis[cur] = 1;
+        for (char *q = pp; *q; ++q) {
+            // ⚠ 方向编码必须与 DCH={'L','U','R','D'} / delta[] 一致。
+            //   第一版写成 U=0,D=1,L=2,R=3，整个 ref_used 全错，探出一堆假违例。
+            int d = (*q == 'L') ? 0 : (*q == 'U') ? 1 : (*q == 'R') ? 2 : (*q == 'D') ? 3 : -1;
+            if (d < 0) continue;
+            for (;;) {                       // 逐格滑到撞墙或撞到已访问
+                int nx = cur + delta[d];
+                if (!g0[nx] || vis[nx]) break;
+                ref_used[cur * 4 + d] = 1;
+                ref_used[nx * 4 + (d ^ 2)] = 1;
+                cur = nx; vis[nx] = 1;
+            }
+        }
+        free(vis);
+        ref_on = 1;
+        fprintf(stderr, "REFSOL loaded: true start (%d,%d), per-deduction assertions ON\n", rx, ry);
+    }
+
     if (!global_fixpoint()) { fprintf(stderr, "全局阶段：度约束松弛无解\n"); return 1; }
     for (int c = 0; c < N; ++c) if (g0[c]) for (int d = 2; d < 4; ++d)
         if (g0[c + delta[d]] && g_estate[c * 4 + d]) ++gfix_total;
@@ -2453,6 +2536,21 @@ int main(int argc, char **argv) {
     int ns = 0;
     memcpy(g, g0, N);
     for (int c = 0; c < N; ++c) if (g0[c] && end_ok[c]) starts[ns++] = c;
+    // PINSTART="x,y"：只跑这一个起点（从 v71 谱系移植）。
+    // ⚠ 血的教训：v58->v73 谱系此前**没有**这个解析，PINSTART 被静默忽略 ——
+    //   所有"钉住 703 候选"的测试实际是全盘跑，"树价"诊断的证据链因此作废过一次。
+    //   环境变量拼错/不存在时程序不报错只会"照常跑"，所以这里命中与否都打印。
+    if (getenv("PINSTART")) {
+        int px = -1, py = -1;
+        if (sscanf(getenv("PINSTART"), "%d,%d", &px, &py) == 2) {
+            int want = (py + 1) * W + (px + 1), k = 0;
+            for (int i = 0; i < ns; ++i) if (starts[i] == want) starts[k++] = starts[i];
+            ns = k;
+            fprintf(stderr, "PINSTART=(%d,%d) -> %s\n", px, py,
+                    ns ? "命中，只跑这一个起点" : "**该起点已被全局过滤剔除**");
+        }
+    }
+
     for (int i = 1; i < ns; ++i) {
         int v = starts[i], dv = freedeg(v), j = i;
         while (j > 0 && freedeg(starts[j - 1]) > dv) { starts[j] = starts[j - 1]; --j; }
