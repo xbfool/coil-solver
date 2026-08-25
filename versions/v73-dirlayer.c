@@ -344,6 +344,13 @@ static int *dsu;
 static int *pq;
 static unsigned char *inq;
 static int qhead, qtail;
+// 树内传播的状态（propagate_dyn 那一套）。声明提前：有向层要参数化复用它们，而它在这些定义之前。
+static unsigned char *estate2;
+static int *dsu2;
+static int p2_bad, p2_start, p2_endcol, p2_end;
+static void set_edge2(int c, int d, int v);
+static void ppush2(int c);
+
 static unsigned char *end_ok;   // 全局端点过滤的结论："这格可不可能是端点"，sound 且与起点无关
 static int prop_bad, prop_start, prop_endcol, prop_forced_end;
 static int prop_global;   // 1 = pprocess 走"不假定起点"的语义（每格 lo=1,hi=2；靠 end_ok 收紧）
@@ -694,7 +701,9 @@ static int *fhead, *fnext, *fto, *fcap, *flevel, *fiter, *fq, *fmap;
 static int fcnt, fnodes;
 static long long flow_bans = 0, flow_uses = 0, flow_refute = 0;
 static int use_flow = 1;
-static int use_dirlayer = 1; // DIRLAYER=0 关掉有向层做消融对照
+// 默认 3 = 规则 + 全局预计算 probing + 时序找环（实测：L690 176s->72s、L680 30s->12s、L660 21s->2s）。
+// 0=关 1=只规则 2=加时序找环 3=加全局 probing 4=每起点也 probing 5=树内也跑(**实测负收益**)
+static int use_dirlayer = 3;
 static int use_chain = 1;   // CHAIN=0 关掉链定向做消融对照
 
 // ============================================================================
@@ -712,6 +721,21 @@ static int use_chain = 1;   // CHAIN=0 关掉链定向做消融对照
 // 变量：dirv[c*4+e] ∈ {0 未定, 1 是, 2 否}，"路径从 c 走向 c+e"。
 // 「从 e 方向进入 c」就是 dirv[(c-delta[e])*4+e]。
 //
+// ===== 有向层的状态选择器 =====
+// D_mode = 0：外层（estate / g0 / prop_* / set_edge）
+// D_mode = 1：**树内**（estate2 / g / p2_* / set_edge2）—— 树内的决定性优势是
+//             前缀已知，g[] 直接告诉我们哪些格已访问，滑行规则里"前方是否已访问"从析取变成查表。
+// 参数化复用而不是复制第二份：规则只有一处，改了不会漏同步。
+static int D_mode;
+#define DEST   (D_mode ? estate2 : estate)
+#define DGRID  (D_mode ? g : g0)
+#define DSTART (D_mode ? p2_start : prop_start)
+#define DBAD    (D_mode ? p2_bad : prop_bad)
+#define DENDCOL (D_mode ? p2_endcol : prop_endcol)
+#define DFEND   (D_mode ? p2_end : prop_forced_end)
+#define DSETBAD() do { if (D_mode) p2_bad = 1; else prop_bad = 1; } while (0)
+#define DSET_EDGE(c,d,v) do { if (D_mode) set_edge2((c),(d),(v)); else set_edge((c),(d),(v)); } while (0)
+
 static unsigned char *dirv;
 static unsigned char *g_dirv;      // 全局有向事实：不假定起点推出来的，对一切起点成立（类比 g_estate）
 static int dir_global;
@@ -722,12 +746,12 @@ static long long dir_newban;        // 有向层反哺给无向层的新禁边�
 
 static inline int in_val(int c, int e) {          // 从 e 方向进入 c：是/否/未定
     int p = c - delta[e];
-    if (!g0[p]) return 2;                          // 从墙里进来不可能
+    if (!DGRID[p]) return 2;                          // 从墙里进来不可能
     return dirv[p * 4 + e];
 }
 
 static void dpush(int c) {
-    if (!g0[c] || dinq[c]) return;
+    if (!DGRID[c] || dinq[c]) return;
     dinq[c] = 1; dqbuf[dqt++] = c;
     if (dqt == N + 1) dqt = 0;
 }
@@ -745,13 +769,15 @@ static inline void dtrail_set(int idx, int v) {
 }
 
 static void set_dir(int c, int e, int v) {
-    if (!g0[c] || !g0[c + delta[e]]) { if (v == 1) dir_bad = 1; return; }
+    if (!DGRID[c] || !DGRID[c + delta[e]]) { if (v == 1) dir_bad = 1; return; }
     unsigned char *p = &dirv[c * 4 + e];
     if (*p == v) return;
     if (*p != 0) { dir_bad = 1; return; }
     dtrail_set(c * 4 + e, v);
     dpush(c); dpush(c + delta[e]);
-    if (v == 1 && estate[c * 4 + e] == 0) set_edge(c, e, 1);   // 走了这一步 => 这条边必用，触发无向级联
+    if (v == 1 && DEST[c * 4 + e] == 0) DSET_EDGE(c, e, 1);   // 走了这一步 => 这条边必用，触发无向级联
+    // ⚠ 这里必须用分发宏：参数化时我把它误还原成外层 set_edge，树内模式下会去改**外层 estate** ——
+    //   既污染外层又没约束树内，关 55 因此丢解。
     if (v == 1) {                                  // 走了这一步，反向那步就不可能
         unsigned char *q = &dirv[(c + delta[e]) * 4 + (e ^ 2)];
         if (*q == 1) { dir_bad = 1; return; }
@@ -789,11 +815,11 @@ static int ord_reach(int a, int b, int budget) {
             if (dirv[x * 4 + d] != 1) continue;
             int y = x + delta[d];
             if (y == b) return 1;
-            if (g0[y] && ord_seen[y] != ord_gen && sp < N) { ord_seen[y] = ord_gen; ord_stack[sp++] = y; }
+            if (DGRID[y] && ord_seen[y] != ord_gen && sp < N) { ord_seen[y] = ord_gen; ord_stack[sp++] = y; }
         }
         for (int e = 0; e < 4; ++e) {                   // 回边：x 是某转弯点的"前方格" => t(x) < t(该点)
             int y = x - delta[e];
-            if (!g0[y] || in_val(y, e) != 1 || dirv[y * 4 + e] != 2) continue;
+            if (!DGRID[y] || in_val(y, e) != 1 || dirv[y * 4 + e] != 2) continue;
             if (y == b) return 1;
             if (ord_seen[y] != ord_gen && sp < N) { ord_seen[y] = ord_gen; ord_stack[sp++] = y; }
         }
@@ -803,13 +829,13 @@ static int ord_reach(int a, int b, int budget) {
 
 // 对一格施加全部有向规则
 static void dprocess(int c) {
-    if (dir_bad || !g0[c]) return;
+    if (dir_bad || !DGRID[c]) return;
 
     // --- 规则 1：与 estate 双向喂 ---
     for (int e = 0; e < 4; ++e) {
         int n = c + delta[e];
-        if (!g0[n]) { if (dirv[c * 4 + e] == 0) dtrail_set(c * 4 + e, 2); continue; }
-        int st = estate[c * 4 + e];
+        if (!DGRID[n]) { if (dirv[c * 4 + e] == 0) dtrail_set(c * 4 + e, 2); continue; }
+        int st = DEST[c * 4 + e];
         if (st == 2) {                                        // 禁边 => 两向都不可能
             if (dirv[c * 4 + e] == 1 || dirv[n * 4 + (e ^ 2)] == 1) { dir_bad = 1; return; }
             if (dirv[c * 4 + e] == 0) { dtrail_set(c * 4 + e, 2); dpush(n); }
@@ -820,8 +846,8 @@ static void dprocess(int c) {
             if (dirv[n * 4 + (e ^ 2)] == 2 && dirv[c * 4 + e] == 0) set_dir(c, e, 1);
             if (dir_bad) return;
         } else {                                              // 未定边：两向都否 => 这条边用不上
-            if (dirv[c * 4 + e] == 2 && dirv[n * 4 + (e ^ 2)] == 2 && estate[c * 4 + e] == 0) {
-                set_edge(c, e, 2); ++dir_newban;   // 试探期不碰 estate（它没有 trail，会和 prestore 打架）               // ← 有向层反哺无向层
+            if (dirv[c * 4 + e] == 2 && dirv[n * 4 + (e ^ 2)] == 2 && DEST[c * 4 + e] == 0) {
+                DSET_EDGE(c, e, 2); ++dir_newban;   // 试探期不碰 estate（它没有 trail，会和 prestore 打架）               // ← 有向层反哺无向层
                 if (prop_bad) { dir_bad = 1; return; }
             }
         }
@@ -833,11 +859,11 @@ static void dprocess(int c) {
     //   第一版共用了出向那个 continue，于是"c+e 是墙但 c−e 是自由格"时会漏数一个合法入向，
     //   进而错误地断定"只剩一个入向"或直接判"进不来"=> 所有起点全被证伪。
     for (int e = 0; e < 4; ++e) {
-        if (g0[c + delta[e]]) {
+        if (DGRID[c + delta[e]]) {
             int ov = dirv[c * 4 + e];
             if (ov == 1) ++oy; else if (ov == 0) { ++ou; oe = e; }
         }
-        if (g0[c - delta[e]]) {
+        if (DGRID[c - delta[e]]) {
             int iv = in_val(c, e);
             if (iv == 1) ++iy; else if (iv == 0) { ++iu; ie = e; }
         }
@@ -846,12 +872,12 @@ static void dprocess(int c) {
     if (dir_global) {
         // 全局相：起点/终点未知，"至多一个出向 / 至多一个入向"是无条件成立的。
         if (oy == 1) for (int e = 0; e < 4; ++e) if (dirv[c * 4 + e] == 0) { dtrail_set(c * 4 + e, 2); dpush(c + delta[e]); }
-        if (iy == 1) for (int e = 0; e < 4; ++e) if (g0[c - delta[e]] && in_val(c, e) == 0) set_dir(c - delta[e], e, 2);
+        if (iy == 1) for (int e = 0; e < 4; ++e) if (DGRID[c - delta[e]] && in_val(c, e) == 0) set_dir(c - delta[e], e, 2);
         if (dir_bad) return;
         // 但"这格绝不可能是端点"这个信息**全局过滤已经算出来了**（end_ok[]），有向相之前没接上。
         // 不可能是端点 <=> 既不是起点也不是终点 <=> **入度恰好 1 且出度恰好 1**。
         // 这正是之前被降级掉的那条规则，现在对这批格子可以合法地用回来。
-        if (dir_use_endok && !end_ok[c]) {
+        if (!D_mode && dir_use_endok && !end_ok[c]) {
             if (oy == 0) {
                 if (ou == 0) { dir_bad = 1; return; }          // 非端点却出不去
                 if (ou == 1) { set_dir(c, oe, 1); if (dir_bad) return; }
@@ -863,12 +889,12 @@ static void dprocess(int c) {
         }
         goto slide_rule;
     }
-    int is_start = (c == prop_start);
+    int is_start = (c == DSTART);
     // ⚠ **终点是未知的**：只有"确定不可能是终点"的格才能断言"恰好一个出向"。
     //   判据与无向层同源 —— 终点已定在别处，或颜色对不上（终点色由奇偶决定）。
     //   第一版没加这个判据，对每格都强推出向，把真终点那格推错 => 所有关全被证伪。
-    int is_end = (prop_forced_end == c);
-    int maybe_end = is_end || (prop_forced_end < 0 && col[c] == prop_endcol);
+    int is_end = (DFEND == c);
+    int maybe_end = is_end || (DFEND < 0 && col[c] == DENDCOL);
     if (is_end) { for (int e = 0; e < 4; ++e) if (dirv[c * 4 + e] == 0) { dtrail_set(c * 4 + e, 2); dpush(c + delta[e]); } }
     else if (!maybe_end) {
         if (oy == 0 && ou == 0) { dir_bad = 1; return; }       // 非终点却出不去
@@ -877,10 +903,10 @@ static void dprocess(int c) {
     } else if (oy == 1) {                                      // 可能是终点：只能说"至多一个出向"
         for (int e = 0; e < 4; ++e) if (dirv[c * 4 + e] == 0) { dtrail_set(c * 4 + e, 2); dpush(c + delta[e]); }
     }
-    if (is_start) { for (int e = 0; e < 4; ++e) if (g0[c - delta[e]] && in_val(c, e) == 0) set_dir(c - delta[e], e, 2); }
+    if (is_start) { for (int e = 0; e < 4; ++e) if (DGRID[c - delta[e]] && in_val(c, e) == 0) set_dir(c - delta[e], e, 2); }
     else {
         if (iy == 0 && iu == 0) { dir_bad = 1; return; }       // 非起点却进不来
-        if (iy == 1) { for (int e = 0; e < 4; ++e) if (g0[c - delta[e]] && in_val(c, e) == 0) set_dir(c - delta[e], e, 2); }
+        if (iy == 1) { for (int e = 0; e < 4; ++e) if (DGRID[c - delta[e]] && in_val(c, e) == 0) set_dir(c - delta[e], e, 2); }
         else if (iu == 1) { set_dir(c - delta[ie], ie, 1); if (dir_bad) return; }
     }
     if (dir_bad) return;
@@ -890,14 +916,15 @@ static void dprocess(int c) {
     //   相邻两格不能互相要求对方更早：¬( T(c,e) ∧ T(c+e, −e) )
     //   于是 T(c,e) 一旦成立：若路径从 c+2e 走向 c+e，它**必须继续走进 c**。
 slide_rule:
-    if (use_dirlayer < 2) return;      // DIRLAYER=1 只开规则 1~2，=2 才加反对称（便于二分定位）
+    if (use_dirlayer < 2) return;
+    if (D_mode && getenv("NODYNORD")) return;   // 消融：树内关掉滑行/找环      // DIRLAYER=1 只开规则 1~2，=2 才加反对称（便于二分定位）
     for (int e = 0; e < 4; ++e) {
         if (in_val(c, e) != 1) continue;                       // 没从 e 进来
         int f = c + delta[e];
-        if (!g0[f]) continue;                                  // 正前方是墙：转弯本来就自由，无约束
+        if (!DGRID[f]) continue;                                  // 正前方是墙：转弯本来就自由，无约束
         if (dirv[c * 4 + e] != 2) continue;                    // 还没确定"没直行"
         int b = f + delta[e];                                  // c+2e
-        if (!g0[b]) continue;
+        if (!DGRID[b]) continue;
         if (dirv[b * 4 + (e ^ 2)] == 1) {                      // 路径从 c+2e 走向 c+e
             set_dir(f, e ^ 2, 1);                              // 那它必须继续走进 c
             if (dir_bad) return;
@@ -946,7 +973,7 @@ static int try_dir_v(int c, int e, int v, int *cap, int *ncap) {
     drun();
     prun_queue();                       // ← 现在可以放心跑无向级联了：pprocess 走全局语义
     prop_global = spg; prop_start = sps; prop_forced_end = sfe2;
-    // 历史注记：一开始直接调 prun_queue() 而没做全局语义，pprocess 用的是 prop_start / prop_endcol，
+    // 历史注记：一开始直接调 prun_queue() 而没做全局语义，pprocess 用的是 DSTART / DENDCOL，
     // 而全局相里那是"上一次某个起点留下的值"，拿起点专属推理做全局证伪 => 18 关被误杀。
     // 现在 pprocess 有了 prop_global 模式，这条通路才是可靠的。
     int r = dir_bad || prop_bad;
@@ -957,7 +984,7 @@ static int try_dir_v(int c, int e, int v, int *cap, int *ncap) {
     }
     // 逐条回退：dirv / estate / dsu，顺序无关（都是独立下标的旧值）
     while (ndtrail) { int t = dtrail[--ndtrail]; dirv[t >> 2] = (unsigned char)(t & 3); }
-    while (netrail) { int t = etrail[--netrail]; estate[t >> 2] = (unsigned char)(t & 3); }
+    while (netrail) { int t = etrail[--netrail]; DEST[t >> 2] = (unsigned char)(t & 3); }
     while (nutrail) { --nutrail; dsu[utrail_i[nutrail]] = utrail_v[nutrail]; }
     while (dqh != dqt) { dinq[dqbuf[dqh++]] = 0; if (dqh == N + 1) dqh = 0; }   // 清队列残留
     while (qhead != qtail) { inq[pq[qhead++]] = 0; if (qhead == N + 1) qhead = 0; }
@@ -977,9 +1004,9 @@ static void dir_probe(void) {
     }
     if (!capA) { capA = malloc((size_t)N * 4 * sizeof(int)); capB = malloc((size_t)N * 4 * sizeof(int)); capval = calloc((size_t)N * 4, 1); }
     for (int c = 0; c < N && !dir_bad; ++c) {
-        if (!g0[c]) continue;
+        if (!DGRID[c]) continue;
         for (int e = 0; e < 4; ++e) {
-            if (!g0[c + delta[e]] || dirv[c * 4 + e] != 0) continue;
+            if (!DGRID[c + delta[e]] || dirv[c * 4 + e] != 0) continue;
             // ===== 两条腿的 failed literal =====
             // 之前只做了一半：只假设"走这一步"然后找矛盾。经典做法还有另一半 ——
             //   假设 A 推出 X，假设 ¬A 也推出 X  =>  **X 无条件成立**
@@ -1014,6 +1041,21 @@ static void dir_probe(void) {
             if (hit) { drun(); if (dir_bad) return; }
         }
     }
+}
+
+// 树内有向层：在**剩余子问题**上跑有向规则（含时序找环）。
+// 树内的决定性优势：前缀已知，`g[]` 直接给出"哪些格已访问" ——
+// 滑行规则里"前方是否已访问"从析取变成查表：前方已访问(g==0)或是墙 => 转弯自由，无需时序约束。
+static int dir_layer_dyn(void) {
+    if (!dirv || !use_dirlayer) return 1;
+    D_mode = 1;
+    memset(dirv, 0, (size_t)N * 4);
+    memset(dinq, 0, (size_t)N);
+    dqh = dqt = 0; dir_bad = 0;
+    for (int c = 0; c < N; ++c) if (g[c]) dpush(c);
+    drun();
+    D_mode = 0;
+    return !dir_bad && !p2_bad;
 }
 
 // ===== 全局相有向预计算 —— 这就是 Tron 说的 pre-calculation =====
@@ -1820,12 +1862,9 @@ static inline int estate_ok(int p, int d, int dd, int len, int c) {
 //   · 终点色 = col(p) ^ (剩余格数 & 1) —— 从 p 再走 remaining 步，两色交替，终点色直接算出来；
 //   · 其余照旧：非终点色的格子必须用满两条边，强制边不许闭成环。
 // 一样是「证明无解」，矛盾就把这个候选当场砍掉。
-static unsigned char *estate2;
-static int *dsu2;
 static int *pq2;
 static unsigned char *inq2;
 static int q2h, q2t;
-static int p2_bad, p2_start, p2_endcol, p2_end;
 static int prop_depth;
 
 static int dfind2(int x) { while (dsu2[x] != x) { dsu2[x] = dsu2[dsu2[x]]; x = dsu2[x]; } return x; }
@@ -2003,6 +2042,7 @@ static int propagate_dyn(int p, int remaining, int sfirst, int sdd, int slen) {
         inq2[pq2[q2h++]] = 0;
         if (q2h == N + 1) q2h = 0;
     }
+    if (!p2_bad && use_dirlayer >= 5) dir_layer_dyn();   // v73：树内有向层（DIRLAYER>=5 才开）
     g[p] = 0;
     return !p2_bad;
 }
