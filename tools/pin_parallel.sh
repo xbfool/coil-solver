@@ -3,10 +3,10 @@
 #   tools/pin_parallel.sh <关号> [并行度] [每候选上限秒]
 set -uo pipefail
 LV=${1:?}; J=${2:-10}; LIMIT=${3:-1200}
-BIN=/mnt/d/works/coil-solver/bin/v73-dirlayer
-BOARD=/mnt/d/works/coilbench/levels_all/$LV
-BANK=/mnt/d/works/coil-solutions/solutions
-CHECK=/mnt/d/works/coilbench/coil_check/check
+BIN=${COIL_ROOT:-/mnt/d/works}/coil-solver/bin/v73-dirlayer
+BOARD=${COIL_ROOT:-/mnt/d/works}/coilbench/levels_all/$LV
+BANK=${COIL_ROOT:-/mnt/d/works}/coil-solutions/solutions
+CHECK=${COIL_ROOT:-/mnt/d/works}/coilbench/coil_check/check
 W=$(( $(grep -oE "x=[0-9]+" "$BOARD" | head -1 | cut -d= -f2) + 2 ))
 LOG=/tmp/pin_${LV}.log; : > "$LOG"
 WIN=/tmp/win_${LV}.flag; rm -f "$WIN"
