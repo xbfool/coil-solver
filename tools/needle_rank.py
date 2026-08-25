@@ -24,6 +24,18 @@ SOLVER = "/mnt/d/works/coil-solver/bin/v58-probezero"
 LEVELS = "/mnt/d/works/coilbench/levels_all"
 BANK = "/mnt/d/works/coil-solutions/solutions"
 
+CHECK = "/mnt/d/works/coilbench/coil_check/check"
+
+
+def label_ok(level):
+    """标签闸：银行里有脏解（direction is blocked / start position is blocked /
+    残缺条目 / 低关号 1-indexed）。拿它当标注集之前必须逐个过官方校验器 ——
+    我就是没做这一步，13 个样本里混进了 4 个假针。"""
+    r = subprocess.run([CHECK, f"{LEVELS}/{level}", f"{BANK}/{level}.sol"],
+                       capture_output=True, text=True)
+    return not (r.stdout.strip() or r.stderr.strip())
+
+
 
 def needle_cell(level):
     """真起点的内部格号。W = 盘宽 + 2（四周补墙），格号 = (y+1)*W + (x+1)。"""
@@ -35,6 +47,8 @@ def needle_cell(level):
 
 
 def measure(level, timeout):
+    if not label_ok(level):
+        return f"关 {level}: 银行里的解不合法，跳过（不能当标注用）"
     cell, xy = needle_cell(level)
     try:
         out = subprocess.run([SOLVER, f"{LEVELS}/{level}"], env={**os.environ, "PROBEDUMP": "1"},
