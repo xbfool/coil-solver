@@ -926,26 +926,35 @@ static void drun(void) {
 // 这才是产生信息的那一步，也正是 Tron 说的 recursive patterns。
 //
 // 成本：4N 次假设 × 一次传播 —— 与无向 probing 的 2N 同数量级，2011 年单核跑得起。
-static long long dirprobe_kill;
+static long long dirprobe_kill, both_kill;
+static int *capA, *capB; static unsigned char *capval;
 
-static int try_dir(int c, int e) {          // 假设「路径从 c 走向 c+e」，返回是否矛盾
+// 假设 dirv[c][e] = v，跑传播，返回是否矛盾。cap != NULL 时把**推出来的全部有向结论**捕获下来
+// （trail 里记的正是"这一趟改过哪些下标"，所以捕获是免费的）。
+static int try_dir_v(int c, int e, int v, int *cap, int *ncap) {
     int qh0 = dqh, qt0 = dqt, ph0 = qhead, pt0 = qtail;
     int sb = prop_bad, sfe = prop_forced_end;
     ndtrail = 0; netrail = 0; nutrail = 0;
     dir_trial = 1; e_trial = 1;
     dqh = dqt = 0; qhead = qtail = 0;
 
-    int spg = prop_global, sps = prop_start;
-    prop_global = 1; prop_start = -1; prop_forced_end = -1;   // 全局语义：不假定起点
-    set_dir(c, e, 1);
+    int spg = prop_global, sps = prop_start, sfe2 = prop_forced_end;
+    // ⚠ 只有在**全局相**才切换成"不假定起点"的语义。
+    //   每起点模式下起点是已知的，把 prop_start 置 -1 会让真起点也被要求"必须有入边"=> 误杀。
+    if (dir_global) { prop_global = 1; prop_start = -1; prop_forced_end = -1; }
+    set_dir(c, e, v);
     drun();
     prun_queue();                       // ← 现在可以放心跑无向级联了：pprocess 走全局语义
-    prop_global = spg; prop_start = sps;
+    prop_global = spg; prop_start = sps; prop_forced_end = sfe2;
     // 历史注记：一开始直接调 prun_queue() 而没做全局语义，pprocess 用的是 prop_start / prop_endcol，
     // 而全局相里那是"上一次某个起点留下的值"，拿起点专属推理做全局证伪 => 18 关被误杀。
     // 现在 pprocess 有了 prop_global 模式，这条通路才是可靠的。
     int r = dir_bad || prop_bad;
 
+    if (cap) {                       // 回退前先把推论抄走：(下标, 新值)
+        *ncap = 0;
+        for (int i = 0; i < ndtrail; ++i) { int idx = dtrail[i] >> 2; cap[(*ncap)++] = (idx << 2) | dirv[idx]; }
+    }
     // 逐条回退：dirv / estate / dsu，顺序无关（都是独立下标的旧值）
     while (ndtrail) { int t = dtrail[--ndtrail]; dirv[t >> 2] = (unsigned char)(t & 3); }
     while (netrail) { int t = etrail[--netrail]; estate[t >> 2] = (unsigned char)(t & 3); }
@@ -966,17 +975,43 @@ static void dir_probe(void) {
         utrail_i = malloc((size_t)(N + 64) * sizeof(int));
         utrail_v = malloc((size_t)(N + 64) * sizeof(int));
     }
+    if (!capA) { capA = malloc((size_t)N * 4 * sizeof(int)); capB = malloc((size_t)N * 4 * sizeof(int)); capval = calloc((size_t)N * 4, 1); }
     for (int c = 0; c < N && !dir_bad; ++c) {
         if (!g0[c]) continue;
         for (int e = 0; e < 4; ++e) {
             if (!g0[c + delta[e]] || dirv[c * 4 + e] != 0) continue;
-            if (try_dir(c, e)) {                       // 这么走必然矛盾 => 这一步不可能
+            // ===== 两条腿的 failed literal =====
+            // 之前只做了一半：只假设"走这一步"然后找矛盾。经典做法还有另一半 ——
+            //   假设 A 推出 X，假设 ¬A 也推出 X  =>  **X 无条件成立**
+            // 交集里的每一条都是白捡的事实，不需要任何一边被证伪。
+            // 而 trail 里正好记着每一趟推出了什么，取交集是免费的。
+            int nA = 0, nB = 0;
+            if (try_dir_v(c, e, 1, capA, &nA)) {        // 走这一步必矛盾 => 不可能走
                 set_dir(c, e, 2); ++dirprobe_kill;
                 dqh = dqt = 0; memset(dinq, 0, (size_t)N);
-                dpush(c); dpush(c + delta[e]);
-                drun();
+                dpush(c); dpush(c + delta[e]); drun();
                 if (dir_bad) return;
+                continue;
             }
+            if (try_dir_v(c, e, 2, capB, &nB)) {        // 不走这一步必矛盾 => 必须走
+                set_dir(c, e, 1); ++dirprobe_kill;
+                dqh = dqt = 0; memset(dinq, 0, (size_t)N);
+                dpush(c); dpush(c + delta[e]); drun();
+                if (dir_bad) return;
+                continue;
+            }
+            for (int i = 0; i < nA; ++i) capval[capA[i] >> 2] = (unsigned char)((capA[i] & 3) + 1);
+            int hit = 0;
+            for (int i = 0; i < nB; ++i) {
+                int idx = capB[i] >> 2, v = capB[i] & 3;
+                if (capval[idx] == (unsigned char)(v + 1) && dirv[idx] == 0) {
+                    dirv[idx] = (unsigned char)v; dpush(idx >> 2);
+                    dpush((idx >> 2) + delta[idx & 3]);
+                    ++both_kill; hit = 1;
+                }
+            }
+            for (int i = 0; i < nA; ++i) capval[capA[i] >> 2] = 0;
+            if (hit) { drun(); if (dir_bad) return; }
         }
     }
 }
@@ -1066,7 +1101,11 @@ static int dir_layer(int s) {
     (void)s;
     for (int c = 0; c < N; ++c) if (g0[c]) dpush(c);
     drun();
-    if (0) {   // per-start 不再跑 probing —— 已挪进全局预计算，整盘只做一次
+    // DIRLAYER>=4：**每起点也跑一遍 probing**。
+    // 全局相是约束最松的地方（起点未知、终点未知），probing 在那里推不远；
+    // 起点一旦钉住，端点色、首步滑行、入度全都收紧，同样的 probing 威力完全不同。
+    // 代价高，所以只在候选很少的硬关上开（703 强筛选后只剩 8 个候选，完全付得起）。
+    if (use_dirlayer >= 4) {
         long long k0 = dirprobe_kill, b0 = dir_newban;
         dir_probe();
         if (getenv("DIRSTAT"))
