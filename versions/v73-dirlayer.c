@@ -759,6 +759,48 @@ static void set_dir(int c, int e, int v) {
     }
 }
 
+// ===== 时序环检测（Tron 的 bounded brute force）=====
+//
+// 滑行规则产生的本质上是「谁比谁早」的约束，而我们此前只用了**成对**反对称
+// （A 和 B 不能互相要求对方更早）。真正有力的是**沿链传递地找环**：
+//
+//   · dirv[a][d]=1（路径 a -> a+d）  =>  t(a) < t(a+d)      —— 正向链接
+//   · T(c,e)（从 e 进入 c 却转弯）    =>  t(c+e) < t(c)      —— 回边
+//
+// **任何环 = 矛盾。** 而找环用**有界 DFS**：找到环是证明，找不到不下任何结论 ——
+// 所以无论深度限多少都 sound，这正是 "bounded brute force" 的本意（有界搜索找矛盾）。
+//
+// 成对反对称只是这里深度=1 的特例。
+static int ord_depth = 24;
+static long long ord_kill;
+
+// 从 a 出发沿"更早 -> 更晚"的链走，看能不能到 b（能到 => 与 t(b)<t(a) 矛盾 => 环）
+// 迭代 + 访问标记：递归版会指数爆炸（分支 <=8、深度 24 => 8^24）。
+static int *ord_stack; static int *ord_seen; static int ord_gen;
+static int ord_reach(int a, int b, int budget) {
+    if (a == b) return 1;
+    if (!ord_stack) { ord_stack = malloc((size_t)N * sizeof(int)); ord_seen = calloc((size_t)N, sizeof(int)); }
+    ++ord_gen;
+    int sp = 0;
+    ord_stack[sp++] = a; ord_seen[a] = ord_gen;
+    while (sp && budget-- > 0) {
+        int x = ord_stack[--sp];
+        for (int d = 0; d < 4; ++d) {                   // 正向链接：x -> x+d
+            if (dirv[x * 4 + d] != 1) continue;
+            int y = x + delta[d];
+            if (y == b) return 1;
+            if (g0[y] && ord_seen[y] != ord_gen && sp < N) { ord_seen[y] = ord_gen; ord_stack[sp++] = y; }
+        }
+        for (int e = 0; e < 4; ++e) {                   // 回边：x 是某转弯点的"前方格" => t(x) < t(该点)
+            int y = x - delta[e];
+            if (!g0[y] || in_val(y, e) != 1 || dirv[y * 4 + e] != 2) continue;
+            if (y == b) return 1;
+            if (ord_seen[y] != ord_gen && sp < N) { ord_seen[y] = ord_gen; ord_stack[sp++] = y; }
+        }
+    }
+    return 0;
+}
+
 // 对一格施加全部有向规则
 static void dprocess(int c) {
     if (dir_bad || !g0[c]) return;
@@ -860,6 +902,10 @@ slide_rule:
             set_dir(f, e ^ 2, 1);                              // 那它必须继续走进 c
             if (dir_bad) return;
         }
+        // 传递版（bounded brute force）：T(c,e) 断言 t(f) < t(c)。
+        // 若沿"更早->更晚"的链从 c 又能走到 f（即 t(c) < t(f)），就成环 => 矛盾。
+        // 成对反对称只是这里深度=1 的特例。
+        if (use_dirlayer >= 2 && ord_reach(c, f, ord_depth)) { dir_bad = 1; ++ord_kill; return; }
     }
 }
 
@@ -2163,6 +2209,7 @@ int main(int argc, char **argv) {
     if (getenv("CHAIN")) use_chain = atoi(getenv("CHAIN"));
     if (getenv("DIRLAYER")) use_dirlayer = atoi(getenv("DIRLAYER"));
     if (getenv("ENDOK")) dir_use_endok = atoi(getenv("ENDOK"));
+    if (getenv("ORDDEPTH")) ord_depth = atoi(getenv("ORDDEPTH"));
     if (getenv("SUBTOUR")) use_subtour = atoi(getenv("SUBTOUR"));
     bk_estate = malloc((size_t)N * 4);
     bk_dsu = malloc(sizeof(int) * (size_t)N);
