@@ -1330,7 +1330,24 @@ static int global_fixpoint(void) {
         for (int c = 0; c < N; ++c) if (g0[c] && end_ok[c]) ++gfilter_kept;
         fprintf(stderr, "  分治：%d 块 %d 对，可行 %d 对，整块淘汰掉 %d 格\n", K, npair, nok, killed);
     }
-    if (use_dirlayer) dir_global_precompute();   // v73：有向预计算（Tron 的 pre-calculation）
+    // v73：有向层与流过滤**互相喂**，套成外层循环 ——
+    //   有向层产出新禁边 -> 流过滤吃进去 -> 端点候选(end_ok)变少 -> 有向层又能推更多。
+    //   之前只跑一轮，两层各自的产出都没喂给对方。
+    if (use_dirlayer) {
+        long long prev = -1;
+        for (int outer = 0; outer < 4; ++outer) {
+            dir_global_precompute();
+            long long det = 0;
+            for (int c = 0; c < N; ++c) if (g0[c]) for (int d = 2; d < 4; ++d)
+                if (g0[c + delta[d]] && estate[c * 4 + d]) ++det;
+            if (det == prev) break;                       // 收敛
+            prev = det;
+            for (int it = 0; it < 4; ++it) {              // 让流过滤吃到新禁边
+                if (!filter_endpoints()) return 0;
+                if (gfix_new == 0) break;
+            }
+        }
+    }
     memcpy(g_estate, estate, (size_t)N * 4);
 
     // ---- SAC 测量（SACPROBE=1）：逐条未定边假设"必走"，传播看矛盾 => 全局禁边 ----
