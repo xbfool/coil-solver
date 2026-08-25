@@ -667,7 +667,9 @@ static int use_chain = 1;   // CHAIN=0 关掉链定向做消融对照
 //
 static unsigned char *dirv;
 static unsigned char *g_dirv;      // 全局有向事实：不假定起点推出来的，对一切起点成立（类比 g_estate）
-static int dir_global;             // 1 = 全局相：出/入度只用"<=1"，不用"恰好 1"
+static unsigned char *end_ok;   // 全局过滤算出的"这格可不可能是端点"（有向相要用，故提前声明）
+static int dir_global;
+static int dir_use_endok = 1;   // ENDOK=0 关掉"非端点格出入度恰好 1"做消融对照             // 1 = 全局相：出/入度只用"<=1"，不用"恰好 1"
 static int *dqbuf; static unsigned char *dinq;
 static int dqh, dqt, dir_bad;
 static long long dir_newban;        // 有向层反哺给无向层的新禁边数（衡量这层值不值）
@@ -730,7 +732,7 @@ static void dprocess(int c) {
             if (dir_bad) return;
         } else {                                              // 未定边：两向都否 => 这条边用不上
             if (!dir_trial && dirv[c * 4 + e] == 2 && dirv[n * 4 + (e ^ 2)] == 2 && estate[c * 4 + e] == 0) {
-                set_edge(c, e, 2); ++dir_newban;   // 试探期不碰 estate（它没有 trail）               // ← 有向层反哺无向层
+                set_edge(c, e, 2); ++dir_newban;   // 试探期不碰 estate（它没有 trail，会和 prestore 打架）               // ← 有向层反哺无向层
                 if (prop_bad) { dir_bad = 1; return; }
             }
         }
@@ -753,11 +755,23 @@ static void dprocess(int c) {
     }
     if (oy > 1 || iy > 1) { dir_bad = 1; return; }
     if (dir_global) {
-        // 全局相：起点/终点都未知，只有"至多一个出向 / 至多一个入向"是无条件成立的。
-        // "恰好一个"依赖于"这格不是端点"，全局相没有这个信息 —— 降级，别推。
+        // 全局相：起点/终点未知，"至多一个出向 / 至多一个入向"是无条件成立的。
         if (oy == 1) for (int e = 0; e < 4; ++e) if (dirv[c * 4 + e] == 0) { dtrail_set(c * 4 + e, 2); dpush(c + delta[e]); }
         if (iy == 1) for (int e = 0; e < 4; ++e) if (g0[c - delta[e]] && in_val(c, e) == 0) set_dir(c - delta[e], e, 2);
         if (dir_bad) return;
+        // 但"这格绝不可能是端点"这个信息**全局过滤已经算出来了**（end_ok[]），有向相之前没接上。
+        // 不可能是端点 <=> 既不是起点也不是终点 <=> **入度恰好 1 且出度恰好 1**。
+        // 这正是之前被降级掉的那条规则，现在对这批格子可以合法地用回来。
+        if (dir_use_endok && !end_ok[c]) {
+            if (oy == 0) {
+                if (ou == 0) { dir_bad = 1; return; }          // 非端点却出不去
+                if (ou == 1) { set_dir(c, oe, 1); if (dir_bad) return; }
+            }
+            if (iy == 0) {
+                if (iu == 0) { dir_bad = 1; return; }          // 非端点却进不来
+                if (iu == 1) { set_dir(c - delta[ie], ie, 1); if (dir_bad) return; }
+            }
+        }
         goto slide_rule;
     }
     int is_start = (c == prop_start);
@@ -871,9 +885,15 @@ static void dir_global_precompute(void) {
     memset(dirv, 0, (size_t)N * 4);
     memset(dinq, 0, (size_t)N);
     dqh = dqt = 0; dir_bad = 0; dir_global = 1;
-    for (int c = 0; c < N; ++c) if (g0[c]) dpush(c);
-    drun();
-    if (!dir_bad && use_dirlayer >= 3) dir_probe();
+    // 迭代到不动点：probing 产出新事实 -> 重跑传播 -> 再 probing，直到没有新增
+    for (int round = 0; round < 8 && !dir_bad; ++round) {
+        long long before = dirprobe_kill;
+        for (int c = 0; c < N; ++c) if (g0[c]) dpush(c);
+        drun();
+        if (dir_bad) break;
+        if (use_dirlayer >= 3) dir_probe();
+        if (dir_bad || dirprobe_kill == before) break;          // 这一轮没新东西，收敛
+    }
     dir_global = 0;
     memcpy(g_dirv, dirv, (size_t)N * 4);
     g_dirdet = 0;
@@ -957,7 +977,6 @@ static int hfind(int x) { while (hdsu[x] != x) { hdsu[x] = hdsu[hdsu[x]]; x = hd
 //   c0 == c1（偶数格）：两端点异色，左右各挂一个哑点，各带 1 个单位
 //   c0 == c1+1（奇数格，颜色 0 是多数）：两端点同为颜色 0，右侧哑点带 2 个单位
 //   c1 == c0+1：镜像
-static unsigned char *end_ok;
 static long long gfilter_kept = 0, gfix_new = 0, gfix_total = 0;
 static int use_gfilter = 1;
 #define FDUM2 (N + 3)
@@ -2043,6 +2062,7 @@ int main(int argc, char **argv) {
     if (getenv("FLOW")) use_flow = atoi(getenv("FLOW"));
     if (getenv("CHAIN")) use_chain = atoi(getenv("CHAIN"));
     if (getenv("DIRLAYER")) use_dirlayer = atoi(getenv("DIRLAYER"));
+    if (getenv("ENDOK")) dir_use_endok = atoi(getenv("ENDOK"));
     if (getenv("SUBTOUR")) use_subtour = atoi(getenv("SUBTOUR"));
     bk_estate = malloc((size_t)N * 4);
     bk_dsu = malloc(sizeof(int) * (size_t)N);
