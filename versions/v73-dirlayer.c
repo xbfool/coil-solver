@@ -1005,7 +1005,9 @@ static int *capA, *capB; static unsigned char *capval;
 // 成本控制（Tron 单核可行的关键）：内层候选**只取外层 trail 的尾部** —— 刚被改动的格子
 // 就是传播前沿，矛盾几乎总在那附近；上限 nest_k 个。
 static int dir_nest, nest_k = 24;
-static long long nest_kill;
+static long long nest_kill, nest_fix;
+static int *nest_seen; static int nest_gen;
+static int nest_edge = 1;   // NESTEDGE=0 关掉边变量内层做消融   // 内层去重：同一外层假设下同一 (cell,f) 只探一次
 
 // 假设 dirv[c][e] = v，跑传播，返回是否矛盾。cap != NULL 时把**推出来的全部有向结论**捕获下来
 // （trail 里记的正是"这一趟改过哪些下标"，所以捕获是免费的）。
@@ -1027,18 +1029,28 @@ static int try_dir_v(int c, int e, int v, int *cap, int *ncap) {
     // ---- 嵌套探针：外层无矛盾时，在 X 之下对前沿变量试双值 ----
     if (dir_nest && !D_mode && !dir_bad && !prop_bad) {
         int nd0 = ndtrail, tried = 0;
-        for (int ti = nd0 - 1; ti >= 0 && tried < nest_k && !dir_bad; --ti) {
-            int cell = (dtrail[ti] >> 2) >> 2;               // trail 记的是 idx=(c*4+e)，取回格号
-            for (int f = 0; f < 4 && tried < nest_k; ++f) {
-                if (!g0[cell + delta[f]] || dirv[cell * 4 + f] != 0) continue;
+        ++nest_gen;                                          // 内层去重的代际戳
+        // 候选源 = trail 格 + 其四邻（半径+1）：实测 trail 前沿只有十几个格，NESTK 24->384 判定率不动
+        // —— 瓶颈在源不在预算，扩一圈邻居才能把预算用起来。
+        for (int tj = 0; tj < (nd0 << 2) + (nd0 << 2) && tried < nest_k && !dir_bad; ++tj) {
+            int ti = nd0 - 1 - (tj / 5);
+            if (ti < 0) break;
+            int base = (dtrail[ti] >> 2) >> 2;
+            int cell = (tj % 5 == 0) ? base : base + delta[(tj % 5) - 1];
+            if (!g0[cell]) continue;
+            for (int f = 0; f < 4 && tried < nest_k && !dir_bad; ++f) {
+                int yidx = cell * 4 + f;
+                if (!g0[cell + delta[f]] || dirv[yidx] != 0) continue;
+                if (nest_seen[yidx] == nest_gen) continue;   // 同一 (cell,f) 别重复探
+                nest_seen[yidx] = nest_gen;
                 ++tried;
-                int badboth = 1;
-                for (int vv = 1; vv <= 2 && badboth; ++vv) {
+                int bad[3] = {0, 0, 0};
+                for (int vv = 1; vv <= 2; ++vv) {            // 两个取值都试（累积学习需要两边的结果）
                     int nd1 = ndtrail, ne1 = netrail, nu1 = nutrail, fe1 = prop_forced_end;
                     set_dir(cell, f, vv);
                     drun(); prun_queue();
-                    if (!dir_bad && !prop_bad) badboth = 0;
-                    // 回滚到"只有外层假设"的状态（trail 是 LIFO，弹到检查点即可）
+                    bad[vv] = (dir_bad || prop_bad);
+                    // 回滚到"只有外层假设(+已累积事实)"的状态（trail 是 LIFO，弹到检查点即可）
                     while (ndtrail > nd1) { int t = dtrail[--ndtrail]; dirv[t >> 2] = (unsigned char)(t & 3); }
                     while (netrail > ne1) { int t = etrail[--netrail]; estate[t >> 2] = (unsigned char)(t & 3); }
                     while (nutrail > nu1) { --nutrail; dsu[utrail_i[nutrail]] = utrail_v[nutrail]; }
@@ -1047,7 +1059,42 @@ static int try_dir_v(int c, int e, int v, int *cap, int *ncap) {
                     dqh = dqt = 0; qhead = qtail = 0;
                     prop_forced_end = fe1; prop_bad = 0; dir_bad = 0; dsu0_valid = 0;
                 }
-                if (badboth) { dir_bad = 1; ++nest_kill; break; }    // 二层双矛盾 => X 不可能
+                if (bad[1] && bad[2]) { dir_bad = 1; ++nest_kill; break; }   // 双矛盾 => X 不可能
+                if (nest_edge && estate[yidx] == 0) {
+                    // ===== 无向边变量也当内层 Y：必用/禁用双试 =====
+                    // 边比单走向"强"（一条边=两个走向的析取），矛盾谱和走向不重合。
+                    int ebad[3] = {0, 0, 0};
+                    for (int vv = 1; vv <= 2; ++vv) {
+                        int nd1 = ndtrail, ne1 = netrail, nu1 = nutrail, fe1 = prop_forced_end;
+                        set_edge(cell, f, vv);
+                        drun(); prun_queue();
+                        ebad[vv] = (dir_bad || prop_bad);
+                        while (ndtrail > nd1) { int t = dtrail[--ndtrail]; dirv[t >> 2] = (unsigned char)(t & 3); }
+                        while (netrail > ne1) { int t = etrail[--netrail]; estate[t >> 2] = (unsigned char)(t & 3); }
+                        while (nutrail > nu1) { --nutrail; dsu[utrail_i[nutrail]] = utrail_v[nutrail]; }
+                        while (dqh != dqt) { dinq[dqbuf[dqh++]] = 0; if (dqh == N + 1) dqh = 0; }
+                        while (qhead != qtail) { inq[pq[qhead++]] = 0; if (qhead == N + 1) qhead = 0; }
+                        dqh = dqt = 0; qhead = qtail = 0;
+                        prop_forced_end = fe1; prop_bad = 0; dir_bad = 0; dsu0_valid = 0;
+                    }
+                    if (ebad[1] && ebad[2]) { dir_bad = 1; ++nest_kill; break; }
+                    if (ebad[1] != ebad[2]) {
+                        set_edge(cell, f, ebad[1] ? 2 : 1);
+                        drun(); prun_queue();
+                        ++nest_fix;
+                        if (dir_bad || prop_bad) { dir_bad = 1; ++nest_kill; break; }
+                    }
+                }
+                if (bad[1] != bad[2]) {
+                    // ===== 累积学习（lookahead 的标准招）=====
+                    // 一边矛盾 => 在 X 之下 Y 必取另一边。把它**定进 X 的试验态**并传播：
+                    // X 的状态越试越强，后面的内层探针看到的矛盾越多。
+                    // （可靠性：结论是"X ∧ ¬v 矛盾 => X ⊢ Y=v"，只写进带 trail 的试验态，随 X 一起回滚。）
+                    set_dir(cell, f, bad[1] ? 2 : 1);
+                    drun(); prun_queue();
+                    ++nest_fix;
+                    if (dir_bad || prop_bad) { dir_bad = 1; ++nest_kill; break; }  // 理论上不该发生；发生即 X 不可能（保守方向）
+                }
             }
         }
     }
@@ -1083,6 +1130,7 @@ static void dir_probe(void) {
         utrail_v = malloc((size_t)(N + 64) * sizeof(int));
     }
     if (!capA) { capA = malloc((size_t)N * 4 * sizeof(int)); capB = malloc((size_t)N * 4 * sizeof(int)); capval = calloc((size_t)N * 4, 1); }
+    if (!nest_seen) nest_seen = calloc((size_t)N * 4, sizeof(int));
     for (int c = 0; c < N && !dir_bad; ++c) {
         if (!DGRID[c]) continue;
         for (int e = 0; e < 4; ++e) {
@@ -1207,7 +1255,7 @@ static void dir_global_precompute(void) {
     //   不是"有向走向定了多少"。之前一直在量后者，两个数不可比。
     fprintf(stderr, "有向预计算：走向已定 %lld/%lld (%.1f%%) | 无向判定率 %.1f%% -> %.1f%% (%lld -> %lld / %lld 边)\n",
             g_dirdet, tot, tot ? 100.0 * g_dirdet / tot : 0.0,
-            etot ? 100.0 * det0 / etot : 0.0, etot ? 100.0 * det1 / etot : 0.0, det0, det1, etot, nest_kill);
+            etot ? 100.0 * det0 / etot : 0.0, etot ? 100.0 * det1 / etot : 0.0, det0, det1, etot, nest_kill, nest_fix);
 }
 
 // 有向层主入口：从当前 estate 长出 dirv，跑到不动点。返回 0 表示证伪。
@@ -2399,6 +2447,7 @@ int main(int argc, char **argv) {
     if (getenv("ORDDEPTH")) ord_depth = atoi(getenv("ORDDEPTH"));
     if (getenv("NESTPROBE")) dir_nest = atoi(getenv("NESTPROBE"));
     if (getenv("NESTK")) nest_k = atoi(getenv("NESTK"));
+    if (getenv("NESTEDGE")) nest_edge = atoi(getenv("NESTEDGE"));
     if (getenv("SUBTOUR")) use_subtour = atoi(getenv("SUBTOUR"));
     bk_estate = malloc((size_t)N * 4);
     bk_dsu = malloc(sizeof(int) * (size_t)N);
