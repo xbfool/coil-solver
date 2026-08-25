@@ -666,6 +666,8 @@ static int use_chain = 1;   // CHAIN=0 关掉链定向做消融对照
 // 「从 e 方向进入 c」就是 dirv[(c-delta[e])*4+e]。
 //
 static unsigned char *dirv;
+static unsigned char *g_dirv;      // 全局有向事实：不假定起点推出来的，对一切起点成立（类比 g_estate）
+static int dir_global;             // 1 = 全局相：出/入度只用"<=1"，不用"恰好 1"
 static int *dqbuf; static unsigned char *dinq;
 static int dqh, dqt, dir_bad;
 static long long dir_newban;        // 有向层反哺给无向层的新禁边数（衡量这层值不值）
@@ -750,6 +752,14 @@ static void dprocess(int c) {
         }
     }
     if (oy > 1 || iy > 1) { dir_bad = 1; return; }
+    if (dir_global) {
+        // 全局相：起点/终点都未知，只有"至多一个出向 / 至多一个入向"是无条件成立的。
+        // "恰好一个"依赖于"这格不是端点"，全局相没有这个信息 —— 降级，别推。
+        if (oy == 1) for (int e = 0; e < 4; ++e) if (dirv[c * 4 + e] == 0) { dtrail_set(c * 4 + e, 2); dpush(c + delta[e]); }
+        if (iy == 1) for (int e = 0; e < 4; ++e) if (g0[c - delta[e]] && in_val(c, e) == 0) set_dir(c - delta[e], e, 2);
+        if (dir_bad) return;
+        goto slide_rule;
+    }
     int is_start = (c == prop_start);
     // ⚠ **终点是未知的**：只有"确定不可能是终点"的格才能断言"恰好一个出向"。
     //   判据与无向层同源 —— 终点已定在别处，或颜色对不上（终点色由奇偶决定）。
@@ -776,6 +786,7 @@ static void dprocess(int c) {
     //   T(c,e) = 「从 e 进入 c，却没有继续直行」 => t(c+e) < t(c)
     //   相邻两格不能互相要求对方更早：¬( T(c,e) ∧ T(c+e, −e) )
     //   于是 T(c,e) 一旦成立：若路径从 c+2e 走向 c+e，它**必须继续走进 c**。
+slide_rule:
     if (use_dirlayer < 2) return;      // DIRLAYER=1 只开规则 1~2，=2 才加反对称（便于二分定位）
     for (int e = 0; e < 4; ++e) {
         if (in_val(c, e) != 1) continue;                       // 没从 e 进来
@@ -841,19 +852,55 @@ static void dir_probe(void) {
     }
 }
 
+// ===== 全局相有向预计算 —— 这就是 Tron 说的 pre-calculation =====
+//
+// 关键在于哪些规则不依赖起点：
+//   · 与 estate 双向喂          —— 不依赖
+//   · 滑行 + 成对反对称          —— 不依赖（只涉及局部有向事实）
+//   · 出/入度 **<= 1**          —— 不依赖（任何解都成立）
+//   · 出/入度 **恰好 1**         —— 依赖（起点无入、终点无出）=> 全局相降级掉
+// 于是全局相推出来的结论对**一切起点**成立，可以像 g_estate 一样存下来复用。
+//
+// 这一刀的意义：有向 probing 是 4N 次假设，原来放在每个起点的 propagate_strong 里，
+// 起点上万个 => 上万倍的重复。挪到全局相后**整盘只跑一次**。
+static long long g_dirdet;
+static void dir_global_precompute(void) {
+    if (!dirv) { dirv = malloc((size_t)N * 4); dqbuf = malloc((size_t)(N + 2) * sizeof(int)); dinq = malloc((size_t)N); }
+    if (!g_dirv) g_dirv = malloc((size_t)N * 4);
+    if (!dtrail) dtrail = malloc((size_t)N * 4 * sizeof(int));
+    memset(dirv, 0, (size_t)N * 4);
+    memset(dinq, 0, (size_t)N);
+    dqh = dqt = 0; dir_bad = 0; dir_global = 1;
+    for (int c = 0; c < N; ++c) if (g0[c]) dpush(c);
+    drun();
+    if (!dir_bad && use_dirlayer >= 3) dir_probe();
+    dir_global = 0;
+    memcpy(g_dirv, dirv, (size_t)N * 4);
+    g_dirdet = 0;
+    long long tot = 0;
+    for (int c = 0; c < N; ++c) if (g0[c]) for (int e = 0; e < 4; ++e) {
+        if (!g0[c + delta[e]]) continue;
+        ++tot;
+        if (g_dirv[c * 4 + e]) ++g_dirdet;
+    }
+    fprintf(stderr, "有向预计算：%lld/%lld 个走向已定 (%.1f%%)，反哺禁边 %lld 条\n",
+            g_dirdet, tot, tot ? 100.0 * g_dirdet / tot : 0.0, dir_newban);
+}
+
 // 有向层主入口：从当前 estate 长出 dirv，跑到不动点。返回 0 表示证伪。
 static int dir_layer(int s) {
     if (!dirv) {
         dirv = malloc((size_t)N * 4); dqbuf = malloc((size_t)(N + 2) * sizeof(int));
         dinq = malloc((size_t)N);
     }
-    memset(dirv, 0, (size_t)N * 4);
+    if (g_dirv) memcpy(dirv, g_dirv, (size_t)N * 4);   // 从全局有向事实出发，不从零
+    else memset(dirv, 0, (size_t)N * 4);
     memset(dinq, 0, (size_t)N);
     dqh = dqt = 0; dir_bad = 0;
     (void)s;
     for (int c = 0; c < N; ++c) if (g0[c]) dpush(c);
     drun();
-    if (!dir_bad && use_dirlayer >= 3) {
+    if (0) {   // per-start 不再跑 probing —— 已挪进全局预计算，整盘只做一次
         long long k0 = dirprobe_kill, b0 = dir_newban;
         dir_probe();
         if (getenv("DIRSTAT"))
@@ -1079,6 +1126,7 @@ static int global_fixpoint(void) {
         for (int c = 0; c < N; ++c) if (g0[c] && end_ok[c]) ++gfilter_kept;
         fprintf(stderr, "  分治：%d 块 %d 对，可行 %d 对，整块淘汰掉 %d 格\n", K, npair, nok, killed);
     }
+    if (use_dirlayer) dir_global_precompute();   // v73：有向预计算（Tron 的 pre-calculation）
     memcpy(g_estate, estate, (size_t)N * 4);
 
     // ---- SAC 测量（SACPROBE=1）：逐条未定边假设"必走"，传播看矛盾 => 全局禁边 ----
