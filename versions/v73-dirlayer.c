@@ -997,6 +997,16 @@ static void drun(void) {
 static long long dirprobe_kill, both_kill;
 static int *capA, *capB; static unsigned char *capval;
 
+// ===== v74：嵌套探针（Tron "recursive patterns" 的第二层）=====
+// 一层 failed literal 的矛盾够不着的地方，用二层够：
+//   假设 X 传播无矛盾时，再在 X 之下对某个 Y 试两个取值 —— **两边都矛盾 => X 不可能**。
+// 可靠性：若 X 在某解成立，该解必给 Y 某取值 v，且 X∧(Y=v) 的传播无矛盾（所有规则已证 sound）。
+// 故二层双矛盾是 X 的合法否定。∎（见 PROOFS.md §4.6）
+// 成本控制（Tron 单核可行的关键）：内层候选**只取外层 trail 的尾部** —— 刚被改动的格子
+// 就是传播前沿，矛盾几乎总在那附近；上限 nest_k 个。
+static int dir_nest, nest_k = 24;
+static long long nest_kill;
+
 // 假设 dirv[c][e] = v，跑传播，返回是否矛盾。cap != NULL 时把**推出来的全部有向结论**捕获下来
 // （trail 里记的正是"这一趟改过哪些下标"，所以捕获是免费的）。
 static int try_dir_v(int c, int e, int v, int *cap, int *ncap) {
@@ -1013,6 +1023,35 @@ static int try_dir_v(int c, int e, int v, int *cap, int *ncap) {
     set_dir(c, e, v);
     drun();
     prun_queue();                       // ← 现在可以放心跑无向级联了：pprocess 走全局语义
+
+    // ---- 嵌套探针：外层无矛盾时，在 X 之下对前沿变量试双值 ----
+    if (dir_nest && !D_mode && !dir_bad && !prop_bad) {
+        int nd0 = ndtrail, tried = 0;
+        for (int ti = nd0 - 1; ti >= 0 && tried < nest_k && !dir_bad; --ti) {
+            int cell = (dtrail[ti] >> 2) >> 2;               // trail 记的是 idx=(c*4+e)，取回格号
+            for (int f = 0; f < 4 && tried < nest_k; ++f) {
+                if (!g0[cell + delta[f]] || dirv[cell * 4 + f] != 0) continue;
+                ++tried;
+                int badboth = 1;
+                for (int vv = 1; vv <= 2 && badboth; ++vv) {
+                    int nd1 = ndtrail, ne1 = netrail, nu1 = nutrail, fe1 = prop_forced_end;
+                    set_dir(cell, f, vv);
+                    drun(); prun_queue();
+                    if (!dir_bad && !prop_bad) badboth = 0;
+                    // 回滚到"只有外层假设"的状态（trail 是 LIFO，弹到检查点即可）
+                    while (ndtrail > nd1) { int t = dtrail[--ndtrail]; dirv[t >> 2] = (unsigned char)(t & 3); }
+                    while (netrail > ne1) { int t = etrail[--netrail]; estate[t >> 2] = (unsigned char)(t & 3); }
+                    while (nutrail > nu1) { --nutrail; dsu[utrail_i[nutrail]] = utrail_v[nutrail]; }
+                    while (dqh != dqt) { dinq[dqbuf[dqh++]] = 0; if (dqh == N + 1) dqh = 0; }
+                    while (qhead != qtail) { inq[pq[qhead++]] = 0; if (qhead == N + 1) qhead = 0; }
+                    dqh = dqt = 0; qhead = qtail = 0;
+                    prop_forced_end = fe1; prop_bad = 0; dir_bad = 0; dsu0_valid = 0;
+                }
+                if (badboth) { dir_bad = 1; ++nest_kill; break; }    // 二层双矛盾 => X 不可能
+            }
+        }
+    }
+
     prop_global = spg; prop_start = sps; prop_forced_end = sfe2;
     // 历史注记：一开始直接调 prun_queue() 而没做全局语义，pprocess 用的是 DSTART / DENDCOL，
     // 而全局相里那是"上一次某个起点留下的值"，拿起点专属推理做全局证伪 => 18 关被误杀。
@@ -1168,7 +1207,7 @@ static void dir_global_precompute(void) {
     //   不是"有向走向定了多少"。之前一直在量后者，两个数不可比。
     fprintf(stderr, "有向预计算：走向已定 %lld/%lld (%.1f%%) | 无向判定率 %.1f%% -> %.1f%% (%lld -> %lld / %lld 边)\n",
             g_dirdet, tot, tot ? 100.0 * g_dirdet / tot : 0.0,
-            etot ? 100.0 * det0 / etot : 0.0, etot ? 100.0 * det1 / etot : 0.0, det0, det1, etot);
+            etot ? 100.0 * det0 / etot : 0.0, etot ? 100.0 * det1 / etot : 0.0, det0, det1, etot, nest_kill);
 }
 
 // 有向层主入口：从当前 estate 长出 dirv，跑到不动点。返回 0 表示证伪。
@@ -2358,6 +2397,8 @@ int main(int argc, char **argv) {
     if (getenv("DIRLAYER")) use_dirlayer = atoi(getenv("DIRLAYER"));
     if (getenv("ENDOK")) dir_use_endok = atoi(getenv("ENDOK"));
     if (getenv("ORDDEPTH")) ord_depth = atoi(getenv("ORDDEPTH"));
+    if (getenv("NESTPROBE")) dir_nest = atoi(getenv("NESTPROBE"));
+    if (getenv("NESTK")) nest_k = atoi(getenv("NESTK"));
     if (getenv("SUBTOUR")) use_subtour = atoi(getenv("SUBTOUR"));
     bk_estate = malloc((size_t)N * 4);
     bk_dsu = malloc(sizeof(int) * (size_t)N);
