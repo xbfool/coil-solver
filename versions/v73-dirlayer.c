@@ -344,7 +344,9 @@ static int *dsu;
 static int *pq;
 static unsigned char *inq;
 static int qhead, qtail;
+static unsigned char *end_ok;   // 全局端点过滤的结论："这格可不可能是端点"，sound 且与起点无关
 static int prop_bad, prop_start, prop_endcol, prop_forced_end;
+static int prop_global;   // 1 = pprocess 走"不假定起点"的语义（每格 lo=1,hi=2；靠 end_ok 收紧）
 
 // ===== v73：无向层的 trail（让有向试探能安全地驱动无向传播）=====
 //
@@ -414,7 +416,17 @@ static void pprocess(int c) {
     }
 
     int lo, hi;
-    if (c == prop_start)             lo = hi = 1;        // 起点只挂 1 条边
+    if (prop_global) {
+        // ===== 不假定起点的模式（v73）=====
+        // 全局相下 `col[c] == prop_endcol` 这个判据**没有合法取值**：
+        // 设成任一颜色会把另一色的端点判死；设成 -1 则所有格都被判成度数恰好 2，而端点度数是 1。
+        // 正确的全局语义是「至多两格是端点」=> 每格 lo=1, hi=2。
+        // 而"这格绝不可能是端点"这件事，**全局端点过滤已经算出来了**（end_ok），
+        // 它 sound 且与起点无关 —— 用它来把该收紧的格子收紧到 lo=hi=2。
+        if (end_ok && !end_ok[c]) lo = hi = 2;
+        else { lo = 1; hi = 2; }
+    }
+    else if (c == prop_start)        lo = hi = 1;        // 起点只挂 1 条边
     else if (prop_forced_end == c)   lo = hi = 1;        // 已认定的终点
     else if (prop_forced_end >= 0)   lo = hi = 2;        // 终点定在别处，这里必是中间格
     else if (col[c] == prop_endcol) { lo = 1; hi = 2; }  // 颜色对得上，还可能是终点
@@ -431,6 +443,12 @@ static void pprocess(int c) {
             if (g0[c + delta[d]] && estate[c * 4 + d] == 0) { set_edge(c, d, 1); if (prop_bad) return; }
     }
 
+    if (prop_global) {
+        // 全局相：最多挂 1 条边 => 这格必是端点。此时唯一能断言的是
+        // "它得能当端点" —— 而 end_ok 正好说了这件事。颜色/forced_end 那套是起点专属的，不能用。
+        if (used + avail == 1 && end_ok && !end_ok[c]) prop_bad = 1;
+        return;
+    }
     if (c != prop_start && used + avail == 1 && hi == 2) {   // 最多挂 1 条边 => 只能是终点
         if (col[c] != prop_endcol) { prop_bad = 1; return; }
         if (prop_forced_end >= 0 && prop_forced_end != c) { prop_bad = 1; return; }
@@ -696,7 +714,6 @@ static int use_chain = 1;   // CHAIN=0 关掉链定向做消融对照
 //
 static unsigned char *dirv;
 static unsigned char *g_dirv;      // 全局有向事实：不假定起点推出来的，对一切起点成立（类比 g_estate）
-static unsigned char *end_ok;   // 全局过滤算出的"这格可不可能是端点"（有向相要用，故提前声明）
 static int dir_global;
 static int dir_use_endok = 1;   // ENDOK=0 关掉"非端点格出入度恰好 1"做消融对照             // 1 = 全局相：出/入度只用"<=1"，不用"恰好 1"
 static int *dqbuf; static unsigned char *dinq;
@@ -734,6 +751,7 @@ static void set_dir(int c, int e, int v) {
     if (*p != 0) { dir_bad = 1; return; }
     dtrail_set(c * 4 + e, v);
     dpush(c); dpush(c + delta[e]);
+    if (v == 1 && estate[c * 4 + e] == 0) set_edge(c, e, 1);   // 走了这一步 => 这条边必用，触发无向级联
     if (v == 1) {                                  // 走了这一步，反向那步就不可能
         unsigned char *q = &dirv[(c + delta[e]) * 4 + (e ^ 2)];
         if (*q == 1) { dir_bad = 1; return; }
@@ -871,13 +889,15 @@ static int try_dir(int c, int e) {          // 假设「路径从 c 走向 c+e�
     dir_trial = 1; e_trial = 1;
     dqh = dqt = 0; qhead = qtail = 0;
 
+    int spg = prop_global, sps = prop_start;
+    prop_global = 1; prop_start = -1; prop_forced_end = -1;   // 全局语义：不假定起点
     set_dir(c, e, 1);
     drun();
-    // ⚠ 这里**不能**调 prun_queue()：它执行的 pprocess 用的是 prop_start / prop_endcol，
-    //   而全局相里这两个是"上一次某个起点留下的值"。拿起点专属的推理去做全局证伪 => 不可靠。
-    //   实测开了之后 1~120 关里 18 关被全部证伪（no solution found），消融确认是 probing 本身，
-    //   与 end_ok 规则无关（DIRLAYER=1/2 均 10/10 正常，只有 =3 变成 1/10）。
-    //   要打开这条通路，得先给 pprocess 做一个"不假定起点"的模式 —— 见下方 TODO。
+    prun_queue();                       // ← 现在可以放心跑无向级联了：pprocess 走全局语义
+    prop_global = spg; prop_start = sps;
+    // 历史注记：一开始直接调 prun_queue() 而没做全局语义，pprocess 用的是 prop_start / prop_endcol，
+    // 而全局相里那是"上一次某个起点留下的值"，拿起点专属推理做全局证伪 => 18 关被误杀。
+    // 现在 pprocess 有了 prop_global 模式，这条通路才是可靠的。
     int r = dir_bad || prop_bad;
 
     // 逐条回退：dirv / estate / dsu，顺序无关（都是独立下标的旧值）
@@ -928,6 +948,11 @@ static void dir_probe(void) {
 // 起点上万个 => 上万倍的重复。挪到全局相后**整盘只跑一次**。
 static long long g_dirdet;
 static void dir_global_precompute(void) {
+    long long det0 = 0, etot = 0;          // 进来时的无向判定率，用来量这一层到底抬了多少
+    for (int c = 0; c < N; ++c) if (g0[c]) for (int d = 2; d < 4; ++d) {
+        if (!g0[c + delta[d]]) continue;
+        ++etot; if (estate[c * 4 + d]) ++det0;
+    }
     if (!dirv) { dirv = malloc((size_t)N * 4); dqbuf = malloc((size_t)(N + 2) * sizeof(int)); dinq = malloc((size_t)N); }
     if (!g_dirv) g_dirv = malloc((size_t)N * 4);
     if (!dtrail) {          // ⚠ 四个 trail 必须一起分配 —— 这里原来只分配了 dtrail，
@@ -970,8 +995,16 @@ static void dir_global_precompute(void) {
         ++tot;
         if (g_dirv[c * 4 + e]) ++g_dirdet;
     }
-    fprintf(stderr, "有向预计算：%lld/%lld 个走向已定 (%.1f%%)，反哺禁边 %lld 条\n",
-            g_dirdet, tot, tot ? 100.0 * g_dirdet / tot : 0.0, dir_newban);
+    long long det1 = 0;
+    for (int c = 0; c < N; ++c) if (g0[c]) for (int d = 2; d < 4; ++d) {
+        if (!g0[c + delta[d]]) continue;
+        if (estate[c * 4 + d]) ++det1;
+    }
+    // ⚠ 真正该盯的指标是**无向边判定率** —— Tron 的 99.7%（"哪两条边被用"）就是这把尺子，
+    //   不是"有向走向定了多少"。之前一直在量后者，两个数不可比。
+    fprintf(stderr, "有向预计算：走向已定 %lld/%lld (%.1f%%) | 无向判定率 %.1f%% -> %.1f%% (%lld -> %lld / %lld 边)\n",
+            g_dirdet, tot, tot ? 100.0 * g_dirdet / tot : 0.0,
+            etot ? 100.0 * det0 / etot : 0.0, etot ? 100.0 * det1 / etot : 0.0, det0, det1, etot);
 }
 
 // 有向层主入口：从当前 estate 长出 dirv，跑到不动点。返回 0 表示证伪。
