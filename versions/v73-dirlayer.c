@@ -352,6 +352,7 @@ static void set_edge2(int c, int d, int v);
 static void ppush2(int c);
 
 static unsigned char *end_ok;   // 全局端点过滤的结论："这格可不可能是端点"，sound 且与起点无关
+static int rp_check_start(int s);   // v76 前向声明（定义在 global_fixpoint 之前）
 static int prop_bad, prop_start, prop_endcol, prop_forced_end;
 static int prop_global;   // 1 = pprocess 走"不假定起点"的语义（每格 lo=1,hi=2；靠 end_ok 收紧）
 
@@ -634,6 +635,7 @@ static void prun_queue(void) {
 
 static int propagate(int s) {
     dsu0_valid = 0;
+    if (!rp_check_start(s)) return 0;      // v76：割点口袋颜色速判（O(割点数)）
     memcpy(estate, g_estate, (size_t)N * 4);        // 从全局推论出发，而不是从零
     for (int c = 0; c < N; ++c) dsu[c] = c;
     memset(inq, 0, (size_t)N);
@@ -1455,12 +1457,147 @@ static int filter_endpoints(void) {
 }
 
 // 全局阶段滚到不动点：流 -> 固定网格边 -> 再流 …… 这些推论对所有起点都成立，算一次全局复用
+// ===== v76：分区奇偶（PROOFS §2.5，外部清单 #2）=====
+//
+// 割点 v 把自由格图切成 S/R 两侧时（定理 B）每侧恰含一个路径端点、v 自己不能当端点；
+// （定理 C）每侧端点的颜色被口袋黑白差**强制**；（定理 D）两侧强制色须与全局端点色集相容；
+// （定理 E）v 在某侧只有一个邻居则那条边必用。
+// 实现：迭代 Tarjan + Euler 区间（子树成员判定 O(1)，rp_order 枚举 O(|S|)）。
+static int use_regpar = 0;   // ⚠ 默认关：批量跑丢 9/120 关(单跑同关却能过,依赖上下文的бug未定位)。REGPAR=1 只准研究用
+static int *rp_in, *rp_out, *rp_low, *rp_par, *rp_order, *rp_c0, *rp_c1, *rp_stk, *rp_dirs, *rp_sepn;
+static int *rp_vv, *rp_vc, *rp_xs, *rp_xr;   // 记录给每起点相：(割点, S侧子树根, S侧端点色, R侧端点色)
+static int rp_ncut, rp_ready;
+static long long rp_endok_kill, rp_edge_force, rp_start_refute;
+
+// 对一个割点条目应用定理 B/C/D/E。返回 -1 = 全局无解。
+static int rp_apply(int v, int child, long long s0, long long s1, long long r0, long long r1,
+                    int glob_same, int glob_maj, int *changed) {
+    long long ds = s0 - s1, dr = r0 - r1;
+    if (ds < -1 || ds > 1 || dr < -1 || dr > 1) return -1;          // C：|b-w|>=2
+    int gc = col[v] ^ 1;                                            // 门端颜色（邻接 v）
+    int xs = (ds == 0) ? col[v] : ((ds > 0) ? 0 : 1);
+    if (ds != 0 && xs != gc) return -1;                             // C：多数色 != 门色
+    int xr = (dr == 0) ? col[v] : ((dr > 0) ? 0 : 1);
+    if (dr != 0 && xr != gc) return -1;
+    if (glob_same) { if (xs != glob_maj || xr != glob_maj) return -1; }   // D
+    else if (xs == xr) return -1;                                          // D：n 偶须异色
+    if (end_ok[v]) { end_ok[v] = 0; ++rp_endok_kill; ++*changed; }         // B
+    for (int t = rp_in[child]; t < rp_out[child]; ++t) {                   // C 推论：S 侧异色格灭
+        int cell = rp_order[t];
+        if (end_ok[cell] && col[cell] != xs) { end_ok[cell] = 0; ++rp_endok_kill; ++*changed; }
+    }
+    int gates = 0, gd = -1;                                                // E：v 的 S 侧邻居
+    for (int d = 0; d < 4; ++d) {
+        int n = v + delta[d];
+        if (!g0[n]) continue;
+        if (rp_in[n] >= rp_in[child] && rp_in[n] < rp_out[child]) { ++gates; gd = d; }
+    }
+    if (gates == 1 && estate[v * 4 + gd] == 0) {
+        int spg = prop_global, sps = prop_start, sfe = prop_forced_end;    // 全局语义写入
+        prop_global = 1; prop_start = -1; prop_forced_end = -1;
+        set_edge(v, gd, 1); prun_queue();
+        prop_global = spg; prop_start = sps; prop_forced_end = sfe;
+        if (prop_bad) return -1;
+        ++rp_edge_force; ++*changed;
+    }
+    rp_vv[rp_ncut] = v; rp_vc[rp_ncut] = child; rp_xs[rp_ncut] = xs; rp_xr[rp_ncut] = xr; ++rp_ncut;
+    return 0;
+}
+
+// 返回 -1 = 全局无解；否则 = 本次新变化数
+static int region_parity(void) {
+    if (!use_regpar) return 0;
+    if (!rp_in) {
+        rp_in = malloc((size_t)N * 4); rp_out = malloc((size_t)N * 4); rp_low = malloc((size_t)N * 4);
+        rp_par = malloc((size_t)N * 4); rp_order = malloc((size_t)N * 4);
+        rp_c0 = malloc((size_t)N * 4); rp_c1 = malloc((size_t)N * 4);
+        rp_stk = malloc((size_t)N * 4); rp_dirs = malloc((size_t)N * 4); rp_sepn = malloc((size_t)N * 4);
+        rp_vv = malloc((size_t)N * 4); rp_vc = malloc((size_t)N * 4);
+        rp_xs = malloc((size_t)N * 4); rp_xr = malloc((size_t)N * 4);
+    }
+    long long t0c = 0, t1c = 0;
+    for (int c = 0; c < N; ++c) if (g0[c]) { if (col[c]) ++t1c; else ++t0c; }
+    int glob_same = (int)((t0c + t1c) & 1);
+    int glob_maj = (t0c >= t1c) ? 0 : 1;
+    int changed = 0;
+    rp_ncut = 0;
+    for (int i = 0; i < N; ++i) { rp_in[i] = -1; rp_sepn[i] = 0; }
+    int timer = 0;
+    static int pend_v[65536], pend_c[65536];     // 本分量待处理的割点条目，等分量总数出来再算 R 侧
+
+    for (int root = 0; root < N; ++root) {
+        if (!g0[root] || rp_in[root] >= 0) continue;
+        int npend = 0, root_children = 0, rc1 = -1;
+        int sp = 0;
+        rp_stk[0] = root; rp_dirs[0] = 0; rp_par[root] = -1;
+        rp_in[root] = rp_low[root] = timer; rp_order[timer] = root; ++timer;
+        rp_c0[root] = (col[root] == 0); rp_c1[root] = (col[root] == 1);
+        while (sp >= 0) {
+            int v = rp_stk[sp];
+            if (rp_dirs[sp] < 4) {
+                int d = rp_dirs[sp]++;
+                int n = v + delta[d];
+                if (!g0[n] || n == rp_par[v]) continue;
+                if (rp_in[n] >= 0) { if (rp_in[n] < rp_low[v]) rp_low[v] = rp_in[n]; continue; }
+                rp_par[n] = v; rp_in[n] = rp_low[n] = timer; rp_order[timer] = n; ++timer;
+                rp_c0[n] = (col[n] == 0); rp_c1[n] = (col[n] == 1);
+                if (v == root) { ++root_children; if (rc1 < 0) rc1 = n; }
+                ++sp; rp_stk[sp] = n; rp_dirs[sp] = 0;
+            } else {
+                rp_out[v] = timer;
+                int pv = rp_par[v];
+                --sp;
+                if (pv < 0) break;
+                if (rp_low[v] < rp_low[pv]) rp_low[pv] = rp_low[v];
+                rp_c0[pv] += rp_c0[v]; rp_c1[pv] += rp_c1[v];
+                if (rp_par[pv] >= 0 && rp_low[v] >= rp_in[pv]) {          // 非根割点分离出子树 v
+                    if (++rp_sepn[pv] >= 2) return -1;                    // A：k >= 3
+                    if (npend < 65536) { pend_v[npend] = pv; pend_c[npend] = v; ++npend; }
+                }
+            }
+        }
+        long long comp0 = rp_c0[root], comp1 = rp_c1[root];
+        if (root_children >= 3) return -1;                                // A（根）
+        if (root_children == 2 && npend < 65536) { pend_v[npend] = root; pend_c[npend] = rc1; ++npend; }
+        for (int i = 0; i < npend; ++i) {
+            int v = pend_v[i], c = pend_c[i];
+            long long s0 = rp_c0[c], s1 = rp_c1[c];
+            long long r0 = comp0 - s0 - (col[v] == 0), r1 = comp1 - s1 - (col[v] == 1);
+            int r = rp_apply(v, c, s0, s1, r0, r1, glob_same, glob_maj, &changed);
+            if (r < 0) return -1;
+        }
+    }
+    rp_ready = 1;
+    if (getenv("RPSTAT"))
+        fprintf(stderr, "分区奇偶：割点条目 %d，end_ok 砍 %lld，强制边 %lld\n",
+                rp_ncut, rp_endok_kill, rp_edge_force);
+    return changed;
+}
+
+// 每起点速判（定理 B/C 的直接推论）：s 落在割点的某一侧 => s 就是该侧唯一端点 => 颜色必须匹配强制色。
+// O(割点条目数) 每起点，可能直接砍掉宽候选型关卡的上万候选。
+static int rp_check_start(int s) {
+    if (!use_regpar || !rp_ready) return 1;
+    for (int i = 0; i < rp_ncut; ++i) {
+        if (s == rp_vv[i]) return 0;
+        int c = rp_vc[i];
+        int x = (rp_in[s] >= rp_in[c] && rp_in[s] < rp_out[c]) ? rp_xs[i] : rp_xr[i];
+        if (col[s] != x) { ++rp_start_refute; return 0; }
+    }
+    return 1;
+}
+
 static int global_fixpoint(void) {
     ref_suspend = 0;                 // 全局相：放开可靠性断言
     memset(estate, 0, (size_t)N * 4);
     for (int it = 0; it < 8; ++it) {
         if (!filter_endpoints()) return 0;
         if (gfix_new == 0) break;
+    }
+    {   // v76：分区奇偶 —— end_ok 收紧/强制边有产出就再喂一轮流过滤
+        int rpc = region_parity();
+        if (rpc < 0) return 0;
+        if (rpc > 0) for (int it = 0; it < 4; ++it) { if (!filter_endpoints()) return 0; if (gfix_new == 0) break; }
     }
 
     // ---- 分治：块对联合假设 ----
@@ -2262,6 +2399,104 @@ static int reach_local(int first, int dd, int len, int c, int rem2) {
     return 0;
 }
 
+// ===== v76b：树内分区奇偶（PROOFS §3.7）=====
+// 剩余图 R 的割点 v：k>=3 剪；k=2 时无 p 邻居的侧必含终点（两侧都无 => 剪），
+// 终点侧颜色强制且须等于剩余终点色（否则剪）。Tarjan O(|R|)，只在浅层跑（RPDEPTH 门控）。
+// ⚠ 两个教训修在这版里：
+//   1) **必须用独立数组** —— 初版复用全局 rp_* 数组，把 rp_check_start 依赖的 Euler 区间覆写了，
+//      后续起点的速判全乱（31 关丢解的主因）。
+//   2) 分离标记用**代际戳**而不是事后清理 —— 初版在 k>=3 提前返回时标记没清，脏标记跨调用累积成假杀。
+static int rpd_depth = 0;                 // RPDEPTH：深度 < 此值才跑。⚠ 默认关：修了两轮仍有 9/120 丢解，未定位的不可靠，只准研究用
+static long long rpd_calls, rpd_kills;
+static int *rd_in, *rd_out, *rd_low, *rd_par, *rd_order, *rd_c0, *rd_c1, *rd_stk, *rd_dirs, *rd_sep;
+static int rd_gen = 1000000;              // 高起点，避免与任何清零值撞车
+
+static int rp_dyn_ok(int p, int remaining) {
+    ++rpd_calls;
+    if (!rd_in) {
+        rd_in = malloc((size_t)N * 4); rd_out = malloc((size_t)N * 4); rd_low = malloc((size_t)N * 4);
+        rd_par = malloc((size_t)N * 4); rd_order = malloc((size_t)N * 4);
+        rd_c0 = malloc((size_t)N * 4); rd_c1 = malloc((size_t)N * 4);
+        rd_stk = malloc((size_t)N * 4); rd_dirs = malloc((size_t)N * 4);
+        rd_sep = calloc((size_t)N, 4);
+        for (int i2 = 0; i2 < N; ++i2) rd_in[i2] = -1;
+    }
+    ++rd_gen;
+    int endcol_now = col[p] ^ (remaining & 1);   // 剩余路径终点色（§3.6 同式）
+    int root = -1;
+    for (int d = 0; d < 4; ++d) if (g[p + delta[d]]) { root = p + delta[d]; break; }
+    if (root < 0) return remaining == 0;
+    // rd_in 用 (gen 编码)：rd_in[x] >= gen_base 才算本轮访问过。为省 O(N) 清理，
+    // 存 timer + gen*大偏移不现实；改为记录访问名单事后清。
+    static int *touched; static int ntouched;
+    if (!touched) touched = malloc((size_t)N * 4);
+    ntouched = 0;
+    int timer = 0;
+    int sp = 0;
+    rd_stk[0] = root; rd_dirs[0] = 0; rd_par[root] = -1;
+    rd_in[root] = rd_low[root] = timer; rd_order[timer] = root; ++timer; touched[ntouched++] = root;
+    rd_c0[root] = (col[root] == 0); rd_c1[root] = (col[root] == 1);
+    int root_children = 0, rc1 = -1;
+    static int pend_v2[4096], pend_c2[4096];
+    int npend = 0, dead = 0;
+    while (sp >= 0) {
+        int v = rd_stk[sp];
+        if (rd_dirs[sp] < 4) {
+            int d = rd_dirs[sp]++;
+            int n = v + delta[d];
+            if (!g[n] || n == rd_par[v]) continue;
+            if (rd_in[n] >= 0) { if (rd_in[n] < rd_low[v]) rd_low[v] = rd_in[n]; continue; }
+            rd_par[n] = v; rd_in[n] = rd_low[n] = timer; rd_order[timer] = n; ++timer; touched[ntouched++] = n;
+            rd_c0[n] = (col[n] == 0); rd_c1[n] = (col[n] == 1);
+            if (v == root) { ++root_children; if (rc1 < 0) rc1 = n; }
+            ++sp; rd_stk[sp] = n; rd_dirs[sp] = 0;
+        } else {
+            rd_out[v] = timer;
+            int pv = rd_par[v];
+            --sp;
+            if (pv < 0) break;
+            if (rd_low[v] < rd_low[pv]) rd_low[pv] = rd_low[v];
+            rd_c0[pv] += rd_c0[v]; rd_c1[pv] += rd_c1[v];
+            if (rd_par[pv] >= 0 && rd_low[v] >= rd_in[pv]) {
+                if (rd_sep[pv] == rd_gen) { dead = 1; break; }        // A'：k >= 3
+                rd_sep[pv] = rd_gen;                                  // 代际戳，无需清理
+                if (npend < 4096) { pend_v2[npend] = pv; pend_c2[npend] = v; ++npend; }
+            }
+        }
+    }
+    long long comp0 = rd_c0[root], comp1 = rd_c1[root];
+    if (!dead && root_children >= 3) dead = 1;                        // A'（根）
+    if (!dead && root_children == 2 && npend < 4096) { pend_v2[npend] = root; pend_c2[npend] = rc1; ++npend; }
+
+    for (int i2 = 0; !dead && i2 < npend; ++i2) {
+        int v = pend_v2[i2], c = pend_c2[i2];
+        long long s0 = rd_c0[c], s1 = rd_c1[c];
+        long long r0 = comp0 - s0 - (col[v] == 0), r1 = comp1 - s1 - (col[v] == 1);
+        long long ds = s0 - s1, dr = r0 - r1;
+        if (ds < -1 || ds > 1 || dr < -1 || dr > 1) { dead = 1; break; }   // C'
+        int pinS = 0, pinR = 0, pinV = 0;
+        for (int d = 0; d < 4; ++d) {
+            int n = p + delta[d];
+            if (!g[n]) continue;
+            if (n == v) { pinV = 1; continue; }
+            if (rd_in[n] >= rd_in[c] && rd_in[n] < rd_out[c]) pinS = 1; else pinR = 1;
+        }
+        if (pinV) continue;                                          // 首步可落在割点上，两侧都可达
+        int gc = col[v] ^ 1;
+        if (!pinS && !pinR) { dead = 1; break; }                     // 防御（reach 层应已排除）
+        if (!pinS) {                                                 // 终点必在 S 侧
+            int xs = (ds == 0) ? col[v] : ((ds > 0) ? 0 : 1);
+            if ((ds != 0 && xs != gc) || xs != endcol_now) { dead = 1; break; }
+        } else if (!pinR) {                                          // 终点必在 R 侧
+            int xr = (dr == 0) ? col[v] : ((dr > 0) ? 0 : 1);
+            if ((dr != 0 && xr != gc) || xr != endcol_now) { dead = 1; break; }
+        }
+    }
+    for (int i2 = 0; i2 < ntouched; ++i2) rd_in[touched[i2]] = -1;   // 只清访问过的
+    if (dead) { ++rpd_kills; return 0; }
+    return 1;
+}
+
 static int dfs(int p, int remaining, int depth) {
     if (live_end == 0 && remaining > 0) { ++dth_liveend; return 0; }    // 终点候选全被走掉了，后面必然收不了尾
     if (remaining < best_rem) best_rem = remaining;
@@ -2284,6 +2519,7 @@ static int dfs(int p, int remaining, int depth) {
         for (int k = 0, q = p; k < len; ++k) { q += dd; mark(q); }
         int rem2 = remaining - len;
         int rok = (rem2 == 0 || (cheap_ok(c, rem2) && reach_local(p + dd, dd, len, c, rem2)));
+        if (rok && rem2 > 0 && rpd_depth > 0 && depth < rpd_depth && !rp_dyn_ok(c, rem2)) rok = 0;   // v76b
         if (!rok) { ++dth_reach; static int cs_on = -1; if (cs_on < 0) cs_on = getenv("CHAMBERSTAT") != 0; if (cs_on) chamber_diag(c); }
         if (rok) {
             cand[nc].dir = d; cand[nc].endp = c; cand[nc].len = len;
@@ -2448,6 +2684,8 @@ int main(int argc, char **argv) {
     if (getenv("NESTPROBE")) dir_nest = atoi(getenv("NESTPROBE"));
     if (getenv("NESTK")) nest_k = atoi(getenv("NESTK"));
     if (getenv("NESTEDGE")) nest_edge = atoi(getenv("NESTEDGE"));
+    if (getenv("REGPAR")) use_regpar = atoi(getenv("REGPAR"));
+    if (getenv("RPDEPTH")) rpd_depth = atoi(getenv("RPDEPTH"));
     if (getenv("SUBTOUR")) use_subtour = atoi(getenv("SUBTOUR"));
     bk_estate = malloc((size_t)N * 4);
     bk_dsu = malloc(sizeof(int) * (size_t)N);
