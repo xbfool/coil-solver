@@ -11,7 +11,7 @@ FROM=${1:?起始关号}; TO=${2:?结束关号}; LIMIT=${3:-1800}; JOBS=${4:-24}
 HERE="$(cd "$(dirname "$0")/.." && pwd)"
 BENCH="${COILBENCH_DIR:-/mnt/d/works/coilbench}"
 BANK="${COIL_BANK:-/mnt/d/works/coil-solutions/solutions}"
-SOLVER="$HERE/bin/v58-probezero"
+SOLVER="${SOLVER:-$HERE/bin/v73-dirlayer}"   # v73=有向层默认开(660: 21s->2s)；可用 SOLVER= 覆盖
 
 [ -x "$SOLVER" ] || cc -std=gnu99 -O3 -march=native -funroll-loops \
     "$HERE/versions/v58-probezero.c" -o "$SOLVER" || exit 1
