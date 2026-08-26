@@ -10,6 +10,32 @@
 > 修复：setrlimit 入 main + 分片父进程 waitpid 验尸（崩过打 TAINTED 退 3）+ postrust 双保险。
 > 详见 notes.md「🧨 信任重建」节；脚手架：tools/postrust.sh（阳性对照）+ SOLWALK=<解文件>（搜索段 REFSOL）。
 
+> ## 🏠 回家跑 runbook（2026-08-26 傍晚交接，按优先级）
+>
+> **最新案情（当晚三连反转后）**：① 栈溢出破案修复（"全灭"证据链坍塌）；② 包围圈双重证实
+> （真起点 ∈ 87/88）；③ **g_estate 出示不在场证明**：767 全局阶段固定 0 条边、候选 100% 保留
+> （GDUMP 实测为空）——漏斗传播 ≡ 空底座语义，52 个消失者死于**探针层小预算真穷尽**
+> （整树 <650~32k 节点走完，本就是漏斗设计：假候选死得快；真起点的树不可能穷尽）
+> ⇒ **真起点极可能 ∈ 6 个活口**（撑过 Luby r15-r22、数百万节点仍 r=-1）：
+> **(115,193) (117,197) (108,197) (109,198) (115,197) (108,199)** = research/767/alive_hard.txt。
+>
+> ```bash
+> git pull && wsl -e bash -lc "cd /mnt/d/works/coil-solver && cc -std=gnu99 -O3 -march=native -funroll-loops versions/v77-deepprune.c -o bin/v77b"
+> ```
+> 1. **首选：`tools/hard6.sh 26 14400`** —— 6 活口逐格 swarm（747 攻陷配方，每格 4h 盒）。
+>    出解=收官；"干净穷尽"的格进裁判复核；6 格全穷尽=矛盾升级，开审搜索段（见 3）。
+> 2. **完备性扫尾：`tools/pin52.sh 20 1800`** —— 52 个探针死者逐钉无限搜复核
+>    （每钉的第三层是无限预算，等于把 650 节点的"微树穷尽"重验一遍；预期全 NOSOL 且秒级）。
+> 3. **搜索段审讯（若 1+2 后矛盾仍在）**：DEATHSTAT=1 重跑活口看死因构成（liveend/estate/
+>    reach/dyn/flow 哪个屠树）+ referee 对拍逐 estate（--edges 探针已有）；SOLWALK 在 767
+>    无解可走，可用邻居对拍规则行为差异。
+> 4. 工具备忘：gaudit.py（g_estate 跨实现审计）本关空底座用不上，但其他关/全局层改动后必跑；
+>    GBASE=0 开关（空底座语义）、GDUMP/GDUMPEXIT（底座导出）、T1/T15/T2 账本（TREELOG=1）已入 C。
+>
+> 脚手架清单：postrust.sh（阳性对照）/ SOLWALK（搜索段REFSOL）/ referee.py（selftest·refute·
+> certify·--edges）/ rescue.py+localize.py（营救演算定位器：703/736 真起点双双落区）/
+> pin52.sh / hard6.sh。全部已校准，语义与战绩见 notes.md「信任重建」各节。
+
 > 状态：**未解决**。用户叫停全部计算，要求重新思考。本文是完整交接。
 
 ## 一句话案情

@@ -2990,6 +2990,31 @@ int main(int argc, char **argv) {
         return viol ? 2 : 0;
     }
 
+    // 2026-08-26 审讯钩子 GDUMP=<file>：导出全局底座（g_estate 的 G 行 + end_ok=0 的 E 行），
+    // 供 referee gaudit 跨实现对拍。GDUMPEXIT=1 则导出后直接退出（不进漏斗）。
+    if (getenv("GDUMP")) {
+        FILE *gf = fopen(getenv("GDUMP"), "w");
+        if (gf) {
+            for (int c = 0; c < N; ++c) if (g0[c]) for (int d = 2; d < 4; ++d)
+                if (g0[c + delta[d]] && g_estate[c * 4 + d])
+                    fprintf(gf, "G %d %d %d\n", c, d, g_estate[c * 4 + d]);
+            for (int c = 0; c < N; ++c) if (g0[c] && !end_ok[c]) fprintf(gf, "E %d\n", c);
+            fclose(gf);
+            fprintf(stderr, "GDUMP: g_estate + end_ok 已导出到 %s\n", getenv("GDUMP"));
+        }
+        if (getenv("GDUMPEXIT")) return 0;
+    }
+
+    // 2026-08-26 审讯开关 GBASE=0：清空全局底座（= PROBEDUMP 空底座语义）。
+    // 767 案：87 候选中 52 个死在"全局底座之上"的第 1/2 层（g_estate 是唯一无裁判冗余的层）。
+    // GBASE=0 + PINSTART 逐钉 52 疑犯 = 绕开嫌疑层直接搜 —— 出解即同时破案+定罪。
+    if (getenv("GBASE") && atoi(getenv("GBASE")) == 0) {
+        memset(g_estate, 0, (size_t)N * 4);
+        for (int c = 0; c < N; ++c) end_ok[c] = g0[c] ? 1 : 0;
+        gfix_total = 0;
+        fprintf(stderr, "GBASE=0: 全局底座已清空（空底座语义，审讯用；建议配 DIRLAYER=0）\n");
+    }
+
     if (!wall_t0) wall_t0 = time(0);
     int *starts = malloc(sizeof(int) * (size_t)total_free);
     int ns = 0;

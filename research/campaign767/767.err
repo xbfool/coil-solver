@@ -742,3 +742,30 @@ sweep shard15 round20 done (budget 800000)
 T3[t=3209s] shard10 r23 #0 cell=(117,199) sc=43254 nodes=3245721 r=0
 sweep shard10 round23 done (budget 4611686018427387904)
 no solution found
+T3[t=3283s] shard18 r21 #4 cell=(108,199) sc=43419 nodes=1600001 r=-1
+sweep shard18 round21 done (budget 1600000)
+T3[t=3283s] shard9 r13 #1 cell=(109,198) sc=43496 nodes=1600001 r=-1
+T3[t=3322s] shard3 r13 #1 cell=(117,197) sc=43812 nodes=1600001 r=-1
+T3[t=3324s] shard15 r21 #2 cell=(115,197) sc=44251 nodes=1600001 r=-1
+sweep shard15 round21 done (budget 1600000)
+T3[t=3339s] shard18 r22 #4 cell=(108,199) sc=43419 nodes=400001 r=-1
+sweep shard18 round22 done (budget 400000)
+T3[t=3385s] shard15 r22 #2 cell=(115,197) sc=44251 nodes=400001 r=-1
+sweep shard15 round22 done (budget 400000)
+T3[t=3533s] shard9 r13 #2 cell=(108,197) sc=43461 nodes=1600001 r=-1
+sweep shard9 round13 done (budget 1600000)
+T3[t=3585s] shard3 r13 #2 cell=(115,193) sc=43769 nodes=1600001 r=-1
+sweep shard3 round13 done (budget 1600000)
+T3[t=4026s] shard9 r14 #1 cell=(109,198) sc=43496 nodes=3200001 r=-1
+T3[t=4086s] shard3 r14 #1 cell=(117,197) sc=43812 nodes=3200001 r=-1
+T3[t=4464s] shard9 r14 #2 cell=(108,197) sc=43461 nodes=3200001 r=-1
+sweep shard9 round14 done (budget 3200000)
+T3[t=4515s] shard9 r15 #1 cell=(109,198) sc=43496 nodes=400001 r=-1
+T3[t=4517s] shard3 r14 #2 cell=(115,193) sc=43769 nodes=3200001 r=-1
+sweep shard3 round14 done (budget 3200000)
+T3[t=4579s] shard9 r15 #2 cell=(108,197) sc=43461 nodes=400001 r=-1
+sweep shard9 round15 done (budget 400000)
+T3[t=4581s] shard3 r15 #1 cell=(117,197) sc=43812 nodes=400001 r=-1
+T3[t=4624s] shard9 r16 #1 cell=(109,198) sc=43496 nodes=400001 r=-1
+T3[t=4626s] shard3 r15 #2 cell=(115,193) sc=43769 nodes=400001 r=-1
+sweep shard3 round15 done (budget 400000)
