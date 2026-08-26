@@ -549,6 +549,7 @@ static void pprocess(int c) {
 static int *chain_id, *chain_pos, *seqbuf;
 
 // strict 用于含起点的那条链，见上面第 2 条
+static int cd_turn = 1, cd_strict = 1, cd_fro = 1;   // 链定向子规则消融: CHAINTURN/CHAINSTRICT/CHAINFRO
 static int chain_dir_ok(const int *seq, int k, int rev, int cid, int strict) {
     for (int i = 1; i + 1 < k; ++i) {
         int prev = rev ? seq[i + 1] : seq[i - 1];
@@ -556,10 +557,10 @@ static int chain_dir_ok(const int *seq, int k, int rev, int cid, int strict) {
         if (next - seq[i] == seq[i] - prev) continue;       // 直穿，滑行规则没意见
         int f = seq[i] + (seq[i] - prev);                   // 拐弯时「前方」那一格
         if (!g0[f]) continue;                               // 前方是墙，拐弯天然合法
-        if (chain_id[f] != cid) { if (strict) return 0; continue; }
+        if (chain_id[f] != cid) { if (strict && cd_strict) return 0; continue; }
         int tf = rev ? (k - 1 - chain_pos[f]) : chain_pos[f];
         int ti = rev ? (k - 1 - i) : i;
-        if (tf > ti) return 0;                              // 前方那格更晚 => 这个方向不可能
+        if (cd_turn && tf > ti) return 0;                   // 前方那格更晚 => 这个方向不可能
     }
     return 1;
 }
@@ -603,12 +604,12 @@ static int orient_chains(int s) {
         int ok1 = chain_dir_ok(seqbuf, k, 1, nchain, tail_s);
         if (head_s) ok1 = 0;                                // 起点只挂 1 条边，必是链端，路径从它出发
         if (tail_s) ok0 = 0;
-        if (head_s && !first_run_ok(seqbuf, k)) return 0;
+        if (cd_fro && head_s && !first_run_ok(seqbuf, k)) return 0;
         if (tail_s) {
             int kk = k < 8192 ? k : 8192;
             static int rev[8192];
             for (int t = 0; t < kk; ++t) rev[t] = seqbuf[k - 1 - t];
-            if (!first_run_ok(rev, kk)) return 0;
+            if (cd_fro && !first_run_ok(rev, kk)) return 0;
         }
         if (!ok0 && !ok1) return 0;                         // 两个方向都走不通 => 矛盾
         ++nchain;
@@ -2428,6 +2429,7 @@ static int reach_local(int first, int dd, int len, int c, int rem2) {
 static int rpd_depth = 0;
 static int rp_every = 0;
 static int pd_every = 0;
+static long long pdev_try, pdev_kill, bj_try, bj_kill;   // PDEVERY 经济学仪表：触发数/击杀数(命中率=kill/try)
 static int bj_every = 0;   // BJ:节点入口检查本节点死否,死则剪整子树(回跳核心)   // PDEVERY:每N节点触发强制边传播,逮奇偶逮不到的深层怪物   // RPEVERY:每N节点触发一次分区奇偶(不是每步),便宜地杀怪物                 // RPDEPTH：深度 < 此值才跑。⚠ 默认关：修了两轮仍有 9/120 丢解，未定位的不可靠，只准研究用
 static long long rpd_calls, rpd_kills;
 static int *rd_in, *rd_out, *rd_low, *rd_par, *rd_order, *rd_c0, *rd_c1, *rd_stk, *rd_dirs, *rd_sep;
@@ -2524,10 +2526,13 @@ static int dfs(int p, int remaining, int depth) {
     if (remaining < best_rem) best_rem = remaining;
     if (remaining == 0) return 1;
     if (nodes++ >= node_limit) return -1;
-    if (bj_every > 0 && remaining > 0 && (nodes % bj_every) == 0) { int r0=-1; for(int d=0;d<4;++d) if(g[p+delta[d]]){r0=p+delta[d];break;} if(r0>=0 && !propagate_dyn(p, remaining, r0, delta[0], -1)) return 0; }
-    if ((nodes & 0x7FFFFF) == 0 && getenv("DEATHSTAT"))
+    if (bj_every > 0 && remaining > 0 && (nodes % bj_every) == 0) { int r0=-1; for(int d=0;d<4;++d) if(g[p+delta[d]]){r0=p+delta[d];break;} if(r0>=0){ ++bj_try; if(!propagate_dyn(p, remaining, r0, delta[0], -1)) { ++bj_kill; return 0; } } }
+    if ((nodes & 0xFFFFF) == 0 && getenv("DEATHSTAT")) {   // 1M 节点一吐(原 8M 在 PDEVERY 重载下根本到不了——仪表门不能依赖被测吞吐)
         fprintf(stderr, "DEATH sh%d liveend=%lld estate=%lld reach=%lld dyn=%lld flow=%lld geom=%lld\n",
                 shard, dth_liveend, dth_estate, dth_reach, dth_dyn, dth_flow, dth_geom);
+        fprintf(stderr, "PDEV sh%d try=%lld kill=%lld (%.1f%%) BJ try=%lld kill=%lld nodes=%lld\n",
+                shard, pdev_try, pdev_kill, pdev_try ? 100.0 * pdev_kill / pdev_try : 0.0, bj_try, bj_kill, nodes);
+    }
 
 
     struct move { int dir, endp, len, score; } cand[4];
@@ -2543,7 +2548,7 @@ static int dfs(int p, int remaining, int depth) {
         int rem2 = remaining - len;
         int rok = (rem2 == 0 || (cheap_ok(c, rem2) && reach_local(p + dd, dd, len, c, rem2)));
         if (rok && rem2 > 0 && ((rpd_depth > 0 && depth < rpd_depth) || (rp_every > 0 && (nodes % rp_every) == 0)) && !rp_dyn_ok(c, rem2)) rok = 0;
-        if (rok && rem2 > 0 && pd_every > 0 && (nodes % pd_every) == 0 && !propagate_dyn(c, rem2, p + dd, dd, -1)) rok = 0;   // v76b
+        if (rok && rem2 > 0 && pd_every > 0 && (nodes % pd_every) == 0) { ++pdev_try; if (!propagate_dyn(c, rem2, p + dd, dd, -1)) { rok = 0; ++pdev_kill; } }   // v77 + 仪表
         if (!rok) { ++dth_reach; static int cs_on = -1; if (cs_on < 0) cs_on = getenv("CHAMBERSTAT") != 0; if (cs_on) chamber_diag(c); }
         if (rok) {
             cand[nc].dir = d; cand[nc].endp = c; cand[nc].len = len;
@@ -2702,6 +2707,9 @@ int main(int argc, char **argv) {
     }
     if (getenv("FLOW")) use_flow = atoi(getenv("FLOW"));
     if (getenv("CHAIN")) use_chain = atoi(getenv("CHAIN"));
+    if (getenv("CHAINTURN")) cd_turn = atoi(getenv("CHAINTURN"));
+    if (getenv("CHAINSTRICT")) cd_strict = atoi(getenv("CHAINSTRICT"));
+    if (getenv("CHAINFRO")) cd_fro = atoi(getenv("CHAINFRO"));
     if (getenv("DIRLAYER")) use_dirlayer = atoi(getenv("DIRLAYER"));
     if (getenv("ENDOK")) dir_use_endok = atoi(getenv("ENDOK"));
     if (getenv("ORDDEPTH")) ord_depth = atoi(getenv("ORDDEPTH"));
