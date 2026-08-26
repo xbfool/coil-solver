@@ -6,11 +6,16 @@
 从 PROOFS.md 的数学规范**独立**重实现筛选规则（刻意不照抄 C 实现——独立性即价值），
 用于跨实现对拍：求解器版本随便迭代，裁判不动，谁错谁现形。
 
-实现的规则面（= per-start 强筛链，除 dirlayer/subtour/probing——767 消融证明其贡献为零）：
+实现的规则面（= per-start 强筛链）：
   §1.1 度数窗口   §1.2 必用边不成环(DSU)   §1.3/1.4 端点色/唯一终点
   §3.4 首滑直冲到墙（0 向死 / 1 向强制整线）
   §2.1/2.2 流层 Régin GAC（scipy maximum_flow + 强连通分量），哑点按奇偶挂边
   §3.5 链定向（内部拐点 tf>ti / strict / 首滑直线 / 含 s 链的方向淘汰）
+  §有向层（v73 移植，DIRLAYER 开关，默认 2）：走向变量 dirv + 规则1~3
+    （estate 双向喂 / 出入度 / 滑行反对称 + ord_reach 时序找环）；drun/drain 交替到不动点。
+    健全性已验：747 真起点存活且推 26175+4781 条边与真解零冲突、720~769 批量 50/50 存活。
+    ⚠ 平凡有向传播杀不动 747 远起点（需嵌套探针 NESTPROBE，Python 里对 localize 不可行）；
+    强制边族无 flow 那样的 max-flow 营救对偶 —— 详见 DIRLAYER-FINDINGS.md。
 
 坐标系与 C 完全一致：W=盘宽+2（哨兵边框），cell=(y+1)*W+(x+1)，
 delta=[-1,-W,+1,+W]=[L,U,R,D]，estate: 0=未定 1=必用 2=禁用，规范方向 d∈{2,3}。
@@ -70,6 +75,13 @@ class Propagator:
         self.endcol = bd.col[s] if (n & 1) else (bd.col[s] ^ 1)
         self.forced_end = -1
         self.q = deque(); self.inq = bytearray(bd.N)
+        self.dirv = bytearray(bd.N * 4)          # 有向变量:0未定 1=c->c+e走 2=不走
+        self.dq = deque(); self.dinq = bytearray(bd.N)
+        self.dir_bad = False; self.dir_reason = "有向层矛盾"
+        self.ord_seen = [0]*bd.N; self.ord_gen = 0
+        self.ord_depth = 24
+        import os as _os
+        self.use_dirlayer = int(_os.environ.get("DIRLAYER", "2"))
 
     # ---------- 基础设施 ----------
     def find(self, c):
@@ -320,6 +332,158 @@ class Propagator:
                 raise Dead(f"链{cid}(长{len(seq)},{xy(seq[0])}->{xy(seq[-1])})双杀: "
                            f"正向[{fmt(bad0)}] 反向[{fmt(bad1)}]")
 
+    # ---------- 有向层(v73移植): 走向变量+滑行时序+时序找环 ----------
+    def in_val(self, c, e):
+        p = c - self.bd.delta[e]
+        if not self.bd.free[p]: return 2
+        return self.dirv[p * 4 + e]
+
+    def dpush(self, c):
+        if self.bd.free[c] and not self.dinq[c]:
+            self.dinq[c] = 1; self.dq.append(c)
+
+    def set_dir(self, c, e, v):
+        bd = self.bd; n = c + bd.delta[e]
+        if not bd.free[c] or not bd.free[n]:
+            if v == 1: self.dir_bad = True
+            return
+        p = self.dirv[c * 4 + e]
+        if p == v: return
+        if p != 0: self.dir_bad = True; return
+        self.dirv[c * 4 + e] = v
+        self.dpush(c); self.dpush(n)
+        if v == 1:
+            if self.estate[c * 4 + e] == 0: self.set_edge(c, e, 1)   # 走=>必用边(触发§1.2)
+            q = self.dirv[n * 4 + (e ^ 2)]
+            if q == 1: self.dir_bad = True; return
+            if q == 0: self.dirv[n * 4 + (e ^ 2)] = 2; self.dpush(n)
+
+    def ord_reach(self, a, b, budget):
+        if a == b: return True
+        bd = self.bd; self.ord_gen += 1; gen = self.ord_gen
+        seen = self.ord_seen; par = self.ord_par
+        stack = [a]; seen[a] = gen; par[a] = -1
+        while stack and budget > 0:
+            budget -= 1; x = stack.pop()
+            for d in range(4):
+                if self.dirv[x * 4 + d] != 1: continue
+                y = x + bd.delta[d]
+                if y == b: par[b] = x; return True
+                if bd.free[y] and seen[y] != gen: seen[y] = gen; par[y] = x; stack.append(y)
+            for e in range(4):
+                y = x - bd.delta[e]
+                if not bd.free[y] or self.in_val(y, e) != 1 or self.dirv[y * 4 + e] != 2: continue
+                if y == b: par[b] = x; return True
+                if seen[y] != gen: seen[y] = gen; par[y] = x; stack.append(y)
+        return False
+
+    def dprocess(self, c):
+        if self.dir_bad or not self.bd.free[c]: return
+        bd = self.bd; est = self.estate; dirv = self.dirv; D = bd.delta
+        # 规则1: 与estate双向喂
+        for e in range(4):
+            n = c + D[e]
+            if not bd.free[n]:
+                if dirv[c * 4 + e] == 0: dirv[c * 4 + e] = 2
+                continue
+            st = est[c * 4 + e]
+            if st == 2:
+                if dirv[c * 4 + e] == 1 or dirv[n * 4 + (e ^ 2)] == 1: self.dir_bad = True; return
+                if dirv[c * 4 + e] == 0: dirv[c * 4 + e] = 2; self.dpush(n)
+                if dirv[n * 4 + (e ^ 2)] == 0: dirv[n * 4 + (e ^ 2)] = 2; self.dpush(n)
+            elif st == 1:
+                if dirv[c * 4 + e] == 2 and dirv[n * 4 + (e ^ 2)] == 2: self.dir_bad = True; return
+                if dirv[c * 4 + e] == 2 and dirv[n * 4 + (e ^ 2)] == 0: self.set_dir(n, e ^ 2, 1)
+                if dirv[n * 4 + (e ^ 2)] == 2 and dirv[c * 4 + e] == 0: self.set_dir(c, e, 1)
+                if self.dir_bad: return
+            else:
+                if dirv[c * 4 + e] == 2 and dirv[n * 4 + (e ^ 2)] == 2 and est[c * 4 + e] == 0:
+                    self.set_edge(c, e, 2)   # 有向反哺无向:禁边
+        # 规则2: 出/入度(每起点相)
+        oy = ou = iy = iu = 0; oe = ie = -1
+        for e in range(4):
+            if bd.free[c + D[e]]:
+                ov = dirv[c * 4 + e]
+                if ov == 1: oy += 1
+                elif ov == 0: ou += 1; oe = e
+            if bd.free[c - D[e]]:
+                iv = self.in_val(c, e)
+                if iv == 1: iy += 1
+                elif iv == 0: iu += 1; ie = e
+        if oy > 1 or iy > 1: self.dir_bad = True; return
+        is_start = (c == self.s)
+        is_end = (self.forced_end == c)
+        maybe_end = is_end or (self.forced_end < 0 and bd.col[c] == self.endcol)
+        if is_end:
+            for e in range(4):
+                if dirv[c * 4 + e] == 0: dirv[c * 4 + e] = 2; self.dpush(c + D[e])
+        elif not maybe_end:
+            if oy == 0 and ou == 0: self.dir_bad = True; return
+            if oy == 1:
+                for e in range(4):
+                    if dirv[c * 4 + e] == 0: dirv[c * 4 + e] = 2; self.dpush(c + D[e])
+            elif ou == 1:
+                self.set_dir(c, oe, 1)
+                if self.dir_bad: return
+        elif oy == 1:
+            for e in range(4):
+                if dirv[c * 4 + e] == 0: dirv[c * 4 + e] = 2; self.dpush(c + D[e])
+        if is_start:
+            for e in range(4):
+                if bd.free[c - D[e]] and self.in_val(c, e) == 0: self.set_dir(c - D[e], e, 2)
+        else:
+            if iy == 0 and iu == 0: self.dir_bad = True; return
+            if iy == 1:
+                for e in range(4):
+                    if bd.free[c - D[e]] and self.in_val(c, e) == 0: self.set_dir(c - D[e], e, 2)
+            elif iu == 1:
+                self.set_dir(c - D[ie], ie, 1)
+                if self.dir_bad: return
+        if self.dir_bad: return
+        # 规则3: 滑行反对称 + 时序找环
+        if self.use_dirlayer < 2: return
+        for e in range(4):
+            if self.in_val(c, e) != 1: continue
+            f = c + D[e]
+            if not bd.free[f]: continue
+            if dirv[c * 4 + e] != 2: continue
+            b = f + D[e]
+            if not bd.free[b]: continue
+            if dirv[b * 4 + (e ^ 2)] == 1:
+                self.set_dir(f, e ^ 2, 1)
+                if self.dir_bad: return
+            if self.ord_reach(c, f, self.ord_depth):
+                self._ord_motif(c, f); self.dir_reason = "有向层时序成环"
+                self.dir_bad = True; return
+
+    def _ord_motif(self, a, b):
+        # 时序环 = a..b 链(相邻格)+闭合 => 供 localize 当模体
+        par = self.ord_par; seq = [b]
+        while seq[-1] != a and par[seq[-1]] >= 0: seq.append(par[seq[-1]])
+        self.kill_chain = seq
+
+    def drun_dir(self):
+        while self.dq and not self.dir_bad:
+            c = self.dq.popleft(); self.dinq[c] = 0
+            self.dprocess(c)
+
+    def _det(self):
+        return (len(self.dirv) - self.dirv.count(0)) + (len(self.estate) - self.estate.count(0))
+
+    def dir_layer(self):
+        if not self.use_dirlayer: return
+        self.ord_par = [-1] * self.bd.N
+        self.drain()
+        prev = -1
+        for _ in range(80):
+            for c in self.bd.cells: self.dpush(c)
+            self.drun_dir()
+            if self.dir_bad: raise Dead(self.dir_reason)
+            self.drain()
+            cur = self._det()
+            if cur == prev: break
+            prev = cur
+
     # ---------- 总流程 ----------
     def run(self):
         try:
@@ -329,6 +493,7 @@ class Propagator:
             self.flow_regin()
             self.first_move_rounds()
             self.flow_regin()                            # 第二轮流（吃前轮级联的新结论）
+            self.dir_layer()                             # v73 有向层(走向+滑行时序+找环)
             self.chains_check()
             return True, "存活"
         except Dead as e:
