@@ -2,3 +2,4 @@ bin/
 solver
 *.o
 solutions/
+research/postrust/*.out

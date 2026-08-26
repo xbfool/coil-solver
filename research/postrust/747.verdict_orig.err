@@ -1,0 +1,11 @@
+  分治：12 块 144 对，可行 39 对，整块淘汰掉 0 格
+全局阶段：固定 0 条边，起点候选 42178 / 42178 (100.0%)
+adaptive PROPDEPTH=2 (fixed 0 / 59899 edges; 第一层存活率>=SURVDEEP%再升深层)
+PINSTART=(12,19) -> 命中，只跑这一个起点
+FRANK shard0: F降序
+shard 0: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 0: 1.5 层深层重探后剩 1
+shard 0: 第一层存活 1/1 = 100%%, 第二层 开
+probe[t=5s]: 0/1 起点被证伪，剩 1
+DYN shard0: 609 calls, 183 refuted (30%)
+T3[t=33s] shard0 r0 #0 cell=(12,19) sc=40945 nodes=278391 r=1

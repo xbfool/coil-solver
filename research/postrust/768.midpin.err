@@ -1,0 +1,8 @@
+全局阶段：固定 29662 条边，起点候选 12 / 44420 (0.0%)
+adaptive PROPDEPTH=999999 (fixed 29662 / 62985 edges; 第一层存活率>=SURVDEEP%再升深层)
+PINSTART=(157,151) -> 命中，只跑这一个起点
+FRANK shard0: F降序
+shard 0: 第一层存活 1/1 = 100%%, 第二层 开
+probe[t=14s]: 0/1 起点被证伪，剩 1
+DYN shard0: 2184 calls, 521 refuted (24%)
+T3[t=85s] shard0 r0 #0 cell=(157,151) sc=42339 nodes=386979 r=1
