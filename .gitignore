@@ -3,3 +3,4 @@ solver
 *.o
 solutions/
 research/postrust/*.out
+research/campaign767/*.out

@@ -1,0 +1,63 @@
+有向预计算：走向已定 54660/125970 (43.4%) | 无向判定率 47.1% -> 59.3% (29662 -> 37345 / 62985 边)
+有向预计算：走向已定 54931/125970 (43.6%) | 无向判定率 59.3% -> 59.5% (37345 -> 37474 / 62985 边)
+有向预计算：走向已定 54931/125970 (43.6%) | 无向判定率 59.5% -> 59.5% (37474 -> 37474 / 62985 边)
+全局阶段：固定 37474 条边，起点候选 12 / 44420 (0.0%)
+adaptive PROPDEPTH=999999 (fixed 37474 / 62985 edges; 第一层存活率>=SURVDEEP%再升深层)
+shard 0: swarm 模式（12 个候选全员上，随机顺序）
+shard 1: swarm 模式（12 个候选全员上，随机顺序）
+shard 2: swarm 模式（12 个候选全员上，随机顺序）
+shard 3: swarm 模式（12 个候选全员上，随机顺序）
+shard 5: swarm 模式（12 个候选全员上，随机顺序）
+shard 4: swarm 模式（12 个候选全员上，随机顺序）
+shard 6: swarm 模式（12 个候选全员上，随机顺序）
+shard 7: swarm 模式（12 个候选全员上，随机顺序）
+shard 8: swarm 模式（12 个候选全员上，随机顺序）
+shard 9: swarm 模式（12 个候选全员上，随机顺序）
+shard 10: swarm 模式（12 个候选全员上，随机顺序）
+shard 11: swarm 模式（12 个候选全员上，随机顺序）
+FRANK shard4: F降序
+shard 4: 第一层存活 1/1 = 100%%, 第二层 开
+FRANK shard1: F降序
+shard 1: 第一层存活 1/1 = 100%%, 第二层 开
+FRANK shard10: F降序
+shard 10: 第一层存活 1/1 = 100%%, 第二层 开
+FRANK shard7: F降序
+shard 7: 第一层存活 1/1 = 100%%, 第二层 开
+FRANK shard2: F降序
+shard 2: 第一层存活 1/1 = 100%%, 第二层 开
+FRANK shard5: F降序
+shard 5: 第一层存活 1/1 = 100%%, 第二层 开
+FRANK shard8: F降序
+shard 8: 第一层存活 1/1 = 100%%, 第二层 开
+FRANK shard11: F降序
+shard 11: 第一层存活 1/1 = 100%%, 第二层 开
+FRANK shard9: F降序
+shard 9: 第一层存活 1/1 = 100%%, 第二层 开
+FRANK shard6: F降序
+shard 6: 第一层存活 1/1 = 100%%, 第二层 开
+FRANK shard3: F降序
+shard 3: 第一层存活 1/1 = 100%%, 第二层 开
+FRANK shard0: F降序
+shard 0: 第一层存活 1/1 = 100%%, 第二层 开
+probe[t=8s]: 11/12 起点被证伪，剩 1
+DYN shard7: 1628 calls, 451 refuted (28%)
+probe[t=8s]: 11/12 起点被证伪，剩 1
+DYN shard10: 1734 calls, 453 refuted (26%)
+probe[t=9s]: 11/12 起点被证伪，剩 1
+DYN shard4: 1768 calls, 462 refuted (26%)
+probe[t=10s]: 11/12 起点被证伪，剩 1
+DYN shard1: 2020 calls, 480 refuted (24%)
+probe[t=13s]: 11/12 起点被证伪，剩 1
+DYN shard2: 1568 calls, 585 refuted (37%)
+probe[t=14s]: 11/12 起点被证伪，剩 1
+DYN shard8: 1548 calls, 595 refuted (38%)
+probe[t=15s]: 11/12 起点被证伪，剩 1
+DYN shard5: 1764 calls, 673 refuted (38%)
+probe[t=15s]: 11/12 起点被证伪，剩 1
+DYN shard11: 1790 calls, 640 refuted (36%)
+probe[t=20s]: 11/12 起点被证伪，剩 1
+DYN shard3: 1948 calls, 501 refuted (26%)
+probe[t=22s]: 11/12 起点被证伪，剩 1
+DYN shard9: 2372 calls, 574 refuted (24%)
+T3[t=22s] shard10 r0 #0 cell=(157,151) sc=42237 nodes=71952 r=1
+WINNER shard 10 tier 2 nodes 71952
