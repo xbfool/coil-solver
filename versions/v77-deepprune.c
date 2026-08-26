@@ -3163,17 +3163,28 @@ int main(int argc, char **argv) {
     unsigned char **tc_save = malloc(sizeof(unsigned char *) * (size_t)ns);
     int keep = 0;
 
+    // 2026-08-26 审讯账本：TREELOG=1 时逐起点记录第 1 层的死法（767 案：87 候选里 52 个
+    // 在进入第三层搜索之前消失，死因分类是破案关键 —— PROPKILL=传播(含全局底座)/
+    // REACHKILL=起点割点/PROBE0=小预算树穷尽）。
+    static int tl1 = -1;
+    if (tl1 < 0) tl1 = getenv("TREELOG") ? 1 : 0;
     for (int i = 0; i < ns; ++i) {
         if (!swarm && i % nshard != shard) continue;       // swarm 模式下每个 shard 都做全部起点
         int s = starts[i];
-        if (!(probe_all ? propagate_strong(s) : propagate(s))) continue;
+        if (!(probe_all ? propagate_strong(s) : propagate(s))) {
+            if (tl1) fprintf(stderr, "T1 sh%d cell=(%d,%d) PROPKILL\n", shard, s % W - 1, s / W - 1);
+            continue;
+        }
         memcpy(g, g0, N);
         cnt[0] = cnt[1] = 0; low_cnt = zero_cnt = 0;
         for (int c = 0; c < N; ++c) if (g[c]) ++cnt[col[c]];
         for (int c = 0; c < N; ++c) if (g[c]) { deg[c] = freedeg(c);
             if (deg[c] <= 1) ++low_cnt; if (deg[c] == 0) ++zero_cnt; }
         mark(s);
-        if (!reach_ok(s, total_free - 1)) continue;        // 起点是割点，整盘直接不连通
+        if (!reach_ok(s, total_free - 1)) {                // 起点是割点，整盘直接不连通
+            if (tl1) fprintf(stderr, "T1 sh%d cell=(%d,%d) REACHKILL\n", shard, s % W - 1, s / W - 1);
+            continue;
+        }
         path_len = 0; nodes = 0; node_limit = probe; best_rem = total_free;
         live_end = -1; tc_on = 0; ntc_low = 0;
         if (use_flow && tcand_for == s) {            // 候选集必须是**本起点**的，串台就关闭
@@ -3189,7 +3200,11 @@ int main(int argc, char **argv) {
         int r = dfs(s, total_free - 1, 0);
         tc_on = 0; live_end = -1;
         if (r == 1) { path[path_len] = 0; emit(s, path); }
-        if (r == 0) continue;                              // 搜穷仍无解 => 永久剔除
+        if (r == 0) {                                      // 搜穷仍无解 => 永久剔除
+            if (tl1) fprintf(stderr, "T1 sh%d cell=(%d,%d) PROBE0 nodes=%lld\n",
+                             shard, s % W - 1, s / W - 1, nodes);
+            continue;
+        }
         fsv[keep] = plainF_last;
         starts[keep] = s; sc[keep] = best_rem;
         est_save[keep] = malloc((size_t)N * 4);
@@ -3280,7 +3295,11 @@ int main(int argc, char **argv) {
                 int r15 = dfs(s, total_free - 1, 0);
                 tc_on = 0; live_end = -1;
                 if (r15 == 1) { path[path_len] = 0; emit(s, path); }
-                if (r15 == 0) { free(est_save[i]); free(tc_save[i]); continue; }
+                if (r15 == 0) {
+                    if (tl1) fprintf(stderr, "T15 sh%d cell=(%d,%d) PROBE0 nodes=%lld\n",
+                                     shard, s % W - 1, s / W - 1, nodes);
+                    free(est_save[i]); free(tc_save[i]); continue;
+                }
                 starts[keep15] = s; sc[keep15] = best_rem; fsv[keep15] = fsv[i];
                 est_save[keep15] = est_save[i]; tc_save[keep15] = tc_save[i];
                 ++keep15;
@@ -3339,7 +3358,11 @@ int main(int argc, char **argv) {
         int r = dfs(s, total_free - 1, 0);
         tc_on = 0; live_end = -1;
         if (r == 1) { path[path_len] = 0; emit(s, path); }
-        if (r == 0) { drop2[i] = 1; continue; }
+        if (r == 0) {
+            if (tl1) fprintf(stderr, "T2 sh%d cell=(%d,%d) PROBE0 nodes=%lld\n",
+                             shard, s % W - 1, s / W - 1, nodes);
+            drop2[i] = 1; continue;
+        }
         (void)keep2;
     }
     {   // 轮转遍历后再顺序压缩（压缩不能在轮转循环里做，会把没跑到的项挤掉）

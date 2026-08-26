@@ -82,6 +82,22 @@ class Propagator:
         if not self.inq[c]:
             self.inq[c] = 1; self.q.append(c)
 
+    def _mand_path(self, a, b):
+        """必用边图上 a→b 的路（闭环时提取环模体用）。"""
+        bd = self.bd
+        prev = {a: None}
+        dq = deque([a])
+        while dq:
+            u = dq.popleft()
+            if u == b: break
+            for d in range(4):
+                v = u + bd.delta[d]
+                if bd.free[v] and self.estate[u * 4 + d] == 1 and v not in prev:
+                    prev[v] = u; dq.append(v)
+        seq = [b]
+        while prev.get(seq[-1]) is not None: seq.append(prev[seq[-1]])
+        return seq[::-1]
+
     def set_edge(self, c, d, v):
         bd = self.bd
         n = c + bd.delta[d]
@@ -90,7 +106,11 @@ class Propagator:
         if a != 0: raise Dead(f"边({c},{d})冲突 {a}->{v}")
         if v == 1:
             ra, rb = self.find(c), self.find(n)
-            if ra == rb: raise Dead(f"必用边({c},{d})闭环")   # §1.2
+            if ra == rb:                                      # §1.2
+                path = self._mand_path(c, n)
+                if path and path[-1] == n:
+                    self.kill_chain = path + [c]              # 环模体：路 + 闭合边
+                raise Dead(f"必用边({c},{d})闭环(环长{len(path)})")
             self.dsu[ra] = rb
         self.estate[c * 4 + d] = v
         self.estate[n * 4 + (d ^ 2)] = v
@@ -293,6 +313,7 @@ class Propagator:
             if head_s and not first_run_ok(seq): raise Dead(f"链{cid}首滑非直线(head)")
             if tail_s and not first_run_ok(seq[::-1]): raise Dead(f"链{cid}首滑非直线(tail)")
             if bad0 and bad1:
+                self.kill_chain = list(seq)          # 供 localize 提取模体边
                 xy = self.bd.xy
                 def fmt(b):
                     return b[0] if b[1] is None else f"{b[0]}@拐点{xy(b[1])}前方{xy(b[2])}"
