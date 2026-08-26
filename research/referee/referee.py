@@ -259,6 +259,7 @@ class Propagator:
             chains.append(seq)
 
         def dir_ok(seq, rev, cid, strict):
+            # 返回 None=可行，否则 (死因, 拐点格, 前方格)
             k = len(seq)
             for i in range(1, k - 1):
                 prev = seq[i + 1] if rev else seq[i - 1]
@@ -267,12 +268,12 @@ class Propagator:
                 f = seq[i] + (seq[i] - prev)
                 if not bd.free[f]: continue
                 if chain_id.get(f) != cid:
-                    if strict: return False
+                    if strict: return ("strict链外拐点", seq[i], f)
                     continue
                 tf = (k - 1 - chain_pos[f]) if rev else chain_pos[f]
                 ti = (k - 1 - i) if rev else i
-                if tf > ti: return False
-            return True
+                if tf > ti: return ("同链拐点tf>ti", seq[i], f)
+            return None
 
         def first_run_ok(seq):
             k = len(seq)
@@ -285,13 +286,18 @@ class Propagator:
         for cid, seq in enumerate(chains):
             if len(seq) < 3: continue
             head_s, tail_s = seq[0] == self.s, seq[-1] == self.s
-            ok0 = dir_ok(seq, False, cid, head_s)
-            ok1 = dir_ok(seq, True, cid, tail_s)
-            if head_s: ok1 = False
-            if tail_s: ok0 = False
+            bad0 = dir_ok(seq, False, cid, head_s)
+            bad1 = dir_ok(seq, True, cid, tail_s)
+            if head_s: bad1 = ("s在链头,反向被淘汰", None, None)
+            if tail_s: bad0 = ("s在链尾,正向被淘汰", None, None)
             if head_s and not first_run_ok(seq): raise Dead(f"链{cid}首滑非直线(head)")
             if tail_s and not first_run_ok(seq[::-1]): raise Dead(f"链{cid}首滑非直线(tail)")
-            if not ok0 and not ok1: raise Dead(f"链{cid}两方向皆不可行")
+            if bad0 and bad1:
+                xy = self.bd.xy
+                def fmt(b):
+                    return b[0] if b[1] is None else f"{b[0]}@拐点{xy(b[1])}前方{xy(b[2])}"
+                raise Dead(f"链{cid}(长{len(seq)},{xy(seq[0])}->{xy(seq[-1])})双杀: "
+                           f"正向[{fmt(bad0)}] 反向[{fmt(bad1)}]")
 
     # ---------- 总流程 ----------
     def run(self):
@@ -362,9 +368,18 @@ def cmd_selftest(board_path, sol_path):
 
 def cmd_refute(board_path, x, y):
     bd = Board(board_path)
-    p = Propagator(bd, bd.cell(x, y))
+    s = bd.cell(x, y)
+    if not bd.free[s]:
+        print(f"({x},{y}): 是墙，不是合法起点"); return 1
+    p = Propagator(bd, s)
     alive, reason = p.run()
     print(f"({x},{y}): {'存活' if alive else '证伪'} —— {reason}")
+    if len(sys.argv) > 5 and sys.argv[5] == "--edges":   # 探针：报告指定边的判定
+        for spec in sys.argv[6:]:
+            ex, ey, ed = map(int, spec.split(','))
+            c = bd.cell(ex, ey)
+            v = p.estate[c * 4 + ed]
+            print(f"  边({ex},{ey})d{ed}: {'未定' if v == 0 else '必用' if v == 1 else '禁用'}")
     return 0
 
 
