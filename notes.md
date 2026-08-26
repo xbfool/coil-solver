@@ -6156,3 +6156,53 @@ CHAINTURN=0 全盘 26 核：预算探针（纯搜索穷尽，与链无关）仍�
 
 一句话现状：767 可解却全灭；凶手夹在「flow 毒边」与「拐点规则传播层误杀」之间，
 一个 6 小时的二叉终审实验（设计已验证）可定谳，被停在起跑线上。
+
+---
+
+## 🧨 信任重建（2026-08-26 新会话）：栈溢出案 —— "全灭"证据链坍塌
+
+新脑子全量 review 代码 + 上轮 session，用户定方针：**先在有解关卡上把脚手架建好并校准，
+再碰 767**（767 是黑洞，没有校准过的仪器不进场）。结果脚手架第一网就捞到大鱼。
+
+### Review 阶段查明的问题（在跑任何计算之前）
+
+1. **CHAIN=0 从来没真正关掉链规则**：`orient_chains` 有三个调用点，`propagate()` 末尾那个
+   （pre-flow estate 上）不受 `use_chain` 门控；probing 后还有一个（默认 probe_rounds=0 走不到）。
+   全关的正确开关是子开关三件套 `CHAINTURN=0 CHAINSTRICT=0 CHAINFRO=0`（在 chain_dir_ok 内部
+   生效，覆盖所有调用点）。被叫停的终审实验用 CHAIN=0，其二叉判决逻辑不成立。
+2. **midpin.sh 把一切失败形态混成"无"**：stderr 进了 /dev/null（PINSTART 的"命中/被全局过滤
+   剔除"那行就在里面）、不区分树穷尽/预算/崩溃/剔除。事实 #4（"87 全灭"）由此作废。
+3. **PROBEDUMP 在 global_fixpoint 之前跑**：87 候选名单是空全局底座上生成的，与漏斗真跑
+   （global estate 更严）不同构 —— 钉 87 时可能被全局 end_ok 剔除而无人知晓。
+4. 独立 Python 复核盘面：44516 格/二染色 22258+22258/度直方图逐位符合/单连通/**双连通(0割点)**；
+   `levels_public/767`（上游明文原件）与实验文件逐字节一致 ⇒ **必有解的前提是牢的**。
+5. 复核后无罪的部分：chain_dir_ok 与 §3.5 证明逐条对应（重推过）；do_flow 教科书 Régin；
+   BJ 传给 propagate_dyn 的假参数在 slen<0 分支不被读取；REGPAR 默认关；dfs 的 0/-1 记账正确。
+
+### 脚手架第一网：postrust 阳性对照 → 30/30 全崩（SIGSEGV）
+
+`tools/postrust.sh`：8 个已解真值关（747+761~766+768，解全过官方 check）× 4 配置
+（allon / midpin / verdict_fixed / verdict_orig），钉真起点，stderr 全留，判决四分类。
+**结果：全部 rc=139。** ASan 定位：**dfs 递归栈溢出**（每滑行一帧，44k 盘的解 ≈ 2万+ 层，
+v77 的帧 × 8MB 默认栈 = 必炸；重建二进制 md5 与上轮 session 的完全一致 —— 崩溃当时就在）。
+
+**要害机理：只有走向深处（=接近解）的搜索才崩，浅层证伪安然返回。**
+- 767 的 87 候选 5~8s"死"得干净 = 浅层证伪（不崩）；**真起点若在其中，一旦开始铺解就 SIGSEGV**，
+  midpin 记"无"、分片漏斗把崩掉的 shard 当"这片搜穷了"（管道 EOF 不验尸，line ~3100）。
+- ⇒ "19/19 决赛者被完整搜索穷尽"、"87 全灭"两案全部翻案待重审。
+- ⇒ **767 可能从头到尾就是可解的，甚至可能已被某次崩掉的运行"差点"解出。**
+- 顺带怀疑名单：L695"离线 2400s 未解出"的墙、基石钉"40 棵慢树从未跑完"，都要用修复版重审。
+
+### 修复（三处，全在 v77-deepprune.c + postrust.sh）
+
+1. main() 开头 `setrlimit(RLIMIT_STACK, 硬限)`，硬限也低时打警告；
+2. 分片父进程收尾 **waitpid 验尸**：有 shard 信号死/异常退出 ⇒ "no solution found (TAINTED)"
+   + 退出码 3 —— 崩溃再也洗不成"证伪"；
+3. postrust.sh 加 `ulimit -s unlimited` 双保险 + CRASH(sigN)/TAINTED 判决类。
+
+### 新验证器 SOLWALK（搜索段的 REFSOL —— 补上最大的验证空白）
+
+REFSOL 只断言全局相 + 真起点的 propagate_strong；搜索段（estate_ok/cheap_ok/reach_ok/
+propagate_dyn 两形态×三 seed_mode/do_flow_dyn/tcand-live_end）从未有过真值检验。
+SOLWALK=<解文件> 沿已知解逐滑行走、每步跑全部搜索谓词，任何谓词否掉真解下一步=假证伪现行。
+冒烟：L101/L301 零违例。8 个真值大盘的全量走查进行中。

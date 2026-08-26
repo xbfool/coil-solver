@@ -134,6 +134,7 @@
 #include <signal.h>
 #include <poll.h>
 #include <sys/prctl.h>
+#include <sys/resource.h>
 
 static int shard = 0, nshard = 1;
 // ===== swarm 模式（v45）=====
@@ -2644,6 +2645,19 @@ static int dfs(int p, int remaining, int depth) {
 }
 
 int main(int argc, char **argv) {
+    // 2026-08-26 栈溢出修复：dfs 每滑行递归一帧，44k 格盘的解 ≈ 2万+ 层，v77 的帧在
+    // 8MB 默认栈上必炸（SIGSEGV）。要害在于：**只有走向深处（=接近解）的搜索才崩，
+    // 浅层证伪安然返回** —— 崩溃被漏斗/脚本当成"搜穷/无解"，假证伪批量生产。
+    // （767 全灭案的第一凶器；postrust 阳性对照 30/30 全崩当场抓获。）
+    { struct rlimit rl;
+      if (getrlimit(RLIMIT_STACK, &rl) == 0 && rl.rlim_cur != RLIM_INFINITY) {
+          rl.rlim_cur = rl.rlim_max;                  // Linux 主线程栈可动态长到软限，提到硬限即可
+          setrlimit(RLIMIT_STACK, &rl);
+          if (getrlimit(RLIMIT_STACK, &rl) == 0 && rl.rlim_cur != RLIM_INFINITY
+              && rl.rlim_cur < (rlim_t)1 << 30)
+              fprintf(stderr, "⚠ 栈上限只有 %lld MB（硬限也低），深盘可能栈溢出 —— 请用 ulimit -s unlimited 启动\n",
+                      (long long)(rl.rlim_cur >> 20));
+      } }
     FILE *in = stdin;
     if (argc > 1 && !(in = fopen(argv[1], "r"))) { fprintf(stderr, "open %s failed\n", argv[1]); return 1; }
     size_t cap = 1 << 20, n = 0;
@@ -2894,6 +2908,88 @@ int main(int argc, char **argv) {
         fprintf(stderr, "adaptive PROPDEPTH=%d (fixed %lld / %lld edges; 第一层存活率>=SURVDEEP%%再升深层)\n", prop_depth, gfix_total, te);
     }
 
+    // ===== SOLWALK=<解文件>：搜索段可靠性走查（REFSOL 的树内版，2026-08-26 信任重建）=====
+    //
+    // REFSOL 只断言全局相 + 真起点的 propagate_strong；搜索段（estate_ok/cheap_ok/reach_ok/
+    // propagate_dyn/do_flow_dyn/tcand-live_end）从未有过真值检验 —— 767 猎凶暴露的最大验证空白。
+    // 原理：真解的每个前缀都是树内子问题的一个真实例。沿已知解逐滑行走，每一步把搜索会跑的
+    // 全部谓词都跑一遍 —— 任何谓词否掉真解的下一步 = 假证伪当场现行。
+    //   · propagate_dyn 两种形态都验：滑播（分支点形态, seed_mode=1）+ 全播 slen=-1
+    //     （PDEVERY/BJ 形态），全播逐步轮换 seed_mode 0/1/2（漏斗按 shard%3 混用，都得验）；
+    //   · do_flow_dyn 每 FLOWEVERY 步一次（默认 16，全量太贵）；
+    //   · rp_dyn_ok 搜索里默认关，RPWALK=1 才查、只告警不计违例。
+    if (getenv("SOLWALK")) {
+        FILE *swf = fopen(getenv("SOLWALK"), "r");
+        if (!swf) { fprintf(stderr, "SOLWALK open failed\n"); return 1; }
+        static char swb[1 << 22];
+        size_t swn = fread(swb, 1, sizeof swb - 1, swf); swb[swn] = 0; fclose(swf);
+        int sx = atoi(strstr(swb, "x=") + 2), sy = atoi(strstr(swb, "y=") + 2);
+        const char *swp = strstr(swb, "path=") + 5;
+        int s = (sy + 1) * W + (sx + 1);
+        long long viol = 0;
+        int flowevery = getenv("FLOWEVERY") ? atoi(getenv("FLOWEVERY")) : 16;
+        int rpwalk = getenv("RPWALK") ? atoi(getenv("RPWALK")) : 0;
+        int cur = s, rem = total_free - 1, step = 0;
+        #define SWBAD(what) do { ++viol; if (viol <= 20) fprintf(stderr, \
+            "‼ SOLWALK违例[%s] 步%d 格(%d,%d) 剩%d\n", (what), step, cur % W - 1, cur / W - 1, rem); } while (0)
+        if (!end_ok[s]) SWBAD("全局end_ok剔除真起点");
+        if (!(probe_all ? propagate_strong(s) : propagate(s))) {
+            fprintf(stderr, "‼ SOLWALK违例[propagate_strong] 真起点被传播层证伪\n");
+            fprintf(stderr, "SOLWALK: 违例 %lld（传播段即死，未走搜索段）\n", viol + 1);
+            return 2;
+        }
+        memcpy(g, g0, N);
+        cnt[0] = cnt[1] = 0; low_cnt = zero_cnt = 0;
+        for (int c = 0; c < N; ++c) if (g[c]) ++cnt[col[c]];
+        for (int c = 0; c < N; ++c) if (g[c]) { deg[c] = freedeg(c);
+            if (deg[c] <= 1) ++low_cnt; if (deg[c] == 0) ++zero_cnt; }
+        live_end = -1; tc_on = 0; ntc_low = 0;
+        if (use_flow && tcand_for == s) {            // 与漏斗第三层完全同构的 tcand 装配
+            live_end = 0;
+            for (int c2 = 0; c2 < N; ++c2) if (g[c2] && tcand[c2]) ++live_end;
+            if (live_end == 0) live_end = -1;
+            if (live_end > 0) {
+                tc_on = 1;
+                for (int c2 = 0; c2 < N; ++c2)
+                    if (g[c2] && deg[c2] <= 1 && !tcand[c2]) ++ntc_low;
+            }
+        }
+        mark(s);
+        if (!reach_ok(s, rem)) SWBAD("reach_ok起点");
+        for (const char *q = swp; *q && *q != '\n' && *q != '\r'; ++q) {
+            int d = (*q == 'L') ? 0 : (*q == 'U') ? 1 : (*q == 'R') ? 2 : 3;
+            int dd = delta[d], len = 0, c = cur;
+            while (g[c + dd]) { c += dd; ++len; }
+            if (len == 0) { fprintf(stderr, "SOLWALK: 第 %d 步方向 %c 走不动，解文件或解析有问题\n", step, *q); ++viol; break; }
+            if (!estate_ok(cur, d, dd, len, c)) SWBAD("estate_ok");
+            int first = cur + dd;
+            for (int k = 0, q2 = cur; k < len; ++k) { q2 += dd; mark(q2); }
+            rem -= len; cur = c;
+            if (rem > 0) {
+                if (live_end == 0) SWBAD("live_end清零");
+                if (!cheap_ok(cur, rem)) SWBAD("cheap_ok");
+                if (!reach_ok(cur, rem)) SWBAD("reach_ok");
+                { int sm0 = seed_mode;
+                  seed_mode = 1;                              // 滑播形态（分支点过滤的默认路径）
+                  if (!propagate_dyn(cur, rem, first, dd, len)) SWBAD("dyn滑播");
+                  seed_mode = step % 3;                       // 全播形态（PDEVERY/BJ），轮换三种底座
+                  if (!propagate_dyn(cur, rem, first, dd, -1)) SWBAD("dyn全播");
+                  seed_mode = sm0; }
+                if (flowevery > 0 && step % flowevery == 0 && !do_flow_dyn(cur, rem)) SWBAD("flow_dyn");
+                if (rpwalk && !rp_dyn_ok(cur, rem))
+                    fprintf(stderr, "⚠ SOLWALK[rp_dyn] 步%d 格(%d,%d) （默认关的层，告警不计违例）\n",
+                            step, cur % W - 1, cur / W - 1);
+            }
+            ++step;
+        }
+        if (rem != 0) { fprintf(stderr, "SOLWALK: 走完剩 %d 格 != 0\n", rem); ++viol; }
+        if (tc_on && !tcand[cur]) SWBAD("tcand缺真终点");
+        fprintf(stderr, "SOLWALK: %d 步走完，违例 %lld —— %s\n", step, viol,
+                viol ? "**搜索段/传播段不可靠现行**" : "全谓词零违例");
+        #undef SWBAD
+        return viol ? 2 : 0;
+    }
+
     if (!wall_t0) wall_t0 = time(0);
     int *starts = malloc(sizeof(int) * (size_t)total_free);
     int ns = 0;
@@ -3007,6 +3103,21 @@ int main(int argc, char **argv) {
             }
         }
         for (int j2 = 0; j2 < nshard; ++j2) if (kids[j2] > 0) kill(kids[j2], SIGKILL);
+        // 2026-08-26 验尸记账：崩掉的 shard 与搜穷的 shard 在管道上长一个样（都是 EOF）。
+        // 不验尸，"无解"就可能是"崩了"——767 全灭案里这正是把 SIGSEGV 洗成"证伪"的通道。
+        // 只要有 shard 非正常退出（信号死/退出码>1），本轮"无解"不可当证伪：打 TAINTED、退 3。
+        { int tainted = 0;
+          for (int j2 = 0; j2 < nshard; ++j2) if (kids[j2] > 0) {
+              int st = 0;
+              if (waitpid(kids[j2], &st, 0) > 0) {
+                  if (WIFSIGNALED(st)) { ++tainted;
+                      fprintf(stderr, "‼ shard %d 死于信号 %d —— 该片起点未搜完\n", j2, WTERMSIG(st)); }
+                  else if (WIFEXITED(st) && WEXITSTATUS(st) > 1) { ++tainted;
+                      fprintf(stderr, "‼ shard %d 异常退出码 %d\n", j2, WEXITSTATUS(st)); }
+              }
+          }
+          if (tainted) { fprintf(stderr, "no solution found (TAINTED: %d/%d shard 崩溃，不可当证伪)\n", tainted, nshard); return 3; }
+        }
         fprintf(stderr, "no solution found\n");
         return 1;
     }
