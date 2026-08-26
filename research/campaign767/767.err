@@ -769,3 +769,11 @@ T3[t=4581s] shard3 r15 #1 cell=(117,197) sc=43812 nodes=400001 r=-1
 T3[t=4624s] shard9 r16 #1 cell=(109,198) sc=43496 nodes=400001 r=-1
 T3[t=4626s] shard3 r15 #2 cell=(115,193) sc=43769 nodes=400001 r=-1
 sweep shard3 round15 done (budget 400000)
+T3[t=4683s] shard9 r16 #2 cell=(108,197) sc=43461 nodes=400001 r=-1
+sweep shard9 round16 done (budget 400000)
+T3[t=4684s] shard3 r16 #1 cell=(117,197) sc=43812 nodes=400001 r=-1
+T3[t=4734s] shard3 r16 #2 cell=(115,193) sc=43769 nodes=400001 r=-1
+sweep shard3 round16 done (budget 400000)
+T3[t=4784s] shard9 r17 #1 cell=(109,198) sc=43496 nodes=800001 r=-1
+T3[t=4839s] shard3 r17 #1 cell=(117,197) sc=43812 nodes=800001 r=-1
+T3[t=4847s] shard15 r23 #2 cell=(115,197) sc=44251 nodes=10153669 r=1
