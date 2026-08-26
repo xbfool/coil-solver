@@ -607,8 +607,8 @@ static int orient_chains(int s) {
         if (tail_s) ok0 = 0;
         if (cd_fro && head_s && !first_run_ok(seqbuf, k)) return 0;
         if (tail_s) {
-            int kk = k < 8192 ? k : 8192;
-            static int rev[8192];
+            int kk = k;                                                        // 巨兽: 去掉8192截断
+            static int *rev = NULL; if (!rev) rev = malloc((size_t)N * sizeof(int));
             for (int t = 0; t < kk; ++t) rev[t] = seqbuf[k - 1 - t];
             if (cd_fro && !first_run_ok(rev, kk)) return 0;
         }
@@ -1988,7 +1988,7 @@ static int xc_scan(const int *seq, int k, int rev, int cid, int strict, int *bef
 static int xc_reach(int from, int to) {
     if (from == to) return 1;
     for (int i = 0; i < xc_nchain; ++i) xc_seen[i] = 0;
-    static int stk[8192];
+    static int *stk = NULL; if (!stk) stk = malloc((size_t)N * sizeof(int));   // 巨兽: 定长8192会截断xc_reach->误"不可达"; 改N大小
     int top = 0;
     stk[top++] = from; xc_seen[from] = 1;
     while (top) {
@@ -1996,7 +1996,7 @@ static int xc_reach(int from, int to) {
         for (int e = xc_eh[v]; e >= 0; e = xc_en[e]) {
             int w2 = xc_et[e];
             if (w2 == to) return 1;
-            if (!xc_seen[w2] && top < 8190) { xc_seen[w2] = 1; stk[top++] = w2; }
+            if (!xc_seen[w2] && top < N) { xc_seen[w2] = 1; stk[top++] = w2; }
         }
     }
     return 0;
