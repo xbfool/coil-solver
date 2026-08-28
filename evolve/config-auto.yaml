@@ -1,7 +1,7 @@
-# EVOLVE-PLAN P3: OpenEvolve 配置 —— manual 档（Claude Code 会话当 mutation 后端）
+# EVOLVE-PLAN P3: OpenEvolve 配置 —— auto 档（claude -p 无人值守）
 #
 # 两档驱动方式（都不要 API key）：
-#   manual 档（本文件）: mutation 请求落到 queue/<id>.json，由 CC 会话读题、
+#   manual 档（config.yaml）: mutation 请求落到 queue/<id>.json，由 CC 会话读题、
 #     写 <id>.answer.json 应答（{"answer": "..."}）。CC 带着全部项目记忆出题,质量档。
 #     跑法: cd evolve && python3 -m openevolve.cli policy.h evaluator.py \
 #              --config config.yaml --iterations 30
@@ -16,11 +16,12 @@ file_suffix: .h
 diff_based_evolution: true      # 只做小 diff，别整文件重写
 
 llm:
-  manual_mode: true
-  _manual_queue_dir: "/mnt/d/works/coil/coil-solver/evolve/queue"
+  provider: "claude_code"        # shell 出 `claude -p`,CLI 订阅鉴权,不要 API key
   models:
-    - name: "claude-code-session"
-      weight: 1.0
+    - name: "sonnet"
+      weight: 0.8
+    - name: "haiku"
+      weight: 0.2
   temperature: 0.8
   max_tokens: 8192
 

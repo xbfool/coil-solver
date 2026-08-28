@@ -100,7 +100,9 @@ def run_level(binp, lv, timeout, refsol=False):
 
 
 def _fail(reason, extra=None):
-    m = {"combined_score": 0.0, "t0_pass": 0.0, "error": reason}
+    # feature 维度必须始终在场——openevolve 对缺维度的 metrics 直接报错丢弃
+    m = {"combined_score": 0.0, "t0_pass": 0.0, "error": reason,
+         "deduction_frac": 0.5, "b_over_a": 0.5}
     if extra:
         m["error_detail"] = str(extra)[:1500]
     return m
@@ -170,7 +172,7 @@ def evaluate_stage2(program_path):
         shutil.rmtree(tmp, ignore_errors=True)
 
 
-def evaluate(program_path):
+def evaluate_stage3(program_path):
     """全量：stage2 + T1H 深树探针（真正的进化靶子在这里）。"""
     m = evaluate_stage2(program_path)
     if m.get("t0_pass", 0.0) < 1.0:
@@ -197,6 +199,11 @@ def evaluate(program_path):
         return m
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
+
+
+def evaluate(program_path):
+    """非级联入口（CLI 自测/manual 驱动用）＝全量 stage3。"""
+    return evaluate_stage3(program_path)
 
 
 if __name__ == "__main__":

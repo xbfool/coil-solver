@@ -12,16 +12,28 @@
 基线等价性：默认 policy 下 `solver.c` 与 `bin/v78stats` 在校准 21 关**逐节点相等**（已验证）。
 改 solver.c 或重生成后必须重跑这个断言。
 
-## 跑
+## 跑 —— 两档驱动，都不要 API key
 
 ```bash
-# WSL，评测器自测（不花钱）：
+# WSL，评测器自测：
 python3 evolve/evaluator.py            # 基线应得 combined_score≈0.60
-
-# 进化（要 API key；Anthropic 的 OpenAI 兼容端点）：
-cd evolve && export OPENAI_API_KEY=<key>
-python3 -m openevolve.cli policy.h evaluator.py --config config.yaml --iterations 100
 ```
+
+**manual 档（质量档，CC 会话当 mutation 后端）** —— `config.yaml`：
+```bash
+cd evolve && python3 -m openevolve.cli policy.h evaluator.py --config config.yaml --iterations 30
+```
+OpenEvolve 把每个 mutation 请求写到 `queue/<id>.json`（含完整 prompt：当前程序 +
+top programs + 进化历史），**无限期等待** `queue/<id>.answer.json`（`{"answer": "..."}`）。
+CC 会话读题 → 带着 62 条 dead_ends 和全部项目记忆出 diff → 写应答 → 它自动
+评测入库。节奏由 CC 掌控，评测（2~4 分钟/候选）本来就是瓶颈，出题快慢不亏。
+
+**auto 档（挂机档，无人值守）** —— `config-auto.yaml`：
+```bash
+cd evolve && python3 -m openevolve.cli policy.h evaluator.py --config config-auto.yaml --iterations 100
+```
+`provider: claude_code` 每次变异 shell 出 `claude -p`（CLI 订阅鉴权）。
+无项目记忆、纯 prompt 驱动，适合夜里刷量；白天 manual 档做定向变异。
 
 产出在 `evolve/openevolve_output/`（gitignore；好的 policy 手工提拔进 git + notes.md）。
 
