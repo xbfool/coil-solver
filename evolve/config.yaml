@@ -1,0 +1,62 @@
+# EVOLVE-PLAN P3: OpenEvolve 配置（进化对象 = policy.h，solver 本体冻结）
+# 运行（WSL，在 evolve/ 目录）:
+#   export OPENAI_API_KEY=<你的 Anthropic API key>
+#   python3 -m openevolve.cli policy.h evaluator.py --config config.yaml --iterations 100
+# 断点续跑: --checkpoint openevolve_output/checkpoints/checkpoint_<N>
+
+max_iterations: 100
+checkpoint_interval: 10
+language: c
+file_suffix: .h
+diff_based_evolution: true      # 只做小 diff，别整文件重写
+
+llm:
+  # Anthropic 的 OpenAI 兼容端点；换别家只改 api_base + models.name
+  api_base: "https://api.anthropic.com/v1/"
+  models:
+    - name: "claude-sonnet-5"
+      weight: 0.8
+    - name: "claude-haiku-4-5-20251001"
+      weight: 0.2
+  temperature: 0.8
+  max_tokens: 8192
+
+prompt:
+  num_top_programs: 3
+  num_diverse_programs: 2
+  system_message: |
+    你在进化 Coil 求解器的策略头文件 policy.h（分支排序 / 演绎武器触发密度 /
+    搜索预算调度）。硬规则：
+    1. 只许改 EVOLVE-BLOCK 标记之间的内容；函数签名与宏名不许动。
+    2. 不许发明新剪枝——你只决定"先试哪个分支、多久触发一次演绎、预算多大"。
+       任何会跳过合法分支的改动都会被 REFSOL 硬门判 0 分。
+    3. 每次改动要小而有明确机制假设（一个可证伪的想法），别大杂烩。
+    4. 评分: t1_frac(校准21关全过) + t1_node_score(节点数 vs 基线) +
+       hard_score(6个深树探针,其中 L271/L287 基线解不动,解出即大幅得分)。
+    5. 已知死路(别重新发明,全库见 research/dead_ends.jsonl):
+       - 割点/连通类规则: 盘面双连通,0 触发白付常数(信息在度里不在连通性里)
+       - 每节点全量传播: 周期<128 成本抵消; 正确形态是周期触发+命中率自调(已有)
+       - 随机重启在解唯一/极少的盘上是负作用(v2~v5 定谳); Luby 只配大预算扫荡用
+       - beam 系全灭: Warnsdorff 区分度不够,留不住正确状态
+       - 预算按怪物树标定是 bug 之源: SWEEP 必须按赢家树量级标(276 倍教训)
+       - probing 类"多算多剪": 先看边际证伪量,89% 时间 0 证伪的先例在案
+
+database:
+  population_size: 60
+  num_islands: 3                # prune-密度岛 / 排序岛 / 调度岛靠迁移自然分化
+  migration_interval: 15
+  migration_rate: 0.1
+  elite_selection_ratio: 0.15
+  exploration_ratio: 0.25
+  # MAP-Elites 行为描述符（P1 结论: 结构同质,多样性必须来自行为）
+  feature_dimensions:
+    - deduction_frac            # 演绎击杀占比(风格: 传播派 vs 几何派)
+    - b_over_a                  # B型/A型节点比(风格: 致密盘特化 vs 开阔盘特化)
+  feature_bins: 8
+
+evaluator:
+  timeout: 1800                 # 单候选全评测墙钟上限(秒)
+  cascade_evaluation: true
+  cascade_thresholds: [0.3, 0.55]   # stage1>=0.3 才进 stage2, stage2>=0.55 才进全量
+  parallel_evaluations: 6       # 每个评测单核跑,28 核留余量
+  max_retries: 1

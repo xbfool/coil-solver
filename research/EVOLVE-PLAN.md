@@ -102,24 +102,30 @@ ReEvo 的反思记忆思想用我们的 notes 机器化实现即可，没必要�
   0.334（免死走法填充率仅 ~9.5%），离官方分布太远；对齐生成器是独立课题。
   过拟合防线暂用官方 1013~1207 的 195 张 B 型（前沿未触及，天然测试集）。
 
-### P2：知识库机器化
-- [ ] 从 notes.md 提炼 `research/dead_ends.jsonl`：
-  `{idea, 实现版本, 死因(量化), 适用条件, 教训}` —— PD128 / 增量传播根本障碍 /
-  割点 0.14% 触发 / SAC 全局 0 推论 / subtour 0 推论 / beam 走空 …… 全部入册
-- [ ] 同样提炼 `research/insights.jsonl`（正面：流 GAC、端点过滤、BJ=500 的
-  机制解释、"信息在度里不在连通性里"这类统领规律）
-- [ ] mutation prompt 模板：Parent 代码 + fingerprint + 相关 dead_ends +
-  "产出一个可证伪的改动 + 预期机制"，机器 apply/compile/cascade，结果回填
+### P2：知识库机器化 —— ✅ 2026-08-28 落地
+- [x] `research/dead_ends.jsonl`：**62 条**，全部带量化死因（beam/割点/环模型/
+  重启/iddeep/tiered/桥/pin/等价0/subtour0/增量传播节点相对障碍/PD128/SAC0/
+  换数学空间/767 验尸教训/缝定律/SWEEP 标定错误 等全入册）
+- [x] `research/insights.jsonl`：**39 条**（流 GAC/端点过滤/度不在连通性/
+  BJ=500 机制/赢家树定标/墙四型诊断法 等）
+- [x] `research/mutation_prompt.md`：模板含 fingerprint 字段表、dead_ends 注入
+  规则（同模块/同盘型/soundness 三条常注入）、可证伪预言+按型收益声明要求
+- 关键条目已内联进 evolve/config.yaml 的 system_message（policy 空间相关 6 条）
 
-### P3：OpenEvolve 接入（P0~P2 齐了再动）
-- [ ] v78 标注 EVOLVE-BLOCK，首批只开三类：
-  ① 分支排序（branch ordering）② 剪枝调度参数（BJ / SWEEP / PROBE / 梯队
-  预算 / restart 策略）③ 探针排序与预算分配
-  —— 理由见上：最近两次跃迁都在这个空间里
-- [ ] islands ≥3（prune 岛 / order 岛 / schedule 岛），MAP-Elites 描述符 =
-  校准套件按型 nodes fingerprint（不是代码差异）
-- [ ] harness 冻结清单（AI 不可改）：parser、check 调用、cascade、统计输出、REFSOL 回放
-- [ ] checkpoint + 谱系记录：parent → idea → diff → T0~T3 结果 → child，全部落盘
+### P3：OpenEvolve 接入 —— ✅ 2026-08-28 搭建完成，待 API key 点火
+- [x] 方案定为 **policy.h 模块化**（优于原计划的"v78 里散布 EVOLVE-BLOCK"）：
+  `evolve/solver.c` = v78 冻结副本 + 钩子；`evolve/policy.h` = 唯一进化对象
+  （分支打分函数 / 武器周期自调 / 全部预算调度宏）。prompt 只带 70 行头文件，
+  冻结边界 by construction。**默认 policy 与 v78 校准 21 关逐节点相等（已断言）。**
+- [x] `evolve/evaluator.py`：编译→T0 REFSOL 硬门(一票否决)→T1→T1H 三段级联，
+  基线 combined_score 0.598（t1 全过 + hard 4/6，271/287 是现成靶子）
+- [x] `evolve/config.yaml`：islands=3、MAP-Elites 行为描述符
+  （deduction_frac × b_over_a，P1 结论：结构同质 ⇒ 多样性只能来自行为）、
+  级联阈值 [0.3, 0.55]、dead_ends 关键条目内联 system_message
+- [x] OpenEvolve 0.3.2 已装（WSL pip）；checkpoint/谱系是其内建功能
+- [ ] **点火待办：需要 Anthropic API key**（WSL 里 export OPENAI_API_KEY，
+  用 api.anthropic.com 的 OpenAI 兼容端点；跑法见 evolve/README.md）
+- [ ] 探针排序/预算分配的第二批 policy 钩子（先看第一批收敛情况）
 
 ### P4：architecture island（P3 明显 plateau 后再开）
 - 单独一个 island 准许大手术：范式级改动（状态表示、分解、按型切策略）。
