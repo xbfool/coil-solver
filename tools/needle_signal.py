@@ -17,7 +17,7 @@ import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-LEVELS = Path("/mnt/d/works/coil/coilbench/levels_all")
+LEVELS = ROOT.parent / "coilbench" / "levels_all"
 SOLBANK = ROOT.parent / "coil-solutions" / "solutions"
 
 
@@ -69,7 +69,13 @@ def main():
         hit = None
         total = 0
         for f in files:
-            ids = [int(t) for t in f.read_text().split()]
+            # 新原子协议: 末行 "# EOF n" 哨兵;无哨兵或行数不符=半成品,拒读(截断陷阱纪律)
+            lines = f.read_text().splitlines()
+            ids = [int(l) for l in lines if l.strip() and not l.startswith("#")]
+            sent = [l for l in lines if l.startswith("# EOF")]
+            if not sent or int(sent[0].split()[-1]) != len(ids):
+                print(f"⚠ {f.name}: 无哨兵或行数不符,视为半成品拒读", file=sys.stderr)
+                continue
             total += len(ids)
             if tid in ids:
                 hit = (f.name, ids.index(tid) + 1, len(ids))

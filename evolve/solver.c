@@ -3133,6 +3133,18 @@ int main(int argc, char **argv) {
         }
     }
 
+    // ---- STARTDUMP：导出分叉前的最终起点序（补筛缺失 shard 切片用：下标 % JOBS == shard 即该片）----
+    if (getenv("STARTDUMP")) {
+        FILE *sdf = fopen(getenv("STARTDUMP"), "w");
+        if (sdf) {
+            for (int i = 0; i < ns; ++i) fprintf(sdf, "%d\n", starts[i]);
+            fprintf(sdf, "# EOF %d\n", ns);
+            fclose(sdf);
+        }
+        fprintf(stderr, "STARTDUMP: %d 起点已导出，退出\n", ns);
+        return 0;
+    }
+
     // ---- 分叉：起点分片，各干各的 ----
     nshard = getenv("JOBS") ? atoi(getenv("JOBS")) : (int)sysconf(_SC_NPROCESSORS_ONLN);
     if (getenv("FORCESHARD")) { force_shard_identity = atoi(getenv("FORCESHARD")); nshard = 1; shard = 0; }

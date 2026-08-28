@@ -1,0 +1,1250 @@
+  分治：12 块 144 对，可行 40 对，整块淘汰掉 0 格
+有向预计算：走向已定 0/143162 (0.0%) | 无向判定率 0.0% -> 0.0% (0 -> 0 / 71581 边)
+有向预计算：走向已定 0/143162 (0.0%) | 无向判定率 0.0% -> 0.0% (0 -> 0 / 71581 边)
+全局阶段：固定 0 条边，起点候选 50288 / 50288 (100.0%)
+adaptive PROPDEPTH=2 (fixed 0 / 71581 edges; 第一层存活率>=SURVDEEP%再升深层)
+STARTORD: F 升序就位（113 起点，证伪剔除 0）
+FRANK shard6: F降序
+shard 6: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard5: F降序
+shard 5: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard10: F降序
+shard 10: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 6: 1.5 层深层重探后剩 9
+shard 6: 第一层存活 9/9 = 100%%, 第二层 开
+FRANK shard8: F降序
+FRANK shard4: F降序
+shard 4: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 8: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard2: F降序
+shard 2: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 5: 1.5 层深层重探后剩 9
+shard 5: 第一层存活 9/9 = 100%%, 第二层 开
+FRANK shard11: F降序
+shard 11: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard0: F降序
+shard 0: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard1: F降序
+shard 1: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 8: 1.5 层深层重探后剩 9
+shard 8: 第一层存活 9/9 = 100%%, 第二层 开
+FRANK shard7: F降序
+shard 7: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 4: 1.5 层深层重探后剩 10
+shard 4: 第一层存活 10/10 = 100%%, 第二层 开
+shard 10: 1.5 层深层重探后剩 9
+shard 10: 第一层存活 9/9 = 100%%, 第二层 开
+shard 2: 1.5 层深层重探后剩 10
+shard 2: 第一层存活 10/10 = 100%%, 第二层 开
+FRANK shard3: F降序
+shard 3: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 7: 1.5 层深层重探后剩 9
+shard 7: 第一层存活 9/9 = 100%%, 第二层 开
+shard 11: 1.5 层深层重探后剩 9
+shard 11: 第一层存活 9/9 = 100%%, 第二层 开
+shard 1: 1.5 层深层重探后剩 10
+shard 1: 第一层存活 10/10 = 100%%, 第二层 开
+shard 0: 1.5 层深层重探后剩 10
+shard 0: 第一层存活 10/10 = 100%%, 第二层 开
+shard 3: 1.5 层深层重探后剩 10
+shard 3: 第一层存活 10/10 = 100%%, 第二层 开
+FRANK shard9: F降序
+shard 9: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 9: 1.5 层深层重探后剩 9
+shard 9: 第一层存活 9/9 = 100%%, 第二层 开
+T2 sh5 cell=(66,40) PROBE0 nodes=6927
+T2 sh2 cell=(100,42) PROBE0 nodes=31312
+T2 sh7 cell=(14,50) PROBE0 nodes=563
+T2 sh5 cell=(20,46) PROBE0 nodes=659
+T2 sh8 cell=(254,43) PROBE0 nodes=10155
+T2 sh11 cell=(121,145) PROBE0 nodes=9411
+T2 sh2 cell=(123,151) PROBE0 nodes=14474
+T2 sh4 cell=(179,52) PROBE0 nodes=26273
+T2 sh4 cell=(219,70) PROBE0 nodes=7745
+T2 sh1 cell=(220,183) PROBE0 nodes=6617
+T2 sh4 cell=(35,184) PROBE0 nodes=10248
+T2 sh8 cell=(32,97) PROBE0 nodes=7116
+T2 sh10 cell=(72,23) PROBE0 nodes=17688
+T2 sh8 cell=(7,180) PROBE0 nodes=9110
+T2 sh7 cell=(221,176) PROBE0 nodes=4635
+probe[t=34s]: 106/113 起点被证伪，剩 7
+DEATH liveend=0 estate=26990 reach=15308 dyn=5624 flow=0 geom=1777
+DYN shard7: 15062 calls, 5624 refuted (37%)
+T2 sh5 cell=(158,63) PROBE0 nodes=28209
+T2 sh4 cell=(205,80) PROBE0 nodes=27849
+T2 sh4 cell=(76,43) PROBE0 nodes=615
+probe[t=35s]: 108/113 起点被证伪，剩 5
+DEATH liveend=0 estate=28869 reach=15809 dyn=5979 flow=0 geom=1742
+DYN shard4: 15605 calls, 5979 refuted (38%)
+T2 sh5 cell=(206,83) PROBE0 nodes=27849
+probe[t=38s]: 108/113 起点被证伪，剩 5
+DEATH liveend=0 estate=26702 reach=14644 dyn=5455 flow=0 geom=1759
+DYN shard5: 14682 calls, 5455 refuted (37%)
+probe[t=39s]: 107/113 起点被证伪，剩 6
+DEATH liveend=0 estate=26987 reach=14462 dyn=5324 flow=0 geom=2047
+DYN shard8: 14284 calls, 5324 refuted (37%)
+T2 sh1 cell=(20,93) PROBE0 nodes=25163
+T3[t=40s] shard7 r0 #0 cell=(205,43) sc=50264 nodes=50001 r=-1
+T3[t=42s] shard4 r0 #0 cell=(106,86) sc=50276 nodes=40950 r=0
+T2 sh1 cell=(222,67) PROBE0 nodes=11273
+probe[t=42s]: 106/113 起点被证伪，剩 7
+DEATH liveend=0 estate=31506 reach=17207 dyn=6969 flow=0 geom=2020
+DYN shard1: 18237 calls, 6969 refuted (38%)
+T2 sh11 cell=(224,25) PROBE0 nodes=22282
+probe[t=44s]: 106/113 起点被证伪，剩 7
+DEATH liveend=0 estate=30538 reach=16661 dyn=6347 flow=0 geom=2101
+DYN shard11: 16691 calls, 6347 refuted (38%)
+T3[t=45s] shard5 r0 #0 cell=(21,55) sc=50268 nodes=50001 r=-1
+T2 sh2 cell=(215,184) PROBE0 nodes=6718
+T2 sh2 cell=(217,68) PROBE0 nodes=9894
+probe[t=47s]: 107/113 起点被证伪，剩 6
+DEATH liveend=0 estate=32471 reach=17845 dyn=6108 flow=0 geom=2582
+DYN shard2: 16163 calls, 6108 refuted (38%)
+T3[t=47s] shard7 r0 #1 cell=(28,56) sc=50269 nodes=50001 r=-1
+T3[t=48s] shard4 r0 #1 cell=(213,39) sc=50271 nodes=47544 r=0
+T2 sh10 cell=(7,128) PROBE0 nodes=29930
+probe[t=50s]: 104/113 起点被证伪，剩 9
+DEATH liveend=0 estate=36004 reach=22241 dyn=5635 flow=0 geom=3397
+DYN shard6: 18086 calls, 5635 refuted (31%)
+probe[t=50s]: 104/113 起点被证伪，剩 9
+DEATH liveend=0 estate=35745 reach=23546 dyn=5605 flow=0 geom=3976
+DYN shard9: 18884 calls, 5605 refuted (30%)
+T3[t=50s] shard1 r0 #0 cell=(32,46) sc=50271 nodes=50001 r=-1
+T3[t=53s] shard11 r0 #0 cell=(33,45) sc=50267 nodes=50001 r=-1
+T3[t=54s] shard5 r0 #1 cell=(23,71) sc=50267 nodes=50001 r=-1
+T3[t=54s] shard8 r0 #0 cell=(48,58) sc=50268 nodes=50001 r=-1
+T3[t=54s] shard7 r0 #2 cell=(5,75) sc=50266 nodes=45285 r=0
+T3[t=56s] shard6 r0 #0 cell=(200,40) sc=50274 nodes=50001 r=-1
+T3[t=56s] shard4 r0 #2 cell=(201,35) sc=50270 nodes=48151 r=0
+T3[t=57s] shard9 r0 #0 cell=(211,63) sc=50267 nodes=50001 r=-1
+T3[t=59s] shard5 r0 #2 cell=(205,89) sc=50269 nodes=37347 r=0
+T3[t=59s] shard1 r0 #1 cell=(15,61) sc=50264 nodes=50001 r=-1
+T3[t=60s] shard7 r0 #3 cell=(198,70) sc=50281 nodes=50001 r=-1
+probe[t=60s]: 106/113 起点被证伪，剩 7
+DEATH liveend=0 estate=32143 reach=17854 dyn=7377 flow=0 geom=2203
+DYN shard10: 19531 calls, 7377 refuted (38%)
+T3[t=61s] shard2 r0 #0 cell=(39,69) sc=50262 nodes=50001 r=-1
+T3[t=62s] shard6 r0 #1 cell=(194,54) sc=50268 nodes=50001 r=-1
+T3[t=63s] shard4 r0 #3 cell=(182,66) sc=50267 nodes=50001 r=-1
+T3[t=63s] shard8 r0 #1 cell=(37,51) sc=50263 nodes=50001 r=-1
+T3[t=65s] shard9 r0 #1 cell=(216,16) sc=50274 nodes=40354 r=0
+T3[t=65s] shard7 r0 #4 cell=(199,61) sc=50263 nodes=40614 r=0
+T3[t=66s] shard10 r0 #0 cell=(202,44) sc=50266 nodes=50001 r=-1
+T3[t=67s] shard1 r0 #2 cell=(25,83) sc=50264 nodes=49196 r=0
+T3[t=68s] shard2 r0 #1 cell=(200,64) sc=50265 nodes=50001 r=-1
+T3[t=69s] shard11 r0 #1 cell=(45,67) sc=50271 nodes=50001 r=-1
+T3[t=69s] shard5 r0 #3 cell=(30,68) sc=50254 nodes=50001 r=-1
+T3[t=70s] shard9 r0 #2 cell=(34,44) sc=50272 nodes=50001 r=-1
+T3[t=71s] shard4 r0 #4 cell=(49,63) sc=50273 nodes=50001 r=-1
+sweep shard4 round0 done (budget 50000)
+T3[t=72s] shard8 r0 #2 cell=(7,73) sc=50268 nodes=50001 r=-1
+T3[t=72s] shard7 r0 #5 cell=(40,65) sc=50260 nodes=50001 r=-1
+T3[t=73s] shard6 r0 #2 cell=(199,63) sc=50268 nodes=50001 r=-1
+probe[t=73s]: 103/113 起点被证伪，剩 10
+DEATH liveend=0 estate=40989 reach=25377 dyn=6353 flow=0 geom=4622
+DYN shard0: 22015 calls, 6353 refuted (29%)
+probe[t=74s]: 103/113 起点被证伪，剩 10
+DEATH liveend=0 estate=38912 reach=23010 dyn=6257 flow=0 geom=3739
+DYN shard3: 20041 calls, 6257 refuted (31%)
+T3[t=74s] shard1 r0 #3 cell=(36,40) sc=50263 nodes=50001 r=-1
+T3[t=75s] shard11 r0 #2 cell=(25,81) sc=50265 nodes=38219 r=0
+T3[t=76s] shard9 r0 #3 cell=(198,66) sc=50269 nodes=50001 r=-1
+T3[t=76s] shard10 r0 #1 cell=(21,59) sc=50262 nodes=50001 r=-1
+T3[t=77s] shard2 r0 #2 cell=(18,35) sc=50277 nodes=50001 r=-1
+T3[t=77s] shard7 r0 #6 cell=(218,95) sc=50262 nodes=44426 r=0
+sweep shard7 round0 done (budget 50000)
+T3[t=78s] shard5 r0 #4 cell=(25,54) sc=50260 nodes=50001 r=-1
+sweep shard5 round0 done (budget 50000)
+T3[t=78s] shard4 r1 #3 cell=(182,66) sc=50267 nodes=50001 r=-1
+T3[t=80s] shard8 r0 #3 cell=(35,66) sc=50266 nodes=50001 r=-1
+T3[t=81s] shard6 r0 #3 cell=(195,71) sc=50272 nodes=50001 r=-1
+T3[t=82s] shard11 r0 #3 cell=(23,79) sc=50269 nodes=40723 r=0
+T3[t=83s] shard3 r0 #0 cell=(199,37) sc=50274 nodes=50001 r=-1
+T3[t=83s] shard1 r0 #4 cell=(17,30) sc=50266 nodes=50001 r=-1
+T3[t=83s] shard7 r1 #0 cell=(205,43) sc=50264 nodes=50001 r=-1
+T3[t=85s] shard2 r0 #3 cell=(29,50) sc=50271 nodes=50001 r=-1
+T3[t=86s] shard5 r1 #0 cell=(21,55) sc=50268 nodes=50001 r=-1
+T3[t=88s] shard4 r1 #4 cell=(49,63) sc=50273 nodes=50001 r=-1
+sweep shard4 round1 done (budget 50000)
+T3[t=88s] shard6 r0 #4 cell=(206,90) sc=50263 nodes=50001 r=-1
+T3[t=88s] shard9 r0 #4 cell=(33,55) sc=50261 nodes=49552 r=0
+T3[t=89s] shard8 r0 #4 cell=(7,76) sc=50269 nodes=50001 r=-1
+T3[t=89s] shard11 r0 #4 cell=(172,59) sc=50265 nodes=50001 r=-1
+T3[t=90s] shard1 r0 #5 cell=(197,68) sc=50267 nodes=50001 r=-1
+T3[t=91s] shard7 r1 #1 cell=(28,56) sc=50269 nodes=50001 r=-1
+T3[t=93s] shard5 r1 #1 cell=(23,71) sc=50267 nodes=50001 r=-1
+T3[t=93s] shard0 r0 #0 cell=(12,68) sc=50271 nodes=50001 r=-1
+T3[t=93s] shard2 r0 #4 cell=(37,62) sc=50269 nodes=50001 r=-1
+T3[t=94s] shard3 r0 #1 cell=(1,85) sc=50275 nodes=36061 r=0
+T3[t=94s] shard6 r0 #5 cell=(227,89) sc=50272 nodes=50001 r=-1
+T3[t=97s] shard8 r0 #5 cell=(49,62) sc=50273 nodes=50001 r=-1
+sweep shard8 round0 done (budget 50000)
+T3[t=97s] shard2 r0 #5 cell=(217,84) sc=50266 nodes=35022 r=0
+sweep shard2 round0 done (budget 50000)
+T3[t=97s] shard4 r2 #3 cell=(182,66) sc=50267 nodes=72506 r=0
+T3[t=98s] shard1 r0 #6 cell=(188,63) sc=50259 nodes=50001 r=-1
+sweep shard1 round0 done (budget 50000)
+T3[t=98s] shard7 r1 #3 cell=(198,70) sc=50281 nodes=50001 r=-1
+T3[t=98s] shard11 r0 #5 cell=(22,61) sc=50267 nodes=50001 r=-1
+T3[t=99s] shard0 r0 #1 cell=(193,81) sc=50268 nodes=50001 r=-1
+T3[t=100s] shard9 r0 #5 cell=(117,73) sc=50276 nodes=50001 r=-1
+T3[t=102s] shard10 r0 #2 cell=(34,64) sc=50269 nodes=50001 r=-1
+T3[t=102s] shard6 r0 #6 cell=(199,46) sc=50259 nodes=50001 r=-1
+T3[t=103s] shard3 r0 #2 cell=(217,179) sc=50278 nodes=47504 r=0
+T3[t=105s] shard5 r1 #3 cell=(30,68) sc=50254 nodes=50001 r=-1
+T3[t=106s] shard7 r1 #5 cell=(40,65) sc=50260 nodes=50001 r=-1
+sweep shard7 round1 done (budget 50000)
+T3[t=107s] shard11 r0 #6 cell=(47,66) sc=50272 nodes=48553 r=0
+sweep shard11 round0 done (budget 50000)
+T3[t=107s] shard1 r1 #0 cell=(32,46) sc=50271 nodes=50001 r=-1
+T3[t=110s] shard9 r0 #6 cell=(209,58) sc=50265 nodes=50001 r=-1
+T3[t=110s] shard2 r1 #0 cell=(39,69) sc=50262 nodes=50001 r=-1
+T3[t=110s] shard6 r0 #7 cell=(234,69) sc=50260 nodes=50001 r=-1
+T3[t=111s] shard10 r0 #3 cell=(10,67) sc=50263 nodes=50001 r=-1
+T3[t=112s] shard8 r1 #0 cell=(48,58) sc=50268 nodes=50001 r=-1
+T3[t=112s] shard4 r2 #4 cell=(49,63) sc=50273 nodes=100001 r=-1
+sweep shard4 round2 done (budget 100000)
+T3[t=114s] shard5 r1 #4 cell=(25,54) sc=50260 nodes=50001 r=-1
+sweep shard5 round1 done (budget 50000)
+T3[t=114s] shard0 r0 #2 cell=(103,177) sc=50268 nodes=36080 r=0
+T3[t=115s] shard11 r1 #0 cell=(33,45) sc=50267 nodes=50001 r=-1
+T3[t=115s] shard1 r1 #1 cell=(15,61) sc=50264 nodes=50001 r=-1
+T3[t=116s] shard3 r0 #3 cell=(25,71) sc=50265 nodes=50001 r=-1
+T3[t=117s] shard2 r1 #1 cell=(200,64) sc=50265 nodes=50001 r=-1
+T3[t=117s] shard10 r0 #4 cell=(10,79) sc=50275 nodes=33406 r=0
+T3[t=118s] shard7 r2 #0 cell=(205,43) sc=50264 nodes=100001 r=-1
+T3[t=119s] shard4 r3 #4 cell=(49,63) sc=50273 nodes=50001 r=-1
+sweep shard4 round3 done (budget 50000)
+T3[t=119s] shard6 r0 #8 cell=(46,59) sc=50269 nodes=50001 r=-1
+sweep shard6 round0 done (budget 50000)
+T3[t=120s] shard9 r0 #7 cell=(183,78) sc=50272 nodes=50001 r=-1
+T3[t=120s] shard8 r1 #1 cell=(37,51) sc=50263 nodes=50001 r=-1
+T3[t=122s] shard0 r0 #3 cell=(221,26) sc=50263 nodes=50001 r=-1
+T3[t=123s] shard1 r1 #3 cell=(36,40) sc=50263 nodes=50001 r=-1
+T3[t=124s] shard10 r0 #5 cell=(199,56) sc=50268 nodes=36894 r=0
+T3[t=126s] shard2 r1 #2 cell=(18,35) sc=50277 nodes=50001 r=-1
+T3[t=127s] shard6 r1 #0 cell=(200,40) sc=50274 nodes=50001 r=-1
+T3[t=127s] shard9 r0 #8 cell=(11,116) sc=50267 nodes=50001 r=-1
+sweep shard9 round0 done (budget 50000)
+T3[t=128s] shard4 r4 #4 cell=(49,63) sc=50273 nodes=50001 r=-1
+sweep shard4 round4 done (budget 50000)
+T3[t=129s] shard11 r1 #1 cell=(45,67) sc=50271 nodes=50001 r=-1
+T3[t=129s] shard8 r1 #2 cell=(7,73) sc=50268 nodes=50001 r=-1
+T3[t=130s] shard5 r2 #0 cell=(21,55) sc=50268 nodes=100001 r=-1
+T3[t=131s] shard10 r0 #6 cell=(30,75) sc=50276 nodes=48008 r=0
+sweep shard10 round0 done (budget 50000)
+T3[t=133s] shard1 r1 #4 cell=(17,30) sc=50266 nodes=50001 r=-1
+T3[t=133s] shard6 r1 #1 cell=(194,54) sc=50268 nodes=50001 r=-1
+T3[t=133s] shard0 r0 #4 cell=(90,45) sc=50268 nodes=38643 r=0
+T3[t=133s] shard3 r0 #4 cell=(218,51) sc=50268 nodes=50001 r=-1
+T3[t=134s] shard7 r2 #1 cell=(28,56) sc=50269 nodes=100001 r=-1
+T3[t=134s] shard9 r1 #0 cell=(211,63) sc=50267 nodes=50001 r=-1
+T3[t=135s] shard2 r1 #3 cell=(29,50) sc=50271 nodes=50001 r=-1
+T3[t=136s] shard11 r1 #4 cell=(172,59) sc=50265 nodes=50001 r=-1
+T3[t=137s] shard10 r1 #0 cell=(202,44) sc=50266 nodes=50001 r=-1
+T3[t=138s] shard8 r1 #3 cell=(35,66) sc=50266 nodes=50001 r=-1
+T3[t=138s] shard5 r2 #1 cell=(23,71) sc=50267 nodes=56092 r=0
+T3[t=139s] shard9 r1 #2 cell=(34,44) sc=50272 nodes=50001 r=-1
+T3[t=139s] shard1 r1 #5 cell=(197,68) sc=50267 nodes=50001 r=-1
+T3[t=140s] shard0 r0 #5 cell=(210,59) sc=50267 nodes=50001 r=-1
+T3[t=141s] shard2 r1 #4 cell=(37,62) sc=50269 nodes=50001 r=-1
+sweep shard2 round1 done (budget 50000)
+T3[t=142s] shard6 r1 #2 cell=(199,63) sc=50268 nodes=50001 r=-1
+T3[t=144s] shard11 r1 #5 cell=(22,61) sc=50267 nodes=50001 r=-1
+sweep shard11 round1 done (budget 50000)
+T3[t=145s] shard4 r5 #4 cell=(49,63) sc=50273 nodes=100001 r=-1
+sweep shard4 round5 done (budget 100000)
+T3[t=145s] shard3 r0 #5 cell=(8,63) sc=50266 nodes=50001 r=-1
+T3[t=145s] shard8 r1 #4 cell=(7,76) sc=50269 nodes=50001 r=-1
+T3[t=146s] shard9 r1 #3 cell=(198,66) sc=50269 nodes=50001 r=-1
+T3[t=147s] shard7 r2 #3 cell=(198,70) sc=50281 nodes=100001 r=-1
+T3[t=147s] shard1 r1 #6 cell=(188,63) sc=50259 nodes=50001 r=-1
+sweep shard1 round1 done (budget 50000)
+T3[t=147s] shard10 r1 #1 cell=(21,59) sc=50262 nodes=50001 r=-1
+T3[t=149s] shard5 r2 #3 cell=(30,68) sc=50254 nodes=58594 r=0
+T3[t=151s] shard6 r1 #3 cell=(195,71) sc=50272 nodes=50001 r=-1
+T3[t=152s] shard0 r0 #6 cell=(17,62) sc=50276 nodes=50001 r=-1
+T3[t=152s] shard3 r0 #6 cell=(55,70) sc=50267 nodes=50001 r=-1
+T3[t=153s] shard8 r1 #5 cell=(49,62) sc=50273 nodes=50001 r=-1
+sweep shard8 round1 done (budget 50000)
+T3[t=157s] shard9 r1 #5 cell=(117,73) sc=50276 nodes=50001 r=-1
+T3[t=158s] shard11 r2 #0 cell=(33,45) sc=50267 nodes=100001 r=-1
+T3[t=159s] shard6 r1 #4 cell=(206,90) sc=50263 nodes=50001 r=-1
+T3[t=159s] shard0 r0 #7 cell=(6,85) sc=50275 nodes=50001 r=-1
+T3[t=161s] shard3 r0 #7 cell=(17,28) sc=50258 nodes=50001 r=-1
+T3[t=161s] shard1 r2 #0 cell=(32,46) sc=50271 nodes=100001 r=-1
+T3[t=162s] shard2 r2 #0 cell=(39,69) sc=50262 nodes=100001 r=-1
+T3[t=162s] shard7 r2 #5 cell=(40,65) sc=50260 nodes=100001 r=-1
+sweep shard7 round2 done (budget 100000)
+T3[t=166s] shard6 r1 #5 cell=(227,89) sc=50272 nodes=50001 r=-1
+T3[t=166s] shard10 r1 #2 cell=(34,64) sc=50269 nodes=50001 r=-1
+T3[t=167s] shard9 r1 #6 cell=(209,58) sc=50265 nodes=50001 r=-1
+T3[t=167s] shard5 r2 #4 cell=(25,54) sc=50260 nodes=100001 r=-1
+sweep shard5 round2 done (budget 100000)
+T3[t=168s] shard3 r0 #8 cell=(44,65) sc=50265 nodes=50001 r=-1
+T3[t=169s] shard7 r3 #0 cell=(205,43) sc=50264 nodes=50001 r=-1
+T3[t=173s] shard6 r1 #6 cell=(199,46) sc=50259 nodes=50001 r=-1
+T3[t=174s] shard10 r1 #3 cell=(10,67) sc=50263 nodes=50001 r=-1
+sweep shard10 round1 done (budget 50000)
+T3[t=174s] shard0 r0 #8 cell=(179,66) sc=50267 nodes=50001 r=-1
+T3[t=175s] shard2 r2 #1 cell=(200,64) sc=50265 nodes=100001 r=-1
+T3[t=176s] shard5 r3 #0 cell=(21,55) sc=50268 nodes=50001 r=-1
+T3[t=176s] shard4 r6 #4 cell=(49,63) sc=50273 nodes=200001 r=-1
+sweep shard4 round6 done (budget 200000)
+T3[t=177s] shard3 r0 #9 cell=(211,42) sc=50273 nodes=50001 r=-1
+sweep shard3 round0 done (budget 50000)
+T3[t=177s] shard7 r3 #1 cell=(28,56) sc=50269 nodes=50001 r=-1
+T3[t=178s] shard8 r2 #0 cell=(48,58) sc=50268 nodes=100001 r=-1
+T3[t=178s] shard9 r1 #7 cell=(183,78) sc=50272 nodes=50001 r=-1
+T3[t=181s] shard10 r2 #0 cell=(202,44) sc=50266 nodes=68607 r=0
+T3[t=182s] shard0 r0 #9 cell=(217,28) sc=50272 nodes=50001 r=-1
+sweep shard0 round0 done (budget 50000)
+T3[t=182s] shard3 r1 #0 cell=(199,37) sc=50274 nodes=50001 r=-1
+T3[t=183s] shard6 r1 #7 cell=(234,69) sc=50260 nodes=50001 r=-1
+T3[t=184s] shard11 r2 #1 cell=(45,67) sc=50271 nodes=100001 r=-1
+T3[t=184s] shard4 r7 #4 cell=(49,63) sc=50273 nodes=50001 r=-1
+sweep shard4 round7 done (budget 50000)
+T3[t=184s] shard5 r3 #4 cell=(25,54) sc=50260 nodes=50001 r=-1
+sweep shard5 round3 done (budget 50000)
+T3[t=184s] shard1 r2 #1 cell=(15,61) sc=50264 nodes=100001 r=-1
+T3[t=185s] shard7 r3 #3 cell=(198,70) sc=50281 nodes=50001 r=-1
+T3[t=187s] shard9 r1 #8 cell=(11,116) sc=50267 nodes=50001 r=-1
+sweep shard9 round1 done (budget 50000)
+T3[t=191s] shard6 r1 #8 cell=(46,59) sc=50269 nodes=50001 r=-1
+sweep shard6 round1 done (budget 50000)
+T3[t=192s] shard11 r2 #4 cell=(172,59) sc=50265 nodes=52678 r=0
+T3[t=192s] shard5 r4 #0 cell=(21,55) sc=50268 nodes=50001 r=-1
+T3[t=192s] shard7 r3 #5 cell=(40,65) sc=50260 nodes=50001 r=-1
+sweep shard7 round3 done (budget 50000)
+T3[t=192s] shard2 r2 #2 cell=(18,35) sc=50277 nodes=100001 r=-1
+T3[t=193s] shard4 r8 #4 cell=(49,63) sc=50273 nodes=50001 r=-1
+sweep shard4 round8 done (budget 50000)
+T3[t=194s] shard3 r1 #3 cell=(25,71) sc=50265 nodes=50001 r=-1
+T3[t=195s] shard8 r2 #1 cell=(37,51) sc=50263 nodes=100001 r=-1
+T3[t=198s] shard9 r2 #0 cell=(211,63) sc=50267 nodes=64368 r=0
+T3[t=198s] shard10 r2 #1 cell=(21,59) sc=50262 nodes=100001 r=-1
+T3[t=200s] shard7 r4 #0 cell=(205,43) sc=50264 nodes=50001 r=-1
+T3[t=201s] shard0 r1 #0 cell=(12,68) sc=50271 nodes=50001 r=-1
+T3[t=201s] shard1 r2 #3 cell=(36,40) sc=50263 nodes=100001 r=-1
+T3[t=201s] shard5 r4 #4 cell=(25,54) sc=50260 nodes=50001 r=-1
+sweep shard5 round4 done (budget 50000)
+T3[t=202s] shard11 r2 #5 cell=(22,61) sc=50267 nodes=56182 r=0
+sweep shard11 round2 done (budget 100000)
+T3[t=205s] shard8 r2 #2 cell=(7,73) sc=50268 nodes=63777 r=0
+T3[t=206s] shard6 r2 #0 cell=(200,40) sc=50274 nodes=100001 r=-1
+T3[t=208s] shard0 r1 #1 cell=(193,81) sc=50268 nodes=50001 r=-1
+T3[t=208s] shard7 r4 #1 cell=(28,56) sc=50269 nodes=50001 r=-1
+T3[t=209s] shard9 r2 #2 cell=(34,44) sc=50272 nodes=100001 r=-1
+T3[t=210s] shard2 r2 #3 cell=(29,50) sc=50271 nodes=100001 r=-1
+T3[t=210s] shard4 r9 #4 cell=(49,63) sc=50273 nodes=100001 r=-1
+sweep shard4 round9 done (budget 100000)
+T3[t=210s] shard11 r3 #0 cell=(33,45) sc=50267 nodes=50001 r=-1
+T3[t=210s] shard3 r1 #4 cell=(218,51) sc=50268 nodes=50001 r=-1
+T3[t=214s] shard5 r5 #0 cell=(21,55) sc=50268 nodes=100001 r=-1
+T3[t=215s] shard7 r4 #3 cell=(198,70) sc=50281 nodes=50001 r=-1
+T3[t=216s] shard0 r1 #3 cell=(221,26) sc=50263 nodes=50001 r=-1
+T3[t=216s] shard1 r2 #4 cell=(17,30) sc=50266 nodes=100001 r=-1
+T3[t=217s] shard6 r2 #1 cell=(194,54) sc=50268 nodes=77377 r=0
+T3[t=219s] shard4 r10 #4 cell=(49,63) sc=50273 nodes=50001 r=-1
+sweep shard4 round10 done (budget 50000)
+T3[t=222s] shard0 r1 #5 cell=(210,59) sc=50267 nodes=50001 r=-1
+T3[t=223s] shard3 r1 #5 cell=(8,63) sc=50266 nodes=50001 r=-1
+T3[t=224s] shard7 r4 #5 cell=(40,65) sc=50260 nodes=50001 r=-1
+sweep shard7 round4 done (budget 50000)
+T3[t=224s] shard8 r2 #3 cell=(35,66) sc=50266 nodes=100001 r=-1
+T3[t=224s] shard9 r2 #3 cell=(198,66) sc=50269 nodes=100001 r=-1
+T3[t=225s] shard11 r3 #1 cell=(45,67) sc=50271 nodes=50001 r=-1
+sweep shard11 round3 done (budget 50000)
+T3[t=225s] shard1 r2 #5 cell=(197,68) sc=50267 nodes=78214 r=0
+T3[t=226s] shard10 r2 #2 cell=(34,64) sc=50269 nodes=83204 r=0
+T3[t=226s] shard2 r2 #4 cell=(37,62) sc=50269 nodes=100001 r=-1
+sweep shard2 round2 done (budget 100000)
+T3[t=228s] shard4 r11 #4 cell=(49,63) sc=50273 nodes=50001 r=-1
+sweep shard4 round11 done (budget 50000)
+T3[t=230s] shard3 r1 #6 cell=(55,70) sc=50267 nodes=50001 r=-1
+T3[t=231s] shard6 r2 #2 cell=(199,63) sc=50268 nodes=65900 r=0
+T3[t=232s] shard0 r1 #6 cell=(17,62) sc=50276 nodes=50001 r=-1
+T3[t=232s] shard5 r5 #4 cell=(25,54) sc=50260 nodes=100001 r=-1
+sweep shard5 round5 done (budget 100000)
+T3[t=233s] shard11 r4 #0 cell=(33,45) sc=50267 nodes=50001 r=-1
+T3[t=237s] shard2 r3 #0 cell=(39,69) sc=50262 nodes=50001 r=-1
+T3[t=239s] shard7 r5 #0 cell=(205,43) sc=50264 nodes=100001 r=-1
+T3[t=239s] shard3 r1 #7 cell=(17,28) sc=50258 nodes=50001 r=-1
+T3[t=240s] shard0 r1 #7 cell=(6,85) sc=50275 nodes=50001 r=-1
+T3[t=241s] shard1 r2 #6 cell=(188,63) sc=50259 nodes=100001 r=-1
+sweep shard1 round2 done (budget 100000)
+T3[t=244s] shard2 r3 #1 cell=(200,64) sc=50265 nodes=50001 r=-1
+T3[t=245s] shard8 r2 #4 cell=(7,76) sc=50269 nodes=100001 r=-1
+T3[t=245s] shard10 r2 #3 cell=(10,67) sc=50263 nodes=100001 r=-1
+sweep shard10 round2 done (budget 100000)
+T3[t=246s] shard4 r12 #4 cell=(49,63) sc=50273 nodes=100001 r=-1
+sweep shard4 round12 done (budget 100000)
+T3[t=246s] shard3 r1 #8 cell=(44,65) sc=50265 nodes=50001 r=-1
+T3[t=247s] shard6 r2 #3 cell=(195,71) sc=50272 nodes=100001 r=-1
+T3[t=249s] shard11 r4 #1 cell=(45,67) sc=50271 nodes=50001 r=-1
+sweep shard11 round4 done (budget 50000)
+T3[t=249s] shard9 r2 #5 cell=(117,73) sc=50276 nodes=100001 r=-1
+T3[t=250s] shard1 r3 #0 cell=(32,46) sc=50271 nodes=50001 r=-1
+T3[t=252s] shard5 r6 #0 cell=(21,55) sc=50268 nodes=124529 r=0
+T3[t=253s] shard2 r3 #2 cell=(18,35) sc=50277 nodes=50001 r=-1
+T3[t=254s] shard10 r3 #1 cell=(21,59) sc=50262 nodes=50001 r=-1
+T3[t=254s] shard7 r5 #1 cell=(28,56) sc=50269 nodes=100001 r=-1
+T3[t=255s] shard3 r1 #9 cell=(211,42) sc=50273 nodes=50001 r=-1
+sweep shard3 round1 done (budget 50000)
+T3[t=255s] shard0 r1 #8 cell=(179,66) sc=50267 nodes=50001 r=-1
+T3[t=257s] shard6 r2 #4 cell=(206,90) sc=50263 nodes=61870 r=0
+T3[t=259s] shard1 r3 #1 cell=(15,61) sc=50264 nodes=50001 r=-1
+T3[t=261s] shard2 r3 #3 cell=(29,50) sc=50271 nodes=50001 r=-1
+T3[t=262s] shard11 r5 #0 cell=(33,45) sc=50267 nodes=100001 r=-1
+T3[t=263s] shard10 r3 #3 cell=(10,67) sc=50263 nodes=50001 r=-1
+sweep shard10 round3 done (budget 50000)
+T3[t=263s] shard0 r1 #9 cell=(217,28) sc=50272 nodes=50001 r=-1
+sweep shard0 round1 done (budget 50000)
+T3[t=263s] shard8 r2 #5 cell=(49,62) sc=50273 nodes=100001 r=-1
+sweep shard8 round2 done (budget 100000)
+T3[t=265s] shard6 r2 #5 cell=(227,89) sc=50272 nodes=55038 r=0
+T3[t=266s] shard9 r2 #6 cell=(209,58) sc=50265 nodes=100001 r=-1
+T3[t=267s] shard1 r3 #3 cell=(36,40) sc=50263 nodes=50001 r=-1
+T3[t=268s] shard3 r2 #0 cell=(199,37) sc=50274 nodes=100001 r=-1
+T3[t=268s] shard7 r5 #3 cell=(198,70) sc=50281 nodes=100001 r=-1
+T3[t=270s] shard2 r3 #4 cell=(37,62) sc=50269 nodes=50001 r=-1
+sweep shard2 round3 done (budget 50000)
+T3[t=271s] shard10 r4 #1 cell=(21,59) sc=50262 nodes=50001 r=-1
+T3[t=277s] shard1 r3 #4 cell=(17,30) sc=50266 nodes=50001 r=-1
+T3[t=278s] shard8 r3 #0 cell=(48,58) sc=50268 nodes=50001 r=-1
+T3[t=278s] shard10 r4 #3 cell=(10,67) sc=50263 nodes=50001 r=-1
+sweep shard10 round4 done (budget 50000)
+T3[t=279s] shard4 r13 #4 cell=(49,63) sc=50273 nodes=200001 r=-1
+sweep shard4 round13 done (budget 200000)
+T3[t=282s] shard11 r5 #1 cell=(45,67) sc=50271 nodes=100001 r=-1
+sweep shard11 round5 done (budget 100000)
+T3[t=283s] shard9 r2 #7 cell=(183,78) sc=50272 nodes=100001 r=-1
+T3[t=284s] shard1 r3 #6 cell=(188,63) sc=50259 nodes=50001 r=-1
+sweep shard1 round3 done (budget 50000)
+T3[t=284s] shard2 r4 #0 cell=(39,69) sc=50262 nodes=50001 r=-1
+T3[t=285s] shard3 r2 #3 cell=(25,71) sc=50265 nodes=62347 r=0
+T3[t=285s] shard7 r5 #5 cell=(40,65) sc=50260 nodes=100001 r=-1
+sweep shard7 round5 done (budget 100000)
+T3[t=285s] shard5 r6 #4 cell=(25,54) sc=50260 nodes=200001 r=-1
+sweep shard5 round6 done (budget 200000)
+T3[t=286s] shard8 r3 #1 cell=(37,51) sc=50263 nodes=50001 r=-1
+T3[t=287s] shard6 r2 #6 cell=(199,46) sc=50259 nodes=100001 r=-1
+T3[t=292s] shard1 r4 #0 cell=(32,46) sc=50271 nodes=50001 r=-1
+T3[t=292s] shard10 r5 #1 cell=(21,59) sc=50262 nodes=100001 r=-1
+T3[t=293s] shard5 r7 #4 cell=(25,54) sc=50260 nodes=50001 r=-1
+sweep shard5 round7 done (budget 50000)
+T3[t=293s] shard2 r4 #1 cell=(200,64) sc=50265 nodes=50001 r=-1
+T3[t=294s] shard8 r3 #3 cell=(35,66) sc=50266 nodes=50001 r=-1
+T3[t=295s] shard0 r2 #0 cell=(12,68) sc=50271 nodes=100001 r=-1
+T3[t=299s] shard9 r2 #8 cell=(11,116) sc=50267 nodes=100001 r=-1
+sweep shard9 round2 done (budget 100000)
+T3[t=299s] shard1 r4 #1 cell=(15,61) sc=50264 nodes=50001 r=-1
+T3[t=301s] shard5 r8 #4 cell=(25,54) sc=50260 nodes=50001 r=-1
+sweep shard5 round8 done (budget 50000)
+T3[t=303s] shard8 r3 #4 cell=(7,76) sc=50269 nodes=50001 r=-1
+T3[t=304s] shard2 r4 #2 cell=(18,35) sc=50277 nodes=50001 r=-1
+T3[t=304s] shard6 r2 #7 cell=(234,69) sc=50260 nodes=88267 r=0
+T3[t=305s] shard7 r6 #0 cell=(205,43) sc=50264 nodes=141307 r=0
+T3[t=306s] shard9 r3 #2 cell=(34,44) sc=50272 nodes=50001 r=-1
+T3[t=307s] shard1 r4 #3 cell=(36,40) sc=50263 nodes=50001 r=-1
+T3[t=308s] shard0 r2 #1 cell=(193,81) sc=50268 nodes=100001 r=-1
+T3[t=310s] shard11 r6 #0 cell=(33,45) sc=50267 nodes=171971 r=0
+T3[t=311s] shard10 r5 #3 cell=(10,67) sc=50263 nodes=100001 r=-1
+sweep shard10 round5 done (budget 100000)
+T3[t=311s] shard8 r3 #5 cell=(49,62) sc=50273 nodes=50001 r=-1
+sweep shard8 round3 done (budget 50000)
+T3[t=313s] shard2 r4 #3 cell=(29,50) sc=50271 nodes=50001 r=-1
+T3[t=314s] shard9 r3 #3 cell=(198,66) sc=50269 nodes=50001 r=-1
+T3[t=315s] shard1 r4 #4 cell=(17,30) sc=50266 nodes=50001 r=-1
+T3[t=320s] shard6 r2 #8 cell=(46,59) sc=50269 nodes=100001 r=-1
+sweep shard6 round2 done (budget 100000)
+T3[t=321s] shard5 r9 #4 cell=(25,54) sc=50260 nodes=100001 r=-1
+sweep shard5 round9 done (budget 100000)
+T3[t=321s] shard3 r2 #4 cell=(218,51) sc=50268 nodes=100001 r=-1
+T3[t=322s] shard1 r4 #6 cell=(188,63) sc=50259 nodes=50001 r=-1
+sweep shard1 round4 done (budget 50000)
+T3[t=323s] shard7 r6 #1 cell=(28,56) sc=50269 nodes=122149 r=0
+T3[t=323s] shard8 r4 #0 cell=(48,58) sc=50268 nodes=50001 r=-1
+T3[t=323s] shard2 r4 #4 cell=(37,62) sc=50269 nodes=50001 r=-1
+sweep shard2 round4 done (budget 50000)
+T3[t=325s] shard0 r2 #3 cell=(221,26) sc=50263 nodes=100001 r=-1
+T3[t=327s] shard9 r3 #5 cell=(117,73) sc=50276 nodes=50001 r=-1
+T3[t=327s] shard6 r3 #0 cell=(200,40) sc=50274 nodes=50001 r=-1
+T3[t=329s] shard5 r10 #4 cell=(25,54) sc=50260 nodes=50001 r=-1
+sweep shard5 round10 done (budget 50000)
+T3[t=331s] shard8 r4 #1 cell=(37,51) sc=50263 nodes=50001 r=-1
+T3[t=332s] shard4 r14 #4 cell=(49,63) sc=50273 nodes=400001 r=-1
+sweep shard4 round14 done (budget 400000)
+T3[t=335s] shard3 r2 #5 cell=(8,63) sc=50266 nodes=56794 r=0
+T3[t=336s] shard6 r3 #3 cell=(195,71) sc=50272 nodes=50001 r=-1
+T3[t=336s] shard9 r3 #6 cell=(209,58) sc=50265 nodes=50001 r=-1
+T3[t=337s] shard5 r11 #4 cell=(25,54) sc=50260 nodes=50001 r=-1
+sweep shard5 round11 done (budget 50000)
+T3[t=338s] shard7 r6 #3 cell=(198,70) sc=50281 nodes=111496 r=0
+T3[t=338s] shard0 r2 #5 cell=(210,59) sc=50267 nodes=100001 r=-1
+T3[t=339s] shard1 r5 #0 cell=(32,46) sc=50271 nodes=100001 r=-1
+T3[t=340s] shard8 r4 #3 cell=(35,66) sc=50266 nodes=50001 r=-1
+T3[t=342s] shard4 r15 #4 cell=(49,63) sc=50273 nodes=50001 r=-1
+sweep shard4 round15 done (budget 50000)
+T3[t=342s] shard2 r5 #0 cell=(39,69) sc=50262 nodes=100001 r=-1
+T3[t=344s] shard6 r3 #6 cell=(199,46) sc=50259 nodes=50001 r=-1
+T3[t=345s] shard10 r6 #1 cell=(21,59) sc=50262 nodes=135648 r=0
+T3[t=346s] shard9 r3 #7 cell=(183,78) sc=50272 nodes=50001 r=-1
+T3[t=349s] shard3 r2 #6 cell=(55,70) sc=50267 nodes=100001 r=-1
+T3[t=349s] shard8 r4 #4 cell=(7,76) sc=50269 nodes=50001 r=-1
+T3[t=350s] shard11 r6 #1 cell=(45,67) sc=50271 nodes=200001 r=-1
+sweep shard11 round6 done (budget 200000)
+T3[t=351s] shard4 r16 #4 cell=(49,63) sc=50273 nodes=50001 r=-1
+sweep shard4 round16 done (budget 50000)
+T3[t=352s] shard6 r3 #8 cell=(46,59) sc=50269 nodes=50001 r=-1
+sweep shard6 round3 done (budget 50000)
+T3[t=355s] shard5 r12 #4 cell=(25,54) sc=50260 nodes=100001 r=-1
+sweep shard5 round12 done (budget 100000)
+T3[t=355s] shard9 r3 #8 cell=(11,116) sc=50267 nodes=50001 r=-1
+sweep shard9 round3 done (budget 50000)
+T3[t=358s] shard8 r4 #5 cell=(49,62) sc=50273 nodes=50001 r=-1
+sweep shard8 round4 done (budget 50000)
+T3[t=358s] shard0 r2 #6 cell=(17,62) sc=50276 nodes=100001 r=-1
+T3[t=358s] shard2 r5 #1 cell=(200,64) sc=50265 nodes=100001 r=-1
+T3[t=359s] shard6 r4 #0 cell=(200,40) sc=50274 nodes=50001 r=-1
+T3[t=360s] shard9 r4 #2 cell=(34,44) sc=50272 nodes=50001 r=-1
+T3[t=361s] shard1 r5 #1 cell=(15,61) sc=50264 nodes=100001 r=-1
+T3[t=363s] shard11 r7 #1 cell=(45,67) sc=50271 nodes=50001 r=-1
+sweep shard11 round7 done (budget 50000)
+T3[t=366s] shard3 r2 #7 cell=(17,28) sc=50258 nodes=100001 r=-1
+T3[t=368s] shard9 r4 #3 cell=(198,66) sc=50269 nodes=50001 r=-1
+T3[t=368s] shard6 r4 #3 cell=(195,71) sc=50272 nodes=50001 r=-1
+T3[t=371s] shard7 r6 #5 cell=(40,65) sc=50260 nodes=200001 r=-1
+sweep shard7 round6 done (budget 200000)
+T3[t=371s] shard4 r17 #4 cell=(49,63) sc=50273 nodes=100001 r=-1
+sweep shard4 round17 done (budget 100000)
+T3[t=373s] shard11 r8 #1 cell=(45,67) sc=50271 nodes=50001 r=-1
+sweep shard11 round8 done (budget 50000)
+T3[t=374s] shard2 r5 #2 cell=(18,35) sc=50277 nodes=100001 r=-1
+T3[t=375s] shard0 r2 #7 cell=(6,85) sc=50275 nodes=100001 r=-1
+T3[t=377s] shard6 r4 #6 cell=(199,46) sc=50259 nodes=50001 r=-1
+T3[t=377s] shard1 r5 #3 cell=(36,40) sc=50263 nodes=100001 r=-1
+T3[t=379s] shard9 r4 #5 cell=(117,73) sc=50276 nodes=50001 r=-1
+T3[t=380s] shard10 r6 #3 cell=(10,67) sc=50263 nodes=198289 r=0
+sweep shard10 round6 done (budget 200000)
+sweep shard10 round7 done (budget 50000)
+sweep shard10 round8 done (budget 50000)
+sweep shard10 round9 done (budget 100000)
+sweep shard10 round10 done (budget 50000)
+sweep shard10 round11 done (budget 50000)
+sweep shard10 round12 done (budget 100000)
+sweep shard10 round13 done (budget 200000)
+sweep shard10 round14 done (budget 400000)
+sweep shard10 round15 done (budget 50000)
+sweep shard10 round16 done (budget 50000)
+sweep shard10 round17 done (budget 100000)
+sweep shard10 round18 done (budget 50000)
+sweep shard10 round19 done (budget 50000)
+sweep shard10 round20 done (budget 100000)
+sweep shard10 round21 done (budget 200000)
+sweep shard10 round22 done (budget 50000)
+sweep shard10 round23 done (budget 50000)
+sweep shard10 round24 done (budget 100000)
+sweep shard10 round25 done (budget 50000)
+sweep shard10 round26 done (budget 50000)
+sweep shard10 round27 done (budget 100000)
+sweep shard10 round28 done (budget 200000)
+sweep shard10 round29 done (budget 400000)
+sweep shard10 round30 done (budget 800000)
+sweep shard10 round31 done (budget 50000)
+sweep shard10 round32 done (budget 50000)
+sweep shard10 round33 done (budget 100000)
+sweep shard10 round34 done (budget 50000)
+sweep shard10 round35 done (budget 50000)
+sweep shard10 round36 done (budget 100000)
+sweep shard10 round37 done (budget 200000)
+sweep shard10 round38 done (budget 50000)
+sweep shard10 round39 done (budget 4611686018427387904)
+no solution found
+STATS {"solved":0,"shard":10,"wall_s":380,"nodes_total":1875895,"nodes_win":-1,"dth_liveend":0,"dth_estate":219831,"dth_reach":124495,"dth_dyn":48810,"dth_flow":0,"dth_geom":16023,"maxrss_kb":23512,"start_x":-1,"start_y":-1}
+T3[t=380s] shard7 r7 #5 cell=(40,65) sc=50260 nodes=50001 r=-1
+sweep shard7 round7 done (budget 50000)
+T3[t=381s] shard8 r5 #0 cell=(48,58) sc=50268 nodes=100001 r=-1
+T3[t=381s] shard4 r18 #4 cell=(49,63) sc=50273 nodes=50001 r=-1
+sweep shard4 round18 done (budget 50000)
+T3[t=383s] shard3 r2 #8 cell=(44,65) sc=50265 nodes=100001 r=-1
+T3[t=384s] shard6 r4 #8 cell=(46,59) sc=50269 nodes=50001 r=-1
+sweep shard6 round4 done (budget 50000)
+T3[t=388s] shard7 r8 #5 cell=(40,65) sc=50260 nodes=50001 r=-1
+sweep shard7 round8 done (budget 50000)
+T3[t=388s] shard9 r4 #6 cell=(209,58) sc=50265 nodes=50001 r=-1
+T3[t=389s] shard5 r13 #4 cell=(25,54) sc=50260 nodes=200001 r=-1
+sweep shard5 round13 done (budget 200000)
+T3[t=390s] shard4 r19 #4 cell=(49,63) sc=50273 nodes=50001 r=-1
+sweep shard4 round19 done (budget 50000)
+T3[t=391s] shard0 r2 #8 cell=(179,66) sc=50267 nodes=100001 r=-1
+T3[t=392s] shard2 r5 #3 cell=(29,50) sc=50271 nodes=100001 r=-1
+T3[t=392s] shard1 r5 #4 cell=(17,30) sc=50266 nodes=100001 r=-1
+T3[t=395s] shard8 r5 #1 cell=(37,51) sc=50263 nodes=100001 r=-1
+T3[t=395s] shard11 r9 #1 cell=(45,67) sc=50271 nodes=100001 r=-1
+sweep shard11 round9 done (budget 100000)
+T3[t=397s] shard3 r2 #9 cell=(211,42) sc=50273 nodes=100001 r=-1
+sweep shard3 round2 done (budget 100000)
+T3[t=398s] shard6 r5 #0 cell=(200,40) sc=50274 nodes=100001 r=-1
+T3[t=398s] shard9 r4 #7 cell=(183,78) sc=50272 nodes=50001 r=-1
+T3[t=403s] shard3 r3 #0 cell=(199,37) sc=50274 nodes=50001 r=-1
+T3[t=403s] shard7 r9 #5 cell=(40,65) sc=50260 nodes=100001 r=-1
+sweep shard7 round9 done (budget 100000)
+T3[t=407s] shard9 r4 #8 cell=(11,116) sc=50267 nodes=50001 r=-1
+sweep shard9 round4 done (budget 50000)
+T3[t=407s] shard0 r2 #9 cell=(217,28) sc=50272 nodes=100001 r=-1
+sweep shard0 round2 done (budget 100000)
+T3[t=408s] shard4 r20 #4 cell=(49,63) sc=50273 nodes=100001 r=-1
+sweep shard4 round20 done (budget 100000)
+T3[t=408s] shard2 r5 #4 cell=(37,62) sc=50269 nodes=100001 r=-1
+sweep shard2 round5 done (budget 100000)
+T3[t=409s] shard1 r5 #6 cell=(188,63) sc=50259 nodes=100001 r=-1
+sweep shard1 round5 done (budget 100000)
+T3[t=409s] shard11 r10 #1 cell=(45,67) sc=50271 nodes=50001 r=-1
+sweep shard11 round10 done (budget 50000)
+T3[t=410s] shard7 r10 #5 cell=(40,65) sc=50260 nodes=50001 r=-1
+sweep shard7 round10 done (budget 50000)
+T3[t=412s] shard6 r5 #3 cell=(195,71) sc=50272 nodes=100001 r=-1
+T3[t=412s] shard8 r5 #3 cell=(35,66) sc=50266 nodes=100001 r=-1
+T3[t=418s] shard3 r3 #4 cell=(218,51) sc=50268 nodes=50001 r=-1
+T3[t=418s] shard11 r11 #1 cell=(45,67) sc=50271 nodes=50001 r=-1
+sweep shard11 round11 done (budget 50000)
+T3[t=419s] shard7 r11 #5 cell=(40,65) sc=50260 nodes=50001 r=-1
+sweep shard7 round11 done (budget 50000)
+T3[t=420s] shard9 r5 #2 cell=(34,44) sc=50272 nodes=100001 r=-1
+T3[t=425s] shard0 r3 #0 cell=(12,68) sc=50271 nodes=50001 r=-1
+T3[t=426s] shard3 r3 #6 cell=(55,70) sc=50267 nodes=50001 r=-1
+T3[t=429s] shard8 r5 #4 cell=(7,76) sc=50269 nodes=100001 r=-1
+T3[t=432s] shard0 r3 #1 cell=(193,81) sc=50268 nodes=50001 r=-1
+T3[t=432s] shard5 r14 #4 cell=(25,54) sc=50260 nodes=286389 r=0
+sweep shard5 round14 done (budget 400000)
+sweep shard5 round15 done (budget 50000)
+sweep shard5 round16 done (budget 50000)
+sweep shard5 round17 done (budget 100000)
+sweep shard5 round18 done (budget 50000)
+sweep shard5 round19 done (budget 50000)
+sweep shard5 round20 done (budget 100000)
+sweep shard5 round21 done (budget 200000)
+sweep shard5 round22 done (budget 50000)
+sweep shard5 round23 done (budget 50000)
+sweep shard5 round24 done (budget 100000)
+sweep shard5 round25 done (budget 50000)
+sweep shard5 round26 done (budget 50000)
+sweep shard5 round27 done (budget 100000)
+sweep shard5 round28 done (budget 200000)
+sweep shard5 round29 done (budget 400000)
+sweep shard5 round30 done (budget 800000)
+sweep shard5 round31 done (budget 50000)
+sweep shard5 round32 done (budget 50000)
+sweep shard5 round33 done (budget 100000)
+sweep shard5 round34 done (budget 50000)
+sweep shard5 round35 done (budget 50000)
+sweep shard5 round36 done (budget 100000)
+sweep shard5 round37 done (budget 200000)
+sweep shard5 round38 done (budget 50000)
+sweep shard5 round39 done (budget 4611686018427387904)
+no solution found
+STATS {"solved":0,"shard":5,"wall_s":432,"nodes_total":2586822,"nodes_win":-1,"dth_liveend":0,"dth_estate":304891,"dth_reach":159353,"dth_dyn":67412,"dth_flow":0,"dth_geom":19653,"maxrss_kb":23984,"start_x":-1,"start_y":-1}
+T3[t=432s] shard3 r3 #7 cell=(17,28) sc=50258 nodes=50001 r=-1
+T3[t=433s] shard6 r5 #6 cell=(199,46) sc=50259 nodes=100001 r=-1
+T3[t=434s] shard7 r12 #5 cell=(40,65) sc=50260 nodes=100001 r=-1
+sweep shard7 round12 done (budget 100000)
+T3[t=434s] shard9 r5 #3 cell=(198,66) sc=50269 nodes=100001 r=-1
+T3[t=437s] shard11 r12 #1 cell=(45,67) sc=50271 nodes=100001 r=-1
+sweep shard11 round12 done (budget 100000)
+T3[t=437s] shard4 r21 #4 cell=(49,63) sc=50273 nodes=200001 r=-1
+sweep shard4 round21 done (budget 200000)
+T3[t=438s] shard2 r6 #0 cell=(39,69) sc=50262 nodes=200001 r=-1
+T3[t=438s] shard0 r3 #3 cell=(221,26) sc=50263 nodes=50001 r=-1
+T3[t=439s] shard3 r3 #8 cell=(44,65) sc=50265 nodes=50001 r=-1
+T3[t=441s] shard1 r6 #0 cell=(32,46) sc=50271 nodes=200001 r=-1
+T3[t=443s] shard8 r5 #5 cell=(49,62) sc=50273 nodes=100001 r=-1
+sweep shard8 round5 done (budget 100000)
+T3[t=445s] shard0 r3 #5 cell=(210,59) sc=50267 nodes=50001 r=-1
+T3[t=446s] shard4 r22 #4 cell=(49,63) sc=50273 nodes=50001 r=-1
+sweep shard4 round22 done (budget 50000)
+T3[t=447s] shard3 r3 #9 cell=(211,42) sc=50273 nodes=50001 r=-1
+sweep shard3 round3 done (budget 50000)
+T3[t=448s] shard6 r5 #8 cell=(46,59) sc=50269 nodes=100001 r=-1
+sweep shard6 round5 done (budget 100000)
+T3[t=453s] shard4 r23 #4 cell=(49,63) sc=50273 nodes=50001 r=-1
+sweep shard4 round23 done (budget 50000)
+T3[t=453s] shard3 r4 #0 cell=(199,37) sc=50274 nodes=50001 r=-1
+T3[t=455s] shard0 r3 #6 cell=(17,62) sc=50276 nodes=50001 r=-1
+T3[t=460s] shard9 r5 #5 cell=(117,73) sc=50276 nodes=100001 r=-1
+T3[t=462s] shard0 r3 #7 cell=(6,85) sc=50275 nodes=50001 r=-1
+T3[t=462s] shard1 r6 #1 cell=(15,61) sc=50264 nodes=109148 r=0
+T3[t=463s] shard7 r13 #5 cell=(40,65) sc=50260 nodes=200001 r=-1
+sweep shard7 round13 done (budget 200000)
+T3[t=464s] shard11 r13 #1 cell=(45,67) sc=50271 nodes=200001 r=-1
+sweep shard11 round13 done (budget 200000)
+T3[t=464s] shard6 r6 #0 cell=(200,40) sc=50274 nodes=126868 r=0
+T3[t=466s] shard2 r6 #1 cell=(200,64) sc=50265 nodes=200001 r=-1
+T3[t=468s] shard3 r4 #4 cell=(218,51) sc=50268 nodes=50001 r=-1
+T3[t=470s] shard4 r24 #4 cell=(49,63) sc=50273 nodes=100001 r=-1
+sweep shard4 round24 done (budget 100000)
+T3[t=473s] shard8 r6 #0 cell=(48,58) sc=50268 nodes=200001 r=-1
+T3[t=474s] shard3 r4 #6 cell=(55,70) sc=50267 nodes=50001 r=-1
+T3[t=475s] shard0 r3 #8 cell=(179,66) sc=50267 nodes=50001 r=-1
+T3[t=476s] shard9 r5 #6 cell=(209,58) sc=50265 nodes=100001 r=-1
+T3[t=480s] shard4 r25 #4 cell=(49,63) sc=50273 nodes=50001 r=-1
+sweep shard4 round25 done (budget 50000)
+T3[t=480s] shard1 r6 #3 cell=(36,40) sc=50263 nodes=122896 r=0
+T3[t=481s] shard3 r4 #7 cell=(17,28) sc=50258 nodes=50001 r=-1
+T3[t=482s] shard0 r3 #9 cell=(217,28) sc=50272 nodes=50001 r=-1
+sweep shard0 round3 done (budget 50000)
+T3[t=487s] shard3 r4 #8 cell=(44,65) sc=50265 nodes=50001 r=-1
+T3[t=487s] shard6 r6 #3 cell=(195,71) sc=50272 nodes=175672 r=0
+T3[t=487s] shard4 r26 #4 cell=(49,63) sc=50273 nodes=50001 r=-1
+sweep shard4 round26 done (budget 50000)
+T3[t=490s] shard8 r6 #1 cell=(37,51) sc=50263 nodes=122487 r=0
+T3[t=491s] shard2 r6 #2 cell=(18,35) sc=50277 nodes=153893 r=0
+T3[t=494s] shard9 r5 #7 cell=(183,78) sc=50272 nodes=100001 r=-1
+T3[t=494s] shard3 r4 #9 cell=(211,42) sc=50273 nodes=50001 r=-1
+sweep shard3 round4 done (budget 50000)
+T3[t=500s] shard0 r4 #0 cell=(12,68) sc=50271 nodes=50001 r=-1
+T3[t=503s] shard1 r6 #4 cell=(17,30) sc=50266 nodes=153893 r=0
+T3[t=503s] shard4 r27 #4 cell=(49,63) sc=50273 nodes=100001 r=-1
+sweep shard4 round27 done (budget 100000)
+T3[t=508s] shard0 r4 #1 cell=(193,81) sc=50268 nodes=50001 r=-1
+T3[t=509s] shard3 r5 #0 cell=(199,37) sc=50274 nodes=100001 r=-1
+T3[t=510s] shard9 r5 #8 cell=(11,116) sc=50267 nodes=100001 r=-1
+sweep shard9 round5 done (budget 100000)
+T3[t=512s] shard7 r14 #5 cell=(40,65) sc=50260 nodes=400001 r=-1
+sweep shard7 round14 done (budget 400000)
+T3[t=516s] shard0 r4 #3 cell=(221,26) sc=50263 nodes=50001 r=-1
+T3[t=517s] shard1 r6 #6 cell=(188,63) sc=50259 nodes=112419 r=0
+sweep shard1 round6 done (budget 200000)
+T3[t=520s] shard7 r15 #5 cell=(40,65) sc=50260 nodes=50001 r=-1
+sweep shard7 round15 done (budget 50000)
+T3[t=522s] shard0 r4 #5 cell=(210,59) sc=50267 nodes=50001 r=-1
+T3[t=522s] shard11 r14 #1 cell=(45,67) sc=50271 nodes=400001 r=-1
+sweep shard11 round14 done (budget 400000)
+T3[t=523s] shard8 r6 #3 cell=(35,66) sc=50266 nodes=200001 r=-1
+T3[t=523s] shard6 r6 #6 cell=(199,46) sc=50259 nodes=200001 r=-1
+T3[t=524s] shard2 r6 #3 cell=(29,50) sc=50271 nodes=200001 r=-1
+T3[t=525s] shard1 r7 #0 cell=(32,46) sc=50271 nodes=50001 r=-1
+sweep shard1 round7 done (budget 50000)
+T3[t=527s] shard7 r16 #5 cell=(40,65) sc=50260 nodes=50001 r=-1
+sweep shard7 round16 done (budget 50000)
+T3[t=530s] shard4 r28 #4 cell=(49,63) sc=50273 nodes=200001 r=-1
+sweep shard4 round28 done (budget 200000)
+T3[t=533s] shard0 r4 #6 cell=(17,62) sc=50276 nodes=50001 r=-1
+T3[t=534s] shard1 r8 #0 cell=(32,46) sc=50271 nodes=50001 r=-1
+sweep shard1 round8 done (budget 50000)
+T3[t=536s] shard11 r15 #1 cell=(45,67) sc=50271 nodes=50001 r=-1
+sweep shard11 round15 done (budget 50000)
+T3[t=539s] shard3 r5 #4 cell=(218,51) sc=50268 nodes=100001 r=-1
+T3[t=542s] shard0 r4 #7 cell=(6,85) sc=50275 nodes=50001 r=-1
+T3[t=545s] shard7 r17 #5 cell=(40,65) sc=50260 nodes=100001 r=-1
+sweep shard7 round17 done (budget 100000)
+T3[t=546s] shard1 r9 #0 cell=(32,46) sc=50271 nodes=100001 r=-1
+sweep shard1 round9 done (budget 100000)
+T3[t=549s] shard2 r6 #4 cell=(37,62) sc=50269 nodes=200001 r=-1
+sweep shard2 round6 done (budget 200000)
+T3[t=550s] shard11 r16 #1 cell=(45,67) sc=50271 nodes=50001 r=-1
+sweep shard11 round16 done (budget 50000)
+T3[t=550s] shard8 r6 #4 cell=(7,76) sc=50269 nodes=155277 r=0
+T3[t=551s] shard9 r6 #2 cell=(34,44) sc=50272 nodes=200001 r=-1
+T3[t=553s] shard1 r10 #0 cell=(32,46) sc=50271 nodes=50001 r=-1
+sweep shard1 round10 done (budget 50000)
+T3[t=554s] shard7 r18 #5 cell=(40,65) sc=50260 nodes=50001 r=-1
+sweep shard7 round18 done (budget 50000)
+T3[t=554s] shard6 r6 #8 cell=(46,59) sc=50269 nodes=200001 r=-1
+sweep shard6 round6 done (budget 200000)
+T3[t=556s] shard3 r5 #6 cell=(55,70) sc=50267 nodes=100001 r=-1
+T3[t=558s] shard0 r4 #8 cell=(179,66) sc=50267 nodes=50001 r=-1
+T3[t=560s] shard1 r11 #0 cell=(32,46) sc=50271 nodes=50001 r=-1
+sweep shard1 round11 done (budget 50000)
+T3[t=561s] shard2 r7 #0 cell=(39,69) sc=50262 nodes=50001 r=-1
+T3[t=561s] shard7 r19 #5 cell=(40,65) sc=50260 nodes=50001 r=-1
+sweep shard7 round19 done (budget 50000)
+T3[t=562s] shard6 r7 #6 cell=(199,46) sc=50259 nodes=50001 r=-1
+T3[t=564s] shard0 r4 #9 cell=(217,28) sc=50272 nodes=50001 r=-1
+sweep shard0 round4 done (budget 50000)
+T3[t=566s] shard11 r17 #1 cell=(45,67) sc=50271 nodes=100001 r=-1
+sweep shard11 round17 done (budget 100000)
+T3[t=568s] shard6 r7 #8 cell=(46,59) sc=50269 nodes=50001 r=-1
+sweep shard6 round7 done (budget 50000)
+T3[t=569s] shard2 r7 #1 cell=(200,64) sc=50265 nodes=50001 r=-1
+T3[t=573s] shard3 r5 #7 cell=(17,28) sc=50258 nodes=100001 r=-1
+T3[t=575s] shard6 r8 #6 cell=(199,46) sc=50259 nodes=50001 r=-1
+T3[t=576s] shard2 r7 #3 cell=(29,50) sc=50271 nodes=50001 r=-1
+T3[t=577s] shard1 r12 #0 cell=(32,46) sc=50271 nodes=100001 r=-1
+sweep shard1 round12 done (budget 100000)
+T3[t=577s] shard7 r20 #5 cell=(40,65) sc=50260 nodes=100001 r=-1
+sweep shard7 round20 done (budget 100000)
+T3[t=578s] shard9 r6 #3 cell=(198,66) sc=50269 nodes=200001 r=-1
+T3[t=578s] shard4 r29 #4 cell=(49,63) sc=50273 nodes=400001 r=-1
+sweep shard4 round29 done (budget 400000)
+T3[t=580s] shard8 r6 #5 cell=(49,62) sc=50273 nodes=200001 r=-1
+sweep shard8 round6 done (budget 200000)
+T3[t=581s] shard6 r8 #8 cell=(46,59) sc=50269 nodes=50001 r=-1
+sweep shard6 round8 done (budget 50000)
+T3[t=581s] shard11 r18 #1 cell=(45,67) sc=50271 nodes=50001 r=-1
+sweep shard11 round18 done (budget 50000)
+T3[t=583s] shard2 r7 #4 cell=(37,62) sc=50269 nodes=50001 r=-1
+sweep shard2 round7 done (budget 50000)
+T3[t=590s] shard3 r5 #8 cell=(44,65) sc=50265 nodes=100001 r=-1
+T3[t=591s] shard11 r19 #1 cell=(45,67) sc=50271 nodes=50001 r=-1
+sweep shard11 round19 done (budget 50000)
+T3[t=593s] shard8 r7 #0 cell=(48,58) sc=50268 nodes=50001 r=-1
+T3[t=593s] shard0 r5 #0 cell=(12,68) sc=50271 nodes=100001 r=-1
+T3[t=594s] shard2 r8 #0 cell=(39,69) sc=50262 nodes=50001 r=-1
+T3[t=600s] shard2 r8 #1 cell=(200,64) sc=50265 nodes=50001 r=-1
+T3[t=601s] shard8 r7 #3 cell=(35,66) sc=50266 nodes=50001 r=-1
+T3[t=604s] shard3 r5 #9 cell=(211,42) sc=50273 nodes=100001 r=-1
+sweep shard3 round5 done (budget 100000)
+T3[t=604s] shard0 r5 #1 cell=(193,81) sc=50268 nodes=100001 r=-1
+T3[t=605s] shard6 r9 #6 cell=(199,46) sc=50259 nodes=100001 r=-1
+T3[t=607s] shard11 r20 #1 cell=(45,67) sc=50271 nodes=100001 r=-1
+sweep shard11 round20 done (budget 100000)
+T3[t=608s] shard7 r21 #5 cell=(40,65) sc=50260 nodes=200001 r=-1
+sweep shard7 round21 done (budget 200000)
+T3[t=608s] shard2 r8 #3 cell=(29,50) sc=50271 nodes=50001 r=-1
+T3[t=608s] shard8 r7 #5 cell=(49,62) sc=50273 nodes=50001 r=-1
+sweep shard8 round7 done (budget 50000)
+T3[t=609s] shard1 r13 #0 cell=(32,46) sc=50271 nodes=200001 r=-1
+sweep shard1 round13 done (budget 200000)
+T3[t=610s] shard9 r6 #5 cell=(117,73) sc=50276 nodes=115306 r=0
+T3[t=616s] shard0 r5 #3 cell=(221,26) sc=50263 nodes=100001 r=-1
+T3[t=616s] shard7 r22 #5 cell=(40,65) sc=50260 nodes=50001 r=-1
+sweep shard7 round22 done (budget 50000)
+T3[t=616s] shard2 r8 #4 cell=(37,62) sc=50269 nodes=50001 r=-1
+sweep shard2 round8 done (budget 50000)
+T3[t=620s] shard6 r9 #8 cell=(46,59) sc=50269 nodes=100001 r=-1
+sweep shard6 round9 done (budget 100000)
+T3[t=622s] shard8 r8 #0 cell=(48,58) sc=50268 nodes=50001 r=-1
+T3[t=622s] shard3 r6 #0 cell=(199,37) sc=50274 nodes=126840 r=0
+T3[t=625s] shard7 r23 #5 cell=(40,65) sc=50260 nodes=50001 r=-1
+sweep shard7 round23 done (budget 50000)
+T3[t=626s] shard0 r5 #5 cell=(210,59) sc=50267 nodes=100001 r=-1
+T3[t=628s] shard6 r10 #6 cell=(199,46) sc=50259 nodes=50001 r=-1
+T3[t=630s] shard8 r8 #3 cell=(35,66) sc=50266 nodes=50001 r=-1
+T3[t=633s] shard2 r9 #0 cell=(39,69) sc=50262 nodes=100001 r=-1
+T3[t=636s] shard8 r8 #5 cell=(49,62) sc=50273 nodes=50001 r=-1
+sweep shard8 round8 done (budget 50000)
+T3[t=636s] shard6 r10 #8 cell=(46,59) sc=50269 nodes=50001 r=-1
+sweep shard6 round10 done (budget 50000)
+T3[t=637s] shard11 r21 #1 cell=(45,67) sc=50271 nodes=200001 r=-1
+sweep shard11 round21 done (budget 200000)
+T3[t=639s] shard9 r6 #6 cell=(209,58) sc=50265 nodes=200001 r=-1
+T3[t=641s] shard7 r24 #5 cell=(40,65) sc=50260 nodes=100001 r=-1
+sweep shard7 round24 done (budget 100000)
+T3[t=643s] shard1 r14 #0 cell=(32,46) sc=50271 nodes=228504 r=0
+sweep shard1 round14 done (budget 400000)
+sweep shard1 round15 done (budget 50000)
+sweep shard1 round16 done (budget 50000)
+sweep shard1 round17 done (budget 100000)
+sweep shard1 round18 done (budget 50000)
+sweep shard1 round19 done (budget 50000)
+sweep shard1 round20 done (budget 100000)
+sweep shard1 round21 done (budget 200000)
+sweep shard1 round22 done (budget 50000)
+sweep shard1 round23 done (budget 50000)
+sweep shard1 round24 done (budget 100000)
+sweep shard1 round25 done (budget 50000)
+sweep shard1 round26 done (budget 50000)
+sweep shard1 round27 done (budget 100000)
+sweep shard1 round28 done (budget 200000)
+sweep shard1 round29 done (budget 400000)
+sweep shard1 round30 done (budget 800000)
+sweep shard1 round31 done (budget 50000)
+sweep shard1 round32 done (budget 50000)
+sweep shard1 round33 done (budget 100000)
+sweep shard1 round34 done (budget 50000)
+sweep shard1 round35 done (budget 50000)
+sweep shard1 round36 done (budget 100000)
+sweep shard1 round37 done (budget 200000)
+sweep shard1 round38 done (budget 50000)
+sweep shard1 round39 done (budget 4611686018427387904)
+no solution found
+STATS {"solved":0,"shard":1,"wall_s":643,"nodes_total":4021590,"nodes_win":-1,"dth_liveend":0,"dth_estate":467118,"dth_reach":255583,"dth_dyn":103752,"dth_flow":0,"dth_geom":30850,"maxrss_kb":24240,"start_x":-1,"start_y":-1}
+T3[t=645s] shard6 r11 #6 cell=(199,46) sc=50259 nodes=50001 r=-1
+T3[t=645s] shard0 r5 #6 cell=(17,62) sc=50276 nodes=100001 r=-1
+T3[t=648s] shard2 r9 #1 cell=(200,64) sc=50265 nodes=100001 r=-1
+T3[t=648s] shard11 r22 #1 cell=(45,67) sc=50271 nodes=50001 r=-1
+sweep shard11 round22 done (budget 50000)
+T3[t=649s] shard7 r25 #5 cell=(40,65) sc=50260 nodes=50001 r=-1
+sweep shard7 round25 done (budget 50000)
+T3[t=652s] shard6 r11 #8 cell=(46,59) sc=50269 nodes=50001 r=-1
+sweep shard6 round11 done (budget 50000)
+T3[t=656s] shard8 r9 #0 cell=(48,58) sc=50268 nodes=100001 r=-1
+T3[t=656s] shard7 r26 #5 cell=(40,65) sc=50260 nodes=50001 r=-1
+sweep shard7 round26 done (budget 50000)
+T3[t=659s] shard11 r23 #1 cell=(45,67) sc=50271 nodes=50001 r=-1
+sweep shard11 round23 done (budget 50000)
+T3[t=661s] shard0 r5 #7 cell=(6,85) sc=50275 nodes=100001 r=-1
+T3[t=664s] shard4 r30 #4 cell=(49,63) sc=50273 nodes=800001 r=-1
+sweep shard4 round30 done (budget 800000)
+T3[t=664s] shard2 r9 #3 cell=(29,50) sc=50271 nodes=100001 r=-1
+T3[t=670s] shard8 r9 #3 cell=(35,66) sc=50266 nodes=100001 r=-1
+T3[t=671s] shard7 r27 #5 cell=(40,65) sc=50260 nodes=100001 r=-1
+sweep shard7 round27 done (budget 100000)
+T3[t=671s] shard4 r31 #4 cell=(49,63) sc=50273 nodes=50001 r=-1
+sweep shard4 round31 done (budget 50000)
+T3[t=672s] shard9 r6 #7 cell=(183,78) sc=50272 nodes=200001 r=-1
+T3[t=672s] shard6 r12 #6 cell=(199,46) sc=50259 nodes=100001 r=-1
+T3[t=674s] shard3 r6 #4 cell=(218,51) sc=50268 nodes=160355 r=0
+T3[t=677s] shard0 r5 #8 cell=(179,66) sc=50267 nodes=100001 r=-1
+T3[t=678s] shard11 r24 #1 cell=(45,67) sc=50271 nodes=100001 r=-1
+sweep shard11 round24 done (budget 100000)
+T3[t=680s] shard4 r32 #4 cell=(49,63) sc=50273 nodes=50001 r=-1
+sweep shard4 round32 done (budget 50000)
+T3[t=681s] shard2 r9 #4 cell=(37,62) sc=50269 nodes=100001 r=-1
+sweep shard2 round9 done (budget 100000)
+T3[t=683s] shard8 r9 #5 cell=(49,62) sc=50273 nodes=100001 r=-1
+sweep shard8 round9 done (budget 100000)
+T3[t=687s] shard6 r12 #8 cell=(46,59) sc=50269 nodes=100001 r=-1
+sweep shard6 round12 done (budget 100000)
+T3[t=689s] shard11 r25 #1 cell=(45,67) sc=50271 nodes=50001 r=-1
+sweep shard11 round25 done (budget 50000)
+T3[t=692s] shard2 r10 #0 cell=(39,69) sc=50262 nodes=50001 r=-1
+T3[t=692s] shard0 r5 #9 cell=(217,28) sc=50272 nodes=100001 r=-1
+sweep shard0 round5 done (budget 100000)
+T3[t=693s] shard4 r33 #4 cell=(49,63) sc=50273 nodes=100001 r=-1
+sweep shard4 round33 done (budget 100000)
+T3[t=696s] shard11 r26 #1 cell=(45,67) sc=50271 nodes=50001 r=-1
+sweep shard11 round26 done (budget 50000)
+T3[t=696s] shard8 r10 #0 cell=(48,58) sc=50268 nodes=50001 r=-1
+T3[t=697s] shard7 r28 #5 cell=(40,65) sc=50260 nodes=200001 r=-1
+sweep shard7 round28 done (budget 200000)
+T3[t=698s] shard2 r10 #1 cell=(200,64) sc=50265 nodes=50001 r=-1
+T3[t=698s] shard9 r6 #8 cell=(11,116) sc=50267 nodes=190444 r=0
+sweep shard9 round6 done (budget 200000)
+T3[t=701s] shard4 r34 #4 cell=(49,63) sc=50273 nodes=50001 r=-1
+sweep shard4 round34 done (budget 50000)
+T3[t=702s] shard9 r7 #2 cell=(34,44) sc=50272 nodes=50001 r=-1
+T3[t=705s] shard8 r10 #3 cell=(35,66) sc=50266 nodes=50001 r=-1
+T3[t=705s] shard3 r6 #6 cell=(55,70) sc=50267 nodes=200001 r=-1
+T3[t=706s] shard2 r10 #3 cell=(29,50) sc=50271 nodes=50001 r=-1
+T3[t=708s] shard4 r35 #4 cell=(49,63) sc=50273 nodes=50001 r=-1
+sweep shard4 round35 done (budget 50000)
+T3[t=708s] shard9 r7 #3 cell=(198,66) sc=50269 nodes=50001 r=-1
+T3[t=710s] shard8 r10 #5 cell=(49,62) sc=50273 nodes=50001 r=-1
+sweep shard8 round10 done (budget 50000)
+T3[t=713s] shard2 r10 #4 cell=(37,62) sc=50269 nodes=50001 r=-1
+sweep shard2 round10 done (budget 50000)
+T3[t=715s] shard11 r27 #1 cell=(45,67) sc=50271 nodes=100001 r=-1
+sweep shard11 round27 done (budget 100000)
+T3[t=716s] shard9 r7 #6 cell=(209,58) sc=50265 nodes=50001 r=-1
+T3[t=721s] shard6 r13 #6 cell=(199,46) sc=50259 nodes=200001 r=-1
+T3[t=723s] shard2 r11 #0 cell=(39,69) sc=50262 nodes=50001 r=-1
+T3[t=724s] shard4 r36 #4 cell=(49,63) sc=50273 nodes=100001 r=-1
+sweep shard4 round36 done (budget 100000)
+T3[t=725s] shard8 r11 #0 cell=(48,58) sc=50268 nodes=50001 r=-1
+T3[t=725s] shard9 r7 #7 cell=(183,78) sc=50272 nodes=50001 r=-1
+sweep shard9 round7 done (budget 50000)
+T3[t=729s] shard2 r11 #1 cell=(200,64) sc=50265 nodes=50001 r=-1
+T3[t=730s] shard9 r8 #2 cell=(34,44) sc=50272 nodes=50001 r=-1
+T3[t=733s] shard8 r11 #3 cell=(35,66) sc=50266 nodes=50001 r=-1
+T3[t=735s] shard3 r6 #7 cell=(17,28) sc=50258 nodes=200001 r=-1
+T3[t=736s] shard0 r6 #0 cell=(12,68) sc=50271 nodes=200001 r=-1
+T3[t=736s] shard9 r8 #3 cell=(198,66) sc=50269 nodes=50001 r=-1
+T3[t=737s] shard2 r11 #3 cell=(29,50) sc=50271 nodes=50001 r=-1
+T3[t=741s] shard8 r11 #5 cell=(49,62) sc=50273 nodes=50001 r=-1
+sweep shard8 round11 done (budget 50000)
+T3[t=743s] shard9 r8 #6 cell=(209,58) sc=50265 nodes=50001 r=-1
+T3[t=744s] shard2 r11 #4 cell=(37,62) sc=50269 nodes=50001 r=-1
+sweep shard2 round11 done (budget 50000)
+T3[t=746s] shard11 r28 #1 cell=(45,67) sc=50271 nodes=200001 r=-1
+sweep shard11 round28 done (budget 200000)
+T3[t=752s] shard4 r37 #4 cell=(49,63) sc=50273 nodes=200001 r=-1
+sweep shard4 round37 done (budget 200000)
+T3[t=752s] shard9 r8 #7 cell=(183,78) sc=50272 nodes=50001 r=-1
+sweep shard9 round8 done (budget 50000)
+T3[t=754s] shard6 r13 #8 cell=(46,59) sc=50269 nodes=200001 r=-1
+sweep shard6 round13 done (budget 200000)
+T3[t=754s] shard7 r29 #5 cell=(40,65) sc=50260 nodes=400001 r=-1
+sweep shard7 round29 done (budget 400000)
+T3[t=759s] shard4 r38 #4 cell=(49,63) sc=50273 nodes=50001 r=-1
+sweep shard4 round38 done (budget 50000)
+T3[t=761s] shard0 r6 #1 cell=(193,81) sc=50268 nodes=200001 r=-1
+T3[t=762s] shard3 r6 #8 cell=(44,65) sc=50265 nodes=200001 r=-1
+T3[t=762s] shard2 r12 #0 cell=(39,69) sc=50262 nodes=100001 r=-1
+T3[t=763s] shard8 r12 #0 cell=(48,58) sc=50268 nodes=100001 r=-1
+T3[t=764s] shard9 r9 #2 cell=(34,44) sc=50272 nodes=100001 r=-1
+T3[t=775s] shard2 r12 #1 cell=(200,64) sc=50265 nodes=100001 r=-1
+T3[t=777s] shard8 r12 #3 cell=(35,66) sc=50266 nodes=100001 r=-1
+T3[t=777s] shard9 r9 #3 cell=(198,66) sc=50269 nodes=100001 r=-1
+T3[t=780s] shard3 r6 #9 cell=(211,42) sc=50273 nodes=147081 r=0
+sweep shard3 round6 done (budget 200000)
+T3[t=783s] shard0 r6 #3 cell=(221,26) sc=50263 nodes=160018 r=0
+T3[t=787s] shard3 r7 #6 cell=(55,70) sc=50267 nodes=50001 r=-1
+T3[t=789s] shard8 r12 #5 cell=(49,62) sc=50273 nodes=100001 r=-1
+sweep shard8 round12 done (budget 100000)
+T3[t=792s] shard2 r12 #3 cell=(29,50) sc=50271 nodes=100001 r=-1
+T3[t=793s] shard9 r9 #6 cell=(209,58) sc=50265 nodes=100001 r=-1
+T3[t=795s] shard3 r7 #7 cell=(17,28) sc=50258 nodes=50001 r=-1
+T3[t=801s] shard3 r7 #8 cell=(44,65) sc=50265 nodes=50001 r=-1
+sweep shard3 round7 done (budget 50000)
+T3[t=802s] shard11 r29 #1 cell=(45,67) sc=50271 nodes=400001 r=-1
+sweep shard11 round29 done (budget 400000)
+T3[t=808s] shard0 r6 #5 cell=(210,59) sc=50267 nodes=200001 r=-1
+T3[t=808s] shard3 r8 #6 cell=(55,70) sc=50267 nodes=50001 r=-1
+T3[t=810s] shard2 r12 #4 cell=(37,62) sc=50269 nodes=100001 r=-1
+sweep shard2 round12 done (budget 100000)
+T3[t=812s] shard9 r9 #7 cell=(183,78) sc=50272 nodes=100001 r=-1
+sweep shard9 round9 done (budget 100000)
+T3[t=816s] shard6 r14 #6 cell=(199,46) sc=50259 nodes=400001 r=-1
+T3[t=816s] shard3 r8 #7 cell=(17,28) sc=50258 nodes=50001 r=-1
+T3[t=818s] shard9 r10 #2 cell=(34,44) sc=50272 nodes=50001 r=-1
+T3[t=823s] shard8 r13 #0 cell=(48,58) sc=50268 nodes=200001 r=-1
+T3[t=823s] shard3 r8 #8 cell=(44,65) sc=50265 nodes=50001 r=-1
+sweep shard3 round8 done (budget 50000)
+T3[t=825s] shard9 r10 #3 cell=(198,66) sc=50269 nodes=50001 r=-1
+T3[t=834s] shard9 r10 #6 cell=(209,58) sc=50265 nodes=50001 r=-1
+T3[t=836s] shard7 r30 #5 cell=(40,65) sc=50260 nodes=800001 r=-1
+sweep shard7 round30 done (budget 800000)
+T3[t=837s] shard2 r13 #0 cell=(39,69) sc=50262 nodes=200001 r=-1
+T3[t=837s] shard3 r9 #6 cell=(55,70) sc=50267 nodes=100001 r=-1
+T3[t=841s] shard0 r6 #6 cell=(17,62) sc=50276 nodes=200001 r=-1
+T3[t=842s] shard7 r31 #5 cell=(40,65) sc=50260 nodes=50001 r=-1
+sweep shard7 round31 done (budget 50000)
+T3[t=845s] shard9 r10 #7 cell=(183,78) sc=50272 nodes=50001 r=-1
+sweep shard9 round10 done (budget 50000)
+DEATH sh4 liveend=0 estate=794199 reach=484171 dyn=78021 flow=0 geom=88379
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=12477 kill=2499 nodes=1048576
+ADAPT sh4 rp[P=8192 try=6939 kill=1148 17%] pd[P=66 try=89888 kill=25517 28%]
+T3[t=851s] shard9 r11 #2 cell=(34,44) sc=50272 nodes=50001 r=-1
+T3[t=851s] shard7 r32 #5 cell=(40,65) sc=50260 nodes=50001 r=-1
+sweep shard7 round32 done (budget 50000)
+T3[t=853s] shard3 r9 #7 cell=(17,28) sc=50258 nodes=100001 r=-1
+T3[t=855s] shard8 r13 #3 cell=(35,66) sc=50266 nodes=200001 r=-1
+T3[t=857s] shard9 r11 #3 cell=(198,66) sc=50269 nodes=50001 r=-1
+T3[t=859s] shard2 r13 #1 cell=(200,64) sc=50265 nodes=200001 r=-1
+T3[t=862s] shard7 r33 #5 cell=(40,65) sc=50260 nodes=100001 r=-1
+sweep shard7 round33 done (budget 100000)
+T3[t=863s] shard9 r11 #6 cell=(209,58) sc=50265 nodes=50001 r=-1
+T3[t=864s] shard3 r9 #8 cell=(44,65) sc=50265 nodes=100001 r=-1
+sweep shard3 round9 done (budget 100000)
+T3[t=867s] shard7 r34 #5 cell=(40,65) sc=50260 nodes=50001 r=-1
+sweep shard7 round34 done (budget 50000)
+T3[t=868s] shard0 r6 #7 cell=(6,85) sc=50275 nodes=200001 r=-1
+T3[t=869s] shard9 r11 #7 cell=(183,78) sc=50272 nodes=50001 r=-1
+sweep shard9 round11 done (budget 50000)
+T3[t=870s] shard3 r10 #6 cell=(55,70) sc=50267 nodes=50001 r=-1
+T3[t=873s] shard7 r35 #5 cell=(40,65) sc=50260 nodes=50001 r=-1
+sweep shard7 round35 done (budget 50000)
+T3[t=875s] shard6 r14 #8 cell=(46,59) sc=50269 nodes=400001 r=-1
+sweep shard6 round14 done (budget 400000)
+T3[t=875s] shard3 r10 #7 cell=(17,28) sc=50258 nodes=50001 r=-1
+T3[t=877s] shard8 r13 #5 cell=(49,62) sc=50273 nodes=200001 r=-1
+sweep shard8 round13 done (budget 200000)
+T3[t=877s] shard9 r12 #2 cell=(34,44) sc=50272 nodes=100001 r=-1
+T3[t=880s] shard3 r10 #8 cell=(44,65) sc=50265 nodes=50001 r=-1
+sweep shard3 round10 done (budget 50000)
+T3[t=880s] shard11 r30 #1 cell=(45,67) sc=50271 nodes=800001 r=-1
+sweep shard11 round30 done (budget 800000)
+T3[t=880s] shard6 r15 #6 cell=(199,46) sc=50259 nodes=50001 r=-1
+T3[t=881s] shard2 r13 #3 cell=(29,50) sc=50271 nodes=200001 r=-1
+T3[t=883s] shard7 r36 #5 cell=(40,65) sc=50260 nodes=100001 r=-1
+sweep shard7 round36 done (budget 100000)
+T3[t=885s] shard6 r15 #8 cell=(46,59) sc=50269 nodes=50001 r=-1
+sweep shard6 round15 done (budget 50000)
+T3[t=885s] shard3 r11 #6 cell=(55,70) sc=50267 nodes=50001 r=-1
+T3[t=887s] shard9 r12 #3 cell=(198,66) sc=50269 nodes=100001 r=-1
+T3[t=890s] shard11 r31 #1 cell=(45,67) sc=50271 nodes=50001 r=-1
+sweep shard11 round31 done (budget 50000)
+T3[t=890s] shard0 r6 #8 cell=(179,66) sc=50267 nodes=200001 r=-1
+T3[t=890s] shard6 r16 #6 cell=(199,46) sc=50259 nodes=50001 r=-1
+T3[t=891s] shard3 r11 #7 cell=(17,28) sc=50258 nodes=50001 r=-1
+T3[t=895s] shard6 r16 #8 cell=(46,59) sc=50269 nodes=50001 r=-1
+sweep shard6 round16 done (budget 50000)
+T3[t=896s] shard3 r11 #8 cell=(44,65) sc=50265 nodes=50001 r=-1
+sweep shard3 round11 done (budget 50000)
+T3[t=897s] shard11 r32 #1 cell=(45,67) sc=50271 nodes=50001 r=-1
+sweep shard11 round32 done (budget 50000)
+T3[t=898s] shard9 r12 #6 cell=(209,58) sc=50265 nodes=100001 r=-1
+T3[t=899s] shard2 r13 #4 cell=(37,62) sc=50269 nodes=200001 r=-1
+sweep shard2 round13 done (budget 200000)
+T3[t=903s] shard7 r37 #5 cell=(40,65) sc=50260 nodes=200001 r=-1
+sweep shard7 round37 done (budget 200000)
+T3[t=907s] shard3 r12 #6 cell=(55,70) sc=50267 nodes=100001 r=-1
+T3[t=907s] shard0 r6 #9 cell=(217,28) sc=50272 nodes=159599 r=0
+sweep shard0 round6 done (budget 200000)
+T3[t=909s] shard11 r33 #1 cell=(45,67) sc=50271 nodes=100001 r=-1
+sweep shard11 round33 done (budget 100000)
+T3[t=909s] shard7 r38 #5 cell=(40,65) sc=50260 nodes=50001 r=-1
+sweep shard7 round38 done (budget 50000)
+T3[t=910s] shard6 r17 #6 cell=(199,46) sc=50259 nodes=100001 r=-1
+T3[t=910s] shard9 r12 #7 cell=(183,78) sc=50272 nodes=100001 r=-1
+sweep shard9 round12 done (budget 100000)
+T3[t=917s] shard3 r12 #7 cell=(17,28) sc=50258 nodes=100001 r=-1
+T3[t=917s] shard8 r14 #0 cell=(48,58) sc=50268 nodes=400001 r=-1
+T3[t=918s] shard11 r34 #1 cell=(45,67) sc=50271 nodes=50001 r=-1
+sweep shard11 round34 done (budget 50000)
+T3[t=919s] shard0 r7 #0 cell=(12,68) sc=50271 nodes=50001 r=-1
+T3[t=921s] shard6 r17 #8 cell=(46,59) sc=50269 nodes=100001 r=-1
+sweep shard6 round17 done (budget 100000)
+T3[t=924s] shard0 r7 #1 cell=(193,81) sc=50268 nodes=50001 r=-1
+T3[t=925s] shard11 r35 #1 cell=(45,67) sc=50271 nodes=50001 r=-1
+sweep shard11 round35 done (budget 50000)
+T3[t=926s] shard6 r18 #6 cell=(199,46) sc=50259 nodes=50001 r=-1
+T3[t=927s] shard9 r13 #2 cell=(34,44) sc=50272 nodes=200001 r=-1
+DEATH sh4 liveend=0 estate=934031 reach=577345 dyn=81085 flow=0 geom=109145
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=14574 kill=3018 nodes=2097152
+ADAPT sh4 rp[P=8192 try=7133 kill=1165 16%] pd[P=121 try=119595 kill=34086 29%]
+T3[t=928s] shard0 r7 #5 cell=(210,59) sc=50267 nodes=50001 r=-1
+T3[t=928s] shard3 r12 #8 cell=(44,65) sc=50265 nodes=100001 r=-1
+sweep shard3 round12 done (budget 100000)
+T3[t=931s] shard6 r18 #8 cell=(46,59) sc=50269 nodes=50001 r=-1
+sweep shard6 round18 done (budget 50000)
+T3[t=933s] shard2 r14 #0 cell=(39,69) sc=50262 nodes=400001 r=-1
+T3[t=935s] shard11 r36 #1 cell=(45,67) sc=50271 nodes=100001 r=-1
+sweep shard11 round36 done (budget 100000)
+T3[t=936s] shard0 r7 #6 cell=(17,62) sc=50276 nodes=50001 r=-1
+T3[t=937s] shard6 r19 #6 cell=(199,46) sc=50259 nodes=50001 r=-1
+T3[t=941s] shard0 r7 #7 cell=(6,85) sc=50275 nodes=50001 r=-1
+T3[t=942s] shard6 r19 #8 cell=(46,59) sc=50269 nodes=50001 r=-1
+sweep shard6 round19 done (budget 50000)
+T3[t=946s] shard9 r13 #3 cell=(198,66) sc=50269 nodes=200001 r=-1
+T3[t=951s] shard0 r7 #8 cell=(179,66) sc=50267 nodes=50001 r=-1
+sweep shard0 round7 done (budget 50000)
+T3[t=953s] shard3 r13 #6 cell=(55,70) sc=50267 nodes=200001 r=-1
+T3[t=957s] shard6 r20 #6 cell=(199,46) sc=50259 nodes=100001 r=-1
+T3[t=959s] shard11 r37 #1 cell=(45,67) sc=50271 nodes=200001 r=-1
+sweep shard11 round37 done (budget 200000)
+T3[t=961s] shard2 r14 #1 cell=(200,64) sc=50265 nodes=291015 r=0
+T3[t=962s] shard8 r14 #3 cell=(35,66) sc=50266 nodes=400001 r=-1
+T3[t=963s] shard0 r8 #0 cell=(12,68) sc=50271 nodes=50001 r=-1
+T3[t=967s] shard11 r38 #1 cell=(45,67) sc=50271 nodes=50001 r=-1
+sweep shard11 round38 done (budget 50000)
+T3[t=967s] shard6 r20 #8 cell=(46,59) sc=50269 nodes=100001 r=-1
+sweep shard6 round20 done (budget 100000)
+T3[t=968s] shard0 r8 #1 cell=(193,81) sc=50268 nodes=50001 r=-1
+T3[t=968s] shard9 r13 #6 cell=(209,58) sc=50265 nodes=200001 r=-1
+T3[t=972s] shard0 r8 #5 cell=(210,59) sc=50267 nodes=50001 r=-1
+T3[t=977s] shard3 r13 #7 cell=(17,28) sc=50258 nodes=200001 r=-1
+DEATH sh7 liveend=0 estate=941276 reach=543378 dyn=147123 flow=0 geom=87786
+PDEV sh7 try=0 kill=0 (0.0%) BJ try=15262 kill=1518 nodes=1048576
+ADAPT sh7 rp[P=7369 try=1732 kill=159 9%] pd[P=166 try=59201 kill=16320 28%]
+T3[t=979s] shard0 r8 #6 cell=(17,62) sc=50276 nodes=50001 r=-1
+T3[t=985s] shard0 r8 #7 cell=(6,85) sc=50275 nodes=50001 r=-1
+T3[t=990s] shard9 r13 #7 cell=(183,78) sc=50272 nodes=200001 r=-1
+sweep shard9 round13 done (budget 200000)
+T3[t=992s] shard6 r21 #6 cell=(199,46) sc=50259 nodes=200001 r=-1
+T3[t=992s] shard2 r14 #3 cell=(29,50) sc=50271 nodes=286472 r=0
+T3[t=994s] shard0 r8 #8 cell=(179,66) sc=50267 nodes=50001 r=-1
+sweep shard0 round8 done (budget 50000)
+T3[t=995s] shard3 r13 #8 cell=(44,65) sc=50265 nodes=200001 r=-1
+sweep shard3 round13 done (budget 200000)
+T3[t=1003s] shard8 r14 #5 cell=(49,62) sc=50273 nodes=400001 r=-1
+sweep shard8 round14 done (budget 400000)
+T3[t=1013s] shard8 r15 #0 cell=(48,58) sc=50268 nodes=50001 r=-1
+T3[t=1013s] shard0 r9 #0 cell=(12,68) sc=50271 nodes=100001 r=-1
+T3[t=1015s] shard6 r21 #8 cell=(46,59) sc=50269 nodes=200001 r=-1
+sweep shard6 round21 done (budget 200000)
+T3[t=1019s] shard8 r15 #3 cell=(35,66) sc=50266 nodes=50001 r=-1
+T3[t=1020s] shard6 r22 #6 cell=(199,46) sc=50259 nodes=50001 r=-1
+T3[t=1022s] shard2 r14 #4 cell=(37,62) sc=50269 nodes=400001 r=-1
+sweep shard2 round14 done (budget 400000)
+T3[t=1022s] shard0 r9 #1 cell=(193,81) sc=50268 nodes=100001 r=-1
+T3[t=1024s] shard8 r15 #5 cell=(49,62) sc=50273 nodes=50001 r=-1
+sweep shard8 round15 done (budget 50000)
+T3[t=1026s] shard6 r22 #8 cell=(46,59) sc=50269 nodes=50001 r=-1
+sweep shard6 round22 done (budget 50000)
+T3[t=1031s] shard6 r23 #6 cell=(199,46) sc=50259 nodes=50001 r=-1
+T3[t=1031s] shard2 r15 #0 cell=(39,69) sc=50262 nodes=50001 r=-1
+T3[t=1032s] shard0 r9 #5 cell=(210,59) sc=50267 nodes=100001 r=-1
+T3[t=1033s] shard8 r16 #0 cell=(48,58) sc=50268 nodes=50001 r=-1
+T3[t=1036s] shard6 r23 #8 cell=(46,59) sc=50269 nodes=50001 r=-1
+sweep shard6 round23 done (budget 50000)
+T3[t=1036s] shard2 r15 #4 cell=(37,62) sc=50269 nodes=50001 r=-1
+sweep shard2 round15 done (budget 50000)
+T3[t=1039s] shard8 r16 #3 cell=(35,66) sc=50266 nodes=50001 r=-1
+DEATH sh11 liveend=0 estate=976523 reach=634114 dyn=51213 flow=0 geom=140541
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=13921 kill=3617 nodes=1048576
+ADAPT sh11 rp[P=8192 try=8448 kill=1431 17%] pd[P=58 try=150810 kill=36159 24%]
+T3[t=1041s] shard3 r14 #6 cell=(55,70) sc=50267 nodes=400001 r=-1
+T3[t=1044s] shard2 r16 #0 cell=(39,69) sc=50262 nodes=50001 r=-1
+T3[t=1044s] shard0 r9 #6 cell=(17,62) sc=50276 nodes=100001 r=-1
+T3[t=1044s] shard8 r16 #5 cell=(49,62) sc=50273 nodes=50001 r=-1
+sweep shard8 round16 done (budget 50000)
+T3[t=1049s] shard2 r16 #4 cell=(37,62) sc=50269 nodes=50001 r=-1
+sweep shard2 round16 done (budget 50000)
+T3[t=1049s] shard9 r14 #2 cell=(34,44) sc=50272 nodes=400001 r=-1
+DEATH sh7 liveend=0 estate=1079004 reach=638510 dyn=150105 flow=0 geom=109442
+PDEV sh7 try=0 kill=0 (0.0%) BJ try=17359 kill=2056 nodes=2097152
+ADAPT sh7 rp[P=8192 try=1906 kill=172 9%] pd[P=71 try=88642 kill=24711 28%]
+T3[t=1051s] shard6 r24 #6 cell=(199,46) sc=50259 nodes=100001 r=-1
+T3[t=1056s] shard0 r9 #7 cell=(6,85) sc=50275 nodes=100001 r=-1
+T3[t=1059s] shard8 r17 #0 cell=(48,58) sc=50268 nodes=100001 r=-1
+DEATH sh4 liveend=0 estate=1211960 reach=763630 dyn=84186 flow=0 geom=151605
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=18768 kill=4092 nodes=4194304
+ADAPT sh4 rp[P=5706 try=7794 kill=1253 16%] pd[P=38 try=178871 kill=51098 29%]
+T3[t=1061s] shard6 r24 #8 cell=(46,59) sc=50269 nodes=100001 r=-1
+sweep shard6 round24 done (budget 100000)
+T3[t=1062s] shard2 r17 #0 cell=(39,69) sc=50262 nodes=100001 r=-1
+T3[t=1067s] shard6 r25 #6 cell=(199,46) sc=50259 nodes=50001 r=-1
+T3[t=1067s] shard0 r9 #8 cell=(179,66) sc=50267 nodes=100001 r=-1
+sweep shard0 round9 done (budget 100000)
+T3[t=1070s] shard8 r17 #3 cell=(35,66) sc=50266 nodes=100001 r=-1
+T3[t=1072s] shard2 r17 #4 cell=(37,62) sc=50269 nodes=100001 r=-1
+sweep shard2 round17 done (budget 100000)
+T3[t=1072s] shard6 r25 #8 cell=(46,59) sc=50269 nodes=50001 r=-1
+sweep shard6 round25 done (budget 50000)
+T3[t=1077s] shard6 r26 #6 cell=(199,46) sc=50259 nodes=50001 r=-1
+T3[t=1080s] shard2 r18 #0 cell=(39,69) sc=50262 nodes=50001 r=-1
+T3[t=1080s] shard0 r10 #0 cell=(12,68) sc=50271 nodes=50001 r=-1
+T3[t=1080s] shard8 r17 #5 cell=(49,62) sc=50273 nodes=100001 r=-1
+sweep shard8 round17 done (budget 100000)
+T3[t=1082s] shard6 r26 #8 cell=(46,59) sc=50269 nodes=50001 r=-1
+sweep shard6 round26 done (budget 50000)
+T3[t=1085s] shard0 r10 #1 cell=(193,81) sc=50268 nodes=50001 r=-1
+T3[t=1085s] shard4 r39 #4 cell=(49,63) sc=50273 nodes=4519552 r=0
+sweep shard4 round39 done (budget 4611686018427387904)
+no solution found
+STATS {"solved":0,"shard":4,"wall_s":1085,"nodes_total":9711699,"nodes_win":-1,"dth_liveend":0,"dth_estate":1254987,"dth_reach":791936,"dth_dyn":86330,"dth_flow":0,"dth_geom":157575,"maxrss_kb":32072,"start_x":-1,"start_y":-1}
+T3[t=1085s] shard2 r18 #4 cell=(37,62) sc=50269 nodes=50001 r=-1
+sweep shard2 round18 done (budget 50000)
+T3[t=1086s] shard9 r14 #3 cell=(198,66) sc=50269 nodes=400001 r=-1
+T3[t=1087s] shard3 r14 #7 cell=(17,28) sc=50258 nodes=400001 r=-1
+T3[t=1089s] shard0 r10 #5 cell=(210,59) sc=50267 nodes=50001 r=-1
+T3[t=1089s] shard8 r18 #0 cell=(48,58) sc=50268 nodes=50001 r=-1
+DEATH sh11 liveend=0 estate=1122953 reach=734609 dyn=51213 flow=0 geom=164980
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=16018 kill=4138 nodes=2097152
+ADAPT sh11 rp[P=8192 try=8613 kill=1442 17%] pd[P=201 try=184814 kill=44465 24%]
+T3[t=1093s] shard2 r19 #0 cell=(39,69) sc=50262 nodes=50001 r=-1
+T3[t=1095s] shard8 r18 #3 cell=(35,66) sc=50266 nodes=50001 r=-1
+T3[t=1096s] shard0 r10 #6 cell=(17,62) sc=50276 nodes=50001 r=-1
+T3[t=1097s] shard6 r27 #6 cell=(199,46) sc=50259 nodes=100001 r=-1
+T3[t=1098s] shard2 r19 #4 cell=(37,62) sc=50269 nodes=50001 r=-1
+sweep shard2 round19 done (budget 50000)
+T3[t=1100s] shard8 r18 #5 cell=(49,62) sc=50273 nodes=50001 r=-1
+sweep shard8 round18 done (budget 50000)
+T3[t=1101s] shard0 r10 #7 cell=(6,85) sc=50275 nodes=50001 r=-1
+T3[t=1107s] shard6 r27 #8 cell=(46,59) sc=50269 nodes=100001 r=-1
+sweep shard6 round27 done (budget 100000)
+T3[t=1109s] shard8 r19 #0 cell=(48,58) sc=50268 nodes=50001 r=-1
+T3[t=1110s] shard0 r10 #8 cell=(179,66) sc=50267 nodes=50001 r=-1
+sweep shard0 round10 done (budget 50000)
+T3[t=1110s] shard2 r20 #0 cell=(39,69) sc=50262 nodes=100001 r=-1
+T3[t=1115s] shard8 r19 #3 cell=(35,66) sc=50266 nodes=50001 r=-1
+DEATH sh7 liveend=0 estate=1216730 reach=733821 dyn=153083 flow=0 geom=131164
+PDEV sh7 try=0 kill=0 (0.0%) BJ try=19456 kill=2599 nodes=3145728
+ADAPT sh7 rp[P=8192 try=2104 kill=192 9%] pd[P=26 try=117915 kill=33039 28%]
+T3[t=1120s] shard8 r19 #5 cell=(49,62) sc=50273 nodes=50001 r=-1
+sweep shard8 round19 done (budget 50000)
+T3[t=1120s] shard2 r20 #4 cell=(37,62) sc=50269 nodes=100001 r=-1
+sweep shard2 round20 done (budget 100000)
+T3[t=1122s] shard0 r11 #0 cell=(12,68) sc=50271 nodes=50001 r=-1
+T3[t=1126s] shard0 r11 #1 cell=(193,81) sc=50268 nodes=50001 r=-1
+T3[t=1128s] shard3 r14 #8 cell=(44,65) sc=50265 nodes=400001 r=-1
+sweep shard3 round14 done (budget 400000)
+T3[t=1130s] shard9 r14 #6 cell=(209,58) sc=50265 nodes=400001 r=-1
+T3[t=1131s] shard0 r11 #5 cell=(210,59) sc=50267 nodes=50001 r=-1
+T3[t=1131s] shard6 r28 #6 cell=(199,46) sc=50259 nodes=200001 r=-1
+T3[t=1134s] shard8 r20 #0 cell=(48,58) sc=50268 nodes=100001 r=-1
+T3[t=1134s] shard3 r15 #6 cell=(55,70) sc=50267 nodes=50001 r=-1
+T3[t=1138s] shard0 r11 #6 cell=(17,62) sc=50276 nodes=50001 r=-1
+T3[t=1139s] shard3 r15 #7 cell=(17,28) sc=50258 nodes=50001 r=-1
+T3[t=1141s] shard2 r21 #0 cell=(39,69) sc=50262 nodes=200001 r=-1
+T3[t=1143s] shard0 r11 #7 cell=(6,85) sc=50275 nodes=50001 r=-1
+T3[t=1144s] shard3 r15 #8 cell=(44,65) sc=50265 nodes=50001 r=-1
+sweep shard3 round15 done (budget 50000)
+T3[t=1145s] shard8 r20 #3 cell=(35,66) sc=50266 nodes=100001 r=-1
+DEATH sh11 liveend=0 estate=1272251 reach=837330 dyn=51213 flow=0 geom=190376
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=18115 kill=4619 nodes=3145728
+ADAPT sh11 rp[P=8192 try=8807 kill=1461 17%] pd[P=35 try=220704 kill=53404 24%]
+T3[t=1149s] shard3 r16 #6 cell=(55,70) sc=50267 nodes=50001 r=-1
