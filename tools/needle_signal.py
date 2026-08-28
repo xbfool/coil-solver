@@ -76,7 +76,10 @@ def main():
         if not files:
             print(f"{lv}\t({x},{y})\t漏斗未完成({wall:.0f}s)")
         elif hit is None:
-            print(f"{lv}\t({x},{y})\t🚨 真起点被漏斗杀掉(unsound!) 幸存{total} wall={wall:.0f}s")
+            # ⚠ 份数不全时不许下 unsound 结论(2026-08-28 名单切片事故同款陷阱)
+            tag = "🚨 真起点被漏斗杀掉(unsound!)" if len(files) >= args.jobs else \
+                  f"⚠ 真起点不在已交卷切片({len(files)}/{args.jobs}份,不可判)"
+            print(f"{lv}\t({x},{y})\t{tag} 幸存{total} wall={wall:.0f}s")
         else:
             fn, rank, n = hit
             print(f"{lv}\t({x},{y})\t{fn}\t{rank}/{n}\t{100*rank/n:.0f}%\t~{100*rank/n:.0f}%\t{wall:.0f}s")
