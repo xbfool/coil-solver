@@ -77,8 +77,24 @@ for l in open('$VEC',encoding='utf-8'):
 print(n)")
 if [ "$NFAIL" != "0" ]; then echo "== T1 FAIL: $NFAIL 关未过"; exit 4; fi
 echo "== T1 PASS，向量在 $VEC"
+
+# ---- T1H: 行为特殊盘（深树探针，不作硬门；假解仍一票否决）----
+T1H_TIMEOUT="${T1H_TIMEOUT:-30}"
+VECH="$HERE/results/vec/$TAG-hard.jsonl"
+if [ -f "$HERE/calib/hard.txt" ]; then
+  echo "== T1H.hard（每关 ${T1H_TIMEOUT}s，非门禁 → $VECH）"
+  python3 "$HERE/tools/evalvec.py" "$BIN" --list "$HERE/calib/hard.txt" \
+    --timeout "$T1H_TIMEOUT" --out "$VECH" --coilbench "$CB"
+  [ $? -eq 2 ] && { echo "T1H FAIL: 🚨 UNSOUND（假解）"; exit 3; }
+fi
+
 python3 -c "
 import json
 rs=[json.loads(l) for l in open('$VEC',encoding='utf-8')]
 tn=sum(r['nodes_total'] for r in rs); tm=sum(r['wall_ms'] for r in rs)
-print(f'== 汇总: {len(rs)} 关, nodes_total={tn:,}, wall={tm}ms')"
+line=f'== 汇总: T1 {len(rs)} 关全过, nodes_total={tn:,}, wall={tm}ms'
+try:
+    hs=[json.loads(l) for l in open('$VECH',encoding='utf-8')]
+    line+=f' | T1H {sum(r[\"solved\"] for r in hs)}/{len(hs)} 解出, wall={sum(r[\"wall_ms\"] for r in hs)}ms'
+except FileNotFoundError: pass
+print(line)"
