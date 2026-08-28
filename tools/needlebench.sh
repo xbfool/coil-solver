@@ -4,8 +4,8 @@
 # 盘单: 零信息阶梯(真起点来自解库)。输出 TSV: 关 钉 wall_s nodes_total
 set -u
 OUTF="$1"; PAR="${2:-11}"; TMO="${3:-600}"; BIN="${4:-bin/champ1}"
-ROOT=/mnt/d/works/coil/coil-solver
-LV=/mnt/d/works/coil/coilbench/levels_all
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+LV="$ROOT/../coilbench/levels_all"
 cd "$ROOT"; ulimit -s unlimited 2>/dev/null
 PINS="570 33,183 580 142,79 582 142,130 590 74,97 598 18,60 628 134,0 630 126,27 634 78,121 736 231,140 744 204,77 748 236,111"
 

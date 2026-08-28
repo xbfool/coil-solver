@@ -12,8 +12,8 @@
 # ============================================================================
 set -u
 BOARD="$1"; OUT="$2"; FT="${3:-600}"
-ROOT=/mnt/d/works/coil/coil-solver
-CK=/mnt/d/works/coil/coilbench/coil_check/check
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+CK="$ROOT/../coilbench/coil_check/check"
 ulimit -s unlimited 2>/dev/null
 W=$(head -c 40 "$BOARD" | grep -oE 'x=[0-9]+' | grep -oE '[0-9]+')
 WW=$((W + 2))

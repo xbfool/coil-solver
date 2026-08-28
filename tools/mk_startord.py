@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 # 生成完整 STARTORD 文件：候选 OK 行 + 其余自由格全部 REF（STARTORD 只排序不过滤，REF 才剔除）
 import re, sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
 lv = sys.argv[1]
-board_path = f"/mnt/d/works/coil/coilbench/levels_all/{lv}"
+board_path = str(ROOT.parent / "coilbench" / "levels_all" / lv)
 cand_path = f"/tmp/cand_{lv}.txt"
 out_path = f"/tmp/so_{lv}.txt"
 t = open(board_path).read().strip()

@@ -17,10 +17,13 @@ import os
 import re
 import subprocess
 import sys
+from pathlib import Path
 
-LEVELS = "/mnt/d/works/coil/coilbench/levels_all"
-BANK = "/mnt/d/works/coil/coil-solutions/solutions"
-CHECK = "/mnt/d/works/coil/coilbench/coil_check/check"
+ROOT = Path(__file__).resolve().parent.parent
+
+LEVELS = str(ROOT.parent / "coilbench" / "levels_all")
+BANK = str(ROOT.parent / "coil-solutions" / "solutions")
+CHECK = str(ROOT.parent / "coilbench" / "coil_check" / "check")
 DIRS = {"U": (0, -1), "D": (0, 1), "L": (-1, 0), "R": (1, 0)}
 
 

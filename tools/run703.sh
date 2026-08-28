@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # 703 的 8 个候选起点各钉一次，比较有向层档位。
 #   tools/run703.sh <DIRLAYER档位> <上限秒> <日志>
-BIN=${BIN:-/mnt/d/works/coil/coil-solver/bin/v73-dirlayer}
-LV=/mnt/d/works/coil/coilbench/levels_all/703
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+BIN=${BIN:-$ROOT/bin/v73-dirlayer}
+LV="$ROOT/../coilbench/levels_all/703"
 D=${1:-4}; LIMIT=${2:-2400}; LOG=${3:-/tmp/p703b.log}
 : > "$LOG"
 for xy in 28,150 29,151 31,151 28,152 30,152 31,152 30,153 31,153; do

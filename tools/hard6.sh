@@ -8,8 +8,8 @@
 set -uo pipefail
 HERE="$(cd "$(dirname "$0")/.." && pwd)"
 BIN="$HERE/bin/v77b"
-BOARD=/mnt/d/works/coil/coilbench/levels_all/767
-CHECK=/mnt/d/works/coil/coilbench/coil_check/check
+BOARD="$HERE/../coilbench/levels_all/767"
+CHECK="$HERE/../coilbench/coil_check/check"
 LIST="$HERE/research/767/alive_hard.txt"
 OUT="$HERE/research/767/hard6"
 mkdir -p "$OUT"

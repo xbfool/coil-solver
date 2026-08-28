@@ -15,10 +15,10 @@
 """
 import sys, os
 from collections import deque
+from pathlib import Path
 
-LEVELS = os.environ.get("LEVELS", "/mnt/d/workspace/coilbench/levels_all")
-if not os.path.isdir(LEVELS):
-    LEVELS = r"D:\workspace\coilbench\levels_all"
+ROOT = Path(__file__).resolve().parent.parent
+LEVELS = os.environ.get("LEVELS", str(ROOT.parent / "coilbench" / "levels_all"))
 
 DIRS = [(-1, 0), (0, -1), (1, 0), (0, 1)]          # L U R D
 LEFT = {(-1, 0): (0, 1), (0, -1): (-1, 0), (1, 0): (0, -1), (0, 1): (1, 0)}

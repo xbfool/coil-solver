@@ -13,8 +13,8 @@
 set -uo pipefail
 HERE="$(cd "$(dirname "$0")/.." && pwd)"
 BIN="$HERE/bin/v77b"
-LV=/mnt/d/works/coil/coilbench/levels_all
-CHECK=/mnt/d/works/coil/coilbench/coil_check/check
+LV="$HERE/../coilbench/levels_all"
+CHECK="$HERE/../coilbench/coil_check/check"
 OUT="$HERE/research/campaign767"
 mkdir -p "$OUT"
 J=${1:-20}; T767=${2:-7200}

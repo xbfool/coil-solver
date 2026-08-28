@@ -30,6 +30,9 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
 
 BASE = "https://www.hacker.org/coil/index.php"
 UA = "coil-solver/1.0 (personal research; contact via hacker.org user xbfool)"
@@ -113,8 +116,8 @@ class Client:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--levels", default="/mnt/d/works/coil/coilbench/levels_all")
-    ap.add_argument("--solutions", default="/mnt/d/works/coil/coil-solutions/solutions")
+    ap.add_argument("--levels", default=str(ROOT.parent / "coilbench" / "levels_all"))
+    ap.add_argument("--solutions", default=str(ROOT.parent / "coil-solutions" / "solutions"))
     ap.add_argument("--rate", type=float, default=2.0, help="请求最小间隔秒数")
     ap.add_argument("--max-fail", type=int, default=5, help="连续失败多少次熔断")
     ap.add_argument("--max", type=int, default=0, help="本次最多提交多少关(0=不限)")

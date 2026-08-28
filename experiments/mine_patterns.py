@@ -18,8 +18,11 @@ local patterns / recursive patterns / bounded brute force，但从未展开。
 import os
 import sys
 from collections import defaultdict
+from pathlib import Path
 
-LV = "/mnt/d/works/coil/coilbench/levels_public/%s"
+ROOT = Path(__file__).resolve().parent.parent
+
+LV = str(ROOT.parent / "coilbench" / "levels_public" / "%s")
 SOL = "/tmp/sols/%s"
 D = {"L": (-1, 0), "R": (1, 0), "U": (0, -1), "D": (0, 1)}
 DIRS = [(-1, 0), (0, -1), (1, 0), (0, 1)]        # L U R D，与求解器一致

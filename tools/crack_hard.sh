@@ -10,10 +10,11 @@
 #   v58->v73 谱系曾静默忽略它，所有"钉住"测试实际是全盘跑，"703 树价"的诊断因此错了一轮。
 set -uo pipefail
 LV=${1:?关号}; LIMIT=${2:-1200}; MAXC=${3:-40}
-BIN=${BIN:-${COIL_ROOT:-/mnt/d/works}/coil-solver/bin/v73-dirlayer}
-BOARD=${COIL_ROOT:-/mnt/d/works}/coilbench/levels_all/$LV
-BANK=${COIL_ROOT:-/mnt/d/works}/coil-solutions/solutions
-CHECK=${COIL_ROOT:-/mnt/d/works}/coilbench/coil_check/check
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+BIN=${BIN:-${COIL_ROOT:-$ROOT/..}/coil-solver/bin/v73-dirlayer}
+BOARD=${COIL_ROOT:-$ROOT/..}/coilbench/levels_all/$LV
+BANK=${COIL_ROOT:-$ROOT/..}/coil-solutions/solutions
+CHECK=${COIL_ROOT:-$ROOT/..}/coilbench/coil_check/check
 
 W=$(( $(grep -oE "x=[0-9]+" "$BOARD" | head -1 | cut -d= -f2) + 2 ))
 echo "== 关 $LV：强筛选找候选 =="

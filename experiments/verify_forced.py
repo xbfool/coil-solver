@@ -9,8 +9,11 @@
 import subprocess
 import sys
 from collections import defaultdict
+from pathlib import Path
 
-LV = "/mnt/d/works/coil/coilbench/levels_public/%s"
+ROOT = Path(__file__).resolve().parent.parent
+
+LV = str(ROOT.parent / "coilbench" / "levels_public" / "%s")
 D = {"L": (-1, 0), "R": (1, 0), "U": (0, -1), "D": (0, 1)}
 
 

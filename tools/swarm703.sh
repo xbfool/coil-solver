@@ -7,8 +7,9 @@
 # 回溯搜索的耗时是重尾的：同一实例换个分支顺序可能几秒出解，
 # 所以多策略并行才是对的形态（代码里本来就有 4 档策略梯队）。
 set -uo pipefail
-BIN=${BIN:-/mnt/d/works/coil/coil-solver/bin/v73-dirlayer}
-LV=${LV:-/mnt/d/works/coil/coilbench/levels_all/703}
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+BIN=${BIN:-$ROOT/bin/v73-dirlayer}
+LV=${LV:-$ROOT/../coilbench/levels_all/703}
 J=${1:-3}; LIMIT=${2:-600}; LOG=${3:-/tmp/swarm703.log}
 : > "$LOG"
 for xy in 28,150 29,151 31,151 28,152 30,152 31,152 30,153 31,153; do

@@ -3,10 +3,11 @@
 # 树内传播是基石级的（剩余图度数/奇偶/成环，PROOFS §3.6），从零播种零外层依赖——
 # 它才是"死树 10M->15K"的那把刀；上一轮只给了 PDEVERY=200 的稀疏出场，慢 100 倍是自找的。
 set -uo pipefail
-BIN=/mnt/d/works/coil/coil-solver/bin/v77b
-BOARD=/mnt/d/works/coil/coilbench/levels_all/767
-CHECK=/mnt/d/works/coil/coilbench/coil_check/check
-BANK=/mnt/d/works/coil/coil-solutions/solutions
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+BIN="$ROOT/bin/v77b"
+BOARD="$ROOT/../coilbench/levels_all/767"
+CHECK="$ROOT/../coilbench/coil_check/check"
+BANK="$ROOT/../coil-solutions/solutions"
 W=260
 LOG=/tmp/ct42k.log; : > "$LOG"
 WIN=/tmp/ct42k.win; rm -f "$WIN"

@@ -3,10 +3,11 @@
 # 逻辑：87 里必有真起点（可解盘 + 筛选自称 sound）；此前它死在"全链条 estate"喂养的搜索里。
 # 拔掉全部可疑 estate 生产者后只剩基石（度数/奇偶/成环）——无毒可下。出解 = 毒源实锤在被拔的三层里。
 set -uo pipefail
-BIN=/mnt/d/works/coil/coil-solver/bin/v77b
-BOARD=/mnt/d/works/coil/coilbench/levels_all/767
-CHECK=/mnt/d/works/coil/coilbench/coil_check/check
-BANK=/mnt/d/works/coil/coil-solutions/solutions
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+BIN="$ROOT/bin/v77b"
+BOARD="$ROOT/../coilbench/levels_all/767"
+CHECK="$ROOT/../coilbench/coil_check/check"
+BANK="$ROOT/../coil-solutions/solutions"
 W=260
 LOG=/tmp/bed767.log; : > "$LOG"
 WIN=/tmp/bed767.win; rm -f "$WIN"

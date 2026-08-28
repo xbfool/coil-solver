@@ -7,8 +7,11 @@
 """
 import sys
 from collections import Counter
+from pathlib import Path
 
-LV = "/mnt/d/works/coil/coilbench/levels_public/%s"
+ROOT = Path(__file__).resolve().parent.parent
+
+LV = str(ROOT.parent / "coilbench" / "levels_public" / "%s")
 
 
 def load(n):

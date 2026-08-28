@@ -17,7 +17,8 @@ diff_based_evolution: true      # 只做小 diff，别整文件重写
 
 llm:
   manual_mode: true
-  _manual_queue_dir: "/mnt/d/works/coil/coil-solver/evolve/queue"
+  # 相对启动目录的路径 —— 按文件头文档跑法 cd evolve && openevolve.cli 启动
+  _manual_queue_dir: "queue"
   models:
     - name: "claude-code-session"
       weight: 1.0

@@ -5,10 +5,11 @@
 set -uo pipefail
 ABL=${1:?消融 OK 文件}; ENVS=${2:?环境串如 CHAINSTRICT=0}; J=${3:-12}; LIMIT=${4:-900}
 BASE=/tmp/cand_767.txt
-BIN=/mnt/d/works/coil/coil-solver/bin/v77b
-BOARD=/mnt/d/works/coil/coilbench/levels_all/767
-CHECK=/mnt/d/works/coil/coilbench/coil_check/check
-BANK=/mnt/d/works/coil/coil-solutions/solutions
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+BIN="$ROOT/bin/v77b"
+BOARD="$ROOT/../coilbench/levels_all/767"
+CHECK="$ROOT/../coilbench/coil_check/check"
+BANK="$ROOT/../coil-solutions/solutions"
 W=260
 LOG=/tmp/pinex_$(basename "$ABL").log; : > "$LOG"
 # 差集：消融幸存 − 基线87

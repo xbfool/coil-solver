@@ -13,10 +13,10 @@
 """
 import os, sys
 from collections import deque, Counter
+from pathlib import Path
 
-LEVELS = r"D:\workspace\coilbench\levels_all"
-if not os.path.isdir(LEVELS):
-    LEVELS = "/mnt/d/workspace/coilbench/levels_all"
+ROOT = Path(__file__).resolve().parent.parent
+LEVELS = str(ROOT.parent / "coilbench" / "levels_all")
 SOLS = r"C:\Users\xbfoo\AppData\Local\Temp\claude\D--workspace\a9a27850-3ba8-4b8e-8061-a644473312f2\scratchpad\sols"
 
 DIRS = [(-1, 0), (0, -1), (1, 0), (0, 1)]          # L U R D

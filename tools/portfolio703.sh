@@ -12,8 +12,9 @@
 # 任何一个进程出解，其余立刻停。
 set -uo pipefail
 XY=${1:?候选起点 x,y}; LIMIT=${2:-900}; LV=${3:-703}
-BIN=${BIN:-/mnt/d/works/coil/coil-solver/bin/v73-dirlayer}
-BOARD=/mnt/d/works/coil/coilbench/levels_all/$LV
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+BIN=${BIN:-$ROOT/bin/v73-dirlayer}
+BOARD="$ROOT/../coilbench/levels_all/$LV"
 IDS="0 3 6 10 14 18 22 25 28 31"
 LOG=/tmp/pf_${LV}_${XY}.log
 : > "$LOG"

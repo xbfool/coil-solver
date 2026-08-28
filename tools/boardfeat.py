@@ -18,6 +18,8 @@ from pathlib import Path
 
 import numpy as np
 
+ROOT = Path(__file__).resolve().parent.parent
+
 
 def load(path: Path):
     s = path.read_text(encoding="utf-8").strip()
@@ -89,7 +91,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("range", nargs="*", help="起 止 关号")
     ap.add_argument("--files", nargs="*", help="直接给盘面文件")
-    ap.add_argument("--levels-dir", default="/mnt/d/works/coil/coilbench/levels_all")
+    ap.add_argument("--levels-dir", default=str(ROOT.parent / "coilbench" / "levels_all"))
     ap.add_argument("--out")
     args = ap.parse_args()
 

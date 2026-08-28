@@ -3,12 +3,12 @@
 # 用法: funneltime.sh <关号> [JOBS=8] [超时=900] [bin=bin/champ1]
 set -u
 LV="$1"; J="${2:-8}"; TMO="${3:-900}"; BIN="${4:-bin/champ1}"
-ROOT=/mnt/d/works/coil/coil-solver
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"; ulimit -s unlimited 2>/dev/null
 D=$(mktemp -d); trap 'rm -rf "$D"' EXIT
 start=$(date +%s)
 timeout "$TMO" env FUNNELDUMP="$D/surv" STATS=1 RESTART=1 SWEEP=50000 JOBS="$J" \
-    "$BIN" "/mnt/d/works/coil/coilbench/levels_all/$LV" >/dev/null 2>"$D/log" &
+    "$BIN" "$ROOT/../coilbench/levels_all/$LV" >/dev/null 2>"$D/log" &
 pid=$!
 while kill -0 "$pid" 2>/dev/null; do
     n=$(ls "$D"/surv.* 2>/dev/null | wc -l)

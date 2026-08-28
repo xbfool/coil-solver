@@ -19,12 +19,15 @@ import os
 import re
 import subprocess
 import sys
+from pathlib import Path
 
-SOLVER = "/mnt/d/works/coil/coil-solver/bin/v58-probezero"
-LEVELS = "/mnt/d/works/coil/coilbench/levels_all"
-BANK = "/mnt/d/works/coil/coil-solutions/solutions"
+ROOT = Path(__file__).resolve().parent.parent
 
-CHECK = "/mnt/d/works/coil/coilbench/coil_check/check"
+SOLVER = str(ROOT / "bin" / "v58-probezero")
+LEVELS = str(ROOT.parent / "coilbench" / "levels_all")
+BANK = str(ROOT.parent / "coil-solutions" / "solutions")
+
+CHECK = str(ROOT.parent / "coilbench" / "coil_check" / "check")
 
 
 def label_ok(level):
