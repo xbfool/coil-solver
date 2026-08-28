@@ -703,6 +703,32 @@ static int propagate(int s) {
             tok = strtok(NULL, ";");
         }
     }
+    if (getenv("FORCEEDGEFILE")) {              // 大批量公理注入：文件版（env 64KB 上限绕行）
+        // 首次调用读入内存，之后每次传播从缓存回放——传播是热路径，不许碰文件系统
+        static int fe_n = -1;
+        static int (*fe)[3] = NULL;
+        if (fe_n < 0) {
+            fe_n = 0;
+            FILE *ff = fopen(getenv("FORCEEDGEFILE"), "r");
+            if (ff) {
+                int cap = 200000, fc, fd, fv;
+                fe = malloc(sizeof *fe * cap);
+                while (fe_n < cap && fscanf(ff, "%d %d %d", &fc, &fd, &fv) == 3) {
+                    fe[fe_n][0] = fc; fe[fe_n][1] = fd; fe[fe_n][2] = fv; ++fe_n;
+                }
+                fclose(ff);
+            }
+        }
+        for (int i = 0; i < fe_n && !prop_bad; ++i) {
+            int fc = fe[i][0], fd = fe[i][1], fv = fe[i][2];
+            if (fc < 0 || fc >= N || fd < 0 || fd > 3) continue;
+            if (!g0[fc] || !g0[fc + delta[fd]]) continue;
+            unsigned char *ea = &estate[fc * 4 + fd];
+            unsigned char *eb = &estate[(fc + delta[fd]) * 4 + (fd ^ 2)];
+            if (*ea != 0 && *ea != fv) { prop_bad = 1; break; }
+            if (*ea == 0) { *ea = *eb = (unsigned char)fv; ppush(fc); ppush(fc + delta[fd]); }
+        }
+    }
     for (int c = 0; c < N; ++c) if (g0[c]) ppush(c);
     prun_queue();
 
