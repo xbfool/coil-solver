@@ -25,6 +25,11 @@ wsl -e bash -lc "cd /mnt/d/works/coil/coil-solver && ulimit -s unlimited && \
 - 出解 → 官方 check → 解入私库 → SOLVELOG/CASE 销案。
 - 这次开了 TREELOG:全灭/久磨时 grind2.log 里有每钉死因,别再盲磨。
 
+## ⚠ 名单覆盖说明（16:37 定稿）
+19/20 切片、**1780 幸存者**（shard 9 超时未交,其 ~2500 起点未筛 = 5% 盲区）。
+磨到全灭时头号嫌疑 = shard 9 切片,补筛后再下结论。startord-ordered.txt 已保序
+（漏斗排名,勿 sort!）。
+
 ## 悬案清单（回家可继续的科研）
 1. **去偏彩票终审**：h&7(e2e 19s) vs h&15(300s 超时) 证明单盘 e2e 是顺序彩票。
    干净核跨盘 A/B: `bin/champ1` vs `bin/champ2-debias` 在 634/736/744/748 各一枪
