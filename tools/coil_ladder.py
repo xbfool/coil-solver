@@ -113,8 +113,8 @@ class Client:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--levels", default="/mnt/d/works/coilbench/levels_all")
-    ap.add_argument("--solutions", default="/mnt/d/works/coil-solutions/solutions")
+    ap.add_argument("--levels", default="/mnt/d/works/coil/coilbench/levels_all")
+    ap.add_argument("--solutions", default="/mnt/d/works/coil/coil-solutions/solutions")
     ap.add_argument("--rate", type=float, default=2.0, help="请求最小间隔秒数")
     ap.add_argument("--max-fail", type=int, default=5, help="连续失败多少次熔断")
     ap.add_argument("--max", type=int, default=0, help="本次最多提交多少关(0=不限)")

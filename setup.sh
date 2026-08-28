@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # 一条命令把开发环境备齐：拉 coilbench、编译校验器、装全部 1207 关（奇+偶）。
 #
-#   wsl -e bash -lc "cd /mnt/d/works/coil-solver && ./setup.sh"
+#   wsl -e bash -lc "cd /mnt/d/works/coil/coil-solver && ./setup.sh"
 #
 # 为什么关卡不进 git：奇 148MB + 偶 150MB ≈ 300MB，单个文件最大 3.9MB，
 # 每次 clone 都要拖一遍；而上游 release 本来就有 47MB 的压缩包，就地重建更划算。

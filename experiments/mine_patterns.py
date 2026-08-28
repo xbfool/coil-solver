@@ -19,7 +19,7 @@ import os
 import sys
 from collections import defaultdict
 
-LV = "/mnt/d/works/coilbench/levels_public/%s"
+LV = "/mnt/d/works/coil/coilbench/levels_public/%s"
 SOL = "/tmp/sols/%s"
 D = {"L": (-1, 0), "R": (1, 0), "U": (0, -1), "D": (0, 1)}
 DIRS = [(-1, 0), (0, -1), (1, 0), (0, 1)]        # L U R D，与求解器一致

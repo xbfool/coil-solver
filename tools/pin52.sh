@@ -11,8 +11,8 @@
 set -uo pipefail
 HERE="$(cd "$(dirname "$0")/.." && pwd)"
 BIN="$HERE/bin/v77b"
-BOARD=/mnt/d/works/coilbench/levels_all/767
-CHECK=/mnt/d/works/coilbench/coil_check/check
+BOARD=/mnt/d/works/coil/coilbench/levels_all/767
+CHECK=/mnt/d/works/coil/coilbench/coil_check/check
 LIST="$HERE/research/767/suspects52.txt"
 OUT="$HERE/research/767/pin52"
 mkdir -p "$OUT"

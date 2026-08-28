@@ -13,7 +13,7 @@ DIRS = [(1, 0), (0, 1), (-1, 0), (0, -1)]      # R D L U，顺时针
 
 
 def load(n):
-    s = open("/mnt/d/works/coilbench/levels_public/%s" % n).read().strip()
+    s = open("/mnt/d/works/coil/coilbench/levels_public/%s" % n).read().strip()
     w = int(s.split("x=")[1].split("&")[0])
     h = int(s.split("y=")[1].split("&")[0])
     return w, h, s.split("board=")[1]

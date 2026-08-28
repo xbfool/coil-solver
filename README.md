@@ -63,7 +63,7 @@ SAC 全局层新禁边 0 / trail 撤销提速≈0）。**要突破得换范式�
 ## 换台机器（一条命令）
 
 ```bash
-wsl -e bash -lc "cd /mnt/d/works/coil-solver && ./setup.sh"
+wsl -e bash -lc "cd /mnt/d/works/coil/coil-solver && ./setup.sh"
 ```
 
 拉 coilbench、修 CRLF、编译校验器、装全部 **1207 关**（奇数关明文 + 偶数关归档 + 解出的 `levels_all/`）。
@@ -86,7 +86,7 @@ wsl -e bash -lc "cd /mnt/d/works/coil-solver && ./setup.sh"
 需要 WSL（Windows 侧没有 C 编译器，且上游脚本是 POSIX sh）：
 
 ```bash
-wsl -e bash -lc "cd /mnt/d/works/coil-solver && ./bench --start 1 --timeout 60"
+wsl -e bash -lc "cd /mnt/d/works/coil/coil-solver && ./bench --start 1 --timeout 60"
 ```
 
 `bench` 会编译版本源码 → 拷进 coilbench 当 `./solver`（`run_solver` 会优先跑它）→ 调官方

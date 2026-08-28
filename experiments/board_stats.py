@@ -8,7 +8,7 @@
 import sys
 from collections import Counter
 
-LV = "/mnt/d/works/coilbench/levels_public/%s"
+LV = "/mnt/d/works/coil/coilbench/levels_public/%s"
 
 
 def load(n):

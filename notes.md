@@ -280,7 +280,7 @@ v5 里这没事，因为每换一个起点都会 `memcpy` 重置盘面；但 v12
 
 ## 环境重建（换机器后）
 
-原来的 `/mnt/d/works/coilbench` 没了，重新拉了一份：
+原来的 `/mnt/d/works/coil/coilbench` 没了，重新拉了一份：
 
 - `git clone https://github.com/adum/coilbench.git` 到 coil-solver 的同级目录，`bench` 改成默认找同级。
 - **关卡包不需要口令**：`download_full_levels.sh` 里的口令只用于把偶数关加密存档，

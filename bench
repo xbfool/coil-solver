@@ -10,7 +10,7 @@ set -euo pipefail
 
 HERE="$(cd "$(dirname "$0")" && pwd)"
 BENCH="${COILBENCH_DIR:-$HERE/../coilbench}"
-[ -d "$BENCH" ] || BENCH="/mnt/d/works/coilbench"
+[ -d "$BENCH" ] || BENCH="/mnt/d/works/coil/coilbench"
 [ -d "$BENCH" ] || { echo "找不到 coilbench：$BENCH（可用 COILBENCH_DIR 指定）" >&2; exit 1; }
 
 VER=""

@@ -12,9 +12,9 @@
 set -uo pipefail
 HERE="$(cd "$(dirname "$0")/.." && pwd)"
 BIN="$HERE/bin/v77b"
-LV=/mnt/d/works/coilbench/levels_all
-CHECK=/mnt/d/works/coilbench/coil_check/check
-BANK=/mnt/d/works/coil-solutions/solutions
+LV=/mnt/d/works/coil/coilbench/levels_all
+CHECK=/mnt/d/works/coil/coilbench/coil_check/check
+BANK=/mnt/d/works/coil/coil-solutions/solutions
 OUT="$HERE/research/postrust"
 mkdir -p "$OUT"
 T=${1:-1200}; JMAX=${2:-20}

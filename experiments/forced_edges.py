@@ -16,7 +16,7 @@
 import sys
 from collections import defaultdict
 
-LV = "/mnt/d/works/coilbench/levels_public/%s"
+LV = "/mnt/d/works/coil/coilbench/levels_public/%s"
 
 
 def analyse(n):

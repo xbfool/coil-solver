@@ -18,9 +18,9 @@ import re
 import subprocess
 import sys
 
-LEVELS = "/mnt/d/works/coilbench/levels_all"
-BANK = "/mnt/d/works/coil-solutions/solutions"
-CHECK = "/mnt/d/works/coilbench/coil_check/check"
+LEVELS = "/mnt/d/works/coil/coilbench/levels_all"
+BANK = "/mnt/d/works/coil/coil-solutions/solutions"
+CHECK = "/mnt/d/works/coil/coilbench/coil_check/check"
 DIRS = {"U": (0, -1), "D": (0, 1), "L": (-1, 0), "R": (1, 0)}
 
 

@@ -15,11 +15,11 @@ import re
 import subprocess
 import sys
 
-SOLVER = "/mnt/d/works/coil-solver/bin/v72-featdump"
-LEVELS = "/mnt/d/works/coilbench/levels_all"
-BANK = "/mnt/d/works/coil-solutions/solutions"
+SOLVER = "/mnt/d/works/coil/coil-solver/bin/v72-featdump"
+LEVELS = "/mnt/d/works/coil/coilbench/levels_all"
+BANK = "/mnt/d/works/coil/coil-solutions/solutions"
 
-CHECK = "/mnt/d/works/coilbench/coil_check/check"
+CHECK = "/mnt/d/works/coil/coilbench/coil_check/check"
 
 
 def label_ok(level):

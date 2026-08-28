@@ -11,7 +11,7 @@ import subprocess
 import sys
 from collections import Counter
 
-LV = "/mnt/d/works/coilbench/levels_public/%s"
+LV = "/mnt/d/works/coil/coilbench/levels_public/%s"
 D = {"L": (-1, 0), "R": (1, 0), "U": (0, -1), "D": (0, 1)}
 
 

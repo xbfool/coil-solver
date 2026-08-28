@@ -26,7 +26,7 @@
 > **(115,193) (117,197) (108,197) (109,198) (115,197) (108,199)** = research/767/alive_hard.txt。
 >
 > ```bash
-> git pull && wsl -e bash -lc "cd /mnt/d/works/coil-solver && cc -std=gnu99 -O3 -march=native -funroll-loops versions/v77-deepprune.c -o bin/v77b"
+> git pull && wsl -e bash -lc "cd /mnt/d/works/coil/coil-solver && cc -std=gnu99 -O3 -march=native -funroll-loops versions/v77-deepprune.c -o bin/v77b"
 > ```
 > 1. **首选：`tools/hard6.sh 26 14400`** —— 6 活口逐格 swarm（747 攻陷配方，每格 4h 盒）。
 >    出解=收官；"干净穷尽"的格进裁判复核；6 格全穷尽=矛盾升级，开审搜索段（见 3）。
@@ -87,7 +87,7 @@
 - 续跑命令：
   ```
   CHAIN=0 DIRLAYER=0 SWEEP=400000 PDEVERY=20 BJ=20 JOBS=26 \
-    bin/v77b /mnt/d/works/coilbench/levels_all/767
+    bin/v77b /mnt/d/works/coil/coilbench/levels_all/767
   ```
 - 若全灭后要解剖 flow：嫌疑点按历史排序 = FDUM 哑点语义（三次栽过）>
   Régin SCC 判读方向 > needL/needR 配平。767 是偶数盘（44516），走**单哑点**分支（per-start）。
