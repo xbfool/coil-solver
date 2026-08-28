@@ -9,3 +9,7 @@ research/767/pin52/
 research/767/hard6/
 evolve/openevolve_output/
 evolve/queue/
+evolve/__pycache__/
+evolve/openevolve_output2/
+evolve/openevolve_output2.log
+research/814/surv.*

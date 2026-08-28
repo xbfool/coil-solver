@@ -1,0 +1,247 @@
+  分治：12 块 144 对，可行 40 对，整块淘汰掉 0 格
+有向预计算：走向已定 0/143162 (0.0%) | 无向判定率 0.0% -> 0.0% (0 -> 0 / 71581 边)
+有向预计算：走向已定 0/143162 (0.0%) | 无向判定率 0.0% -> 0.0% (0 -> 0 / 71581 边)
+全局阶段：固定 0 条边，起点候选 50288 / 50288 (100.0%)
+adaptive PROPDEPTH=2 (fixed 0 / 71581 edges; 第一层存活率>=SURVDEEP%再升深层)
+FRANK shard25: F降序
+shard 25: 第一层存活 95% >= 38%，升深度传播(PD=64)
+FRANK shard19: F降序
+shard 19: 第一层存活 95% >= 38%，升深度传播(PD=64)
+FRANK shard16: F降序
+shard 16: 第一层存活 95% >= 38%，升深度传播(PD=64)
+FRANK shard10: F降序
+shard 10: 第一层存活 95% >= 38%，升深度传播(PD=64)
+FRANK shard13: F降序
+shard 13: 第一层存活 96% >= 38%，升深度传播(PD=64)
+FRANK shard7: F降序
+shard 7: 第一层存活 95% >= 38%，升深度传播(PD=64)
+FRANK shard1: F降序
+shard 1: 第一层存活 95% >= 38%，升深度传播(PD=64)
+FRANK shard4: F降序
+shard 4: 第一层存活 95% >= 38%，升深度传播(PD=64)
+FRANK shard22: F降序
+shard 22: 第一层存活 96% >= 38%，升深度传播(PD=64)
+FRANK shard5: F降序
+shard 5: 第一层存活 94% >= 38%，升深度传播(PD=64)
+FRANK shard17: F降序
+shard 17: 第一层存活 95% >= 38%，升深度传播(PD=64)
+FRANK shard14: F降序
+shard 14: 第一层存活 95% >= 38%，升深度传播(PD=64)
+FRANK shard23: F降序
+shard 23: 第一层存活 95% >= 38%，升深度传播(PD=64)
+FRANK shard8: F降序
+shard 8: 第一层存活 95% >= 38%，升深度传播(PD=64)
+FRANK shard11: F降序
+shard 11: 第一层存活 94% >= 38%，升深度传播(PD=64)
+FRANK shard20: F降序
+shard 20: 第一层存活 94% >= 38%，升深度传播(PD=64)
+FRANK shard12: F降序
+shard 12: 第一层存活 95% >= 38%，升深度传播(PD=64)
+FRANK shard2: F降序
+shard 2: 第一层存活 94% >= 38%，升深度传播(PD=64)
+FRANK shard15: F降序
+shard 15: 第一层存活 95% >= 38%，升深度传播(PD=64)
+FRANK shard6: F降序
+shard 6: 第一层存活 94% >= 38%，升深度传播(PD=64)
+shard 25: 1.5 层深层重探后剩 1838
+shard 25: 第一层存活 1838/1934 = 95%%, 第二层 开
+FRANK shard3: F降序
+shard 3: 第一层存活 95% >= 38%，升深度传播(PD=64)
+FRANK shard21: F降序
+shard 21: 第一层存活 94% >= 38%，升深度传播(PD=64)
+FRANK shard9: F降序
+shard 9: 第一层存活 94% >= 38%，升深度传播(PD=64)
+shard 19: 1.5 层深层重探后剩 1828
+shard 19: 第一层存活 1828/1934 = 94%%, 第二层 开
+FRANK shard0: F降序
+shard 0: 第一层存活 94% >= 38%，升深度传播(PD=64)
+FRANK shard18: F降序
+shard 18: 第一层存活 95% >= 38%，升深度传播(PD=64)
+shard 16: 1.5 层深层重探后剩 1842
+shard 16: 第一层存活 1842/1934 = 95%%, 第二层 开
+shard 10: 1.5 层深层重探后剩 1832
+shard 10: 第一层存活 1832/1934 = 94%%, 第二层 开
+FRANK shard24: F降序
+shard 24: 第一层存活 95% >= 38%，升深度传播(PD=64)
+shard 13: 1.5 层深层重探后剩 1849
+shard 13: 第一层存活 1849/1934 = 95%%, 第二层 开
+shard 7: 1.5 层深层重探后剩 1844
+shard 7: 第一层存活 1844/1934 = 95%%, 第二层 开
+shard 1: 1.5 层深层重探后剩 1838
+shard 1: 第一层存活 1838/1935 = 94%%, 第二层 开
+shard 4: 1.5 层深层重探后剩 1838
+shard 4: 第一层存活 1838/1934 = 95%%, 第二层 开
+shard 22: 1.5 层深层重探后剩 1846
+shard 22: 第一层存活 1846/1934 = 95%%, 第二层 开
+shard 5: 1.5 层深层重探后剩 1831
+shard 5: 第一层存活 1831/1934 = 94%%, 第二层 开
+shard 14: 1.5 层深层重探后剩 1840
+shard 14: 第一层存活 1840/1934 = 95%%, 第二层 开
+shard 23: 1.5 层深层重探后剩 1845
+shard 23: 第一层存活 1845/1934 = 95%%, 第二层 开
+shard 17: 1.5 层深层重探后剩 1852
+shard 17: 第一层存活 1852/1934 = 95%%, 第二层 开
+shard 8: 1.5 层深层重探后剩 1838
+shard 8: 第一层存活 1838/1934 = 95%%, 第二层 开
+shard 20: 1.5 层深层重探后剩 1826
+shard 20: 第一层存活 1826/1934 = 94%%, 第二层 开
+shard 11: 1.5 层深层重探后剩 1831
+shard 11: 第一层存活 1831/1934 = 94%%, 第二层 开
+shard 2: 1.5 层深层重探后剩 1822
+shard 2: 第一层存活 1822/1935 = 94%%, 第二层 开
+shard 12: 1.5 层深层重探后剩 1838
+shard 12: 第一层存活 1838/1934 = 95%%, 第二层 开
+shard 6: 1.5 层深层重探后剩 1827
+shard 6: 第一层存活 1827/1934 = 94%%, 第二层 开
+shard 15: 1.5 层深层重探后剩 1852
+shard 15: 第一层存活 1852/1934 = 95%%, 第二层 开
+shard 3: 1.5 层深层重探后剩 1840
+shard 3: 第一层存活 1840/1935 = 95%%, 第二层 开
+shard 21: 1.5 层深层重探后剩 1833
+shard 21: 第一层存活 1833/1934 = 94%%, 第二层 开
+shard 9: 1.5 层深层重探后剩 1830
+shard 9: 第一层存活 1830/1934 = 94%%, 第二层 开
+shard 0: 1.5 层深层重探后剩 1834
+shard 0: 第一层存活 1834/1935 = 94%%, 第二层 开
+shard 18: 1.5 层深层重探后剩 1838
+shard 18: 第一层存活 1838/1934 = 95%%, 第二层 开
+shard 24: 1.5 层深层重探后剩 1840
+shard 24: 第一层存活 1840/1934 = 95%%, 第二层 开
+probe[t=1296s]: 50232/50288 起点被证伪，剩 56
+DEATH liveend=0 estate=595481 reach=327280 dyn=132888 flow=0 geom=42924
+DYN shard5: 356496 calls, 132888 refuted (37%)
+probe[t=1298s]: 50236/50288 起点被证伪，剩 52
+DEATH liveend=0 estate=598886 reach=331842 dyn=133772 flow=0 geom=44192
+DYN shard10: 358126 calls, 133772 refuted (37%)
+probe[t=1299s]: 50237/50288 起点被证伪，剩 51
+DEATH liveend=0 estate=592463 reach=327506 dyn=133852 flow=0 geom=42282
+DYN shard14: 355762 calls, 133852 refuted (38%)
+probe[t=1307s]: 50230/50288 起点被证伪，剩 58
+DEATH liveend=0 estate=613555 reach=339374 dyn=137094 flow=0 geom=46418
+DYN shard7: 370997 calls, 137094 refuted (37%)
+probe[t=1311s]: 50237/50288 起点被证伪，剩 51
+DEATH liveend=0 estate=579744 reach=319031 dyn=130413 flow=0 geom=41618
+DYN shard13: 347753 calls, 130413 refuted (38%)
+probe[t=1312s]: 50234/50288 起点被证伪，剩 54
+DEATH liveend=0 estate=592089 reach=322219 dyn=131400 flow=0 geom=41958
+DYN shard22: 348599 calls, 131400 refuted (38%)
+probe[t=1325s]: 50220/50288 起点被证伪，剩 68
+DEATH liveend=0 estate=610305 reach=331423 dyn=137522 flow=0 geom=44600
+DYN shard25: 368272 calls, 137522 refuted (37%)
+probe[t=1325s]: 50230/50288 起点被证伪，剩 58
+DEATH liveend=0 estate=612698 reach=338505 dyn=138325 flow=0 geom=44700
+DYN shard1: 370313 calls, 138325 refuted (37%)
+probe[t=1329s]: 50234/50288 起点被证伪，剩 54
+DEATH liveend=0 estate=588392 reach=323939 dyn=131996 flow=0 geom=43415
+DYN shard11: 354032 calls, 131996 refuted (37%)
+probe[t=1350s]: 50224/50288 起点被证伪，剩 64
+DEATH liveend=0 estate=599565 reach=328836 dyn=134520 flow=0 geom=43441
+DYN shard4: 360211 calls, 134520 refuted (37%)
+probe[t=1354s]: 50237/50288 起点被证伪，剩 51
+DEATH liveend=0 estate=599455 reach=332800 dyn=133243 flow=0 geom=42774
+DYN shard19: 356162 calls, 133243 refuted (37%)
+probe[t=1355s]: 50232/50288 起点被证伪，剩 56
+DEATH liveend=0 estate=584865 reach=323231 dyn=131933 flow=0 geom=42806
+DYN shard8: 353338 calls, 131933 refuted (37%)
+probe[t=1362s]: 50231/50288 起点被证伪，剩 57
+DEATH liveend=0 estate=617495 reach=336856 dyn=138794 flow=0 geom=43774
+DYN shard23: 369026 calls, 138794 refuted (38%)
+probe[t=1363s]: 50226/50288 起点被证伪，剩 62
+DEATH liveend=0 estate=606821 reach=332975 dyn=135626 flow=0 geom=41701
+DYN shard20: 357124 calls, 135626 refuted (38%)
+probe[t=1399s]: 50233/50288 起点被证伪，剩 55
+DEATH liveend=0 estate=642556 reach=357985 dyn=145082 flow=0 geom=45430
+DYN shard16: 385531 calls, 145082 refuted (38%)
+probe[t=1410s]: 50230/50288 起点被证伪，剩 58
+DEATH liveend=0 estate=598530 reach=331428 dyn=135250 flow=0 geom=44521
+DYN shard2: 362834 calls, 135250 refuted (37%)
+probe[t=1444s]: 50212/50288 起点被证伪，剩 76
+DEATH liveend=0 estate=665635 reach=369237 dyn=147364 flow=0 geom=47206
+DYN shard17: 392459 calls, 147364 refuted (38%)
+sweep shard14 round0 done (budget 50000)
+sweep shard10 round0 done (budget 50000)
+sweep shard13 round0 done (budget 50000)
+sweep shard5 round0 done (budget 50000)
+sweep shard22 round0 done (budget 50000)
+sweep shard19 round0 done (budget 50000)
+sweep shard1 round0 done (budget 50000)
+sweep shard11 round0 done (budget 50000)
+sweep shard7 round0 done (budget 50000)
+sweep shard16 round0 done (budget 50000)
+sweep shard23 round0 done (budget 50000)
+sweep shard8 round0 done (budget 50000)
+probe[t=1936s]: 50202/50288 起点被证伪，剩 86
+DEATH liveend=0 estate=784831 reach=456711 dyn=134839 flow=0 geom=80286
+DYN shard18: 427510 calls, 134839 refuted (32%)
+sweep shard4 round0 done (budget 50000)
+sweep shard20 round0 done (budget 50000)
+sweep shard25 round0 done (budget 50000)
+sweep shard2 round0 done (budget 50000)
+probe[t=2019s]: 50198/50288 起点被证伪，剩 90
+DEATH liveend=0 estate=784487 reach=462385 dyn=133665 flow=0 geom=82606
+DYN shard9: 427317 calls, 133665 refuted (31%)
+sweep shard14 round1 done (budget 50000)
+probe[t=2078s]: 50188/50288 起点被证伪，剩 100
+DEATH liveend=0 estate=835513 reach=488798 dyn=140423 flow=0 geom=87021
+DYN shard12: 453672 calls, 140423 refuted (31%)
+sweep shard10 round1 done (budget 50000)
+probe[t=2130s]: 50187/50288 起点被证伪，剩 101
+DEATH liveend=0 estate=833250 reach=486509 dyn=139827 flow=0 geom=89185
+DYN shard6: 456341 calls, 139827 refuted (31%)
+probe[t=2147s]: 50183/50288 起点被证伪，剩 105
+DEATH liveend=0 estate=859663 reach=503675 dyn=149027 flow=0 geom=87795
+DYN shard21: 474844 calls, 149027 refuted (31%)
+sweep shard17 round0 done (budget 50000)
+sweep shard22 round1 done (budget 50000)
+sweep shard13 round1 done (budget 50000)
+probe[t=2201s]: 50185/50288 起点被证伪，剩 103
+DEATH liveend=0 estate=848569 reach=501688 dyn=143138 flow=0 geom=90149
+DYN shard24: 465250 calls, 143138 refuted (31%)
+sweep shard5 round1 done (budget 50000)
+sweep shard19 round1 done (budget 50000)
+probe[t=2265s]: 50178/50288 起点被证伪，剩 110
+DEATH liveend=0 estate=888296 reach=527541 dyn=151541 flow=0 geom=93718
+DYN shard3: 488135 calls, 151541 refuted (31%)
+sweep shard1 round1 done (budget 50000)
+sweep shard16 round1 done (budget 50000)
+sweep shard7 round1 done (budget 50000)
+probe[t=2366s]: 50174/50288 起点被证伪，剩 114
+DEATH liveend=0 estate=895249 reach=525157 dyn=152309 flow=0 geom=94101
+DYN shard0: 493569 calls, 152309 refuted (31%)
+sweep shard11 round1 done (budget 50000)
+probe[t=2378s]: 50173/50288 起点被证伪，剩 115
+DEATH liveend=0 estate=933428 reach=545296 dyn=158736 flow=0 geom=93916
+DYN shard15: 503935 calls, 158736 refuted (31%)
+sweep shard20 round1 done (budget 50000)
+sweep shard23 round1 done (budget 50000)
+sweep shard8 round1 done (budget 50000)
+sweep shard4 round1 done (budget 50000)
+sweep shard2 round1 done (budget 50000)
+sweep shard14 round2 done (budget 100000)
+sweep shard25 round1 done (budget 50000)
+sweep shard14 round3 done (budget 50000)
+sweep shard17 round1 done (budget 50000)
+sweep shard10 round2 done (budget 100000)
+sweep shard13 round2 done (budget 100000)
+sweep shard22 round2 done (budget 100000)
+sweep shard14 round4 done (budget 50000)
+sweep shard19 round2 done (budget 100000)
+sweep shard5 round2 done (budget 100000)
+sweep shard16 round2 done (budget 100000)
+sweep shard13 round3 done (budget 50000)
+sweep shard1 round2 done (budget 100000)
+sweep shard18 round0 done (budget 50000)
+sweep shard20 round2 done (budget 100000)
+sweep shard10 round3 done (budget 50000)
+sweep shard22 round3 done (budget 50000)
+sweep shard19 round3 done (budget 50000)
+sweep shard7 round2 done (budget 100000)
+sweep shard14 round5 done (budget 100000)
+sweep shard13 round4 done (budget 50000)
+sweep shard11 round2 done (budget 100000)
+sweep shard16 round3 done (budget 50000)
+sweep shard5 round3 done (budget 50000)
+sweep shard23 round2 done (budget 100000)
+sweep shard1 round3 done (budget 50000)
+sweep shard20 round3 done (budget 50000)
+sweep shard22 round4 done (budget 50000)

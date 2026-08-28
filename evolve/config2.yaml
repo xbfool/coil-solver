@@ -1,0 +1,48 @@
+# 进化战役 #2：双标的（磨加速 needle / 端到端 e2e）—— manual 档
+# 跑法: cd evolve && python3 -m openevolve.cli champions/2026-08-28-adapt-z10-warm16.h \
+#          evaluator2.py --config config2.yaml --iterations 20
+max_iterations: 20
+checkpoint_interval: 5
+language: c
+file_suffix: .h
+diff_based_evolution: true
+
+llm:
+  manual_mode: true
+  models:
+    - name: "claude-code-session"
+      weight: 1.0
+  max_tokens: 8192
+
+prompt:
+  num_top_programs: 3
+  num_diverse_programs: 2
+  system_message: |
+    你在进化 Coil 求解器的 policy.h。本战役(#2)双标的,起点=战役#1冠军(AD+z10+温16):
+    - needle_score(55%): 7个零信息阶梯盘钉真起点的节点数 vs 冠军基线
+      (580/582/590/598/628/634/736,基线 23k~617k 节点)。这量的是纯"磨"成本:
+      深针树搜索里排序/武器策略的品质。
+    - funnel_score(35%): 628 无钉 8 核端到端解出墙钟 vs 冠军 117s。
+    硬规则同战役#1: 只改 EVOLVE-BLOCK 内;不发明新剪枝;REFSOL/官方check一票否决。
+    已收官的轴(别再试): 探针剂量(z10定谳)/武器密度地板反应/BJ叠加/升降档阈值/
+    滑长排序/厚漏斗。剩余的有效面: 分支排序函数本身(freedeg之外的信号组合)、
+    武器周期策略函数、残局相变、SWEEP阶梯形状(sweep_mul不可用,但SWEEP0在e2e路径生效)。
+
+database:
+  population_size: 40
+  num_islands: 2
+  migration_interval: 10
+  migration_rate: 0.1
+  elite_selection_ratio: 0.2
+  exploration_ratio: 0.25
+  feature_dimensions:
+    - needle_score            # 磨特化轴
+    - funnel_score            # 端到端特化轴
+  feature_bins: 8
+
+evaluator:
+  timeout: 1800
+  cascade_evaluation: true
+  cascade_thresholds: [0.3, 0.4]
+  parallel_evaluations: 1     # stage3 单评测吃 8 核,磨线占 13,不并行
+  max_retries: 1

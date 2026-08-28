@@ -142,9 +142,38 @@ def evaluate_stage2(program_path):
 
 
 def evaluate_stage3(program_path):
+    """标的B(端到端口径): 628 无钉 JOBS=8 从开跑到解出的墙钟。
+    基线 champ1 = 117s。涵盖名单成本+磨成本+590型'漏斗自解'的良性情况。"""
     m = evaluate_stage2(program_path)
     if m.get("t0_pass", 0) < 1.0:
         return m
+    binp, (tmp, _) = build(program_path)
+    try:
+        import time
+        t0 = time.monotonic()
+        r = _run(binp, "628", 300, {"JOBS": "8", "RESTART": "1", "SWEEP": "50000"})
+        wall = time.monotonic() - t0
+        if r["tainted"]:
+            return _fail("tainted@e2e")
+        if r["sol"] and not _verify("628", r["sol"]):
+            return _fail("fakesol@e2e")
+        if r["sol"]:
+            e2e = max(0.0, min(1.0, 0.5 - 0.25 * math.log10(max(wall, 1) / 117.0)))
+            m["e2e_wall_s"] = round(wall, 1)
+        else:
+            e2e = 0.0
+            m["e2e_note"] = "timeout300"
+        m["funnel_score"] = e2e   # 字段名沿用,语义=端到端分
+        m["combined_score"] = (0.1 * m.get("t0_pass", 0)
+                               + 0.55 * m["needle_score"] * m.get("needle_solved", 0)
+                               + 0.35 * e2e)
+        return m
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def _dead_stage3(program_path):
+    m = {}
     binp, (tmp, _) = build(program_path)
     try:
         # ---- 标的B: 漏斗成本（真起点必须活着）----
