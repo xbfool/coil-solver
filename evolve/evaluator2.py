@@ -164,9 +164,11 @@ def evaluate_stage3(program_path):
             e2e = 0.0
             m["e2e_note"] = "timeout300"
         m["funnel_score"] = e2e   # 字段名沿用,语义=端到端分
+        # 2026-08-28 16:25 降权: h&7 vs h&15 证明单盘 e2e 被顺序彩票主导(19s vs 300s超时),
+        # needle(确定性节点数)才是抗彩票信号。e2e 降为 tie-breaker。
         m["combined_score"] = (0.1 * m.get("t0_pass", 0)
-                               + 0.55 * m["needle_score"] * m.get("needle_solved", 0)
-                               + 0.35 * e2e)
+                               + 0.65 * m["needle_score"] * m.get("needle_solved", 0)
+                               + 0.25 * e2e)
         return m
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
