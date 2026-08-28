@@ -185,12 +185,29 @@ static int dsu0_valid;
 static int seed_full;      // v55：升档（零信息类）分片恒用全量播种，保住 v52 的证伪语义
 static int seed_mode = 1;  // v56 portfolio：0=v52语义(空底全播) 1=v54(底座滑播) 2=v55(底座全播)，按 shard%3 混编
 static long long nodes, node_limit;
+static long long nodes_total;   // 跨起点/跨轮累计（nodes 每棵树清零，这个不清）
 static int best_rem;
 
 static time_t wall_t0;
 static long long dth_liveend, dth_estate, dth_reach, dth_dyn, dth_flow, dth_geom;
+// STATS=1：进程结束前在 stderr 打一行机器可读 JSON（EVOLVE-PLAN P0）。
+// swarm 多进程时每 shard 各打一行；做 fitness vector 请用 JOBS=1 跑校准盘。
+static void stats_json(int solved, int s) {
+    if (!getenv("STATS")) return;
+    struct rusage ru; getrusage(RUSAGE_SELF, &ru);
+    fprintf(stderr, "STATS {\"solved\":%d,\"shard\":%d,\"wall_s\":%lld,"
+        "\"nodes_total\":%lld,\"nodes_win\":%lld,"
+        "\"dth_liveend\":%lld,\"dth_estate\":%lld,\"dth_reach\":%lld,"
+        "\"dth_dyn\":%lld,\"dth_flow\":%lld,\"dth_geom\":%lld,"
+        "\"maxrss_kb\":%ld,\"start_x\":%d,\"start_y\":%d}\n",
+        solved, shard, (long long)(time(0) - wall_t0),
+        nodes_total, solved ? nodes : -1,
+        dth_liveend, dth_estate, dth_reach, dth_dyn, dth_flow, dth_geom,
+        (long)ru.ru_maxrss, solved ? s % W - 1 : -1, solved ? s / W - 1 : -1);
+}
 // 找到解就写进管道（子进程）或直接打印（单进程模式）
 static void emit(int s, const char *pathstr) {
+    stats_json(1, s);
     if (getenv("DEATHSTAT")) fprintf(stderr, "DEATH@WIN sh%d liveend=%lld estate=%lld reach=%lld dyn=%lld flow=%lld geom=%lld nodes=%lld\n",
         shard, dth_liveend, dth_estate, dth_reach, dth_dyn, dth_flow, dth_geom, nodes);
     if (flow_depth > 0)
@@ -2542,6 +2559,7 @@ static int dfs(int p, int remaining, int depth) {
     if (live_end == 0 && remaining > 0) { ++dth_liveend; return 0; }    // 终点候选全被走掉了，后面必然收不了尾
     if (remaining < best_rem) best_rem = remaining;
     if (remaining == 0) return 1;
+    ++nodes_total;
     if (nodes++ >= node_limit) return -1;
     if (bj_every > 0 && remaining > 0 && (nodes % bj_every) == 0) { int r0=-1; for(int d=0;d<4;++d) if(g[p+delta[d]]){r0=p+delta[d];break;} if(r0>=0){ ++bj_try; if(!propagate_dyn(p, remaining, r0, delta[0], -1)) { ++bj_kill; return 0; } } }
     // v78 RPBJ：帧入口周期 region_parity。死则置回跳信号、剪整子树。
@@ -3531,5 +3549,6 @@ int main(int argc, char **argv) {
     if (nrounds3 > 1) fprintf(stderr, "sweep shard%d round%d done (budget %lld)\n", shard, round3, budget3);
     }
     fprintf(stderr, "no solution found\n");
+    stats_json(0, -1);
     return 1;
 }

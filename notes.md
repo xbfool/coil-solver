@@ -6271,3 +6271,20 @@ flow强制链×拐点规则 —— 滑动语义现象，割集奇偶定理（G1'
 案件定谳：规则全部无罪，凶手 = 8MB 默认栈上的 dfs 递归溢出，SIGSEGV 被记账成"搜穷"。
 方法论：脚手架先行（阳性对照第一网捞出凶手）→ 独立裁判 → 营救演算 —— 全链可复用。
 收官验证：SOLWALK 沿真解 23693 步全谓词零违例；裁判 selftest PASS（27445 必用+4950 禁用与真解零冲突）。
+
+---
+
+## 📐 科研升级：进化搜索实验场（2026-08-28，计划立项）
+
+GPT 建议把项目接入 OpenEvolve 风格的进化搜索。已评估：方向采纳，但两处判断修正——
+① "828→1001 榜单断层=算法相变"被我们自己的数据证伪（v78 已解 L1050 420×420）；
+② soundness 是第一风险（767 案形态：unsound 行为让求解器**看起来更快**），
+REFSOL/SOLWALK 回放 + postrust 阳性对照必须当 cascade 硬门。
+
+采纳的核心理由：最近两次最大跃迁（SWEEP 276 倍参数错误、BJ=500 位置+稀疏度）
+都是**参数/调度空间的发现**，正是盲搜+进化擅长的领域。
+
+**完整评估与四阶段计划见 `research/EVOLVE-PLAN.md`**：
+P0 evaluator 硬化（STATS=1 一行 JSON + cascade 四级）→ P1 校准套件+分型
+→ P2 知识库机器化（dead_ends.jsonl）→ P3 OpenEvolve（islands + 按型 fingerprint
+的 MAP-Elites）→ P4 architecture island（plateau 后）。P0~P2 无论进化搞不搞都回本。

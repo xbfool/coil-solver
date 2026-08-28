@@ -1,0 +1,119 @@
+# EVOLVE-PLAN：把项目升级成算法发现实验场（2026-08-28）
+
+> 缘起：GPT 建议把 Coil 塞进 OpenEvolve 风格的进化搜索框架。本文是对该建议的
+> 评估结论 + 落地计划。评估的原始对话不入库，结论都在这里。
+
+## 一、评估结论（先读这个）
+
+### GPT 说对的
+1. **稠密 fitness vector**：只看"过到第几关"信号太稀疏，要输出
+   solved / time / nodes / backtracks / 各剪枝层命中数 的向量。✅ 采纳，是 P0。
+2. **Cascade evaluator**：便宜盘先筛，贵盘只给精英。✅ 采纳——我们已有
+   30s 奇数关 → 600s 全量的两级雏形，正规化即可。
+3. **别只从冠军爬山**：v1→v78 的工作模式确实是 hill climbing from champion，
+   要保留多条暂时稍差的谱系（islands / MAP-Elites）。✅ 采纳。
+4. **行为多样性描述符**：不用代码差异做 diversity，用"每型盘上的 performance
+   fingerprint"。✅ 采纳——junction.py 度数指纹、board_stats.py 就是现成原料。
+5. **合成训练盘防过拟合**：✅ 采纳——experiments/gen.c、gen2.c、backbite.c
+   已是雏形，缺的是和官方盘统计对齐的校准。
+6. **失败记忆库**：✅ 我们早就有（notes.md 6273 行，每条死路带量化死因），
+   GPT 不知道。缺的只是机器可读化，能自动喂进 mutation prompt。
+
+### GPT 判断错的（重要，别被带偏）
+1. **"828→1001 榜单断层 = 算法相变" 已被我们自己的数据证伪。**
+   v78（BJ=500）已解 L1050（420×420，满核 <25min），767 破案后 790~814
+   大多秒~分钟级。墙不是尺寸相变，是个别 deep-doom 实例（L664 型）。
+   榜单断层更可能是"人肉玩家弃坑点"，不构成方法论转折的证据。
+2. **低估 soundness 风险——这是本项目最贵的教训。**
+   767 案形态：unsound 行为（栈溢出记账成"搜穷"）让求解器**看起来更快更果断**，
+   骗过 499 关 REFSOL 回放 + 7 个邻居关逐条回放。LLM 变异产生的 unsound 剪枝
+   会是同一形态：浅层全过、中盘更快、某关沉默失败。
+   ⇒ cascade 第一关必须是 REFSOL/SOLWALK 回放 + postrust 阳性对照当**硬门**，
+   崩过/违例即 TAINTED 淘汰，不给分。
+3. **没算评估成本的账。** frontier 关一次 eval = 数百秒 × 26 核，繁殖率受限。
+   fitness 主战场必须在秒级校准盘上。但历史数据表明**中盘提速与 frontier
+   突破相关性弱**（probing 中盘 +20 关对墙无效；BJ=500 对 767 型 100×，
+   对别型未验证）⇒ fitness 必须**按型分列**，不是单标量。
+
+### 为什么仍然值得干
+最近两次最大跃迁都不是新算法，是**参数/调度/位置的发现**：
+- SWEEP 80.4M→400k（一个 276 倍的参数错误，值 L664）
+- BJ=500（传播放对位置 + 调稀疏，767 型 81min→44s 单核）
+这类东西正是盲搜+进化最擅长、人肉+CC 只有痛苦法证之后才找到的。
+参数/调度空间里大概率还有低垂果实。算法级相变（如果存在）留给 architecture
+island 晚期再开。
+
+### 框架选择
+先 **OpenEvolve** 一个，跑在 WSL。LLM4AD / MCTS-AHD / ReEvo 先不装——
+ReEvo 的反思记忆思想用我们的 notes 机器化实现即可，没必要引第二套框架。
+算力：本机 28 核为主；5090 服务器（111.17.197.107）CPU 可当第二 farm（待确认核数）。
+**红线：解库是私有的（防 LLM 训练集污染），evolution loop 只喂代码+统计，永不喂解。**
+
+## 二、已有资产盘点（别重建）
+
+| GPT 以为要建 | 实际已有 |
+| --- | --- |
+| 可信 evaluator | check.c 官方模拟器、bench/bench-full、referee.py、postrust.sh、SOLWALK |
+| instrumentation | DEATHSTAT、TREELOG、PROF、GDUMP、WINNER nodes（散落 stderr，未统一） |
+| 失败记忆 | notes.md 全部死路+量化死因 |
+| 盘面生成 | experiments/gen.c、gen2.c、backbite.c |
+| 拓扑分型 | tools/junction.py（度数指纹）、experiments/board_stats.py |
+| cascade 雏形 | 30s 奇数关代理 → 600s 全量两级 |
+
+## 三、落地计划（按序，P0~P2 无论进化搞不搞都值得）
+
+### P0：evaluator 硬化（地基）—— ✅ 2026-08-28 首版落地
+- [x] v78 加 `STATS=1`：stderr 一行 JSON `{solved, wall_s, nodes_total, nodes_win,
+  dth_liveend/estate/reach/dyn/flow/geom, maxrss_kb, start_x, start_y}`。
+  nodes_total 是新增的跨起点累计器（nodes 每棵树清零）。⚠ swarm 多进程时每
+  shard 各打一行 —— 做向量必须 JOBS=1。改动在 versions/v78-rpbj.c（stats_json）。
+- [x] `tools/evalvec.py`：二进制+盘列表 → JSONL（含官方 check 验证；
+  solved 但 check 拒绝 = 🚨 UNSOUND 退出码 2；崩溃按信号显式记账 tainted）
+- [x] `tools/cascade.sh` T0+T1：
+  - **T0 soundness 硬门**（calib/refsol.txt，8 关带真解回放）：断言违例("!!")/
+    崩溃(信号)/未解/假解 一票否决。v78 基线全过。postrust 阳性对照暂未接（TODO）。
+  - **T1 校准套件**（calib/list.txt，17 关占位版）：全 solved+verified 才 PASS，
+    向量归档 results/vec/。v78 基线：17 关 21.2s，nodes_total 489 万
+    → `results/vec/v78-baseline.jsonl`。
+  - [ ] **T2 中档 600s / T3 frontier** 未接：先人工 ./bench 与 tools/solve.sh。
+- [ ] 排名规则：先正确性（T0 一票否决），再 solved_count，再按型 log(nodes) 分列比
+  （等 P1 分型后落地）
+
+### P1：校准套件 + 分型（和 P0 并行）
+- [ ] 用 junction.py + board_stats.py 特征（度数分布、墙密度、链长分布、
+  强制步比例、分支因子）对官方 1~1050 聚类，每类挑 4~6 个秒级代表盘
+- [ ] gen/gen2/backbite 产物与官方盘统计对齐校验（墙密度 33%、双色墙数相等、
+  单连通、无度 0/1 自由格——board_stats.py 已能量）；对齐后每类补合成盘，
+  防止对官方那几十张图过拟合
+- [ ] 产出 `calib/` 目录 + 类型标签清单
+
+### P2：知识库机器化
+- [ ] 从 notes.md 提炼 `research/dead_ends.jsonl`：
+  `{idea, 实现版本, 死因(量化), 适用条件, 教训}` —— PD128 / 增量传播根本障碍 /
+  割点 0.14% 触发 / SAC 全局 0 推论 / subtour 0 推论 / beam 走空 …… 全部入册
+- [ ] 同样提炼 `research/insights.jsonl`（正面：流 GAC、端点过滤、BJ=500 的
+  机制解释、"信息在度里不在连通性里"这类统领规律）
+- [ ] mutation prompt 模板：Parent 代码 + fingerprint + 相关 dead_ends +
+  "产出一个可证伪的改动 + 预期机制"，机器 apply/compile/cascade，结果回填
+
+### P3：OpenEvolve 接入（P0~P2 齐了再动）
+- [ ] v78 标注 EVOLVE-BLOCK，首批只开三类：
+  ① 分支排序（branch ordering）② 剪枝调度参数（BJ / SWEEP / PROBE / 梯队
+  预算 / restart 策略）③ 探针排序与预算分配
+  —— 理由见上：最近两次跃迁都在这个空间里
+- [ ] islands ≥3（prune 岛 / order 岛 / schedule 岛），MAP-Elites 描述符 =
+  校准套件按型 nodes fingerprint（不是代码差异）
+- [ ] harness 冻结清单（AI 不可改）：parser、check 调用、cascade、统计输出、REFSOL 回放
+- [ ] checkpoint + 谱系记录：parent → idea → diff → T0~T3 结果 → child，全部落盘
+
+### P4：architecture island（P3 明显 plateau 后再开）
+- 单独一个 island 准许大手术：范式级改动（状态表示、分解、按型切策略）。
+- 目标形态参考 EoH-S：不是一个万能 heuristic，是**一组互补策略 + 按 fingerprint
+  的 selector**（"if 盘型≈A 用策略A"）。我们已有按型数据基础。
+
+## 四、成功判据（防自嗨）
+- P0~P2 本身就该回本：cascade + 校准套件让**人肉迭代**也变快（现在每次 A/B 全靠手跑）。
+- P3 的第一个里程碑不定"破新关"，定：**进化在校准套件上找到 ≥1 个
+  人没试过的、经 T2 验证不退化的参数/排序改进**。找不到 ⇒ 参数空间已被
+  人肉榨干，是有价值的负结果，architecture island 提前。
+- 随时对照红线：跨机器绝对秒数不可比（A/B 必须同机）；官方口径 600s/关。
