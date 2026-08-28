@@ -3473,10 +3473,18 @@ int main(int argc, char **argv) {
     }
     keep = keep2;
     if (getenv("FUNNELDUMP")) {
-        char fdn[512];
+        // 2026-08-28 切片截断陷阱根治: .tmp + EOF哨兵 + 原子rename交卷。
+        // 被 timeout 杀掉的 shard 只留 .tmp —— 半成品永远不出现在正式名下。
+        char fdn[512], fdt[520];
         snprintf(fdn, sizeof fdn, "%s.%d", getenv("FUNNELDUMP"), shard);
-        FILE *fdf = fopen(fdn, "w");
-        if (fdf) { for (int i = 0; i < keep; ++i) fprintf(fdf, "%d\n", starts[i]); fclose(fdf); }
+        snprintf(fdt, sizeof fdt, "%s.tmp", fdn);
+        FILE *fdf = fopen(fdt, "w");
+        if (fdf) {
+            for (int i = 0; i < keep; ++i) fprintf(fdf, "%d\n", starts[i]);
+            fprintf(fdf, "# EOF %d\n", keep);
+            fclose(fdf);
+            rename(fdt, fdn);
+        }
     }
     free(drop2);
     }

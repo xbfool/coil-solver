@@ -30,6 +30,16 @@ wsl -e bash -lc "cd /mnt/d/works/coil/coil-solver && ulimit -s unlimited && \
 磨到全灭时头号嫌疑 = shard 9 切片,补筛后再下结论。startord-ordered.txt 已保序
 （漏斗排名,勿 sort!）。
 
+## 🔒 切片截断陷阱根治（17:55,一劳永逸三层防御）
+1. **C 层**: FUNNELDUMP 改 .tmp+EOF哨兵+原子rename——被杀 shard 只留 .tmp,
+   半成品永不出现在正式名下(evolve/solver.c + v78-rpbj.c 已patch,bin/v78+bin/king 已重编)
+2. **读取层**: tools/survread.py = 分片产物唯一合法读取器(验份数/哨兵/行数,
+   缺一拒读),默认轮转交错输出(各片第1名先出,吃"针在前三成"信号);
+   磨线名单构建改用: `python3 tools/survread.py research/814/surv --jobs 20 --startord > startord.txt`
+   ⚠ 老的 startord-ordered.txt 是旧协议产物(无哨兵),仍可用但过渡期后废弃
+3. **知识层**: "无dump且提前退出=已在探针内解出(针<探针预算),是喜事不是异常"
+   ——271 单进程复测定谳(针4191<64k,探针直接出解),628/598/748 三桩神秘退出同此销案
+
 ## 悬案清单（回家可继续的科研）
 1. **去偏彩票终审**：h&7(e2e 19s) vs h&15(300s 超时) 证明单盘 e2e 是顺序彩票。
    干净核跨盘 A/B: `bin/champ1` vs `bin/champ2-debias` 在 634/736/744/748 各一枪
