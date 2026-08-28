@@ -154,7 +154,8 @@ def evaluate_stage2(program_path):
         if binp is None:
             return _fail("compile", errtail)
         for lv in _read_list("refsol.txt"):
-            r = run_level(binp, lv, 90, refsol=True)
+            # 180s: L257 单核基线 ~60s,同机有负载时 90s 会假阳性(冒烟实测教训)
+            r = run_level(binp, lv, 180, refsol=True)
             if r["violation"] or r["tainted"]:
                 return _fail(f"unsound@L{lv}", r)      # 一票否决
             if not r["solved"]:
