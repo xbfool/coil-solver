@@ -71,6 +71,13 @@ def main():
     xs = sorted(bd.xy(c)[0] for c in region); ys = sorted(bd.xy(c)[1] for c in region)
     print(f"\n定位结果: {len(region)} / {bd.total_free} 格 ({100.0*len(region)/bd.total_free:.2f}%)"
           f"  bbox x∈[{xs[0]},{xs[-1]}] y∈[{ys[0]},{ys[-1]}]")
+    import os as _os
+    _o=_os.environ.get("DUMPCAND")
+    if _o:
+        _fh=open(_o,"w")
+        for _c in sorted(region):
+            _x,_y=bd.xy(_c); print(str(_x)+","+str(_y), file=_fh)
+        _fh.close(); print("dumped "+str(len(region))+" to "+_o)
     if solp:
         s, _, _ = sol_edges(bd, solp)
         inr = s in region
