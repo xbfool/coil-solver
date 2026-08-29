@@ -90,6 +90,11 @@ def main():
         union |= set(ids)
     pins = sorted(union)
     print(f"[{lv}] 并集候选 {len(pins)} ({good} 份合格切片)", flush=True)
+    # 份数门: 切片不齐 = 候选集不完备 = 公理必然可疑(157名单事故同款) —— 硬拒
+    if good < a.jobs:
+        print(f"[{lv}] ❌ 份数门: {good}/{a.jobs} 切片, 候选集不完备, "
+              f"加大 --funnel-tmo 重跑, 拒绝蒸馏", flush=True)
+        return 1
     if not pins:
         print(f"[{lv}] ❌ 无幸存候选(全灭或漏斗失败), 人工介入", flush=True)
         return 1
