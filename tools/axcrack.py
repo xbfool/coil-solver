@@ -52,6 +52,8 @@ def main():
     ap.add_argument("--jobs", type=int, default=26)
     ap.add_argument("--funnel-tmo", type=int, default=3600)
     ap.add_argument("--fleet-tmo", type=int, default=28800)
+    ap.add_argument("--fast", action="store_true",
+                    help="快刀模式: 只打漏斗一发, 不出解即退(rc=2), 不升级流水线")
     a = ap.parse_args()
     lv = a.lv
     WW = read_board(lv)
@@ -73,6 +75,9 @@ def main():
     if sol1.stat().st_size > 0 and official_check(lv, sol1):
         bank(lv, sol1, "漏斗直接出解")
         return 0
+    if a.fast:
+        print(f"[{lv}] 快刀未破, 记入硬骨头名单", flush=True)
+        return 2
 
     # ---- 2. 幸存并集（哨兵门）----
     union = set()
