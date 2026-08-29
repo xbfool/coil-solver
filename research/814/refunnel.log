@@ -1,0 +1,150 @@
+  分治：12 块 144 对，可行 40 对，整块淘汰掉 0 格
+有向预计算：走向已定 0/143162 (0.0%) | 无向判定率 0.0% -> 0.0% (0 -> 0 / 71581 边)
+有向预计算：走向已定 0/143162 (0.0%) | 无向判定率 0.0% -> 0.0% (0 -> 0 / 71581 边)
+全局阶段：固定 0 条边，起点候选 50288 / 50288 (100.0%)
+adaptive PROPDEPTH=2 (fixed 0 / 71581 edges; 第一层存活率>=SURVDEEP%再升深层)
+STARTORD: F 升序就位（1780 起点，证伪剔除 0）
+FRANK shard19: F降序
+shard 19: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard10: F降序
+shard 10: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard4: F降序
+shard 4: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard1: F降序
+shard 1: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard16: F降序
+shard 16: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard7: F降序
+shard 7: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard20: F降序
+shard 20: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard22: F降序
+shard 22: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard13: F降序
+shard 13: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard18: F降序
+shard 18: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard17: F降序
+shard 17: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard8: F降序
+shard 8: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard11: F降序
+shard 11: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard12: F降序
+shard 12: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard23: F降序
+shard 23: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard15: F降序
+shard 15: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard9: F降序
+shard 9: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard0: F降序
+shard 0: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard21: F降序
+shard 21: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 19: 1.5 层深层重探后剩 74
+shard 19: 第一层存活 74/74 = 100%%, 第二层 开
+FRANK shard2: F降序
+shard 2: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard14: F降序
+shard 14: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 10: 1.5 层深层重探后剩 74
+shard 10: 第一层存活 74/74 = 100%%, 第二层 开
+FRANK shard5: F降序
+shard 5: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard3: F降序
+shard 3: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard6: F降序
+shard 6: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 4: 1.5 层深层重探后剩 74
+shard 4: 第一层存活 74/74 = 100%%, 第二层 开
+shard 1: 1.5 层深层重探后剩 75
+shard 1: 第一层存活 75/75 = 100%%, 第二层 开
+shard 16: 1.5 层深层重探后剩 74
+shard 16: 第一层存活 74/74 = 100%%, 第二层 开
+shard 7: 1.5 层深层重探后剩 74
+shard 7: 第一层存活 74/74 = 100%%, 第二层 开
+shard 20: 1.5 层深层重探后剩 74
+shard 20: 第一层存活 74/74 = 100%%, 第二层 开
+shard 22: 1.5 层深层重探后剩 74
+shard 22: 第一层存活 74/74 = 100%%, 第二层 开
+shard 13: 1.5 层深层重探后剩 74
+shard 13: 第一层存活 74/74 = 100%%, 第二层 开
+shard 17: 1.5 层深层重探后剩 74
+shard 17: 第一层存活 74/74 = 100%%, 第二层 开
+shard 8: 1.5 层深层重探后剩 74
+shard 8: 第一层存活 74/74 = 100%%, 第二层 开
+shard 18: 1.5 层深层重探后剩 74
+shard 18: 第一层存活 74/74 = 100%%, 第二层 开
+shard 11: 1.5 层深层重探后剩 74
+shard 11: 第一层存活 74/74 = 100%%, 第二层 开
+shard 23: 1.5 层深层重探后剩 74
+shard 23: 第一层存活 74/74 = 100%%, 第二层 开
+shard 12: 1.5 层深层重探后剩 74
+shard 12: 第一层存活 74/74 = 100%%, 第二层 开
+shard 0: 1.5 层深层重探后剩 75
+shard 0: 第一层存活 75/75 = 100%%, 第二层 开
+shard 21: 1.5 层深层重探后剩 74
+shard 21: 第一层存活 74/74 = 100%%, 第二层 开
+shard 2: 1.5 层深层重探后剩 75
+shard 2: 第一层存活 75/75 = 100%%, 第二层 开
+shard 14: 1.5 层深层重探后剩 74
+shard 14: 第一层存活 74/74 = 100%%, 第二层 开
+shard 15: 1.5 层深层重探后剩 74
+shard 15: 第一层存活 74/74 = 100%%, 第二层 开
+shard 5: 1.5 层深层重探后剩 74
+shard 5: 第一层存活 74/74 = 100%%, 第二层 开
+shard 9: 1.5 层深层重探后剩 74
+shard 9: 第一层存活 74/74 = 100%%, 第二层 开
+shard 6: 1.5 层深层重探后剩 74
+shard 6: 第一层存活 74/74 = 100%%, 第二层 开
+shard 3: 1.5 层深层重探后剩 75
+shard 3: 第一层存活 75/75 = 100%%, 第二层 开
+probe[t=239s]: 1722/1780 起点被证伪，剩 58
+DYN shard10: 142432 calls, 54060 refuted (38%)
+probe[t=243s]: 1725/1780 起点被证伪，剩 55
+DYN shard23: 140592 calls, 53088 refuted (38%)
+probe[t=250s]: 1719/1780 起点被证伪，剩 61
+DYN shard8: 149273 calls, 55863 refuted (37%)
+probe[t=251s]: 1717/1780 起点被证伪，剩 63
+DYN shard11: 150181 calls, 57424 refuted (38%)
+probe[t=253s]: 1720/1780 起点被证伪，剩 60
+DYN shard19: 142981 calls, 54887 refuted (38%)
+probe[t=255s]: 1721/1780 起点被证伪，剩 59
+DYN shard7: 145758 calls, 55685 refuted (38%)
+probe[t=255s]: 1723/1780 起点被证伪，剩 57
+DYN shard5: 142538 calls, 54048 refuted (38%)
+probe[t=259s]: 1721/1780 起点被证伪，剩 59
+DYN shard4: 145071 calls, 55525 refuted (38%)
+probe[t=262s]: 1720/1780 起点被证伪，剩 60
+DYN shard20: 143013 calls, 55069 refuted (39%)
+probe[t=265s]: 1725/1780 起点被证伪，剩 55
+DYN shard13: 141743 calls, 53503 refuted (38%)
+probe[t=269s]: 1721/1780 起点被证伪，剩 59
+DYN shard17: 143463 calls, 53445 refuted (37%)
+probe[t=271s]: 1726/1780 起点被证伪，剩 54
+DYN shard16: 139014 calls, 52792 refuted (38%)
+probe[t=274s]: 1722/1780 起点被证伪，剩 58
+DYN shard22: 140879 calls, 53592 refuted (38%)
+probe[t=274s]: 1720/1780 起点被证伪，剩 60
+DYN shard2: 147028 calls, 56182 refuted (38%)
+probe[t=276s]: 1724/1780 起点被证伪，剩 56
+DYN shard1: 145665 calls, 54970 refuted (38%)
+probe[t=276s]: 1720/1780 起点被证伪，剩 60
+DYN shard14: 150537 calls, 56666 refuted (38%)
+probe[t=297s]: 1706/1780 起点被证伪，剩 74
+DYN shard18: 151712 calls, 45677 refuted (30%)
+probe[t=302s]: 1705/1780 起点被证伪，剩 75
+DYN shard0: 154300 calls, 46770 refuted (30%)
+probe[t=305s]: 1706/1780 起点被证伪，剩 74
+DYN shard12: 148340 calls, 45238 refuted (30%)
+probe[t=312s]: 1706/1780 起点被证伪，剩 74
+DYN shard21: 151915 calls, 45088 refuted (30%)
+probe[t=316s]: 1706/1780 起点被证伪，剩 74
+DYN shard15: 154714 calls, 48246 refuted (31%)
+probe[t=318s]: 1706/1780 起点被证伪，剩 74
+DYN shard6: 154920 calls, 45483 refuted (29%)
+probe[t=325s]: 1706/1780 起点被证伪，剩 74
+DYN shard9: 156225 calls, 47106 refuted (30%)
+probe[t=343s]: 1705/1780 起点被证伪，剩 75
+DYN shard3: 153808 calls, 47372 refuted (31%)
