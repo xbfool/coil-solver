@@ -1,0 +1,2095 @@
+  分治：12 块 144 对，可行 38 对，整块淘汰掉 0 格
+有向预计算：走向已定 0/203692 (0.0%) | 无向判定率 0.0% -> 0.0% (0 -> 0 / 101846 边)
+有向预计算：走向已定 0/203692 (0.0%) | 无向判定率 0.0% -> 0.0% (0 -> 0 / 101846 边)
+全局阶段：固定 0 条边，起点候选 71734 / 71734 (100.0%)
+adaptive PROPDEPTH=2 (fixed 0 / 101846 edges; 第一层存活率>=SURVDEEP%再升深层)
+STARTORD: F 升序就位（6184 起点，证伪剔除 0）
+T1 sh4 cell=(210,127) PROBE0 nodes=6
+FRANK shard10: F降序
+shard 10: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard1: F降序
+shard 1: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard16: F降序
+shard 16: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard7: F降序
+shard 7: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard22: F降序
+shard 22: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard13: F降序
+shard 13: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard4: F降序
+shard 4: 第一层存活 99% >= 38%，升深度传播(PD=64)
+FRANK shard19: F降序
+shard 19: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard17: F降序
+shard 17: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard18: F降序
+shard 18: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard6: F降序
+shard 6: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard0: F降序
+shard 0: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard21: F降序
+shard 21: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard15: F降序
+shard 15: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard8: F降序
+shard 8: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard5: F降序
+shard 5: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard2: F降序
+shard 2: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard23: F降序
+shard 23: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard11: F降序
+shard 11: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard14: F降序
+shard 14: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard20: F降序
+shard 20: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 10: 1.5 层深层重探后剩 258
+shard 10: 第一层存活 258/258 = 100%%, 第二层 开
+FRANK shard12: F降序
+shard 12: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 1: 1.5 层深层重探后剩 258
+shard 1: 第一层存活 258/258 = 100%%, 第二层 开
+shard 16: 1.5 层深层重探后剩 257
+shard 16: 第一层存活 257/257 = 100%%, 第二层 开
+FRANK shard3: F降序
+shard 3: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 7: 1.5 层深层重探后剩 258
+shard 7: 第一层存活 258/258 = 100%%, 第二层 开
+FRANK shard9: F降序
+shard 9: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 22: 1.5 层深层重探后剩 257
+shard 22: 第一层存活 257/257 = 100%%, 第二层 开
+shard 13: 1.5 层深层重探后剩 258
+shard 13: 第一层存活 258/258 = 100%%, 第二层 开
+shard 4: 1.5 层深层重探后剩 257
+shard 4: 第一层存活 257/258 = 99%%, 第二层 开
+shard 19: 1.5 层深层重探后剩 257
+shard 19: 第一层存活 257/257 = 100%%, 第二层 开
+shard 17: 1.5 层深层重探后剩 257
+shard 17: 第一层存活 257/257 = 100%%, 第二层 开
+shard 18: 1.5 层深层重探后剩 257
+shard 18: 第一层存活 257/257 = 100%%, 第二层 开
+shard 6: 1.5 层深层重探后剩 258
+shard 6: 第一层存活 258/258 = 100%%, 第二层 开
+shard 0: 1.5 层深层重探后剩 258
+shard 0: 第一层存活 258/258 = 100%%, 第二层 开
+shard 2: 1.5 层深层重探后剩 258
+shard 2: 第一层存活 258/258 = 100%%, 第二层 开
+shard 8: 1.5 层深层重探后剩 258
+shard 8: 第一层存活 258/258 = 100%%, 第二层 开
+shard 23: 1.5 层深层重探后剩 257
+shard 23: 第一层存活 257/257 = 100%%, 第二层 开
+shard 5: 1.5 层深层重探后剩 258
+shard 5: 第一层存活 258/258 = 100%%, 第二层 开
+shard 21: 1.5 层深层重探后剩 257
+shard 21: 第一层存活 257/257 = 100%%, 第二层 开
+shard 11: 1.5 层深层重探后剩 258
+shard 11: 第一层存活 258/258 = 100%%, 第二层 开
+shard 14: 1.5 层深层重探后剩 258
+shard 14: 第一层存活 258/258 = 100%%, 第二层 开
+shard 20: 1.5 层深层重探后剩 257
+shard 20: 第一层存活 257/257 = 100%%, 第二层 开
+shard 15: 1.5 层深层重探后剩 258
+shard 15: 第一层存活 258/258 = 100%%, 第二层 开
+shard 3: 1.5 层深层重探后剩 258
+shard 3: 第一层存活 258/258 = 100%%, 第二层 开
+shard 12: 1.5 层深层重探后剩 258
+shard 12: 第一层存活 258/258 = 100%%, 第二层 开
+T2 sh8 cell=(177,243) PROBE0 nodes=3445
+shard 9: 1.5 层深层重探后剩 258
+shard 9: 第一层存活 258/258 = 100%%, 第二层 开
+T2 sh4 cell=(131,75) PROBE0 nodes=25
+T2 sh17 cell=(192,206) PROBE0 nodes=14588
+T2 sh16 cell=(182,172) PROBE0 nodes=27178
+T2 sh14 cell=(180,234) PROBE0 nodes=11562
+T2 sh7 cell=(154,64) PROBE0 nodes=11230
+T2 sh10 cell=(179,137) PROBE0 nodes=27178
+T2 sh20 cell=(97,53) PROBE0 nodes=486
+T2 sh19 cell=(165,241) PROBE0 nodes=3456
+T2 sh1 cell=(262,232) PROBE0 nodes=10711
+T2 sh10 cell=(137,15) PROBE0 nodes=27725
+T2 sh14 cell=(154,12) PROBE0 nodes=24250
+T2 sh14 cell=(147,15) PROBE0 nodes=20120
+T2 sh4 cell=(154,32) PROBE0 nodes=31991
+T2 sh11 cell=(140,24) PROBE0 nodes=31497
+T2 sh16 cell=(213,37) PROBE0 nodes=8302
+T2 sh17 cell=(214,34) PROBE0 nodes=8457
+T2 sh23 cell=(155,13) PROBE0 nodes=30729
+T2 sh2 cell=(171,43) PROBE0 nodes=16384
+T2 sh17 cell=(173,39) PROBE0 nodes=30731
+T2 sh11 cell=(156,36) PROBE0 nodes=31974
+T2 sh20 cell=(201,39) PROBE0 nodes=11431
+T2 sh19 cell=(125,35) PROBE0 nodes=30066
+T2 sh1 cell=(134,58) PROBE0 nodes=9596
+T2 sh16 cell=(160,44) PROBE0 nodes=20418
+T2 sh1 cell=(112,60) PROBE0 nodes=21706
+T2 sh17 cell=(174,56) PROBE0 nodes=17616
+T2 sh2 cell=(98,64) PROBE0 nodes=185
+T2 sh16 cell=(192,54) PROBE0 nodes=20153
+T2 sh17 cell=(113,67) PROBE0 nodes=22375
+T2 sh2 cell=(147,65) PROBE0 nodes=18648
+T2 sh2 cell=(160,66) PROBE0 nodes=10094
+T2 sh2 cell=(95,73) PROBE0 nodes=563
+T2 sh2 cell=(128,74) PROBE0 nodes=58
+T2 sh22 cell=(188,44) PROBE0 nodes=6542
+T2 sh16 cell=(164,56) PROBE0 nodes=12421
+T2 sh10 cell=(156,52) PROBE0 nodes=18486
+T2 sh19 cell=(174,44) PROBE0 nodes=11715
+T2 sh5 cell=(175,51) PROBE0 nodes=18205
+T2 sh17 cell=(91,85) PROBE0 nodes=1860
+T2 sh4 cell=(172,60) PROBE0 nodes=25
+T2 sh4 cell=(93,63) PROBE0 nodes=541
+T2 sh14 cell=(120,56) PROBE0 nodes=18576
+T2 sh4 cell=(120,64) PROBE0 nodes=18487
+T2 sh20 cell=(133,61) PROBE0 nodes=18904
+T2 sh1 cell=(108,74) PROBE0 nodes=29433
+T2 sh7 cell=(160,48) PROBE0 nodes=9622
+T2 sh22 cell=(95,65) PROBE0 nodes=24396
+T2 sh20 cell=(116,66) PROBE0 nodes=21791
+T2 sh22 cell=(120,66) PROBE0 nodes=9726
+T2 sh5 cell=(121,63) PROBE0 nodes=27936
+T2 sh23 cell=(180,30) PROBE0 nodes=5541
+T2 sh19 cell=(196,54) PROBE0 nodes=15633
+T2 sh7 cell=(286,56) PROBE0 nodes=30148
+T2 sh11 cell=(176,54) PROBE0 nodes=30731
+T2 sh11 cell=(108,62) PROBE0 nodes=12931
+T2 sh5 cell=(151,73) PROBE0 nodes=8629
+T2 sh5 cell=(140,74) PROBE0 nodes=17712
+T2 sh19 cell=(111,61) PROBE0 nodes=30564
+T2 sh11 cell=(134,82) PROBE0 nodes=34
+T2 sh10 cell=(140,72) PROBE0 nodes=26972
+T2 sh17 cell=(112,104) PROBE0 nodes=840
+T2 sh19 cell=(161,71) PROBE0 nodes=8549
+T2 sh23 cell=(204,38) PROBE0 nodes=26922
+T2 sh23 cell=(117,45) PROBE0 nodes=20751
+T2 sh19 cell=(137,77) PROBE0 nodes=18460
+T2 sh14 cell=(95,87) PROBE0 nodes=908
+T2 sh14 cell=(96,90) PROBE0 nodes=1589
+T2 sh19 cell=(97,79) PROBE0 nodes=874
+T2 sh16 cell=(97,89) PROBE0 nodes=11539
+T2 sh23 cell=(173,53) PROBE0 nodes=30730
+T2 sh23 cell=(90,58) PROBE0 nodes=595
+T2 sh7 cell=(89,93) PROBE0 nodes=12112
+T2 sh13 cell=(122,108) PROBE0 nodes=486
+T2 sh11 cell=(141,101) PROBE0 nodes=319
+T2 sh23 cell=(135,65) PROBE0 nodes=18264
+T2 sh4 cell=(143,103) PROBE0 nodes=464
+T2 sh8 cell=(91,81) PROBE0 nodes=612
+T2 sh7 cell=(97,101) PROBE0 nodes=423
+T2 sh16 cell=(96,104) PROBE0 nodes=424
+T2 sh19 cell=(141,95) PROBE0 nodes=229
+T2 sh19 cell=(142,104) PROBE0 nodes=840
+T2 sh10 cell=(99,93) PROBE0 nodes=10578
+T2 sh8 cell=(90,92) PROBE0 nodes=11475
+T2 sh8 cell=(93,93) PROBE0 nodes=315
+T2 sh20 cell=(293,97) PROBE0 nodes=668
+T2 sh20 cell=(291,99) PROBE0 nodes=441
+T2 sh20 cell=(108,102) PROBE0 nodes=1218
+T2 sh20 cell=(135,109) PROBE0 nodes=787
+T2 sh22 cell=(98,100) PROBE0 nodes=405
+T2 sh20 cell=(227,119) PROBE0 nodes=19125
+T2 sh10 cell=(97,107) PROBE0 nodes=10459
+T2 sh21 cell=(293,95) PROBE0 nodes=20549
+T2 sh23 cell=(120,100) PROBE0 nodes=2626
+T2 sh11 cell=(203,137) PROBE0 nodes=26121
+T2 sh5 cell=(182,136) PROBE0 nodes=29281
+T2 sh20 cell=(297,131) PROBE0 nodes=21746
+T2 sh6 cell=(281,127) PROBE0 nodes=28777
+T2 sh10 cell=(165,145) PROBE0 nodes=121
+T2 sh22 cell=(163,147) PROBE0 nodes=160
+T2 sh7 cell=(203,147) PROBE0 nodes=27281
+T2 sh5 cell=(159,149) PROBE0 nodes=249
+T2 sh19 cell=(181,159) PROBE0 nodes=25701
+T2 sh7 cell=(171,153) PROBE0 nodes=25676
+T2 sh11 cell=(171,151) PROBE0 nodes=92
+T2 sh13 cell=(165,155) PROBE0 nodes=124
+T2 sh13 cell=(168,156) PROBE0 nodes=83
+T2 sh17 cell=(218,168) PROBE0 nodes=26058
+T2 sh13 cell=(182,162) PROBE0 nodes=27178
+T2 sh10 cell=(171,167) PROBE0 nodes=25741
+T2 sh8 cell=(168,154) PROBE0 nodes=29331
+T2 sh8 cell=(163,157) PROBE0 nodes=180
+T2 sh17 cell=(222,170) PROBE0 nodes=26231
+T2 sh16 cell=(165,179) PROBE0 nodes=29286
+T2 sh23 cell=(32,152) PROBE0 nodes=12963
+T2 sh19 cell=(187,181) PROBE0 nodes=15153
+T2 sh10 cell=(202,188) PROBE0 nodes=13116
+T2 sh14 cell=(177,183) PROBE0 nodes=14712
+T2 sh17 cell=(169,179) PROBE0 nodes=27184
+T2 sh2 cell=(189,191) PROBE0 nodes=12750
+T2 sh14 cell=(194,184) PROBE0 nodes=12771
+T2 sh17 cell=(193,183) PROBE0 nodes=19764
+T2 sh10 cell=(192,194) PROBE0 nodes=13153
+T2 sh4 cell=(185,175) PROBE0 nodes=25045
+T2 sh8 cell=(210,172) PROBE0 nodes=10984
+T2 sh17 cell=(206,184) PROBE0 nodes=24207
+T2 sh13 cell=(188,184) PROBE0 nodes=11700
+T2 sh8 cell=(184,178) PROBE0 nodes=68
+T2 sh23 cell=(208,166) PROBE0 nodes=27158
+T2 sh10 cell=(172,202) PROBE0 nodes=10514
+T2 sh2 cell=(199,225) PROBE0 nodes=1968
+T2 sh2 cell=(164,228) PROBE0 nodes=11485
+T2 sh2 cell=(174,242) PROBE0 nodes=6149
+T2 sh2 cell=(257,245) PROBE0 nodes=9130
+T2 sh10 cell=(191,203) PROBE0 nodes=18869
+T2 sh7 cell=(213,173) PROBE0 nodes=25052
+T2 sh19 cell=(167,195) PROBE0 nodes=15465
+T2 sh10 cell=(159,219) PROBE0 nodes=7791
+T2 sh5 cell=(186,168) PROBE0 nodes=26107
+T2 sh10 cell=(188,226) PROBE0 nodes=20386
+T2 sh7 cell=(190,180) PROBE0 nodes=107
+T2 sh5 cell=(206,172) PROBE0 nodes=24982
+T2 sh10 cell=(163,229) PROBE0 nodes=23535
+T2 sh19 cell=(197,201) PROBE0 nodes=14592
+T2 sh5 cell=(195,175) PROBE0 nodes=23791
+T2 sh14 cell=(161,213) PROBE0 nodes=12286
+T2 sh10 cell=(227,233) PROBE0 nodes=19889
+T2 sh16 cell=(185,201) PROBE0 nodes=31444
+T2 sh10 cell=(258,236) PROBE0 nodes=12479
+T2 sh23 cell=(194,176) PROBE0 nodes=25085
+T2 sh13 cell=(205,197) PROBE0 nodes=12841
+T2 sh2 cell=(186,160) PROBE0 nodes=25549
+T2 sh17 cell=(191,201) PROBE0 nodes=27048
+T2 sh16 cell=(175,213) PROBE0 nodes=28958
+T2 sh11 cell=(215,175) PROBE0 nodes=27192
+T2 sh16 cell=(158,222) PROBE0 nodes=11950
+T2 sh10 cell=(249,243) PROBE0 nodes=11893
+T2 sh13 cell=(164,210) PROBE0 nodes=6151
+T2 sh19 cell=(167,227) PROBE0 nodes=8825
+T2 sh10 cell=(255,247) PROBE0 nodes=8632
+T2 sh20 cell=(191,179) PROBE0 nodes=257
+T2 sh10 cell=(240,254) PROBE0 nodes=8507
+T2 sh23 cell=(201,181) PROBE0 nodes=27177
+T2 sh13 cell=(169,219) PROBE0 nodes=16811
+T2 sh16 cell=(188,224) PROBE0 nodes=30672
+T2 sh1 cell=(176,190) PROBE0 nodes=14711
+T2 sh2 cell=(176,58) PROBE0 nodes=30734
+T2 sh5 cell=(176,180) PROBE0 nodes=29333
+T2 sh19 cell=(181,249) PROBE0 nodes=9119
+T2 sh14 cell=(224,226) PROBE0 nodes=29590
+T2 sh14 cell=(161,237) PROBE0 nodes=1118
+T2 sh14 cell=(168,240) PROBE0 nodes=3451
+T2 sh14 cell=(265,243) PROBE0 nodes=8003
+T2 sh16 cell=(184,232) PROBE0 nodes=8040
+T2 sh14 cell=(178,248) PROBE0 nodes=3456
+T2 sh19 cell=(221,261) PROBE0 nodes=23762
+T2 sh16 cell=(181,237) PROBE0 nodes=6402
+T2 sh13 cell=(158,232) PROBE0 nodes=381
+T2 sh19 cell=(117,271) PROBE0 nodes=4860
+T2 sh17 cell=(142,216) PROBE0 nodes=13205
+T2 sh22 cell=(171,199) PROBE0 nodes=12412
+T2 sh16 cell=(246,240) PROBE0 nodes=9125
+T2 sh13 cell=(156,234) PROBE0 nodes=10241
+T2 sh13 cell=(159,237) PROBE0 nodes=370
+T2 sh13 cell=(160,240) PROBE0 nodes=749
+T2 sh13 cell=(176,248) PROBE0 nodes=5933
+T2 sh13 cell=(164,256) PROBE0 nodes=1486
+T2 sh17 cell=(139,227) PROBE0 nodes=13046
+T2 sh16 cell=(226,244) PROBE0 nodes=19716
+T2 sh20 cell=(172,186) PROBE0 nodes=29281
+T2 sh13 cell=(250,260) PROBE0 nodes=9482
+T2 sh16 cell=(228,256) PROBE0 nodes=7679
+T2 sh8 cell=(187,209) PROBE0 nodes=22893
+T2 sh13 cell=(197,267) PROBE0 nodes=9663
+T2 sh14 cell=(208,256) PROBE0 nodes=31616
+T2 sh14 cell=(213,267) PROBE0 nodes=8350
+T2 sh14 cell=(131,283) PROBE0 nodes=4824
+T2 sh17 cell=(191,237) PROBE0 nodes=8240
+T2 sh7 cell=(190,196) PROBE0 nodes=14671
+T2 sh16 cell=(201,269) PROBE0 nodes=11199
+T2 sh22 cell=(168,220) PROBE0 nodes=29024
+T2 sh1 cell=(180,204) PROBE0 nodes=27475
+T2 sh17 cell=(213,257) PROBE0 nodes=26236
+T2 sh10 cell=(139,33) PROBE0 nodes=17335
+T2 sh8 cell=(166,226) PROBE0 nodes=22814
+T2 sh19 cell=(187,39) PROBE0 nodes=2854
+T2 sh17 cell=(212,270) PROBE0 nodes=9295
+T2 sh22 cell=(163,225) PROBE0 nodes=19643
+T2 sh10 cell=(170,54) PROBE0 nodes=32
+T2 sh23 cell=(197,195) PROBE0 nodes=19937
+T2 sh1 cell=(173,217) PROBE0 nodes=31084
+T2 sh22 cell=(227,237) PROBE0 nodes=15065
+T2 sh8 cell=(181,239) PROBE0 nodes=8632
+T2 sh8 cell=(207,265) PROBE0 nodes=7607
+T2 sh23 cell=(214,200) PROBE0 nodes=27165
+T2 sh4 cell=(194,204) PROBE0 nodes=24886
+T2 sh22 cell=(251,241) PROBE0 nodes=21151
+T2 sh22 cell=(222,258) PROBE0 nodes=8941
+T2 sh7 cell=(178,212) PROBE0 nodes=14465
+T2 sh4 cell=(160,212) PROBE0 nodes=10941
+T2 sh14 cell=(190,42) PROBE0 nodes=11315
+T2 sh7 cell=(145,215) PROBE0 nodes=12984
+T2 sh7 cell=(173,223) PROBE0 nodes=5891
+T2 sh17 cell=(124,26) PROBE0 nodes=24425
+T2 sh1 cell=(255,237) PROBE0 nodes=16349
+T2 sh23 cell=(196,208) PROBE0 nodes=24738
+T2 sh1 cell=(259,241) PROBE0 nodes=8648
+T2 sh4 cell=(172,218) PROBE0 nodes=30593
+T2 sh1 cell=(253,245) PROBE0 nodes=16960
+T2 sh7 cell=(215,233) PROBE0 nodes=28901
+T2 sh4 cell=(141,221) PROBE0 nodes=12699
+T2 sh8 cell=(164,48) PROBE0 nodes=17875
+T2 sh20 cell=(161,211) PROBE0 nodes=22720
+T2 sh14 cell=(117,99) PROBE0 nodes=1124
+T2 sh16 cell=(97,67) PROBE0 nodes=356
+T2 sh22 cell=(132,18) PROBE0 nodes=23536
+T2 sh20 cell=(184,216) PROBE0 nodes=28004
+T2 sh8 cell=(163,57) PROBE0 nodes=16217
+T2 sh7 cell=(254,242) PROBE0 nodes=8621
+T2 sh23 cell=(265,227) PROBE0 nodes=17970
+T2 sh17 cell=(189,49) PROBE0 nodes=25009
+T2 sh20 cell=(162,220) PROBE0 nodes=13998
+T2 sh20 cell=(175,227) PROBE0 nodes=7424
+T2 sh23 cell=(228,232) PROBE0 nodes=17741
+T2 sh11 cell=(195,203) PROBE0 nodes=24260
+T2 sh7 cell=(254,246) PROBE0 nodes=21081
+T2 sh5 cell=(202,204) PROBE0 nodes=12106
+T2 sh4 cell=(270,230) PROBE0 nodes=18428
+T2 sh7 cell=(231,253) PROBE0 nodes=8673
+T2 sh20 cell=(259,229) PROBE0 nodes=17308
+T2 sh7 cell=(193,265) PROBE0 nodes=11331
+T2 sh4 cell=(262,252) PROBE0 nodes=8030
+T2 sh5 cell=(141,215) PROBE0 nodes=27023
+T2 sh4 cell=(225,263) PROBE0 nodes=9079
+T2 sh4 cell=(117,275) PROBE0 nodes=6609
+T2 sh23 cell=(255,241) PROBE0 nodes=18057
+T2 sh22 cell=(165,53) PROBE0 nodes=22025
+T2 sh16 cell=(136,90) PROBE0 nodes=497
+T2 sh11 cell=(267,223) PROBE0 nodes=17883
+T2 sh11 cell=(200,226) PROBE0 nodes=1216
+T2 sh20 cell=(173,245) PROBE0 nodes=7961
+T2 sh20 cell=(162,258) PROBE0 nodes=1490
+T2 sh23 cell=(227,245) PROBE0 nodes=14401
+T2 sh8 cell=(111,101) PROBE0 nodes=1126
+T2 sh11 cell=(262,236) PROBE0 nodes=7195
+T2 sh5 cell=(180,218) PROBE0 nodes=29333
+T2 sh20 cell=(225,261) PROBE0 nodes=10626
+T2 sh1 cell=(140,14) PROBE0 nodes=21576
+T2 sh10 cell=(181,221) PROBE0 nodes=17381
+T2 sh11 cell=(221,255) PROBE0 nodes=7276
+T2 sh5 cell=(151,231) PROBE0 nodes=9757
+T2 sh11 cell=(222,260) PROBE0 nodes=8940
+T2 sh5 cell=(181,233) PROBE0 nodes=8760
+T2 sh23 cell=(213,251) PROBE0 nodes=23975
+T2 sh1 cell=(118,22) PROBE0 nodes=18175
+T2 sh19 cell=(153,211) PROBE0 nodes=12951
+T2 sh11 cell=(194,266) PROBE0 nodes=16092
+T2 sh23 cell=(224,262) PROBE0 nodes=14118
+T2 sh20 cell=(133,285) PROBE0 nodes=11814
+T2 sh19 cell=(174,216) PROBE0 nodes=13280
+T2 sh19 cell=(159,245) PROBE0 nodes=764
+T2 sh23 cell=(212,272) PROBE0 nodes=9202
+T2 sh23 cell=(128,286) PROBE0 nodes=5943
+T2 sh5 cell=(250,238) PROBE0 nodes=23702
+T2 sh5 cell=(250,242) PROBE0 nodes=7440
+T2 sh10 cell=(179,57) PROBE0 nodes=22051
+T2 sh10 cell=(131,101) PROBE0 nodes=158
+T2 sh7 cell=(173,231) PROBE0 nodes=5387
+T2 sh5 cell=(222,246) PROBE0 nodes=23539
+T2 sh5 cell=(165,253) PROBE0 nodes=1488
+T2 sh14 cell=(212,170) PROBE0 nodes=30
+T2 sh7 cell=(145,63) PROBE0 nodes=9212
+T2 sh5 cell=(214,260) PROBE0 nodes=9769
+T2 sh5 cell=(229,263) PROBE0 nodes=8371
+T2 sh5 cell=(124,288) PROBE0 nodes=10908
+T2 sh1 cell=(96,64) PROBE0 nodes=185
+T2 sh1 cell=(96,96) PROBE0 nodes=11201
+T2 sh4 cell=(138,74) PROBE0 nodes=20315
+T2 sh23 cell=(146,42) PROBE0 nodes=11534
+T2 sh11 cell=(174,52) PROBE0 nodes=24513
+T2 sh11 cell=(94,68) PROBE0 nodes=554
+T2 sh19 cell=(178,56) PROBE0 nodes=27759
+T2 sh11 cell=(159,69) PROBE0 nodes=19799
+T2 sh10 cell=(204,178) PROBE0 nodes=27194
+T2 sh2 cell=(164,238) PROBE0 nodes=380
+T2 sh8 cell=(169,203) PROBE0 nodes=15200
+T2 sh2 cell=(89,168) PROBE0 nodes=52
+T2 sh7 cell=(199,175) PROBE0 nodes=27182
+T2 sh8 cell=(133,69) PROBE0 nodes=19633
+T2 sh14 cell=(178,210) PROBE0 nodes=29720
+T2 sh2 cell=(197,192) PROBE0 nodes=31893
+T2 sh11 cell=(91,91) PROBE0 nodes=21433
+T2 sh16 cell=(174,206) PROBE0 nodes=16865
+T2 sh1 cell=(189,165) PROBE0 nodes=27178
+T2 sh10 cell=(106,167) PROBE0 nodes=81
+T2 sh13 cell=(173,183) PROBE0 nodes=27180
+T2 sh19 cell=(196,146) PROBE0 nodes=24792
+T2 sh22 cell=(181,211) PROBE0 nodes=14461
+T2 sh22 cell=(225,227) PROBE0 nodes=16857
+T2 sh14 cell=(172,232) PROBE0 nodes=8184
+T2 sh7 cell=(264,228) PROBE0 nodes=19934
+T2 sh7 cell=(125,289) PROBE0 nodes=5744
+T2 sh22 cell=(222,232) PROBE0 nodes=17661
+T2 sh14 cell=(163,49) PROBE0 nodes=21433
+T2 sh17 cell=(127,77) PROBE0 nodes=25
+T2 sh22 cell=(209,245) PROBE0 nodes=9664
+T2 sh22 cell=(246,250) PROBE0 nodes=7548
+T2 sh7 cell=(197,43) PROBE0 nodes=14559
+T2 sh22 cell=(210,262) PROBE0 nodes=7926
+T2 sh23 cell=(230,258) PROBE0 nodes=10684
+T2 sh1 cell=(186,252) PROBE0 nodes=4816
+T2 sh17 cell=(218,224) PROBE0 nodes=21528
+T2 sh22 cell=(298,122) PROBE0 nodes=27854
+T2 sh1 cell=(163,47) PROBE0 nodes=26711
+T2 sh4 cell=(174,180) PROBE0 nodes=27180
+T2 sh14 cell=(159,179) PROBE0 nodes=26271
+T2 sh8 cell=(175,63) PROBE0 nodes=30890
+T2 sh14 cell=(207,261) PROBE0 nodes=6953
+T2 sh17 cell=(187,96) PROBE0 nodes=369
+T2 sh17 cell=(238,149) PROBE0 nodes=216
+T2 sh4 cell=(175,233) PROBE0 nodes=9891
+T2 sh4 cell=(247,259) PROBE0 nodes=9641
+T2 sh7 cell=(161,106) PROBE0 nodes=724
+T2 sh4 cell=(165,9) PROBE0 nodes=23241
+T2 sh1 cell=(152,66) PROBE0 nodes=20396
+T2 sh10 cell=(285,48) PROBE0 nodes=23326
+T2 sh16 cell=(240,101) PROBE0 nodes=146
+T2 sh7 cell=(96,161) PROBE0 nodes=19
+T2 sh7 cell=(118,209) PROBE0 nodes=392
+T2 sh22 cell=(213,169) PROBE0 nodes=25821
+T2 sh11 cell=(193,207) PROBE0 nodes=25587
+T2 sh8 cell=(167,14) PROBE0 nodes=31619
+T2 sh11 cell=(245,239) PROBE0 nodes=7022
+T2 sh11 cell=(158,248) PROBE0 nodes=775
+T2 sh14 cell=(184,97) PROBE0 nodes=3085
+T2 sh14 cell=(91,104) PROBE0 nodes=933
+T2 sh1 cell=(119,105) PROBE0 nodes=1093
+T2 sh11 cell=(122,34) PROBE0 nodes=21227
+T2 sh11 cell=(185,197) PROBE0 nodes=19763
+T2 sh16 cell=(123,30) PROBE0 nodes=21790
+T2 sh5 cell=(267,235) PROBE0 nodes=18668
+T2 sh22 cell=(212,216) PROBE0 nodes=1486
+T2 sh11 cell=(143,33) PROBE0 nodes=27390
+T2 sh11 cell=(175,229) PROBE0 nodes=5093
+T2 sh14 cell=(130,25) PROBE0 nodes=31217
+T2 sh1 cell=(174,230) PROBE0 nodes=6816
+T2 sh4 cell=(246,135) PROBE0 nodes=211
+T2 sh13 cell=(196,144) PROBE0 nodes=25714
+T2 sh10 cell=(317,90) PROBE0 nodes=28807
+T2 sh1 cell=(275,200) PROBE0 nodes=655
+T2 sh1 cell=(95,162) PROBE0 nodes=44
+T2 sh11 cell=(111,155) PROBE0 nodes=27
+T2 sh10 cell=(243,110) PROBE0 nodes=422
+T2 sh10 cell=(301,116) PROBE0 nodes=10046
+T2 sh13 cell=(184,95) PROBE0 nodes=3141
+T2 sh19 cell=(240,113) PROBE0 nodes=201
+T2 sh11 cell=(287,138) PROBE0 nodes=1710
+T2 sh19 cell=(298,121) PROBE0 nodes=8966
+T2 sh16 cell=(318,93) PROBE0 nodes=29874
+T2 sh23 cell=(260,59) PROBE0 nodes=2886
+T2 sh2 cell=(238,111) PROBE0 nodes=461
+T2 sh10 cell=(301,132) PROBE0 nodes=14540
+T2 sh10 cell=(240,133) PROBE0 nodes=217
+T2 sh16 cell=(301,120) PROBE0 nodes=23617
+T2 sh8 cell=(311,90) PROBE0 nodes=17780
+T2 sh1 cell=(152,35) PROBE0 nodes=8774
+T2 sh8 cell=(174,103) PROBE0 nodes=3097
+T2 sh8 cell=(213,110) PROBE0 nodes=7222
+T2 sh17 cell=(91,94) PROBE0 nodes=1600
+T2 sh1 cell=(249,50) PROBE0 nodes=14269
+T2 sh13 cell=(179,54) PROBE0 nodes=31053
+T2 sh17 cell=(242,101) PROBE0 nodes=238
+T2 sh7 cell=(89,92) PROBE0 nodes=1530
+T2 sh8 cell=(297,118) PROBE0 nodes=20999
+T2 sh17 cell=(236,121) PROBE0 nodes=137
+T2 sh22 cell=(142,61) PROBE0 nodes=27000
+T2 sh14 cell=(307,88) PROBE0 nodes=18211
+T2 sh19 cell=(243,142) PROBE0 nodes=885
+T2 sh7 cell=(175,98) PROBE0 nodes=237
+T2 sh8 cell=(298,127) PROBE0 nodes=9089
+T2 sh7 cell=(209,110) PROBE0 nodes=9951
+T2 sh8 cell=(309,128) PROBE0 nodes=26128
+T2 sh7 cell=(221,118) PROBE0 nodes=3676
+T2 sh4 cell=(175,100) PROBE0 nodes=200
+T2 sh4 cell=(242,105) PROBE0 nodes=177
+T2 sh8 cell=(287,132) PROBE0 nodes=3647
+T2 sh14 cell=(151,108) PROBE0 nodes=13744
+T2 sh8 cell=(167,138) PROBE0 nodes=344
+T2 sh17 cell=(241,134) PROBE0 nodes=26
+T2 sh17 cell=(128,135) PROBE0 nodes=77
+T2 sh2 cell=(220,129) PROBE0 nodes=3800
+T2 sh7 cell=(235,126) PROBE0 nodes=131
+T2 sh23 cell=(309,96) PROBE0 nodes=27292
+T2 sh7 cell=(307,128) PROBE0 nodes=20154
+T2 sh14 cell=(229,120) PROBE0 nodes=4208
+T2 sh23 cell=(180,111) PROBE0 nodes=3090
+T2 sh23 cell=(305,112) PROBE0 nodes=10441
+T2 sh16 cell=(249,144) PROBE0 nodes=2016
+T2 sh8 cell=(181,144) PROBE0 nodes=21820
+T2 sh7 cell=(235,132) PROBE0 nodes=335
+T2 sh23 cell=(206,117) PROBE0 nodes=3731
+T2 sh13 cell=(325,86) PROBE0 nodes=29029
+T2 sh7 cell=(165,138) PROBE0 nodes=370
+T2 sh13 cell=(93,90) PROBE0 nodes=1229
+T2 sh23 cell=(309,122) PROBE0 nodes=29339
+T2 sh4 cell=(213,126) PROBE0 nodes=7544
+T2 sh20 cell=(177,112) PROBE0 nodes=587
+T2 sh4 cell=(298,129) PROBE0 nodes=27661
+T2 sh7 cell=(164,141) PROBE0 nodes=198
+T2 sh1 cell=(144,97) PROBE0 nodes=2414
+T2 sh22 cell=(308,95) PROBE0 nodes=14307
+T2 sh11 cell=(140,93) PROBE0 nodes=3272
+T2 sh1 cell=(242,109) PROBE0 nodes=352
+T2 sh1 cell=(216,111) PROBE0 nodes=10371
+T2 sh2 cell=(199,156) PROBE0 nodes=21695
+T2 sh5 cell=(245,100) PROBE0 nodes=231
+T2 sh14 cell=(246,145) PROBE0 nodes=2417
+T2 sh22 cell=(215,112) PROBE0 nodes=7669
+T2 sh11 cell=(182,95) PROBE0 nodes=6149
+T2 sh5 cell=(314,105) PROBE0 nodes=12161
+T2 sh11 cell=(313,98) PROBE0 nodes=24704
+T2 sh11 cell=(242,103) PROBE0 nodes=537
+T2 sh11 cell=(187,114) PROBE0 nodes=217
+T2 sh11 cell=(303,116) PROBE0 nodes=15049
+T2 sh11 cell=(146,119) PROBE0 nodes=695
+T2 sh4 cell=(164,139) PROBE0 nodes=170
+T2 sh5 cell=(238,123) PROBE0 nodes=163
+T2 sh5 cell=(219,126) PROBE0 nodes=3775
+T2 sh22 cell=(302,131) PROBE0 nodes=5645
+T2 sh1 cell=(311,130) PROBE0 nodes=22767
+T2 sh6 cell=(178,89) PROBE0 nodes=26568
+T2 sh5 cell=(226,127) PROBE0 nodes=4190
+T2 sh12 cell=(151,210) PROBE0 nodes=16969
+T2 sh20 cell=(62,143) PROBE0 nodes=16848
+T2 sh11 cell=(303,132) PROBE0 nodes=5518
+T2 sh5 cell=(303,128) PROBE0 nodes=16922
+T2 sh11 cell=(286,133) PROBE0 nodes=5698
+T2 sh13 cell=(304,133) PROBE0 nodes=5516
+T2 sh12 cell=(268,221) PROBE0 nodes=23086
+T2 sh4 cell=(97,156) PROBE0 nodes=34
+T2 sh5 cell=(169,148) PROBE0 nodes=63
+T2 sh23 cell=(239,154) PROBE0 nodes=2843
+T2 sh11 cell=(89,148) PROBE0 nodes=168
+T2 sh6 cell=(148,121) PROBE0 nodes=26561
+T2 sh0 cell=(93,60) PROBE0 nodes=31082
+T2 sh14 cell=(192,167) PROBE0 nodes=21707
+T2 sh17 cell=(174,181) PROBE0 nodes=21988
+T2 sh7 cell=(199,182) PROBE0 nodes=21848
+T2 sh15 cell=(281,194) PROBE0 nodes=23569
+T2 sh8 cell=(182,187) PROBE0 nodes=11069
+T2 sh6 cell=(225,126) PROBE0 nodes=24968
+T2 sh18 cell=(218,237) PROBE0 nodes=29291
+T2 sh16 cell=(283,194) PROBE0 nodes=7140
+T2 sh2 cell=(276,195) PROBE0 nodes=14174
+T2 sh7 cell=(281,190) PROBE0 nodes=7528
+T2 sh7 cell=(282,191) PROBE0 nodes=7137
+T2 sh5 cell=(221,166) PROBE0 nodes=21331
+T2 sh19 cell=(199,200) PROBE0 nodes=21685
+T2 sh16 cell=(278,197) PROBE0 nodes=7166
+T2 sh19 cell=(283,202) PROBE0 nodes=1075
+T2 sh19 cell=(113,208) PROBE0 nodes=184
+T2 sh19 cell=(115,214) PROBE0 nodes=755
+T2 sh22 cell=(234,159) PROBE0 nodes=359
+T2 sh19 cell=(141,220) PROBE0 nodes=11073
+T2 sh16 cell=(171,200) PROBE0 nodes=17195
+T2 sh17 cell=(175,200) PROBE0 nodes=19287
+T2 sh16 cell=(265,202) PROBE0 nodes=6715
+T2 sh2 cell=(260,199) PROBE0 nodes=1050
+T2 sh16 cell=(294,203) PROBE0 nodes=320
+T2 sh8 cell=(209,196) PROBE0 nodes=15888
+T2 sh17 cell=(188,213) PROBE0 nodes=29256
+T2 sh2 cell=(183,204) PROBE0 nodes=21252
+T2 sh17 cell=(131,220) PROBE0 nodes=26497
+T2 sh2 cell=(252,205) PROBE0 nodes=6813
+T2 sh19 cell=(258,229) PROBE0 nodes=20984
+T2 sh16 cell=(131,216) PROBE0 nodes=130
+T2 sh2 cell=(257,208) PROBE0 nodes=6625
+T2 sh2 cell=(113,212) PROBE0 nodes=228
+T2 sh2 cell=(114,215) PROBE0 nodes=598
+T2 sh4 cell=(175,188) PROBE0 nodes=27792
+T2 sh2 cell=(164,223) PROBE0 nodes=17620
+T2 sh7 cell=(161,198) PROBE0 nodes=11290
+T2 sh8 cell=(149,202) PROBE0 nodes=22466
+T2 sh7 cell=(253,204) PROBE0 nodes=6534
+T2 sh7 cell=(114,219) PROBE0 nodes=215
+T2 sh12 cell=(253,58) PROBE0 nodes=16895
+T2 sh2 cell=(120,233) PROBE0 nodes=1129
+T2 sh16 cell=(209,234) PROBE0 nodes=31035
+T2 sh17 cell=(259,240) PROBE0 nodes=27703
+T2 sh7 cell=(159,226) PROBE0 nodes=7791
+T2 sh4 cell=(199,190) PROBE0 nodes=27709
+T2 sh7 cell=(269,238) PROBE0 nodes=21555
+T2 sh17 cell=(253,244) PROBE0 nodes=24231
+T2 sh16 cell=(134,283) PROBE0 nodes=6526
+T2 sh14 cell=(277,194) PROBE0 nodes=7767
+T2 sh19 cell=(70,109) PROBE0 nodes=8622
+T2 sh2 cell=(119,274) PROBE0 nodes=6631
+T2 sh2 cell=(124,287) PROBE0 nodes=7606
+T2 sh7 cell=(119,276) PROBE0 nodes=3807
+T2 sh17 cell=(216,261) PROBE0 nodes=20898
+T2 sh21 cell=(156,109) PROBE0 nodes=26786
+T2 sh14 cell=(166,201) PROBE0 nodes=14065
+T2 sh14 cell=(270,203) PROBE0 nodes=512
+T2 sh8 cell=(183,212) PROBE0 nodes=15693
+T2 sh5 cell=(191,182) PROBE0 nodes=27955
+T2 sh11 cell=(192,185) PROBE0 nodes=16349
+T2 sh21 cell=(193,112) PROBE0 nodes=17225
+T2 sh10 cell=(184,197) PROBE0 nodes=11005
+T2 sh14 cell=(264,207) PROBE0 nodes=180
+T2 sh10 cell=(251,198) PROBE0 nodes=3078
+T2 sh4 cell=(290,205) PROBE0 nodes=84
+T2 sh4 cell=(291,208) PROBE0 nodes=104
+T2 sh4 cell=(140,215) PROBE0 nodes=17185
+T2 sh3 cell=(38,33) PROBE0 nodes=31136
+T2 sh22 cell=(179,192) PROBE0 nodes=22007
+T2 sh8 cell=(136,219) PROBE0 nodes=27620
+T2 sh4 cell=(228,225) PROBE0 nodes=21208
+T2 sh0 cell=(208,109) PROBE0 nodes=24850
+T2 sh1 cell=(193,192) PROBE0 nodes=16390
+T2 sh19 cell=(134,67) PROBE0 nodes=28894
+T2 sh11 cell=(271,192) PROBE0 nodes=13575
+T2 sh5 cell=(181,188) PROBE0 nodes=27893
+T2 sh8 cell=(229,236) PROBE0 nodes=21114
+T2 sh7 cell=(237,124) PROBE0 nodes=109
+T2 sh1 cell=(274,193) PROBE0 nodes=14219
+T2 sh11 cell=(193,194) PROBE0 nodes=11065
+T2 sh0 cell=(166,115) PROBE0 nodes=20726
+T2 sh8 cell=(257,246) PROBE0 nodes=23981
+T2 sh13 cell=(279,196) PROBE0 nodes=7165
+T2 sh17 cell=(239,108) PROBE0 nodes=546
+T2 sh11 cell=(277,198) PROBE0 nodes=15947
+T2 sh17 cell=(194,113) PROBE0 nodes=3749
+T2 sh20 cell=(198,193) PROBE0 nodes=26773
+T2 sh5 cell=(201,190) PROBE0 nodes=26570
+T2 sh21 cell=(203,122) PROBE0 nodes=17229
+T2 sh8 cell=(240,253) PROBE0 nodes=27100
+T2 sh4 cell=(123,288) PROBE0 nodes=11419
+T2 sh11 cell=(191,202) PROBE0 nodes=15959
+T2 sh11 cell=(257,212) PROBE0 nodes=301
+T2 sh16 cell=(182,113) PROBE0 nodes=3102
+T2 sh17 cell=(322,125) PROBE0 nodes=16489
+T2 sh19 cell=(294,131) PROBE0 nodes=22332
+T2 sh23 cell=(181,192) PROBE0 nodes=22645
+T2 sh11 cell=(162,219) PROBE0 nodes=30533
+T2 sh2 cell=(166,105) PROBE0 nodes=438
+T2 sh20 cell=(168,195) PROBE0 nodes=12439
+T2 sh18 cell=(255,70) PROBE0 nodes=19390
+T2 sh16 cell=(235,134) PROBE0 nodes=252
+T2 sh10 cell=(193,266) PROBE0 nodes=22114
+T2 sh10 cell=(121,282) PROBE0 nodes=4908
+T2 sh23 cell=(167,204) PROBE0 nodes=17310
+T2 sh13 cell=(202,207) PROBE0 nodes=19875
+T2 sh1 cell=(265,214) PROBE0 nodes=675
+T2 sh13 cell=(196,215) PROBE0 nodes=14565
+T2 sh13 cell=(272,221) PROBE0 nodes=389
+T2 sh1 cell=(139,228) PROBE0 nodes=12153
+T2 sh22 cell=(192,205) PROBE0 nodes=21261
+T2 sh20 cell=(200,201) PROBE0 nodes=27494
+T2 sh10 cell=(128,291) PROBE0 nodes=3787
+T2 sh22 cell=(189,208) PROBE0 nodes=18793
+T2 sh1 cell=(118,273) PROBE0 nodes=3330
+T2 sh11 cell=(254,243) PROBE0 nodes=31342
+T2 sh23 cell=(175,214) PROBE0 nodes=24581
+T2 sh4 cell=(131,22) PROBE0 nodes=31216
+T2 sh19 cell=(208,167) PROBE0 nodes=21272
+T2 sh22 cell=(169,214) PROBE0 nodes=15960
+T2 sh22 cell=(269,222) PROBE0 nodes=356
+T2 sh22 cell=(123,230) PROBE0 nodes=2134
+T2 sh23 cell=(171,220) PROBE0 nodes=20659
+T2 sh23 cell=(112,223) PROBE0 nodes=268
+T2 sh13 cell=(120,283) PROBE0 nodes=4269
+T2 sh23 cell=(166,225) PROBE0 nodes=20425
+T2 sh23 cell=(125,230) PROBE0 nodes=2193
+T2 sh22 cell=(123,286) PROBE0 nodes=7691
+T2 sh20 cell=(180,205) PROBE0 nodes=12802
+T2 sh23 cell=(228,237) PROBE0 nodes=21115
+T2 sh20 cell=(257,206) PROBE0 nodes=13141
+T2 sh21 cell=(235,130) PROBE0 nodes=17949
+T2 sh20 cell=(141,214) PROBE0 nodes=22278
+T2 sh5 cell=(164,221) PROBE0 nodes=18664
+T2 sh15 cell=(176,101) PROBE0 nodes=21437
+T2 sh16 cell=(119,220) PROBE0 nodes=165
+T2 sh11 cell=(250,209) PROBE0 nodes=129
+T2 sh16 cell=(235,108) PROBE0 nodes=290
+T2 sh8 cell=(185,106) PROBE0 nodes=3994
+T2 sh20 cell=(265,224) PROBE0 nodes=21024
+T2 sh5 cell=(217,228) PROBE0 nodes=21020
+T2 sh23 cell=(196,199) PROBE0 nodes=21175
+T2 sh18 cell=(220,113) PROBE0 nodes=21379
+T2 sh14 cell=(254,215) PROBE0 nodes=512
+T2 sh20 cell=(257,234) PROBE0 nodes=27260
+T2 sh8 cell=(299,124) PROBE0 nodes=27376
+T2 sh3 cell=(60,103) PROBE0 nodes=29875
+T2 sh16 cell=(197,162) PROBE0 nodes=21657
+T2 sh15 cell=(164,113) PROBE0 nodes=26568
+T2 sh14 cell=(131,222) PROBE0 nodes=13122
+T2 sh10 cell=(240,103) PROBE0 nodes=235
+T2 sh1 cell=(320,115) PROBE0 nodes=30679
+T2 sh3 cell=(184,105) PROBE0 nodes=9958
+T2 sh14 cell=(214,229) PROBE0 nodes=27139
+T2 sh18 cell=(238,121) PROBE0 nodes=17744
+T2 sh8 cell=(127,134) PROBE0 nodes=54
+T2 sh19 cell=(130,285) PROBE0 nodes=7002
+T2 sh11 cell=(164,107) PROBE0 nodes=932
+T2 sh2 cell=(276,193) PROBE0 nodes=685
+T2 sh4 cell=(177,136) PROBE0 nodes=21699
+T2 sh22 cell=(314,97) PROBE0 nodes=15806
+T2 sh17 cell=(277,202) PROBE0 nodes=7096
+T2 sh17 cell=(287,210) PROBE0 nodes=146
+T2 sh2 cell=(178,217) PROBE0 nodes=12138
+T2 sh2 cell=(116,221) PROBE0 nodes=172
+T2 sh17 cell=(161,222) PROBE0 nodes=23391
+T2 sh17 cell=(121,284) PROBE0 nodes=3801
+T2 sh5 cell=(306,129) PROBE0 nodes=20205
+T2 sh19 cell=(324,101) PROBE0 nodes=30690
+probe[t=1302s]: 5966/6184 起点被证伪，剩 218
+DEATH liveend=0 estate=889305 reach=488545 dyn=161548 flow=0 geom=52345
+DYN shard16: 428268 calls, 161548 refuted (38%)
+T2 sh11 cell=(175,150) PROBE0 nodes=21738
+T2 sh14 cell=(90,165) PROBE0 nodes=51
+T2 sh10 cell=(171,114) PROBE0 nodes=6222
+T2 sh7 cell=(239,136) PROBE0 nodes=215
+probe[t=1314s]: 5973/6184 起点被证伪，剩 211
+DEATH liveend=0 estate=863055 reach=475252 dyn=156201 flow=0 geom=51585
+DYN shard7: 417876 calls, 156201 refuted (37%)
+T2 sh14 cell=(237,144) PROBE0 nodes=217
+T2 sh23 cell=(267,216) PROBE0 nodes=342
+T2 sh23 cell=(89,98) PROBE0 nodes=638
+T2 sh1 cell=(200,211) PROBE0 nodes=19779
+T2 sh23 cell=(320,95) PROBE0 nodes=16738
+T3[t=1322s] shard7 r0 #0 cell=(179,84) sc=71716 nodes=64752 r=0
+T3[t=1323s] shard16 r0 #0 cell=(155,81) sc=71719 nodes=136638 r=0
+probe[t=1323s]: 5970/6184 起点被证伪，剩 214
+DEATH liveend=0 estate=890644 reach=489545 dyn=159912 flow=0 geom=53764
+DYN shard17: 424113 calls, 159912 refuted (38%)
+T2 sh10 cell=(269,192) PROBE0 nodes=13561
+T3[t=1327s] shard7 r0 #1 cell=(187,70) sc=71712 nodes=34309 r=0
+T2 sh2 cell=(137,60) PROBE0 nodes=20023
+T2 sh1 cell=(135,286) PROBE0 nodes=3246
+T2 sh1 cell=(245,150) PROBE0 nodes=2021
+T2 sh1 cell=(251,208) PROBE0 nodes=6655
+T2 sh11 cell=(182,215) PROBE0 nodes=9324
+T2 sh19 cell=(254,257) PROBE0 nodes=28091
+T2 sh19 cell=(98,163) PROBE0 nodes=65
+probe[t=1334s]: 5968/6184 起点被证伪，剩 216
+DEATH liveend=0 estate=884899 reach=488407 dyn=161781 flow=0 geom=52143
+DYN shard19: 428306 calls, 161781 refuted (38%)
+T2 sh21 cell=(243,146) PROBE0 nodes=18751
+T2 sh3 cell=(242,135) PROBE0 nodes=18163
+probe[t=1336s]: 5961/6184 起点被证伪，剩 223
+DEATH liveend=0 estate=880288 reach=487440 dyn=161882 flow=0 geom=51121
+DYN shard2: 427851 calls, 161882 refuted (38%)
+T2 sh8 cell=(148,207) PROBE0 nodes=11284
+T2 sh8 cell=(132,289) PROBE0 nodes=3779
+T3[t=1338s] shard19 r0 #0 cell=(191,97) sc=71717 nodes=34359 r=0
+T3[t=1341s] shard7 r0 #2 cell=(179,89) sc=71712 nodes=81657 r=0
+probe[t=1343s]: 5967/6184 起点被证伪，剩 217
+DEATH liveend=0 estate=899966 reach=493174 dyn=162551 flow=0 geom=54439
+DYN shard10: 431195 calls, 162551 refuted (38%)
+probe[t=1346s]: 5968/6184 起点被证伪，剩 216
+DEATH liveend=0 estate=876195 reach=482497 dyn=160080 flow=0 geom=51472
+DYN shard14: 423582 calls, 160080 refuted (38%)
+T2 sh11 cell=(313,110) PROBE0 nodes=15067
+probe[t=1346s]: 5971/6184 起点被证伪，剩 213
+DEATH liveend=0 estate=900633 reach=496109 dyn=162167 flow=0 geom=55127
+DYN shard23: 434057 calls, 162167 refuted (37%)
+T2 sh20 cell=(211,130) PROBE0 nodes=3756
+T2 sh1 cell=(142,223) PROBE0 nodes=17082
+T2 sh5 cell=(120,275) PROBE0 nodes=3309
+T2 sh13 cell=(152,213) PROBE0 nodes=12342
+T2 sh20 cell=(306,113) PROBE0 nodes=10581
+probe[t=1357s]: 5965/6184 起点被证伪，剩 219
+DEATH liveend=0 estate=893250 reach=493760 dyn=163074 flow=0 geom=53373
+DYN shard1: 433532 calls, 163074 refuted (38%)
+T3[t=1357s] shard23 r0 #0 cell=(167,37) sc=71716 nodes=76528 r=0
+T2 sh8 cell=(184,223) PROBE0 nodes=15605
+T2 sh13 cell=(141,224) PROBE0 nodes=19909
+T3[t=1361s] shard23 r0 #1 cell=(181,85) sc=71712 nodes=34247 r=0
+T2 sh8 cell=(167,116) PROBE0 nodes=6199
+T3[t=1369s] shard1 r0 #0 cell=(152,77) sc=71715 nodes=95067 r=0
+T2 sh8 cell=(167,198) PROBE0 nodes=11347
+T2 sh20 cell=(239,104) PROBE0 nodes=289
+T2 sh20 cell=(101,164) PROBE0 nodes=147
+T2 sh22 cell=(149,204) PROBE0 nodes=22467
+probe[t=1378s]: 5962/6184 起点被证伪，剩 222
+DEATH liveend=0 estate=897675 reach=492962 dyn=165885 flow=0 geom=51904
+DYN shard20: 439483 calls, 165885 refuted (38%)
+T2 sh5 cell=(268,225) PROBE0 nodes=20995
+probe[t=1383s]: 5978/6184 起点被证伪，剩 206
+DEATH liveend=0 estate=864256 reach=473044 dyn=160105 flow=0 geom=49255
+DYN shard11: 422737 calls, 160105 refuted (38%)
+probe[t=1391s]: 5963/6184 起点被证伪，剩 221
+DEATH liveend=0 estate=895769 reach=494745 dyn=163520 flow=0 geom=52617
+DYN shard4: 435168 calls, 163520 refuted (38%)
+T2 sh22 cell=(291,130) PROBE0 nodes=1864
+T2 sh13 cell=(232,137) PROBE0 nodes=245
+T2 sh13 cell=(325,98) PROBE0 nodes=30661
+probe[t=1399s]: 5970/6184 起点被证伪，剩 214
+DEATH liveend=0 estate=897618 reach=492063 dyn=159514 flow=0 geom=55325
+DYN shard8: 427289 calls, 159514 refuted (37%)
+probe[t=1402s]: 5965/6184 起点被证伪，剩 219
+DEATH liveend=0 estate=907067 reach=501605 dyn=164490 flow=0 geom=54619
+DYN shard5: 438196 calls, 164490 refuted (38%)
+probe[t=1404s]: 5964/6184 起点被证伪，剩 220
+DEATH liveend=0 estate=897014 reach=491845 dyn=166488 flow=0 geom=50762
+DYN shard22: 440152 calls, 166488 refuted (38%)
+probe[t=1406s]: 5958/6184 起点被证伪，剩 226
+DEATH liveend=0 estate=900649 reach=493834 dyn=168248 flow=0 geom=50913
+DYN shard13: 443716 calls, 168248 refuted (38%)
+T3[t=1407s] shard5 r0 #0 cell=(181,86) sc=71711 nodes=34249 r=0
+T3[t=1411s] shard5 r0 #1 cell=(185,70) sc=71714 nodes=34309 r=0
+T3[t=1416s] shard5 r0 #2 cell=(190,76) sc=71716 nodes=34390 r=0
+T3[t=1416s] shard4 r0 #0 cell=(164,87) sc=71708 nodes=191184 r=0
+T3[t=1424s] shard17 r0 #0 cell=(156,117) sc=71709 nodes=763738 r=0
+T3[t=1426s] shard5 r0 #3 cell=(189,85) sc=71718 nodes=51697 r=0
+T3[t=1434s] shard4 r0 #1 cell=(152,16) sc=71715 nodes=88923 r=0
+T3[t=1438s] shard2 r0 #0 cell=(107,140) sc=71716 nodes=761209 r=0
+T3[t=1440s] shard5 r0 #4 cell=(142,18) sc=71712 nodes=42931 r=0
+T3[t=1442s] shard16 r0 #1 cell=(123,135) sc=71715 nodes=469836 r=0
+T3[t=1449s] shard14 r0 #0 cell=(87,128) sc=71708 nodes=761476 r=0
+T3[t=1451s] shard16 r0 #2 cell=(191,177) sc=71715 nodes=39365 r=0
+T3[t=1455s] shard16 r0 #3 cell=(160,12) sc=71721 nodes=35422 r=0
+T3[t=1457s] shard5 r0 #5 cell=(135,21) sc=71700 nodes=47277 r=0
+T3[t=1458s] shard19 r0 #1 cell=(125,131) sc=71719 nodes=469835 r=0
+T2 sh6 cell=(249,204) PROBE0 nodes=23660
+T3[t=1467s] shard19 r0 #2 cell=(191,99) sc=71716 nodes=68740 r=0
+T3[t=1470s] shard5 r0 #6 cell=(129,23) sc=71711 nodes=45943 r=0
+T2 sh6 cell=(139,226) PROBE0 nodes=18227
+T3[t=1476s] shard4 r0 #2 cell=(155,25) sc=71712 nodes=175205 r=0
+T3[t=1479s] shard23 r0 #2 cell=(103,121) sc=71706 nodes=469866 r=0
+T3[t=1480s] shard5 r0 #7 cell=(172,24) sc=71714 nodes=76530 r=0
+T3[t=1485s] shard4 r0 #3 cell=(144,26) sc=71719 nodes=59528 r=0
+T3[t=1486s] shard19 r0 #3 cell=(136,16) sc=71706 nodes=53536 r=0
+T3[t=1491s] shard5 r0 #8 cell=(146,26) sc=71725 nodes=45887 r=0
+T2 sh21 cell=(179,186) PROBE0 nodes=29228
+T3[t=1498s] shard4 r0 #4 cell=(141,27) sc=71709 nodes=39642 r=0
+T3[t=1499s] shard5 r0 #9 cell=(126,28) sc=71709 nodes=27134 r=0
+T3[t=1499s] shard19 r0 #4 cell=(135,19) sc=71717 nodes=38330 r=0
+T3[t=1508s] shard4 r0 #5 cell=(168,28) sc=71713 nodes=76528 r=0
+T2 sh18 cell=(180,193) PROBE0 nodes=29242
+T3[t=1519s] shard19 r0 #5 cell=(156,22) sc=71719 nodes=100810 r=0
+T3[t=1525s] shard5 r0 #10 cell=(159,29) sc=71712 nodes=192155 r=0
+T3[t=1528s] shard22 r0 #0 cell=(155,123) sc=71712 nodes=474346 r=0
+T3[t=1531s] shard4 r0 #6 cell=(150,30) sc=71712 nodes=118396 r=0
+T3[t=1531s] shard16 r0 #4 cell=(157,21) sc=71708 nodes=257206 r=0
+DEATH sh11 liveend=0 estate=981160 reach=536071 dyn=184126 flow=0 geom=54335
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=16584 kill=373 nodes=1048576
+ADAPT sh11 rp[P=8192 try=3617 kill=516 14%] pd[P=8192 try=866 kill=14 2%]
+T3[t=1536s] shard5 r0 #11 cell=(170,34) sc=71715 nodes=76528 r=0
+T2 sh18 cell=(279,202) PROBE0 nodes=23665
+T3[t=1539s] shard2 r0 #1 cell=(107,146) sc=71715 nodes=761209 r=0
+T3[t=1541s] shard4 r0 #7 cell=(123,31) sc=71715 nodes=34769 r=0
+T3[t=1542s] shard16 r0 #5 cell=(157,27) sc=71710 nodes=82079 r=0
+T2 sh15 cell=(250,197) PROBE0 nodes=24578
+T2 sh3 cell=(258,205) PROBE0 nodes=23094
+T2 sh21 cell=(256,201) PROBE0 nodes=24170
+T3[t=1548s] shard2 r0 #2 cell=(138,18) sc=71709 nodes=37127 r=0
+T2 sh18 cell=(130,211) PROBE0 nodes=18236
+T2 sh15 cell=(278,203) PROBE0 nodes=23665
+T2 sh18 cell=(257,224) PROBE0 nodes=22603
+T3[t=1555s] shard5 r0 #12 cell=(156,38) sc=71717 nodes=109028 r=0
+T2 sh3 cell=(285,208) PROBE0 nodes=23985
+T3[t=1558s] shard16 r0 #6 cell=(148,28) sc=71709 nodes=105741 r=0
+T2 sh3 cell=(116,215) PROBE0 nodes=18431
+T3[t=1559s] shard2 r0 #3 cell=(124,22) sc=71706 nodes=40962 r=0
+T2 sh3 cell=(262,217) PROBE0 nodes=22976
+T2 sh18 cell=(257,244) PROBE0 nodes=22496
+DEATH sh7 liveend=0 estate=1005672 reach=567814 dyn=174554 flow=0 geom=67338
+PDEV sh7 try=0 kill=0 (0.0%) BJ try=16892 kill=691 nodes=1048576
+ADAPT sh7 rp[P=249 try=6941 kill=1136 16%] pd[P=360 try=3342 kill=482 14%]
+T3[t=1568s] shard19 r0 #6 cell=(153,23) sc=71721 nodes=229703 r=0
+T3[t=1571s] shard5 r0 #13 cell=(154,42) sc=71718 nodes=68874 r=0
+T3[t=1577s] shard19 r0 #7 cell=(163,27) sc=71719 nodes=76530 r=0
+T2 sh3 cell=(218,263) PROBE0 nodes=27868
+T3[t=1582s] shard10 r0 #0 cell=(146,192) sc=71713 nodes=928556 r=0
+T3[t=1583s] shard5 r0 #14 cell=(155,45) sc=71711 nodes=37743 r=0
+T3[t=1584s] shard4 r0 #8 cell=(171,31) sc=71713 nodes=214465 r=0
+T3[t=1586s] shard2 r0 #4 cell=(142,26) sc=71707 nodes=90418 r=0
+T2 sh9 cell=(181,194) PROBE0 nodes=29215
+T3[t=1590s] shard16 r0 #7 cell=(166,30) sc=71719 nodes=135909 r=0
+T3[t=1592s] shard5 r0 #15 cell=(198,56) sc=71717 nodes=47534 r=0
+DEATH sh1 liveend=0 estate=1025740 reach=578113 dyn=181520 flow=0 geom=66944
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=17306 kill=666 nodes=1048576
+ADAPT sh1 rp[P=782 try=6518 kill=1058 16%] pd[P=5201 try=940 kill=23 2%]
+T3[t=1594s] shard23 r0 #3 cell=(159,135) sc=71718 nodes=474346 r=0
+T3[t=1595s] shard2 r0 #5 cell=(137,27) sc=71721 nodes=29655 r=0
+T3[t=1597s] shard5 r0 #16 cell=(176,60) sc=71709 nodes=34696 r=0
+T3[t=1602s] shard16 r0 #8 cell=(151,31) sc=71714 nodes=80888 r=0
+T2 sh12 cell=(116,213) PROBE0 nodes=18458
+T3[t=1603s] shard11 r0 #0 cell=(99,192) sc=71719 nodes=1522928 r=0
+T3[t=1603s] shard19 r0 #8 cell=(154,28) sc=71711 nodes=127278 r=0
+T3[t=1603s] shard5 r0 #17 cell=(136,64) sc=71715 nodes=40158 r=0
+T2 sh6 cell=(195,182) PROBE0 nodes=29234
+T2 sh9 cell=(193,198) PROBE0 nodes=29044
+T3[t=1606s] shard23 r0 #4 cell=(132,40) sc=71711 nodes=39450 r=0
+T2 sh12 cell=(270,223) PROBE0 nodes=23351
+T3[t=1607s] shard16 r0 #9 cell=(155,33) sc=71713 nodes=33485 r=0
+T3[t=1608s] shard5 r0 #18 cell=(185,65) sc=71715 nodes=34307 r=0
+T2 sh6 cell=(183,188) PROBE0 nodes=29223
+T2 sh0 cell=(213,272) PROBE0 nodes=25347
+T2 sh9 cell=(153,202) PROBE0 nodes=23485
+T2 sh12 cell=(215,226) PROBE0 nodes=23424
+T3[t=1612s] shard5 r0 #19 cell=(199,67) sc=71718 nodes=34310 r=0
+T3[t=1613s] shard16 r0 #10 cell=(130,34) sc=71713 nodes=43332 r=0
+DEATH sh20 liveend=0 estate=1017650 reach=566185 dyn=186361 flow=0 geom=61580
+PDEV sh20 try=0 kill=0 (0.0%) BJ try=17171 kill=462 nodes=1048576
+ADAPT sh20 rp[P=1087 try=5197 kill=814 16%] pd[P=8192 try=923 kill=20 2%]
+T3[t=1614s] shard4 r0 #9 cell=(175,33) sc=71717 nodes=110679 r=0
+T2 sh12 cell=(269,236) PROBE0 nodes=23143
+T2 sh15 cell=(211,108) PROBE0 nodes=15872
+T3[t=1618s] shard5 r0 #20 cell=(135,75) sc=71716 nodes=40914 r=0
+T3[t=1618s] shard16 r0 #11 cell=(188,34) sc=71710 nodes=36744 r=0
+T2 sh6 cell=(267,218) PROBE0 nodes=23092
+T2 sh12 cell=(229,260) PROBE0 nodes=26049
+T3[t=1624s] shard4 r0 #10 cell=(128,36) sc=71713 nodes=31025 r=0
+T2 sh0 cell=(113,228) PROBE0 nodes=17189
+T2 sh9 cell=(260,223) PROBE0 nodes=23155
+T3[t=1633s] shard5 r0 #21 cell=(153,79) sc=71717 nodes=94522 r=0
+T3[t=1634s] shard22 r0 #1 cell=(148,149) sc=71712 nodes=761208 r=0
+T3[t=1636s] shard2 r0 #6 cell=(148,30) sc=71709 nodes=206408 r=0
+T3[t=1636s] shard1 r0 #1 cell=(123,161) sc=71713 nodes=1250219 r=0
+T2 sh18 cell=(208,131) PROBE0 nodes=3534
+T3[t=1639s] shard22 r0 #2 cell=(179,85) sc=71716 nodes=40717 r=0
+T3[t=1643s] shard2 r0 #7 cell=(121,31) sc=71722 nodes=27003 r=0
+T3[t=1647s] shard13 r0 #0 cell=(97,193) sc=71717 nodes=928559 r=0
+T3[t=1649s] shard2 r0 #8 cell=(190,32) sc=71708 nodes=48117 r=0
+T3[t=1655s] shard4 r0 #11 cell=(173,37) sc=71716 nodes=115159 r=0
+T3[t=1658s] shard13 r0 #1 cell=(142,28) sc=71716 nodes=30643 r=0
+T3[t=1659s] shard17 r0 #1 cell=(151,191) sc=71712 nodes=928560 r=0
+T3[t=1661s] shard4 r0 #12 cell=(148,40) sc=71716 nodes=40406 r=0
+T2 sh0 cell=(206,111) PROBE0 nodes=15482
+T3[t=1664s] shard19 r0 #9 cell=(176,32) sc=71715 nodes=226105 r=0
+T3[t=1665s] shard5 r0 #22 cell=(146,80) sc=71717 nodes=124887 r=0
+T3[t=1670s] shard2 r0 #9 cell=(153,35) sc=71716 nodes=81670 r=0
+T3[t=1670s] shard5 r0 #23 cell=(186,80) sc=71717 nodes=34328 r=0
+DEATH sh8 liveend=0 estate=1014588 reach=555831 dyn=184126 flow=0 geom=60280
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=16982 kill=494 nodes=1048576
+ADAPT sh8 rp[P=7957 try=3267 kill=464 14%] pd[P=8192 try=893 kill=19 2%]
+T2 sh6 cell=(179,196) PROBE0 nodes=29215
+T3[t=1675s] shard2 r0 #10 cell=(144,40) sc=71712 nodes=37387 r=0
+T3[t=1675s] shard17 r0 #2 cell=(151,17) sc=71718 nodes=46387 r=0
+DEATH sh14 liveend=0 estate=1082923 reach=606807 dyn=193675 flow=0 geom=68248
+PDEV sh14 try=0 kill=0 (0.0%) BJ try=18368 kill=727 nodes=1048576
+ADAPT sh14 rp[P=782 try=6262 kill=1000 16%] pd[P=5201 try=1021 kill=26 3%]
+T3[t=1679s] shard4 r0 #13 cell=(147,41) sc=71714 nodes=123764 r=0
+T3[t=1680s] shard16 r0 #12 cell=(174,38) sc=71719 nodes=201293 r=0
+T3[t=1680s] shard17 r0 #3 cell=(133,19) sc=71720 nodes=36083 r=0
+T3[t=1689s] shard4 r0 #14 cell=(185,43) sc=71714 nodes=59184 r=0
+T3[t=1694s] shard19 r0 #10 cell=(165,33) sc=71715 nodes=114758 r=0
+T3[t=1695s] shard4 r0 #15 cell=(157,51) sc=71713 nodes=45811 r=0
+T3[t=1696s] shard2 r0 #11 cell=(169,47) sc=71718 nodes=53144 r=0
+T3[t=1698s] shard17 r0 #4 cell=(152,20) sc=71711 nodes=80053 r=0
+T3[t=1698s] shard19 r0 #11 cell=(186,40) sc=71717 nodes=36908 r=0
+T3[t=1700s] shard2 r0 #12 cell=(179,53) sc=71707 nodes=21686 r=0
+T3[t=1705s] shard10 r0 #1 cell=(96,130) sc=71711 nodes=469990 r=0
+T2 sh3 cell=(282,195) PROBE0 nodes=23659
+T3[t=1709s] shard2 r0 #13 cell=(186,76) sc=71719 nodes=68741 r=0
+T3[t=1710s] shard4 r0 #16 cell=(187,53) sc=71710 nodes=53085 r=0
+T3[t=1710s] shard16 r0 #13 cell=(175,41) sc=71717 nodes=126885 r=0
+T3[t=1711s] shard19 r0 #12 cell=(132,42) sc=71710 nodes=43211 r=0
+probe[t=1715s]: 5936/6184 起点被证伪，剩 248
+DEATH liveend=0 estate=1019954 reach=602292 dyn=133435 flow=0 geom=97914
+DYN shard6: 406647 calls, 133435 refuted (33%)
+T3[t=1715s] shard4 r0 #17 cell=(186,66) sc=71718 nodes=34307 r=0
+T3[t=1715s] shard16 r0 #14 cell=(185,59) sc=71717 nodes=34693 r=0
+T3[t=1715s] shard2 r0 #14 cell=(151,85) sc=71717 nodes=41053 r=0
+T3[t=1720s] shard17 r0 #5 cell=(154,22) sc=71714 nodes=164029 r=0
+T3[t=1721s] shard14 r0 #1 cell=(125,163) sc=71712 nodes=1250219 r=0
+T3[t=1724s] shard2 r0 #15 cell=(185,85) sc=71718 nodes=49872 r=0
+T3[t=1724s] shard16 r0 #15 cell=(193,63) sc=71724 nodes=49859 r=0
+T3[t=1724s] shard19 r0 #13 cell=(170,46) sc=71715 nodes=40908 r=0
+T3[t=1726s] shard5 r0 #24 cell=(155,83) sc=71719 nodes=288038 r=0
+T2 sh18 cell=(307,134) PROBE0 nodes=27870
+T2 sh3 cell=(266,199) PROBE0 nodes=23044
+T2 sh0 cell=(116,223) PROBE0 nodes=17076
+T3[t=1740s] shard4 r0 #18 cell=(204,68) sc=71713 nodes=137249 r=0
+T3[t=1740s] shard19 r0 #14 cell=(284,52) sc=71714 nodes=49175 r=0
+T2 sh12 cell=(196,185) PROBE0 nodes=29179
+T3[t=1742s] shard5 r0 #25 cell=(140,84) sc=71720 nodes=108712 r=0
+T3[t=1745s] shard16 r0 #16 cell=(203,65) sc=71717 nodes=157978 r=0
+T2 sh15 cell=(186,97) PROBE0 nodes=17424
+T3[t=1747s] shard4 r0 #19 cell=(149,73) sc=71711 nodes=35899 r=0
+T3[t=1749s] shard2 r0 #16 cell=(167,89) sc=71715 nodes=106808 r=0
+T3[t=1750s] shard19 r0 #15 cell=(195,57) sc=71723 nodes=46486 r=0
+T3[t=1750s] shard16 r0 #17 cell=(195,69) sc=71714 nodes=34336 r=0
+T2 sh0 cell=(187,192) PROBE0 nodes=29179
+T3[t=1752s] shard1 r0 #2 cell=(109,149) sc=71713 nodes=470074 r=0
+T3[t=1754s] shard19 r0 #16 cell=(193,59) sc=71714 nodes=34251 r=0
+T3[t=1754s] shard16 r0 #18 cell=(196,74) sc=71723 nodes=34425 r=0
+T3[t=1757s] shard17 r0 #6 cell=(149,23) sc=71715 nodes=135170 r=0
+T3[t=1757s] shard5 r0 #26 cell=(166,88) sc=71719 nodes=53784 r=0
+T2 sh18 cell=(180,181) PROBE0 nodes=29242
+T3[t=1759s] shard19 r0 #17 cell=(201,63) sc=71718 nodes=34393 r=0
+T2 sh9 cell=(231,236) PROBE0 nodes=23030
+probe[t=1762s]: 5933/6184 起点被证伪，剩 251
+DEATH liveend=0 estate=1007446 reach=587931 dyn=139384 flow=0 geom=91394
+DYN shard15: 414594 calls, 139384 refuted (34%)
+T3[t=1762s] shard5 r0 #27 cell=(197,91) sc=71710 nodes=34358 r=0
+T3[t=1762s] shard2 r0 #17 cell=(186,90) sc=71712 nodes=85861 r=0
+T3[t=1762s] shard4 r0 #20 cell=(201,75) sc=71708 nodes=82000 r=0
+T3[t=1763s] shard19 r0 #18 cell=(200,74) sc=71712 nodes=34445 r=0
+T3[t=1770s] shard5 r0 #28 cell=(192,92) sc=71714 nodes=49888 r=0
+T3[t=1771s] shard1 r0 #3 cell=(164,22) sc=71720 nodes=152922 r=0
+T3[t=1772s] shard16 r0 #19 cell=(167,75) sc=71723 nodes=92079 r=0
+T3[t=1772s] shard8 r0 #0 cell=(153,155) sc=71715 nodes=1409162 r=0
+T3[t=1772s] shard17 r0 #7 cell=(148,24) sc=71716 nodes=104532 r=0
+T3[t=1776s] shard19 r0 #19 cell=(166,76) sc=71724 nodes=56193 r=0
+T3[t=1780s] shard2 r0 #18 cell=(189,91) sc=71711 nodes=120197 r=0
+probe[t=1780s]: 5937/6184 起点被证伪，剩 247
+DEATH liveend=0 estate=995867 reach=582703 dyn=141915 flow=0 geom=88158
+DYN shard3: 425020 calls, 141915 refuted (33%)
+probe[t=1782s]: 5934/6184 起点被证伪，剩 250
+DEATH liveend=0 estate=1003678 reach=587522 dyn=141033 flow=0 geom=91034
+DYN shard0: 417834 calls, 141033 refuted (34%)
+T2 sh18 cell=(162,195) PROBE0 nodes=17207
+T3[t=1783s] shard5 r0 #29 cell=(175,93) sc=71719 nodes=48331 r=0
+T2 sh9 cell=(169,116) PROBE0 nodes=22009
+T3[t=1784s] shard17 r0 #8 cell=(124,30) sc=71724 nodes=45681 r=0
+T3[t=1786s] shard8 r0 #1 cell=(129,31) sc=71715 nodes=38733 r=0
+T3[t=1788s] shard16 r0 #20 cell=(162,76) sc=71716 nodes=101896 r=0
+T3[t=1789s] shard0 r0 #0 cell=(190,77) sc=71716 nodes=34827 r=0
+T3[t=1793s] shard4 r0 #21 cell=(155,77) sc=71722 nodes=178177 r=0
+probe[t=1793s]: 5940/6184 起点被证伪，剩 244
+DEATH liveend=0 estate=992954 reach=580746 dyn=139838 flow=0 geom=89595
+DYN shard18: 416967 calls, 139838 refuted (34%)
+T3[t=1795s] shard16 r0 #21 cell=(192,78) sc=71713 nodes=55795 r=0
+T3[t=1796s] shard17 r0 #9 cell=(124,32) sc=71722 nodes=36258 r=0
+probe[t=1797s]: 5935/6184 起点被证伪，剩 249
+DEATH liveend=0 estate=1002416 reach=585921 dyn=140722 flow=0 geom=90008
+DYN shard21: 420677 calls, 140722 refuted (33%)
+T3[t=1799s] shard4 r0 #22 cell=(168,78) sc=71715 nodes=40677 r=0
+T3[t=1803s] shard2 r0 #19 cell=(168,94) sc=71725 nodes=113462 r=0
+T3[t=1803s] shard17 r0 #10 cell=(157,37) sc=71715 nodes=48114 r=0
+T3[t=1805s] shard4 r0 #23 cell=(176,84) sc=71720 nodes=40730 r=0
+T3[t=1805s] shard0 r0 #1 cell=(160,23) sc=71706 nodes=83234 r=0
+T2 sh9 cell=(180,103) PROBE0 nodes=17236
+probe[t=1806s]: 5933/6184 起点被证伪，剩 251
+DEATH liveend=0 estate=1021865 reach=594119 dyn=141758 flow=0 geom=93021
+DYN shard9: 432211 calls, 141758 refuted (33%)
+DEATH sh7 liveend=0 estate=1126242 reach=642702 dyn=192301 flow=0 geom=78677
+PDEV sh7 try=0 kill=0 (0.0%) BJ try=18989 kill=902 nodes=2097152
+ADAPT sh7 rp[P=726 try=9752 kill=1638 17%] pd[P=1289 try=4947 kill=758 15%]
+T3[t=1816s] shard16 r0 #22 cell=(171,79) sc=71718 nodes=88661 r=0
+T3[t=1816s] shard3 r0 #0 cell=(157,35) sc=71711 nodes=147617 r=0
+T3[t=1816s] shard17 r0 #11 cell=(156,46) sc=71709 nodes=41257 r=0
+T3[t=1819s] shard4 r0 #24 cell=(169,89) sc=71717 nodes=57853 r=0
+T3[t=1820s] shard0 r0 #2 cell=(172,27) sc=71716 nodes=77192 r=0
+T3[t=1820s] shard2 r0 #20 cell=(158,96) sc=71724 nodes=81626 r=0
+T3[t=1825s] shard17 r0 #12 cell=(192,52) sc=71716 nodes=53422 r=0
+T3[t=1826s] shard1 r0 #4 cell=(151,25) sc=71723 nodes=211513 r=0
+T3[t=1830s] shard17 r0 #13 cell=(196,72) sc=71721 nodes=34425 r=0
+T3[t=1832s] shard19 r0 #20 cell=(154,78) sc=71715 nodes=285281 r=0
+DEATH sh11 liveend=0 estate=1155906 reach=643118 dyn=211146 flow=0 geom=69738
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=19629 kill=660 nodes=1048576
+ADAPT sh11 rp[P=782 try=6683 kill=1062 16%] pd[P=5201 try=1100 kill=28 3%]
+T3[t=1834s] shard17 r0 #14 cell=(206,78) sc=71719 nodes=34415 r=0
+T3[t=1835s] shard16 r0 #23 cell=(152,82) sc=71717 nodes=101102 r=0
+T3[t=1837s] shard4 r0 #25 cell=(188,90) sc=71717 nodes=137453 r=0
+probe[t=1839s]: 5935/6184 起点被证伪，剩 249
+DEATH liveend=0 estate=1010470 reach=592057 dyn=142586 flow=0 geom=91645
+DYN shard12: 424738 calls, 142586 refuted (34%)
+T3[t=1840s] shard16 r0 #24 cell=(186,82) sc=71718 nodes=34319 r=0
+T3[t=1840s] shard2 r0 #21 cell=(157,97) sc=71715 nodes=123222 r=0
+T3[t=1846s] shard12 r0 #0 cell=(193,93) sc=71713 nodes=34802 r=0
+T3[t=1846s] shard4 r0 #26 cell=(170,94) sc=71704 nodes=40609 r=0
+T3[t=1847s] shard17 r0 #15 cell=(173,85) sc=71724 nodes=81672 r=0
+DEATH sh23 liveend=0 estate=1141940 reach=633538 dyn=210232 flow=0 geom=68315
+PDEV sh23 try=0 kill=0 (0.0%) BJ try=19277 kill=527 nodes=1048576
+ADAPT sh23 rp[P=1883 try=5161 kill=801 16%] pd[P=8192 try=1041 kill=18 2%]
+T3[t=1850s] shard19 r0 #21 cell=(177,83) sc=71711 nodes=106250 r=0
+DEATH sh20 liveend=0 estate=1137485 reach=638739 dyn=207627 flow=0 geom=70713
+PDEV sh20 try=0 kill=0 (0.0%) BJ try=19268 kill=562 nodes=2097152
+ADAPT sh20 rp[P=1289 try=6767 kill=1088 16%] pd[P=8192 try=1104 kill=34 3%]
+T3[t=1851s] shard3 r0 #1 cell=(162,144) sc=71714 nodes=262294 r=0
+T3[t=1852s] shard16 r0 #25 cell=(173,83) sc=71718 nodes=81672 r=0
+T3[t=1853s] shard12 r0 #1 cell=(189,60) sc=71716 nodes=34779 r=0
+T3[t=1853s] shard4 r0 #27 cell=(162,96) sc=71721 nodes=40682 r=0
+T3[t=1856s] shard1 r0 #5 cell=(162,28) sc=71720 nodes=125491 r=0
+T3[t=1861s] shard16 r0 #26 cell=(185,87) sc=71709 nodes=68642 r=0
+T3[t=1862s] shard8 r0 #2 cell=(176,28) sc=71714 nodes=457584 r=0
+T3[t=1862s] shard18 r0 #0 cell=(154,82) sc=71715 nodes=256827 r=0
+T3[t=1866s] shard1 r0 #6 cell=(167,31) sc=71721 nodes=76597 r=0
+T3[t=1867s] shard4 r0 #28 cell=(161,97) sc=71717 nodes=54493 r=0
+T3[t=1867s] shard23 r0 #5 cell=(138,146) sc=71712 nodes=1124754 r=0
+DEATH sh22 liveend=0 estate=1161401 reach=647510 dyn=212156 flow=0 geom=70002
+PDEV sh22 try=0 kill=0 (0.0%) BJ try=19721 kill=660 nodes=1048576
+ADAPT sh22 rp[P=782 try=6402 kill=1020 16%] pd[P=5201 try=1093 kill=29 3%]
+T3[t=1871s] shard19 r0 #22 cell=(162,84) sc=71717 nodes=136648 r=0
+T3[t=1876s] shard8 r0 #3 cell=(154,10) sc=71714 nodes=41105 r=0
+T3[t=1878s] shard11 r0 #1 cell=(126,164) sc=71709 nodes=1250187 r=0
+T3[t=1878s] shard16 r0 #27 cell=(168,92) sc=71714 nodes=57226 r=0
+T3[t=1884s] shard8 r0 #4 cell=(133,17) sc=71709 nodes=21724 r=0
+T3[t=1885s] shard19 r0 #23 cell=(175,85) sc=71718 nodes=56193 r=0
+T3[t=1885s] shard16 r0 #28 cell=(159,93) sc=71720 nodes=35500 r=0
+T3[t=1890s] shard19 r0 #24 cell=(151,87) sc=71716 nodes=34198 r=0
+T3[t=1892s] shard4 r0 #29 cell=(168,98) sc=71713 nodes=97386 r=0
+T3[t=1893s] shard11 r0 #2 cell=(189,149) sc=71715 nodes=49247 r=0
+T3[t=1893s] shard3 r0 #2 cell=(194,160) sc=71706 nodes=278400 r=0
+T3[t=1895s] shard16 r0 #29 cell=(184,96) sc=71714 nodes=68999 r=0
+T3[t=1900s] shard16 r0 #30 cell=(187,97) sc=71714 nodes=34454 r=0
+T3[t=1901s] shard5 r0 #30 cell=(149,113) sc=71712 nodes=446478 r=0
+T3[t=1903s] shard19 r0 #25 cell=(156,94) sc=71715 nodes=64305 r=0
+T3[t=1904s] shard1 r0 #7 cell=(150,32) sc=71721 nodes=173268 r=0
+T3[t=1905s] shard17 r0 #16 cell=(160,86) sc=71724 nodes=325029 r=0
+T3[t=1907s] shard11 r0 #3 cell=(137,17) sc=71721 nodes=37666 r=0
+DEATH sh13 liveend=0 estate=1127286 reach=623966 dyn=212302 flow=0 geom=64062
+PDEV sh13 try=0 kill=0 (0.0%) BJ try=19155 kill=399 nodes=1048576
+ADAPT sh13 rp[P=1419 try=5526 kill=870 16%] pd[P=8192 try=1051 kill=23 2%]
+T3[t=1910s] shard1 r0 #8 cell=(188,32) sc=71710 nodes=41042 r=0
+T3[t=1910s] shard8 r0 #5 cell=(136,20) sc=71718 nodes=74882 r=0
+T3[t=1914s] shard15 r0 #0 cell=(122,150) sc=71715 nodes=477864 r=0
+T3[t=1920s] shard17 r0 #17 cell=(167,91) sc=71714 nodes=57868 r=0
+T3[t=1925s] shard15 r0 #1 cell=(125,99) sc=71715 nodes=61195 r=0
+T3[t=1928s] shard17 r0 #18 cell=(161,93) sc=71719 nodes=36807 r=0
+T3[t=1928s] shard13 r0 #2 cell=(105,143) sc=71715 nodes=1125538 r=0
+T3[t=1931s] shard8 r0 #6 cell=(144,22) sc=71716 nodes=72780 r=0
+T3[t=1933s] shard17 r0 #19 cell=(189,97) sc=71720 nodes=34363 r=0
+T3[t=1934s] shard1 r0 #9 cell=(129,39) sc=71713 nodes=66217 r=0
+T3[t=1936s] shard11 r0 #4 cell=(152,18) sc=71703 nodes=83541 r=0
+T3[t=1944s] shard13 r0 #3 cell=(145,15) sc=71716 nodes=40254 r=0
+DEATH sh10 liveend=0 estate=1176624 reach=652499 dyn=215019 flow=0 geom=71327
+PDEV sh10 try=0 kill=0 (0.0%) BJ try=19848 kill=586 nodes=1048576
+ADAPT sh10 rp[P=1093 try=5120 kill=785 15%] pd[P=8192 try=1090 kill=23 2%]
+T3[t=1952s] shard21 r0 #0 cell=(131,147) sc=71706 nodes=477665 r=0
+T3[t=1953s] shard1 r0 #10 cell=(133,41) sc=71713 nodes=60885 r=0
+T3[t=1954s] shard11 r0 #5 cell=(123,25) sc=71712 nodes=60675 r=0
+T3[t=1960s] shard11 r0 #6 cell=(179,31) sc=71716 nodes=44506 r=0
+T3[t=1961s] shard1 r0 #11 cell=(150,42) sc=71717 nodes=52068 r=0
+T3[t=1962s] shard13 r0 #4 cell=(141,17) sc=71712 nodes=43693 r=0
+T3[t=1969s] shard8 r0 #7 cell=(178,24) sc=71714 nodes=262163 r=0
+T3[t=1971s] shard1 r0 #12 cell=(179,55) sc=71706 nodes=32733 r=0
+DEATH sh14 liveend=0 estate=1227271 reach=701755 dyn=214513 flow=0 geom=83857
+PDEV sh14 try=0 kill=0 (0.0%) BJ try=20868 kill=985 nodes=1048576
+ADAPT sh14 rp[P=528 try=11452 kill=1948 17%] pd[P=7369 try=1412 kill=75 5%]
+T3[t=1972s] shard17 r0 #20 cell=(169,99) sc=71705 nodes=155172 r=0
+T3[t=1978s] shard11 r0 #7 cell=(178,34) sc=71718 nodes=56650 r=0
+T3[t=1978s] shard1 r0 #13 cell=(194,56) sc=71721 nodes=49966 r=0
+T3[t=1979s] shard0 r0 #3 cell=(125,133) sc=71719 nodes=469835 r=0
+T3[t=1981s] shard4 r0 #30 cell=(158,110) sc=71696 nodes=324279 r=0
+T3[t=1982s] shard1 r0 #14 cell=(192,62) sc=71717 nodes=34307 r=0
+T3[t=1989s] shard1 r0 #15 cell=(139,65) sc=71718 nodes=41603 r=0
+T3[t=1999s] shard13 r0 #5 cell=(150,22) sc=71712 nodes=161586 r=0
+T3[t=2003s] shard1 r0 #16 cell=(200,68) sc=71719 nodes=85837 r=0
+T3[t=2005s] shard8 r0 #8 cell=(150,26) sc=71712 nodes=169335 r=0
+T3[t=2005s] shard0 r0 #4 cell=(183,225) sc=71705 nodes=170208 r=0
+T3[t=2008s] shard14 r0 #2 cell=(158,134) sc=71723 nodes=1194159 r=0
+T3[t=2008s] shard1 r0 #17 cell=(205,69) sc=71707 nodes=34483 r=0
+T3[t=2011s] shard11 r0 #8 cell=(157,39) sc=71714 nodes=148529 r=0
+T3[t=2012s] shard6 r0 #0 cell=(124,184) sc=71714 nodes=935926 r=0
+T3[t=2013s] shard1 r0 #18 cell=(210,74) sc=71716 nodes=34476 r=0
+T3[t=2018s] shard7 r0 #3 cell=(113,177) sc=71712 nodes=2979603 r=0
+T3[t=2018s] shard11 r0 #9 cell=(158,40) sc=71714 nodes=40919 r=0
+T3[t=2018s] shard12 r0 #2 cell=(122,146) sc=71709 nodes=477665 r=0
+T3[t=2021s] shard8 r0 #9 cell=(132,28) sc=71715 nodes=51709 r=0
+T3[t=2023s] shard1 r0 #19 cell=(191,77) sc=71717 nodes=53981 r=0
+T3[t=2027s] shard6 r0 #1 cell=(171,34) sc=71713 nodes=77221 r=0
+T3[t=2027s] shard5 r0 #31 cell=(154,114) sc=71699 nodes=475611 r=0
+T3[t=2032s] shard13 r0 #6 cell=(145,23) sc=71715 nodes=125246 r=0
+T3[t=2034s] shard6 r0 #2 cell=(186,70) sc=71713 nodes=34782 r=0
+T3[t=2040s] shard11 r0 #10 cell=(155,41) sc=71719 nodes=84502 r=0
+T3[t=2042s] shard8 r0 #10 cell=(156,30) sc=71708 nodes=150351 r=0
+T3[t=2045s] shard11 r0 #11 cell=(185,45) sc=71717 nodes=36953 r=0
+T3[t=2046s] shard1 r0 #20 cell=(147,79) sc=71714 nodes=90953 r=0
+T3[t=2047s] shard8 r0 #11 cell=(125,33) sc=71716 nodes=32451 r=0
+T3[t=2051s] shard1 r0 #21 cell=(205,79) sc=71711 nodes=34445 r=0
+T3[t=2052s] shard11 r0 #12 cell=(157,49) sc=71711 nodes=45898 r=0
+T3[t=2053s] shard14 r0 #3 cell=(155,21) sc=71710 nodes=177935 r=0
+T3[t=2057s] shard1 r0 #22 cell=(174,80) sc=71718 nodes=40715 r=0
+T3[t=2058s] shard17 r0 #21 cell=(158,112) sc=71705 nodes=324279 r=0
+T3[t=2058s] shard8 r0 #12 cell=(163,35) sc=71710 nodes=76528 r=0
+T3[t=2064s] shard11 r0 #13 cell=(148,76) sc=71707 nodes=54406 r=0
+T3[t=2068s] shard7 r0 #4 cell=(143,21) sc=71714 nodes=143485 r=0
+T3[t=2074s] shard8 r0 #13 cell=(152,36) sc=71717 nodes=49841 r=0
+T3[t=2075s] shard19 r0 #26 cell=(150,126) sc=71723 nodes=630061 r=0
+T3[t=2078s] shard13 r0 #7 cell=(142,24) sc=71713 nodes=167513 r=0
+T3[t=2082s] shard7 r0 #5 cell=(131,23) sc=71721 nodes=40033 r=0
+T3[t=2087s] shard1 r0 #23 cell=(164,82) sc=71712 nodes=174344 r=0
+T3[t=2088s] shard11 r0 #14 cell=(161,79) sc=71718 nodes=136648 r=0
+T3[t=2097s] shard8 r0 #14 cell=(129,37) sc=71710 nodes=57809 r=0
+T3[t=2101s] shard2 r0 #22 cell=(108,122) sc=71713 nodes=935978 r=0
+T3[t=2104s] shard13 r0 #8 cell=(129,25) sc=71709 nodes=70372 r=0
+DEATH sh20 liveend=0 estate=1256928 reach=710782 dyn=229200 flow=0 geom=79578
+PDEV sh20 try=0 kill=0 (0.0%) BJ try=21365 kill=627 nodes=3145728
+ADAPT sh20 rp[P=2100 try=8376 kill=1368 16%] pd[P=8192 try=1247 kill=38 3%]
+T3[t=2112s] shard11 r0 #15 cell=(163,83) sc=71715 nodes=136654 r=0
+DEATH sh18 liveend=0 estate=1151908 reach=694396 dyn=146680 flow=0 geom=116195
+PDEV sh18 try=0 kill=0 (0.0%) BJ try=18783 kill=1893 nodes=1048576
+ADAPT sh18 rp[P=125 try=19038 kill=3367 18%] pd[P=222 try=6429 kill=1037 16%]
+T3[t=2118s] shard11 r0 #16 cell=(152,84) sc=71719 nodes=36711 r=0
+T3[t=2118s] shard14 r0 #4 cell=(156,26) sc=71713 nodes=233983 r=0
+T3[t=2119s] shard13 r0 #9 cell=(147,31) sc=71716 nodes=95969 r=0
+DEATH sh23 liveend=0 estate=1270398 reach=712111 dyn=232305 flow=0 geom=78643
+PDEV sh23 try=0 kill=0 (0.0%) BJ try=21526 kill=612 nodes=1048576
+ADAPT sh23 rp[P=835 try=7085 kill=1140 16%] pd[P=8192 try=1213 kill=28 2%]
+T3[t=2123s] shard9 r0 #0 cell=(117,201) sc=71711 nodes=935926 r=0
+T3[t=2127s] shard13 r0 #10 cell=(189,31) sc=71715 nodes=49208 r=0
+T3[t=2127s] shard11 r0 #17 cell=(152,86) sc=71719 nodes=50709 r=0
+T3[t=2135s] shard8 r0 #15 cell=(181,37) sc=71713 nodes=104201 r=0
+DEATH sh22 liveend=0 estate=1281421 reach=720701 dyn=231277 flow=0 geom=80247
+PDEV sh22 try=0 kill=0 (0.0%) BJ try=21818 kill=834 nodes=2097152
+ADAPT sh22 rp[P=801 try=8943 kill=1476 17%] pd[P=4545 try=1455 kill=79 5%]
+T3[t=2137s] shard11 r0 #18 cell=(190,86) sc=71717 nodes=68801 r=0
+T3[t=2140s] shard9 r0 #1 cell=(161,38) sc=71713 nodes=77192 r=0
+T3[t=2146s] shard8 r0 #16 cell=(159,45) sc=71707 nodes=29816 r=0
+T3[t=2148s] shard11 r0 #19 cell=(191,89) sc=71710 nodes=53882 r=0
+T3[t=2156s] shard1 r0 #24 cell=(151,83) sc=71715 nodes=296281 r=0
+T3[t=2157s] shard11 r0 #20 cell=(160,92) sc=71718 nodes=36500 r=0
+T3[t=2159s] shard7 r0 #6 cell=(176,24) sc=71709 nodes=228766 r=0
+T3[t=2165s] shard8 r0 #17 cell=(189,51) sc=71716 nodes=59587 r=0
+T3[t=2166s] shard11 r0 #21 cell=(172,96) sc=71708 nodes=40611 r=0
+T3[t=2169s] shard1 r0 #25 cell=(172,84) sc=71723 nodes=73480 r=0
+T3[t=2170s] shard14 r0 #5 cell=(155,27) sc=71718 nodes=168775 r=0
+DEATH sh16 liveend=0 estate=1342154 reach=751422 dyn=249463 flow=0 geom=81545
+PDEV sh16 try=0 kill=0 (0.0%) BJ try=22829 kill=668 nodes=1048576
+ADAPT sh16 rp[P=1284 try=6945 kill=1096 16%] pd[P=8192 try=1611 kill=97 6%]
+T3[t=2176s] shard13 r0 #11 cell=(166,32) sc=71721 nodes=214459 r=0
+T3[t=2180s] shard8 r0 #18 cell=(191,53) sc=71706 nodes=48382 r=0
+DEATH sh15 liveend=0 estate=1196419 reach=715349 dyn=155488 flow=0 geom=117647
+PDEV sh15 try=0 kill=0 (0.0%) BJ try=19541 kill=1963 nodes=1048576
+ADAPT sh15 rp[P=643 try=16682 kill=2913 17%] pd[P=2311 try=7112 kill=1155 16%]
+T3[t=2182s] shard13 r0 #12 cell=(180,34) sc=71716 nodes=36745 r=0
+T3[t=2187s] shard12 r0 #3 cell=(111,123) sc=71720 nodes=462086 r=0
+T3[t=2188s] shard8 r0 #19 cell=(193,55) sc=71721 nodes=51906 r=0
+T3[t=2188s] shard7 r0 #7 cell=(148,26) sc=71711 nodes=121721 r=0
+T3[t=2193s] shard14 r0 #6 cell=(133,29) sc=71717 nodes=92332 r=0
+T3[t=2195s] shard20 r0 #0 cell=(147,163) sc=71715 nodes=3437638 r=0
+T3[t=2195s] shard4 r0 #31 cell=(150,118) sc=71714 nodes=847347 r=0
+T3[t=2197s] shard12 r0 #4 cell=(132,68) sc=71711 nodes=33608 r=0
+T3[t=2198s] shard13 r0 #13 cell=(153,37) sc=71702 nodes=49841 r=0
+T3[t=2198s] shard8 r0 #20 cell=(191,61) sc=71715 nodes=49865 r=0
+T3[t=2198s] shard7 r0 #8 cell=(145,27) sc=71710 nodes=62398 r=0
+T3[t=2203s] shard8 r0 #21 cell=(189,65) sc=71718 nodes=34308 r=0
+T3[t=2208s] shard9 r0 #2 cell=(165,29) sc=71712 nodes=204361 r=0
+T3[t=2211s] shard19 r0 #27 cell=(97,127) sc=71707 nodes=469917 r=0
+DEATH sh10 liveend=0 estate=1296907 reach=727965 dyn=234106 flow=0 geom=82227
+PDEV sh10 try=0 kill=0 (0.0%) BJ try=21945 kill=730 nodes=2097152
+ADAPT sh10 rp[P=1114 try=7773 kill=1253 16%] pd[P=8192 try=1263 kill=36 3%]
+T3[t=2214s] shard14 r0 #7 cell=(179,29) sc=71724 nodes=64611 r=0
+T3[t=2216s] shard13 r0 #14 cell=(189,37) sc=71710 nodes=52771 r=0
+T3[t=2220s] shard3 r0 #3 cell=(116,182) sc=71717 nodes=935926 r=0
+T3[t=2234s] shard1 r0 #26 cell=(157,87) sc=71717 nodes=325024 r=0
+T3[t=2236s] shard7 r0 #9 cell=(163,29) sc=71712 nodes=135911 r=0
+T3[t=2239s] shard3 r0 #4 cell=(163,23) sc=71717 nodes=77192 r=0
+T3[t=2247s] shard7 r0 #10 cell=(158,32) sc=71714 nodes=76529 r=0
+T3[t=2247s] shard13 r0 #15 cell=(159,39) sc=71712 nodes=102337 r=0
+T3[t=2247s] shard8 r0 #22 cell=(203,67) sc=71714 nodes=239864 r=0
+T3[t=2251s] shard14 r0 #8 cell=(164,30) sc=71723 nodes=229530 r=0
+T3[t=2252s] shard8 r0 #23 cell=(203,71) sc=71714 nodes=34413 r=0
+T3[t=2253s] shard1 r0 #27 cell=(154,88) sc=71715 nodes=110994 r=0
+T3[t=2259s] shard1 r0 #28 cell=(188,92) sc=71714 nodes=34365 r=0
+T3[t=2261s] shard7 r0 #11 cell=(174,34) sc=71716 nodes=49164 r=0
+DEATH sh0 liveend=0 estate=1228165 reach=731978 dyn=164282 flow=0 geom=117895
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=20123 kill=1971 nodes=1048576
+ADAPT sh0 rp[P=218 try=16379 kill=2846 17%] pd[P=3031 try=6458 kill=1029 16%]
+T3[t=2264s] shard10 r0 #2 cell=(130,178) sc=71713 nodes=2277974 r=0
+T3[t=2267s] shard5 r0 #32 cell=(150,120) sc=71704 nodes=868131 r=0
+T3[t=2267s] shard14 r0 #9 cell=(128,34) sc=71715 nodes=38807 r=0
+T3[t=2267s] shard8 r0 #24 cell=(166,74) sc=71712 nodes=56783 r=0
+T3[t=2273s] shard14 r0 #10 cell=(186,34) sc=71711 nodes=36740 r=0
+T3[t=2277s] shard3 r0 #5 cell=(126,36) sc=71714 nodes=110930 r=0
+T3[t=2281s] shard7 r0 #12 cell=(158,38) sc=71712 nodes=102410 r=0
+T3[t=2283s] shard10 r0 #3 cell=(142,20) sc=71708 nodes=73229 r=0
+T3[t=2287s] shard13 r0 #16 cell=(165,41) sc=71715 nodes=119313 r=0
+T3[t=2292s] shard10 r0 #4 cell=(149,21) sc=71724 nodes=51817 r=0
+T3[t=2292s] shard13 r0 #17 cell=(186,42) sc=71710 nodes=37290 r=0
+T3[t=2292s] shard3 r0 #6 cell=(160,60) sc=71716 nodes=36952 r=0
+T3[t=2298s] shard7 r0 #13 cell=(151,39) sc=71713 nodes=49190 r=0
+T3[t=2299s] shard14 r0 #11 cell=(158,44) sc=71713 nodes=75261 r=0
+DEATH sh6 liveend=0 estate=1265074 reach=758716 dyn=164036 flow=0 geom=124884
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=20578 kill=2261 nodes=1048576
+ADAPT sh6 rp[P=413 try=14447 kill=2487 17%] pd[P=148 try=5990 kill=946 16%]
+T3[t=2303s] shard13 r0 #18 cell=(159,49) sc=71711 nodes=41614 r=0
+T3[t=2304s] shard14 r0 #12 cell=(189,57) sc=71707 nodes=34243 r=0
+T3[t=2305s] shard17 r0 #22 cell=(151,115) sc=71714 nodes=868777 r=0
+T3[t=2306s] shard7 r0 #14 cell=(152,40) sc=71723 nodes=46274 r=0
+T3[t=2306s] shard1 r0 #29 cell=(167,95) sc=71720 nodes=196613 r=0
+T3[t=2308s] shard10 r0 #5 cell=(146,22) sc=71711 nodes=102027 r=0
+T3[t=2312s] shard8 r0 #25 cell=(161,77) sc=71716 nodes=230467 r=0
+T3[t=2313s] shard13 r0 #19 cell=(188,52) sc=71715 nodes=60658 r=0
+T3[t=2316s] shard3 r0 #7 cell=(150,16) sc=71705 nodes=53435 r=0
+T3[t=2317s] shard8 r0 #26 cell=(207,77) sc=71718 nodes=34416 r=0
+T3[t=2319s] shard14 r0 #13 cell=(192,60) sc=71716 nodes=102835 r=0
+T3[t=2320s] shard1 r0 #30 cell=(168,100) sc=71703 nodes=52221 r=0
+T3[t=2320s] shard13 r0 #20 cell=(287,55) sc=71716 nodes=33627 r=0
+T3[t=2324s] shard7 r0 #15 cell=(156,42) sc=71713 nodes=73522 r=0
+T3[t=2324s] shard14 r0 #14 cell=(194,64) sc=71720 nodes=34346 r=0
+DEATH sh21 liveend=0 estate=1172023 reach=679505 dyn=176495 flow=0 geom=97394
+PDEV sh21 try=0 kill=0 (0.0%) BJ try=19328 kill=1413 nodes=1048576
+ADAPT sh21 rp[P=7957 try=6572 kill=1048 16%] pd[P=8192 try=4492 kill=662 15%]
+T3[t=2330s] shard8 r0 #27 cell=(172,82) sc=71715 nodes=81672 r=0
+T3[t=2332s] shard13 r0 #21 cell=(197,73) sc=71719 nodes=50979 r=0
+T3[t=2334s] shard4 r0 #32 cell=(118,120) sc=71723 nodes=469981 r=0
+T3[t=2338s] shard14 r0 #15 cell=(165,75) sc=71715 nodes=71126 r=0
+T3[t=2339s] shard16 r0 #31 cell=(153,111) sc=71717 nodes=1705531 r=0
+T3[t=2342s] shard7 r0 #16 cell=(157,45) sc=71709 nodes=58445 r=0
+T3[t=2347s] shard7 r0 #17 cell=(194,58) sc=71711 nodes=34276 r=0
+T3[t=2349s] shard10 r0 #6 cell=(171,25) sc=71721 nodes=127341 r=0
+T3[t=2353s] shard7 r0 #18 cell=(138,76) sc=71712 nodes=33728 r=0
+T3[t=2353s] shard8 r0 #28 cell=(148,84) sc=71724 nodes=99667 r=0
+T3[t=2354s] shard14 r0 #16 cell=(160,76) sc=71714 nodes=63418 r=0
+T3[t=2359s] shard14 r0 #17 cell=(188,78) sc=71717 nodes=34329 r=0
+T3[t=2360s] shard3 r0 #8 cell=(157,29) sc=71710 nodes=193072 r=0
+T3[t=2364s] shard13 r0 #22 cell=(146,78) sc=71715 nodes=102069 r=0
+T3[t=2368s] shard22 r0 #3 cell=(119,191) sc=71713 nodes=2967594 r=0
+T3[t=2372s] shard10 r0 #7 cell=(152,26) sc=71711 nodes=75077 r=0
+T3[t=2375s] shard8 r0 #29 cell=(178,94) sc=71715 nodes=92164 r=0
+T3[t=2376s] shard13 r0 #23 cell=(180,82) sc=71719 nodes=52447 r=0
+T3[t=2376s] shard3 r0 #9 cell=(166,34) sc=71717 nodes=77192 r=0
+T3[t=2380s] shard9 r0 #3 cell=(122,164) sc=71718 nodes=477707 r=0
+T3[t=2383s] shard8 r0 #30 cell=(177,95) sc=71711 nodes=36819 r=0
+T3[t=2384s] shard3 r0 #10 cell=(186,36) sc=71717 nodes=37067 r=0
+DEATH sh23 liveend=0 estate=1390812 reach=786811 dyn=251816 flow=0 geom=89096
+PDEV sh23 try=0 kill=0 (0.0%) BJ try=23623 kill=731 nodes=2097152
+ADAPT sh23 rp[P=589 try=9454 kill=1557 16%] pd[P=7830 try=1350 kill=32 2%]
+DEATH sh18 liveend=0 estate=1279900 reach=789098 dyn=149470 flow=0 geom=139556
+PDEV sh18 try=0 kill=0 (0.0%) BJ try=20880 kill=2292 nodes=2097152
+ADAPT sh18 rp[P=244 try=31795 kill=5710 18%] pd[P=678 try=10454 kill=1755 17%]
+DEATH sh2 liveend=0 estate=1441417 reach=797664 dyn=277456 flow=0 geom=78508
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=24827 kill=556 nodes=1048576
+ADAPT sh2 rp[P=7957 try=4208 kill=576 14%] pd[P=8192 try=1379 kill=30 2%]
+T3[t=2401s] shard7 r0 #19 cell=(155,79) sc=71717 nodes=197693 r=0
+T3[t=2401s] shard5 r0 #33 cell=(119,121) sc=71721 nodes=470155 r=0
+T3[t=2408s] shard3 r0 #11 cell=(154,38) sc=71715 nodes=112767 r=0
+T3[t=2408s] shard13 r0 #24 cell=(154,84) sc=71716 nodes=166275 r=0
+T3[t=2409s] shard14 r0 #18 cell=(169,79) sc=71721 nodes=273788 r=0
+T3[t=2412s] shard10 r0 #8 cell=(149,27) sc=71710 nodes=154126 r=0
+T3[t=2412s] shard8 r0 #31 cell=(165,97) sc=71715 nodes=110832 r=0
+T3[t=2414s] shard9 r0 #4 cell=(139,23) sc=71711 nodes=115004 r=0
+T3[t=2414s] shard13 r0 #25 cell=(154,86) sc=71717 nodes=33725 r=0
+T3[t=2419s] shard7 r0 #20 cell=(148,80) sc=71719 nodes=88909 r=0
+T3[t=2419s] shard13 r0 #26 cell=(195,93) sc=71711 nodes=34378 r=0
+T3[t=2423s] shard10 r0 #9 cell=(125,29) sc=71720 nodes=54003 r=0
+T3[t=2424s] shard7 r0 #21 cell=(181,81) sc=71719 nodes=34297 r=0
+T3[t=2424s] shard13 r0 #27 cell=(183,97) sc=71718 nodes=34560 r=0
+T3[t=2430s] shard14 r0 #19 cell=(150,82) sc=71717 nodes=101242 r=0
+T3[t=2430s] shard9 r0 #5 cell=(130,24) sc=71710 nodes=79464 r=0
+T3[t=2434s] shard10 r0 #10 cell=(177,31) sc=71719 nodes=79287 r=0
+T3[t=2437s] shard23 r0 #6 cell=(127,175) sc=71718 nodes=2263601 r=0
+T3[t=2438s] shard17 r0 #23 cell=(159,119) sc=71717 nodes=474349 r=0
+T3[t=2440s] shard10 r0 #11 cell=(189,33) sc=71714 nodes=41578 r=0
+DEATH sh11 liveend=0 estate=1449813 reach=817276 dyn=265773 flow=0 geom=90780
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=24729 kill=923 nodes=1048576
+ADAPT sh11 rp[P=6252 try=10913 kill=1799 16%] pd[P=8192 try=1642 kill=79 5%]
+T3[t=2448s] shard17 r0 #24 cell=(302,120) sc=71720 nodes=20445 r=0
+T3[t=2448s] shard14 r0 #20 cell=(156,84) sc=71718 nodes=88086 r=0
+DEATH sh15 liveend=0 estate=1324611 reach=808756 dyn=159107 flow=0 geom=140678
+PDEV sh15 try=0 kill=0 (0.0%) BJ try=21638 kill=2399 nodes=2097152
+ADAPT sh15 rp[P=117 try=26706 kill=4737 18%] pd[P=4895 try=10553 kill=1768 17%]
+T3[t=2451s] shard9 r0 #6 cell=(121,25) sc=71711 nodes=71906 r=0
+T3[t=2452s] shard10 r0 #12 cell=(167,35) sc=71717 nodes=76528 r=0
+T3[t=2453s] shard3 r0 #12 cell=(143,39) sc=71714 nodes=118340 r=0
+T3[t=2457s] shard10 r0 #13 cell=(185,37) sc=71711 nodes=36745 r=0
+DEATH sh12 liveend=0 estate=1255373 reach=749585 dyn=170839 flow=0 geom=119848
+PDEV sh12 try=0 kill=0 (0.0%) BJ try=20513 kill=2020 nodes=1048576
+ADAPT sh12 rp[P=153 try=17249 kill=3018 17%] pd[P=1380 try=5237 kill=796 15%]
+DEATH sh19 liveend=0 estate=1424258 reach=797956 dyn=268110 flow=0 geom=84132
+PDEV sh19 try=0 kill=0 (0.0%) BJ try=24350 kill=657 nodes=1048576
+ADAPT sh19 rp[P=1239 try=7509 kill=1193 16%] pd[P=8192 try=1371 kill=34 2%]
+DEATH sh20 liveend=0 estate=1408361 reach=801153 dyn=257874 flow=0 geom=89748
+PDEV sh20 try=0 kill=0 (0.0%) BJ try=24046 kill=667 nodes=1048576
+ADAPT sh20 rp[P=1634 try=10624 kill=1762 17%] pd[P=8192 try=1412 kill=39 3%]
+T3[t=2468s] shard14 r0 #21 cell=(169,85) sc=71722 nodes=112073 r=0
+T3[t=2469s] shard3 r0 #13 cell=(145,41) sc=71716 nodes=77260 r=0
+T3[t=2472s] shard10 r0 #14 cell=(175,45) sc=71724 nodes=33620 r=0
+T3[t=2477s] shard9 r0 #7 cell=(176,34) sc=71715 nodes=121810 r=0
+T3[t=2481s] shard14 r0 #22 cell=(155,93) sc=71712 nodes=64297 r=0
+T3[t=2483s] shard10 r0 #15 cell=(195,55) sc=71718 nodes=53186 r=0
+T3[t=2485s] shard20 r0 #1 cell=(138,142) sc=71718 nodes=1106272 r=0
+T3[t=2487s] shard19 r0 #28 cell=(98,128) sc=71724 nodes=1133176 r=0
+T3[t=2488s] shard10 r0 #16 cell=(198,58) sc=71715 nodes=34307 r=0
+T3[t=2490s] shard14 r0 #23 cell=(187,95) sc=71715 nodes=50067 r=0
+T3[t=2491s] shard20 r0 #2 cell=(124,18) sc=71711 nodes=32770 r=0
+T3[t=2495s] shard14 r0 #24 cell=(182,96) sc=71717 nodes=34747 r=0
+T3[t=2507s] shard20 r0 #3 cell=(156,20) sc=71721 nodes=44891 r=0
+T3[t=2509s] shard10 r0 #17 cell=(181,63) sc=71711 nodes=35255 r=0
+T3[t=2519s] shard10 r0 #18 cell=(200,66) sc=71718 nodes=47313 r=0
+T3[t=2522s] shard9 r0 #8 cell=(145,37) sc=71712 nodes=117111 r=0
+T3[t=2526s] shard3 r0 #14 cell=(152,42) sc=71716 nodes=228471 r=0
+DEATH sh0 liveend=0 estate=1355637 reach=823226 dyn=169582 flow=0 geom=139520
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=22220 kill=2421 nodes=2097152
+ADAPT sh0 rp[P=160 try=25550 kill=4507 18%] pd[P=8192 try=7989 kill=1294 16%]
+T3[t=2530s] shard14 r0 #25 cell=(169,101) sc=71712 nodes=144306 r=0
+T3[t=2534s] shard10 r0 #19 cell=(205,67) sc=71720 nodes=85858 r=0
+T3[t=2539s] shard5 r0 #34 cell=(103,123) sc=71705 nodes=469866 r=0
+T3[t=2541s] shard7 r0 #22 cell=(161,85) sc=71720 nodes=603282 r=0
+T3[t=2545s] shard9 r0 #9 cell=(155,39) sc=71723 nodes=73535 r=0
+T3[t=2549s] shard10 r0 #20 cell=(151,75) sc=71707 nodes=44962 r=0
+DEATH sh6 liveend=0 estate=1393557 reach=850621 dyn=170095 flow=0 geom=146801
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=22675 kill=2753 nodes=2097152
+ADAPT sh6 rp[P=314 try=22267 kill=3901 18%] pd[P=2933 try=6726 kill=1063 16%]
+T3[t=2551s] shard7 r0 #23 cell=(191,85) sc=71718 nodes=50650 r=0
+T3[t=2558s] shard3 r0 #15 cell=(175,43) sc=71716 nodes=78465 r=0
+T3[t=2563s] shard7 r0 #24 cell=(168,88) sc=71716 nodes=51435 r=0
+T3[t=2564s] shard13 r0 #28 cell=(154,112) sc=71701 nodes=475725 r=0
+T3[t=2569s] shard7 r0 #25 cell=(185,93) sc=71715 nodes=34848 r=0
+T3[t=2569s] shard23 r0 #7 cell=(107,149) sc=71712 nodes=470021 r=0
+T3[t=2572s] shard20 r0 #4 cell=(152,24) sc=71710 nodes=233636 r=0
+T3[t=2574s] shard8 r0 #32 cell=(148,112) sc=71722 nodes=653945 r=0
+T3[t=2577s] shard9 r0 #10 cell=(156,40) sc=71712 nodes=110494 r=0
+T3[t=2578s] shard7 r0 #26 cell=(175,95) sc=71710 nodes=40609 r=0
+T3[t=2579s] shard10 r0 #21 cell=(163,77) sc=71715 nodes=142558 r=0
+T3[t=2585s] shard10 r0 #22 cell=(138,78) sc=71710 nodes=36891 r=0
+T3[t=2588s] shard3 r0 #16 cell=(183,47) sc=71715 nodes=97879 r=0
+T3[t=2590s] shard4 r0 #33 cell=(161,123) sc=71718 nodes=935900 r=0
+DEATH sh1 liveend=0 estate=1536071 reach=874878 dyn=280374 flow=0 geom=100074
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=26243 kill=947 nodes=1048576
+ADAPT sh1 rp[P=466 try=11441 kill=1914 17%] pd[P=3900 try=1727 kill=83 5%]
+T3[t=2597s] shard11 r0 #22 cell=(152,112) sc=71715 nodes=1669831 r=0
+T3[t=2598s] shard16 r0 #32 cell=(90,128) sc=71707 nodes=928725 r=0
+T3[t=2601s] shard10 r0 #23 cell=(152,80) sc=71719 nodes=94522 r=0
+T3[t=2605s] shard23 r0 #8 cell=(159,23) sc=71707 nodes=143095 r=0
+T3[t=2611s] shard20 r0 #5 cell=(143,25) sc=71709 nodes=146502 r=0
+T3[t=2618s] shard10 r0 #24 cell=(145,81) sc=71709 nodes=46663 r=0
+DEATH sh22 liveend=0 estate=1505785 reach=870827 dyn=255738 flow=0 geom=108261
+PDEV sh22 try=0 kill=0 (0.0%) BJ try=25656 kill=1480 nodes=1048576
+ADAPT sh22 rp[P=792 try=17740 kill=3061 17%] pd[P=3355 try=4722 kill=655 14%]
+T3[t=2625s] shard7 r0 #27 cell=(167,103) sc=71716 nodes=163945 r=0
+T3[t=2628s] shard10 r0 #25 cell=(174,82) sc=71717 nodes=48549 r=0
+T3[t=2630s] shard20 r0 #6 cell=(130,26) sc=71716 nodes=56393 r=0
+T3[t=2638s] shard3 r0 #17 cell=(183,55) sc=71717 nodes=154604 r=0
+T3[t=2646s] shard3 r0 #18 cell=(196,56) sc=71719 nodes=38092 r=0
+T3[t=2647s] shard10 r0 #26 cell=(150,84) sc=71715 nodes=100578 r=0
+T3[t=2666s] shard20 r0 #7 cell=(156,28) sc=71711 nodes=169921 r=0
+DEATH sh18 liveend=0 estate=1407997 reach=884067 dyn=152059 flow=0 geom=162963
+PDEV sh18 try=0 kill=0 (0.0%) BJ try=22977 kill=2754 nodes=3145728
+ADAPT sh18 rp[P=202 try=45509 kill=8252 18%] pd[P=3291 try=12875 kill=2181 17%]
+T3[t=2671s] shard9 r0 #11 cell=(153,41) sc=71721 nodes=380056 r=0
+T3[t=2672s] shard10 r0 #27 cell=(184,84) sc=71714 nodes=137351 r=0
+T3[t=2678s] shard9 r0 #12 cell=(158,42) sc=71713 nodes=34631 r=0
+T3[t=2680s] shard10 r0 #28 cell=(156,92) sc=71714 nodes=36758 r=0
+T3[t=2685s] shard10 r0 #29 cell=(191,93) sc=71716 nodes=34367 r=0
+T3[t=2685s] shard1 r0 #31 cell=(150,114) sc=71719 nodes=1389820 r=0
+DEATH sh21 liveend=0 estate=1289591 reach=746885 dyn=198506 flow=0 geom=104799
+PDEV sh21 try=0 kill=0 (0.0%) BJ try=21425 kill=1536 nodes=2097152
+ADAPT sh21 rp[P=6005 try=6936 kill=1106 16%] pd[P=200 try=6500 kill=1145 18%]
+T3[t=2691s] shard11 r0 #23 cell=(155,113) sc=71706 nodes=324409 r=0
+T3[t=2698s] shard9 r0 #13 cell=(169,45) sc=71708 nodes=43014 r=0
+T3[t=2699s] shard20 r0 #8 cell=(172,30) sc=71711 nodes=229531 r=0
+T3[t=2703s] shard3 r0 #19 cell=(185,61) sc=71715 nodes=210612 r=0
+T3[t=2707s] shard10 r0 #30 cell=(180,94) sc=71713 nodes=93600 r=0
+T3[t=2711s] shard20 r0 #9 cell=(157,31) sc=71716 nodes=76528 r=0
+T3[t=2713s] shard3 r0 #20 cell=(118,64) sc=71704 nodes=35968 r=0
+T3[t=2715s] shard10 r0 #31 cell=(179,95) sc=71716 nodes=37276 r=0
+T3[t=2718s] shard9 r0 #14 cell=(284,48) sc=71709 nodes=59447 r=0
+DEATH sh17 liveend=0 estate=1568260 reach=876921 dyn=292529 flow=0 geom=93354
+PDEV sh17 try=0 kill=0 (0.0%) BJ try=26855 kill=805 nodes=1048576
+ADAPT sh17 rp[P=583 try=8550 kill=1370 16%] pd[P=8192 try=1557 kill=42 3%]
+DEATH sh15 liveend=0 estate=1452864 reach=902198 dyn=162901 flow=0 geom=163662
+PDEV sh15 try=0 kill=0 (0.0%) BJ try=23735 kill=2829 nodes=3145728
+ADAPT sh15 rp[P=337 try=35875 kill=6389 18%] pd[P=363 try=14681 kill=2517 17%]
+T3[t=2721s] shard20 r0 #10 cell=(136,32) sc=71724 nodes=37130 r=0
+T3[t=2732s] shard3 r0 #21 cell=(136,70) sc=71713 nodes=85400 r=0
+DEATH sh12 liveend=0 estate=1383104 reach=842403 dyn=175196 flow=0 geom=142354
+PDEV sh12 try=0 kill=0 (0.0%) BJ try=22610 kill=2432 nodes=2097152
+ADAPT sh12 rp[P=180 try=27138 kill=4812 18%] pd[P=8192 try=8015 kill=1285 16%]
+T3[t=2738s] shard17 r0 #25 cell=(119,123) sc=71713 nodes=1114125 r=0
+T3[t=2740s] shard3 r0 #22 cell=(101,75) sc=71721 nodes=35703 r=0
+T3[t=2741s] shard2 r0 #23 cell=(159,123) sc=71717 nodes=2200260 r=0
+T3[t=2746s] shard10 r0 #32 cell=(167,97) sc=71709 nodes=113139 r=0
+T3[t=2747s] shard3 r0 #23 cell=(197,75) sc=71721 nodes=34881 r=0
+T3[t=2747s] shard9 r0 #15 cell=(165,57) sc=71714 nodes=75891 r=0
+T3[t=2754s] shard20 r0 #11 cell=(148,34) sc=71718 nodes=150426 r=0
+DEATH sh19 liveend=0 estate=1553881 reach=879470 dyn=288670 flow=0 geom=95842
+PDEV sh19 try=0 kill=0 (0.0%) BJ try=26616 kill=818 nodes=1048576
+ADAPT sh19 rp[P=504 try=11121 kill=1849 17%] pd[P=5300 try=1570 kill=52 3%]
+T3[t=2759s] shard9 r0 #16 cell=(186,60) sc=71713 nodes=53387 r=0
+T3[t=2760s] shard20 r0 #12 cell=(182,38) sc=71718 nodes=42465 r=0
+T3[t=2781s] shard20 r0 #13 cell=(155,43) sc=71722 nodes=65923 r=0
+T3[t=2785s] shard19 r0 #29 cell=(139,135) sc=71718 nodes=1154992 r=0
+DEATH sh0 liveend=0 estate=1483313 reach=914699 dyn=175022 flow=0 geom=161135
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=24317 kill=2891 nodes=3145728
+ADAPT sh0 rp[P=350 try=34871 kill=6194 18%] pd[P=1242 try=9197 kill=1509 16%]
+T3[t=2799s] shard20 r0 #14 cell=(174,46) sc=71720 nodes=45711 r=0
+T3[t=2803s] shard13 r0 #29 cell=(159,113) sc=71704 nodes=802850 r=0
+T3[t=2804s] shard20 r0 #15 cell=(150,50) sc=71724 nodes=34430 r=0
+T3[t=2807s] shard8 r0 #33 cell=(158,114) sc=71710 nodes=803132 r=0
+T3[t=2810s] shard3 r0 #24 cell=(193,77) sc=71719 nodes=207092 r=0
+DEATH sh14 liveend=0 estate=1627776 reach=936037 dyn=292383 flow=0 geom=110082
+PDEV sh14 try=0 kill=0 (0.0%) BJ try=27898 kill=1202 nodes=1048576
+ADAPT sh14 rp[P=1297 try=16252 kill=2778 17%] pd[P=8192 try=1881 kill=94 5%]
+DEATH sh6 liveend=0 estate=1521410 reach=942116 dyn=176629 flow=0 geom=168261
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=24772 kill=3174 nodes=3145728
+ADAPT sh6 rp[P=1477 try=30477 kill=5379 18%] pd[P=548 try=8564 kill=1393 16%]
+DEATH sh5 liveend=0 estate=1560953 reach=875090 dyn=296022 flow=0 geom=91815
+PDEV sh5 try=0 kill=0 (0.0%) BJ try=26768 kill=697 nodes=1048576
+ADAPT sh5 rp[P=1936 try=7585 kill=1199 16%] pd[P=8192 try=1579 kill=47 3%]
+T3[t=2824s] shard20 r0 #16 cell=(204,64) sc=71717 nodes=137944 r=0
+T3[t=2834s] shard9 r0 #17 cell=(178,64) sc=71714 nodes=256599 r=0
+T3[t=2834s] shard20 r0 #17 cell=(199,69) sc=71717 nodes=68677 r=0
+T3[t=2850s] shard20 r0 #18 cell=(202,72) sc=71710 nodes=86869 r=0
+T3[t=2853s] shard9 r0 #18 cell=(135,69) sc=71714 nodes=68001 r=0
+DEATH sh21 liveend=0 estate=1425705 reach=831151 dyn=204344 flow=0 geom=123896
+PDEV sh21 try=0 kill=0 (0.0%) BJ try=23522 kill=1905 nodes=3145728
+ADAPT sh21 rp[P=8192 try=7389 kill=1171 16%] pd[P=43 try=24976 kill=5411 22%]
+DEATH sh4 liveend=0 estate=1598908 reach=904986 dyn=296029 flow=0 geom=98894
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=27439 kill=986 nodes=1048576
+ADAPT sh4 rp[P=125 try=11373 kill=1899 17%] pd[P=6105 try=1639 kill=62 4%]
+T3[t=2861s] shard3 r0 #25 cell=(149,79) sc=71711 nodes=172616 r=0
+DEATH sh23 liveend=0 estate=1597507 reach=907630 dyn=291566 flow=0 geom=102058
+PDEV sh23 try=0 kill=0 (0.0%) BJ try=27279 kill=791 nodes=1048576
+ADAPT sh23 rp[P=2246 try=11867 kill=1972 17%] pd[P=8192 try=1572 kill=35 2%]
+T3[t=2871s] shard20 r0 #19 cell=(205,73) sc=71721 nodes=101449 r=0
+T3[t=2876s] shard20 r0 #20 cell=(177,75) sc=71709 nodes=34219 r=0
+T3[t=2876s] shard17 r0 #26 cell=(105,125) sc=71712 nodes=469905 r=0
+DEATH sh16 liveend=0 estate=1640228 reach=926877 dyn=304947 flow=0 geom=101410
+PDEV sh16 try=0 kill=0 (0.0%) BJ try=28097 kill=911 nodes=1048576
+ADAPT sh16 rp[P=1617 try=10298 kill=1683 16%] pd[P=8192 try=1992 kill=116 6%]
+DEATH sh22 liveend=0 estate=1628018 reach=951513 dyn=270165 flow=0 geom=122770
+PDEV sh22 try=0 kill=0 (0.0%) BJ try=27753 kill=1791 nodes=2097152
+ADAPT sh22 rp[P=1461 try=21057 kill=3655 17%] pd[P=8192 try=6653 kill=992 15%]
+T3[t=2882s] shard20 r0 #21 cell=(139,77) sc=71716 nodes=35230 r=0
+T3[t=2887s] shard20 r0 #22 cell=(137,79) sc=71715 nodes=36784 r=0
+T3[t=2889s] shard6 r0 #3 cell=(160,110) sc=71702 nodes=3439328 r=0
+T3[t=2889s] shard23 r0 #9 cell=(144,156) sc=71712 nodes=1118408 r=0
+T3[t=2892s] shard20 r0 #23 cell=(177,79) sc=71707 nodes=34198 r=0
+DEATH sh7 liveend=0 estate=1637601 reach=950887 dyn=280467 flow=0 geom=119522
+PDEV sh7 try=0 kill=0 (0.0%) BJ try=27881 kill=1445 nodes=1048576
+ADAPT sh7 rp[P=1504 try=17386 kill=2981 17%] pd[P=8192 try=10031 kill=1613 16%]
+T3[t=2907s] shard4 r0 #34 cell=(115,127) sc=71713 nodes=1227251 r=0
+T3[t=2907s] shard23 r0 #10 cell=(140,16) sc=71715 nodes=42642 r=0
+T3[t=2912s] shard20 r0 #24 cell=(167,81) sc=71724 nodes=106200 r=0
+T3[t=2919s] shard23 r0 #11 cell=(160,20) sc=71708 nodes=81739 r=0
+T3[t=2920s] shard6 r0 #4 cell=(148,10) sc=71724 nodes=88054 r=0
+T3[t=2926s] shard3 r0 #26 cell=(176,80) sc=71719 nodes=236361 r=0
+T3[t=2929s] shard9 r0 #19 cell=(146,76) sc=71717 nodes=271349 r=0
+DEATH sh18 liveend=0 estate=1535966 reach=979203 dyn=154666 flow=0 geom=186445
+PDEV sh18 try=0 kill=0 (0.0%) BJ try=25074 kill=3174 nodes=4194304
+ADAPT sh18 rp[P=396 try=59106 kill=10755 18%] pd[P=112 try=16280 kill=2801 17%]
+T3[t=2945s] shard6 r0 #5 cell=(154,14) sc=71718 nodes=79239 r=0
+DEATH sh1 liveend=0 estate=1695098 reach=973591 dyn=306358 flow=0 geom=113875
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=29022 kill=1134 nodes=1048576
+ADAPT sh1 rp[P=1619 try=14672 kill=2480 17%] pd[P=8192 try=2000 kill=108 5%]
+T3[t=2952s] shard14 r0 #26 cell=(151,111) sc=71710 nodes=1619918 r=0
+T3[t=2959s] shard23 r0 #12 cell=(162,22) sc=71720 nodes=127351 r=0
+DEATH sh11 liveend=0 estate=1677609 reach=957652 dyn=303426 flow=0 geom=109934
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=28716 kill=1216 nodes=1048576
+ADAPT sh11 rp[P=1155 try=14199 kill=2380 17%] pd[P=8192 try=1931 kill=94 5%]
+T3[t=2964s] shard1 r0 #32 cell=(100,118) sc=71724 nodes=1116427 r=0
+T3[t=2965s] shard20 r0 #25 cell=(156,82) sc=71720 nodes=254672 r=0
+T3[t=2968s] shard17 r0 #27 cell=(146,126) sc=71720 nodes=316888 r=0
+T3[t=2977s] shard20 r0 #26 cell=(139,83) sc=71718 nodes=76181 r=0
+T3[t=2983s] shard6 r0 #6 cell=(134,20) sc=71720 nodes=114610 r=0
+T3[t=2988s] shard16 r0 #33 cell=(144,128) sc=71717 nodes=1469506 r=0
+T3[t=2988s] shard23 r0 #13 cell=(147,25) sc=71715 nodes=138974 r=0
+T3[t=2989s] shard11 r0 #24 cell=(95,125) sc=71712 nodes=1150809 r=0
+DEATH sh15 liveend=0 estate=1580957 reach=995738 dyn=166872 flow=0 geom=186599
+PDEV sh15 try=0 kill=0 (0.0%) BJ try=25832 kill=3238 nodes=4194304
+ADAPT sh15 rp[P=117 try=46650 kill=8351 18%] pd[P=2806 try=17801 kill=3068 17%]
+T3[t=2993s] shard9 r0 #20 cell=(178,78) sc=71706 nodes=236361 r=0
+T3[t=2995s] shard11 r0 #25 cell=(297,125) sc=71720 nodes=32514 r=0
+DEATH sh12 liveend=0 estate=1511170 reach=935547 dyn=179369 flow=0 geom=165116
+PDEV sh12 try=0 kill=0 (0.0%) BJ try=24707 kill=2898 nodes=3145728
+ADAPT sh12 rp[P=95 try=36921 kill=6588 18%] pd[P=1077 try=10541 kill=1741 17%]
+T3[t=3001s] shard23 r0 #14 cell=(133,27) sc=71707 nodes=31752 r=0
+T3[t=3012s] shard23 r0 #15 cell=(160,28) sc=71720 nodes=76528 r=0
+T3[t=3014s] shard10 r0 #33 cell=(101,119) sc=71713 nodes=935918 r=0
+T3[t=3015s] shard6 r0 #7 cell=(142,22) sc=71705 nodes=118857 r=0
+T3[t=3016s] shard9 r0 #21 cell=(137,81) sc=71719 nodes=119309 r=0
+DEATH sh2 liveend=0 estate=1689229 reach=939980 dyn=326050 flow=0 geom=92886
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=29227 kill=672 nodes=1048576
+ADAPT sh2 rp[P=1704 try=6195 kill=924 15%] pd[P=8192 try=1650 kill=38 2%]
+T3[t=3029s] shard3 r0 #27 cell=(177,81) sc=71711 nodes=393482 r=0
+T3[t=3043s] shard20 r0 #27 cell=(166,86) sc=71710 nodes=255426 r=0
+T3[t=3044s] shard23 r0 #16 cell=(151,29) sc=71712 nodes=160561 r=0
+T3[t=3047s] shard6 r0 #8 cell=(174,24) sc=71714 nodes=159069 r=0
+T3[t=3053s] shard20 r0 #28 cell=(191,87) sc=71713 nodes=50961 r=0
+DEATH sh0 liveend=0 estate=1610514 reach=1006120 dyn=180761 flow=0 geom=182631
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=26414 kill=3300 nodes=4194304
+ADAPT sh0 rp[P=384 try=43614 kill=7770 18%] pd[P=5964 try=11442 kill=1904 17%]
+T3[t=3059s] shard20 r0 #29 cell=(147,89) sc=71716 nodes=34024 r=0
+T3[t=3061s] shard13 r0 #30 cell=(151,119) sc=71708 nodes=994410 r=0
+DEATH sh19 liveend=0 estate=1684491 reach=955598 dyn=313345 flow=0 geom=104202
+PDEV sh19 try=0 kill=0 (0.0%) BJ try=28925 kill=875 nodes=1048576
+ADAPT sh19 rp[P=1671 try=12559 kill=2099 17%] pd[P=8192 try=1719 kill=56 3%]
+T3[t=3066s] shard9 r0 #22 cell=(140,86) sc=71716 nodes=254849 r=0
+T3[t=3070s] shard23 r0 #17 cell=(140,30) sc=71704 nodes=76345 r=0
+T3[t=3073s] shard20 r0 #30 cell=(166,90) sc=71719 nodes=56362 r=0
+T3[t=3080s] shard20 r0 #31 cell=(174,92) sc=71719 nodes=36061 r=0
+T3[t=3081s] shard6 r0 #9 cell=(157,25) sc=71710 nodes=166454 r=0
+DEATH sh8 liveend=0 estate=1674445 reach=934882 dyn=316564 flow=0 geom=99441
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=28600 kill=695 nodes=1048576
+ADAPT sh8 rp[P=1609 try=8112 kill=1287 16%] pd[P=8192 try=1561 kill=25 2%]
+DEATH sh5 liveend=0 estate=1679973 reach=946759 dyn=318336 flow=0 geom=100176
+PDEV sh5 try=0 kill=0 (0.0%) BJ try=28865 kill=724 nodes=2097152
+ADAPT sh5 rp[P=1862 try=9243 kill=1489 16%] pd[P=6935 try=1711 kill=49 3%]
+T3[t=3113s] shard8 r0 #34 cell=(156,120) sc=71707 nodes=1129780 r=0
+T3[t=3118s] shard23 r0 #18 cell=(165,31) sc=71723 nodes=218657 r=0
+DEATH sh21 liveend=0 estate=1553633 reach=905189 dyn=219232 flow=0 geom=136445
+PDEV sh21 try=0 kill=0 (0.0%) BJ try=25619 kill=2106 nodes=4194304
+ADAPT sh21 rp[P=6631 try=7618 kill=1199 16%] pd[P=8192 try=34409 kill=7570 22%]
+T3[t=3122s] shard21 r0 #1 cell=(162,190) sc=71720 nodes=4201315 r=0
+T3[t=3125s] shard9 r0 #23 cell=(186,86) sc=71722 nodes=245839 r=0
+DEATH sh22 liveend=0 estate=1750516 reach=1032970 dyn=283800 flow=0 geom=137825
+PDEV sh22 try=0 kill=0 (0.0%) BJ try=29850 kill=2173 nodes=3145728
+ADAPT sh22 rp[P=1423 try=25552 kill=4468 17%] pd[P=5560 try=7460 kill=1129 15%]
+T3[t=3138s] shard5 r0 #35 cell=(160,124) sc=71718 nodes=2248749 r=0
+T3[t=3139s] shard9 r0 #24 cell=(187,89) sc=71716 nodes=69502 r=0
+T3[t=3142s] shard6 r0 #10 cell=(170,28) sc=71713 nodes=201662 r=0
+T3[t=3143s] shard7 r0 #28 cell=(151,113) sc=71712 nodes=2008543 r=0
+T3[t=3148s] shard10 r0 #34 cell=(158,120) sc=71723 nodes=474346 r=0
+T3[t=3150s] shard23 r0 #19 cell=(148,32) sc=71714 nodes=154107 r=0
+T3[t=3158s] shard21 r0 #2 cell=(197,181) sc=71715 nodes=267210 r=0
+DEATH sh4 liveend=0 estate=1741467 reach=999240 dyn=313420 flow=0 geom=115125
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=29893 kill=1333 nodes=1048576
+ADAPT sh4 rp[P=1069 try=16527 kill=2825 17%] pd[P=752 try=3227 kill=340 11%]
+T3[t=3161s] shard14 r0 #27 cell=(161,113) sc=71719 nodes=770082 r=0
+T3[t=3164s] shard6 r0 #11 cell=(154,30) sc=71717 nodes=113060 r=0
+T3[t=3172s] shard23 r0 #20 cell=(169,33) sc=71713 nodes=153028 r=0
+T3[t=3183s] shard21 r0 #3 cell=(153,13) sc=71714 nodes=70334 r=0
+T3[t=3190s] shard23 r0 #21 cell=(185,35) sc=71711 nodes=56650 r=0
+DEATH sh18 liveend=0 estate=1664215 reach=1073942 dyn=157467 flow=0 geom=209880
+PDEV sh18 try=0 kill=0 (0.0%) BJ try=27171 kill=3621 nodes=5242880
+ADAPT sh18 rp[P=38 try=72050 kill=13130 18%] pd[P=4464 try=19742 kill=3408 17%]
+T3[t=3192s] shard15 r0 #2 cell=(109,139) sc=71713 nodes=5016844 r=0
+T3[t=3196s] shard6 r0 #12 cell=(173,31) sc=71715 nodes=154401 r=0
+T3[t=3198s] shard13 r0 #31 cell=(124,128) sc=71714 nodes=469915 r=0
+T3[t=3200s] shard4 r0 #35 cell=(114,128) sc=71712 nodes=1198179 r=0
+T3[t=3209s] shard4 r0 #36 cell=(298,128) sc=71714 nodes=41440 r=0
+T3[t=3209s] shard15 r0 #3 cell=(153,15) sc=71717 nodes=46019 r=0
+T3[t=3211s] shard19 r0 #30 cell=(118,136) sc=71717 nodes=1621293 r=0
+T3[t=3212s] shard6 r0 #13 cell=(123,33) sc=71713 nodes=49770 r=0
+T3[t=3213s] shard20 r0 #32 cell=(159,117) sc=71713 nodes=474350 r=0
+T3[t=3216s] shard21 r0 #4 cell=(138,16) sc=71714 nodes=89523 r=0
+DEATH sh1 liveend=0 estate=1823461 reach=1053497 dyn=327048 flow=0 geom=125205
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=31254 kill=1261 nodes=1048576
+ADAPT sh1 rp[P=1241 try=17257 kill=2937 17%] pd[P=8192 try=2153 kill=113 5%]
+T3[t=3224s] shard23 r0 #22 cell=(150,38) sc=71714 nodes=159408 r=0
+T3[t=3226s] shard21 r0 #5 cell=(126,18) sc=71709 nodes=44501 r=0
+T3[t=3229s] shard2 r0 #24 cell=(151,125) sc=71710 nodes=1886341 r=0
+T3[t=3230s] shard23 r0 #23 cell=(151,47) sc=71717 nodes=36195 r=0
+T3[t=3244s] shard8 r0 #35 cell=(153,121) sc=71714 nodes=474359 r=0
+T3[t=3244s] shard23 r0 #24 cell=(190,62) sc=71718 nodes=102920 r=0
+T3[t=3244s] shard1 r0 #33 cell=(100,120) sc=71711 nodes=1141962 r=0
+T3[t=3248s] shard6 r0 #14 cell=(179,33) sc=71720 nodes=114963 r=0
+DEATH sh17 liveend=0 estate=1780854 reach=993437 dyn=336890 flow=0 geom=102773
+PDEV sh17 try=0 kill=0 (0.0%) BJ try=30655 kill=871 nodes=1048576
+ADAPT sh17 rp[P=8192 try=9316 kill=1485 16%] pd[P=8192 try=1769 kill=44 2%]
+DEATH sh11 liveend=0 estate=1815492 reach=1046813 dyn=321708 flow=0 geom=124418
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=31082 kill=1498 nodes=1048576
+ADAPT sh11 rp[P=699 try=18676 kill=3188 17%] pd[P=8192 try=3000 kill=272 9%]
+T3[t=3253s] shard0 r0 #5 cell=(138,138) sc=71712 nodes=4998572 r=0
+DEATH sh12 liveend=0 estate=1639031 reach=1028238 dyn=183859 flow=0 geom=187624
+PDEV sh12 try=0 kill=0 (0.0%) BJ try=26804 kill=3300 nodes=4194304
+ADAPT sh12 rp[P=95 try=47074 kill=8440 18%] pd[P=8192 try=13046 kill=2180 17%]
+T3[t=3256s] shard21 r0 #6 cell=(163,21) sc=71720 nodes=154310 r=0
+T3[t=3262s] shard23 r0 #25 cell=(205,63) sc=71722 nodes=137826 r=0
+DEATH sh16 liveend=0 estate=1807632 reach=1028479 dyn=334314 flow=0 geom=114415
+PDEV sh16 try=0 kill=0 (0.0%) BJ try=31036 kill=1038 nodes=1048576
+ADAPT sh16 rp[P=179 try=13391 kill=2241 17%] pd[P=8192 try=2217 kill=128 6%]
+T3[t=3264s] shard6 r0 #15 cell=(161,35) sc=71715 nodes=77192 r=0
+T3[t=3271s] shard23 r0 #26 cell=(187,75) sc=71716 nodes=49877 r=0
+T3[t=3277s] shard15 r0 #4 cell=(152,22) sc=71720 nodes=230117 r=0
+T3[t=3277s] shard16 r0 #34 cell=(151,129) sc=71711 nodes=1106407 r=0
+T3[t=3283s] shard23 r0 #27 cell=(176,76) sc=71727 nodes=49463 r=0
+T3[t=3293s] shard23 r0 #28 cell=(189,77) sc=71711 nodes=48502 r=0
+T3[t=3299s] shard14 r0 #28 cell=(115,123) sc=71714 nodes=469920 r=0
+T3[t=3303s] shard23 r0 #29 cell=(145,79) sc=71711 nodes=39677 r=0
+T3[t=3309s] shard9 r0 #25 cell=(168,96) sc=71710 nodes=641530 r=0
+DEATH sh3 liveend=0 estate=1665466 reach=985960 dyn=237710 flow=0 geom=155061
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=27443 kill=1764 nodes=1048576
+ADAPT sh3 rp[P=634 try=16413 kill=2787 17%] pd[P=6064 try=2541 kill=228 9%]
+T3[t=3321s] shard9 r0 #26 cell=(121,101) sc=71710 nodes=61025 r=0
+T3[t=3327s] shard13 r0 #32 cell=(87,129) sc=71708 nodes=469835 r=0
+T3[t=3328s] shard15 r0 #5 cell=(147,23) sc=71712 nodes=169126 r=0
+T3[t=3329s] shard23 r0 #30 cell=(172,80) sc=71717 nodes=153001 r=0
+T3[t=3337s] shard19 r0 #31 cell=(103,137) sc=71715 nodes=469916 r=0
+T3[t=3341s] shard4 r0 #37 cell=(125,129) sc=71717 nodes=469882 r=0
+T3[t=3342s] shard21 r0 #7 cell=(158,22) sc=71710 nodes=250750 r=0
+T3[t=3349s] shard15 r0 #6 cell=(144,24) sc=71719 nodes=102117 r=0
+T3[t=3356s] shard15 r0 #7 cell=(122,26) sc=71712 nodes=33362 r=0
+T3[t=3364s] shard15 r0 #8 cell=(146,28) sc=71710 nodes=38566 r=0
+T3[t=3372s] shard23 r0 #31 cell=(170,84) sc=71710 nodes=229810 r=0
+T3[t=3373s] shard15 r0 #9 cell=(189,29) sc=71714 nodes=43151 r=0
+T3[t=3373s] shard6 r0 #16 cell=(175,37) sc=71718 nodes=336307 r=0
+T3[t=3378s] shard23 r0 #32 cell=(141,85) sc=71710 nodes=36868 r=0
+DEATH sh22 liveend=0 estate=1872687 reach=1113346 dyn=298522 flow=0 geom=151998
+PDEV sh22 try=0 kill=0 (0.0%) BJ try=31947 kill=2490 nodes=4194304
+ADAPT sh22 rp[P=370 try=29861 kill=5246 18%] pd[P=872 try=8448 kill=1302 15%]
+DEATH sh5 liveend=0 estate=1817370 reach=1034682 dyn=338922 flow=0 geom=113443
+PDEV sh5 try=0 kill=0 (0.0%) BJ try=31265 kill=941 nodes=1048576
+ADAPT sh5 rp[P=703 try=13181 kill=2200 17%] pd[P=2014 try=2035 kill=92 5%]
+T3[t=3398s] shard21 r0 #8 cell=(157,23) sc=71706 nodes=198521 r=0
+T3[t=3399s] shard7 r0 #29 cell=(105,123) sc=71705 nodes=935929 r=0
+DEATH sh10 liveend=0 estate=1838506 reach=1039041 dyn=341102 flow=0 geom=114617
+PDEV sh10 try=0 kill=0 (0.0%) BJ try=31467 kill=981 nodes=1048576
+ADAPT sh10 rp[P=265 try=11556 kill=1897 16%] pd[P=3900 try=1887 kill=63 3%]
+T3[t=3414s] shard21 r0 #9 cell=(169,27) sc=71715 nodes=77223 r=0
+T3[t=3430s] shard5 r0 #36 cell=(127,129) sc=71716 nodes=1186431 r=0
+T3[t=3440s] shard23 r0 #33 cell=(155,87) sc=71717 nodes=316849 r=0
+T3[t=3441s] shard6 r0 #17 cell=(149,39) sc=71714 nodes=298284 r=0
+DEATH sh18 liveend=0 estate=1792529 reach=1168799 dyn=160050 flow=0 geom=233290
+PDEV sh18 try=0 kill=0 (0.0%) BJ try=29268 kill=4063 nodes=6291456
+ADAPT sh18 rp[P=300 try=85511 kill=15611 18%] pd[P=296 try=22543 kill=3912 17%]
+T3[t=3448s] shard15 r0 #10 cell=(168,32) sc=71725 nodes=274599 r=0
+T3[t=3455s] shard6 r0 #18 cell=(149,41) sc=71721 nodes=58984 r=0
+T3[t=3462s] shard12 r0 #5 cell=(122,142) sc=71715 nodes=5072552 r=0
+T3[t=3468s] shard19 r0 #32 cell=(98,140) sc=71724 nodes=469899 r=0
+T3[t=3469s] shard23 r0 #34 cell=(165,95) sc=71714 nodes=109667 r=0
+DEATH sh20 liveend=0 estate=1906042 reach=1092396 dyn=354322 flow=0 geom=122498
+PDEV sh20 try=0 kill=0 (0.0%) BJ try=32733 kill=897 nodes=1048576
+ADAPT sh20 rp[P=1284 try=15515 kill=2596 17%] pd[P=8192 try=1969 kill=56 3%]
+T3[t=3472s] shard6 r0 #19 cell=(187,43) sc=71722 nodes=90037 r=0
+T3[t=3480s] shard23 r0 #35 cell=(168,102) sc=71714 nodes=48435 r=0
+T3[t=3484s] shard10 r0 #35 cell=(155,121) sc=71717 nodes=1374251 r=0
+T3[t=3487s] shard6 r0 #20 cell=(150,48) sc=71710 nodes=74068 r=0
+T3[t=3490s] shard2 r0 #25 cell=(121,129) sc=71710 nodes=935978 r=0
+T3[t=3491s] shard21 r0 #10 cell=(149,29) sc=71720 nodes=332098 r=0
+T3[t=3493s] shard20 r0 #33 cell=(99,121) sc=71717 nodes=1136363 r=0
+T3[t=3495s] shard14 r0 #29 cell=(140,126) sc=71724 nodes=742788 r=0
+T3[t=3501s] shard21 r0 #11 cell=(132,30) sc=71717 nodes=44267 r=0
+T3[t=3503s] shard12 r0 #6 cell=(154,18) sc=71716 nodes=118832 r=0
+DEATH sh11 liveend=0 estate=1936117 reach=1122789 dyn=340501 flow=0 geom=135359
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=33179 kill=1654 nodes=2097152
+ADAPT sh11 rp[P=1080 try=22242 kill=3821 17%] pd[P=8192 try=3175 kill=285 9%]
+DEATH sh0 liveend=0 estate=1837797 reach=1170742 dyn=189499 flow=0 geom=222576
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=30120 kill=4166 nodes=1048576
+ADAPT sh0 rp[P=530 try=59035 kill=10568 18%] pd[P=8192 try=15276 kill=2580 17%]
+DEATH sh8 liveend=0 estate=1856802 reach=1044973 dyn=348753 flow=0 geom=112862
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=31807 kill=852 nodes=1048576
+ADAPT sh8 rp[P=1110 try=11168 kill=1826 16%] pd[P=8192 try=1756 kill=28 2%]
+T3[t=3513s] shard5 r0 #37 cell=(144,130) sc=71712 nodes=317093 r=0
+T3[t=3515s] shard15 r0 #11 cell=(149,33) sc=71722 nodes=284530 r=0
+DEATH sh16 liveend=0 estate=1936339 reach=1113724 dyn=349978 flow=0 geom=129240
+PDEV sh16 try=0 kill=0 (0.0%) BJ try=33248 kill=1383 nodes=1048576
+ADAPT sh16 rp[P=295 try=18284 kill=3124 17%] pd[P=4754 try=2886 kill=235 8%]
+T3[t=3529s] shard8 r0 #36 cell=(118,122) sc=71721 nodes=1120587 r=0
+DEATH sh1 liveend=0 estate=1951398 reach=1124011 dyn=353361 flow=0 geom=131118
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=33537 kill=1301 nodes=1048576
+ADAPT sh1 rp[P=7957 try=17722 kill=3006 17%] pd[P=8192 try=2277 kill=114 5%]
+T3[t=3537s] shard13 r0 #33 cell=(145,129) sc=71717 nodes=804365 r=0
+T3[t=3538s] shard15 r0 #12 cell=(175,35) sc=71719 nodes=115406 r=0
+T3[t=3547s] shard15 r0 #13 cell=(155,37) sc=71718 nodes=38753 r=0
+DEATH sh17 liveend=0 estate=1897988 reach=1057197 dyn=361453 flow=0 geom=107772
+PDEV sh17 try=0 kill=0 (0.0%) BJ try=32752 kill=900 nodes=2097152
+ADAPT sh17 rp[P=7369 try=9602 kill=1529 16%] pd[P=8192 try=1883 kill=46 2%]
+T3[t=3552s] shard11 r0 #26 cell=(118,126) sc=71714 nodes=2299197 r=0
+T3[t=3556s] shard15 r0 #14 cell=(203,37) sc=71705 nodes=52423 r=0
+T3[t=3557s] shard12 r0 #7 cell=(153,21) sc=71714 nodes=198119 r=0
+T3[t=3562s] shard21 r0 #12 cell=(167,33) sc=71718 nodes=201715 r=0
+T3[t=3569s] shard3 r0 #28 cell=(153,83) sc=71715 nodes=2044238 r=0
+T3[t=3577s] shard3 r0 #29 cell=(138,84) sc=71722 nodes=34625 r=0
+DEATH sh9 liveend=0 estate=1776756 reach=1064620 dyn=247328 flow=0 geom=174787
+PDEV sh9 try=0 kill=0 (0.0%) BJ try=28991 kill=2188 nodes=1048576
+ADAPT sh9 rp[P=218 try=21707 kill=3765 17%] pd[P=2521 try=6546 kill=955 15%]
+T3[t=3584s] shard6 r0 #21 cell=(177,51) sc=71712 nodes=344014 r=0
+T3[t=3599s] shard3 r0 #30 cell=(161,87) sc=71714 nodes=95638 r=0
+T3[t=3601s] shard21 r0 #13 cell=(144,38) sc=71720 nodes=99852 r=0
+T3[t=3607s] shard17 r0 #28 cell=(95,127) sc=71716 nodes=2328641 r=0
+T3[t=3613s] shard21 r0 #14 cell=(188,38) sc=71717 nodes=54696 r=0
+T3[t=3617s] shard15 r0 #15 cell=(165,39) sc=71716 nodes=201662 r=0
+T3[t=3620s] shard20 r0 #34 cell=(96,122) sc=71721 nodes=469866 r=0
+T3[t=3623s] shard21 r0 #15 cell=(128,40) sc=71715 nodes=44450 r=0
+DEATH sh4 liveend=0 estate=1934409 reach=1106856 dyn=351970 flow=0 geom=124956
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=33310 kill=1452 nodes=1048576
+ADAPT sh4 rp[P=5201 try=17696 kill=3019 17%] pd[P=8192 try=3548 kill=362 10%]
+T3[t=3631s] shard1 r0 #34 cell=(107,121) sc=71724 nodes=1409140 r=0
+T3[t=3632s] shard21 r0 #16 cell=(200,40) sc=71710 nodes=40256 r=0
+T3[t=3633s] shard15 r0 #16 cell=(166,40) sc=71720 nodes=77197 r=0
+T3[t=3634s] shard12 r0 #8 cell=(143,23) sc=71716 nodes=270399 r=0
+T3[t=3637s] shard11 r0 #27 cell=(139,127) sc=71715 nodes=317086 r=0
+DEATH sh22 liveend=0 estate=1995789 reach=1196789 dyn=310259 flow=0 geom=168622
+PDEV sh22 try=0 kill=0 (0.0%) BJ try=34044 kill=2822 nodes=5242880
+ADAPT sh22 rp[P=2538 try=34168 kill=6011 18%] pd[P=298 try=13238 kill=2265 17%]
+T3[t=3642s] shard6 r0 #22 cell=(189,53) sc=71709 nodes=236148 r=0
+T3[t=3642s] shard15 r0 #17 cell=(133,43) sc=71717 nodes=43996 r=0
+T3[t=3650s] shard12 r0 #9 cell=(173,25) sc=71714 nodes=77221 r=0
+T3[t=3651s] shard15 r0 #18 cell=(140,46) sc=71710 nodes=36792 r=0
+DEATH sh7 liveend=0 estate=1971280 reach=1146436 dyn=341920 flow=0 geom=141730
+PDEV sh7 try=0 kill=0 (0.0%) BJ try=33769 kill=1668 nodes=1048576
+ADAPT sh7 rp[P=1493 try=20589 kill=3536 17%] pd[P=8192 try=10442 kill=1634 16%]
+T3[t=3656s] shard6 r0 #23 cell=(189,61) sc=71718 nodes=69556 r=0
+T3[t=3659s] shard21 r0 #17 cell=(134,42) sc=71708 nodes=93191 r=0
+T3[t=3663s] shard6 r0 #24 cell=(133,63) sc=71714 nodes=37915 r=0
+T3[t=3667s] shard12 r0 #10 cell=(154,26) sc=71710 nodes=84617 r=0
+T3[t=3670s] shard6 r0 #25 cell=(190,66) sc=71717 nodes=34784 r=0
+T3[t=3672s] shard2 r0 #26 cell=(140,130) sc=71717 nodes=737202 r=0
+T3[t=3677s] shard6 r0 #26 cell=(201,71) sc=71711 nodes=34814 r=0
+T3[t=3679s] shard7 r0 #30 cell=(96,124) sc=71711 nodes=1163883 r=0
+T3[t=3685s] shard16 r0 #35 cell=(116,130) sc=71712 nodes=1679487 r=0
+T3[t=3701s] shard21 r0 #18 cell=(186,44) sc=71713 nodes=173752 r=0
+DEATH sh18 liveend=0 estate=1920582 reach=1263468 dyn=162827 flow=0 geom=256606
+PDEV sh18 try=0 kill=0 (0.0%) BJ try=31366 kill=4501 nodes=7340032
+ADAPT sh18 rp[P=247 try=98861 kill=18067 18%] pd[P=4145 try=25023 kill=4345 17%]
+T3[t=3705s] shard6 r0 #27 cell=(150,74) sc=71704 nodes=99937 r=0
+T3[t=3708s] shard20 r0 #35 cell=(149,127) sc=71718 nodes=316888 r=0
+T3[t=3710s] shard21 r0 #19 cell=(178,50) sc=71723 nodes=44898 r=0
+T3[t=3711s] shard12 r0 #11 cell=(151,27) sc=71709 nodes=170977 r=0
+T3[t=3716s] shard21 r0 #20 cell=(157,53) sc=71714 nodes=34994 r=0
+T3[t=3721s] shard12 r0 #12 cell=(187,31) sc=71716 nodes=51571 r=0
+T3[t=3722s] shard15 r0 #19 cell=(190,52) sc=71717 nodes=288666 r=0
+T3[t=3723s] shard21 r0 #21 cell=(93,55) sc=71711 nodes=36571 r=0
+T3[t=3730s] shard15 r0 #20 cell=(154,56) sc=71719 nodes=37348 r=0
+DEATH sh19 liveend=0 estate=1973962 reach=1124256 dyn=368440 flow=0 geom=122428
+PDEV sh19 try=0 kill=0 (0.0%) BJ try=34045 kill=981 nodes=1048576
+ADAPT sh19 rp[P=1358 try=15334 kill=2579 17%] pd[P=8192 try=2033 kill=62 3%]
+T3[t=3736s] shard12 r0 #13 cell=(169,35) sc=71715 nodes=77192 r=0
+DEATH sh10 liveend=0 estate=1994678 reach=1133830 dyn=369172 flow=0 geom=126572
+PDEV sh10 try=0 kill=0 (0.0%) BJ try=34215 kill=1109 nodes=1048576
+ADAPT sh10 rp[P=1629 try=13725 kill=2276 17%] pd[P=8192 try=2095 kill=73 3%]
+DEATH sh22 liveend=0 estate=2138529 reach=1284920 dyn=314164 flow=0 geom=189850
+PDEV sh22 try=0 kill=0 (0.0%) BJ try=36141 kill=3209 nodes=6291456
+ADAPT sh22 rp[P=668 try=34920 kill=6138 18%] pd[P=4351 try=30989 kill=5973 19%]
+T3[t=3743s] shard15 r0 #21 cell=(174,62) sc=71717 nodes=51470 r=0
+T3[t=3744s] shard21 r0 #22 cell=(199,57) sc=71721 nodes=104268 r=0
+DEATH sh14 liveend=0 estate=2036376 reach=1177068 dyn=367616 flow=0 geom=137933
+PDEV sh14 try=0 kill=0 (0.0%) BJ try=35101 kill=1477 nodes=1048576
+ADAPT sh14 rp[P=1619 try=21121 kill=3629 17%] pd[P=8192 try=2405 kill=121 5%]
+DEATH sh0 liveend=0 estate=1966816 reach=1264561 dyn=194591 flow=0 geom=245482
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=32217 kill=4588 nodes=2097152
+ADAPT sh0 rp[P=165 try=67746 kill=12143 18%] pd[P=3770 try=18214 kill=3109 17%]
+DEATH sh23 liveend=0 estate=2048946 reach=1168562 dyn=382187 flow=0 geom=129463
+PDEV sh23 try=0 kill=0 (0.0%) BJ try=35176 kill=927 nodes=1048576
+ADAPT sh23 rp[P=1924 try=15380 kill=2561 17%] pd[P=8192 try=2045 kill=42 2%]
+T3[t=3759s] shard6 r0 #28 cell=(192,76) sc=71722 nodes=206585 r=0
+T3[t=3760s] shard21 r0 #23 cell=(141,61) sc=71711 nodes=75307 r=0
+T3[t=3765s] shard19 r0 #33 cell=(95,141) sc=71715 nodes=1143468 r=0
+T3[t=3767s] shard5 r0 #38 cell=(87,131) sc=71715 nodes=928600 r=0
+T3[t=3771s] shard11 r0 #28 cell=(122,128) sc=71715 nodes=469917 r=0
+T3[t=3774s] shard23 r0 #36 cell=(159,115) sc=71710 nodes=1130972 r=0
+T3[t=3783s] shard3 r0 #31 cell=(156,88) sc=71713 nodes=694440 r=0
+DEATH sh8 liveend=0 estate=1984915 reach=1124340 dyn=370256 flow=0 geom=123385
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=34048 kill=967 nodes=1048576
+ADAPT sh8 rp[P=897 try=13586 kill=2251 17%] pd[P=8192 try=1913 kill=34 2%]
+T3[t=3791s] shard3 r0 #32 cell=(191,91) sc=71717 nodes=34814 r=0
+T3[t=3792s] shard4 r0 #38 cell=(158,132) sc=71719 nodes=1597470 r=0
+T3[t=3797s] shard6 r0 #29 cell=(170,82) sc=71716 nodes=147593 r=0
+T3[t=3798s] shard3 r0 #33 cell=(190,92) sc=71717 nodes=34821 r=0
+T3[t=3801s] shard8 r0 #37 cell=(118,128) sc=71713 nodes=1105071 r=0
+T3[t=3810s] shard7 r0 #31 cell=(119,127) sc=71712 nodes=469983 r=0
+T3[t=3810s] shard3 r0 #34 cell=(173,93) sc=71722 nodes=40960 r=0
+T3[t=3816s] shard6 r0 #30 cell=(178,84) sc=71718 nodes=75836 r=0
+T3[t=3817s] shard7 r0 #32 cell=(295,127) sc=71714 nodes=36756 r=0
+DEATH sh22 liveend=0 estate=2282995 reach=1373035 dyn=314978 flow=0 geom=212443
+PDEV sh22 try=0 kill=0 (0.0%) BJ try=38239 kill=3632 nodes=7340032
+ADAPT sh22 rp[P=8192 try=36113 kill=6333 18%] pd[P=42 try=50293 kill=9854 20%]
+T3[t=3820s] shard12 r0 #14 cell=(151,37) sc=71718 nodes=326702 r=0
+DEATH sh13 liveend=0 estate=1933989 reach=1085656 dyn=372162 flow=0 geom=110657
+PDEV sh13 try=0 kill=0 (0.0%) BJ try=33377 kill=854 nodes=1048576
+ADAPT sh13 rp[P=5201 try=12312 kill=2035 17%] pd[P=8192 try=1916 kill=44 2%]
+T3[t=3831s] shard6 r0 #31 cell=(182,86) sc=71710 nodes=69483 r=0
+T3[t=3842s] shard13 r0 #34 cell=(159,131) sc=71720 nodes=1119721 r=0
+T3[t=3845s] shard6 r0 #32 cell=(190,90) sc=71714 nodes=69649 r=0
+DEATH sh9 liveend=0 estate=1903960 reach=1156170 dyn=254470 flow=0 geom=195983
+PDEV sh9 try=0 kill=0 (0.0%) BJ try=31088 kill=2557 nodes=2097152
+ADAPT sh9 rp[P=617 try=29558 kill=5181 18%] pd[P=368 try=9878 kill=1555 16%]
+T3[t=3854s] shard12 r0 #15 cell=(156,44) sc=71716 nodes=122582 r=0
+T3[t=3876s] shard12 r0 #16 cell=(180,52) sc=71702 nodes=93333 r=0
+T3[t=3878s] shard10 r0 #36 cell=(152,122) sc=71710 nodes=1586792 r=0
+T3[t=3878s] shard20 r0 #36 cell=(150,128) sc=71720 nodes=630061 r=0
+T3[t=3883s] shard8 r0 #38 cell=(139,129) sc=71722 nodes=317083 r=0
+T3[t=3884s] shard12 r0 #17 cell=(140,62) sc=71713 nodes=37754 r=0
+T3[t=3886s] shard1 r0 #35 cell=(97,123) sc=71719 nodes=928633 r=0
+DEATH sh17 liveend=0 estate=2042580 reach=1142146 dyn=389610 flow=0 geom=116831
+PDEV sh17 try=0 kill=0 (0.0%) BJ try=35312 kill=924 nodes=1048576
+ADAPT sh17 rp[P=1052 try=11258 kill=1823 16%] pd[P=8192 try=2035 kill=46 2%]
+T3[t=3889s] shard21 r0 #24 cell=(203,63) sc=71720 nodes=503950 r=0
+T3[t=3891s] shard12 r0 #18 cell=(185,63) sc=71717 nodes=34786 r=0
+T3[t=3893s] shard14 r0 #30 cell=(89,127) sc=71706 nodes=1597475 r=0
+T3[t=3903s] shard23 r0 #37 cell=(98,120) sc=71715 nodes=470061 r=0
+T3[t=3909s] shard15 r0 #22 cell=(201,65) sc=71717 nodes=603378 r=0
+T3[t=3910s] shard17 r0 #29 cell=(160,130) sc=71719 nodes=1126507 r=0
+T3[t=3916s] shard15 r0 #23 cell=(93,67) sc=71714 nodes=35286 r=0
+T3[t=3946s] shard3 r0 #35 cell=(169,95) sc=71718 nodes=497101 r=0
+DEATH sh2 liveend=0 estate=2090676 reach=1172906 dyn=404195 flow=0 geom=117038
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=36344 kill=814 nodes=1048576
+ADAPT sh2 rp[P=617 try=10384 kill=1654 16%] pd[P=8192 try=2113 kill=52 2%]
+T3[t=3949s] shard21 r0 #25 cell=(204,74) sc=71713 nodes=193242 r=0
+DEATH sh16 liveend=0 estate=2128356 reach=1231704 dyn=381422 flow=0 geom=145219
+PDEV sh16 try=0 kill=0 (0.0%) BJ try=36606 kill=1597 nodes=1048576
+ADAPT sh16 rp[P=178 try=22487 kill=3878 17%] pd[P=5201 try=3946 kill=400 10%]
+T3[t=3957s] shard21 r0 #26 cell=(185,75) sc=71725 nodes=34852 r=0
+DEATH sh18 liveend=0 estate=2048895 reach=1358751 dyn=165157 flow=0 geom=280256
+PDEV sh18 try=0 kill=0 (0.0%) BJ try=33463 kill=5022 nodes=8388608
+ADAPT sh18 rp[P=105 try=112685 kill=20611 18%] pd[P=1185 try=26276 kill=4566 17%]
+DEATH sh22 liveend=0 estate=2422044 reach=1460938 dyn=319541 flow=0 geom=233434
+PDEV sh22 try=0 kill=0 (0.0%) BJ try=40336 kill=4043 nodes=8388608
+ADAPT sh22 rp[P=8192 try=37832 kill=6634 18%] pd[P=137 try=67352 kill=13434 20%]
+T3[t=3959s] shard12 r0 #19 cell=(202,66) sc=71721 nodes=243663 r=0
+T3[t=3971s] shard15 r0 #24 cell=(186,68) sc=71719 nodes=202853 r=0
+T3[t=3979s] shard12 r0 #20 cell=(161,75) sc=71715 nodes=73820 r=0
+T3[t=3981s] shard21 r0 #27 cell=(139,79) sc=71713 nodes=119626 r=0
+T3[t=3985s] shard3 r0 #36 cell=(159,97) sc=71713 nodes=139353 r=0
+T3[t=3985s] shard6 r0 #33 cell=(164,96) sc=71723 nodes=532310 r=0
+T3[t=3992s] shard12 r0 #21 cell=(150,76) sc=71709 nodes=46832 r=0
+DEATH sh0 liveend=0 estate=2095274 reach=1357329 dyn=199673 flow=0 geom=267971
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=34314 kill=5013 nodes=3145728
+ADAPT sh0 rp[P=70 try=76383 kill=13699 18%] pd[P=1840 try=20907 kill=3595 17%]
+T3[t=4004s] shard12 r0 #22 cell=(167,77) sc=71719 nodes=41057 r=0
+T3[t=4005s] shard15 r0 #25 cell=(148,78) sc=71715 nodes=110917 r=0
+T3[t=4012s] shard12 r0 #23 cell=(186,78) sc=71719 nodes=34883 r=0
+T3[t=4012s] shard10 r0 #37 cell=(109,123) sc=71719 nodes=469916 r=0
+T3[t=4022s] shard19 r0 #34 cell=(94,142) sc=71718 nodes=928532 r=0
+T3[t=4022s] shard8 r0 #39 cell=(88,130) sc=71710 nodes=470093 r=0
+T3[t=4026s] shard11 r0 #29 cell=(85,129) sc=71708 nodes=928529 r=0
+T3[t=4028s] shard15 r0 #26 cell=(151,81) sc=71721 nodes=88515 r=0
+T3[t=4035s] shard14 r0 #31 cell=(126,128) sc=71711 nodes=469969 r=0
+DEATH sh5 liveend=0 estate=2092173 reach=1193621 dyn=391176 flow=0 geom=130436
+PDEV sh5 try=0 kill=0 (0.0%) BJ try=36128 kill=1090 nodes=1048576
+ADAPT sh5 rp[P=1145 try=15720 kill=2637 17%] pd[P=8192 try=2386 kill=105 4%]
+T3[t=4041s] shard21 r0 #28 cell=(168,80) sc=71714 nodes=211261 r=0
+T3[t=4042s] shard17 r0 #30 cell=(163,131) sc=71710 nodes=474346 r=0
+T3[t=4046s] shard3 r0 #37 cell=(170,100) sc=71703 nodes=215088 r=0
+T3[t=4054s] shard6 r0 #34 cell=(163,97) sc=71713 nodes=250093 r=0
+T3[t=4069s] shard12 r0 #24 cell=(147,81) sc=71709 nodes=183456 r=0
+T3[t=4076s] shard0 r0 #6 cell=(157,127) sc=71710 nodes=3425511 r=0
+T3[t=4076s] shard21 r0 #29 cell=(139,85) sc=71712 nodes=178239 r=0
+DEATH sh4 liveend=0 estate=2116251 reach=1216874 dyn=383505 flow=0 geom=139020
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=36504 kill=1611 nodes=1048576
+ADAPT sh4 rp[P=578 try=20787 kill=3574 17%] pd[P=3567 try=3773 kill=377 10%]
+DEATH sh7 liveend=0 estate=2163101 reach=1263061 dyn=373459 flow=0 geom=157465
+PDEV sh7 try=0 kill=0 (0.0%) BJ try=37108 kill=1911 nodes=1048576
+ADAPT sh7 rp[P=113 try=24336 kill=4215 17%] pd[P=2406 try=10723 kill=1661 15%]
+T3[t=4088s] shard21 r0 #30 cell=(177,85) sc=71712 nodes=41080 r=0
+DEATH sh13 liveend=0 estate=2062509 reach=1165938 dyn=392559 flow=0 geom=122188
+PDEV sh13 try=0 kill=0 (0.0%) BJ try=35616 kill=1006 nodes=1048576
+ADAPT sh13 rp[P=1617 try=14841 kill=2484 17%] pd[P=8192 try=2097 kill=56 3%]
+DEATH sh22 liveend=0 estate=2560674 reach=1548596 dyn=324144 flow=0 geom=254632
+PDEV sh22 try=0 kill=0 (0.0%) BJ try=42433 kill=4473 nodes=9437184
+ADAPT sh22 rp[P=8192 try=40176 kill=7050 18%] pd[P=41 try=82672 kill=16739 20%]
+T3[t=4100s] shard21 r0 #31 cell=(153,87) sc=71725 nodes=41024 r=0
+T3[t=4104s] shard15 r0 #27 cell=(171,83) sc=71718 nodes=281657 r=0
+T3[t=4104s] shard12 r0 #25 cell=(138,82) sc=71719 nodes=179022 r=0
+T3[t=4110s] shard8 r0 #40 cell=(148,130) sc=71715 nodes=317494 r=0
+T3[t=4116s] shard6 r0 #35 cell=(170,98) sc=71711 nodes=212265 r=0
+DEATH sh9 liveend=0 estate=2031242 reach=1248276 dyn=260808 flow=0 geom=217718
+PDEV sh9 try=0 kill=0 (0.0%) BJ try=33185 kill=2974 nodes=3145728
+ADAPT sh9 rp[P=338 try=37108 kill=6546 18%] pd[P=3341 try=12434 kill=2004 16%]
+T3[t=4121s] shard4 r0 #39 cell=(160,138) sc=71719 nodes=1194322 r=0
+T3[t=4133s] shard7 r0 #33 cell=(84,130) sc=71711 nodes=1213459 r=0
+DEATH sh20 liveend=0 estate=2194199 reach=1258167 dyn=410294 flow=0 geom=139427
+PDEV sh20 try=0 kill=0 (0.0%) BJ try=37837 kill=1029 nodes=1048576
+ADAPT sh20 rp[P=691 try=18382 kill=3092 17%] pd[P=8192 try=2278 kill=62 3%]
+T3[t=4151s] shard10 r0 #38 cell=(125,127) sc=71714 nodes=469840 r=0
+T3[t=4156s] shard1 r0 #36 cell=(111,127) sc=71723 nodes=935978 r=0
+T3[t=4157s] shard19 r0 #35 cell=(110,144) sc=71720 nodes=469835 r=0
+T3[t=4158s] shard15 r0 #28 cell=(190,84) sc=71718 nodes=205880 r=0
+T3[t=4158s] shard12 r0 #26 cell=(178,82) sc=71718 nodes=208830 r=0
+T3[t=4164s] shard20 r0 #37 cell=(113,129) sc=71713 nodes=1099012 r=0
+T3[t=4166s] shard15 r0 #29 cell=(183,87) sc=71712 nodes=34843 r=0
+DEATH sh23 liveend=0 estate=2229704 reach=1274591 dyn=416790 flow=0 geom=141016
+PDEV sh23 try=0 kill=0 (0.0%) BJ try=38377 kill=1021 nodes=1048576
+ADAPT sh23 rp[P=1704 try=17281 kill=2893 17%] pd[P=8192 try=2249 kill=47 2%]
+T3[t=4184s] shard15 r0 #30 cell=(95,89) sc=71710 nodes=98375 r=0
+T3[t=4201s] shard15 r0 #31 cell=(118,90) sc=71711 nodes=92634 r=0
+DEATH sh16 liveend=0 estate=2248531 reach=1306928 dyn=400875 flow=0 geom=155622
+PDEV sh16 try=0 kill=0 (0.0%) BJ try=38703 kill=1716 nodes=2097152
+ADAPT sh16 rp[P=1885 try=25243 kill=4359 17%] pd[P=7830 try=4096 kill=406 10%]
+T3[t=4216s] shard15 r0 #32 cell=(197,93) sc=71713 nodes=69654 r=0
+DEATH sh18 liveend=0 estate=2177068 reach=1453545 dyn=167920 flow=0 geom=303624
+PDEV sh18 try=0 kill=0 (0.0%) BJ try=35560 kill=5482 nodes=9437184
+ADAPT sh18 rp[P=569 try=126026 kill=23054 18%] pd[P=117 try=28412 kill=4951 17%]
+T3[t=4222s] shard7 r0 #34 cell=(146,130) sc=71713 nodes=317113 r=0
+T3[t=4230s] shard15 r0 #33 cell=(188,94) sc=71711 nodes=69721 r=0
+T3[t=4231s] shard21 r0 #32 cell=(177,91) sc=71716 nodes=488957 r=0
+T3[t=4240s] shard13 r0 #35 cell=(85,133) sc=71716 nodes=1597477 r=0
+T3[t=4243s] shard15 r0 #34 cell=(92,104) sc=71721 nodes=66044 r=0
+T3[t=4244s] shard8 r0 #41 cell=(91,131) sc=71716 nodes=470074 r=0
+T3[t=4250s] shard16 r0 #36 cell=(117,131) sc=71716 nodes=2231551 r=0
+T3[t=4289s] shard14 r0 #32 cell=(89,129) sc=71713 nodes=928529 r=0
+DEATH sh11 liveend=0 estate=2271693 reach=1318730 dyn=402008 flow=0 geom=157466
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=39110 kill=1946 nodes=1048576
+ADAPT sh11 rp[P=495 try=26475 kill=4574 17%] pd[P=3680 try=3596 kill=311 9%]
+T3[t=4292s] shard19 r0 #36 cell=(148,144) sc=71724 nodes=469835 r=0
+T3[t=4293s] shard21 r0 #33 cell=(163,95) sc=71715 nodes=211487 r=0
+DEATH sh5 liveend=0 estate=2212671 reach=1270083 dyn=409174 flow=0 geom=142025
+PDEV sh5 try=0 kill=0 (0.0%) BJ try=38225 kill=1281 nodes=2097152
+ADAPT sh5 rp[P=949 try=18845 kill=3198 17%] pd[P=5284 try=2546 kill=116 5%]
+T3[t=4304s] shard18 r0 #1 cell=(111,125) sc=71718 nodes=9762721 r=0
+T3[t=4304s] shard21 r0 #34 cell=(140,102) sc=71717 nodes=59893 r=0
+T3[t=4310s] shard21 r0 #35 cell=(279,119) sc=71715 nodes=36151 r=0
+T3[t=4313s] shard23 r0 #38 cell=(152,124) sc=71708 nodes=1587899 r=0
+T3[t=4317s] shard18 r0 #2 cell=(164,46) sc=71718 nodes=40617 r=0
+DEATH sh3 liveend=0 estate=2125365 reach=1292219 dyn=283801 flow=0 geom=218208
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=35100 kill=2690 nodes=1048576
+ADAPT sh3 rp[P=260 try=34424 kill=6044 18%] pd[P=8192 try=5334 kill=678 13%]
+DEATH sh17 liveend=0 estate=2221439 reach=1240204 dyn=427135 flow=0 geom=124699
+PDEV sh17 try=0 kill=0 (0.0%) BJ try=38513 kill=976 nodes=1048576
+ADAPT sh17 rp[P=8192 try=11839 kill=1909 16%] pd[P=8192 try=2205 kill=46 2%]
+DEATH sh0 liveend=0 estate=2257384 reach=1475698 dyn=204340 flow=0 geom=297149
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=36971 kill=5563 nodes=1048576
+ADAPT sh0 rp[P=168 try=89048 kill=15996 18%] pd[P=2642 try=25228 kill=4367 17%]
+T3[t=4335s] shard18 r0 #3 cell=(159,21) sc=71714 nodes=82663 r=0
+T3[t=4337s] shard11 r0 #30 cell=(96,136) sc=71716 nodes=1222471 r=0
+T3[t=4356s] shard15 r0 #35 cell=(156,112) sc=71704 nodes=317060 r=0
+T3[t=4359s] shard7 r0 #35 cell=(89,131) sc=71715 nodes=469968 r=0
+T3[t=4362s] shard5 r0 #39 cell=(96,138) sc=71717 nodes=2359356 r=0
+T3[t=4371s] shard15 r0 #36 cell=(296,120) sc=71718 nodes=54605 r=0
+T3[t=4374s] shard12 r0 #27 cell=(167,85) sc=71714 nodes=804936 r=0
+DEATH sh6 liveend=0 estate=2247009 reach=1398790 dyn=271522 flow=0 geom=251859
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=36873 kill=4246 nodes=1048576
+ADAPT sh6 rp[P=409 try=48524 kill=8587 18%] pd[P=444 try=12746 kill=2055 16%]
+T3[t=4383s] shard18 r0 #4 cell=(141,25) sc=71709 nodes=178771 r=0
+DEATH sh4 liveend=0 estate=2252519 reach=1300183 dyn=407009 flow=0 geom=149919
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=38892 kill=1697 nodes=1048576
+ADAPT sh4 rp[P=737 try=23276 kill=4012 17%] pd[P=8192 try=3939 kill=380 10%]
+T3[t=4390s] shard12 r0 #28 cell=(190,88) sc=71718 nodes=69691 r=0
+DEATH sh9 liveend=0 estate=2157574 reach=1338052 dyn=268799 flow=0 geom=237993
+PDEV sh9 try=0 kill=0 (0.0%) BJ try=35282 kill=3336 nodes=4194304
+ADAPT sh9 rp[P=6856 try=45002 kill=7966 18%] pd[P=8192 try=15130 kill=2480 16%]
+T3[t=4403s] shard12 r0 #29 cell=(88,90) sc=71711 nodes=66136 r=0
+T3[t=4409s] shard4 r0 #40 cell=(110,140) sc=71714 nodes=1115229 r=0
+T3[t=4409s] shard18 r0 #5 cell=(141,29) sc=71711 nodes=71292 r=0
+T3[t=4409s] shard12 r0 #30 cell=(117,91) sc=71715 nodes=32494 r=0
+DEATH sh10 liveend=0 estate=2281130 reach=1302219 dyn=422099 flow=0 geom=145601
+PDEV sh10 try=0 kill=0 (0.0%) BJ try=39266 kill=1294 nodes=1048576
+ADAPT sh10 rp[P=1531 try=16828 kill=2815 17%] pd[P=8192 try=2419 kill=83 3%]
+DEATH sh22 liveend=0 estate=2830179 reach=1715658 dyn=340170 flow=0 geom=291340
+PDEV sh22 try=0 kill=0 (0.0%) BJ try=46627 kill=5130 nodes=11534336
+ADAPT sh22 rp[P=953 try=43941 kill=7714 18%] pd[P=8192 try=105560 kill=21407 20%]
+T3[t=4425s] shard12 r0 #31 cell=(184,94) sc=71717 nodes=70464 r=0
+T3[t=4426s] shard10 r0 #39 cell=(118,132) sc=71711 nodes=1122068 r=0
+T3[t=4427s] shard19 r0 #37 cell=(91,145) sc=71714 nodes=469835 r=0
+T3[t=4428s] shard1 r0 #37 cell=(110,128) sc=71716 nodes=936035 r=0
+T3[t=4433s] shard12 r0 #32 cell=(183,95) sc=71716 nodes=35871 r=0
+T3[t=4437s] shard18 r0 #6 cell=(126,30) sc=71707 nodes=75716 r=0
+T3[t=4451s] shard23 r0 #39 cell=(101,127) sc=71718 nodes=469870 r=0
+T3[t=4453s] shard18 r0 #7 cell=(170,30) sc=71713 nodes=77192 r=0
+T3[t=4464s] shard20 r0 #38 cell=(128,130) sc=71724 nodes=1214631 r=0
+T3[t=4489s] shard2 r0 #27 cell=(156,132) sc=71711 nodes=3055646 r=0
+T3[t=4494s] shard18 r0 #8 cell=(155,31) sc=71714 nodes=147617 r=0
+T3[t=4511s] shard18 r0 #9 cell=(172,32) sc=71717 nodes=77221 r=0
+DEATH sh8 liveend=0 estate=2287436 reach=1297887 dyn=428676 flow=0 geom=141082
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=39406 kill=1120 nodes=1048576
+ADAPT sh8 rp[P=1531 try=16123 kill=2684 17%] pd[P=8192 try=2253 kill=44 2%]
+DEATH sh13 liveend=0 estate=2243195 reach=1271951 dyn=426634 flow=0 geom=133868
+PDEV sh13 try=0 kill=0 (0.0%) BJ try=38810 kill=1076 nodes=1048576
+ADAPT sh13 rp[P=1051 try=16675 kill=2803 17%] pd[P=8192 try=2305 kill=62 3%]
+T3[t=4515s] shard22 r0 #4 cell=(162,188) sc=71718 nodes=11876719 r=0
+DEATH sh16 liveend=0 estate=2382838 reach=1385733 dyn=425532 flow=0 geom=164706
+PDEV sh16 try=0 kill=0 (0.0%) BJ try=41069 kill=1802 nodes=1048576
+ADAPT sh16 rp[P=1924 try=26497 kill=4575 17%] pd[P=8192 try=4244 kill=410 10%]
+T3[t=4529s] shard8 r0 #42 cell=(116,132) sc=71713 nodes=1122058 r=0
+T3[t=4534s] shard13 r0 #36 cell=(122,140) sc=71720 nodes=1136694 r=0
+T3[t=4540s] shard6 r0 #36 cell=(146,112) sc=71711 nodes=1666055 r=0
+T3[t=4543s] shard18 r0 #10 cell=(146,34) sc=71720 nodes=156571 r=0
+T3[t=4544s] shard8 r0 #43 cell=(203,139) sc=71710 nodes=52311 r=0
+T3[t=4545s] shard4 r0 #41 cell=(89,143) sc=71713 nodes=469874 r=0
+T3[t=4546s] shard15 r0 #37 cell=(163,121) sc=71722 nodes=477660 r=0
+DEATH sh14 liveend=0 estate=2375985 reach=1377492 dyn=427503 flow=0 geom=161718
+PDEV sh14 try=0 kill=0 (0.0%) BJ try=41091 kill=1879 nodes=1048576
+ADAPT sh14 rp[P=125 try=26947 kill=4675 17%] pd[P=6105 try=2865 kill=155 5%]
+T3[t=4560s] shard10 r0 #40 cell=(117,135) sc=71716 nodes=469835 r=0
+T3[t=4561s] shard8 r0 #44 cell=(192,140) sc=71713 nodes=53340 r=0
+T3[t=4573s] shard7 r0 #36 cell=(151,131) sc=71705 nodes=762874 r=0
+T3[t=4574s] shard12 r0 #33 cell=(169,97) sc=71710 nodes=538193 r=0
+DEATH sh0 liveend=0 estate=2385529 reach=1569685 dyn=207527 flow=0 geom=320565
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=39068 kill=6016 nodes=2097152
+ADAPT sh0 rp[P=278 try=100144 kill=18021 18%] pd[P=5757 try=28177 kill=4893 17%]
+T3[t=4604s] shard14 r0 #33 cell=(114,130) sc=71710 nodes=1227245 r=0
+T3[t=4607s] shard1 r0 #38 cell=(156,128) sc=71720 nodes=630278 r=0
+DEATH sh3 liveend=0 estate=2252051 reach=1382152 dyn=291356 flow=0 geom=238811
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=37197 kill=3144 nodes=2097152
+ADAPT sh3 rp[P=122 try=42487 kill=7509 18%] pd[P=105 try=6668 kill=922 14%]
+T3[t=4608s] shard21 r0 #36 cell=(153,123) sc=71709 nodes=802837 r=0
+DEATH sh11 liveend=0 estate=2411161 reach=1404757 dyn=425629 flow=0 geom=168935
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=41554 kill=2053 nodes=1048576
+ADAPT sh11 rp[P=882 try=29176 kill=5049 17%] pd[P=8192 try=3963 kill=351 9%]
+T3[t=4623s] shard5 r0 #40 cell=(95,139) sc=71717 nodes=928529 r=0
+T3[t=4634s] shard18 r0 #11 cell=(179,35) sc=71715 nodes=273279 r=0
+DEATH sh17 liveend=0 estate=2338554 reach=1303935 dyn=451695 flow=0 geom=129690
+PDEV sh17 try=0 kill=0 (0.0%) BJ try=40610 kill=1006 nodes=2097152
+ADAPT sh17 rp[P=7369 try=12125 kill=1953 16%] pd[P=8192 try=2319 kill=48 2%]
+T3[t=4650s] shard18 r0 #12 cell=(159,37) sc=71716 nodes=77192 r=0
+T3[t=4657s] shard18 r0 #13 cell=(180,38) sc=71715 nodes=37073 r=0
+DEATH sh9 liveend=0 estate=2285933 reach=1432002 dyn=273838 flow=0 geom=260862
+PDEV sh9 try=0 kill=0 (0.0%) BJ try=37379 kill=3801 nodes=5242880
+ADAPT sh9 rp[P=130 try=53003 kill=9426 18%] pd[P=5284 try=18421 kill=3071 17%]
+T3[t=4663s] shard23 r0 #40 cell=(154,128) sc=71712 nodes=800769 r=0
+T3[t=4665s] shard18 r0 #14 cell=(205,41) sc=71715 nodes=38624 r=0
+T3[t=4668s] shard16 r0 #37 cell=(86,134) sc=71710 nodes=1628236 r=0
+T3[t=4685s] shard19 r0 #38 cell=(159,147) sc=71720 nodes=935980 r=0
+T3[t=4692s] shard8 r0 #45 cell=(121,141) sc=71719 nodes=469836 r=0
