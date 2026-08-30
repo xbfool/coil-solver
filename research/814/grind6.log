@@ -1,0 +1,769 @@
+  分治：12 块 144 对，可行 40 对，整块淘汰掉 0 格
+全局阶段：固定 0 条边，起点候选 50288 / 50288 (100.0%)
+adaptive PROPDEPTH=2 (fixed 0 / 71581 edges; 第一层存活率>=SURVDEEP%再升深层)
+FRANK shard10: F降序
+shard 10: 第一层存活 412/2095 = 19%%, 第二层 跳过
+probe[t=32s]: 49876/50288 起点被证伪，剩 412
+DEATH liveend=11 estate=52443 reach=31201 dyn=855 flow=0 geom=8957
+DYN shard10: 5143 calls, 855 refuted (17%)
+T3[t=32s] shard10 r0 #0 cell=(81,173) sc=49579 nodes=16886 r=0
+T3[t=32s] shard10 r0 #1 cell=(81,175) sc=49581 nodes=16886 r=0
+T3[t=32s] shard10 r0 #2 cell=(164,246) sc=49521 nodes=7815 r=0
+FRANK shard19: F降序
+shard 19: 第一层存活 428/2095 = 20%%, 第二层 跳过
+probe[t=32s]: 49860/50288 起点被证伪，剩 428
+DEATH liveend=15 estate=55252 reach=33133 dyn=905 flow=0 geom=9345
+DYN shard19: 5290 calls, 905 refuted (17%)
+T3[t=33s] shard10 r0 #3 cell=(88,174) sc=49582 nodes=34744 r=0
+FRANK shard7: F降序
+shard 7: 第一层存活 435/2096 = 20%%, 第二层 跳过
+probe[t=33s]: 49853/50288 起点被证伪，剩 435
+DEATH liveend=15 estate=54241 reach=31825 dyn=884 flow=0 geom=9064
+DYN shard7: 5229 calls, 884 refuted (17%)
+FRANK shard13: F降序
+shard 13: 第一层存活 437/2095 = 20%%, 第二层 跳过
+probe[t=33s]: 49851/50288 起点被证伪，剩 437
+DEATH liveend=13 estate=55856 reach=33536 dyn=869 flow=0 geom=9610
+DYN shard13: 5288 calls, 869 refuted (16%)
+FRANK shard1: F降序
+shard 1: 第一层存活 455/2096 = 21%%, 第二层 跳过
+probe[t=33s]: 49833/50288 起点被证伪，剩 455
+DEATH liveend=16 estate=57072 reach=34712 dyn=802 flow=0 geom=9919
+DYN shard1: 5243 calls, 802 refuted (15%)
+FRANK shard16: F降序
+shard 16: 第一层存活 436/2095 = 20%%, 第二层 跳过
+probe[t=33s]: 49852/50288 起点被证伪，剩 436
+DEATH liveend=16 estate=54969 reach=33021 dyn=875 flow=0 geom=9471
+DYN shard16: 5217 calls, 875 refuted (17%)
+FRANK shard4: F降序
+shard 4: 第一层存活 452/2096 = 21%%, 第二层 跳过
+probe[t=33s]: 49836/50288 起点被证伪，剩 452
+DEATH liveend=18 estate=57000 reach=33635 dyn=894 flow=0 geom=9497
+DYN shard4: 5456 calls, 894 refuted (16%)
+T3[t=33s] shard4 r0 #0 cell=(247,219) sc=49790 nodes=2620 r=0
+T3[t=33s] shard4 r0 #1 cell=(272,178) sc=49478 nodes=2599 r=0
+FRANK shard22: F降序
+shard 22: 第一层存活 434/2095 = 20%%, 第二层 跳过
+probe[t=34s]: 49854/50288 起点被证伪，剩 434
+DEATH liveend=14 estate=56308 reach=33746 dyn=911 flow=0 geom=9707
+DYN shard22: 5418 calls, 911 refuted (17%)
+T3[t=34s] shard22 r0 #0 cell=(243,197) sc=49774 nodes=2629 r=0
+T3[t=34s] shard13 r0 #0 cell=(21,191) sc=49295 nodes=193105 r=0
+T3[t=35s] shard22 r0 #1 cell=(216,70) sc=49213 nodes=238566 r=0
+T3[t=36s] shard22 r0 #2 cell=(121,67) sc=49118 nodes=9139 r=0
+T3[t=37s] shard10 r0 #4 cell=(221,21) sc=49275 nodes=594013 r=0
+T3[t=38s] shard10 r0 #5 cell=(29,109) sc=49225 nodes=158508 r=0
+T3[t=39s] shard10 r0 #6 cell=(96,198) sc=49482 nodes=16733 r=0
+T3[t=39s] shard10 r0 #7 cell=(270,180) sc=49556 nodes=4301 r=0
+T3[t=39s] shard1 r0 #0 cell=(27,68) sc=49784 nodes=569690 r=0
+T3[t=39s] shard1 r0 #1 cell=(167,245) sc=49533 nodes=7808 r=0
+T3[t=39s] shard1 r0 #2 cell=(262,166) sc=49133 nodes=8639 r=0
+T3[t=40s] shard1 r0 #3 cell=(7,169) sc=49291 nodes=86675 r=0
+T3[t=40s] shard1 r0 #4 cell=(265,187) sc=49792 nodes=4764 r=0
+T3[t=40s] shard1 r0 #5 cell=(239,191) sc=49822 nodes=9348 r=0
+FRANK shard11: F降序
+shard 11: 第一层存活 396/2095 = 18%%, 第二层 跳过
+probe[t=41s]: 49892/50288 起点被证伪，剩 396
+DEATH liveend=25 estate=50920 reach=30198 dyn=1431 flow=0 geom=8578
+DYN shard11: 5829 calls, 1431 refuted (25%)
+FRANK shard9: F降序
+shard 9: 第一层存活 422/2095 = 20%%, 第二层 跳过
+probe[t=41s]: 49866/50288 起点被证伪，剩 422
+DEATH liveend=7 estate=52797 reach=30847 dyn=905 flow=0 geom=8789
+DYN shard9: 5050 calls, 905 refuted (18%)
+T3[t=41s] shard9 r0 #0 cell=(252,219) sc=49785 nodes=2626 r=0
+FRANK shard20: F降序
+shard 20: 第一层存活 361/2095 = 17%%, 第二层 跳过
+probe[t=41s]: 49927/50288 起点被证伪，剩 361
+DEATH liveend=11 estate=48472 reach=28472 dyn=1542 flow=0 geom=7810
+DYN shard20: 6077 calls, 1542 refuted (25%)
+T3[t=41s] shard1 r0 #6 cell=(22,194) sc=49030 nodes=182405 r=0
+FRANK shard2: F降序
+shard 2: 第一层存活 401/2096 = 19%%, 第二层 跳过
+probe[t=42s]: 49887/50288 起点被证伪，剩 401
+DEATH liveend=12 estate=50774 reach=29880 dyn=1501 flow=0 geom=8250
+DYN shard2: 5975 calls, 1501 refuted (25%)
+T3[t=42s] shard9 r0 #1 cell=(187,195) sc=49392 nodes=52332 r=0
+FRANK shard8: F降序
+shard 8: 第一层存活 399/2095 = 19%%, 第二层 跳过
+probe[t=42s]: 49889/50288 起点被证伪，剩 399
+DEATH liveend=19 estate=50831 reach=29545 dyn=1669 flow=0 geom=8271
+DYN shard8: 6303 calls, 1669 refuted (26%)
+T3[t=42s] shard9 r0 #2 cell=(106,210) sc=49576 nodes=16684 r=0
+FRANK shard17: F降序
+shard 17: 第一层存活 392/2095 = 18%%, 第二层 跳过
+probe[t=42s]: 49896/50288 起点被证伪，剩 392
+DEATH liveend=11 estate=50730 reach=30376 dyn=1595 flow=0 geom=8475
+DYN shard17: 6317 calls, 1595 refuted (25%)
+FRANK shard6: F降序
+shard 6: 第一层存活 428/2096 = 20%%, 第二层 跳过
+probe[t=42s]: 49860/50288 起点被证伪，剩 428
+DEATH liveend=18 estate=53017 reach=31353 dyn=834 flow=0 geom=8920
+DYN shard6: 5009 calls, 834 refuted (17%)
+T3[t=42s] shard6 r0 #0 cell=(257,183) sc=49734 nodes=4742 r=0
+T3[t=42s] shard17 r0 #0 cell=(193,171) sc=49471 nodes=18379 r=0
+T3[t=42s] shard8 r0 #0 cell=(119,177) sc=49444 nodes=66985 r=0
+T3[t=42s] shard1 r0 #7 cell=(192,190) sc=49590 nodes=57238 r=0
+T3[t=42s] shard1 r0 #8 cell=(126,246) sc=49697 nodes=1099 r=0
+T3[t=42s] shard8 r0 #1 cell=(204,134) sc=49203 nodes=3821 r=0
+T3[t=42s] shard1 r0 #9 cell=(12,258) sc=49280 nodes=2531 r=0
+FRANK shard14: F降序
+shard 14: 第一层存活 387/2095 = 18%%, 第二层 跳过
+probe[t=43s]: 49901/50288 起点被证伪，剩 387
+DEATH liveend=17 estate=50093 reach=29274 dyn=1566 flow=0 geom=8215
+DYN shard14: 6166 calls, 1566 refuted (25%)
+T3[t=43s] shard1 r0 #10 cell=(94,222) sc=49552 nodes=16699 r=0
+FRANK shard5: F降序
+shard 5: 第一层存活 417/2096 = 19%%, 第二层 跳过
+probe[t=43s]: 49871/50288 起点被证伪，剩 417
+DEATH liveend=18 estate=53858 reach=31843 dyn=1616 flow=0 geom=8865
+DYN shard5: 6400 calls, 1616 refuted (25%)
+T3[t=43s] shard5 r0 #0 cell=(17,209) sc=49069 nodes=3189 r=0
+FRANK shard3: F降序
+shard 3: 第一层存活 409/2096 = 19%%, 第二层 跳过
+probe[t=43s]: 49879/50288 起点被证伪，剩 409
+DEATH liveend=21 estate=53460 reach=31997 dyn=969 flow=0 geom=9171
+DYN shard3: 5295 calls, 969 refuted (18%)
+FRANK shard21: F降序
+shard 21: 第一层存活 419/2095 = 20%%, 第二层 跳过
+probe[t=43s]: 49869/50288 起点被证伪，剩 419
+DEATH liveend=13 estate=54696 reach=33269 dyn=924 flow=0 geom=9522
+DYN shard21: 5246 calls, 924 refuted (18%)
+T3[t=43s] shard1 r0 #11 cell=(85,187) sc=49616 nodes=101406 r=0
+FRANK shard12: F降序
+shard 12: 第一层存活 407/2095 = 19%%, 第二层 跳过
+probe[t=43s]: 49881/50288 起点被证伪，剩 407
+DEATH liveend=15 estate=52541 reach=31428 dyn=1018 flow=0 geom=9140
+DYN shard12: 5402 calls, 1018 refuted (19%)
+T3[t=43s] shard1 r0 #12 cell=(266,238) sc=49816 nodes=20996 r=0
+T3[t=43s] shard1 r0 #13 cell=(266,178) sc=49576 nodes=4822 r=0
+T3[t=43s] shard12 r0 #0 cell=(251,181) sc=49722 nodes=4749 r=0
+T3[t=43s] shard1 r0 #14 cell=(270,182) sc=49462 nodes=2606 r=0
+T3[t=43s] shard12 r0 #1 cell=(160,66) sc=49678 nodes=1025 r=0
+FRANK shard18: F降序
+shard 18: 第一层存活 420/2095 = 20%%, 第二层 跳过
+probe[t=43s]: 49868/50288 起点被证伪，剩 420
+DEATH liveend=13 estate=54909 reach=32410 dyn=1090 flow=0 geom=9304
+DYN shard18: 5559 calls, 1090 refuted (20%)
+T3[t=43s] shard1 r0 #15 cell=(161,269) sc=49262 nodes=7932 r=0
+FRANK shard23: F降序
+shard 23: 第一层存活 385/2095 = 18%%, 第二层 跳过
+probe[t=43s]: 49903/50288 起点被证伪，剩 385
+DEATH liveend=22 estate=52311 reach=30894 dyn=1592 flow=0 geom=8725
+DYN shard23: 6384 calls, 1592 refuted (25%)
+T3[t=44s] shard18 r0 #0 cell=(153,253) sc=49593 nodes=7731 r=0
+T3[t=44s] shard5 r0 #1 cell=(213,183) sc=49261 nodes=247842 r=0
+T3[t=44s] shard18 r0 #1 cell=(77,217) sc=49528 nodes=8190 r=0
+T3[t=44s] shard14 r0 #0 cell=(217,57) sc=49200 nodes=141675 r=0
+T3[t=44s] shard23 r0 #0 cell=(203,145) sc=49469 nodes=18775 r=0
+T3[t=44s] shard5 r0 #2 cell=(160,248) sc=49551 nodes=7754 r=0
+T3[t=44s] shard21 r0 #0 cell=(186,190) sc=49588 nodes=51724 r=0
+T3[t=44s] shard21 r0 #1 cell=(153,91) sc=49772 nodes=1111 r=0
+T3[t=44s] shard14 r0 #1 cell=(108,36) sc=49093 nodes=8005 r=0
+T3[t=44s] shard18 r0 #2 cell=(61,225) sc=49466 nodes=24177 r=0
+T3[t=44s] shard23 r0 #1 cell=(101,73) sc=49112 nodes=19843 r=0
+T3[t=44s] shard14 r0 #2 cell=(250,144) sc=49169 nodes=12446 r=0
+FRANK shard0: F降序
+shard 0: 第一层存活 450/2096 = 21%%, 第二层 跳过
+probe[t=44s]: 49838/50288 起点被证伪，剩 450
+DEATH liveend=17 estate=57997 reach=34579 dyn=1040 flow=0 geom=9963
+DYN shard0: 5653 calls, 1040 refuted (18%)
+T3[t=44s] shard1 r0 #16 cell=(235,167) sc=49399 nodes=70917 r=0
+T3[t=44s] shard8 r0 #2 cell=(214,184) sc=49289 nodes=495401 r=0
+T3[t=44s] shard14 r0 #3 cell=(218,172) sc=49380 nodes=17292 r=0
+FRANK shard15: F降序
+shard 15: 第一层存活 402/2095 = 19%%, 第二层 跳过
+probe[t=44s]: 49886/50288 起点被证伪，剩 402
+DEATH liveend=12 estate=53060 reach=31448 dyn=1010 flow=0 geom=9100
+DYN shard15: 5393 calls, 1010 refuted (19%)
+T3[t=44s] shard12 r0 #2 cell=(186,196) sc=49699 nodes=50945 r=0
+T3[t=44s] shard1 r0 #17 cell=(178,226) sc=49635 nodes=10791 r=0
+T3[t=44s] shard15 r0 #0 cell=(202,144) sc=49612 nodes=23026 r=0
+T3[t=44s] shard8 r0 #3 cell=(67,213) sc=49558 nodes=35677 r=0
+T3[t=44s] shard12 r0 #3 cell=(214,216) sc=49740 nodes=10829 r=0
+T3[t=45s] shard8 r0 #4 cell=(209,153) sc=49365 nodes=17255 r=0
+T3[t=45s] shard14 r0 #4 cell=(194,202) sc=49589 nodes=32919 r=0
+T3[t=45s] shard8 r0 #5 cell=(214,236) sc=49872 nodes=11041 r=0
+T3[t=45s] shard1 r0 #18 cell=(240,56) sc=49307 nodes=143374 r=0
+T3[t=45s] shard1 r0 #19 cell=(57,65) sc=49663 nodes=676 r=0
+T3[t=47s] shard6 r0 #1 cell=(219,25) sc=49273 nodes=594452 r=0
+T3[t=47s] shard6 r0 #2 cell=(91,215) sc=49560 nodes=16700 r=0
+T3[t=47s] shard1 r0 #20 cell=(227,1) sc=49063 nodes=271171 r=0
+T3[t=47s] shard1 r0 #21 cell=(120,6) sc=49809 nodes=894 r=0
+T3[t=47s] shard6 r0 #3 cell=(196,198) sc=49591 nodes=50410 r=0
+T3[t=47s] shard6 r0 #4 cell=(16,110) sc=49991 nodes=663 r=0
+T3[t=49s] shard14 r0 #5 cell=(221,98) sc=49368 nodes=673945 r=0
+T3[t=50s] shard11 r0 #0 cell=(6,63) sc=49700 nodes=855010 r=0
+T3[t=50s] shard11 r0 #1 cell=(240,140) sc=49091 nodes=5611 r=0
+T3[t=51s] shard11 r0 #2 cell=(177,265) sc=49419 nodes=7815 r=0
+T3[t=51s] shard1 r0 #22 cell=(217,7) sc=49102 nodes=646621 r=0
+T3[t=56s] shard1 r0 #23 cell=(206,14) sc=49148 nodes=647867 r=0
+DEATH sh10 liveend=11 estate=1310255 reach=1068181 dyn=873 flow=0 geom=337660
+DEATH sh3 liveend=21 estate=1201182 reach=982108 dyn=969 flow=0 geom=311685
+DEATH sh15 liveend=12 estate=1186247 reach=965616 dyn=1013 flow=0 geom=304170
+DEATH sh19 liveend=15 estate=1140043 reach=813497 dyn=905 flow=0 geom=242534
+T3[t=86s] shard21 r0 #2 cell=(149,63) sc=49660 nodes=6372987 r=0
+DEATH sh16 liveend=16 estate=1139840 reach=813429 dyn=877 flow=0 geom=242690
+T3[t=88s] shard7 r0 #0 cell=(17,59) sc=49543 nodes=5107223 r=0
+T3[t=88s] shard7 r0 #1 cell=(261,155) sc=49219 nodes=13763 r=0
+T3[t=88s] shard7 r0 #2 cell=(250,219) sc=49879 nodes=4577 r=0
+DEATH sh13 liveend=13 estate=1169313 reach=832082 dyn=870 flow=0 geom=248522
+T3[t=93s] shard8 r0 #6 cell=(32,60) sc=49170 nodes=4525662 r=0
+T3[t=94s] shard21 r0 #3 cell=(200,40) sc=49402 nodes=1242470 r=0
+DEATH sh18 liveend=13 estate=1145994 reach=816976 dyn=1100 flow=0 geom=244047
+DEATH sh17 liveend=11 estate=1139282 reach=814670 dyn=1609 flow=0 geom=243091
+DEATH sh9 liveend=7 estate=1149279 reach=824809 dyn=912 flow=0 geom=246481
+T3[t=97s] shard21 r0 #4 cell=(20,96) sc=49706 nodes=281967 r=0
+T3[t=97s] shard8 r0 #7 cell=(216,26) sc=49283 nodes=594418 r=0
+T3[t=97s] shard8 r0 #8 cell=(98,54) sc=49503 nodes=2803 r=0
+T3[t=97s] shard1 r0 #24 cell=(99,33) sc=49140 nodes=3946534 r=0
+T3[t=97s] shard21 r0 #5 cell=(129,175) sc=49368 nodes=66932 r=0
+DEATH sh23 liveend=23 estate=1146259 reach=817980 dyn=1596 flow=0 geom=244454
+T3[t=98s] shard8 r0 #9 cell=(44,200) sc=49307 nodes=115558 r=0
+T3[t=98s] shard8 r0 #10 cell=(111,29) sc=49095 nodes=7977 r=0
+DEATH sh5 liveend=18 estate=1182052 reach=838262 dyn=1635 flow=0 geom=251573
+DEATH sh0 liveend=17 estate=1144997 reach=819991 dyn=1041 flow=0 geom=245403
+DEATH sh12 liveend=15 estate=1147243 reach=822370 dyn=1045 flow=0 geom=245501
+T3[t=99s] shard21 r0 #6 cell=(158,186) sc=49481 nodes=123563 r=0
+T3[t=99s] shard21 r0 #7 cell=(141,263) sc=49615 nodes=9746 r=0
+T3[t=99s] shard21 r0 #8 cell=(264,189) sc=49781 nodes=4759 r=0
+T3[t=100s] shard21 r0 #9 cell=(224,198) sc=49604 nodes=16976 r=0
+DEATH sh6 liveend=18 estate=1224404 reach=880926 dyn=843 flow=0 geom=262537
+T3[t=101s] shard21 r0 #10 cell=(14,126) sc=49144 nodes=111749 r=0
+T3[t=101s] shard21 r0 #11 cell=(241,83) sc=49096 nodes=52904 r=0
+T3[t=101s] shard8 r0 #11 cell=(28,76) sc=49332 nodes=281841 r=0
+T3[t=101s] shard7 r0 #3 cell=(208,76) sc=49349 nodes=2305601 r=0
+T3[t=101s] shard7 r0 #4 cell=(242,17) sc=49706 nodes=665 r=0
+DEATH sh10 liveend=11 estate=2457948 reach=2019801 dyn=873 flow=0 geom=640858
+DEATH sh11 liveend=25 estate=1241284 reach=895087 dyn=1452 flow=0 geom=266952
+T3[t=105s] shard11 r0 #3 cell=(128,78) sc=49198 nodes=8424134 r=0
+T3[t=105s] shard21 r0 #12 cell=(207,19) sc=49274 nodes=592751 r=0
+T3[t=105s] shard21 r0 #13 cell=(104,26) sc=49433 nodes=1108 r=0
+T3[t=105s] shard21 r0 #14 cell=(110,34) sc=49106 nodes=9715 r=0
+DEATH sh3 liveend=21 estate=2348892 reach=1933796 dyn=969 flow=0 geom=614923
+T3[t=113s] shard11 r0 #4 cell=(204,50) sc=49677 nodes=1390053 r=0
+DEATH sh15 liveend=12 estate=2333794 reach=1917641 dyn=1013 flow=0 geom=607470
+DEATH sh4 liveend=18 estate=1085914 reach=861721 dyn=904 flow=0 geom=261518
+T3[t=120s] shard11 r0 #5 cell=(204,88) sc=49029 nodes=1370799 r=0
+DEATH sh22 liveend=14 estate=1117291 reach=884981 dyn=915 flow=0 geom=268987
+DEATH sh2 liveend=12 estate=1078840 reach=857546 dyn=1503 flow=0 geom=260134
+DEATH sh20 liveend=11 estate=1088665 reach=864367 dyn=1549 flow=0 geom=268209
+T3[t=129s] shard14 r0 #6 cell=(10,30) sc=49074 nodes=7663337 r=0
+DEATH sh10 liveend=11 estate=3605581 reach=2971752 dyn=873 flow=0 geom=944169
+DEATH sh19 liveend=15 estate=2234679 reach=1598469 dyn=905 flow=0 geom=477651
+DEATH sh3 liveend=21 estate=3496454 reach=2885692 dyn=969 flow=0 geom=918177
+DEATH sh16 liveend=16 estate=2234476 reach=1598404 dyn=877 flow=0 geom=477801
+DEATH sh13 liveend=13 estate=2264262 reach=1617206 dyn=870 flow=0 geom=483693
+DEATH sh15 liveend=12 estate=3481531 reach=2869522 dyn=1013 flow=0 geom=910713
+DEATH sh18 liveend=13 estate=2240622 reach=1601967 dyn=1100 flow=0 geom=479172
+DEATH sh17 liveend=11 estate=2233975 reach=1599760 dyn=1609 flow=0 geom=478266
+DEATH sh9 liveend=7 estate=2243654 reach=1610080 dyn=912 flow=0 geom=481771
+DEATH sh23 liveend=23 estate=2240897 reach=1602983 dyn=1596 flow=0 geom=479620
+DEATH sh6 liveend=18 estate=2319033 reach=1665918 dyn=843 flow=0 geom=497662
+DEATH sh5 liveend=18 estate=2276427 reach=1623533 dyn=1635 flow=0 geom=486864
+DEATH sh0 liveend=17 estate=2239406 reach=1605233 dyn=1041 flow=0 geom=480703
+DEATH sh12 liveend=15 estate=2241759 reach=1607219 dyn=1045 flow=0 geom=480573
+DEATH sh7 liveend=15 estate=2111780 reach=1570710 dyn=894 flow=0 geom=462981
+DEATH sh8 liveend=19 estate=1912224 reach=1408597 dyn=1720 flow=0 geom=423231
+DEATH sh10 liveend=11 estate=4753800 reach=3923199 dyn=873 flow=0 geom=1247256
+DEATH sh3 liveend=21 estate=4644743 reach=3837105 dyn=969 flow=0 geom=1221270
+DEATH sh11 liveend=26 estate=2730969 reach=1957511 dyn=1460 flow=0 geom=582710
+DEATH sh15 liveend=12 estate=4629757 reach=3820931 dyn=1013 flow=0 geom=1213807
+T3[t=177s] shard1 r0 #25 cell=(10,36) sc=49085 nodes=7663332 r=0
+T3[t=178s] shard1 r0 #26 cell=(246,36) sc=49576 nodes=143574 r=0
+T3[t=179s] shard1 r0 #27 cell=(238,38) sc=49153 nodes=136691 r=0
+T3[t=179s] shard1 r0 #28 cell=(104,42) sc=49336 nodes=916 r=0
+T3[t=182s] shard20 r0 #0 cell=(88,44) sc=49293 nodes=13633912 r=0
+T3[t=184s] shard20 r0 #1 cell=(195,187) sc=49207 nodes=624085 r=0
+T3[t=185s] shard21 r0 #15 cell=(29,35) sc=49078 nodes=7663172 r=0
+DEATH sh19 liveend=15 estate=3319341 reach=2378581 dyn=905 flow=0 geom=710774
+DEATH sh16 liveend=16 estate=3319152 reach=2378471 dyn=877 flow=0 geom=710912
+DEATH sh10 liveend=11 estate=5901515 reach=4874861 dyn=873 flow=0 geom=1550449
+DEATH sh13 liveend=13 estate=3349284 reach=2397325 dyn=870 flow=0 geom=716816
+DEATH sh3 liveend=21 estate=5792466 reach=4788777 dyn=969 flow=0 geom=1524468
+DEATH sh18 liveend=13 estate=3325295 reach=2382081 dyn=1100 flow=0 geom=712298
+DEATH sh17 liveend=11 estate=3318436 reach=2379613 dyn=1609 flow=0 geom=711291
+DEATH sh6 liveend=18 estate=3403706 reach=2446039 dyn=843 flow=0 geom=730793
+DEATH sh9 liveend=7 estate=3329100 reach=2392955 dyn=912 flow=0 geom=716128
+DEATH sh23 liveend=23 estate=3325837 reach=2383260 dyn=1596 flow=0 geom=712835
+DEATH sh4 liveend=18 estate=2116550 reach=1690241 dyn=904 flow=0 geom=514677
+DEATH sh0 liveend=17 estate=3324695 reach=2387695 dyn=1041 flow=0 geom=714973
+DEATH sh5 liveend=18 estate=3361874 reach=2406409 dyn=1635 flow=0 geom=721222
+DEATH sh22 liveend=14 estate=2147925 reach=1713499 dyn=915 flow=0 geom=522146
+DEATH sh12 liveend=15 estate=3326341 reach=2387380 dyn=1045 flow=0 geom=713726
+DEATH sh7 liveend=15 estate=3206734 reach=2355838 dyn=894 flow=0 geom=698156
+DEATH sh8 liveend=19 estate=3006695 reach=2193482 dyn=1720 flow=0 geom=658328
+DEATH sh15 liveend=12 estate=5777496 reach=4772348 dyn=1013 flow=0 geom=1516957
+T3[t=209s] shard14 r0 #7 cell=(12,35) sc=49073 nodes=7663310 r=0
+DEATH sh2 liveend=12 estate=2109476 reach=1686066 dyn=1503 flow=0 geom=513293
+T3[t=223s] shard14 r0 #8 cell=(211,87) sc=49361 nodes=2768250 r=0
+DEATH sh10 liveend=11 estate=7049747 reach=5826158 dyn=873 flow=0 geom=1853536
+DEATH sh11 liveend=26 estate=3825453 reach=2742980 dyn=1460 flow=0 geom=818067
+DEATH sh3 liveend=21 estate=6940628 reach=5740161 dyn=969 flow=0 geom=1827580
+DEATH sh15 liveend=12 estate=6925733 reach=5724038 dyn=1013 flow=0 geom=1820129
+DEATH sh19 liveend=15 estate=4413820 reach=3163536 dyn=905 flow=0 geom=945889
+DEATH sh16 liveend=16 estate=4413614 reach=3163480 dyn=877 flow=0 geom=946044
+T3[t=241s] shard1 r0 #29 cell=(31,47) sc=49325 nodes=5940109 r=0
+DEATH sh13 liveend=13 estate=4444187 reach=3182425 dyn=870 flow=0 geom=952014
+DEATH sh18 liveend=13 estate=4419768 reach=3167017 dyn=1100 flow=0 geom=947404
+DEATH sh6 liveend=18 estate=4498173 reach=3230962 dyn=843 flow=0 geom=965893
+DEATH sh17 liveend=11 estate=4412776 reach=3164846 dyn=1609 flow=0 geom=946538
+DEATH sh10 liveend=11 estate=8197483 reach=6777778 dyn=873 flow=0 geom=2156722
+T3[t=254s] shard1 r0 #30 cell=(175,57) sc=49487 nodes=2130440 r=0
+T3[t=255s] shard1 r0 #31 cell=(82,60) sc=50071 nodes=10194 r=0
+DEATH sh9 liveend=7 estate=4422884 reach=3176901 dyn=912 flow=0 geom=950967
+DEATH sh23 liveend=23 estate=4420542 reach=3168513 dyn=1596 flow=0 geom=948099
+DEATH sh0 liveend=17 estate=4418371 reach=3171745 dyn=1041 flow=0 geom=949825
+DEATH sh5 liveend=18 estate=4455658 reach=3190353 dyn=1635 flow=0 geom=956059
+DEATH sh12 liveend=15 estate=4420711 reach=3172630 dyn=1045 flow=0 geom=949007
+DEATH sh3 liveend=21 estate=8088430 reach=6691723 dyn=969 flow=0 geom=2130764
+DEATH sh7 liveend=15 estate=4291747 reach=3135958 dyn=894 flow=0 geom=931277
+DEATH sh8 liveend=19 estate=4092029 reach=2976945 dyn=1720 flow=0 geom=892932
+T3[t=265s] shard21 r0 #16 cell=(17,39) sc=49072 nodes=7663191 r=0
+DEATH sh15 liveend=12 estate=8073486 reach=6675561 dyn=1013 flow=0 geom=2123281
+DEATH sh20 liveend=12 estate=2882538 reach=2282150 dyn=1558 flow=0 geom=714093
+T3[t=273s] shard1 r0 #32 cell=(203,63) sc=49274 nodes=2895589 r=0
+DEATH sh14 liveend=17 estate=3551749 reach=2679280 dyn=1605 flow=0 geom=791817
+DEATH sh11 liveend=26 estate=4911452 reach=3525209 dyn=1460 flow=0 geom=1052342
+DEATH sh10 liveend=11 estate=9345215 reach=7729784 dyn=873 flow=0 geom=2460017
+DEATH sh22 liveend=14 estate=3176160 reach=2540974 dyn=915 flow=0 geom=774004
+DEATH sh4 liveend=18 estate=3144786 reach=2517718 dyn=904 flow=0 geom=766535
+DEATH sh3 liveend=21 estate=9236152 reach=7643724 dyn=969 flow=0 geom=2434053
+DEATH sh19 liveend=15 estate=5498374 reach=3943666 dyn=905 flow=0 geom=1179026
+DEATH sh16 liveend=16 estate=5498169 reach=3943579 dyn=877 flow=0 geom=1179176
+DEATH sh2 liveend=12 estate=3137713 reach=2513543 dyn=1503 flow=0 geom=765151
+T3[t=295s] shard1 r0 #33 cell=(188,72) sc=49255 nodes=3657522 r=0
+DEATH sh15 liveend=12 estate=9221199 reach=7627485 dyn=1013 flow=0 geom=2426568
+DEATH sh13 liveend=13 estate=5528905 reach=3962433 dyn=870 flow=0 geom=1185085
+DEATH sh18 liveend=13 estate=5504328 reach=3947154 dyn=1100 flow=0 geom=1180545
+DEATH sh6 liveend=18 estate=5582734 reach=4011101 dyn=843 flow=0 geom=1199034
+DEATH sh17 liveend=11 estate=5497298 reach=3944887 dyn=1609 flow=0 geom=1179618
+DEATH sh23 liveend=23 estate=5505405 reach=3948775 dyn=1596 flow=0 geom=1181310
+DEATH sh9 liveend=7 estate=5507842 reach=3958002 dyn=912 flow=0 geom=1184666
+DEATH sh0 liveend=17 estate=5503614 reach=3953432 dyn=1041 flow=0 geom=1183794
+DEATH sh5 liveend=18 estate=5540616 reach=3971454 dyn=1635 flow=0 geom=1189758
+DEATH sh12 liveend=15 estate=5505180 reach=3952604 dyn=1045 flow=0 geom=1182047
+DEATH sh7 liveend=15 estate=5386646 reach=3921056 dyn=894 flow=0 geom=1166478
+DEATH sh8 liveend=19 estate=5186149 reach=3761463 dyn=1720 flow=0 geom=1127977
+DEATH sh10 liveend=11 estate=10493297 reach=8681385 dyn=873 flow=0 geom=2763217
+DEATH sh3 liveend=21 estate=10384162 reach=8595333 dyn=969 flow=0 geom=2737229
+T3[t=323s] shard20 r0 #2 cell=(89,45) sc=49287 nodes=13633915 r=0
+T3[t=323s] shard20 r0 #3 cell=(94,42) sc=49324 nodes=694 r=0
+T3[t=323s] shard20 r0 #4 cell=(54,192) sc=49217 nodes=38965 r=0
+T3[t=323s] shard20 r0 #5 cell=(162,65) sc=49693 nodes=997 r=0
+T3[t=324s] shard20 r0 #6 cell=(164,204) sc=49445 nodes=61652 r=0
+DEATH sh14 liveend=17 estate=4646377 reach=3464271 dyn=1605 flow=0 geom=1026943
+DEATH sh15 liveend=12 estate=10369268 reach=8579139 dyn=1013 flow=0 geom=2729744
+DEATH sh11 liveend=26 estate=6004905 reach=4309168 dyn=1460 flow=0 geom=1287121
+DEATH sh19 liveend=15 estate=6592752 reach=4728883 dyn=905 flow=0 geom=1414281
+DEATH sh16 liveend=16 estate=6592554 reach=4728783 dyn=877 flow=0 geom=1414428
+DEATH sh10 liveend=11 estate=11640905 reach=9633309 dyn=873 flow=0 geom=3066492
+DEATH sh1 liveend=18 estate=4850177 reach=3670899 dyn=871 flow=0 geom=1103152
+T3[t=348s] shard1 r0 #34 cell=(124,76) sc=49192 nodes=8424142 r=0
+T3[t=349s] shard1 r0 #35 cell=(109,79) sc=49118 nodes=19852 r=0
+DEATH sh18 liveend=13 estate=6598704 reach=4732360 dyn=1100 flow=0 geom=1415791
+DEATH sh3 liveend=21 estate=11531786 reach=9547253 dyn=969 flow=0 geom=3040505
+DEATH sh21 liveend=25 estate=4116788 reach=3217998 dyn=953 flow=0 geom=970166
+DEATH sh13 liveend=13 estate=6623657 reach=4747947 dyn=870 flow=0 geom=1420458
+DEATH sh6 liveend=18 estate=6677111 reach=4796305 dyn=843 flow=0 geom=1434281
+T3[t=355s] shard1 r0 #36 cell=(224,90) sc=49353 nodes=1324745 r=0
+DEATH sh17 liveend=11 estate=6591775 reach=4730299 dyn=1609 flow=0 geom=1414963
+DEATH sh15 liveend=12 estate=11516834 reach=9531040 dyn=1013 flow=0 geom=3033019
+DEATH sh23 liveend=23 estate=6599405 reach=4732695 dyn=1596 flow=0 geom=1416120
+DEATH sh9 liveend=7 estate=6601626 reach=4743114 dyn=912 flow=0 geom=1419879
+T3[t=360s] shard1 r0 #37 cell=(33,93) sc=49254 nodes=438158 r=0
+T3[t=360s] shard1 r0 #38 cell=(153,95) sc=49776 nodes=1106 r=0
+DEATH sh0 liveend=17 estate=6597432 reach=4738501 dyn=1041 flow=0 geom=1419002
+DEATH sh5 liveend=18 estate=6634400 reach=4756567 dyn=1635 flow=0 geom=1424972
+DEATH sh12 liveend=15 estate=6599655 reach=4738049 dyn=1045 flow=0 geom=1417393
+DEATH sh7 liveend=15 estate=6471373 reach=4701058 dyn=894 flow=0 geom=1399542
+DEATH sh8 liveend=19 estate=6270659 reach=4542697 dyn=1720 flow=0 geom=1361714
+T3[t=363s] shard23 r0 #2 cell=(113,83) sc=49598 nodes=50954122 r=0
+T3[t=364s] shard23 r0 #3 cell=(38,158) sc=49441 nodes=97787 r=0
+DEATH sh22 liveend=14 estate=4207252 reach=3370073 dyn=915 flow=0 geom=1027599
+DEATH sh4 liveend=18 estate=4175882 reach=3346821 dyn=905 flow=0 geom=1020131
+DEATH sh20 liveend=12 estate=4665131 reach=3735179 dyn=1585 flow=0 geom=1171584
+DEATH sh14 liveend=17 estate=5731049 reach=4244386 dyn=1605 flow=0 geom=1260069
+DEATH sh10 liveend=11 estate=12788577 reach=10585204 dyn=873 flow=0 geom=3369720
+DEATH sh2 liveend=13 estate=4168808 reach=3342644 dyn=1504 flow=0 geom=1018746
+DEATH sh3 liveend=21 estate=12679457 reach=10499063 dyn=969 flow=0 geom=3343752
+DEATH sh11 liveend=26 estate=7091741 reach=5092535 dyn=1460 flow=0 geom=1521775
+DEATH sh19 liveend=15 estate=7677229 reach=5508898 dyn=905 flow=0 geom=1647358
+DEATH sh15 liveend=12 estate=12664479 reach=10482617 dyn=1013 flow=0 geom=3336220
+DEATH sh16 liveend=16 estate=7677021 reach=5508821 dyn=877 flow=0 geom=1647503
+DEATH sh18 liveend=13 estate=7683170 reach=5512373 dyn=1100 flow=0 geom=1648868
+DEATH sh20 liveend=12 estate=5812980 reach=4686989 dyn=1585 flow=0 geom=1474790
+DEATH sh13 liveend=13 estate=7708400 reach=5527939 dyn=870 flow=0 geom=1653545
+T3[t=404s] shard21 r0 #17 cell=(83,41) sc=49319 nodes=13634063 r=0
+DEATH sh6 liveend=18 estate=7761578 reach=5576318 dyn=843 flow=0 geom=1667356
+T3[t=404s] shard21 r0 #18 cell=(222,50) sc=49927 nodes=1394 r=0
+DEATH sh17 liveend=11 estate=7676301 reach=5510295 dyn=1609 flow=0 geom=1648074
+DEATH sh10 liveend=11 estate=13936148 reach=11536929 dyn=873 flow=0 geom=3672958
+DEATH sh3 liveend=21 estate=13827071 reach=11450826 dyn=969 flow=0 geom=3646970
+DEATH sh9 liveend=7 estate=7686827 reach=5523500 dyn=912 flow=0 geom=1653124
+DEATH sh1 liveend=19 estate=6205324 reach=4635212 dyn=874 flow=0 geom=1389835
+DEATH sh0 liveend=17 estate=7682466 reach=5518701 dyn=1041 flow=0 geom=1652117
+DEATH sh5 liveend=18 estate=7719600 reach=5536952 dyn=1635 flow=0 geom=1658216
+DEATH sh12 liveend=15 estate=7683921 reach=5517378 dyn=1045 flow=0 geom=1650263
+DEATH sh7 liveend=15 estate=7566123 reach=5486585 dyn=894 flow=0 geom=1634924
+DEATH sh8 liveend=19 estate=7364294 reach=5327347 dyn=1720 flow=0 geom=1596756
+DEATH sh15 liveend=12 estate=13812186 reach=11434713 dyn=1013 flow=0 geom=3639526
+DEATH sh14 liveend=17 estate=6825525 reach=5029324 dyn=1605 flow=0 geom=1495175
+DEATH sh20 liveend=12 estate=6960616 reach=5638664 dyn=1585 flow=0 geom=1777997
+DEATH sh11 liveend=26 estate=8185545 reach=5877647 dyn=1460 flow=0 geom=1757003
+DEATH sh10 liveend=11 estate=15083728 reach=12488505 dyn=873 flow=0 geom=3976162
+DEATH sh19 liveend=15 estate=8771526 reach=6293697 dyn=905 flow=0 geom=1882513
+DEATH sh3 liveend=21 estate=14974674 reach=12402411 dyn=969 flow=0 geom=3950175
+DEATH sh16 liveend=16 estate=8771305 reach=6293601 dyn=877 flow=0 geom=1882649
+DEATH sh23 liveend=23 estate=7727482 reach=5636474 dyn=1598 flow=0 geom=1688551
+DEATH sh18 liveend=13 estate=8777471 reach=6297177 dyn=1100 flow=0 geom=1884026
+DEATH sh15 liveend=12 estate=14959836 reach=12386308 dyn=1013 flow=0 geom=3942749
+DEATH sh22 liveend=14 estate=5237830 reach=4199046 dyn=915 flow=0 geom=1281096
+DEATH sh4 liveend=18 estate=5206459 reach=4175797 dyn=905 flow=0 geom=1273628
+DEATH sh6 liveend=18 estate=8855876 reach=6361123 dyn=843 flow=0 geom=1902516
+DEATH sh13 liveend=13 estate=8802726 reach=6312516 dyn=870 flow=0 geom=1888625
+DEATH sh17 liveend=11 estate=8769853 reach=6293956 dyn=1609 flow=0 geom=1882754
+DEATH sh20 liveend=12 estate=8108941 reach=6590346 dyn=1585 flow=0 geom=2081144
+DEATH sh2 liveend=13 estate=5199385 reach=4171620 dyn=1504 flow=0 geom=1272243
+DEATH sh12 liveend=15 estate=8777645 reach=6301404 dyn=1045 flow=0 geom=1885094
+DEATH sh9 liveend=7 estate=8780614 reach=6308551 dyn=912 flow=0 geom=1888290
+DEATH sh1 liveend=19 estate=7301097 reach=5422157 dyn=874 flow=0 geom=1626233
+DEATH sh0 liveend=17 estate=8776306 reach=6303873 dyn=1041 flow=0 geom=1887358
+DEATH sh5 liveend=18 estate=8813387 reach=6322003 dyn=1635 flow=0 geom=1893382
+DEATH sh7 liveend=15 estate=8650860 reach=6266572 dyn=894 flow=0 geom=1868007
+DEATH sh8 liveend=19 estate=8449455 reach=6107745 dyn=1720 flow=0 geom=1829979
+T3[t=473s] shard1 r0 #39 cell=(114,96) sc=49544 nodes=17660969 r=0
+T3[t=473s] shard1 r0 #40 cell=(213,107) sc=49025 nodes=6385 r=0
+T3[t=473s] shard1 r0 #41 cell=(49,111) sc=49994 nodes=686 r=0
+T3[t=473s] shard1 r0 #42 cell=(265,111) sc=49901 nodes=999 r=0
+DEATH sh10 liveend=11 estate=16230540 reach=13440751 dyn=873 flow=0 geom=4279573
+DEATH sh21 liveend=25 estate=5831301 reach=4609209 dyn=958 flow=0 geom=1401070
+DEATH sh23 liveend=23 estate=8875245 reach=6587933 dyn=1598 flow=0 geom=1991680
+DEATH sh3 liveend=21 estate=16121381 reach=13354693 dyn=969 flow=0 geom=4253593
+DEATH sh14 liveend=17 estate=7910082 reach=5809462 dyn=1605 flow=0 geom=1728316
+DEATH sh15 liveend=12 estate=16106660 reach=13338499 dyn=1013 flow=0 geom=4246124
+DEATH sh11 liveend=26 estate=9270512 reach=6657356 dyn=1460 flow=0 geom=1990009
+DEATH sh20 liveend=12 estate=9256567 reach=7541844 dyn=1585 flow=0 geom=2384323
+DEATH sh19 liveend=15 estate=9855924 reach=7073431 dyn=905 flow=0 geom=2115507
+DEATH sh16 liveend=16 estate=9855672 reach=7073310 dyn=877 flow=0 geom=2115628
+DEATH sh18 liveend=13 estate=9861878 reach=7076916 dyn=1100 flow=0 geom=2117023
+DEATH sh6 liveend=18 estate=9940281 reach=7140856 dyn=843 flow=0 geom=2135511
+DEATH sh10 liveend=11 estate=17377728 reach=14392807 dyn=873 flow=0 geom=4582895
+DEATH sh21 liveend=25 estate=6979030 reach=5560623 dyn=958 flow=0 geom=1704212
+DEATH sh23 liveend=23 estate=10022974 reach=7539888 dyn=1598 flow=0 geom=2294961
+DEATH sh3 liveend=21 estate=17268583 reach=14306655 dyn=969 flow=0 geom=4556901
+DEATH sh13 liveend=13 estate=9887525 reach=7092213 dyn=870 flow=0 geom=2121595
+DEATH sh17 liveend=11 estate=9854459 reach=7073665 dyn=1609 flow=0 geom=2115730
+DEATH sh12 liveend=15 estate=9862291 reach=7081194 dyn=1045 flow=0 geom=2118096
+DEATH sh15 liveend=12 estate=17253513 reach=14290589 dyn=1013 flow=0 geom=4549476
+DEATH sh9 liveend=7 estate=9865658 reach=7088730 dyn=912 flow=0 geom=2121448
+DEATH sh5 liveend=18 estate=9898432 reach=7102182 dyn=1635 flow=0 geom=2126540
+DEATH sh7 liveend=15 estate=9745189 reach=7051134 dyn=894 flow=0 geom=2103083
+DEATH sh0 liveend=17 estate=9861165 reach=7083490 dyn=1041 flow=0 geom=2120328
+DEATH sh8 liveend=19 estate=9543272 reach=6892853 dyn=1720 flow=0 geom=2065203
+DEATH sh20 liveend=12 estate=10404245 reach=8493543 dyn=1585 flow=0 geom=2687540
+DEATH sh1 liveend=19 estate=8505081 reach=6293722 dyn=887 flow=0 geom=1888051
+DEATH sh14 liveend=17 estate=9004458 reach=6594668 dyn=1605 flow=0 geom=1963562
+DEATH sh10 liveend=11 estate=18525409 reach=15344280 dyn=873 flow=0 geom=4886028
+DEATH sh23 liveend=23 estate=11170488 reach=8491552 dyn=1598 flow=0 geom=2598182
+DEATH sh21 liveend=25 estate=8126686 reach=6512611 dyn=958 flow=0 geom=2007486
+DEATH sh22 liveend=14 estate=6271252 reach=5030797 dyn=915 flow=0 geom=1537266
+DEATH sh4 liveend=18 estate=6239884 reach=5007545 dyn=905 flow=0 geom=1529796
+DEATH sh3 liveend=21 estate=18416346 reach=15258227 dyn=969 flow=0 geom=4860069
+DEATH sh11 liveend=26 estate=10363334 reach=7441433 dyn=1460 flow=0 geom=2224767
+DEATH sh19 liveend=15 estate=10949491 reach=7857417 dyn=905 flow=0 geom=2350275
+DEATH sh16 liveend=16 estate=10949271 reach=7857295 dyn=877 flow=0 geom=2350410
+DEATH sh15 liveend=12 estate=18401373 reach=15242064 dyn=1013 flow=0 geom=4852601
+DEATH sh2 liveend=13 estate=6232810 reach=5003368 dyn=1504 flow=0 geom=1528411
+DEATH sh18 liveend=13 estate=10955434 reach=7860906 dyn=1100 flow=0 geom=2351788
+DEATH sh20 liveend=12 estate=11552538 reach=9444938 dyn=1585 flow=0 geom=2990619
+DEATH sh6 liveend=18 estate=11033840 reach=7924851 dyn=843 flow=0 geom=2370277
+DEATH sh13 liveend=13 estate=10981309 reach=7876233 dyn=870 flow=0 geom=2356403
+DEATH sh17 liveend=11 estate=10947805 reach=7857499 dyn=1609 flow=0 geom=2350491
+DEATH sh21 liveend=25 estate=9274848 reach=7464526 dyn=958 flow=0 geom=2310699
+DEATH sh10 liveend=11 estate=19673047 reach=16296289 dyn=873 flow=0 geom=5189319
+DEATH sh23 liveend=23 estate=12318936 reach=9443154 dyn=1598 flow=0 geom=2901306
+DEATH sh12 liveend=15 estate=10955704 reach=7865262 dyn=1045 flow=0 geom=2352923
+DEATH sh3 liveend=21 estate=19563995 reach=16210206 dyn=969 flow=0 geom=5163337
+DEATH sh9 liveend=7 estate=10958709 reach=7872635 dyn=912 flow=0 geom=2356249
+DEATH sh5 liveend=18 estate=10991482 reach=7886088 dyn=1635 flow=0 geom=2361341
+DEATH sh7 liveend=15 estate=10829993 reach=7830851 dyn=894 flow=0 geom=2336060
+DEATH sh0 liveend=17 estate=10953885 reach=7867472 dyn=1041 flow=0 geom=2355049
+DEATH sh8 liveend=19 estate=10628322 reach=7672978 dyn=1720 flow=0 geom=2298329
+DEATH sh1 liveend=19 estate=9599468 reach=7078925 dyn=887 flow=0 geom=2123305
+DEATH sh15 liveend=12 estate=19549101 reach=16193976 dyn=1013 flow=0 geom=5155861
+DEATH sh14 liveend=17 estate=10088928 reach=7374681 dyn=1605 flow=0 geom=2196639
+DEATH sh20 liveend=12 estate=12700228 reach=10396543 dyn=1585 flow=0 geom=3293817
+DEATH sh19 liveend=15 estate=12034230 reach=8637175 dyn=905 flow=0 geom=2583282
+DEATH sh16 liveend=16 estate=12033992 reach=8637065 dyn=877 flow=0 geom=2583405
+DEATH sh11 liveend=26 estate=11448629 reach=8221738 dyn=1460 flow=0 geom=2457961
+DEATH sh21 liveend=25 estate=10422651 reach=8415760 dyn=958 flow=0 geom=2613781
+DEATH sh10 liveend=11 estate=20821200 reach=17248176 dyn=873 flow=0 geom=5492542
+DEATH sh23 liveend=23 estate=13466528 reach=10394627 dyn=1598 flow=0 geom=3204470
+DEATH sh3 liveend=21 estate=20712155 reach=17162140 dyn=969 flow=0 geom=5466598
+DEATH sh18 liveend=13 estate=12040185 reach=8640663 dyn=1100 flow=0 geom=2584800
+DEATH sh6 liveend=18 estate=12118595 reach=8704609 dyn=843 flow=0 geom=2603288
+DEATH sh15 liveend=12 estate=20697161 reach=17145673 dyn=1013 flow=0 geom=5459065
+DEATH sh20 liveend=12 estate=13848445 reach=11348611 dyn=1585 flow=0 geom=3597121
+DEATH sh13 liveend=13 estate=12066497 reach=8656039 dyn=870 flow=0 geom=2589457
+DEATH sh17 liveend=11 estate=12032921 reach=8637837 dyn=1609 flow=0 geom=2583674
+DEATH sh4 liveend=18 estate=7275930 reach=5840502 dyn=905 flow=0 geom=1787602
+DEATH sh22 liveend=14 estate=7307301 reach=5863749 dyn=915 flow=0 geom=1795070
+DEATH sh12 liveend=15 estate=12040793 reach=8645528 dyn=1045 flow=0 geom=2586097
+DEATH sh5 liveend=18 estate=12076607 reach=8666277 dyn=1635 flow=0 geom=2594433
+DEATH sh9 liveend=7 estate=12043834 reach=8652824 dyn=912 flow=0 geom=2589341
+DEATH sh7 liveend=15 estate=11923783 reach=8614855 dyn=894 flow=0 geom=2570862
+DEATH sh0 liveend=17 estate=12039325 reach=8647737 dyn=1041 flow=0 geom=2588241
+DEATH sh21 liveend=25 estate=11570367 reach=9367260 dyn=958 flow=0 geom=2916959
+DEATH sh10 liveend=11 estate=21969235 reach=18199398 dyn=873 flow=0 geom=5795639
+DEATH sh8 liveend=19 estate=11721531 reach=8457138 dyn=1720 flow=0 geom=2533209
+DEATH sh23 liveend=23 estate=14614895 reach=11345887 dyn=1598 flow=0 geom=3507530
+DEATH sh3 liveend=21 estate=21860163 reach=18113371 dyn=969 flow=0 geom=5769683
+DEATH sh1 liveend=19 estate=10684371 reach=7861215 dyn=887 flow=0 geom=2357516
+DEATH sh14 liveend=17 estate=11183229 reach=8159485 dyn=1605 flow=0 geom=2431797
+DEATH sh2 liveend=13 estate=7268856 reach=5836325 dyn=1504 flow=0 geom=1786217
+DEATH sh15 liveend=12 estate=21845227 reach=18097236 dyn=1013 flow=0 geom=5762214
+DEATH sh20 liveend=12 estate=14995960 reach=12300201 dyn=1585 flow=0 geom=3900331
+DEATH sh19 liveend=15 estate=13127744 reach=9421555 dyn=905 flow=0 geom=2818227
+DEATH sh16 liveend=16 estate=13127540 reach=9421467 dyn=877 flow=0 geom=2818377
+DEATH sh11 liveend=26 estate=12540898 reach=9005283 dyn=1460 flow=0 geom=2692483
+DEATH sh18 liveend=13 estate=13133697 reach=9425043 dyn=1100 flow=0 geom=2819746
+DEATH sh21 liveend=25 estate=12718689 reach=10318895 dyn=958 flow=0 geom=3220097
+DEATH sh6 liveend=18 estate=13212107 reach=9488988 dyn=843 flow=0 geom=2838235
+DEATH sh10 liveend=11 estate=23117197 reach=19150847 dyn=873 flow=0 geom=6098804
+DEATH sh23 liveend=23 estate=15762489 reach=12297826 dyn=1598 flow=0 geom=3810806
+DEATH sh3 liveend=21 estate=23008144 reach=19064754 dyn=969 flow=0 geom=6072817
+DEATH sh13 liveend=13 estate=13160432 reach=9440990 dyn=870 flow=0 geom=2824588
+DEATH sh15 liveend=12 estate=22993083 reach=19048693 dyn=1013 flow=0 geom=6065401
+DEATH sh17 liveend=11 estate=13126776 reach=9422988 dyn=1609 flow=0 geom=2818916
+DEATH sh12 liveend=15 estate=13134552 reach=9430493 dyn=1045 flow=0 geom=2821250
+DEATH sh20 liveend=12 estate=16143558 reach=13252072 dyn=1585 flow=0 geom=4203580
+DEATH sh9 liveend=7 estate=13136227 reach=9436501 dyn=912 flow=0 geom=2823949
+DEATH sh5 liveend=18 estate=13169000 reach=9449953 dyn=1635 flow=0 geom=2829041
+DEATH sh0 liveend=17 estate=13131570 reach=9431383 dyn=1041 flow=0 geom=2822837
+DEATH sh7 liveend=15 estate=13008959 reach=9394675 dyn=894 flow=0 geom=2803921
+DEATH sh8 liveend=19 estate=12806665 reach=9237216 dyn=1720 flow=0 geom=2766297
+DEATH sh1 liveend=19 estate=11777905 reach=8645187 dyn=887 flow=0 geom=2592289
+DEATH sh14 liveend=17 estate=12267632 reach=8939223 dyn=1605 flow=0 geom=2664794
+DEATH sh21 liveend=25 estate=13866429 reach=11270517 dyn=958 flow=0 geom=3523284
+DEATH sh23 liveend=23 estate=16910149 reach=13249436 dyn=1598 flow=0 geom=4114002
+DEATH sh10 liveend=11 estate=24265654 reach=20102161 dyn=873 flow=0 geom=6401877
+T3[t=698s] shard4 r0 #2 cell=(92,46) sc=49086 nodes=65618152 r=0
+DEATH sh3 liveend=21 estate=24156584 reach=20016096 dyn=969 flow=0 geom=6375904
+DEATH sh19 liveend=15 estate=14212904 reach=10201723 dyn=905 flow=0 geom=3051356
+DEATH sh16 liveend=16 estate=14212689 reach=10201621 dyn=877 flow=0 geom=3051509
+DEATH sh15 liveend=12 estate=24141643 reach=19999912 dyn=1013 flow=0 geom=6368431
+DEATH sh11 liveend=26 estate=13626745 reach=9785944 dyn=1460 flow=0 geom=2925835
+T3[t=711s] shard2 r0 #0 cell=(90,46) sc=49083 nodes=65618150 r=0
+DEATH sh22 liveend=14 estate=8335563 reach=6691280 dyn=918 flow=0 geom=2046942
+DEATH sh18 liveend=13 estate=14218855 reach=10205206 dyn=1100 flow=0 geom=3052868
+DEATH sh20 liveend=12 estate=17291246 reach=14203853 dyn=1585 flow=0 geom=4506831
+DEATH sh6 liveend=18 estate=14297269 reach=10269175 dyn=843 flow=0 geom=3071373
+DEATH sh21 liveend=25 estate=15013955 reach=12222458 dyn=958 flow=0 geom=3826581
+DEATH sh10 liveend=11 estate=25413364 reach=21054156 dyn=873 flow=0 geom=6705175
+DEATH sh23 liveend=23 estate=18058380 reach=14201403 dyn=1598 flow=0 geom=4417275
+DEATH sh3 liveend=21 estate=25304284 reach=20968104 dyn=969 flow=0 geom=6679195
+DEATH sh13 liveend=13 estate=14246432 reach=10224708 dyn=870 flow=0 geom=3059290
+DEATH sh17 liveend=11 estate=14213008 reach=10205985 dyn=1609 flow=0 geom=3053376
+DEATH sh12 liveend=15 estate=14220594 reach=10213221 dyn=1045 flow=0 geom=3055673
+DEATH sh15 liveend=12 estate=25289235 reach=20951869 dyn=1013 flow=0 geom=6671715
+DEATH sh7 liveend=15 estate=14102898 reach=10179627 dyn=894 flow=0 geom=3039052
+DEATH sh9 liveend=7 estate=14225363 reach=10224936 dyn=912 flow=0 geom=3060727
+DEATH sh5 liveend=18 estate=14258137 reach=10238388 dyn=1635 flow=0 geom=3065819
+DEATH sh0 liveend=17 estate=14221055 reach=10220495 dyn=1041 flow=0 geom=3059978
+DEATH sh8 liveend=19 estate=13899183 reach=10021076 dyn=1720 flow=0 geom=3000964
+DEATH sh14 liveend=17 estate=13361190 reach=9723212 dyn=1605 flow=0 geom=2899559
+DEATH sh1 liveend=19 estate=12863231 reach=9427721 dyn=887 flow=0 geom=2826534
+DEATH sh20 liveend=12 estate=18438859 reach=15155671 dyn=1585 flow=0 geom=4810063
+DEATH sh4 liveend=18 estate=9208017 reach=7302194 dyn=906 flow=0 geom=2229006
+DEATH sh19 liveend=15 estate=15306722 reach=10986853 dyn=905 flow=0 geom=3286594
+DEATH sh21 liveend=25 estate=16162115 reach=13174100 dyn=958 flow=0 geom=4129760
+DEATH sh10 liveend=11 estate=26560958 reach=22006036 dyn=873 flow=0 geom=7008424
+DEATH sh16 liveend=16 estate=15306520 reach=10986798 dyn=877 flow=0 geom=3286746
+DEATH sh3 liveend=21 estate=26451899 reach=21920019 dyn=969 flow=0 geom=6982475
+DEATH sh23 liveend=23 estate=19205947 reach=15152968 dyn=1598 flow=0 geom=4720457
+DEATH sh2 liveend=14 estate=9201031 reach=7298360 dyn=1505 flow=0 geom=2227780
+DEATH sh11 liveend=26 estate=14719307 reach=10569767 dyn=1460 flow=0 geom=3160481
+DEATH sh18 liveend=13 estate=15312673 reach=10990336 dyn=1100 flow=0 geom=3288106
+DEATH sh15 liveend=12 estate=26436932 reach=21903503 dyn=1013 flow=0 geom=6974923
+DEATH sh6 liveend=18 estate=15391070 reach=11054266 dyn=843 flow=0 geom=3306592
+T3[t=774s] shard11 r0 #6 cell=(132,116) sc=49523 nodes=102259574 r=0
+T3[t=775s] shard11 r0 #7 cell=(16,126) sc=49142 nodes=111749 r=0
+T3[t=775s] shard11 r0 #8 cell=(156,72) sc=49652 nodes=964 r=0
+T3[t=775s] shard11 r0 #9 cell=(124,234) sc=49733 nodes=943 r=0
+T3[t=776s] shard11 r0 #10 cell=(28,174) sc=49063 nodes=83342 r=0
+DEATH sh20 liveend=12 estate=19585863 reach=16107477 dyn=1585 flow=0 geom=5113362
+DEATH sh13 liveend=13 estate=15339190 reach=11008296 dyn=870 flow=0 geom=3293886
+DEATH sh17 liveend=11 estate=15305845 reach=10989616 dyn=1609 flow=0 geom=3288011
+DEATH sh21 liveend=25 estate=17309724 reach=14125991 dyn=958 flow=0 geom=4433041
+DEATH sh10 liveend=11 estate=27709119 reach=22957655 dyn=873 flow=0 geom=7311628
+DEATH sh12 liveend=15 estate=15313325 reach=10997220 dyn=1045 flow=0 geom=3290409
+DEATH sh3 liveend=21 estate=27600056 reach=22871562 dyn=969 flow=0 geom=7285641
+DEATH sh23 liveend=23 estate=20353484 reach=16105039 dyn=1598 flow=0 geom=5023766
+DEATH sh7 liveend=15 estate=15188193 reach=10960040 dyn=894 flow=0 geom=3272307
+DEATH sh5 liveend=18 estate=15350582 reach=11022382 dyn=1635 flow=0 geom=3300549
+DEATH sh9 liveend=7 estate=15317809 reach=11008930 dyn=912 flow=0 geom=3295457
+DEATH sh0 liveend=17 estate=15313507 reach=11004482 dyn=1041 flow=0 geom=3294715
+DEATH sh14 liveend=17 estate=14445941 reach=10502969 dyn=1605 flow=0 geom=3132570
+DEATH sh8 liveend=19 estate=14986453 reach=10807107 dyn=1723 flow=0 geom=3236592
+DEATH sh1 liveend=19 estate=13957071 reach=10212885 dyn=887 flow=0 geom=3061771
+DEATH sh15 liveend=12 estate=27585209 reach=22855388 dyn=1013 flow=0 geom=7278175
+DEATH sh22 liveend=14 estate=9365998 reach=7520005 dyn=918 flow=0 geom=2300261
+DEATH sh4 liveend=18 estate=10302977 reach=8087327 dyn=906 flow=0 geom=2464184
+DEATH sh19 liveend=15 estate=16391910 reach=11767231 dyn=905 flow=0 geom=3519841
+DEATH sh16 liveend=16 estate=16391712 reach=11767124 dyn=877 flow=0 geom=3519978
+DEATH sh20 liveend=12 estate=20732560 reach=17059673 dyn=1585 flow=0 geom=5416727
+DEATH sh2 liveend=14 estate=10295667 reach=8083333 dyn=1505 flow=0 geom=2462897
+DEATH sh18 liveend=13 estate=16397862 reach=11770713 dyn=1100 flow=0 geom=3521353
+DEATH sh21 liveend=25 estate=18457256 reach=15077752 dyn=958 flow=0 geom=4736275
+DEATH sh10 liveend=11 estate=28856848 reach=23909225 dyn=873 flow=0 geom=7614814
+DEATH sh6 liveend=18 estate=16476259 reach=11834654 dyn=843 flow=0 geom=3539841
+DEATH sh3 liveend=21 estate=28747783 reach=23823196 dyn=969 flow=0 geom=7588858
+DEATH sh23 liveend=23 estate=21501191 reach=17056694 dyn=1598 flow=0 geom=5327000
+DEATH sh11 liveend=26 estate=16040820 reach=11521480 dyn=1474 flow=0 geom=3445953
+DEATH sh15 liveend=12 estate=28732887 reach=23807070 dyn=1013 flow=0 geom=7581434
+DEATH sh13 liveend=13 estate=16424477 reach=11788588 dyn=870 flow=0 geom=3527083
+DEATH sh17 liveend=11 estate=16391052 reach=11769879 dyn=1609 flow=0 geom=3521194
+DEATH sh12 liveend=15 estate=16398676 reach=11777496 dyn=1045 flow=0 geom=3523548
+DEATH sh20 liveend=12 estate=21880477 reach=18011437 dyn=1585 flow=0 geom=5719938
+DEATH sh7 liveend=15 estate=16281953 reach=11745069 dyn=894 flow=0 geom=3507469
+DEATH sh5 liveend=18 estate=16437778 reach=11805842 dyn=1635 flow=0 geom=3535257
+DEATH sh14 liveend=17 estate=15539450 reach=11287351 dyn=1605 flow=0 geom=3367517
+DEATH sh0 liveend=17 estate=16400316 reach=11787114 dyn=1041 flow=0 geom=3529143
+DEATH sh9 liveend=7 estate=16405005 reach=11792390 dyn=912 flow=0 geom=3530165
+DEATH sh21 liveend=25 estate=19604997 reach=16029676 dyn=958 flow=0 geom=5039540
+DEATH sh8 liveend=19 estate=16079040 reach=11591161 dyn=1723 flow=0 geom=3471369
+DEATH sh1 liveend=19 estate=15042174 reach=10993035 dyn=887 flow=0 geom=3294924
+DEATH sh10 liveend=11 estate=30004777 reach=24861147 dyn=873 flow=0 geom=7918099
+DEATH sh3 liveend=21 estate=29895717 reach=24775109 dyn=969 flow=0 geom=7892142
+DEATH sh23 liveend=23 estate=22648714 reach=18008562 dyn=1598 flow=0 geom=5630250
+DEATH sh19 liveend=15 estate=17485368 reach=12551609 dyn=905 flow=0 geom=3754774
+DEATH sh4 liveend=18 estate=11387965 reach=8867438 dyn=906 flow=0 geom=2697298
+DEATH sh16 liveend=16 estate=17485163 reach=12551524 dyn=877 flow=0 geom=3754927
+DEATH sh15 liveend=12 estate=29880671 reach=24758964 dyn=1013 flow=0 geom=7884662
+DEATH sh2 liveend=14 estate=11380335 reach=8863444 dyn=1505 flow=0 geom=2696020
+DEATH sh18 liveend=13 estate=17491320 reach=12555092 dyn=1100 flow=0 geom=3756286
+DEATH sh6 liveend=18 estate=17569734 reach=12619049 dyn=843 flow=0 geom=3774789
+DEATH sh20 liveend=12 estate=23028165 reach=18963106 dyn=1585 flow=0 geom=6023148
+DEATH sh11 liveend=26 estate=17135645 reach=12306544 dyn=1474 flow=0 geom=3681103
+DEATH sh21 liveend=25 estate=20752421 reach=16981348 dyn=958 flow=0 geom=5342779
+DEATH sh10 liveend=11 estate=31152506 reach=25812909 dyn=873 flow=0 geom=8221364
+DEATH sh3 liveend=21 estate=31043430 reach=25726867 dyn=969 flow=0 geom=8195390
+DEATH sh22 liveend=14 estate=10396793 reach=8349342 dyn=918 flow=0 geom=2553775
+DEATH sh23 liveend=23 estate=23795360 reach=18960826 dyn=1598 flow=0 geom=5933644
+DEATH sh13 liveend=13 estate=17516848 reach=12572264 dyn=870 flow=0 geom=3761713
+DEATH sh17 liveend=11 estate=17483394 reach=12553587 dyn=1609 flow=0 geom=3755813
+DEATH sh15 liveend=12 estate=31028457 reach=25710591 dyn=1013 flow=0 geom=8187892
+DEATH sh12 liveend=15 estate=17490917 reach=12561103 dyn=1045 flow=0 geom=3758129
+DEATH sh14 liveend=17 estate=16624608 reach=12067518 dyn=1605 flow=0 geom=3600639
+DEATH sh5 liveend=18 estate=17529637 reach=12588923 dyn=1635 flow=0 geom=3769678
+DEATH sh7 liveend=15 estate=17367043 reach=12525298 dyn=894 flow=0 geom=3740638
+DEATH sh9 liveend=7 estate=17496864 reach=12575470 dyn=912 flow=0 geom=3764586
+DEATH sh0 liveend=17 estate=17491948 reach=12570064 dyn=1041 flow=0 geom=3763484
+DEATH sh8 liveend=19 estate=17166194 reach=12375631 dyn=1723 flow=0 geom=3706368
+DEATH sh1 liveend=19 estate=16135367 reach=11777236 dyn=887 flow=0 geom=3529806
+DEATH sh20 liveend=12 estate=24175729 reach=19915129 dyn=1585 flow=0 geom=6326453
+DEATH sh19 liveend=15 estate=18570379 reach=13331660 dyn=905 flow=0 geom=3987881
+DEATH sh16 liveend=16 estate=18570154 reach=13331557 dyn=877 flow=0 geom=3988011
+DEATH sh4 liveend=18 estate=12482837 reach=9652541 dyn=906 flow=0 geom=2932483
+DEATH sh10 liveend=11 estate=32300037 reach=26764908 dyn=873 flow=0 geom=8524683
+DEATH sh21 liveend=25 estate=21898950 reach=17933617 dyn=958 flow=0 geom=5646190
+DEATH sh3 liveend=21 estate=32190863 reach=26678768 dyn=969 flow=0 geom=8498677
+DEATH sh2 liveend=14 estate=12474808 reach=9648391 dyn=1505 flow=0 geom=2931129
+DEATH sh23 liveend=23 estate=24942639 reach=19912509 dyn=1598 flow=0 geom=6236887
+DEATH sh18 liveend=13 estate=18576329 reach=13335146 dyn=1100 flow=0 geom=3989393
+DEATH sh15 liveend=12 estate=32176042 reach=26662236 dyn=1013 flow=0 geom=8491120
+DEATH sh6 liveend=18 estate=18654721 reach=13399076 dyn=843 flow=0 geom=4007882
+DEATH sh11 liveend=26 estate=18220376 reach=13086488 dyn=1474 flow=0 geom=3914142
+DEATH sh20 liveend=12 estate=25324207 reach=20866411 dyn=1585 flow=0 geom=6629518
+DEATH sh17 liveend=11 estate=18569172 reach=13334178 dyn=1609 flow=0 geom=3989090
+DEATH sh13 liveend=13 estate=18602570 reach=13352905 dyn=870 flow=0 geom=3995002
+DEATH sh10 liveend=11 estate=33446573 reach=27717049 dyn=873 flow=0 geom=8828044
+DEATH sh21 liveend=25 estate=23046424 reach=18885505 dyn=958 flow=0 geom=5949460
+DEATH sh14 liveend=17 estate=17718430 reach=12852644 dyn=1605 flow=0 geom=3835877
+DEATH sh3 liveend=21 estate=33337432 reach=27631035 dyn=969 flow=0 geom=8802085
+DEATH sh12 liveend=15 estate=18576836 reach=13341784 dyn=1045 flow=0 geom=3991503
+DEATH sh23 liveend=23 estate=26090442 reach=20864410 dyn=1598 flow=0 geom=6540128
+DEATH sh5 liveend=18 estate=18616858 reach=13371698 dyn=1635 flow=0 geom=4004005
+DEATH sh9 liveend=7 estate=18584084 reach=13358246 dyn=912 flow=0 geom=3998913
+DEATH sh7 liveend=15 estate=18460048 reach=13309146 dyn=894 flow=0 geom=3975411
+DEATH sh0 liveend=17 estate=18580005 reach=13353699 dyn=1041 flow=0 geom=3998174
+DEATH sh15 liveend=12 estate=33322613 reach=27614506 dyn=1013 flow=0 geom=8794530
+DEATH sh8 liveend=19 estate=18258211 reach=13158641 dyn=1723 flow=0 geom=3940827
+DEATH sh1 liveend=19 estate=17220484 reach=12557280 dyn=887 flow=0 geom=3762882
+DEATH sh16 liveend=16 estate=19662784 reach=14115447 dyn=877 flow=0 geom=4222718
+DEATH sh19 liveend=15 estate=19663006 reach=14115561 dyn=905 flow=0 geom=4222587
+DEATH sh20 liveend=12 estate=26472160 reach=21818077 dyn=1585 flow=0 geom=6932717
+DEATH sh4 liveend=18 estate=13567601 reach=10432563 dyn=906 flow=0 geom=3165594
+DEATH sh2 liveend=14 estate=13559368 reach=10428528 dyn=1505 flow=0 geom=3164272
+DEATH sh22 liveend=14 estate=11425004 reach=9176799 dyn=918 flow=0 geom=2805613
+DEATH sh18 liveend=13 estate=19668957 reach=14119048 dyn=1100 flow=0 geom=4224099
+DEATH sh6 liveend=18 estate=19747380 reach=14182980 dyn=843 flow=0 geom=4242602
+DEATH sh21 liveend=25 estate=24194169 reach=19837079 dyn=958 flow=0 geom=6252646
+DEATH sh10 liveend=11 estate=34594006 reach=28668597 dyn=873 flow=0 geom=9131183
+DEATH sh11 liveend=26 estate=19315078 reach=13871589 dyn=1474 flow=0 geom=4149348
+DEATH sh3 liveend=21 estate=34484931 reach=28582567 dyn=969 flow=0 geom=9105229
+DEATH sh23 liveend=23 estate=27238086 reach=21816160 dyn=1598 flow=0 geom=6843383
+DEATH sh15 liveend=12 estate=34469874 reach=28566542 dyn=1013 flow=0 geom=9097839
+DEATH sh20 liveend=12 estate=27620796 reach=22769273 dyn=1585 flow=0 geom=7235764
+DEATH sh17 liveend=11 estate=19661693 reach=14118049 dyn=1609 flow=0 geom=4223779
+DEATH sh13 liveend=13 estate=19695118 reach=14136703 dyn=870 flow=0 geom=4229667
+DEATH sh14 liveend=17 estate=18803617 reach=13633022 dyn=1605 flow=0 geom=4069123
+DEATH sh12 liveend=15 estate=19669593 reach=14125798 dyn=1045 flow=0 geom=4226200
+DEATH sh5 liveend=18 estate=19708948 reach=14155389 dyn=1635 flow=0 geom=4238583
+T3[t=993s] shard13 r0 #1 cell=(119,111) sc=49297 nodes=152410917 r=0
+T3[t=993s] shard13 r0 #2 cell=(108,72) sc=49130 nodes=19665 r=0
+DEATH sh9 liveend=7 estate=19676175 reach=14141937 dyn=912 flow=0 geom=4233491
+DEATH sh7 liveend=15 estate=19545196 reach=14089311 dyn=894 flow=0 geom=4208506
+DEATH sh0 liveend=17 estate=19672115 reach=14137498 dyn=1041 flow=0 geom=4232786
+DEATH sh21 liveend=25 estate=25341860 reach=20788993 dyn=958 flow=0 geom=6555875
+DEATH sh10 liveend=11 estate=35741597 reach=29620560 dyn=873 flow=0 geom=9434471
+DEATH sh3 liveend=21 estate=35632537 reach=29534473 dyn=969 flow=0 geom=9408488
+DEATH sh16 liveend=16 estate=20748281 reach=14895926 dyn=877 flow=0 geom=4455955
+DEATH sh8 liveend=19 estate=19344708 reach=13941060 dyn=1723 flow=0 geom=4175025
+DEATH sh1 liveend=19 estate=18312993 reach=13341104 dyn=887 flow=0 geom=3997542
+DEATH sh23 liveend=23 estate=28386348 reach=22767889 dyn=1598 flow=0 geom=7146528
+DEATH sh19 liveend=15 estate=20748467 reach=14895975 dyn=905 flow=0 geom=4455795
+DEATH sh15 liveend=12 estate=35617695 reach=29518343 dyn=1013 flow=0 geom=9401046
+T3[t=1007s] shard13 r0 #3 cell=(207,79) sc=49355 nodes=2785217 r=0
+DEATH sh4 liveend=18 estate=14662276 reach=11218005 dyn=906 flow=0 geom=3400916
+T3[t=1008s] shard13 r0 #4 cell=(229,49) sc=49082 nodes=135687 r=0
+T3[t=1008s] shard13 r0 #5 cell=(92,180) sc=49696 nodes=102339 r=0
+DEATH sh2 liveend=14 estate=14653751 reach=11213746 dyn=1505 flow=0 geom=3399527
+T3[t=1008s] shard13 r0 #6 cell=(61,187) sc=49843 nodes=43819 r=0
+T3[t=1008s] shard13 r0 #7 cell=(114,68) sc=49132 nodes=10041 r=0
+DEATH sh18 liveend=13 estate=20754415 reach=14899460 dyn=1100 flow=0 geom=4457307
+T3[t=1011s] shard4 r0 #3 cell=(135,103) sc=49301 nodes=50947418 r=0
+DEATH sh20 liveend=12 estate=28768384 reach=23720972 dyn=1585 flow=0 geom=7539009
+DEATH sh6 liveend=18 estate=20832800 reach=14963378 dyn=843 flow=0 geom=4475788
+T3[t=1014s] shard4 r0 #4 cell=(216,12) sc=49267 nodes=592705 r=0
+DEATH sh11 liveend=26 estate=20399754 reach=14651667 dyn=1474 flow=0 geom=4382454
+T3[t=1022s] shard13 r0 #8 cell=(206,88) sc=49356 nodes=2785769 r=0
+T3[t=1022s] shard13 r0 #9 cell=(255,179) sc=49632 nodes=9504 r=0
+T3[t=1022s] shard13 r0 #10 cell=(247,199) sc=49768 nodes=2632 r=0
+DEATH sh10 liveend=11 estate=36889277 reach=30572192 dyn=873 flow=0 geom=9737674
+DEATH sh21 liveend=25 estate=26490271 reach=21740460 dyn=958 flow=0 geom=6859000
+DEATH sh3 liveend=21 estate=36780217 reach=30486154 dyn=969 flow=0 geom=9711716
+DEATH sh23 liveend=23 estate=29534229 reach=23719210 dyn=1598 flow=0 geom=7449667
+DEATH sh17 liveend=11 estate=20748182 reach=14899059 dyn=1609 flow=0 geom=4457257
+DEATH sh15 liveend=12 estate=36765263 reach=30470000 dyn=1013 flow=0 geom=9704267
+DEATH sh14 liveend=17 estate=19897071 reach=14417404 dyn=1605 flow=0 geom=4304055
+DEATH sh20 liveend=12 estate=29916057 reach=24672944 dyn=1585 flow=0 geom=7842278
+DEATH sh12 liveend=15 estate=20756063 reach=14906864 dyn=1045 flow=0 geom=4459693
+DEATH sh5 liveend=18 estate=20796165 reach=14936723 dyn=1635 flow=0 geom=4472228
+DEATH sh22 liveend=14 estate=12455737 reach=10005217 dyn=918 flow=0 geom=3058879
+DEATH sh9 liveend=7 estate=20763392 reach=14923270 dyn=912 flow=0 geom=4467136
+DEATH sh7 liveend=15 estate=20637616 reach=14873046 dyn=894 flow=0 geom=4443141
+DEATH sh0 liveend=17 estate=20759109 reach=14918656 dyn=1041 flow=0 geom=4466348
+DEATH sh16 liveend=16 estate=21840330 reach=15679384 dyn=877 flow=0 geom=4690446
+DEATH sh19 liveend=15 estate=21840560 reach=15679481 dyn=905 flow=0 geom=4690309
+DEATH sh8 liveend=19 estate=20436887 reach=14724908 dyn=1723 flow=0 geom=4409673
+DEATH sh1 liveend=19 estate=19398636 reach=14121617 dyn=887 flow=0 geom=4230848
+T3[t=1052s] shard7 r0 #5 cell=(111,111) sc=49238 nodes=152262508 r=0
+T3[t=1052s] shard7 r0 #6 cell=(74,224) sc=49537 nodes=22169 r=0
+T3[t=1052s] shard7 r0 #7 cell=(128,108) sc=49510 nodes=1967 r=0
+DEATH sh10 liveend=11 estate=38037596 reach=31523931 dyn=873 flow=0 geom=10040853
+DEATH sh21 liveend=25 estate=27638225 reach=22691760 dyn=958 flow=0 geom=7162125
+DEATH sh3 liveend=21 estate=37928459 reach=31437875 dyn=969 flow=0 geom=10014870
+DEATH sh23 liveend=23 estate=30682231 reach=24670508 dyn=1598 flow=0 geom=7752802
+DEATH sh2 liveend=14 estate=15738221 reach=11993757 dyn=1505 flow=0 geom=3632603

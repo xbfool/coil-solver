@@ -1,0 +1,2181 @@
+  分治：12 块 144 对，可行 42 对，整块淘汰掉 0 格
+有向预计算：走向已定 0/134606 (0.0%) | 无向判定率 0.0% -> 0.0% (0 -> 0 / 67303 边)
+有向预计算：走向已定 0/134606 (0.0%) | 无向判定率 0.0% -> 0.0% (0 -> 0 / 67303 边)
+全局阶段：固定 0 条边，起点候选 47510 / 47510 (100.0%)
+adaptive PROPDEPTH=2 (fixed 0 / 67303 edges; 第一层存活率>=SURVDEEP%再升深层)
+STARTORD: F 升序就位（1169 起点，证伪剔除 0）
+FRANK shard4: F降序
+shard 4: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard1: F降序
+shard 1: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard2: F降序
+shard 2: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard0: F降序
+shard 0: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard3: F降序
+shard 3: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 4: 1.5 层深层重探后剩 233
+shard 4: 第一层存活 233/233 = 100%%, 第二层 开
+shard 1: 1.5 层深层重探后剩 234
+shard 1: 第一层存活 234/234 = 100%%, 第二层 开
+shard 2: 1.5 层深层重探后剩 234
+shard 2: 第一层存活 234/234 = 100%%, 第二层 开
+shard 0: 1.5 层深层重探后剩 234
+shard 0: 第一层存活 234/234 = 100%%, 第二层 开
+shard 3: 1.5 层深层重探后剩 234
+shard 3: 第一层存活 234/234 = 100%%, 第二层 开
+T2 sh1 cell=(134,262) PROBE0 nodes=2475
+T2 sh2 cell=(126,246) PROBE0 nodes=2547
+T2 sh0 cell=(175,97) PROBE0 nodes=29619
+T2 sh4 cell=(172,84) PROBE0 nodes=29530
+T2 sh4 cell=(208,86) PROBE0 nodes=23254
+T2 sh2 cell=(220,84) PROBE0 nodes=30934
+T2 sh1 cell=(223,81) PROBE0 nodes=22787
+T2 sh2 cell=(199,87) PROBE0 nodes=28685
+T2 sh4 cell=(181,91) PROBE0 nodes=22112
+T2 sh1 cell=(175,89) PROBE0 nodes=23436
+T2 sh2 cell=(181,89) PROBE0 nodes=23327
+T2 sh2 cell=(177,91) PROBE0 nodes=23436
+T2 sh4 cell=(183,97) PROBE0 nodes=29905
+T2 sh4 cell=(186,100) PROBE0 nodes=30521
+T2 sh2 cell=(177,99) PROBE0 nodes=23528
+T2 sh0 cell=(114,158) PROBE0 nodes=31126
+T2 sh4 cell=(171,225) PROBE0 nodes=80
+T2 sh2 cell=(133,221) PROBE0 nodes=13738
+T2 sh4 cell=(173,229) PROBE0 nodes=52
+T2 sh1 cell=(180,228) PROBE0 nodes=119
+T2 sh4 cell=(174,234) PROBE0 nodes=217
+T2 sh4 cell=(134,250) PROBE0 nodes=2489
+T2 sh2 cell=(136,248) PROBE0 nodes=2495
+T2 sh4 cell=(135,261) PROBE0 nodes=2472
+T2 sh4 cell=(126,262) PROBE0 nodes=4999
+T2 sh4 cell=(91,263) PROBE0 nodes=2276
+T2 sh4 cell=(217,83) PROBE0 nodes=30282
+T2 sh1 cell=(127,253) PROBE0 nodes=7151
+T2 sh2 cell=(135,257) PROBE0 nodes=2506
+T2 sh1 cell=(126,258) PROBE0 nodes=4908
+T2 sh1 cell=(133,259) PROBE0 nodes=5154
+T2 sh2 cell=(112,262) PROBE0 nodes=6030
+T2 sh1 cell=(125,263) PROBE0 nodes=5000
+T2 sh1 cell=(172,86) PROBE0 nodes=29393
+T2 sh2 cell=(208,82) PROBE0 nodes=30282
+T2 sh1 cell=(161,239) PROBE0 nodes=118
+T2 sh4 cell=(110,264) PROBE0 nodes=4665
+T2 sh4 cell=(147,259) PROBE0 nodes=56
+T2 sh2 cell=(105,265) PROBE0 nodes=2306
+T2 sh4 cell=(202,73) PROBE0 nodes=13759
+T2 sh4 cell=(197,76) PROBE0 nodes=911
+T2 sh4 cell=(194,77) PROBE0 nodes=1704
+T2 sh4 cell=(219,82) PROBE0 nodes=29334
+T2 sh4 cell=(191,94) PROBE0 nodes=16807
+T2 sh4 cell=(179,96) PROBE0 nodes=17196
+T2 sh2 cell=(214,75) PROBE0 nodes=14090
+T2 sh4 cell=(183,98) PROBE0 nodes=17045
+T2 sh4 cell=(138,179) PROBE0 nodes=7556
+T2 sh2 cell=(170,83) PROBE0 nodes=17410
+T2 sh2 cell=(169,84) PROBE0 nodes=17242
+T2 sh2 cell=(193,86) PROBE0 nodes=17247
+T2 sh2 cell=(181,88) PROBE0 nodes=17188
+T2 sh2 cell=(181,90) PROBE0 nodes=17188
+T2 sh1 cell=(205,76) PROBE0 nodes=13666
+T2 sh2 cell=(188,91) PROBE0 nodes=18248
+T2 sh1 cell=(216,79) PROBE0 nodes=30986
+T2 sh2 cell=(139,178) PROBE0 nodes=9530
+T2 sh1 cell=(221,82) PROBE0 nodes=29847
+T2 sh1 cell=(219,84) PROBE0 nodes=29042
+T2 sh1 cell=(178,97) PROBE0 nodes=17427
+T2 sh1 cell=(141,172) PROBE0 nodes=4362
+T2 sh4 cell=(161,218) PROBE0 nodes=36
+T2 sh4 cell=(177,226) PROBE0 nodes=165
+T2 sh4 cell=(172,233) PROBE0 nodes=967
+T2 sh1 cell=(176,227) PROBE0 nodes=50
+T2 sh3 cell=(111,179) PROBE0 nodes=24079
+T2 sh3 cell=(207,81) PROBE0 nodes=31910
+T2 sh4 cell=(182,99) PROBE0 nodes=30342
+T2 sh1 cell=(175,88) PROBE0 nodes=29101
+T2 sh1 cell=(173,230) PROBE0 nodes=37
+T2 sh4 cell=(210,81) PROBE0 nodes=29982
+probe[t=460s]: 964/1169 起点被证伪，剩 205
+DEATH liveend=0 estate=776632 reach=466526 dyn=106184 flow=0 geom=68380
+DYN shard4: 272374 calls, 106184 refuted (39%)
+probe[t=465s]: 954/1169 起点被证伪，剩 215
+DEATH liveend=0 estate=800894 reach=484210 dyn=108703 flow=0 geom=72589
+DYN shard1: 277769 calls, 108703 refuted (39%)
+T3[t=487s] shard1 r0 #0 cell=(151,217) sc=47491 nodes=667684 r=0
+T2 sh2 cell=(209,80) PROBE0 nodes=16571
+T3[t=492s] shard1 r0 #1 cell=(16,68) sc=47491 nodes=83047 r=0
+DEATH sh4 liveend=0 estate=895512 reach=550500 dyn=108653 flow=0 geom=87600
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=15901 kill=2533 nodes=1048576
+ADAPT sh4 rp[P=5615 try=2016 kill=233 12%] pd[P=144 try=18579 kill=4250 23%]
+probe[t=496s]: 956/1169 起点被证伪，剩 213
+DEATH liveend=0 estate=803750 reach=481879 dyn=109599 flow=0 geom=70028
+DYN shard2: 281030 calls, 109599 refuted (39%)
+T3[t=502s] shard1 r0 #2 cell=(7,51) sc=47489 nodes=188123 r=0
+T3[t=511s] shard1 r0 #3 cell=(8,52) sc=47487 nodes=186407 r=0
+T3[t=513s] shard2 r0 #0 cell=(119,230) sc=47488 nodes=377122 r=0
+T3[t=521s] shard1 r0 #4 cell=(16,52) sc=47485 nodes=179001 r=0
+T3[t=525s] shard1 r0 #5 cell=(15,53) sc=47492 nodes=87536 r=0
+DEATH sh4 liveend=0 estate=1015755 reach=637325 dyn=109885 flow=0 geom=107962
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=17998 kill=2970 nodes=2097152
+ADAPT sh4 rp[P=7369 try=2208 kill=249 11%] pd[P=101 try=35554 kill=8035 23%]
+T3[t=535s] shard1 r0 #6 cell=(11,55) sc=47491 nodes=184509 r=0
+T3[t=537s] shard2 r0 #1 cell=(140,228) sc=47490 nodes=684188 r=0
+T3[t=539s] shard4 r0 #0 cell=(118,234) sc=47483 nodes=2272922 r=0
+T3[t=540s] shard1 r0 #7 cell=(20,72) sc=47495 nodes=85193 r=0
+T3[t=544s] shard1 r0 #8 cell=(14,74) sc=47493 nodes=84655 r=0
+T3[t=547s] shard2 r0 #2 cell=(11,53) sc=47487 nodes=184554 r=0
+T3[t=549s] shard1 r0 #9 cell=(16,84) sc=47487 nodes=85159 r=0
+T3[t=553s] shard1 r0 #10 cell=(195,87) sc=47482 nodes=46392 r=0
+T3[t=557s] shard1 r0 #11 cell=(187,91) sc=47488 nodes=52449 r=0
+T3[t=562s] shard4 r0 #1 cell=(138,216) sc=47489 nodes=683196 r=0
+T3[t=563s] shard1 r0 #12 cell=(182,96) sc=47493 nodes=76122 r=0
+T3[t=566s] shard2 r0 #3 cell=(13,55) sc=47489 nodes=368756 r=0
+T3[t=566s] shard1 r0 #13 cell=(176,98) sc=47479 nodes=46890 r=0
+T3[t=572s] shard1 r0 #14 cell=(185,99) sc=47488 nodes=81783 r=0
+T3[t=575s] shard2 r0 #4 cell=(12,56) sc=47486 nodes=184454 r=0
+T3[t=580s] shard2 r0 #5 cell=(15,57) sc=47486 nodes=94443 r=0
+T3[t=590s] shard2 r0 #6 cell=(17,73) sc=47491 nodes=169487 r=0
+T3[t=594s] shard2 r0 #7 cell=(16,74) sc=47485 nodes=84774 r=0
+DEATH sh4 liveend=0 estate=1233792 reach=791608 dyn=114056 flow=0 geom=143220
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=21812 kill=3797 nodes=1048576
+ADAPT sh4 rp[P=8192 try=2635 kill=295 11%] pd[P=100 try=67280 kill=15373 23%]
+T3[t=598s] shard2 r0 #8 cell=(196,88) sc=47482 nodes=65025 r=0
+T3[t=599s] shard1 r0 #15 cell=(126,190) sc=47491 nodes=970713 r=0
+T3[t=601s] shard2 r0 #9 cell=(179,93) sc=47482 nodes=53579 r=0
+T3[t=605s] shard2 r0 #10 cell=(191,95) sc=47489 nodes=46389 r=0
+T3[t=607s] shard2 r0 #11 cell=(184,96) sc=47485 nodes=36680 r=0
+T3[t=611s] shard2 r0 #12 cell=(178,98) sc=47489 nodes=72709 r=0
+T3[t=614s] shard2 r0 #13 cell=(197,99) sc=47485 nodes=36508 r=0
+T3[t=615s] shard4 r0 #2 cell=(124,236) sc=47486 nodes=1614271 r=0
+T3[t=626s] shard4 r0 #3 cell=(13,53) sc=47485 nodes=184458 r=0
+T3[t=632s] shard4 r0 #4 cell=(16,56) sc=47494 nodes=98837 r=0
+DEATH sh1 liveend=0 estate=1266676 reach=790433 dyn=146040 flow=0 geom=131078
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=22563 kill=3462 nodes=1048576
+ADAPT sh1 rp[P=7369 try=2416 kill=243 10%] pd[P=61 try=44661 kill=10095 23%]
+T3[t=639s] shard2 r0 #14 cell=(128,188) sc=47497 nodes=677412 r=0
+T3[t=642s] shard4 r0 #5 cell=(14,58) sc=47492 nodes=175221 r=0
+T3[t=645s] shard1 r0 #16 cell=(126,192) sc=47490 nodes=1334970 r=0
+T3[t=647s] shard4 r0 #6 cell=(18,74) sc=47490 nodes=85289 r=0
+T3[t=650s] shard4 r0 #7 cell=(202,88) sc=47492 nodes=37489 r=0
+T3[t=655s] shard4 r0 #8 cell=(185,89) sc=47497 nodes=44373 r=0
+T3[t=658s] shard4 r0 #9 cell=(205,91) sc=47480 nodes=33655 r=0
+T3[t=664s] shard2 r0 #15 cell=(134,196) sc=47487 nodes=677432 r=0
+T3[t=665s] shard4 r0 #10 cell=(129,189) sc=47488 nodes=133095 r=0
+T3[t=670s] shard1 r0 #17 cell=(128,194) sc=47489 nodes=677433 r=0
+probe[t=689s]: 937/1169 起点被证伪，剩 232
+DEATH liveend=0 estate=905038 reach=539427 dyn=92476 flow=0 geom=95667
+DYN shard3: 276133 calls, 92476 refuted (33%)
+T3[t=696s] shard4 r0 #11 cell=(129,193) sc=47500 nodes=970703 r=0
+T3[t=697s] shard2 r0 #16 cell=(142,196) sc=47486 nodes=969859 r=0
+T3[t=704s] shard1 r0 #18 cell=(139,195) sc=47488 nodes=777200 r=0
+probe[t=720s]: 937/1169 起点被证伪，剩 232
+DEATH liveend=0 estate=914128 reach=539411 dyn=94876 flow=0 geom=96086
+DYN shard0: 284668 calls, 94876 refuted (33%)
+T3[t=721s] shard3 r0 #0 cell=(122,232) sc=47493 nodes=677000 r=0
+DEATH sh4 liveend=0 estate=1620949 reach=1058922 dyn=132391 flow=0 geom=200497
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=28561 kill=4978 nodes=1048576
+ADAPT sh4 rp[P=8192 try=3385 kill=380 11%] pd[P=24 try=107463 kill=24023 22%]
+T3[t=731s] shard4 r0 #12 cell=(133,197) sc=47488 nodes=1115223 r=0
+DEATH sh1 liveend=0 estate=1586425 reach=1019167 dyn=151203 flow=0 geom=183888
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=28140 kill=4702 nodes=1048576
+ADAPT sh1 rp[P=8192 try=3202 kill=342 11%] pd[P=361 try=89705 kill=20396 23%]
+DEATH sh2 liveend=0 estate=1460580 reach=924540 dyn=150330 flow=0 geom=160085
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=25947 kill=4195 nodes=1048576
+ADAPT sh2 rp[P=5201 try=3135 kill=365 12%] pd[P=305 try=72679 kill=16816 23%]
+T3[t=744s] shard0 r0 #0 cell=(110,235) sc=47486 nodes=445144 r=0
+T3[t=747s] shard2 r0 #17 cell=(134,198) sc=47491 nodes=1352751 r=0
+T3[t=750s] shard3 r0 #1 cell=(141,233) sc=47492 nodes=671225 r=0
+T3[t=752s] shard4 r0 #13 cell=(139,197) sc=47478 nodes=660857 r=0
+T3[t=762s] shard0 r0 #1 cell=(133,202) sc=47496 nodes=450773 r=0
+DEATH sh1 liveend=0 estate=1707864 reach=1107563 dyn=152372 flow=0 geom=204688
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=30237 kill=5149 nodes=2097152
+ADAPT sh1 rp[P=6632 try=3402 kill=361 11%] pd[P=161 try=105417 kill=23748 23%]
+T3[t=768s] shard1 r0 #19 cell=(141,197) sc=47476 nodes=2224332 r=0
+DEATH sh2 liveend=0 estate=1616359 reach=1037510 dyn=151428 flow=0 geom=186647
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=28652 kill=4754 nodes=1048576
+ADAPT sh2 rp[P=8192 try=3419 kill=397 12%] pd[P=201 try=94044 kill=21465 23%]
+T3[t=770s] shard4 r0 #14 cell=(129,199) sc=47489 nodes=672527 r=0
+T3[t=772s] shard2 r0 #18 cell=(143,199) sc=47490 nodes=1112084 r=0
+T3[t=775s] shard3 r0 #2 cell=(115,231) sc=47485 nodes=682968 r=0
+T3[t=794s] shard2 r0 #19 cell=(130,204) sc=47501 nodes=677505 r=0
+DEATH sh0 liveend=0 estate=1140725 reach=703738 dyn=97657 flow=0 geom=135424
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=18857 kill=3794 nodes=1048576
+ADAPT sh0 rp[P=8192 try=5280 kill=825 16%] pd[P=430 try=38666 kill=8455 22%]
+T3[t=797s] shard4 r0 #15 cell=(130,202) sc=47498 nodes=970708 r=0
+DEATH sh1 liveend=0 estate=1844756 reach=1206037 dyn=154412 flow=0 geom=227566
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=32588 kill=5655 nodes=1048576
+ADAPT sh1 rp[P=7726 try=3744 kill=408 11%] pd[P=30 try=123272 kill=27695 22%]
+T3[t=802s] shard1 r0 #20 cell=(142,198) sc=47491 nodes=1081933 r=0
+T3[t=803s] shard3 r0 #3 cell=(163,241) sc=47488 nodes=671135 r=0
+T3[t=822s] shard2 r0 #20 cell=(140,204) sc=47490 nodes=961405 r=0
+T3[t=826s] shard4 r0 #16 cell=(142,204) sc=47488 nodes=962370 r=0
+DEATH sh1 liveend=0 estate=1969928 reach=1295913 dyn=156765 flow=0 geom=248364
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=34751 kill=6115 nodes=1048576
+ADAPT sh1 rp[P=8192 try=4003 kill=440 11%] pd[P=87 try=138989 kill=31100 22%]
+DEATH sh0 liveend=0 estate=1263284 reach=796360 dyn=97661 flow=0 geom=158613
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=20954 kill=4212 nodes=2097152
+ADAPT sh0 rp[P=8192 try=5567 kill=866 16%] pd[P=585 try=51583 kill=11032 21%]
+T3[t=843s] shard2 r0 #21 cell=(137,205) sc=47496 nodes=660877 r=0
+T3[t=852s] shard4 r0 #17 cell=(138,206) sc=47488 nodes=962352 r=0
+DEATH sh0 liveend=0 estate=1385716 reach=889663 dyn=97666 flow=0 geom=182026
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=23051 kill=4634 nodes=3145728
+ADAPT sh0 rp[P=4191 try=5956 kill=926 16%] pd[P=121 try=64231 kill=13550 21%]
+DEATH sh2 liveend=0 estate=2008550 reach=1319025 dyn=157088 flow=0 geom=251786
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=35474 kill=6239 nodes=1048576
+ADAPT sh2 rp[P=8192 try=4130 kill=471 11%] pd[P=361 try=148624 kill=33735 23%]
+T3[t=873s] shard1 r0 #21 cell=(131,199) sc=47487 nodes=2280735 r=0
+T3[t=874s] shard3 r0 #4 cell=(10,52) sc=47491 nodes=1020548 r=0
+T3[t=875s] shard2 r0 #22 cell=(144,206) sc=47488 nodes=1112011 r=0
+T3[t=875s] shard4 r0 #18 cell=(146,206) sc=47491 nodes=660877 r=0
+DEATH sh0 liveend=0 estate=1508035 reach=981318 dyn=97666 flow=0 geom=204661
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=25148 kill=5052 nodes=4194304
+ADAPT sh0 rp[P=6631 try=6256 kill=968 15%] pd[P=143 try=76731 kill=15878 21%]
+DEATH sh1 liveend=0 estate=2231258 reach=1482758 dyn=160832 flow=0 geom=291444
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=39312 kill=7071 nodes=1048576
+ADAPT sh1 rp[P=8192 try=4386 kill=472 11%] pd[P=156 try=176786 kill=39883 23%]
+DEATH sh2 liveend=0 estate=2135880 reach=1409458 dyn=159590 flow=0 geom=272535
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=37698 kill=6713 nodes=1048576
+ADAPT sh2 rp[P=8192 try=4306 kill=484 11%] pd[P=113 try=166473 kill=37887 23%]
+DEATH sh4 liveend=0 estate=2309783 reach=1550724 dyn=144299 flow=0 geom=313924
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=40567 kill=7688 nodes=1048576
+ADAPT sh4 rp[P=8192 try=4602 kill=509 11%] pd[P=377 try=204376 kill=46243 23%]
+T3[t=925s] shard4 r0 #19 cell=(136,212) sc=47489 nodes=1341793 r=0
+T3[t=930s] shard0 r0 #2 cell=(117,231) sc=47485 nodes=4453957 r=0
+T3[t=934s] shard2 r0 #23 cell=(145,207) sc=47489 nodes=1762579 r=0
+T3[t=936s] shard1 r0 #22 cell=(132,200) sc=47502 nodes=1927363 r=0
+DEATH sh3 liveend=0 estate=1449404 reach=942112 dyn=110997 flow=0 geom=193084
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=24500 kill=5061 nodes=1048576
+ADAPT sh3 rp[P=8192 try=7479 kill=1186 16%] pd[P=8192 try=77609 kill=18258 24%]
+T3[t=961s] shard3 r0 #5 cell=(12,54) sc=47489 nodes=1112984 r=0
+DEATH sh4 liveend=0 estate=2462002 reach=1658390 dyn=147325 flow=0 geom=338466
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=43250 kill=8262 nodes=1048576
+ADAPT sh4 rp[P=8192 try=4813 kill=524 11%] pd[P=264 try=228132 kill=51920 23%]
+T3[t=966s] shard2 r0 #24 cell=(138,208) sc=47491 nodes=962354 r=0
+T3[t=968s] shard1 r0 #23 cell=(129,201) sc=47491 nodes=959948 r=0
+DEATH sh0 liveend=0 estate=1664408 reach=1096325 dyn=99110 flow=0 geom=233593
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=27764 kill=5602 nodes=1048576
+ADAPT sh0 rp[P=8192 try=6819 kill=1056 15%] pd[P=274 try=91778 kill=18995 21%]
+T3[t=975s] shard4 r0 #20 cell=(137,213) sc=47494 nodes=1316341 r=0
+T3[t=993s] shard1 r0 #24 cell=(129,203) sc=47491 nodes=677432 r=0
+T3[t=997s] shard2 r0 #25 cell=(137,209) sc=47489 nodes=961405 r=0
+T3[t=1000s] shard4 r0 #21 cell=(144,214) sc=47492 nodes=658184 r=0
+T3[t=1001s] shard3 r0 #6 cell=(11,59) sc=47483 nodes=517804 r=0
+DEATH sh0 liveend=0 estate=1787238 reach=1188949 dyn=99111 flow=0 geom=256822
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=29861 kill=6003 nodes=2097152
+ADAPT sh0 rp[P=8192 try=7164 kill=1105 15%] pd[P=411 try=104867 kill=21609 21%]
+T3[t=1018s] shard3 r0 #7 cell=(19,73) sc=47492 nodes=179950 r=0
+T3[t=1022s] shard2 r0 #26 cell=(133,211) sc=47493 nodes=671548 r=0
+T3[t=1025s] shard1 r0 #25 cell=(140,206) sc=47490 nodes=962366 r=0
+T3[t=1026s] shard3 r0 #8 cell=(16,76) sc=47487 nodes=90225 r=0
+DEATH sh4 liveend=0 estate=2688522 reach=1819858 dyn=151451 flow=0 geom=375592
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=47198 kill=9196 nodes=1048576
+ADAPT sh4 rp[P=8192 try=5486 kill=615 11%] pd[P=5132 try=258953 kill=58984 23%]
+T3[t=1035s] shard3 r0 #9 cell=(17,77) sc=47500 nodes=90231 r=0
+T3[t=1041s] shard3 r0 #10 cell=(170,84) sc=47489 nodes=65569 r=0
+T3[t=1049s] shard3 r0 #11 cell=(15,85) sc=47487 nodes=89816 r=0
+T3[t=1051s] shard1 r0 #26 cell=(135,207) sc=47493 nodes=679221 r=0
+DEATH sh0 liveend=0 estate=1909654 reach=1282163 dyn=99115 flow=0 geom=280121
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=31958 kill=6403 nodes=3145728
+ADAPT sh0 rp[P=3312 try=7552 kill=1169 15%] pd[P=98 try=117975 kill=24237 21%]
+T3[t=1054s] shard2 r0 #27 cell=(135,213) sc=47502 nodes=969161 r=0
+T3[t=1057s] shard3 r0 #12 cell=(194,86) sc=47483 nodes=79371 r=0
+T3[t=1063s] shard3 r0 #13 cell=(184,88) sc=47489 nodes=57345 r=0
+T3[t=1063s] shard4 r0 #22 cell=(145,215) sc=47493 nodes=1961299 r=0
+T3[t=1066s] shard3 r0 #14 cell=(195,93) sc=47495 nodes=36849 r=0
+T3[t=1072s] shard3 r0 #15 cell=(190,96) sc=47489 nodes=65537 r=0
+T3[t=1075s] shard3 r0 #16 cell=(181,97) sc=47481 nodes=32791 r=0
+T3[t=1081s] shard3 r0 #17 cell=(180,98) sc=47489 nodes=65544 r=0
+T3[t=1084s] shard3 r0 #18 cell=(179,99) sc=47485 nodes=32830 r=0
+DEATH sh0 liveend=0 estate=2032026 reach=1373947 dyn=99115 flow=0 geom=302891
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=34055 kill=6847 nodes=4194304
+ADAPT sh0 rp[P=7507 try=7935 kill=1227 15%] pd[P=248 try=129980 kill=26457 20%]
+DEATH sh1 liveend=0 estate=2828309 reach=1910824 dyn=170148 flow=0 geom=390333
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=49721 kill=9350 nodes=1048576
+ADAPT sh1 rp[P=3464 try=5582 kill=620 11%] pd[P=86 try=261582 kill=59120 23%]
+DEATH sh2 liveend=0 estate=2751885 reach=1852550 dyn=168364 flow=0 geom=375568
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=48350 kill=8980 nodes=1048576
+ADAPT sh2 rp[P=6739 try=5501 kill=627 11%] pd[P=90 try=247810 kill=55691 22%]
+DEATH sh4 liveend=0 estate=2915289 reach=1984305 dyn=153475 flow=0 geom=414098
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=51120 kill=10001 nodes=1048576
+ADAPT sh4 rp[P=8192 try=5942 kill=670 11%] pd[P=273 try=289444 kill=65455 23%]
+T3[t=1097s] shard1 r0 #27 cell=(132,210) sc=47492 nodes=1310523 r=0
+T3[t=1098s] shard4 r0 #23 cell=(144,216) sc=47495 nodes=1143131 r=0
+T3[t=1114s] shard2 r0 #28 cell=(143,215) sc=47492 nodes=1930048 r=0
+T3[t=1125s] shard1 r0 #28 cell=(138,210) sc=47494 nodes=968990 r=0
+DEATH sh4 liveend=0 estate=3047812 reach=2079964 dyn=155407 flow=0 geom=436286
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=53406 kill=10481 nodes=1048576
+ADAPT sh4 rp[P=8192 try=6217 kill=703 11%] pd[P=273 try=306217 kill=69007 23%]
+T3[t=1131s] shard4 r0 #24 cell=(143,217) sc=47490 nodes=1143131 r=0
+DEATH sh0 liveend=0 estate=2157328 reach=1466254 dyn=100182 flow=0 geom=325938
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=36152 kill=7292 nodes=5242880
+ADAPT sh0 rp[P=7047 try=8554 kill=1332 16%] pd[P=377 try=141916 kill=28820 20%]
+T3[t=1135s] shard2 r0 #29 cell=(149,215) sc=47493 nodes=658184 r=0
+DEATH sh3 liveend=0 estate=1857685 reach=1229570 dyn=134208 flow=0 geom=257540
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=31623 kill=6268 nodes=2097152
+ADAPT sh3 rp[P=8192 try=9302 kill=1475 16%] pd[P=170 try=108073 kill=24741 23%]
+T3[t=1153s] shard1 r0 #29 cell=(138,212) sc=47500 nodes=969163 r=0
+T3[t=1159s] shard4 r0 #25 cell=(149,217) sc=47499 nodes=967903 r=0
+T3[t=1161s] shard2 r0 #30 cell=(142,216) sc=47492 nodes=969048 r=0
+DEATH sh0 liveend=0 estate=2280897 reach=1559834 dyn=100187 flow=0 geom=349500
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=38249 kill=7709 nodes=6291456
+ADAPT sh0 rp[P=4989 try=8988 kill=1405 16%] pd[P=183 try=156249 kill=31807 20%]
+T3[t=1173s] shard1 r0 #30 cell=(136,214) sc=47493 nodes=681330 r=0
+DEATH sh3 liveend=0 estate=1980336 reach=1322506 dyn=134208 flow=0 geom=280981
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=33720 kill=6689 nodes=3145728
+ADAPT sh3 rp[P=4345 try=9648 kill=1529 16%] pd[P=179 try=120598 kill=27157 23%]
+DEATH sh4 liveend=0 estate=3292841 reach=2255510 dyn=159806 flow=0 geom=477030
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=57627 kill=11400 nodes=1048576
+ADAPT sh4 rp[P=8192 try=6666 kill=756 11%] pd[P=218 try=337064 kill=75709 22%]
+T3[t=1186s] shard2 r0 #31 cell=(138,218) sc=47496 nodes=969210 r=0
+T3[t=1192s] shard1 r0 #31 cell=(146,214) sc=47493 nodes=658190 r=0
+DEATH sh0 liveend=0 estate=2403488 reach=1652176 dyn=100192 flow=0 geom=372798
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=40347 kill=8147 nodes=7340032
+ADAPT sh0 rp[P=7830 try=9320 kill=1454 16%] pd[P=472 try=168268 kill=34212 20%]
+T3[t=1207s] shard2 r0 #32 cell=(139,219) sc=47490 nodes=702195 r=0
+T3[t=1210s] shard3 r0 #19 cell=(128,190) sc=47498 nodes=3884664 r=0
+DEATH sh4 liveend=0 estate=3411743 reach=2339725 dyn=161915 flow=0 geom=496296
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=59724 kill=11870 nodes=2097152
+ADAPT sh4 rp[P=7369 try=6841 kill=770 11%] pd[P=44 try=355962 kill=80220 23%]
+DEATH sh1 liveend=0 estate=3356275 reach=2287267 dyn=179658 flow=0 geom=477087
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=58895 kill=11362 nodes=1048576
+ADAPT sh1 rp[P=3671 try=6574 kill=737 11%] pd[P=8192 try=333253 kill=75263 23%]
+DEATH sh0 liveend=0 estate=2525604 reach=1745552 dyn=100192 flow=0 geom=396244
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=42444 kill=8579 nodes=8388608
+ADAPT sh0 rp[P=6338 try=9720 kill=1518 16%] pd[P=42 try=179984 kill=36416 20%]
+DEATH sh2 liveend=0 estate=3354567 reach=2285402 dyn=177032 flow=0 geom=476065
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=58806 kill=11190 nodes=1048576
+ADAPT sh2 rp[P=8192 try=6628 kill=757 11%] pd[P=59 try=330137 kill=73914 22%]
+T3[t=1236s] shard2 r0 #33 cell=(154,220) sc=47489 nodes=1149210 r=0
+T3[t=1238s] shard1 r0 #32 cell=(139,217) sc=47496 nodes=1690784 r=0
+DEATH sh3 liveend=0 estate=2192502 reach=1479306 dyn=135410 flow=0 geom=319940
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=37295 kill=7388 nodes=1048576
+ADAPT sh3 rp[P=2684 try=10488 kill=1666 16%] pd[P=278 try=142503 kill=31565 22%]
+T3[t=1254s] shard0 r0 #3 cell=(128,238) sc=47486 nodes=8890591 r=0
+DEATH sh1 liveend=0 estate=3550327 reach=2426873 dyn=181895 flow=0 geom=509400
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=62276 kill=12103 nodes=1048576
+ADAPT sh1 rp[P=8192 try=6960 kill=780 11%] pd[P=273 try=360460 kill=81321 23%]
+T3[t=1262s] shard4 r0 #26 cell=(140,218) sc=47488 nodes=3905298 r=0
+DEATH sh2 liveend=0 estate=3485687 reach=2377737 dyn=179968 flow=0 geom=497097
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=61104 kill=11735 nodes=1048576
+ADAPT sh2 rp[P=8192 try=6850 kill=779 11%] pd[P=130 try=349273 kill=78551 22%]
+DEATH sh3 liveend=0 estate=2314851 reach=1571973 dyn=135410 flow=0 geom=343123
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=39392 kill=7820 nodes=2097152
+ADAPT sh3 rp[P=2165 try=10949 kill=1742 16%] pd[P=274 try=155242 kill=34092 22%]
+T3[t=1277s] shard0 r0 #4 cell=(156,232) sc=47493 nodes=671000 r=0
+T3[t=1283s] shard0 r0 #5 cell=(6,52) sc=47486 nodes=87461 r=0
+T3[t=1285s] shard1 r0 #33 cell=(145,217) sc=47492 nodes=1800543 r=0
+T3[t=1289s] shard4 r0 #27 cell=(141,219) sc=47495 nodes=989381 r=0
+DEATH sh3 liveend=0 estate=2437219 reach=1664855 dyn=135410 flow=0 geom=366136
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=41489 kill=8232 nodes=3145728
+ADAPT sh3 rp[P=4432 try=11575 kill=1847 16%] pd[P=501 try=168138 kill=36504 22%]
+DEATH sh2 liveend=0 estate=3605230 reach=2462215 dyn=181849 flow=0 geom=516400
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=63201 kill=12195 nodes=2097152
+ADAPT sh2 rp[P=8192 try=7104 kill=812 11%] pd[P=69 try=368191 kill=83076 23%]
+T3[t=1310s] shard1 r0 #34 cell=(142,218) sc=47494 nodes=676456 r=0
+T3[t=1319s] shard3 r0 #20 cell=(129,191) sc=47492 nodes=3502058 r=0
+DEATH sh4 liveend=0 estate=3854800 reach=2657555 dyn=168437 flow=0 geom=569886
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=67415 kill=13476 nodes=1048576
+ADAPT sh4 rp[P=8192 try=7663 kill=864 11%] pd[P=162 try=415674 kill=93418 22%]
+T3[t=1328s] shard4 r0 #28 cell=(156,220) sc=47487 nodes=1159859 r=0
+DEATH sh2 liveend=0 estate=3726065 reach=2549510 dyn=183046 flow=0 geom=536922
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=65298 kill=12651 nodes=3145728
+ADAPT sh2 rp[P=7158 try=7345 kill=842 11%] pd[P=259 try=385114 kill=86798 23%]
+DEATH sh1 liveend=0 estate=3832583 reach=2626821 dyn=187951 flow=0 geom=554971
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=67229 kill=13188 nodes=1048576
+ADAPT sh1 rp[P=8192 try=7414 kill=824 11%] pd[P=101 try=401879 kill=91082 23%]
+T3[t=1348s] shard3 r0 #21 cell=(138,194) sc=47491 nodes=669773 r=0
+T3[t=1351s] shard4 r0 #29 cell=(137,221) sc=47497 nodes=675341 r=0
+DEATH sh0 liveend=0 estate=2792066 reach=1942518 dyn=110905 flow=0 geom=444122
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=47061 kill=9507 nodes=1048576
+ADAPT sh0 rp[P=6707 try=11238 kill=1763 16%] pd[P=7419 try=206991 kill=42847 21%]
+T3[t=1362s] shard1 r0 #35 cell=(148,218) sc=47490 nodes=1621747 r=0
+T3[t=1366s] shard0 r0 #6 cell=(9,53) sc=47489 nodes=1121477 r=0
+DEATH sh2 liveend=0 estate=3845632 reach=2634499 dyn=184732 flow=0 geom=556401
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=67395 kill=13088 nodes=4194304
+ADAPT sh2 rp[P=8192 try=7541 kill=860 11%] pd[P=38 try=404529 kill=91478 23%]
+T3[t=1371s] shard4 r0 #30 cell=(138,222) sc=47495 nodes=676173 r=0
+T3[t=1372s] shard0 r0 #7 cell=(8,54) sc=47489 nodes=86176 r=0
+DEATH sh3 liveend=0 estate=2680739 reach=1842063 dyn=138870 flow=0 geom=408804
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=45638 kill=9111 nodes=1048576
+ADAPT sh3 rp[P=8192 try=12301 kill=1949 16%] pd[P=74 try=197696 kill=43172 22%]
+T3[t=1390s] shard1 r0 #36 cell=(134,222) sc=47494 nodes=971821 r=0
+T3[t=1401s] shard4 r0 #31 cell=(144,222) sc=47490 nodes=996096 r=0
+DEATH sh2 liveend=0 estate=3964775 reach=2718110 dyn=187088 flow=0 geom=575195
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=69492 kill=13526 nodes=5242880
+ADAPT sh2 rp[P=8192 try=7763 kill=886 11%] pd[P=263 try=423145 kill=96024 23%]
+T3[t=1412s] shard0 r0 #8 cell=(13,57) sc=47491 nodes=517814 r=0
+T3[t=1420s] shard0 r0 #9 cell=(13,59) sc=47485 nodes=86131 r=0
+DEATH sh3 liveend=0 estate=2803479 reach=1934116 dyn=138870 flow=0 geom=431741
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=47735 kill=9507 nodes=2097152
+ADAPT sh3 rp[P=1115 try=12918 kill=2054 16%] pd[P=449 try=210800 kill=45777 22%]
+T3[t=1423s] shard1 r0 #37 cell=(152,222) sc=47493 nodes=961902 r=0
+T3[t=1427s] shard0 r0 #10 cell=(21,71) sc=47488 nodes=86687 r=0
+DEATH sh4 liveend=0 estate=4258519 reach=2945638 dyn=176536 flow=0 geom=636568
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=74428 kill=15232 nodes=1048576
+ADAPT sh4 rp[P=8192 try=8978 kill=1052 12%] pd[P=1104 try=466964 kill=104993 22%]
+T3[t=1433s] shard0 r0 #11 cell=(16,78) sc=47489 nodes=89869 r=0
+T3[t=1437s] shard0 r0 #12 cell=(221,81) sc=47493 nodes=37147 r=0
+T3[t=1441s] shard0 r0 #13 cell=(220,82) sc=47491 nodes=33547 r=0
+DEATH sh2 liveend=0 estate=4085046 reach=2804966 dyn=188200 flow=0 geom=595466
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=71589 kill=13918 nodes=6291456
+ADAPT sh2 rp[P=6157 try=7957 kill=906 11%] pd[P=107 try=441155 kill=100032 23%]
+T3[t=1444s] shard0 r0 #14 cell=(170,86) sc=47491 nodes=32801 r=0
+T3[t=1445s] shard1 r0 #38 cell=(135,223) sc=47496 nodes=675338 r=0
+T3[t=1449s] shard0 r0 #15 cell=(209,87) sc=47484 nodes=45288 r=0
+T3[t=1453s] shard0 r0 #16 cell=(198,90) sc=47494 nodes=32769 r=0
+DEATH sh3 liveend=0 estate=2925997 reach=2027418 dyn=138870 flow=0 geom=455193
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=49832 kill=9926 nodes=3145728
+ADAPT sh3 rp[P=4475 try=13414 kill=2129 16%] pd[P=210 try=223878 kill=48382 22%]
+T3[t=1459s] shard0 r0 #17 cell=(180,96) sc=47487 nodes=65539 r=0
+DEATH sh4 liveend=0 estate=4379916 reach=3032750 dyn=178411 flow=0 geom=656835
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=76525 kill=15655 nodes=2097152
+ADAPT sh4 rp[P=8192 try=9147 kill=1064 12%] pd[P=178 try=482614 kill=108339 22%]
+T3[t=1467s] shard1 r0 #39 cell=(143,223) sc=47490 nodes=675334 r=0
+T3[t=1468s] shard0 r0 #18 cell=(184,98) sc=47475 nodes=119312 r=0
+DEATH sh2 liveend=0 estate=4206577 reach=2892445 dyn=189452 flow=0 geom=615813
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=73687 kill=14347 nodes=7340032
+ADAPT sh2 rp[P=5873 try=8219 kill=940 11%] pd[P=240 try=458121 kill=103670 23%]
+DEATH sh3 liveend=0 estate=3048352 reach=2119705 dyn=138870 flow=0 geom=478061
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=51929 kill=10341 nodes=4194304
+ADAPT sh3 rp[P=4041 try=13754 kill=2183 16%] pd[P=83 try=236195 kill=50689 21%]
+T3[t=1497s] shard4 r0 #32 cell=(143,225) sc=47488 nodes=3096588 r=0
+T3[t=1504s] shard2 r0 #34 cell=(147,225) sc=47490 nodes=8076299 r=0
+DEATH sh1 liveend=0 estate=4395799 reach=3028056 dyn=198119 flow=0 geom=647540
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=77038 kill=15342 nodes=1048576
+ADAPT sh1 rp[P=7369 try=8437 kill=943 11%] pd[P=66 try=479937 kill=108817 23%]
+T3[t=1509s] shard3 r0 #22 cell=(141,195) sc=47486 nodes=4511484 r=0
+DEATH sh0 liveend=0 estate=3061198 reach=2127229 dyn=131098 flow=0 geom=484145
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=51764 kill=10209 nodes=1048576
+ADAPT sh0 rp[P=8192 try=12601 kill=1982 16%] pd[P=182 try=222992 kill=46120 21%]
+T3[t=1531s] shard2 r0 #35 cell=(141,227) sc=47490 nodes=684188 r=0
+DEATH sh4 liveend=0 estate=4614750 reach=3200840 dyn=181794 flow=0 geom=695688
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=80621 kill=16522 nodes=1048576
+ADAPT sh4 rp[P=7369 try=9672 kill=1133 12%] pd[P=143 try=515946 kill=115938 22%]
+DEATH sh1 liveend=0 estate=4516037 reach=3114752 dyn=199444 flow=0 geom=667818
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=79135 kill=15811 nodes=2097152
+ADAPT sh1 rp[P=8192 try=8670 kill=970 11%] pd[P=229 try=496806 kill=112534 23%]
+DEATH sh0 liveend=0 estate=3183652 reach=2219829 dyn=131098 flow=0 geom=507345
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=53861 kill=10623 nodes=2097152
+ADAPT sh0 rp[P=4895 try=13092 kill=2063 16%] pd[P=116 try=235545 kill=48623 21%]
+T3[t=1553s] shard1 r0 #40 cell=(144,224) sc=47495 nodes=2293587 r=0
+DEATH sh3 liveend=0 estate=3210976 reach=2239674 dyn=139984 flow=0 geom=507887
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=54660 kill=10948 nodes=1048576
+ADAPT sh3 rp[P=3828 try=15252 kill=2445 16%] pd[P=270 try=252326 kill=54012 21%]
+DEATH sh2 liveend=0 estate=4487209 reach=3090600 dyn=196207 flow=0 geom=660840
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=78624 kill=15461 nodes=1048576
+ADAPT sh2 rp[P=8192 try=8704 kill=990 11%] pd[P=113 try=499161 kill=113412 23%]
+T3[t=1581s] shard2 r0 #36 cell=(147,227) sc=47489 nodes=1320986 r=0
+DEATH sh4 liveend=0 estate=4733942 reach=3284994 dyn=183818 flow=0 geom=714933
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=82718 kill=16961 nodes=2097152
+ADAPT sh4 rp[P=8192 try=9826 kill=1140 12%] pd[P=141 try=534549 kill=120354 23%]
+DEATH sh0 liveend=0 estate=3305683 reach=2312587 dyn=131098 flow=0 geom=530469
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=55958 kill=11033 nodes=3145728
+ADAPT sh0 rp[P=3789 try=13690 kill=2166 16%] pd[P=74 try=248059 kill=50951 21%]
+DEATH sh3 liveend=0 estate=3333906 reach=2332290 dyn=139984 flow=0 geom=531153
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=56757 kill=11354 nodes=2097152
+ADAPT sh3 rp[P=6339 try=15578 kill=2494 16%] pd[P=299 try=265258 kill=56581 21%]
+DEATH sh2 liveend=0 estate=4639561 reach=3199218 dyn=199011 flow=0 geom=685901
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=81265 kill=16022 nodes=1048576
+ADAPT sh2 rp[P=7369 try=9008 kill=1029 11%] pd[P=5201 try=518709 kill=117731 23%]
+DEATH sh4 liveend=0 estate=4855219 reach=3372724 dyn=185048 flow=0 geom=735515
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=84815 kill=17360 nodes=3145728
+ADAPT sh4 rp[P=8192 try=10042 kill=1165 12%] pd[P=400 try=551112 kill=123901 22%]
+DEATH sh3 liveend=0 estate=3456038 reach=2424913 dyn=139984 flow=0 geom=554218
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=58854 kill=11793 nodes=3145728
+ADAPT sh3 rp[P=3473 try=16122 kill=2584 16%] pd[P=419 try=277547 kill=58872 21%]
+DEATH sh1 liveend=0 estate=4778082 reach=3299790 dyn=204174 flow=0 geom=710113
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=83722 kill=16855 nodes=2097152
+ADAPT sh1 rp[P=8192 try=9127 kill=1018 11%] pd[P=81 try=536597 kill=122040 23%]
+DEATH sh0 liveend=0 estate=3430856 reach=2404443 dyn=132175 flow=0 geom=553384
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=58055 kill=11488 nodes=4194304
+ADAPT sh0 rp[P=3822 try=14441 kill=2295 16%] pd[P=214 try=259893 kill=53334 21%]
+T3[t=1652s] shard2 r0 #37 cell=(134,228) sc=47498 nodes=2142483 r=0
+T3[t=1654s] shard3 r0 #23 cell=(138,196) sc=47489 nodes=3541778 r=0
+DEATH sh4 liveend=0 estate=4976539 reach=3459228 dyn=186827 flow=0 geom=755435
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=86912 kill=17799 nodes=4194304
+ADAPT sh4 rp[P=8192 try=10237 kill=1185 12%] pd[P=2848 try=568660 kill=127844 22%]
+DEATH sh1 liveend=0 estate=4899140 reach=3387502 dyn=205350 flow=0 geom=730687
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=85819 kill=17263 nodes=3145728
+ADAPT sh1 rp[P=8192 try=9415 kill=1059 11%] pd[P=52 try=553047 kill=125612 23%]
+DEATH sh0 liveend=0 estate=3553510 reach=2497032 dyn=132175 flow=0 geom=576422
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=60152 kill=11921 nodes=5242880
+ADAPT sh0 rp[P=6438 try=15019 kill=2391 16%] pd[P=173 try=272592 kill=55852 20%]
+DEATH sh2 liveend=0 estate=4885407 reach=3375453 dyn=202414 flow=0 geom=726937
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=85549 kill=16975 nodes=1048576
+ADAPT sh2 rp[P=7369 try=9473 kill=1083 11%] pd[P=143 try=552285 kill=125388 23%]
+DEATH sh4 liveend=0 estate=5095669 reach=3543547 dyn=188939 flow=0 geom=774848
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=89009 kill=18271 nodes=5242880
+ADAPT sh4 rp[P=5891 try=10423 kill=1202 12%] pd[P=224 try=587247 kill=132291 23%]
+DEATH sh3 liveend=0 estate=3623543 reach=2544347 dyn=143103 flow=0 geom=582125
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=61743 kill=12420 nodes=1048576
+ADAPT sh3 rp[P=5968 try=16702 kill=2668 16%] pd[P=66 try=300726 kill=64445 21%]
+DEATH sh1 liveend=0 estate=5020280 reach=3473740 dyn=207102 flow=0 geom=750403
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=87916 kill=17661 nodes=4194304
+ADAPT sh1 rp[P=8192 try=9641 kill=1085 11%] pd[P=1544 try=570858 kill=129642 23%]
+DEATH sh0 liveend=0 estate=3675955 reach=2590404 dyn=132175 flow=0 geom=600046
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=62249 kill=12319 nodes=6291456
+ADAPT sh0 rp[P=8192 try=15656 kill=2498 16%] pd[P=103 try=285419 kill=58389 20%]
+T3[t=1716s] shard3 r0 #24 cell=(130,198) sc=47487 nodes=1340273 r=0
+DEATH sh2 liveend=0 estate=5004627 reach=3459889 dyn=204436 flow=0 geom=746368
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=87646 kill=17418 nodes=2097152
+ADAPT sh2 rp[P=8192 try=9637 kill=1093 11%] pd[P=81 try=570698 kill=129760 23%]
+DEATH sh4 liveend=0 estate=5214701 reach=3627839 dyn=190831 flow=0 geom=794162
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=91106 kill=18745 nodes=6291456
+ADAPT sh4 rp[P=8192 try=10629 kill=1222 11%] pd[P=72 try=606503 kill=136898 23%]
+T3[t=1747s] shard3 r0 #25 cell=(136,198) sc=47489 nodes=670775 r=0
+DEATH sh1 liveend=0 estate=5139263 reach=3557873 dyn=209126 flow=0 geom=769603
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=90013 kill=18116 nodes=5242880
+ADAPT sh1 rp[P=8192 try=9794 kill=1093 11%] pd[P=261 try=589892 kill=134213 23%]
+T3[t=1755s] shard0 r0 #19 cell=(130,190) sc=47494 nodes=7052100 r=0
+DEATH sh2 liveend=0 estate=5125906 reach=3547279 dyn=205651 flow=0 geom=766817
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=89743 kill=17804 nodes=3145728
+ADAPT sh2 rp[P=8192 try=9930 kill=1137 11%] pd[P=170 try=587617 kill=133383 23%]
+DEATH sh4 liveend=0 estate=5333783 reach=3711753 dyn=192988 flow=0 geom=813216
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=93204 kill=19167 nodes=7340032
+ADAPT sh4 rp[P=7974 try=10857 kill=1250 12%] pd[P=38 try=625891 kill=141585 23%]
+T3[t=1785s] shard0 r0 #20 cell=(131,191) sc=47492 nodes=680282 r=0
+DEATH sh3 liveend=0 estate=3854418 reach=2709566 dyn=146497 flow=0 geom=620600
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=65764 kill=13304 nodes=1048576
+ADAPT sh3 rp[P=8192 try=17104 kill=2711 16%] pd[P=368 try=333792 kill=72393 22%]
+DEATH sh1 liveend=0 estate=5258422 reach=3642201 dyn=210848 flow=0 geom=789034
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=92110 kill=18573 nodes=6291456
+ADAPT sh1 rp[P=8192 try=9994 kill=1113 11%] pd[P=270 try=608912 kill=138785 23%]
+DEATH sh2 liveend=0 estate=5247224 reach=3633666 dyn=207405 flow=0 geom=786690
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=91840 kill=18209 nodes=4194304
+ADAPT sh2 rp[P=8192 try=10111 kill=1152 11%] pd[P=2848 try=605115 kill=137358 23%]
+T3[t=1818s] shard0 r0 #21 cell=(139,193) sc=47486 nodes=675788 r=0
+DEATH sh3 liveend=0 estate=3976834 reach=2802294 dyn=146497 flow=0 geom=643781
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=67861 kill=13744 nodes=2097152
+ADAPT sh3 rp[P=5978 try=17318 kill=2736 16%] pd[P=313 try=346527 kill=74935 22%]
+DEATH sh4 liveend=0 estate=5453114 reach=3795991 dyn=194970 flow=0 geom=832357
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=95301 kill=19600 nodes=8388608
+ADAPT sh4 rp[P=8192 try=11011 kill=1258 11%] pd[P=1458 try=645675 kill=146350 23%]
+DEATH sh1 liveend=0 estate=5377581 reach=3726691 dyn=212926 flow=0 geom=808348
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=94208 kill=19005 nodes=7340032
+ADAPT sh1 rp[P=8192 try=10210 kill=1138 11%] pd[P=26 try=627673 kill=143308 23%]
+DEATH sh2 liveend=0 estate=5366356 reach=3717985 dyn=209515 flow=0 geom=806108
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=93937 kill=18680 nodes=5242880
+ADAPT sh2 rp[P=5891 try=10297 kill=1169 11%] pd[P=224 try=623702 kill=141805 23%]
+DEATH sh0 liveend=0 estate=4045671 reach=2859362 dyn=136033 flow=0 geom=664815
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=68579 kill=13675 nodes=1048576
+ADAPT sh0 rp[P=8192 try=16764 kill=2662 16%] pd[P=361 try=331147 kill=68707 21%]
+DEATH sh4 liveend=0 estate=5574603 reach=3882761 dyn=196524 flow=0 geom=852497
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=97398 kill=20033 nodes=9437184
+ADAPT sh4 rp[P=6062 try=11201 kill=1276 11%] pd[P=188 try=661625 kill=149786 23%]
+DEATH sh3 liveend=0 estate=4099515 reach=2894887 dyn=146497 flow=0 geom=667020
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=69958 kill=14177 nodes=3145728
+ADAPT sh3 rp[P=2994 try=17673 kill=2793 16%] pd[P=130 try=359222 kill=77489 22%]
+T3[t=1863s] shard2 r0 #38 cell=(146,228) sc=47498 nodes=5804494 r=0
+DEATH sh1 liveend=0 estate=5497760 reach=3812973 dyn=214491 flow=0 geom=828225
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=96305 kill=19470 nodes=8388608
+ADAPT sh1 rp[P=8192 try=10414 kill=1157 11%] pd[P=151 try=644993 kill=147251 23%]
+DEATH sh0 liveend=0 estate=4168349 reach=2952321 dyn=136033 flow=0 geom=688260
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=70676 kill=14085 nodes=2097152
+ADAPT sh0 rp[P=6935 try=17108 kill=2717 16%] pd[P=86 try=343478 kill=71183 21%]
+DEATH sh4 liveend=0 estate=5696218 reach=3970685 dyn=197724 flow=0 geom=873089
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=99495 kill=20463 nodes=10485760
+ADAPT sh4 rp[P=2344 try=11397 kill=1296 11%] pd[P=167 try=677727 kill=153214 23%]
+DEATH sh2 liveend=0 estate=5551721 reach=3850259 dyn=212343 flow=0 geom=836755
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=97157 kill=19389 nodes=1048576
+ADAPT sh2 rp[P=8192 try=10672 kill=1214 11%] pd[P=87 try=649098 kill=147594 23%]
+DEATH sh1 liveend=0 estate=5619198 reach=3900821 dyn=215685 flow=0 geom=848988
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=98402 kill=19915 nodes=9437184
+ADAPT sh1 rp[P=8192 try=10592 kill=1171 11%] pd[P=302 try=660902 kill=150649 23%]
+DEATH sh3 liveend=0 estate=4223317 reach=2987777 dyn=147120 flow=0 geom=690221
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=72055 kill=14602 nodes=4194304
+ADAPT sh3 rp[P=474 try=18582 kill=2954 16%] pd[P=3867 try=371602 kill=79920 22%]
+DEATH sh0 liveend=0 estate=4290570 reach=3045100 dyn=136033 flow=0 geom=711397
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=72773 kill=14494 nodes=3145728
+ADAPT sh0 rp[P=8192 try=17462 kill=2772 16%] pd[P=36 try=355855 kill=73479 21%]
+T3[t=1925s] shard2 r0 #39 cell=(135,229) sc=47491 nodes=1930097 r=0
+DEATH sh4 liveend=0 estate=5815299 reach=4054974 dyn=199481 flow=0 geom=892400
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=101592 kill=20890 nodes=11534336
+ADAPT sh4 rp[P=8192 try=11615 kill=1316 11%] pd[P=54 try=697270 kill=157899 23%]
+T3[t=1934s] shard3 r0 #26 cell=(133,199) sc=47485 nodes=4892048 r=0
+DEATH sh1 liveend=0 estate=5739038 reach=3985564 dyn=217955 flow=0 geom=868382
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=100499 kill=20350 nodes=10485760
+ADAPT sh1 rp[P=8192 try=10807 kill=1194 11%] pd[P=39 try=679340 kill=155021 23%]
+T3[t=1955s] shard2 r0 #40 cell=(132,230) sc=47495 nodes=968180 r=0
+T3[t=1963s] shard4 r0 #33 cell=(143,227) sc=47486 nodes=12367340 r=0
+DEATH sh0 liveend=0 estate=4415072 reach=3137495 dyn=137036 flow=0 geom=734441
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=74870 kill=14907 nodes=4194304
+ADAPT sh0 rp[P=2138 try=17961 kill=2855 16%] pd[P=319 try=367700 kill=75833 21%]
+DEATH sh3 liveend=0 estate=4427336 reach=3136138 dyn=148844 flow=0 geom=726098
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=75548 kill=15376 nodes=1048576
+ADAPT sh3 rp[P=3745 try=19397 kill=3079 16%] pd[P=213 try=396207 kill=85441 22%]
+DEATH sh1 liveend=0 estate=5858320 reach=4070208 dyn=219728 flow=0 geom=887771
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=102596 kill=20812 nodes=11534336
+ADAPT sh1 rp[P=8192 try=10973 kill=1204 11%] pd[P=202 try=698988 kill=159740 23%]
+T3[t=1984s] shard1 r0 #41 cell=(146,226) sc=47491 nodes=11590335 r=0
+DEATH sh4 liveend=0 estate=6031702 reach=4208804 dyn=203013 flow=0 geom=927879
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=105355 kill=21668 nodes=1048576
+ADAPT sh4 rp[P=8192 try=12020 kill=1363 11%] pd[P=563 try=727618 kill=164902 23%]
+DEATH sh0 liveend=0 estate=4538062 reach=3229679 dyn=137036 flow=0 geom=757353
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=76967 kill=15358 nodes=5242880
+ADAPT sh0 rp[P=4974 try=18418 kill=2927 16%] pd[P=251 try=380601 kill=78408 21%]
+DEATH sh3 liveend=0 estate=4550230 reach=3228798 dyn=148844 flow=0 geom=749292
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=77645 kill=15790 nodes=2097152
+ADAPT sh3 rp[P=3719 try=20079 kill=3194 16%] pd[P=334 try=409110 kill=88018 22%]
+DEATH sh2 liveend=0 estate=6008620 reach=4179701 dyn=218015 flow=0 geom=913664
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=105050 kill=21042 nodes=2097152
+ADAPT sh2 rp[P=3789 try=11476 kill=1306 11%] pd[P=214 try=709584 kill=160689 23%]
+DEATH sh1 liveend=0 estate=5983811 reach=4158743 dyn=222825 flow=0 geom=907882
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=104805 kill=21319 nodes=1048576
+ADAPT sh1 rp[P=8192 try=11190 kill=1229 11%] pd[P=90 try=717336 kill=164135 23%]
+T3[t=2030s] shard4 r0 #34 cell=(136,228) sc=47491 nodes=1937028 r=0
+T3[t=2037s] shard1 r0 #42 cell=(147,229) sc=47497 nodes=1335249 r=0
+DEATH sh0 liveend=0 estate=4660649 reach=3323305 dyn=137036 flow=0 geom=781168
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=79064 kill=15774 nodes=6291456
+ADAPT sh0 rp[P=8192 try=18909 kill=3003 16%] pd[P=359 try=393317 kill=81086 21%]
+DEATH sh3 liveend=0 estate=4672868 reach=3321578 dyn=148844 flow=0 geom=772421
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=79742 kill=16231 nodes=3145728
+ADAPT sh3 rp[P=3745 try=21035 kill=3358 16%] pd[P=188 try=421863 kill=90552 21%]
+T3[t=2056s] shard4 r0 #35 cell=(150,228) sc=47483 nodes=667635 r=0
+DEATH sh2 liveend=0 estate=6129850 reach=4267348 dyn=219237 flow=0 geom=934219
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=107147 kill=21486 nodes=3145728
+ADAPT sh2 rp[P=8192 try=11746 kill=1339 11%] pd[P=247 try=726026 kill=164227 23%]
+T3[t=2062s] shard1 r0 #43 cell=(116,230) sc=47498 nodes=657845 r=0
+DEATH sh0 liveend=0 estate=4783046 reach=3416145 dyn=137036 flow=0 geom=804485
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=81162 kill=16198 nodes=7340032
+ADAPT sh0 rp[P=3445 try=19434 kill=3094 16%] pd[P=461 try=405145 kill=83296 21%]
+DEATH sh3 liveend=0 estate=4794953 reach=3413666 dyn=148844 flow=0 geom=795134
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=81839 kill=16652 nodes=4194304
+ADAPT sh3 rp[P=4546 try=21853 kill=3499 16%] pd[P=583 try=433915 kill=92793 21%]
+DEATH sh4 liveend=0 estate=6331759 reach=4424083 dyn=207534 flow=0 geom=977830
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=110564 kill=22762 nodes=1048576
+ADAPT sh4 rp[P=7046 try=12543 kill=1419 11%] pd[P=361 try=768475 kill=173953 23%]
+DEATH sh2 liveend=0 estate=6251174 reach=4354845 dyn=220621 flow=0 geom=954497
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=109244 kill=21929 nodes=4194304
+ADAPT sh2 rp[P=6632 try=11919 kill=1353 11%] pd[P=42 try=742951 kill=167881 23%]
+DEATH sh1 liveend=0 estate=6210020 reach=4318447 dyn=227415 flow=0 geom=944352
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=108790 kill=22235 nodes=1048576
+ADAPT sh1 rp[P=8192 try=11587 kill=1271 11%] pd[P=66 try=751294 kill=172195 23%]
+T3[t=2119s] shard0 r0 #22 cell=(140,196) sc=47488 nodes=8014298 r=0
+T3[t=2123s] shard4 r0 #36 cell=(137,229) sc=47497 nodes=1928355 r=0
+DEATH sh2 liveend=0 estate=6372928 reach=4442225 dyn=222214 flow=0 geom=974796
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=111341 kill=22352 nodes=5242880
+ADAPT sh2 rp[P=8192 try=12109 kill=1369 11%] pd[P=2238 try=759728 kill=171557 23%]
+T3[t=2140s] shard3 r0 #27 cell=(137,207) sc=47491 nodes=5087453 r=0
+T3[t=2144s] shard2 r0 #41 cell=(150,230) sc=47489 nodes=5710618 r=0
+DEATH sh1 liveend=0 estate=6329132 reach=4402523 dyn=229448 flow=0 geom=963463
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=110887 kill=22680 nodes=2097152
+ADAPT sh1 rp[P=8192 try=11756 kill=1283 11%] pd[P=141 try=769552 kill=176521 23%]
+DEATH sh4 liveend=0 estate=6555159 reach=4585603 dyn=210246 flow=0 geom=1015631
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=114420 kill=23566 nodes=1048576
+ADAPT sh4 rp[P=8192 try=13062 kill=1488 11%] pd[P=218 try=798081 kill=180354 23%]
+DEATH sh0 liveend=0 estate=4983762 reach=3560038 dyn=140192 flow=0 geom=838362
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=84607 kill=16932 nodes=1048576
+ADAPT sh0 rp[P=8192 try=20517 kill=3265 16%] pd[P=361 try=431457 kill=89448 21%]
+DEATH sh2 liveend=0 estate=6548424 reach=4568554 dyn=224749 flow=0 geom=1004305
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=114374 kill=23029 nodes=1048576
+ADAPT sh2 rp[P=8192 try=12459 kill=1413 11%] pd[P=132 try=782181 kill=176455 23%]
+DEATH sh1 liveend=0 estate=6450170 reach=4489741 dyn=230716 flow=0 geom=983911
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=112984 kill=23083 nodes=3145728
+ADAPT sh1 rp[P=8192 try=12022 kill=1318 11%] pd[P=58 try=787138 kill=180424 23%]
+T3[t=2181s] shard0 r0 #23 cell=(132,198) sc=47493 nodes=1358016 r=0
+DEATH sh3 liveend=0 estate=5023619 reach=3579575 dyn=151349 flow=0 geom=835300
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=85722 kill=17460 nodes=1048576
+ADAPT sh3 rp[P=3745 try=23228 kill=3728 16%] pd[P=213 try=461281 kill=98963 21%]
+DEATH sh4 liveend=0 estate=6676238 reach=4672821 dyn=211617 flow=0 geom=1036106
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=116517 kill=24012 nodes=2097152
+ADAPT sh4 rp[P=7830 try=13245 kill=1506 11%] pd[P=320 try=814799 kill=184002 23%]
+T3[t=2202s] shard2 r0 #42 cell=(129,231) sc=47492 nodes=1618998 r=0
+T3[t=2212s] shard0 r0 #24 cell=(135,199) sc=47495 nodes=669773 r=0
+DEATH sh3 liveend=0 estate=5146513 reach=3672235 dyn=151349 flow=0 geom=858494
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=87819 kill=17874 nodes=2097152
+ADAPT sh3 rp[P=3719 try=23910 kill=3843 16%] pd[P=334 try=474184 kill=101540 21%]
+DEATH sh1 liveend=0 estate=6569375 reach=4574348 dyn=232678 flow=0 geom=1003213
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=115081 kill=23538 nodes=4194304
+ADAPT sh1 rp[P=8192 try=12203 kill=1334 11%] pd[P=466 try=806587 kill=185124 23%]
+DEATH sh2 liveend=0 estate=6734575 reach=4701891 dyn=227475 flow=0 geom=1035225
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=117611 kill=23688 nodes=1048576
+ADAPT sh2 rp[P=4754 try=12797 kill=1452 11%] pd[P=110 try=808464 kill=182404 23%]
+DEATH sh4 liveend=0 estate=6795243 reach=4757246 dyn=213817 flow=0 geom=1055347
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=118614 kill=24424 nodes=3145728
+ADAPT sh4 rp[P=8192 try=13416 kill=1519 11%] pd[P=177 try=833717 kill=188550 23%]
+T3[t=2241s] shard4 r0 #37 cell=(136,230) sc=47499 nodes=3259326 r=0
+DEATH sh0 liveend=0 estate=5220195 reach=3731218 dyn=142243 flow=0 geom=879418
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=88662 kill=17835 nodes=1048576
+ADAPT sh0 rp[P=3745 try=21237 kill=3374 16%] pd[P=213 try=462187 kill=96436 21%]
+DEATH sh3 liveend=0 estate=5269151 reach=3765015 dyn=151349 flow=0 geom=881623
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=89916 kill=18315 nodes=3145728
+ADAPT sh3 rp[P=3745 try=24866 kill=4007 16%] pd[P=188 try=486937 kill=104074 21%]
+DEATH sh1 liveend=0 estate=6688588 reach=4658422 dyn=235103 flow=0 geom=1022399
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=117178 kill=23972 nodes=5242880
+ADAPT sh1 rp[P=8192 try=12380 kill=1348 11%] pd[P=213 try=825080 kill=189564 23%]
+DEATH sh2 liveend=0 estate=6856051 reach=4789525 dyn=228886 flow=0 geom=1055803
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=119708 kill=24135 nodes=2097152
+ADAPT sh2 rp[P=4895 try=13017 kill=1479 11%] pd[P=105 try=824818 kill=185905 23%]
+DEATH sh0 liveend=0 estate=5343089 reach=3823878 dyn=142243 flow=0 geom=902612
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=90759 kill=18249 nodes=2097152
+ADAPT sh0 rp[P=3719 try=21919 kill=3489 16%] pd[P=334 try=475090 kill=99013 21%]
+DEATH sh3 liveend=0 estate=5391236 reach=3857103 dyn=151349 flow=0 geom=904336
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=92013 kill=18736 nodes=4194304
+ADAPT sh3 rp[P=4546 try=25684 kill=4148 16%] pd[P=583 try=498989 kill=106315 21%]
+T3[t=2295s] shard1 r0 #44 cell=(133,231) sc=47488 nodes=6153713 r=0
+DEATH sh2 liveend=0 estate=6977404 reach=4877170 dyn=230174 flow=0 geom=1076364
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=121805 kill=24563 nodes=3145728
+ADAPT sh2 rp[P=8192 try=13253 kill=1506 11%] pd[P=216 try=841183 kill=189418 23%]
+DEATH sh4 liveend=0 estate=7050738 reach=4940600 dyn=217692 flow=0 geom=1097770
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=123035 kill=25336 nodes=2097152
+ADAPT sh4 rp[P=8192 try=13868 kill=1570 11%] pd[P=463 try=866982 kill=195786 23%]
+DEATH sh0 liveend=0 estate=5465727 reach=3916658 dyn=142243 flow=0 geom=925741
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=92856 kill=18690 nodes=3145728
+ADAPT sh0 rp[P=3745 try=22875 kill=3653 16%] pd[P=188 try=487843 kill=101547 21%]
+T3[t=2322s] shard2 r0 #43 cell=(149,231) sc=47491 nodes=3829247 r=0
+DEATH sh1 liveend=0 estate=6911392 reach=4817108 dyn=239045 flow=0 geom=1058891
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=121097 kill=24858 nodes=1048576
+ADAPT sh1 rp[P=8192 try=12711 kill=1376 11%] pd[P=98 try=858538 kill=197357 23%]
+DEATH sh4 liveend=0 estate=7172217 reach=5028199 dyn=218956 flow=0 geom=1118294
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=125132 kill=25761 nodes=3145728
+ADAPT sh4 rp[P=8192 try=14065 kill=1588 11%] pd[P=80 try=883618 kill=199382 23%]
+T3[t=2347s] shard2 r0 #44 cell=(112,232) sc=47487 nodes=658603 r=0
+DEATH sh0 liveend=0 estate=5587812 reach=4008746 dyn=142243 flow=0 geom=948454
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=94953 kill=19111 nodes=4194304
+ADAPT sh0 rp[P=4546 try=23693 kill=3794 16%] pd[P=583 try=499895 kill=103788 21%]
+T3[t=2359s] shard3 r0 #28 cell=(134,210) sc=47490 nodes=5235523 r=0
+T3[t=2365s] shard4 r0 #38 cell=(152,230) sc=47487 nodes=3811853 r=0
+DEATH sh1 liveend=0 estate=7033044 reach=4904160 dyn=240593 flow=0 geom=1078995
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=123194 kill=25269 nodes=2097152
+ADAPT sh1 rp[P=8192 try=12896 kill=1394 11%] pd[P=1979 try=875384 kill=201041 23%]
+T3[t=2373s] shard0 r0 #25 cell=(141,199) sc=47492 nodes=4414253 r=0
+T3[t=2382s] shard1 r0 #45 cell=(153,231) sc=47492 nodes=2562561 r=0
+T3[t=2388s] shard3 r0 #29 cell=(150,216) sc=47494 nodes=692757 r=0
+T3[t=2388s] shard4 r0 #39 cell=(131,231) sc=47494 nodes=673829 r=0
+T3[t=2404s] shard0 r0 #26 cell=(140,200) sc=47490 nodes=669928 r=0
+T3[t=2407s] shard2 r0 #45 cell=(152,232) sc=47493 nodes=1920039 r=0
+DEATH sh1 liveend=0 estate=7208267 reach=5029967 dyn=243266 flow=0 geom=1108284
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=126222 kill=25881 nodes=1048576
+ADAPT sh1 rp[P=8192 try=13192 kill=1425 11%] pd[P=137 try=898376 kill=206017 23%]
+DEATH sh4 liveend=0 estate=7445350 reach=5222153 dyn=224401 flow=0 geom=1162729
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=129908 kill=26822 nodes=1048576
+ADAPT sh4 rp[P=7369 try=14547 kill=1640 11%] pd[P=66 try=923195 kill=208577 23%]
+DEATH sh3 liveend=0 estate=5715704 reach=4089933 dyn=157793 flow=0 geom=959526
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=97578 kill=19898 nodes=1048576
+ADAPT sh3 rp[P=4752 try=27048 kill=4362 16%] pd[P=602 try=537262 kill=115161 21%]
+T3[t=2429s] shard2 r0 #46 cell=(131,233) sc=47493 nodes=673838 r=0
+T3[t=2433s] shard0 r0 #27 cell=(141,203) sc=47495 nodes=669928 r=0
+T3[t=2454s] shard2 r0 #47 cell=(139,233) sc=47494 nodes=677675 r=0
+DEATH sh1 liveend=0 estate=7327147 reach=5114109 dyn=245200 flow=0 geom=1127496
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=128319 kill=26322 nodes=2097152
+ADAPT sh1 rp[P=8192 try=13370 kill=1440 11%] pd[P=131 try=917609 kill=210608 23%]
+DEATH sh4 liveend=0 estate=7565576 reach=5308813 dyn=225746 flow=0 geom=1182987
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=132005 kill=27290 nodes=2097152
+ADAPT sh4 rp[P=8192 try=14780 kill=1667 11%] pd[P=229 try=940064 kill=212294 23%]
+T3[t=2463s] shard0 r0 #28 cell=(138,204) sc=47492 nodes=670951 r=0
+DEATH sh3 liveend=0 estate=5838589 reach=4182527 dyn=157793 flow=0 geom=982759
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=99675 kill=20310 nodes=2097152
+ADAPT sh3 rp[P=3674 try=27675 kill=4469 16%] pd[P=230 try=549868 kill=117686 21%]
+T3[t=2479s] shard2 r0 #48 cell=(147,233) sc=47488 nodes=675335 r=0
+T3[t=2494s] shard0 r0 #29 cell=(129,205) sc=47488 nodes=670777 r=0
+DEATH sh4 liveend=0 estate=7687260 reach=5396348 dyn=227042 flow=0 geom=1203363
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=134102 kill=27706 nodes=3145728
+ADAPT sh4 rp[P=8192 try=14988 kill=1688 11%] pd[P=112 try=957073 kill=215937 23%]
+DEATH sh3 liveend=0 estate=5961045 reach=4275522 dyn=157793 flow=0 geom=1006083
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=101772 kill=20702 nodes=3145728
+ADAPT sh3 rp[P=5983 try=28232 kill=4562 16%] pd[P=44 try=562913 kill=120287 21%]
+T3[t=2500s] shard4 r0 #40 cell=(151,231) sc=47493 nodes=3234562 r=0
+DEATH sh1 liveend=0 estate=7446344 reach=5198230 dyn=247098 flow=0 geom=1146672
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=130416 kill=26787 nodes=3145728
+ADAPT sh1 rp[P=8192 try=13610 kill=1470 11%] pd[P=216 try=937124 kill=215314 23%]
+T3[t=2504s] shard2 r0 #49 cell=(130,234) sc=47492 nodes=673808 r=0
+T3[t=2528s] shard2 r0 #50 cell=(162,234) sc=47493 nodes=667635 r=0
+DEATH sh3 liveend=0 estate=6083782 reach=4368012 dyn=157793 flow=0 geom=1029148
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=103869 kill=21094 nodes=4194304
+ADAPT sh3 rp[P=6169 try=28763 kill=4651 16%] pd[P=727 try=575277 kill=122597 21%]
+T3[t=2533s] shard4 r0 #41 cell=(114,232) sc=47485 nodes=960050 r=0
+DEATH sh1 liveend=0 estate=7565761 reach=5282751 dyn=248782 flow=0 geom=1165948
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=132513 kill=27276 nodes=4194304
+ADAPT sh1 rp[P=8192 try=13786 kill=1484 11%] pd[P=278 try=956618 kill=220024 23%]
+T3[t=2560s] shard2 r0 #51 cell=(127,235) sc=47490 nodes=967723 r=0
+DEATH sh0 liveend=0 estate=6167430 reach=4429582 dyn=149067 flow=0 geom=1048580
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=104947 kill=21192 nodes=2097152
+ADAPT sh0 rp[P=6099 try=25418 kill=4041 16%] pd[P=115 try=576868 kill=121514 21%]
+DEATH sh4 liveend=0 estate=7928237 reach=5567537 dyn=231423 flow=0 geom=1242780
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=138297 kill=28650 nodes=1048576
+ADAPT sh4 rp[P=8192 try=15427 kill=1737 11%] pd[P=66 try=990607 kill=223674 23%]
+T3[t=2580s] shard2 r0 #52 cell=(163,235) sc=47487 nodes=669984 r=0
+DEATH sh1 liveend=0 estate=7685144 reach=5367015 dyn=251099 flow=0 geom=1185234
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=134610 kill=27737 nodes=5242880
+ADAPT sh1 rp[P=8192 try=13987 kill=1505 11%] pd[P=424 try=974406 kill=224350 23%]
+T3[t=2591s] shard1 r0 #46 cell=(132,232) sc=47490 nodes=5536341 r=0
+DEATH sh0 liveend=0 estate=6289765 reach=4522263 dyn=149067 flow=0 geom=1071696
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=107044 kill=21616 nodes=3145728
+ADAPT sh0 rp[P=2884 try=25900 kill=4125 16%] pd[P=548 try=589621 kill=124042 21%]
+DEATH sh4 liveend=0 estate=8047349 reach=5651613 dyn=233456 flow=0 geom=1261891
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=140394 kill=29095 nodes=2097152
+ADAPT sh4 rp[P=8192 try=15596 kill=1749 11%] pd[P=141 try=1008865 kill=228000 23%]
+T3[t=2607s] shard2 r0 #53 cell=(122,236) sc=47488 nodes=959978 r=0
+DEATH sh3 liveend=0 estate=6332363 reach=4550991 dyn=160457 flow=0 geom=1074251
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=108063 kill=21932 nodes=6291456
+ADAPT sh3 rp[P=8192 try=29760 kill=4813 16%] pd[P=278 try=599196 kill=127374 21%]
+DEATH sh1 liveend=0 estate=7837216 reach=5474437 dyn=254447 flow=0 geom=1209791
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=137294 kill=28326 nodes=1048576
+ADAPT sh1 rp[P=6735 try=14236 kill=1529 11%] pd[P=321 try=997575 kill=229811 23%]
+DEATH sh0 liveend=0 estate=6412033 reach=4614338 dyn=149067 flow=0 geom=1094520
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=109141 kill=22061 nodes=4194304
+ADAPT sh0 rp[P=6456 try=26366 kill=4201 16%] pd[P=107 try=601614 kill=126286 21%]
+T3[t=2633s] shard1 r0 #47 cell=(115,233) sc=47489 nodes=1301540 r=0
+DEATH sh4 liveend=0 estate=8168384 reach=5738832 dyn=234723 flow=0 geom=1282339
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=142491 kill=29498 nodes=3145728
+ADAPT sh4 rp[P=8192 try=15862 kill=1784 11%] pd[P=58 try=1026451 kill=231903 23%]
+DEATH sh2 liveend=0 estate=8156464 reach=5718589 dyn=250752 flow=0 geom=1270629
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=142353 kill=29090 nodes=1048576
+ADAPT sh2 rp[P=8192 try=15268 kill=1717 11%] pd[P=101 try=1003770 kill=226257 23%]
+T3[t=2649s] shard0 r0 #30 cell=(141,205) sc=47496 nodes=4413710 r=0
+T3[t=2662s] shard2 r0 #54 cell=(146,236) sc=47493 nodes=1917092 r=0
+T3[t=2663s] shard1 r0 #48 cell=(114,234) sc=47485 nodes=982359 r=0
+DEATH sh3 liveend=0 estate=6455602 reach=4644285 dyn=160457 flow=0 geom=1097908
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=110161 kill=22370 nodes=7340032
+ADAPT sh3 rp[P=2674 try=30271 kill=4904 16%] pd[P=721 try=612744 kill=130206 21%]
+DEATH sh4 liveend=0 estate=8287694 reach=5823556 dyn=236695 flow=0 geom=1301679
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=144588 kill=29935 nodes=4194304
+ADAPT sh4 rp[P=8192 try=16019 kill=1792 11%] pd[P=364 try=1045757 kill=236567 23%]
+DEATH sh0 liveend=0 estate=6563437 reach=4725941 dyn=150161 flow=0 geom=1122352
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=111677 kill=22585 nodes=1048576
+ADAPT sh0 rp[P=8192 try=27214 kill=4341 16%] pd[P=113 try=617161 kill=129489 21%]
+DEATH sh3 liveend=0 estate=6577257 reach=4736833 dyn=160457 flow=0 geom=1121109
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=112258 kill=22771 nodes=8388608
+ADAPT sh3 rp[P=2557 try=31113 kill=5048 16%] pd[P=653 try=624134 kill=132325 21%]
+DEATH sh2 liveend=0 estate=8376883 reach=5876654 dyn=253904 flow=0 geom=1307286
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=146187 kill=29873 nodes=1048576
+ADAPT sh2 rp[P=4973 try=15618 kill=1753 11%] pd[P=137 try=1034793 kill=233112 23%]
+DEATH sh1 liveend=0 estate=8101030 reach=5663757 dyn=258384 flow=0 geom=1253970
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=141861 kill=29318 nodes=1048576
+ADAPT sh1 rp[P=4839 try=14879 kill=1623 11%] pd[P=178 try=1031789 kill=237261 23%]
+DEATH sh4 liveend=0 estate=8406943 reach=5907579 dyn=239143 flow=0 geom=1320878
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=146685 kill=30364 nodes=5242880
+ADAPT sh4 rp[P=8192 try=16197 kill=1806 11%] pd[P=213 try=1064088 kill=240985 23%]
+DEATH sh0 liveend=0 estate=6686090 reach=4818563 dyn=150161 flow=0 geom=1145543
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=113774 kill=23005 nodes=2097152
+ADAPT sh0 rp[P=6632 try=27613 kill=4404 16%] pd[P=103 try=630128 kill=132084 21%]
+T3[t=2725s] shard4 r0 #42 cell=(133,233) sc=47486 nodes=5502053 r=0
+T3[t=2726s] shard1 r0 #49 cell=(150,234) sc=47487 nodes=1910313 r=0
+DEATH sh2 liveend=0 estate=8497323 reach=5962295 dyn=256205 flow=0 geom=1327012
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=148284 kill=30318 nodes=2097152
+ADAPT sh2 rp[P=8192 try=15798 kill=1767 11%] pd[P=106 try=1051965 kill=237015 23%]
+T3[t=2738s] shard3 r0 #30 cell=(141,217) sc=47498 nodes=9058815 r=0
+T3[t=2741s] shard2 r0 #55 cell=(119,237) sc=47491 nodes=2249028 r=0
+T3[t=2751s] shard4 r0 #43 cell=(149,233) sc=47489 nodes=675334 r=0
+DEATH sh0 liveend=0 estate=6808836 reach=4911791 dyn=150161 flow=0 geom=1168865
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=115871 kill=23399 nodes=3145728
+ADAPT sh0 rp[P=8192 try=27893 kill=4442 16%] pd[P=424 try=643234 kill=134711 21%]
+T3[t=2763s] shard2 r0 #56 cell=(127,237) sc=47496 nodes=665545 r=0
+DEATH sh1 liveend=0 estate=8319908 reach=5819630 dyn=262574 flow=0 geom=1289952
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=145681 kill=30109 nodes=1048576
+ADAPT sh1 rp[P=8192 try=15296 kill=1672 11%] pd[P=222 try=1062719 kill=244231 23%]
+T3[t=2765s] shard3 r0 #31 cell=(147,217) sc=47486 nodes=671588 r=0
+T3[t=2771s] shard1 r0 #50 cell=(117,235) sc=47491 nodes=1306276 r=0
+DEATH sh4 liveend=0 estate=8632425 reach=6068046 dyn=243262 flow=0 geom=1357832
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=150651 kill=31266 nodes=1048576
+ADAPT sh4 rp[P=7369 try=16561 kill=1840 11%] pd[P=56 try=1097421 kill=248707 23%]
+T3[t=2783s] shard2 r0 #57 cell=(110,238) sc=47499 nodes=658124 r=0
+DEATH sh0 liveend=0 estate=6931362 reach=5003836 dyn=150161 flow=0 geom=1191748
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=117968 kill=23830 nodes=4194304
+ADAPT sh0 rp[P=2871 try=28290 kill=4506 16%] pd[P=289 try=655040 kill=136901 21%]
+T3[t=2792s] shard1 r0 #51 cell=(139,235) sc=47489 nodes=684149 r=0
+DEATH sh3 liveend=0 estate=6857864 reach=4940008 dyn=164403 flow=0 geom=1170019
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=117038 kill=23776 nodes=1048576
+ADAPT sh3 rp[P=8192 try=32230 kill=5218 16%] pd[P=829 try=655948 kill=139272 21%]
+T3[t=2803s] shard2 r0 #58 cell=(130,238) sc=47497 nodes=666841 r=0
+DEATH sh4 liveend=0 estate=8752913 reach=6153827 dyn=245240 flow=0 geom=1377559
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=152748 kill=31702 nodes=2097152
+ADAPT sh4 rp[P=6631 try=16774 kill=1866 11%] pd[P=69 try=1115282 kill=252817 23%]
+DEATH sh1 liveend=0 estate=8545444 reach=5979274 dyn=267814 flow=0 geom=1326314
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=149661 kill=30989 nodes=1048576
+ADAPT sh1 rp[P=8192 try=15665 kill=1710 11%] pd[P=121 try=1095739 kill=252031 23%]
+DEATH sh3 liveend=0 estate=6980947 reach=5032706 dyn=164403 flow=0 geom=1193383
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=119135 kill=24211 nodes=2097152
+ADAPT sh3 rp[P=1700 try=32551 kill=5272 16%] pd[P=401 try=668430 kill=141751 21%]
+T3[t=2837s] shard1 r0 #52 cell=(147,235) sc=47488 nodes=1335028 r=0
+DEATH sh0 liveend=0 estate=7054404 reach=5091129 dyn=152601 flow=0 geom=1212370
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=120065 kill=24310 nodes=5242880
+ADAPT sh0 rp[P=8192 try=28886 kill=4599 16%] pd[P=1116 try=671031 kill=140763 21%]
+DEATH sh2 liveend=0 estate=8859305 reach=6217279 dyn=265069 flow=0 geom=1384861
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=154665 kill=31691 nodes=1048576
+ADAPT sh2 rp[P=8192 try=16436 kill=1837 11%] pd[P=321 try=1104934 kill=249508 23%]
+DEATH sh4 liveend=0 estate=8872111 reach=6238361 dyn=247372 flow=0 geom=1396793
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=154845 kill=32167 nodes=3145728
+ADAPT sh4 rp[P=8192 try=16951 kill=1879 11%] pd[P=137 try=1133471 kill=257033 23%]
+T3[t=2859s] shard1 r0 #53 cell=(128,236) sc=47499 nodes=665550 r=0
+DEATH sh3 liveend=0 estate=7103791 reach=5125890 dyn=164404 flow=0 geom=1216896
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=121232 kill=24666 nodes=3145728
+ADAPT sh3 rp[P=7369 try=33252 kill=5389 16%] pd[P=98 try=680526 kill=144162 21%]
+T3[t=2872s] shard2 r0 #59 cell=(150,238) sc=47483 nodes=1992209 r=0
+DEATH sh0 liveend=0 estate=7177124 reach=5184027 dyn=152601 flow=0 geom=1235641
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=122162 kill=24743 nodes=6291456
+ADAPT sh0 rp[P=4634 try=29190 kill=4646 16%] pd[P=592 try=683977 kill=143367 21%]
+DEATH sh4 liveend=0 estate=8993913 reach=6325871 dyn=248977 flow=0 geom=1417287
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=156942 kill=32602 nodes=4194304
+ADAPT sh4 rp[P=8192 try=17297 kill=1932 11%] pd[P=135 try=1149162 kill=260406 23%]
+T3[t=2897s] shard2 r0 #60 cell=(115,239) sc=47500 nodes=655979 r=0
+DEATH sh3 liveend=0 estate=7226164 reach=5218282 dyn=164404 flow=0 geom=1239841
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=123329 kill=25060 nodes=4194304
+ADAPT sh3 rp[P=3290 try=33765 kill=5473 16%] pd[P=721 try=692678 kill=146423 21%]
+DEATH sh1 liveend=0 estate=8772415 reach=6139638 dyn=272943 flow=0 geom=1362794
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=153662 kill=31873 nodes=1048576
+ADAPT sh1 rp[P=7369 try=16039 kill=1749 11%] pd[P=66 try=1129804 kill=260108 23%]
+T3[t=2910s] shard1 r0 #54 cell=(142,236) sc=47496 nodes=1329841 r=0
+T3[t=2916s] shard4 r0 #44 cell=(123,235) sc=47489 nodes=4831412 r=0
+T3[t=2931s] shard2 r0 #61 cell=(123,239) sc=47489 nodes=983942 r=0
+T3[t=2934s] shard3 r0 #32 cell=(144,218) sc=47490 nodes=4551853 r=0
+T3[t=2940s] shard4 r0 #45 cell=(140,236) sc=47493 nodes=684150 r=0
+DEATH sh1 liveend=0 estate=8924001 reach=6247674 dyn=275446 flow=0 geom=1387719
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=156321 kill=32493 nodes=1048576
+ADAPT sh1 rp[P=8192 try=16253 kill=1765 11%] pd[P=98 try=1152268 kill=265290 23%]
+DEATH sh0 liveend=0 estate=7422005 reach=5369687 dyn=152601 flow=0 geom=1282122
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=126357 kill=25607 nodes=8388608
+ADAPT sh0 rp[P=6440 try=30522 kill=4869 16%] pd[P=166 try=710421 kill=148617 21%]
+DEATH sh2 liveend=0 estate=9275997 reach=6514370 dyn=272382 flow=0 geom=1453691
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=161927 kill=33262 nodes=1048576
+ADAPT sh2 rp[P=4754 try=17217 kill=1929 11%] pd[P=110 try=1162223 kill=262463 23%]
+DEATH sh4 liveend=0 estate=9267217 reach=6521578 dyn=253543 flow=0 geom=1462718
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=161681 kill=33623 nodes=1048576
+ADAPT sh4 rp[P=8192 try=17964 kill=2026 11%] pd[P=179 try=1185947 kill=268650 23%]
+DEATH sh1 liveend=0 estate=9045774 reach=6335430 dyn=276739 flow=0 geom=1408365
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=158418 kill=32944 nodes=2097152
+ADAPT sh1 rp[P=8192 try=16737 kill=1840 11%] pd[P=137 try=1168209 kill=268752 23%]
+DEATH sh0 liveend=0 estate=7544989 reach=5462478 dyn=152604 flow=0 geom=1305392
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=128454 kill=26027 nodes=9437184
+ADAPT sh0 rp[P=6632 try=30832 kill=4917 16%] pd[P=137 try=723272 kill=151130 21%]
+T3[t=2982s] shard1 r0 #55 cell=(158,236) sc=47487 nodes=2594048 r=0
+T3[t=2983s] shard3 r0 #33 cell=(153,221) sc=47492 nodes=1361064 r=0
+T3[t=2984s] shard0 r0 #31 cell=(139,207) sc=47489 nodes=9514829 r=0
+DEATH sh2 liveend=0 estate=9397131 reach=6601585 dyn=273835 flow=0 geom=1474154
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=164024 kill=33712 nodes=2097152
+ADAPT sh2 rp[P=8192 try=17433 kill=1954 11%] pd[P=66 try=1179034 kill=266120 23%]
+DEATH sh4 liveend=0 estate=9388586 reach=6609174 dyn=254957 flow=0 geom=1483287
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=163778 kill=34060 nodes=2097152
+ADAPT sh4 rp[P=8192 try=18168 kill=2048 11%] pd[P=131 try=1202147 kill=272109 23%]
+T3[t=3005s] shard2 r0 #62 cell=(150,240) sc=47487 nodes=2586841 r=0
+T3[t=3008s] shard1 r0 #56 cell=(109,237) sc=47482 nodes=661071 r=0
+DEATH sh0 liveend=0 estate=7679666 reach=5560932 dyn=153737 flow=0 geom=1329868
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=130706 kill=26505 nodes=1048576
+ADAPT sh0 rp[P=3031 try=31590 kill=5047 16%] pd[P=251 try=735939 kill=153651 21%]
+DEATH sh4 liveend=0 estate=9509920 reach=6696866 dyn=256245 flow=0 geom=1503878
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=165875 kill=34486 nodes=3145728
+ADAPT sh4 rp[P=8192 try=18386 kill=2071 11%] pd[P=216 try=1218490 kill=275613 23%]
+DEATH sh1 liveend=0 estate=9300023 reach=6516734 dyn=281391 flow=0 geom=1450298
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=162831 kill=33867 nodes=1048576
+ADAPT sh1 rp[P=4754 try=17241 kill=1905 11%] pd[P=110 try=1202105 kill=276295 23%]
+DEATH sh2 liveend=0 estate=9571900 reach=6725289 dyn=276923 flow=0 geom=1502436
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=167100 kill=34406 nodes=1048576
+ADAPT sh2 rp[P=8192 try=17716 kill=1981 11%] pd[P=130 try=1205996 kill=272636 23%]
+T3[t=3052s] shard3 r0 #34 cell=(136,222) sc=47490 nodes=902727 r=0
+T3[t=3056s] shard4 r0 #46 cell=(148,236) sc=47492 nodes=3829247 r=0
+DEATH sh0 liveend=0 estate=7802457 reach=5653614 dyn=153737 flow=0 geom=1353065
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=132803 kill=26933 nodes=2097152
+ADAPT sh0 rp[P=4895 try=32104 kill=5130 16%] pd[P=401 try=749285 kill=156295 21%]
+DEATH sh1 liveend=0 estate=9421193 reach=6603958 dyn=282772 flow=0 geom=1470837
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=164928 kill=34326 nodes=2097152
+ADAPT sh1 rp[P=6935 try=17469 kill=1932 11%] pd[P=26 try=1218633 kill=279885 23%]
+DEATH sh2 liveend=0 estate=9691445 reach=6809767 dyn=278804 flow=0 geom=1521741
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=169197 kill=34866 nodes=2097152
+ADAPT sh2 rp[P=8192 try=17970 kill=2014 11%] pd[P=69 try=1224914 kill=277161 23%]
+DEATH sh4 liveend=0 estate=9710960 reach=6841313 dyn=258954 flow=0 geom=1537537
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=169339 kill=35198 nodes=1048576
+ADAPT sh4 rp[P=4754 try=18764 kill=2117 11%] pd[P=110 try=1245005 kill=281396 23%]
+DEATH sh3 liveend=0 estate=7652703 reach=5521809 dyn=174078 flow=0 geom=1310792
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=130668 kill=26524 nodes=1048576
+ADAPT sh3 rp[P=7369 try=35204 kill=5689 16%] pd[P=401 try=744820 kill=158595 21%]
+DEATH sh0 liveend=0 estate=7925063 reach=5746843 dyn=153737 flow=0 geom=1376475
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=134900 kill=27382 nodes=3145728
+ADAPT sh0 rp[P=6005 try=32498 kill=5192 16%] pd[P=390 try=762095 kill=158850 21%]
+DEATH sh2 liveend=0 estate=9812672 reach=6897540 dyn=279901 flow=0 geom=1542363
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=171294 kill=35332 nodes=3145728
+ADAPT sh2 rp[P=4924 try=18234 kill=2051 11%] pd[P=183 try=1240850 kill=280577 23%]
+T3[t=3119s] shard4 r0 #47 cell=(162,236) sc=47491 nodes=1923353 r=0
+DEATH sh3 liveend=0 estate=7775382 reach=5614698 dyn=174078 flow=0 geom=1334052
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=132765 kill=26915 nodes=2097152
+ADAPT sh3 rp[P=5084 try=35658 kill=5767 16%] pd[P=67 try=758185 kill=161251 21%]
+DEATH sh0 liveend=0 estate=8047384 reach=5838712 dyn=153737 flow=0 geom=1399260
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=136997 kill=27819 nodes=4194304
+ADAPT sh0 rp[P=5070 try=33107 kill=5295 16%] pd[P=332 try=773718 kill=161005 21%]
+DEATH sh2 liveend=0 estate=9934217 reach=6985446 dyn=281074 flow=0 geom=1563032
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=173391 kill=35787 nodes=4194304
+ADAPT sh2 rp[P=8192 try=18420 kill=2066 11%] pd[P=179 try=1257033 kill=284093 23%]
+DEATH sh4 liveend=0 estate=9933883 reach=7001765 dyn=261737 flow=0 geom=1575036
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=173185 kill=35999 nodes=1048576
+ADAPT sh4 rp[P=8192 try=19171 kill=2163 11%] pd[P=125 try=1274737 kill=287809 23%]
+T3[t=3151s] shard0 r0 #32 cell=(135,209) sc=47491 nodes=4446516 r=0
+DEATH sh1 liveend=0 estate=9660169 reach=6773328 dyn=286302 flow=0 geom=1509569
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=169122 kill=35233 nodes=4194304
+ADAPT sh1 rp[P=8192 try=17827 kill=1962 11%] pd[P=245 try=1256529 kill=288914 23%]
+DEATH sh3 liveend=0 estate=7897977 reach=5707572 dyn=174078 flow=0 geom=1357230
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=134862 kill=27342 nodes=3145728
+ADAPT sh3 rp[P=2529 try=36192 kill=5858 16%] pd[P=60 try=771303 kill=163869 21%]
+DEATH sh2 liveend=0 estate=10053521 reach=7070256 dyn=282725 flow=0 geom=1582605
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=175488 kill=36252 nodes=5242880
+ADAPT sh2 rp[P=8192 try=18621 kill=2087 11%] pd[P=142 try=1276412 kill=288765 23%]
+DEATH sh1 liveend=0 estate=9781739 reach=6861370 dyn=287391 flow=0 geom=1530195
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=171219 kill=35658 nodes=5242880
+ADAPT sh1 rp[P=8192 try=18027 kill=1983 11%] pd[P=28 try=1273124 kill=292475 23%]
+T3[t=3178s] shard4 r0 #48 cell=(121,237) sc=47496 nodes=1922806 r=0
+DEATH sh0 liveend=0 estate=8202860 reach=5952889 dyn=155190 flow=0 geom=1427855
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=139599 kill=28358 nodes=1048576
+ADAPT sh0 rp[P=8192 try=33558 kill=5360 16%] pd[P=331 try=789021 kill=164174 21%]
+DEATH sh3 liveend=0 estate=8020488 reach=5799946 dyn=174078 flow=0 geom=1380214
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=136959 kill=27724 nodes=4194304
+ADAPT sh3 rp[P=7830 try=36610 kill=5923 16%] pd[P=273 try=783648 kill=166151 21%]
+T3[t=3197s] shard4 r0 #49 cell=(160,238) sc=47494 nodes=667760 r=0
+DEATH sh1 liveend=0 estate=9902808 reach=6948057 dyn=289030 flow=0 geom=1550245
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=173316 kill=36076 nodes=6291456
+ADAPT sh1 rp[P=8192 try=18209 kill=1999 11%] pd[P=105 try=1290026 kill=296290 23%]
+DEATH sh2 liveend=0 estate=10172736 reach=7154421 dyn=284668 flow=0 geom=1601754
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=177585 kill=36688 nodes=6291456
+ADAPT sh2 rp[P=8192 try=18816 kill=2106 11%] pd[P=198 try=1295755 kill=293454 23%]
+DEATH sh0 liveend=0 estate=8325874 reach=6045910 dyn=155190 flow=0 geom=1451193
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=141696 kill=28775 nodes=2097152
+ADAPT sh0 rp[P=7369 try=33840 kill=5399 16%] pd[P=239 try=802324 kill=166796 21%]
+T3[t=3212s] shard3 r0 #35 cell=(154,222) sc=47493 nodes=4523088 r=0
+T3[t=3217s] shard4 r0 #50 cell=(129,239) sc=47495 nodes=665513 r=0
+T3[t=3236s] shard3 r0 #36 cell=(137,223) sc=47498 nodes=671225 r=0
+T3[t=3236s] shard4 r0 #51 cell=(116,240) sc=47495 nodes=655984 r=0
+DEATH sh1 liveend=0 estate=10021981 reach=7032442 dyn=290943 flow=0 geom=1569610
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=175414 kill=36513 nodes=7340032
+ADAPT sh1 rp[P=7178 try=18409 kill=2020 11%] pd[P=62 try=1309120 kill=300892 23%]
+DEATH sh0 liveend=0 estate=8448084 reach=6138840 dyn=155190 flow=0 geom=1474399
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=143793 kill=29172 nodes=3145728
+ADAPT sh0 rp[P=3622 try=34167 kill=5451 16%] pd[P=390 try=815636 kill=169460 21%]
+DEATH sh2 liveend=0 estate=10291703 reach=7238080 dyn=287156 flow=0 geom=1620640
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=179683 kill=37136 nodes=7340032
+ADAPT sh2 rp[P=8192 try=19000 kill=2121 11%] pd[P=35 try=1314321 kill=297917 23%]
+T3[t=3253s] shard1 r0 #57 cell=(149,237) sc=47492 nodes=7874694 r=0
+T3[t=3255s] shard4 r0 #52 cell=(152,240) sc=47487 nodes=675336 r=0
+DEATH sh0 liveend=0 estate=8570267 reach=6230645 dyn=155190 flow=0 geom=1497169
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=145890 kill=29580 nodes=4194304
+ADAPT sh0 rp[P=8192 try=34437 kill=5484 16%] pd[P=229 try=827865 kill=171740 21%]
+DEATH sh3 liveend=0 estate=8258357 reach=5969844 dyn=178815 flow=0 geom=1420080
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=141056 kill=28632 nodes=1048576
+ADAPT sh3 rp[P=2271 try=37463 kill=6056 16%] pd[P=483 try=814617 kill=173527 21%]
+DEATH sh1 liveend=0 estate=10204072 reach=7163714 dyn=292335 flow=0 geom=1600284
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=178580 kill=37190 nodes=1048576
+ADAPT sh1 rp[P=8192 try=18682 kill=2043 11%] pd[P=90 try=1335209 kill=306688 23%]
+T3[t=3281s] shard0 r0 #33 cell=(145,209) sc=47492 nodes=4433079 r=0
+T3[t=3282s] shard1 r0 #58 cell=(118,238) sc=47496 nodes=1106408 r=0
+DEATH sh4 liveend=0 estate=10456430 reach=7372424 dyn=272206 flow=0 geom=1660031
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=182357 kill=38041 nodes=1048576
+ADAPT sh4 rp[P=8192 try=20046 kill=2253 11%] pd[P=130 try=1350649 kill=305493 23%]
+DEATH sh2 liveend=0 estate=10533098 reach=7411932 dyn=289687 flow=0 geom=1660910
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=183877 kill=38017 nodes=9437184
+ADAPT sh2 rp[P=8192 try=19412 kill=2164 11%] pd[P=66 try=1349091 kill=305671 23%]
+DEATH sh3 liveend=0 estate=8380934 reach=6062750 dyn=178815 flow=0 geom=1443242
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=143153 kill=29057 nodes=2097152
+ADAPT sh3 rp[P=4106 try=38004 kill=6145 16%] pd[P=214 try=828084 kill=176202 21%]
+DEATH sh1 liveend=0 estate=10332678 reach=7255301 dyn=294640 flow=0 geom=1621508
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=180792 kill=37647 nodes=1048576
+ADAPT sh1 rp[P=8192 try=18948 kill=2077 11%] pd[P=101 try=1351023 kill=310153 23%]
+DEATH sh4 liveend=0 estate=10575975 reach=7456902 dyn=274087 flow=0 geom=1679336
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=184454 kill=38501 nodes=2097152
+ADAPT sh4 rp[P=8192 try=20300 kill=2286 11%] pd[P=69 try=1369567 kill=310018 23%]
+DEATH sh0 liveend=0 estate=8719394 reach=6337243 dyn=158349 flow=0 geom=1522155
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=148465 kill=30137 nodes=1048576
+ADAPT sh0 rp[P=4545 try=35084 kill=5586 16%] pd[P=72 try=848616 kill=176824 21%]
+DEATH sh2 liveend=0 estate=10653326 reach=7498575 dyn=291146 flow=0 geom=1681289
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=185974 kill=38464 nodes=10485760
+ADAPT sh2 rp[P=8192 try=19642 kill=2193 11%] pd[P=202 try=1365867 kill=309432 23%]
+DEATH sh3 liveend=0 estate=8503786 reach=6155326 dyn=178815 flow=0 geom=1466501
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=145250 kill=29490 nodes=3145728
+ADAPT sh3 rp[P=5872 try=38601 kill=6244 16%] pd[P=107 try=840846 kill=178743 21%]
+T3[t=3344s] shard1 r0 #59 cell=(144,238) sc=47493 nodes=1917098 r=0
+T3[t=3362s] shard0 r0 #34 cell=(136,210) sc=47488 nodes=1502797 r=0
+DEATH sh4 liveend=0 estate=10697202 reach=7544675 dyn=275184 flow=0 geom=1699958
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=186551 kill=38967 nodes=3145728
+ADAPT sh4 rp[P=4924 try=20564 kill=2323 11%] pd[P=183 try=1385503 kill=313434 23%]
+DEATH sh2 liveend=0 estate=10772448 reach=7582941 dyn=293170 flow=0 geom=1700553
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=188071 kill=38927 nodes=11534336
+ADAPT sh2 rp[P=8192 try=19818 kill=2206 11%] pd[P=99 try=1384935 kill=314022 23%]
+DEATH sh3 liveend=0 estate=8626399 reach=6248172 dyn=178816 flow=0 geom=1489805
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=147347 kill=29936 nodes=4194304
+ADAPT sh3 rp[P=4361 try=38903 kill=6290 16%] pd[P=200 try=853371 kill=181236 21%]
+DEATH sh1 liveend=0 estate=10552571 reach=7412200 dyn=297876 flow=0 geom=1657773
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=184626 kill=38466 nodes=1048576
+ADAPT sh1 rp[P=7369 try=19354 kill=2126 11%] pd[P=143 try=1383051 kill=317518 23%]
+T3[t=3390s] shard2 r0 #63 cell=(156,240) sc=47495 nodes=11921586 r=0
+DEATH sh4 liveend=0 estate=10818747 reach=7632581 dyn=276357 flow=0 geom=1720627
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=188648 kill=39422 nodes=4194304
+ADAPT sh4 rp[P=8192 try=20750 kill=2338 11%] pd[P=179 try=1401686 kill=316950 23%]
+DEATH sh0 liveend=0 estate=8895309 reach=6464878 dyn=161033 flow=0 geom=1552786
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=151470 kill=30686 nodes=1048576
+ADAPT sh0 rp[P=8192 try=35794 kill=5702 16%] pd[P=179 try=867511 kill=180857 21%]
+DEATH sh1 liveend=0 estate=10671791 reach=7496636 dyn=299898 flow=0 geom=1677204
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=186723 kill=38909 nodes=2097152
+ADAPT sh1 rp[P=8192 try=19518 kill=2136 11%] pd[P=81 try=1401464 kill=321890 23%]
+T3[t=3430s] shard2 r0 #64 cell=(123,241) sc=47490 nodes=970649 r=0
+DEATH sh3 liveend=0 estate=8751275 reach=6339991 dyn=179790 flow=0 geom=1512483
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=149444 kill=30375 nodes=5242880
+ADAPT sh3 rp[P=2648 try=39694 kill=6425 16%] pd[P=417 try=865592 kill=183673 21%]
+DEATH sh4 liveend=0 estate=10938051 reach=7717391 dyn=278008 flow=0 geom=1740200
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=190745 kill=39887 nodes=5242880
+ADAPT sh4 rp[P=8192 try=20951 kill=2359 11%] pd[P=142 try=1421065 kill=321622 23%]
+DEATH sh0 liveend=0 estate=9018135 reach=6557571 dyn=161033 flow=0 geom=1576013
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=153567 kill=31083 nodes=2097152
+ADAPT sh0 rp[P=5527 try=36299 kill=5784 16%] pd[P=179 try=880713 kill=183472 21%]
+DEATH sh1 liveend=0 estate=10793217 reach=7584051 dyn=301054 flow=0 geom=1697608
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=188820 kill=39303 nodes=3145728
+ADAPT sh1 rp[P=8192 try=19787 kill=2175 11%] pd[P=147 try=1418297 kill=325507 23%]
+DEATH sh2 liveend=0 estate=11048095 reach=7778659 dyn=298350 flow=0 geom=1745538
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=192884 kill=39957 nodes=1048576
+ADAPT sh2 rp[P=8192 try=20266 kill=2251 11%] pd[P=619 try=1423780 kill=322982 23%]
+DEATH sh3 liveend=0 estate=8873907 reach=6432839 dyn=179790 flow=0 geom=1535709
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=151541 kill=30794 nodes=6291456
+ADAPT sh3 rp[P=8192 try=40052 kill=6476 16%] pd[P=290 try=878968 kill=186326 21%]
+DEATH sh4 liveend=0 estate=11057464 reach=7802381 dyn=279956 flow=0 geom=1759626
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=192842 kill=40333 nodes=6291456
+ADAPT sh4 rp[P=8192 try=21158 kill=2382 11%] pd[P=190 try=1439150 kill=325889 23%]
+T3[t=3479s] shard2 r0 #65 cell=(155,241) sc=47497 nodes=1333341 r=0
+DEATH sh1 liveend=0 estate=10914431 reach=7671450 dyn=302298 flow=0 geom=1718061
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=190917 kill=39715 nodes=4194304
+ADAPT sh1 rp[P=8192 try=20082 kill=2216 11%] pd[P=180 try=1434803 kill=329102 23%]
+T3[t=3510s] shard2 r0 #66 cell=(140,242) sc=47491 nodes=962807 r=0
+DEATH sh3 liveend=0 estate=8996547 reach=6525400 dyn=179790 flow=0 geom=1558789
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=153639 kill=31230 nodes=7340032
+ADAPT sh3 rp[P=4680 try=40373 kill=6524 16%] pd[P=130 try=892505 kill=189024 21%]
+DEATH sh4 liveend=0 estate=11178922 reach=7889861 dyn=281212 flow=0 geom=1780027
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=194940 kill=40769 nodes=7340032
+ADAPT sh4 rp[P=8192 try=21368 kill=2404 11%] pd[P=129 try=1455957 kill=329467 23%]
+T3[t=3535s] shard2 r0 #67 cell=(156,242) sc=47495 nodes=672079 r=0
+DEATH sh1 liveend=0 estate=11033678 reach=7756020 dyn=304102 flow=0 geom=1737373
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=193014 kill=40148 nodes=5242880
+ADAPT sh1 rp[P=8192 try=20252 kill=2228 11%] pd[P=103 try=1454457 kill=333819 23%]
+DEATH sh3 liveend=0 estate=9119459 reach=6618487 dyn=179791 flow=0 geom=1582061
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=155736 kill=31653 nodes=8388608
+ADAPT sh3 rp[P=4231 try=40928 kill=6619 16%] pd[P=946 try=905320 kill=191578 21%]
+DEATH sh4 liveend=0 estate=11299402 reach=7975621 dyn=283155 flow=0 geom=1799775
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=197037 kill=41215 nodes=8388608
+ADAPT sh4 rp[P=4830 try=21677 kill=2449 11%] pd[P=132 try=1473495 kill=333517 23%]
+T3[t=3560s] shard4 r0 #53 cell=(158,240) sc=47493 nodes=8538750 r=0
+T3[t=3566s] shard1 r0 #60 cell=(156,238) sc=47491 nodes=5944610 r=0
+T3[t=3567s] shard2 r0 #68 cell=(133,243) sc=47488 nodes=960854 r=0
+DEATH sh0 liveend=0 estate=9385748 reach=6828511 dyn=165089 flow=0 geom=1642034
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=159858 kill=32323 nodes=5242880
+ADAPT sh0 rp[P=7047 try=37923 kill=6044 16%] pd[P=2026 try=920949 kill=191962 21%]
+T3[t=3583s] shard0 r0 #35 cell=(137,211) sc=47498 nodes=5249000 r=0
+T3[t=3584s] shard4 r0 #54 cell=(151,241) sc=47497 nodes=668695 r=0
+DEATH sh3 liveend=0 estate=9243275 reach=6711775 dyn=179797 flow=0 geom=1605638
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=157833 kill=32103 nodes=9437184
+ADAPT sh3 rp[P=5873 try=41744 kill=6759 16%] pd[P=147 try=917925 kill=194097 21%]
+T3[t=3590s] shard2 r0 #69 cell=(150,246) sc=47497 nodes=667635 r=0
+DEATH sh1 liveend=0 estate=11232007 reach=7895641 dyn=308890 flow=0 geom=1769110
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=196515 kill=40942 nodes=1048576
+ADAPT sh1 rp[P=8192 try=20562 kill=2257 11%] pd[P=99 try=1484149 kill=340871 23%]
+T3[t=3613s] shard1 r0 #61 cell=(113,239) sc=47495 nodes=1304216 r=0
+DEATH sh4 liveend=0 estate=11511534 reach=8126753 dyn=287397 flow=0 geom=1834260
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=200771 kill=42031 nodes=1048576
+ADAPT sh4 rp[P=8192 try=21965 kill=2463 11%] pd[P=101 try=1504253 kill=340673 23%]
+DEATH sh0 liveend=0 estate=9510676 reach=6920941 dyn=165314 flow=0 geom=1665065
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=161968 kill=32798 nodes=1048576
+ADAPT sh0 rp[P=3745 try=38487 kill=6141 16%] pd[P=213 try=933459 kill=194479 21%]
+DEATH sh2 liveend=0 estate=11573912 reach=8153849 dyn=307738 flow=0 geom=1832104
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=202075 kill=41977 nodes=1048576
+ADAPT sh2 rp[P=6750 try=21187 kill=2351 11%] pd[P=156 try=1498749 kill=340171 23%]
+DEATH sh3 liveend=0 estate=9368755 reach=6802851 dyn=180935 flow=0 geom=1628163
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=159930 kill=32538 nodes=10485760
+ADAPT sh3 rp[P=4731 try=42535 kill=6896 16%] pd[P=269 try=930252 kill=196569 21%]
+DEATH sh1 liveend=0 estate=11379761 reach=8000076 dyn=311768 flow=0 geom=1792949
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=199123 kill=41516 nodes=1048576
+ADAPT sh1 rp[P=7369 try=20854 kill=2293 11%] pd[P=143 try=1506735 kill=346278 23%]
+DEATH sh4 liveend=0 estate=11633254 reach=8214055 dyn=288915 flow=0 geom=1854538
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=202868 kill=42490 nodes=2097152
+ADAPT sh4 rp[P=7369 try=22142 kill=2478 11%] pd[P=885 try=1520674 kill=344270 23%]
+DEATH sh0 liveend=0 estate=9633570 reach=7013601 dyn=165314 flow=0 geom=1688259
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=164065 kill=33212 nodes=2097152
+ADAPT sh0 rp[P=3719 try=39169 kill=6256 16%] pd[P=334 try=946362 kill=197056 21%]
+T3[t=3659s] shard2 r0 #70 cell=(133,247) sc=47487 nodes=1966024 r=0
+T3[t=3665s] shard4 r0 #55 cell=(157,241) sc=47492 nodes=2569865 r=0
+DEATH sh3 liveend=0 estate=9491665 reach=6895709 dyn=180935 flow=0 geom=1651471
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=162027 kill=32964 nodes=11534336
+ADAPT sh3 rp[P=5642 try=43328 kill=7033 16%] pd[P=168 try=942582 kill=199019 21%]
+DEATH sh1 liveend=0 estate=11498981 reach=8084512 dyn=313790 flow=0 geom=1812380
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=201220 kill=41959 nodes=2097152
+ADAPT sh1 rp[P=8192 try=21018 kill=2303 11%] pd[P=81 try=1525148 kill=350650 23%]
+DEATH sh0 liveend=0 estate=9756208 reach=7106381 dyn=165314 flow=0 geom=1711388
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=166162 kill=33653 nodes=3145728
+ADAPT sh0 rp[P=3745 try=40125 kill=6420 16%] pd[P=188 try=959115 kill=199590 21%]
+T3[t=3690s] shard4 r0 #56 cell=(118,242) sc=47496 nodes=656040 r=0
+DEATH sh2 liveend=0 estate=11797238 reach=8311633 dyn=311888 flow=0 geom=1868076
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=206007 kill=42829 nodes=1048576
+ADAPT sh2 rp[P=8192 try=21577 kill=2392 11%] pd[P=264 try=1534039 kill=348626 23%]
+DEATH sh3 liveend=0 estate=9614214 reach=6988989 dyn=180935 flow=0 geom=1674754
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=164124 kill=33342 nodes=12582912
+ADAPT sh3 rp[P=8192 try=43841 kill=7118 16%] pd[P=120 try=955970 kill=201698 21%]
+T3[t=3716s] shard4 r0 #57 cell=(158,242) sc=47493 nodes=668729 r=0
+DEATH sh0 liveend=0 estate=9878293 reach=7198469 dyn=165314 flow=0 geom=1734101
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=168259 kill=34074 nodes=4194304
+ADAPT sh0 rp[P=4546 try=40943 kill=6561 16%] pd[P=583 try=971167 kill=201831 21%]
+DEATH sh1 liveend=0 estate=11620403 reach=8171935 dyn=314942 flow=0 geom=1832787
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=203317 kill=42353 nodes=3145728
+ADAPT sh1 rp[P=8192 try=21287 kill=2342 11%] pd[P=147 try=1541981 kill=354267 23%]
+DEATH sh2 liveend=0 estate=11916151 reach=8395685 dyn=314019 flow=0 geom=1887275
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=208104 kill=43268 nodes=2097152
+ADAPT sh2 rp[P=7369 try=21756 kill=2406 11%] pd[P=24 try=1553030 kill=353175 23%]
+DEATH sh3 liveend=0 estate=9736661 reach=7081273 dyn=180935 flow=0 geom=1697698
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=166221 kill=33752 nodes=13631488
+ADAPT sh3 rp[P=8192 try=44127 kill=7159 16%] pd[P=110 try=968405 kill=204014 21%]
+T3[t=3745s] shard4 r0 #58 cell=(136,244) sc=47492 nodes=974339 r=0
+DEATH sh1 liveend=0 estate=11741820 reach=8259474 dyn=316182 flow=0 geom=1853343
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=205414 kill=42776 nodes=4194304
+ADAPT sh1 rp[P=5706 try=21593 kill=2387 11%] pd[P=351 try=1558219 kill=357788 23%]
+T3[t=3765s] shard4 r0 #59 cell=(151,245) sc=47489 nodes=667639 r=0
+DEATH sh0 liveend=0 estate=10002840 reach=7290883 dyn=166372 flow=0 geom=1756956
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=170356 kill=34484 nodes=5242880
+ADAPT sh0 rp[P=2597 try=41995 kill=6745 16%] pd[P=30 try=983723 kill=204422 21%]
+DEATH sh2 liveend=0 estate=12035297 reach=8480221 dyn=315872 flow=0 geom=1906739
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=210201 kill=43743 nodes=3145728
+ADAPT sh2 rp[P=8192 try=21929 kill=2419 11%] pd[P=267 try=1572024 kill=357705 23%]
+T3[t=3776s] shard2 r0 #71 cell=(120,248) sc=47491 nodes=3254494 r=0
+DEATH sh3 liveend=0 estate=9861504 reach=7173587 dyn=181906 flow=0 geom=1720459
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=168319 kill=34178 nodes=14680064
+ADAPT sh3 rp[P=1787 try=45274 kill=7361 16%] pd[P=90 try=981222 kill=206565 21%]
+DEATH sh1 liveend=0 estate=11860937 reach=8343934 dyn=317988 flow=0 geom=1872591
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=207511 kill=43212 nodes=5242880
+ADAPT sh1 rp[P=8192 try=21788 kill=2405 11%] pd[P=30 try=1577869 kill=362506 23%]
+T3[t=3792s] shard4 r0 #60 cell=(140,246) sc=47499 nodes=971863 r=0
+DEATH sh0 liveend=0 estate=10125905 reach=7383587 dyn=166372 flow=0 geom=1780225
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=172453 kill=34920 nodes=6291456
+ADAPT sh0 rp[P=5633 try=42367 kill=6800 16%] pd[P=972 try=997235 kill=207181 21%]
+DEATH sh2 liveend=0 estate=12166671 reach=8572908 dyn=318626 flow=0 geom=1927755
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=212515 kill=44249 nodes=1048576
+ADAPT sh2 rp[P=8192 try=22185 kill=2448 11%] pd[P=222 try=1592320 kill=362565 23%]
+T3[t=3813s] shard1 r0 #62 cell=(149,239) sc=47491 nodes=5950882 r=0
+T3[t=3820s] shard2 r0 #72 cell=(123,249) sc=47490 nodes=1309547 r=0
+DEATH sh3 liveend=0 estate=9985008 reach=7267306 dyn=181906 flow=0 geom=1744217
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=170416 kill=34608 nodes=15728640
+ADAPT sh3 rp[P=1001 try=45721 kill=7434 16%] pd[P=92 try=995088 kill=209472 21%]
+T3[t=3829s] shard3 r0 #37 cell=(145,223) sc=47485 nodes=16000001 r=-1
+DEATH sh0 liveend=0 estate=10248446 reach=7476460 dyn=166372 flow=0 geom=1803522
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=174551 kill=35341 nodes=7340032
+ADAPT sh0 rp[P=4842 try=43402 kill=6981 16%] pd[P=145 try=1009307 kill=209555 21%]
+DEATH sh1 liveend=0 estate=12060548 reach=8484914 dyn=321856 flow=0 geom=1904788
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=211024 kill=43999 nodes=1048576
+ADAPT sh1 rp[P=7369 try=22168 kill=2449 11%] pd[P=143 try=1608467 kill=369905 23%]
+DEATH sh4 liveend=0 estate=12381630 reach=8749515 dyn=301166 flow=0 geom=1978668
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=215882 kill=45299 nodes=2097152
+ADAPT sh4 rp[P=7830 try=23473 kill=2626 11%] pd[P=320 try=1621334 kill=366721 23%]
+DEATH sh2 liveend=0 estate=12315283 reach=8677918 dyn=321399 flow=0 geom=1951730
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=215134 kill=44823 nodes=1048576
+ADAPT sh2 rp[P=8192 try=22475 kill=2481 11%] pd[P=222 try=1615561 kill=368126 23%]
+DEATH sh0 liveend=0 estate=10370403 reach=7569051 dyn=166372 flow=0 geom=1826511
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=176648 kill=35756 nodes=8388608
+ADAPT sh0 rp[P=7503 try=43773 kill=7040 16%] pd[P=66 try=1022235 kill=211979 21%]
+T3[t=3865s] shard2 r0 #73 cell=(122,250) sc=47499 nodes=1308055 r=0
+DEATH sh3 liveend=0 estate=10140106 reach=7381671 dyn=182721 flow=0 geom=1772509
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=173056 kill=35167 nodes=1048576
+ADAPT sh3 rp[P=7369 try=46243 kill=7514 16%] pd[P=401 try=1009643 kill=212361 21%]
+DEATH sh4 liveend=0 estate=12501776 reach=8835372 dyn=303073 flow=0 geom=1998393
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=217979 kill=45732 nodes=3145728
+ADAPT sh4 rp[P=8192 try=23690 kill=2649 11%] pd[P=58 try=1639019 kill=370767 23%]
+DEATH sh1 liveend=0 estate=12179768 reach=8569350 dyn=323878 flow=0 geom=1924219
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=213121 kill=44442 nodes=2097152
+ADAPT sh1 rp[P=8192 try=22332 kill=2459 11%] pd[P=81 try=1626880 kill=374277 23%]
+DEATH sh3 liveend=0 estate=10262785 reach=7474560 dyn=182721 flow=0 geom=1795769
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=175153 kill=35558 nodes=2097152
+ADAPT sh3 rp[P=5084 try=46697 kill=7592 16%] pd[P=67 try=1023008 kill=215017 21%]
+DEATH sh2 liveend=0 estate=12463814 reach=8783307 dyn=324296 flow=0 geom=1975953
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=217750 kill=45406 nodes=1048576
+ADAPT sh2 rp[P=8192 try=22709 kill=2502 11%] pd[P=191 try=1638282 kill=373531 23%]
+T3[t=3913s] shard2 r0 #74 cell=(122,252) sc=47496 nodes=1318880 r=0
+DEATH sh0 liveend=0 estate=10494863 reach=7660577 dyn=168105 flow=0 geom=1848901
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=178745 kill=36162 nodes=9437184
+ADAPT sh0 rp[P=2664 try=44854 kill=7231 16%] pd[P=178 try=1033510 kill=214219 21%]
+DEATH sh1 liveend=0 estate=12301189 reach=8656769 dyn=325032 flow=0 geom=1944624
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=215218 kill=44836 nodes=3145728
+ADAPT sh1 rp[P=8192 try=22601 kill=2498 11%] pd[P=147 try=1643713 kill=377894 23%]
+DEATH sh4 liveend=0 estate=12622948 reach=8922718 dyn=304327 flow=0 geom=2018805
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=220076 kill=46169 nodes=4194304
+ADAPT sh4 rp[P=8192 try=23876 kill=2666 11%] pd[P=130 try=1655861 kill=374381 23%]
+T3[t=3931s] shard4 r0 #61 cell=(152,246) sc=47493 nodes=4478853 r=0
+DEATH sh3 liveend=0 estate=10385380 reach=7567434 dyn=182721 flow=0 geom=1818947
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=177250 kill=35985 nodes=3145728
+ADAPT sh3 rp[P=2529 try=47231 kill=7683 16%] pd[P=60 try=1036126 kill=217635 21%]
+T3[t=3947s] shard2 r0 #75 cell=(129,253) sc=47494 nodes=965070 r=0
+DEATH sh0 liveend=0 estate=10617914 reach=7753417 dyn=168105 flow=0 geom=1871995
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=180842 kill=36582 nodes=10485760
+ADAPT sh0 rp[P=7730 try=45336 kill=7308 16%] pd[P=469 try=1047028 kill=216907 21%]
+DEATH sh1 liveend=0 estate=12422446 reach=8744146 dyn=326268 flow=0 geom=1965069
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=217315 kill=45243 nodes=4194304
+ADAPT sh1 rp[P=8192 try=22894 kill=2538 11%] pd[P=180 try=1660227 kill=381491 23%]
+DEATH sh4 liveend=0 estate=12777879 reach=9033404 dyn=306841 flow=0 geom=2044533
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=222742 kill=46723 nodes=1048576
+ADAPT sh4 rp[P=8192 try=24178 kill=2703 11%] pd[P=364 try=1675807 kill=378707 23%]
+DEATH sh3 liveend=0 estate=10507891 reach=7659808 dyn=182721 flow=0 geom=1841931
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=179347 kill=36367 nodes=4194304
+ADAPT sh3 rp[P=7830 try=47649 kill=7748 16%] pd[P=273 try=1048471 kill=219917 21%]
+DEATH sh2 liveend=0 estate=12725265 reach=8969487 dyn=328555 flow=0 geom=2018842
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=222317 kill=46372 nodes=1048576
+ADAPT sh2 rp[P=7369 try=23188 kill=2557 11%] pd[P=143 try=1676145 kill=382294 23%]
+DEATH sh0 liveend=0 estate=10740655 reach=7846553 dyn=168105 flow=0 geom=1895426
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=182939 kill=36992 nodes=11534336
+ADAPT sh0 rp[P=8192 try=45764 kill=7378 16%] pd[P=244 try=1060892 kill=219804 21%]
+DEATH sh1 liveend=0 estate=12541693 reach=8828716 dyn=328072 flow=0 geom=1984381
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=219412 kill=45676 nodes=5242880
+ADAPT sh1 rp[P=8192 try=23064 kill=2550 11%] pd[P=103 try=1679881 kill=386208 23%]
+T3[t=4004s] shard3 r0 #38 cell=(153,223) sc=47490 nodes=4523102 r=0
+DEATH sh4 liveend=0 estate=12896651 reach=9117569 dyn=308650 flow=0 geom=2063755
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=224839 kill=47158 nodes=2097152
+ADAPT sh4 rp[P=7830 try=24389 kill=2726 11%] pd[P=242 try=1695493 kill=383462 23%]
+DEATH sh0 liveend=0 estate=10862832 reach=7939072 dyn=168105 flow=0 geom=1918620
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=185036 kill=37452 nodes=12582912
+ADAPT sh0 rp[P=6701 try=46073 kill=7425 16%] pd[P=132 try=1072539 kill=221980 21%]
+T3[t=4021s] shard1 r0 #63 cell=(155,239) sc=47488 nodes=5944612 r=0
+DEATH sh2 liveend=0 estate=12844485 reach=9053923 dyn=330577 flow=0 geom=2038273
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=224414 kill=46815 nodes=2097152
+ADAPT sh2 rp[P=8192 try=23352 kill=2567 11%] pd[P=81 try=1694558 kill=386666 23%]
+DEATH sh4 liveend=0 estate=13016034 reach=9202377 dyn=310687 flow=0 geom=2083064
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=226936 kill=47552 nodes=3145728
+ADAPT sh4 rp[P=4288 try=24571 kill=2742 11%] pd[P=88 try=1714071 kill=387825 23%]
+DEATH sh3 liveend=0 estate=10668940 reach=7775267 dyn=185969 flow=0 geom=1869326
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=182102 kill=36928 nodes=1048576
+ADAPT sh3 rp[P=5296 try=48318 kill=7855 16%] pd[P=100 try=1067901 kill=224423 21%]
+DEATH sh2 liveend=0 estate=12965906 reach=9141343 dyn=331731 flow=0 geom=2058678
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=226511 kill=47209 nodes=3145728
+ADAPT sh2 rp[P=8192 try=23621 kill=2606 11%] pd[P=147 try=1711391 kill=390283 23%]
+DEATH sh1 liveend=0 estate=12740718 reach=8969499 dyn=331994 flow=0 geom=2016555
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=222913 kill=46430 nodes=1048576
+ADAPT sh1 rp[P=8192 try=23416 kill=2589 11%] pd[P=142 try=1709396 kill=393078 23%]
+T3[t=4064s] shard0 r0 #36 cell=(140,216) sc=47488 nodes=13314315 r=0
+T3[t=4068s] shard4 r0 #62 cell=(141,247) sc=47495 nodes=3850658 r=0
+DEATH sh3 liveend=0 estate=10791692 reach=7868328 dyn=185969 flow=0 geom=1892574
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=184199 kill=37338 nodes=2097152
+ADAPT sh3 rp[P=8192 try=48875 kill=7947 16%] pd[P=752 try=1081417 kill=227098 21%]
+T3[t=4084s] shard1 r0 #64 cell=(121,241) sc=47490 nodes=1602145 r=0
+DEATH sh2 liveend=0 estate=13087161 reach=9228722 dyn=332967 flow=0 geom=2079123
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=228608 kill=47616 nodes=4194304
+ADAPT sh2 rp[P=8192 try=23914 kill=2646 11%] pd[P=180 try=1727905 kill=393880 23%]
+T3[t=4095s] shard0 r0 #37 cell=(137,219) sc=47500 nodes=671225 r=0
+T3[t=4102s] shard4 r0 #63 cell=(124,248) sc=47490 nodes=967677 r=0
+DEATH sh3 liveend=0 estate=10914614 reach=7961234 dyn=185969 flow=0 geom=1915993
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=186296 kill=37748 nodes=3145728
+ADAPT sh3 rp[P=8192 try=49286 kill=8014 16%] pd[P=81 try=1094170 kill=229651 21%]
+DEATH sh2 liveend=0 estate=13206408 reach=9313292 dyn=334771 flow=0 geom=2098435
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=230705 kill=48049 nodes=5242880
+ADAPT sh2 rp[P=8192 try=24084 kill=2658 11%] pd[P=103 try=1747559 kill=398597 23%]
+T3[t=4127s] shard4 r0 #64 cell=(154,248) sc=47495 nodes=668695 r=0
+DEATH sh0 liveend=0 estate=11150679 reach=8148177 dyn=171933 flow=0 geom=1969130
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=189938 kill=38456 nodes=1048576
+ADAPT sh0 rp[P=3258 try=47357 kill=7639 16%] pd[P=2223 try=1104448 kill=228959 21%]
+T3[t=4148s] shard1 r0 #65 cell=(159,241) sc=47495 nodes=1920164 r=0
+T3[t=4153s] shard4 r0 #65 cell=(147,249) sc=47495 nodes=667644 r=0
+T3[t=4153s] shard2 r0 #76 cell=(159,253) sc=47498 nodes=5944616 r=0
+DEATH sh3 liveend=0 estate=11037220 reach=8054277 dyn=185971 flow=0 geom=1939504
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=188393 kill=38202 nodes=4194304
+ADAPT sh3 rp[P=4289 try=49679 kill=8077 16%] pd[P=339 try=1106099 kill=232002 21%]
+DEATH sh0 liveend=0 estate=11273506 reach=8241026 dyn=171934 flow=0 geom=1992374
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=192035 kill=38905 nodes=2097152
+ADAPT sh0 rp[P=2344 try=48232 kill=7790 16%] pd[P=137 try=1116917 kill=231469 21%]
+T3[t=4181s] shard1 r0 #66 cell=(132,242) sc=47498 nodes=960299 r=0
+DEATH sh2 liveend=0 estate=13405254 reach=9453920 dyn=338757 flow=0 geom=2130524
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=234206 kill=48836 nodes=1048576
+ADAPT sh2 rp[P=8192 try=24396 kill=2685 11%] pd[P=222 try=1778231 kill=405969 23%]
+DEATH sh4 liveend=0 estate=13480591 reach=9533286 dyn=318795 flow=0 geom=2159119
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=235050 kill=49331 nodes=1048576
+ADAPT sh4 rp[P=8192 try=25330 kill=2811 11%] pd[P=66 try=1780394 kill=403036 23%]
+T3[t=4207s] shard1 r0 #67 cell=(160,242) sc=47493 nodes=668695 r=0
+DEATH sh3 liveend=0 estate=11162226 reach=8146005 dyn=186987 flow=0 geom=1962214
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=190490 kill=38611 nodes=5242880
+ADAPT sh3 rp[P=2725 try=50549 kill=8224 16%] pd[P=325 try=1118587 kill=234464 21%]
+DEATH sh0 liveend=0 estate=11396050 reach=8334167 dyn=171938 flow=0 geom=2015691
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=194132 kill=39350 nodes=3145728
+ADAPT sh0 rp[P=5350 try=48695 kill=7862 16%] pd[P=668 try=1129685 kill=233998 21%]
+T3[t=4229s] shard4 r0 #66 cell=(142,252) sc=47491 nodes=1973355 r=0
+DEATH sh2 liveend=0 estate=13524283 reach=9537842 dyn=340893 flow=0 geom=2149733
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=236303 kill=49265 nodes=2097152
+ADAPT sh2 rp[P=8192 try=24653 kill=2715 11%] pd[P=24 try=1797069 kill=410491 23%]
+DEATH sh0 liveend=0 estate=11518365 reach=8426294 dyn=171938 flow=0 geom=2038628
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=196229 kill=39764 nodes=4194304
+ADAPT sh0 rp[P=8192 try=49432 kill=7989 16%] pd[P=54 try=1141198 kill=236134 21%]
+T3[t=4243s] shard1 r0 #68 cell=(123,243) sc=47487 nodes=966547 r=0
+DEATH sh3 liveend=0 estate=11284649 reach=8239191 dyn=186987 flow=0 geom=1985485
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=192587 kill=39048 nodes=6291456
+ADAPT sh3 rp[P=5196 try=51430 kill=8375 16%] pd[P=329 try=1131440 kill=236987 21%]
+T3[t=4261s] shard4 r0 #67 cell=(143,253) sc=47488 nodes=960632 r=0
+DEATH sh2 liveend=0 estate=13643448 reach=9622193 dyn=342805 flow=0 geom=2169085
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=238400 kill=49710 nodes=3145728
+ADAPT sh2 rp[P=7369 try=24873 kill=2742 11%] pd[P=130 try=1816436 kill=415119 23%]
+T3[t=4276s] shard0 r0 #38 cell=(137,225) sc=47495 nodes=4507971 r=0
+DEATH sh1 liveend=0 estate=13447994 reach=9476507 dyn=342358 flow=0 geom=2134452
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=235147 kill=49007 nodes=1048576
+ADAPT sh1 rp[P=7955 try=24727 kill=2740 11%] pd[P=251 try=1803119 kill=413659 23%]
+DEATH sh3 liveend=0 estate=11407270 reach=8332143 dyn=186987 flow=0 geom=2008700
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=194685 kill=39458 nodes=7340032
+ADAPT sh3 rp[P=1525 try=52114 kill=8494 16%] pd[P=567 try=1144843 kill=239643 21%]
+DEATH sh4 liveend=0 estate=13815812 reach=9772087 dyn=324433 flow=0 geom=2214115
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=240917 kill=50569 nodes=1048576
+ADAPT sh4 rp[P=8192 try=25835 kill=2855 11%] pd[P=222 try=1830149 kill=414577 23%]
+T3[t=4308s] shard1 r0 #69 cell=(147,245) sc=47497 nodes=1920107 r=0
+T3[t=4309s] shard0 r0 #39 cell=(138,226) sc=47488 nodes=696884 r=0
+DEATH sh2 liveend=0 estate=13762938 reach=9707226 dyn=344901 flow=0 geom=2188616
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=240497 kill=50148 nodes=4194304
+ADAPT sh2 rp[P=8192 try=25071 kill=2760 11%] pd[P=66 try=1834337 kill=419295 23%]
+DEATH sh3 liveend=0 estate=11529959 reach=8424688 dyn=186989 flow=0 geom=2031842
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=196782 kill=39838 nodes=8388608
+ADAPT sh3 rp[P=6935 try=52564 kill=8563 16%] pd[P=198 try=1158374 kill=242343 21%]
+T3[t=4334s] shard1 r0 #70 cell=(153,245) sc=47489 nodes=668698 r=0
+T3[t=4335s] shard2 r0 #77 cell=(142,254) sc=47490 nodes=4852170 r=0
+T3[t=4341s] shard4 r0 #68 cell=(123,255) sc=47491 nodes=1958532 r=0
+DEATH sh0 liveend=0 estate=11760227 reach=8601131 dyn=175952 flow=0 geom=2080769
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=200346 kill=40608 nodes=1048576
+ADAPT sh0 rp[P=3258 try=50829 kill=8225 16%] pd[P=2223 try=1167714 kill=242088 21%]
+DEATH sh1 liveend=0 estate=13746228 reach=9690862 dyn=346724 flow=0 geom=2184332
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=240324 kill=50091 nodes=1048576
+ADAPT sh1 rp[P=4754 try=25229 kill=2792 11%] pd[P=110 try=1843840 kill=422679 23%]
+DEATH sh2 liveend=0 estate=13960953 reach=9849456 dyn=347551 flow=0 geom=2221658
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=243910 kill=50860 nodes=1048576
+ADAPT sh2 rp[P=8192 try=25478 kill=2813 11%] pd[P=162 try=1861037 kill=425122 23%]
+DEATH sh3 liveend=0 estate=11654476 reach=8517196 dyn=187917 flow=0 geom=2054901
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=198879 kill=40216 nodes=9437184
+ADAPT sh3 rp[P=1239 try=53070 kill=8650 16%] pd[P=7161 try=1171312 kill=244895 21%]
+DEATH sh4 liveend=0 estate=14038256 reach=9929661 dyn=328537 flow=0 geom=2250255
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=244834 kill=51439 nodes=1048576
+ADAPT sh4 rp[P=8192 try=26174 kill=2885 11%] pd[P=222 try=1864989 kill=422905 23%]
+DEATH sh0 liveend=0 estate=11883054 reach=8693980 dyn=175952 flow=0 geom=2104013
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=202443 kill=41057 nodes=2097152
+ADAPT sh0 rp[P=2344 try=51704 kill=8376 16%] pd[P=137 try=1180183 kill=244598 21%]
+T3[t=4399s] shard1 r0 #71 cell=(148,246) sc=47492 nodes=1923356 r=0
+DEATH sh2 liveend=0 estate=14079815 reach=9933734 dyn=349468 flow=0 geom=2240963
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=246007 kill=51289 nodes=2097152
+ADAPT sh2 rp[P=6631 try=25650 kill=2828 11%] pd[P=69 try=1880367 kill=429763 23%]
+DEATH sh3 liveend=0 estate=11778171 reach=8609057 dyn=188002 flow=0 geom=2077660
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=200976 kill=40664 nodes=10485760
+ADAPT sh3 rp[P=2517 try=53918 kill=8792 16%] pd[P=167 try=1184269 kill=247504 21%]
+DEATH sh0 liveend=0 estate=12005647 reach=8787179 dyn=175954 flow=0 geom=2127409
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=204540 kill=41488 nodes=3145728
+ADAPT sh0 rp[P=8108 try=52138 kill=8441 16%] pd[P=161 try=1192966 kill=247139 21%]
+T3[t=4444s] shard2 r0 #78 cell=(137,259) sc=47492 nodes=2903655 r=0
+T3[t=4463s] shard1 r0 #72 cell=(154,246) sc=47491 nodes=1920117 r=0
+DEATH sh0 liveend=0 estate=12128039 reach=8879494 dyn=175954 flow=0 geom=2150368
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=206637 kill=41905 nodes=4194304
+ADAPT sh0 rp[P=6435 try=52634 kill=8526 16%] pd[P=83 try=1204995 kill=249373 21%]
+DEATH sh4 liveend=0 estate=14276570 reach=10098043 dyn=332586 flow=0 geom=2288890
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=249028 kill=52312 nodes=3145728
+ADAPT sh4 rp[P=7369 try=26656 kill=2944 11%] pd[P=130 try=1903191 kill=432051 23%]
+DEATH sh2 liveend=0 estate=14290657 reach=10082794 dyn=353573 flow=0 geom=2274891
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=249717 kill=52111 nodes=1048576
+ADAPT sh2 rp[P=8192 try=25972 kill=2857 11%] pd[P=222 try=1913197 kill=437631 23%]
+T3[t=4497s] shard4 r0 #69 cell=(142,256) sc=47498 nodes=3912762 r=0
+DEATH sh3 liveend=0 estate=12023209 reach=8794452 dyn=188003 flow=0 geom=2124097
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=205170 kill=41503 nodes=12582912
+ADAPT sh3 rp[P=7158 try=54975 kill=8963 16%] pd[P=379 try=1209656 kill=252561 21%]
+DEATH sh1 liveend=0 estate=14189609 reach=10008285 dyn=352589 flow=0 geom=2258207
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=248010 kill=51732 nodes=1048576
+ADAPT sh1 rp[P=8192 try=26014 kill=2880 11%] pd[P=218 try=1905598 kill=436485 23%]
+T3[t=4517s] shard1 r0 #73 cell=(118,248) sc=47494 nodes=1319167 r=0
+T3[t=4521s] shard2 r0 #79 cell=(126,260) sc=47489 nodes=1958517 r=0
+DEATH sh3 liveend=0 estate=12145613 reach=8886357 dyn=188003 flow=0 geom=2146822
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=207267 kill=41925 nodes=13631488
+ADAPT sh3 rp[P=4279 try=55225 kill=8997 16%] pd[P=125 try=1222347 kill=254930 21%]
+DEATH sh4 liveend=0 estate=14482985 reach=10243990 dyn=336681 flow=0 geom=2322220
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=252659 kill=53106 nodes=1048576
+ADAPT sh4 rp[P=8192 try=26988 kill=2975 11%] pd[P=222 try=1935124 kill=439681 23%]
+DEATH sh0 liveend=0 estate=12251280 reach=8964757 dyn=180418 flow=0 geom=2170157
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=208734 kill=42258 nodes=5242880
+ADAPT sh0 rp[P=8192 try=53344 kill=8640 16%] pd[P=103 try=1219505 kill=252841 21%]
+DEATH sh1 liveend=0 estate=14339580 reach=10114266 dyn=355323 flow=0 geom=2282489
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=250648 kill=52328 nodes=1048576
+ADAPT sh1 rp[P=8192 try=26229 kill=2896 11%] pd[P=264 try=1929166 kill=442141 23%]
+DEATH sh2 liveend=0 estate=14513050 reach=10240303 dyn=357777 flow=0 geom=2310974
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=253634 kill=52975 nodes=1048576
+ADAPT sh2 rp[P=8192 try=26318 kill=2886 11%] pd[P=110 try=1947673 kill=445907 23%]
+DEATH sh4 liveend=0 estate=14601921 reach=10328015 dyn=338862 flow=0 geom=2341413
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=254756 kill=53547 nodes=2097152
+ADAPT sh4 rp[P=6935 try=27173 kill=2992 11%] pd[P=172 try=1954009 kill=444183 23%]
+T3[t=4576s] shard0 r0 #40 cell=(144,226) sc=47494 nodes=5423952 r=0
+DEATH sh3 liveend=0 estate=12270777 reach=8979022 dyn=189016 flow=0 geom=2169957
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=209365 kill=42367 nodes=14680064
+ADAPT sh3 rp[P=3158 try=55985 kill=9128 16%] pd[P=24 try=1234585 kill=257394 21%]
+T3[t=4590s] shard1 r0 #74 cell=(132,248) sc=47486 nodes=1962721 r=0
+T3[t=4593s] shard2 r0 #80 cell=(136,262) sc=47488 nodes=1975876 r=0
+T3[t=4605s] shard0 r0 #41 cell=(138,228) sc=47486 nodes=687718 r=0
+DEATH sh4 liveend=0 estate=14721041 reach=10412115 dyn=340618 flow=0 geom=2360442
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=256853 kill=53972 nodes=3145728
+ADAPT sh4 rp[P=8192 try=27355 kill=3007 11%] pd[P=137 try=1974052 kill=449009 23%]
+T3[t=4612s] shard1 r0 #75 cell=(150,248) sc=47491 nodes=668695 r=0
+DEATH sh3 liveend=0 estate=12393954 reach=9071706 dyn=189016 flow=0 geom=2193212
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=211462 kill=42772 nodes=15728640
+ADAPT sh3 rp[P=7199 try=56743 kill=9257 16%] pd[P=281 try=1248232 kill=260227 21%]
+DEATH sh2 liveend=0 estate=14737348 reach=10399267 dyn=361941 flow=0 geom=2347308
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=257585 kill=53846 nodes=1048576
+ADAPT sh2 rp[P=8192 try=26683 kill=2921 11%] pd[P=222 try=1982838 kill=454266 23%]
+T3[t=4629s] shard3 r0 #39 cell=(146,224) sc=47493 nodes=16000001 r=-1
+T3[t=4633s] shard1 r0 #76 cell=(164,248) sc=47489 nodes=668724 r=0
+T3[t=4637s] shard4 r0 #70 cell=(141,257) sc=47488 nodes=3897195 r=0
+DEATH sh0 liveend=0 estate=12474340 reach=9125396 dyn=184278 flow=0 geom=2208146
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=212568 kill=43017 nodes=1048576
+ADAPT sh0 rp[P=8192 try=54040 kill=8746 16%] pd[P=156 try=1245369 kill=258664 21%]
+T3[t=4661s] shard2 r0 #81 cell=(137,263) sc=47493 nodes=1956198 r=0
+DEATH sh3 liveend=0 estate=12549269 reach=9187206 dyn=189645 flow=0 geom=2221983
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=214102 kill=43316 nodes=1048576
+ADAPT sh3 rp[P=3258 try=57464 kill=9381 16%] pd[P=2223 try=1262898 kill=263121 21%]
+DEATH sh1 liveend=0 estate=14713764 reach=10379609 dyn=362790 flow=0 geom=2343185
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=257247 kill=53810 nodes=1048576
+ADAPT sh1 rp[P=8192 try=26770 kill=2933 11%] pd[P=110 try=1985894 kill=455664 23%]
+DEATH sh4 liveend=0 estate=14925714 reach=10556841 dyn=344646 flow=0 geom=2393484
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=260453 kill=54765 nodes=1048576
+ADAPT sh4 rp[P=8192 try=27647 kill=3029 11%] pd[P=222 try=2005670 kill=456622 23%]
+DEATH sh0 liveend=0 estate=12596697 reach=9217869 dyn=184279 flow=0 geom=2231274
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=214665 kill=43450 nodes=2097152
+ADAPT sh0 rp[P=6950 try=54411 kill=8807 16%] pd[P=516 try=1258260 kill=261242 21%]
+T3[t=4680s] shard1 r0 #77 cell=(120,250) sc=47497 nodes=1321573 r=0
+T3[t=4682s] shard2 r0 #82 cell=(137,199) sc=47495 nodes=677433 r=0
+DEATH sh3 liveend=0 estate=12672096 reach=9280055 dyn=189645 flow=0 geom=2245227
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=216199 kill=43765 nodes=2097152
+ADAPT sh3 rp[P=2344 try=58339 kill=9532 16%] pd[P=137 try=1275367 kill=265631 21%]
+T3[t=4705s] shard1 r0 #78 cell=(155,251) sc=47488 nodes=668695 r=0
+T3[t=4706s] shard2 r0 #83 cell=(143,205) sc=47490 nodes=660877 r=0
+T3[t=4709s] shard4 r0 #71 cell=(123,259) sc=47484 nodes=1956051 r=0
+DEATH sh0 liveend=0 estate=12719414 reach=9311217 dyn=184283 flow=0 geom=2254705
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=216762 kill=43869 nodes=3145728
+ADAPT sh0 rp[P=2868 try=54867 kill=8881 16%] pd[P=245 try=1271046 kill=263783 21%]
+DEATH sh3 liveend=0 estate=12794689 reach=9373254 dyn=189647 flow=0 geom=2268623
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=218296 kill=44196 nodes=3145728
+ADAPT sh3 rp[P=8108 try=58773 kill=9597 16%] pd[P=161 try=1288150 kill=268172 21%]
+T3[t=4742s] shard2 r0 #84 cell=(134,212) sc=47488 nodes=998784 r=0
+DEATH sh1 liveend=0 estate=14939439 reach=10539516 dyn=367138 flow=0 geom=2379697
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=261227 kill=54702 nodes=1048576
+ADAPT sh1 rp[P=7369 try=27145 kill=2969 11%] pd[P=143 try=2020217 kill=463858 23%]
+DEATH sh4 liveend=0 estate=15147936 reach=10714184 dyn=348698 flow=0 geom=2429592
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=264365 kill=55633 nodes=1048576
+ADAPT sh4 rp[P=8192 try=27982 kill=3058 11%] pd[P=222 try=2040510 kill=464950 23%]
+T3[t=4765s] shard2 r0 #85 cell=(147,213) sc=47497 nodes=658184 r=0
+DEATH sh3 liveend=0 estate=12917081 reach=9465569 dyn=189647 flow=0 geom=2291582
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=220393 kill=44613 nodes=4194304
+ADAPT sh3 rp[P=6435 try=59269 kill=9682 16%] pd[P=83 try=1300179 kill=270406 21%]
+DEATH sh1 liveend=0 estate=15058659 reach=10623952 dyn=369160 flow=0 geom=2399128
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=263324 kill=55145 nodes=2097152
+ADAPT sh1 rp[P=8192 try=27309 kill=2979 11%] pd[P=81 try=2038630 kill=468230 23%]
+DEATH sh4 liveend=0 estate=15266845 reach=10798289 dyn=350881 flow=0 geom=2448879
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=266462 kill=56099 nodes=2097152
+ADAPT sh4 rp[P=8192 try=28180 kill=3077 11%] pd[P=142 try=2059051 kill=469379 23%]
+T3[t=4784s] shard2 r0 #86 cell=(148,214) sc=47498 nodes=658184 r=0
+DEATH sh1 liveend=0 estate=15180080 reach=10711372 dyn=370314 flow=0 geom=2419533
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=265421 kill=55539 nodes=3145728
+ADAPT sh1 rp[P=8192 try=27578 kill=3018 11%] pd[P=147 try=2055463 kill=471847 23%]
+DEATH sh2 liveend=0 estate=15376667 reach=10852821 dyn=374031 flow=0 geom=2451086
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=268801 kill=56329 nodes=1048576
+ADAPT sh2 rp[P=8192 try=27732 kill=3023 11%] pd[P=81 try=2077242 kill=476307 23%]
+DEATH sh4 liveend=0 estate=15385910 reach=10882954 dyn=352794 flow=0 geom=2468391
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=268559 kill=56563 nodes=3145728
+ADAPT sh4 rp[P=8192 try=28350 kill=3089 11%] pd[P=103 try=2078098 kill=473910 23%]
+T3[t=4830s] shard3 r0 #40 cell=(136,226) sc=47495 nodes=5215500 r=0
+T3[t=4837s] shard2 r0 #87 cell=(138,224) sc=47490 nodes=1631659 r=0
+DEATH sh0 liveend=0 estate=13090329 reach=9589147 dyn=185289 flow=0 geom=2324054
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=223053 kill=45094 nodes=6291456
+ADAPT sh0 rp[P=1358 try=56222 kill=9101 16%] pd[P=400 try=1310531 kill=271660 21%]
+DEATH sh1 liveend=0 estate=15301335 reach=10798751 dyn=371550 flow=0 geom=2439978
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=267518 kill=55946 nodes=4194304
+ADAPT sh1 rp[P=8192 try=27871 kill=3058 11%] pd[P=180 try=2071977 kill=475444 23%]
+T3[t=4851s] shard4 r0 #72 cell=(138,260) sc=47498 nodes=3905915 r=0
+T3[t=4861s] shard4 r0 #73 cell=(14,52) sc=47484 nodes=174638 r=0
+T3[t=4862s] shard2 r0 #88 cell=(133,225) sc=47498 nodes=675334 r=0
+T3[t=4864s] shard4 r0 #74 cell=(207,87) sc=47487 nodes=35320 r=0
+DEATH sh3 liveend=0 estate=13160657 reach=9641289 dyn=193833 flow=0 geom=2334062
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=224533 kill=45488 nodes=1048576
+ADAPT sh3 rp[P=3258 try=60347 kill=9858 16%] pd[P=2223 try=1326700 kill=276361 21%]
+DEATH sh0 liveend=0 estate=13212955 reach=9682014 dyn=185293 flow=0 geom=2347405
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=225151 kill=45517 nodes=7340032
+ADAPT sh0 rp[P=8192 try=56857 kill=9201 16%] pd[P=304 try=1322828 kill=274104 21%]
+DEATH sh1 liveend=0 estate=15420582 reach=10883321 dyn=373354 flow=0 geom=2459290
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=269615 kill=56379 nodes=5242880
+ADAPT sh1 rp[P=8192 try=28041 kill=3070 11%] pd[P=103 try=2091631 kill=480161 23%]
+T3[t=4888s] shard2 r0 #89 cell=(134,226) sc=47500 nodes=675334 r=0
+T3[t=4888s] shard4 r0 #75 cell=(130,196) sc=47487 nodes=677432 r=0
+DEATH sh3 liveend=0 estate=13283484 reach=9734138 dyn=193834 flow=0 geom=2357306
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=226630 kill=45937 nodes=2097152
+ADAPT sh3 rp[P=2344 try=61222 kill=10009 16%] pd[P=137 try=1339169 kill=278871 21%]
+T3[t=4910s] shard4 r0 #76 cell=(140,202) sc=47491 nodes=679204 r=0
+T3[t=4910s] shard2 r0 #90 cell=(140,226) sc=47488 nodes=683036 r=0
+DEATH sh0 liveend=0 estate=13334930 reach=9774914 dyn=185293 flow=0 geom=2370537
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=227248 kill=45927 nodes=8388608
+ADAPT sh0 rp[P=1945 try=57396 kill=9297 16%] pd[P=83 try=1335327 kill=276441 21%]
+T3[t=4914s] shard1 r0 #79 cell=(154,252) sc=47488 nodes=5944617 r=0
+T3[t=4934s] shard4 r0 #77 cell=(134,208) sc=47492 nodes=660877 r=0
+T3[t=4935s] shard2 r0 #91 cell=(119,231) sc=47495 nodes=659113 r=0
+T3[t=4939s] shard1 r0 #80 cell=(160,252) sc=47488 nodes=668695 r=0
+DEATH sh3 liveend=0 estate=13406028 reach=9827279 dyn=193838 flow=0 geom=2380623
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=228727 kill=46382 nodes=3145728
+ADAPT sh3 rp[P=5350 try=61685 kill=10081 16%] pd[P=668 try=1351937 kill=281400 21%]
+T3[t=4958s] shard4 r0 #78 cell=(152,216) sc=47497 nodes=675362 r=0
+T3[t=4960s] shard2 r0 #92 cell=(144,232) sc=47494 nodes=675334 r=0
+DEATH sh0 liveend=0 estate=13459799 reach=9867083 dyn=186275 flow=0 geom=2393380
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=229345 kill=46354 nodes=9437184
+ADAPT sh0 rp[P=8192 try=58921 kill=9560 16%] pd[P=400 try=1347635 kill=278886 21%]
+DEATH sh3 liveend=0 estate=13528343 reach=9919406 dyn=193838 flow=0 geom=2403560
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=230824 kill=46796 nodes=4194304
+ADAPT sh3 rp[P=8192 try=62422 kill=10208 16%] pd[P=54 try=1363450 kill=283536 21%]
+DEATH sh1 liveend=0 estate=15695022 reach=11077091 dyn=378959 flow=0 geom=2503444
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=274453 kill=57503 nodes=1048576
+ADAPT sh1 rp[P=8192 try=28490 kill=3111 11%] pd[P=66 try=2132913 kill=490067 23%]
+T3[t=4985s] shard2 r0 #93 cell=(152,236) sc=47487 nodes=675340 r=0
+DEATH sh4 liveend=0 estate=15921747 reach=11260837 dyn=366382 flow=0 geom=2553202
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=277978 kill=58598 nodes=1048576
+ADAPT sh4 rp[P=8192 try=29331 kill=3198 11%] pd[P=273 try=2153331 kill=491397 23%]
+T3[t=5010s] shard2 r0 #94 cell=(155,243) sc=47489 nodes=676173 r=0
+T3[t=5019s] shard1 r0 #81 cell=(140,254) sc=47494 nodes=1975823 r=0
+T3[t=5020s] shard4 r0 #79 cell=(146,218) sc=47491 nodes=1800570 r=0
+T3[t=5035s] shard2 r0 #95 cell=(159,251) sc=47488 nodes=667641 r=0
+DEATH sh3 liveend=0 estate=13653416 reach=10010225 dyn=196211 flow=0 geom=2425849
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=232921 kill=47218 nodes=5242880
+ADAPT sh3 rp[P=6237 try=63246 kill=10350 16%] pd[P=423 try=1374099 kill=285697 21%]
+T3[t=5051s] shard4 r0 #80 cell=(151,219) sc=47490 nodes=961902 r=0
+DEATH sh0 liveend=0 estate=13705578 reach=10052843 dyn=186277 flow=0 geom=2439952
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=233539 kill=47242 nodes=11534336
+ADAPT sh0 rp[P=2435 try=59716 kill=9691 16%] pd[P=305 try=1374383 kill=284355 21%]
+DEATH sh1 liveend=0 estate=15919328 reach=11235685 dyn=383047 flow=0 geom=2539653
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=278404 kill=58406 nodes=1048576
+ADAPT sh1 rp[P=8192 try=28861 kill=3146 11%] pd[P=66 try=2167331 kill=498305 23%]
+DEATH sh2 liveend=0 estate=16176368 reach=11420474 dyn=391042 flow=0 geom=2581302
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=282835 kill=59493 nodes=1048576
+ADAPT sh2 rp[P=8192 try=29021 kill=3152 11%] pd[P=49 try=2190247 kill=502467 23%]
+T3[t=5076s] shard4 r0 #81 cell=(132,224) sc=47501 nodes=675334 r=0
+DEATH sh3 liveend=0 estate=13775871 reach=10103050 dyn=196211 flow=0 geom=2449015
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=235018 kill=47613 nodes=6291456
+ADAPT sh3 rp[P=8192 try=63696 kill=10417 16%] pd[P=41 try=1387771 kill=288470 21%]
+DEATH sh0 liveend=0 estate=13827510 reach=10145540 dyn=186277 flow=0 geom=2463131
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=235636 kill=47645 nodes=12582912
+ADAPT sh0 rp[P=5872 try=60144 kill=9758 16%] pd[P=285 try=1386145 kill=286548 21%]
+T3[t=5098s] shard1 r0 #82 cell=(141,255) sc=47487 nodes=1970659 r=0
+DEATH sh2 liveend=0 estate=16295190 reach=11504789 dyn=393113 flow=0 geom=2600633
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=284932 kill=59931 nodes=2097152
+ADAPT sh2 rp[P=8192 try=29219 kill=3171 11%] pd[P=24 try=2209365 kill=507016 23%]
+DEATH sh4 liveend=0 estate=16314961 reach=11539475 dyn=374705 flow=0 geom=2616929
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=284852 kill=60101 nodes=1048576
+ADAPT sh4 rp[P=7369 try=30027 kill=3276 11%] pd[P=66 try=2209699 kill=504513 23%]
+DEATH sh3 liveend=0 estate=13898666 reach=10195393 dyn=196212 flow=0 geom=2472178
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=237116 kill=48047 nodes=7340032
+ADAPT sh3 rp[P=8192 try=63930 kill=10445 16%] pd[P=300 try=1401022 kill=291150 21%]
+T3[t=5125s] shard4 r0 #82 cell=(148,224) sc=47491 nodes=1329841 r=0
+DEATH sh1 liveend=0 estate=16143067 reach=11393820 dyn=387212 flow=0 geom=2575791
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=282345 kill=59267 nodes=1048576
+ADAPT sh1 rp[P=5201 try=29189 kill=3174 11%] pd[P=168 try=2201965 kill=506595 23%]
+DEATH sh0 liveend=0 estate=13952531 reach=10237653 dyn=187295 flow=0 geom=2485890
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=237733 kill=48044 nodes=13631488
+ADAPT sh0 rp[P=1913 try=60886 kill=9885 16%] pd[P=125 try=1398905 kill=289110 21%]
+T3[t=5141s] shard2 r0 #96 cell=(136,258) sc=47491 nodes=2905256 r=0
+DEATH sh3 liveend=0 estate=14020692 reach=10288564 dyn=196212 flow=0 geom=2495460
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=239213 kill=48449 nodes=8388608
+ADAPT sh3 rp[P=3317 try=64326 kill=10511 16%] pd[P=141 try=1413750 kill=293542 21%]
+T3[t=5150s] shard4 r0 #83 cell=(149,227) sc=47491 nodes=676457 r=0
+T3[t=5177s] shard1 r0 #83 cell=(123,257) sc=47492 nodes=1958332 r=0
+DEATH sh0 liveend=0 estate=14074994 reach=10330797 dyn=187295 flow=0 geom=2509085
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=239831 kill=48457 nodes=14680064
+ADAPT sh0 rp[P=8192 try=61428 kill=9968 16%] pd[P=125 try=1412339 kill=291792 21%]
+DEATH sh2 liveend=0 estate=16506320 reach=11653982 dyn=397278 flow=0 geom=2634757
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=288645 kill=60749 nodes=1048576
+ADAPT sh2 rp[P=8192 try=29535 kill=3198 11%] pd[P=222 try=2242220 kill=514861 23%]
+T3[t=5213s] shard3 r0 #41 cell=(142,226) sc=47494 nodes=9116131 r=0
+T3[t=5215s] shard2 r0 #97 cell=(146,260) sc=47485 nodes=1961371 r=0
+DEATH sh1 liveend=0 estate=16365472 reach=11551353 dyn=391273 flow=0 geom=2611840
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=286261 kill=60123 nodes=1048576
+ADAPT sh1 rp[P=8192 try=29516 kill=3199 11%] pd[P=222 try=2237190 kill=515024 23%]
+DEATH sh0 liveend=0 estate=14197575 reach=10423020 dyn=187295 flow=0 geom=2532053
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=241928 kill=48897 nodes=15728640
+ADAPT sh0 rp[P=1985 try=61884 kill=10045 16%] pd[P=58 try=1425273 kill=294374 21%]
+T3[t=5223s] shard2 r0 #98 cell=(9,57) sc=47492 nodes=184448 r=0
+DEATH sh4 liveend=0 estate=16662452 reach=11785249 dyn=380962 flow=0 geom=2673216
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=290960 kill=61517 nodes=2097152
+ADAPT sh4 rp[P=8192 try=30644 kill=3343 11%] pd[P=81 try=2263058 kill=517269 23%]
+T3[t=5227s] shard0 r0 #42 cell=(144,228) sc=47496 nodes=16000001 r=-1
+T3[t=5244s] shard2 r0 #99 cell=(141,221) sc=47496 nodes=675334 r=0
+DEATH sh3 liveend=0 estate=14230110 reach=10436617 dyn=201005 flow=0 geom=2530471
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=242765 kill=49164 nodes=1048576
+ADAPT sh3 rp[P=4430 try=65399 kill=10684 16%] pd[P=396 try=1435849 kill=298529 21%]
+DEATH sh1 liveend=0 estate=16484426 reach=11635606 dyn=393409 flow=0 geom=2631195
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=288358 kill=60577 nodes=2097152
+ADAPT sh1 rp[P=8192 try=29703 kill=3215 11%] pd[P=54 try=2255836 kill=519473 23%]
+DEATH sh4 liveend=0 estate=16783659 reach=11872941 dyn=382140 flow=0 geom=2693761
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=293057 kill=61906 nodes=3145728
+ADAPT sh4 rp[P=8192 try=30953 kill=3387 11%] pd[P=80 try=2279806 kill=520888 23%]
+DEATH sh0 liveend=0 estate=14353583 reach=10539227 dyn=187374 flow=0 geom=2561137
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=244568 kill=49462 nodes=1048576
+ADAPT sh0 rp[P=8192 try=62521 kill=10145 16%] pd[P=361 try=1441544 kill=297735 21%]
+DEATH sh2 liveend=0 estate=16825842 reach=11876831 dyn=407130 flow=0 geom=2684346
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=294285 kill=61965 nodes=1048576
+ADAPT sh2 rp[P=6750 try=30035 kill=3244 11%] pd[P=156 try=2287866 kill=525769 23%]
+DEATH sh3 liveend=0 estate=14352893 reach=10529456 dyn=201005 flow=0 geom=2553613
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=244862 kill=49611 nodes=2097152
+ADAPT sh3 rp[P=7830 try=65769 kill=10739 16%] pd[P=428 try=1448990 kill=301139 21%]
+DEATH sh1 liveend=0 estate=16603336 reach=11720030 dyn=395222 flow=0 geom=2650563
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=290455 kill=61024 nodes=3145728
+ADAPT sh1 rp[P=8192 try=29900 kill=3236 11%] pd[P=60 try=2275111 kill=524108 23%]
+DEATH sh4 liveend=0 estate=16904712 reach=11959289 dyn=383890 flow=0 geom=2713614
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=295154 kill=62308 nodes=4194304
+ADAPT sh4 rp[P=8192 try=31122 kill=3398 11%] pd[P=2411 try=2297450 kill=524899 23%]
+DEATH sh0 liveend=0 estate=14476123 reach=10631908 dyn=187374 flow=0 geom=2584324
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=246665 kill=49878 nodes=2097152
+ADAPT sh0 rp[P=5527 try=62923 kill=10211 16%] pd[P=109 try=1454573 kill=300325 21%]
+T3[t=5318s] shard1 r0 #84 cell=(124,260) sc=47491 nodes=3903023 r=0
+DEATH sh2 liveend=0 estate=16945177 reach=11961103 dyn=409226 flow=0 geom=2703534
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=296382 kill=62379 nodes=2097152
+ADAPT sh2 rp[P=8192 try=30266 kill=3272 11%] pd[P=383 try=2306344 kill=530156 23%]
+DEATH sh3 liveend=0 estate=14475878 reach=10622611 dyn=201006 flow=0 geom=2577056
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=246959 kill=50063 nodes=3145728
+ADAPT sh3 rp[P=6019 try=66068 kill=10783 16%] pd[P=214 try=1462039 kill=303752 21%]
+DEATH sh4 liveend=0 estate=17023773 reach=12043399 dyn=385914 flow=0 geom=2732820
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=297251 kill=62750 nodes=5242880
+ADAPT sh4 rp[P=8192 try=31272 kill=3405 11%] pd[P=261 try=2316546 kill=529475 23%]
+DEATH sh0 liveend=0 estate=14598664 reach=10724945 dyn=187375 flow=0 geom=2607622
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=248762 kill=50281 nodes=3145728
+ADAPT sh0 rp[P=3556 try=63337 kill=10280 16%] pd[P=656 try=1468106 kill=302985 21%]
+DEATH sh2 liveend=0 estate=17066755 reach=12048903 dyn=410420 flow=0 geom=2724045
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=298479 kill=62779 nodes=3145728
+ADAPT sh2 rp[P=8192 try=30482 kill=3298 11%] pd[P=58 try=2323310 kill=533808 23%]
+DEATH sh1 liveend=0 estate=16808657 reach=11865009 dyn=399266 flow=0 geom=2683641
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=294067 kill=61807 nodes=1048576
+ADAPT sh1 rp[P=8192 try=30238 kill=3271 11%] pd[P=222 try=2307230 kill=531792 23%]
+DEATH sh3 liveend=0 estate=14598453 reach=10715246 dyn=201010 flow=0 geom=2600256
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=249056 kill=50477 nodes=4194304
+ADAPT sh3 rp[P=1727 try=66649 kill=10883 16%] pd[P=81 try=1474815 kill=306282 21%]
+DEATH sh4 liveend=0 estate=17142815 reach=12127753 dyn=387799 flow=0 geom=2752256
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=299348 kill=63200 nodes=6291456
+ADAPT sh4 rp[P=7369 try=31464 kill=3423 11%] pd[P=179 try=2335225 kill=533969 23%]
+DEATH sh0 liveend=0 estate=14721092 reach=10817164 dyn=187375 flow=0 geom=2630478
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=250859 kill=50716 nodes=4194304
+ADAPT sh0 rp[P=8192 try=63993 kill=10389 16%] pd[P=129 try=1480079 kill=305242 21%]
+T3[t=5373s] shard4 r0 #84 cell=(145,229) sc=47495 nodes=6447322 r=0
+T3[t=5387s] shard1 r0 #85 cell=(144,260) sc=47487 nodes=1958934 r=0
+T3[t=5395s] shard4 r0 #85 cell=(154,232) sc=47497 nodes=676456 r=0
+T3[t=5411s] shard1 r0 #86 cell=(136,194) sc=47489 nodes=677432 r=0
+DEATH sh3 liveend=0 estate=14723348 reach=10807046 dyn=202012 flow=0 geom=2622893
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=251153 kill=50913 nodes=5242880
+ADAPT sh3 rp[P=4078 try=67557 kill=11035 16%] pd[P=364 try=1487179 kill=308735 21%]
+DEATH sh0 liveend=0 estate=14846799 reach=10909507 dyn=188477 flow=0 geom=2653572
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=252956 kill=51116 nodes=5242880
+ADAPT sh0 rp[P=7329 try=64545 kill=10482 16%] pd[P=325 try=1492742 kill=307795 21%]
+DEATH sh2 liveend=0 estate=17306983 reach=12220593 dyn=413579 flow=0 geom=2763620
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=302673 kill=63655 nodes=5242880
+ADAPT sh2 rp[P=8192 try=30819 kill=3323 11%] pd[P=24 try=2359451 kill=542112 23%]
+DEATH sh4 liveend=0 estate=17356441 reach=12278653 dyn=392660 flow=0 geom=2786509
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=303109 kill=64043 nodes=1048576
+ADAPT sh4 rp[P=7369 try=31847 kill=3468 11%] pd[P=66 try=2367083 kill=541536 23%]
+T3[t=5435s] shard1 r0 #87 cell=(135,197) sc=47491 nodes=677432 r=0
+T3[t=5446s] shard4 r0 #86 cell=(146,234) sc=47488 nodes=1329842 r=0
+T3[t=5449s] shard2 r0 #100 cell=(144,234) sc=47494 nodes=5933297 r=0
+DEATH sh3 liveend=0 estate=14846386 reach=10899814 dyn=202012 flow=0 geom=2646176
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=253250 kill=51335 nodes=6291456
+ADAPT sh3 rp[P=5794 try=67911 kill=11088 16%] pd[P=293 try=1499996 kill=311296 21%]
+T3[t=5459s] shard1 r0 #88 cell=(147,215) sc=47490 nodes=667672 r=0
+DEATH sh0 liveend=0 estate=14969909 reach=11002716 dyn=188477 flow=0 geom=2677016
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=255053 kill=51535 nodes=6291456
+ADAPT sh0 rp[P=2691 try=64863 kill=10531 16%] pd[P=348 try=1506710 kill=310716 21%]
+T3[t=5472s] shard4 r0 #87 cell=(137,235) sc=47490 nodes=683022 r=0
+T3[t=5487s] shard2 r0 #101 cell=(141,225) sc=47494 nodes=1150824 r=0
+DEATH sh1 liveend=0 estate=17262446 reach=12189139 dyn=406730 flow=0 geom=2758073
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=302027 kill=63593 nodes=1048576
+ADAPT sh1 rp[P=8192 try=31101 kill=3366 11%] pd[P=273 try=2373822 kill=547208 23%]
+DEATH sh3 liveend=0 estate=14969103 reach=10992660 dyn=202013 flow=0 geom=2669450
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=255348 kill=51769 nodes=7340032
+ADAPT sh3 rp[P=8192 try=68284 kill=11143 16%] pd[P=129 try=1513722 kill=314034 21%]
+T3[t=5497s] shard1 r0 #89 cell=(151,221) sc=47494 nodes=1143208 r=0
+T3[t=5510s] shard2 r0 #102 cell=(124,230) sc=47493 nodes=657862 r=0
+DEATH sh4 liveend=0 estate=17584946 reach=12439974 dyn=397316 flow=0 geom=2823357
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=307134 kill=64996 nodes=1048576
+ADAPT sh4 rp[P=8192 try=32232 kill=3507 11%] pd[P=66 try=2401365 kill=549688 23%]
+T3[t=5522s] shard1 r0 #90 cell=(140,222) sc=47496 nodes=675334 r=0
+DEATH sh0 liveend=0 estate=15214722 reach=11188351 dyn=188478 flow=0 geom=2723630
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=259248 kill=52406 nodes=8388608
+ADAPT sh0 rp[P=2174 try=65805 kill=10688 16%] pd[P=305 try=1530750 kill=315339 21%]
+DEATH sh3 liveend=0 estate=15091799 reach=11085859 dyn=202017 flow=0 geom=2692855
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=257445 kill=52191 nodes=8388608
+ADAPT sh3 rp[P=7848 try=68696 kill=11210 16%] pd[P=185 try=1526577 kill=316573 21%]
+T3[t=5542s] shard2 r0 #103 cell=(135,239) sc=47494 nodes=971821 r=0
+DEATH sh4 liveend=0 estate=17704065 reach=12524047 dyn=399349 flow=0 geom=2842468
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=309231 kill=65441 nodes=2097152
+ADAPT sh4 rp[P=8192 try=32401 kill=3519 11%] pd[P=141 try=2419623 kill=554014 23%]
+DEATH sh3 liveend=0 estate=15214225 reach=11178361 dyn=202017 flow=0 geom=2715939
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=259542 kill=52601 nodes=9437184
+ADAPT sh3 rp[P=4106 try=69037 kill=11266 16%] pd[P=179 try=1539463 kill=319130 21%]
+T3[t=5572s] shard1 r0 #91 cell=(139,229) sc=47490 nodes=1341813 r=0
+DEATH sh2 liveend=0 estate=17826949 reach=12591975 dyn=421352 flow=0 geom=2849911
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=311710 kill=65544 nodes=1048576
+ADAPT sh2 rp[P=1077 try=33042 kill=3676 11%] pd[P=24 try=2429826 kill=558009 23%]
+DEATH sh0 liveend=0 estate=15339561 reach=11280706 dyn=189413 flow=0 geom=2746562
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=261345 kill=52840 nodes=9437184
+ADAPT sh0 rp[P=3900 try=66994 kill=10892 16%] pd[P=195 try=1542919 kill=317767 21%]
+DEATH sh4 liveend=0 estate=17825147 reach=12611149 dyn=400664 flow=0 geom=2862872
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=311328 kill=65852 nodes=3145728
+ADAPT sh4 rp[P=8192 try=32606 kill=3541 11%] pd[P=76 try=2437115 kill=557879 23%]
+T3[t=5596s] shard2 r0 #104 cell=(161,242) sc=47490 nodes=1184081 r=0
+T3[t=5597s] shard1 r0 #92 cell=(141,231) sc=47494 nodes=675334 r=0
+T3[t=5623s] shard1 r0 #93 cell=(109,233) sc=47492 nodes=662751 r=0
+DEATH sh0 liveend=0 estate=15462305 reach=11372958 dyn=189413 flow=0 geom=2769480
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=263442 kill=53262 nodes=10485760
+ADAPT sh0 rp[P=6736 try=67625 kill=10996 16%] pd[P=115 try=1556027 kill=320360 21%]
+DEATH sh3 liveend=0 estate=15339738 reach=11270723 dyn=202998 flow=0 geom=2739027
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=261639 kill=53041 nodes=10485760
+ADAPT sh3 rp[P=7369 try=69980 kill=11426 16%] pd[P=851 try=1551298 kill=321523 21%]
+DEATH sh4 liveend=0 estate=17944524 reach=12696119 dyn=402568 flow=0 geom=2882315
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=313425 kill=66350 nodes=4194304
+ADAPT sh4 rp[P=8192 try=32787 kill=3557 11%] pd[P=244 try=2456379 kill=562506 23%]
+T3[t=5640s] shard2 r0 #105 cell=(161,252) sc=47489 nodes=889071 r=0
+T3[t=5647s] shard1 r0 #94 cell=(120,234) sc=47486 nodes=659274 r=0
+T3[t=5656s] shard4 r0 #88 cell=(142,248) sc=47492 nodes=4863090 r=0
+DEATH sh3 liveend=0 estate=15462368 reach=11363202 dyn=202998 flow=0 geom=2762232
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=263736 kill=53465 nodes=11534336
+ADAPT sh3 rp[P=8192 try=70548 kill=11520 16%] pd[P=508 try=1563496 kill=323972 21%]
+DEATH sh0 liveend=0 estate=15584990 reach=11466184 dyn=189413 flow=0 geom=2793004
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=265539 kill=53668 nodes=11534336
+ADAPT sh0 rp[P=4069 try=68093 kill=11076 16%] pd[P=195 try=1569794 kill=323248 21%]
+T3[t=5672s] shard1 r0 #95 cell=(153,235) sc=47495 nodes=676456 r=0
+T3[t=5681s] shard4 r0 #89 cell=(160,248) sc=47497 nodes=668699 r=0
+DEATH sh2 liveend=0 estate=18067410 reach=12760331 dyn=425883 flow=0 geom=2889005
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=315856 kill=66429 nodes=1048576
+ADAPT sh2 rp[P=8192 try=36025 kill=4191 12%] pd[P=167 try=2461222 kill=565360 23%]
+T3[t=5688s] shard2 r0 #106 cell=(137,214) sc=47490 nodes=1183154 r=0
+T3[t=5695s] shard2 r0 #107 cell=(16,53) sc=47495 nodes=98408 r=0
+T3[t=5701s] shard2 r0 #108 cell=(15,46) sc=47489 nodes=91686 r=0
+DEATH sh0 liveend=0 estate=15706977 reach=11558593 dyn=189413 flow=0 geom=2816134
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=267636 kill=54073 nodes=12582912
+ADAPT sh0 rp[P=5527 try=68442 kill=11128 16%] pd[P=190 try=1581764 kill=325490 21%]
+T3[t=5705s] shard4 r0 #90 cell=(164,250) sc=47486 nodes=668700 r=0
+DEATH sh3 liveend=0 estate=15584929 reach=11456198 dyn=203000 flow=0 geom=2785586
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=265833 kill=53873 nodes=12582912
+ADAPT sh3 rp[P=8192 try=71036 kill=11601 16%] pd[P=343 try=1576133 kill=326477 21%]
+T3[t=5714s] shard2 r0 #109 cell=(17,48) sc=47492 nodes=191869 r=0
+T3[t=5727s] shard2 r0 #110 cell=(16,51) sc=47482 nodes=191961 r=0
+T3[t=5733s] shard1 r0 #96 cell=(160,240) sc=47488 nodes=1920162 r=0
+T3[t=5734s] shard2 r0 #111 cell=(9,52) sc=47501 nodes=98383 r=0
+DEATH sh3 liveend=0 estate=15707187 reach=11548526 dyn=203000 flow=0 geom=2808496
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=267930 kill=54306 nodes=13631488
+ADAPT sh3 rp[P=8192 try=71421 kill=11662 16%] pd[P=338 try=1588481 kill=328773 21%]
+DEATH sh4 liveend=0 estate=18290775 reach=12941762 dyn=409767 flow=0 geom=2938349
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=319534 kill=67726 nodes=1048576
+ADAPT sh4 rp[P=7369 try=33354 kill=3608 11%] pd[P=125 try=2507955 kill=574829 23%]
+T3[t=5747s] shard2 r0 #112 cell=(17,52) sc=47484 nodes=181132 r=0
+DEATH sh0 liveend=0 estate=15832834 reach=11650149 dyn=190410 flow=0 geom=2838819
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=269733 kill=54481 nodes=13631488
+ADAPT sh0 rp[P=1832 try=69502 kill=11315 16%] pd[P=188 try=1594159 kill=327968 21%]
+T3[t=5758s] shard1 r0 #97 cell=(159,245) sc=47497 nodes=668695 r=0
+T3[t=5761s] shard2 r0 #113 cell=(11,54) sc=47484 nodes=196644 r=0
+T3[t=5767s] shard2 r0 #114 cell=(29,54) sc=47490 nodes=91450 r=0
+T3[t=5774s] shard2 r0 #115 cell=(31,58) sc=47493 nodes=102284 r=0
+T3[t=5781s] shard4 r0 #91 cell=(122,254) sc=47497 nodes=1983700 r=0
+T3[t=5783s] shard1 r0 #98 cell=(160,246) sc=47488 nodes=668695 r=0
+T3[t=5789s] shard2 r0 #116 cell=(11,60) sc=47493 nodes=196640 r=0
+DEATH sh0 liveend=0 estate=15955142 reach=11743109 dyn=190410 flow=0 geom=2861944
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=271831 kill=54928 nodes=14680064
+ADAPT sh0 rp[P=7470 try=70058 kill=11407 16%] pd[P=273 try=1607575 kill=330637 21%]
+T3[t=5794s] shard2 r0 #117 cell=(34,61) sc=47497 nodes=91754 r=0
+DEATH sh3 liveend=0 estate=15833227 reach=11640268 dyn=204451 flow=0 geom=2831484
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=270028 kill=54716 nodes=14680064
+ADAPT sh3 rp[P=4145 try=71821 kill=11729 16%] pd[P=137 try=1600205 kill=331149 21%]
+T3[t=5806s] shard2 r0 #118 cell=(17,68) sc=47491 nodes=173854 r=0
+T3[t=5813s] shard2 r0 #119 cell=(16,77) sc=47488 nodes=82000 r=0
+DEATH sh4 liveend=0 estate=18518654 reach=13104287 dyn=413222 flow=0 geom=2976102
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=323501 kill=68599 nodes=1048576
+ADAPT sh4 rp[P=8192 try=33760 kill=3652 11%] pd[P=516 try=2539936 kill=582104 23%]
+T3[t=5815s] shard2 r0 #120 cell=(180,97) sc=47476 nodes=33916 r=0
+DEATH sh1 liveend=0 estate=18298749 reach=12924199 dyn=428017 flow=0 geom=2926510
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=320205 kill=67647 nodes=1048576
+ADAPT sh1 rp[P=6750 try=32940 kill=3566 11%] pd[P=156 try=2522515 kill=581888 23%]
+DEATH sh0 liveend=0 estate=16077895 reach=11835753 dyn=190410 flow=0 geom=2885071
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=273928 kill=55339 nodes=15728640
+ADAPT sh0 rp[P=8192 try=70329 kill=11444 16%] pd[P=236 try=1620650 kill=333246 21%]
+DEATH sh3 liveend=0 estate=15955794 reach=11733116 dyn=204451 flow=0 geom=2854588
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=272125 kill=55127 nodes=15728640
+ADAPT sh3 rp[P=5381 try=72526 kill=11845 16%] pd[P=35 try=1614196 kill=333959 21%]
+T3[t=5843s] shard4 r0 #92 cell=(143,235) sc=47492 nodes=1937048 r=0
+T3[t=5843s] shard0 r0 #43 cell=(178,228) sc=47491 nodes=16000001 r=-1
+T3[t=5848s] shard3 r0 #42 cell=(148,226) sc=47489 nodes=16000001 r=-1
+T3[t=5848s] shard2 r0 #121 cell=(127,190) sc=47485 nodes=609259 r=0
+T3[t=5857s] shard1 r0 #99 cell=(131,247) sc=47486 nodes=1963528 r=0
+T3[t=5874s] shard2 r0 #122 cell=(126,191) sc=47495 nodes=599647 r=0
+DEATH sh4 liveend=0 estate=18740588 reach=13262674 dyn=417374 flow=0 geom=3012758
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=327375 kill=69445 nodes=1048576
+ADAPT sh4 rp[P=8192 try=34133 kill=3691 11%] pd[P=99 try=2571412 kill=589186 23%]
+T3[t=5879s] shard1 r0 #100 cell=(153,249) sc=47495 nodes=668695 r=0
+DEATH sh0 liveend=0 estate=16233360 reach=11952082 dyn=190466 flow=0 geom=2914107
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=276568 kill=55899 nodes=1048576
+ADAPT sh0 rp[P=7957 try=70781 kill=11515 16%] pd[P=636 try=1637177 kill=336677 21%]
+DEATH sh3 liveend=0 estate=16112073 reach=11847980 dyn=205080 flow=0 geom=2883179
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=274765 kill=55662 nodes=1048576
+ADAPT sh3 rp[P=4755 try=73100 kill=11937 16%] pd[P=223 try=1630010 kill=337214 21%]
+T3[t=5888s] shard4 r0 #93 cell=(114,238) sc=47482 nodes=1304167 r=0
+T3[t=5911s] shard1 r0 #101 cell=(111,235) sc=47486 nodes=968163 r=0
+T3[t=5912s] shard2 r0 #123 cell=(129,192) sc=47487 nodes=906489 r=0
+T3[t=5913s] shard4 r0 #94 cell=(150,220) sc=47495 nodes=658210 r=0
+DEATH sh0 liveend=0 estate=16356065 reach=12044876 dyn=190467 flow=0 geom=2937308
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=278665 kill=56319 nodes=2097152
+ADAPT sh0 rp[P=2960 try=71527 kill=11646 16%] pd[P=247 try=1650194 kill=339249 21%]
+DEATH sh3 liveend=0 estate=16234962 reach=11941014 dyn=205080 flow=0 geom=2906602
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=276862 kill=56077 nodes=2097152
+ADAPT sh3 rp[P=8192 try=73529 kill=12005 16%] pd[P=82 try=1642991 kill=339798 21%]
+T3[t=5934s] shard1 r0 #102 cell=(131,239) sc=47490 nodes=680540 r=0
+T3[t=5941s] shard4 r0 #95 cell=(128,240) sc=47487 nodes=960298 r=0
+T3[t=5946s] shard2 r0 #124 cell=(129,194) sc=47490 nodes=906493 r=0
+DEATH sh0 liveend=0 estate=16478565 reach=12137620 dyn=190471 flow=0 geom=2960551
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=280762 kill=56724 nodes=3145728
+ADAPT sh0 rp[P=3044 try=72029 kill=11730 16%] pd[P=151 try=1663191 kill=341837 21%]
+T3[t=5959s] shard1 r0 #103 cell=(158,244) sc=47497 nodes=668695 r=0
+DEATH sh3 liveend=0 estate=16357427 reach=12033916 dyn=205081 flow=0 geom=2929856
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=278959 kill=56514 nodes=3145728
+ADAPT sh3 rp[P=8192 try=74129 kill=12106 16%] pd[P=352 try=1655569 kill=342298 21%]
+T3[t=5972s] shard4 r0 #96 cell=(135,237) sc=47497 nodes=971821 r=0
+T3[t=5974s] shard2 r0 #125 cell=(140,195) sc=47486 nodes=613131 r=0
+DEATH sh0 liveend=0 estate=16600984 reach=12229731 dyn=190471 flow=0 geom=2983355
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=282859 kill=57115 nodes=4194304
+ADAPT sh0 rp[P=6935 try=72399 kill=11785 16%] pd[P=160 try=1675540 kill=344125 21%]
+DEATH sh3 liveend=0 estate=16479935 reach=12126060 dyn=205081 flow=0 geom=2952765
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=281056 kill=56945 nodes=4194304
+ADAPT sh3 rp[P=7114 try=74601 kill=12184 16%] pd[P=541 try=1667961 kill=344613 21%]
+DEATH sh1 liveend=0 estate=18862578 reach=13324318 dyn=438941 flow=0 geom=3018243
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=330103 kill=69883 nodes=1048576
+ADAPT sh1 rp[P=6750 try=33886 kill=3661 11%] pd[P=156 try=2605111 kill=601236 23%]
+DEATH sh4 liveend=0 estate=19189042 reach=13585124 dyn=423091 flow=0 geom=3087929
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=335162 kill=71069 nodes=1048576
+ADAPT sh4 rp[P=8192 try=34974 kill=3792 11%] pd[P=201 try=2632157 kill=602583 23%]
+T3[t=5998s] shard4 r0 #97 cell=(133,201) sc=47495 nodes=1111348 r=0
+DEATH sh2 liveend=0 estate=18824033 reach=13266900 dyn=477610 flow=0 geom=2992537
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=329125 kill=68512 nodes=1048576
+ADAPT sh2 rp[P=4475 try=42933 kill=5363 12%] pd[P=132 try=2534362 kill=582604 23%]
+T3[t=6018s] shard4 r0 #98 cell=(125,231) sc=47497 nodes=656050 r=0
+DEATH sh1 liveend=0 estate=18981913 reach=13408590 dyn=441038 flow=0 geom=3037431
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=332200 kill=70297 nodes=2097152
+ADAPT sh1 rp[P=8192 try=34117 kill=3689 11%] pd[P=383 try=2623589 kill=605623 23%]
+T3[t=6026s] shard2 r0 #126 cell=(142,197) sc=47494 nodes=1462768 r=0
+DEATH sh0 liveend=0 estate=16726224 reach=12322137 dyn=191544 flow=0 geom=3006378
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=284956 kill=57542 nodes=5242880
+ADAPT sh0 rp[P=2597 try=73219 kill=11930 16%] pd[P=30 try=1688057 kill=346686 21%]
+T3[t=6041s] shard4 r0 #99 cell=(121,229) sc=47496 nodes=658200 r=0
+T3[t=6043s] shard2 r0 #127 cell=(143,198) sc=47500 nodes=391992 r=0
+T3[t=6044s] shard3 r0 #43 cell=(135,227) sc=47499 nodes=5179194 r=0
+T3[t=6059s] shard4 r0 #100 cell=(134,199) sc=47484 nodes=394486 r=0
+DEATH sh1 liveend=0 estate=19102869 reach=13495462 dyn=442391 flow=0 geom=3057658
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=334297 kill=70707 nodes=3145728
+ADAPT sh1 rp[P=8192 try=34318 kill=3710 11%] pd[P=95 try=2641453 kill=609574 23%]
+DEATH sh0 liveend=0 estate=16849288 reach=12414838 dyn=191544 flow=0 geom=3029645
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=287053 kill=57978 nodes=6291456
+ADAPT sh0 rp[P=5633 try=73591 kill=11985 16%] pd[P=972 try=1701569 kill=349445 21%]
+T3[t=6089s] shard4 r0 #101 cell=(138,238) sc=47492 nodes=971821 r=0
+DEATH sh3 liveend=0 estate=16715220 reach=12292458 dyn=210560 flow=0 geom=2991315
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=285123 kill=57805 nodes=1048576
+ADAPT sh3 rp[P=7369 try=75370 kill=12297 16%] pd[P=157 try=1700988 kill=352691 21%]
+DEATH sh2 liveend=0 estate=19038105 reach=13415400 dyn=483711 flow=0 geom=3026221
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=332833 kill=69320 nodes=1048576
+ADAPT sh2 rp[P=8192 try=44987 kill=5717 13%] pd[P=265 try=2561761 kill=589316 23%]
+DEATH sh1 liveend=0 estate=19222165 reach=13579754 dyn=444647 flow=0 geom=3076874
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=336394 kill=71185 nodes=4194304
+ADAPT sh1 rp[P=8192 try=34564 kill=3741 11%] pd[P=1011 try=2660273 kill=614090 23%]
+T3[t=6102s] shard3 r0 #44 cell=(122,228) sc=47488 nodes=1341973 r=0
+DEATH sh0 liveend=0 estate=16971829 reach=12507711 dyn=191546 flow=0 geom=3052942
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=289151 kill=58399 nodes=7340032
+ADAPT sh0 rp[P=4842 try=74626 kill=12166 16%] pd[P=145 try=1713641 kill=351819 21%]
+T3[t=6121s] shard1 r0 #104 cell=(144,244) sc=47493 nodes=4844494 r=0
+DEATH sh4 liveend=0 estate=19622254 reach=13891491 dyn=432933 flow=0 geom=3158038
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=342743 kill=72767 nodes=1048576
+ADAPT sh4 rp[P=8192 try=35852 kill=3897 11%] pd[P=162 try=2692707 kill=616738 23%]
+T3[t=6131s] shard2 r0 #128 cell=(132,199) sc=47486 nodes=1965665 r=0
+DEATH sh0 liveend=0 estate=17093786 reach=12600302 dyn=191546 flow=0 geom=3075931
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=291248 kill=58814 nodes=8388608
+ADAPT sh0 rp[P=7503 try=74997 kill=12225 16%] pd[P=66 try=1726569 kill=354243 21%]
+DEATH sh3 liveend=0 estate=16868431 reach=12400872 dyn=213341 flow=0 geom=3016094
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=287806 kill=58380 nodes=1048576
+ADAPT sh3 rp[P=8192 try=75592 kill=12313 16%] pd[P=148 try=1725238 kill=358629 21%]
+T3[t=6155s] shard4 r0 #102 cell=(157,249) sc=47495 nodes=1981848 r=0
+DEATH sh1 liveend=0 estate=19414926 reach=13715731 dyn=448518 flow=0 geom=3107904
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=339791 kill=71980 nodes=1048576
+ADAPT sh1 rp[P=8192 try=34889 kill=3771 11%] pd[P=44 try=2689522 kill=621070 23%]
+T3[t=6159s] shard2 r0 #129 cell=(133,200) sc=47494 nodes=603315 r=0
+T3[t=6169s] shard0 r0 #44 cell=(128,230) sc=47494 nodes=8814222 r=0
+T3[t=6172s] shard4 r0 #103 cell=(114,235) sc=47485 nodes=387534 r=0
+T3[t=6177s] shard4 r0 #104 cell=(18,47) sc=47491 nodes=97990 r=0
+DEATH sh3 liveend=0 estate=16990625 reach=12490904 dyn=213886 flow=0 geom=3037965
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=289903 kill=58856 nodes=2097152
+ADAPT sh3 rp[P=3497 try=76285 kill=12432 16%] pd[P=333 try=1738818 kill=361511 21%]
+T3[t=6182s] shard4 r0 #105 cell=(25,50) sc=47496 nodes=91448 r=0
+T3[t=6186s] shard2 r0 #130 cell=(130,201) sc=47492 nodes=603318 r=0
+T3[t=6186s] shard1 r0 #105 cell=(136,264) sc=47494 nodes=1966205 r=0
+T3[t=6187s] shard4 r0 #106 cell=(32,51) sc=47496 nodes=91449 r=0
+T3[t=6192s] shard4 r0 #107 cell=(8,53) sc=47485 nodes=107025 r=0
+T3[t=6196s] shard4 r0 #108 cell=(32,53) sc=47491 nodes=91449 r=0
+T3[t=6201s] shard2 r0 #131 cell=(130,203) sc=47497 nodes=392936 r=0
+T3[t=6202s] shard4 r0 #109 cell=(33,54) sc=47487 nodes=91451 r=0
+T3[t=6208s] shard4 r0 #110 cell=(16,55) sc=47484 nodes=81935 r=0
+T3[t=6208s] shard1 r0 #106 cell=(134,202) sc=47494 nodes=677434 r=0
+DEATH sh0 liveend=0 estate=17264871 reach=12722226 dyn=194675 flow=0 geom=3104337
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=294196 kill=59435 nodes=1048576
+ADAPT sh0 rp[P=8192 try=75708 kill=12335 16%] pd[P=243 try=1750170 kill=359878 21%]
+T3[t=6216s] shard4 r0 #111 cell=(12,57) sc=47485 nodes=98317 r=0
+DEATH sh3 liveend=0 estate=17113574 reach=12584340 dyn=213886 flow=0 geom=3061556
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=292000 kill=59278 nodes=3145728
+ADAPT sh3 rp[P=4614 try=76628 kill=12485 16%] pd[P=50 try=1752627 kill=364407 21%]
+T3[t=6227s] shard0 r0 #45 cell=(110,232) sc=47489 nodes=1339419 r=0
+T3[t=6230s] shard4 r0 #112 cell=(12,59) sc=47490 nodes=196621 r=0
+T3[t=6232s] shard1 r0 #107 cell=(144,220) sc=47488 nodes=675334 r=0
+T3[t=6236s] shard4 r0 #113 cell=(16,67) sc=47494 nodes=94040 r=0
+T3[t=6238s] shard2 r0 #132 cell=(133,210) sc=47491 nodes=775014 r=0
+T3[t=6242s] shard4 r0 #114 cell=(18,69) sc=47498 nodes=93717 r=0
+T3[t=6245s] shard4 r0 #115 cell=(208,85) sc=47486 nodes=34093 r=0
+T3[t=6248s] shard4 r0 #116 cell=(185,88) sc=47490 nodes=43563 r=0
+T3[t=6251s] shard4 r0 #117 cell=(197,90) sc=47486 nodes=33646 r=0
+T3[t=6254s] shard4 r0 #118 cell=(191,96) sc=47488 nodes=33993 r=0
+T3[t=6257s] shard1 r0 #108 cell=(140,230) sc=47496 nodes=676456 r=0
+DEATH sh3 liveend=0 estate=17236468 reach=12676580 dyn=213886 flow=0 geom=3084662
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=294097 kill=59726 nodes=4194304
+ADAPT sh3 rp[P=3025 try=77549 kill=12647 16%] pd[P=210 try=1765109 kill=366886 21%]
+DEATH sh0 liveend=0 estate=17419378 reach=12833035 dyn=196615 flow=0 geom=3130466
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=296874 kill=60001 nodes=1048576
+ADAPT sh0 rp[P=8192 try=76002 kill=12371 16%] pd[P=62 try=1771724 kill=364919 21%]
+T3[t=6282s] shard1 r0 #109 cell=(118,232) sc=47491 nodes=659113 r=0
+DEATH sh2 liveend=0 estate=19539118 reach=13764097 dyn=496314 flow=0 geom=3105929
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=341511 kill=71285 nodes=1048576
+ADAPT sh2 rp[P=8192 try=51551 kill=6863 13%] pd[P=101 try=2625746 kill=604839 23%]
+DEATH sh3 liveend=0 estate=17358645 reach=12769617 dyn=213886 flow=0 geom=3107895
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=296194 kill=60135 nodes=5242880
+ADAPT sh3 rp[P=8192 try=77983 kill=12714 16%] pd[P=448 try=1777732 kill=369249 21%]
+DEATH sh4 liveend=0 estate=20032030 reach=14163374 dyn=467004 flow=0 geom=3211322
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=350034 kill=73871 nodes=1048576
+ADAPT sh4 rp[P=8192 try=37891 kill=4213 11%] pd[P=413 try=2729782 kill=625573 23%]
+T3[t=6304s] shard1 r0 #110 cell=(145,233) sc=47496 nodes=675334 r=0
+DEATH sh0 liveend=0 estate=17542267 reach=12926051 dyn=196615 flow=0 geom=3153715
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=298971 kill=60423 nodes=2097152
+ADAPT sh0 rp[P=8192 try=76540 kill=12456 16%] pd[P=278 try=1785257 kill=367593 21%]
+T3[t=6312s] shard4 r0 #119 cell=(129,190) sc=47491 nodes=1307926 r=0
+T3[t=6326s] shard3 r0 #45 cell=(127,229) sc=47491 nodes=5751805 r=0
+DEATH sh2 liveend=0 estate=19660168 reach=13850299 dyn=497144 flow=0 geom=3126319
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=343608 kill=71742 nodes=2097152
+ADAPT sh2 rp[P=8192 try=51919 kill=6921 13%] pd[P=53 try=2643326 kill=608983 23%]
+T3[t=6339s] shard2 r0 #133 cell=(149,216) sc=47500 nodes=2265262 r=0
+DEATH sh1 liveend=0 estate=20019743 reach=14143560 dyn=461348 flow=0 geom=3205760
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=350447 kill=74416 nodes=1048576
+ADAPT sh1 rp[P=8192 try=35967 kill=3888 11%] pd[P=44 try=2779406 kill=642356 23%]
+T3[t=6348s] shard4 r0 #120 cell=(130,191) sc=47492 nodes=906540 r=0
+DEATH sh0 liveend=0 estate=17665435 reach=13018970 dyn=196616 flow=0 geom=3177057
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=301068 kill=60857 nodes=3145728
+ADAPT sh0 rp[P=8192 try=76930 kill=12518 16%] pd[P=150 try=1798071 kill=370146 21%]
+T3[t=6370s] shard4 r0 #121 cell=(141,194) sc=47485 nodes=308083 r=0
+DEATH sh3 liveend=0 estate=17541513 reach=12900838 dyn=216620 flow=0 geom=3139295
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=299309 kill=60783 nodes=1048576
+ADAPT sh3 rp[P=5540 try=78479 kill=12786 16%] pd[P=516 try=1799728 kill=374239 21%]
+T3[t=6381s] shard1 r0 #111 cell=(143,261) sc=47488 nodes=1961563 r=0
+T3[t=6384s] shard2 r0 #134 cell=(140,217) sc=47489 nodes=882908 r=0
+T3[t=6403s] shard2 r0 #135 cell=(146,217) sc=47492 nodes=388374 r=0
+DEATH sh3 liveend=0 estate=17664319 reach=12993746 dyn=216620 flow=0 geom=3162447
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=301406 kill=61202 nodes=2097152
+ADAPT sh3 rp[P=5369 try=78894 kill=12855 16%] pd[P=164 try=1813258 kill=376938 21%]
+T3[t=6415s] shard1 r0 #112 cell=(124,246) sc=47488 nodes=675797 r=0
+DEATH sh4 liveend=0 estate=20326454 reach=14369322 dyn=474069 flow=0 geom=3259262
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=355078 kill=74990 nodes=1048576
+ADAPT sh4 rp[P=8192 try=41144 kill=4781 12%] pd[P=122 try=2766451 kill=634368 23%]
+T3[t=6440s] shard1 r0 #113 cell=(126,234) sc=47500 nodes=665528 r=0
+DEATH sh0 liveend=0 estate=17913245 reach=13204070 dyn=197629 flow=0 geom=3223269
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=305262 kill=61691 nodes=5242880
+ADAPT sh0 rp[P=4732 try=78294 kill=12747 16%] pd[P=192 try=1822517 kill=374993 21%]
+DEATH sh2 liveend=0 estate=19948480 reach=14051592 dyn=503061 flow=0 geom=3172800
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=348582 kill=72830 nodes=1048576
+ADAPT sh2 rp[P=8192 try=54995 kill=7451 14%] pd[P=167 try=2681324 kill=618037 23%]
+DEATH sh3 liveend=0 estate=17787154 reach=13086317 dyn=216620 flow=0 geom=3185630
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=303503 kill=61602 nodes=3145728
+ADAPT sh3 rp[P=4497 try=79237 kill=12908 16%] pd[P=174 try=1826417 kill=379556 21%]
+T3[t=6454s] shard2 r0 #136 cell=(143,218) sc=47489 nodes=1183154 r=0
+T3[t=6463s] shard4 r0 #122 cell=(139,196) sc=47489 nodes=2073204 r=0
+DEATH sh1 liveend=0 estate=20394721 reach=14408405 dyn=469180 flow=0 geom=3266124
+PDEV sh1 try=0 kill=0 (0.0%) BJ try=357052 kill=75860 nodes=1048576
+ADAPT sh1 rp[P=8192 try=36595 kill=3951 11%] pd[P=321 try=2835966 kill=655769 23%]
+T3[t=6481s] shard4 r0 #123 cell=(131,198) sc=47496 nodes=391806 r=0
+DEATH sh0 liveend=0 estate=18035872 reach=13296890 dyn=197629 flow=0 geom=3246505
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=307359 kill=62114 nodes=6291456
+ADAPT sh0 rp[P=8192 try=78582 kill=12787 16%] pd[P=290 try=1835650 kill=377587 21%]
+DEATH sh3 liveend=0 estate=17909547 reach=13179107 dyn=216621 flow=0 geom=3208905
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=305600 kill=62038 nodes=4194304
+ADAPT sh3 rp[P=2548 try=79596 kill=12964 16%] pd[P=485 try=1839178 kill=382086 21%]
+T3[t=6491s] shard1 r0 #114 cell=(157,247) sc=47498 nodes=1330848 r=0
+DEATH sh2 liveend=0 estate=20086099 reach=14148274 dyn=505223 flow=0 geom=3195262
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=350948 kill=73336 nodes=1048576
+ADAPT sh2 rp[P=920 try=56757 kill=7765 14%] pd[P=87 try=2699825 kill=622446 23%]
+T3[t=6497s] shard4 r0 #124 cell=(129,200) sc=47491 nodes=391806 r=0
+T3[t=6504s] shard2 r0 #137 cell=(149,218) sc=47498 nodes=1175264 r=0
+T3[t=6512s] shard1 r0 #115 cell=(156,248) sc=47495 nodes=672079 r=0
+T3[t=6513s] shard4 r0 #125 cell=(137,204) sc=47496 nodes=388164 r=0
+DEATH sh0 liveend=0 estate=18158512 reach=13389451 dyn=197630 flow=0 geom=3269585
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=309457 kill=62550 nodes=7340032
+ADAPT sh0 rp[P=4680 try=78903 kill=12835 16%] pd[P=130 try=1849187 kill=380285 21%]
+T3[t=6521s] shard2 r0 #138 cell=(145,220) sc=47493 nodes=401202 r=0
+DEATH sh3 liveend=0 estate=18035307 reach=13270758 dyn=217672 flow=0 geom=3231618
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=307697 kill=62470 nodes=5242880
+ADAPT sh3 rp[P=7694 try=80290 kill=13078 16%] pd[P=387 try=1851472 kill=384520 21%]
+DEATH sh0 liveend=0 estate=18281424 reach=13482536 dyn=197634 flow=0 geom=3292856
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=311554 kill=62973 nodes=8388608
+ADAPT sh0 rp[P=4231 try=79458 kill=12930 16%] pd[P=946 try=1862002 kill=382839 21%]
+T3[t=6559s] shard4 r0 #126 cell=(140,205) sc=47492 nodes=896416 r=0
+DEATH sh2 liveend=0 estate=20268375 reach=14276041 dyn=509012 flow=0 geom=3224741
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=354100 kill=74065 nodes=1048576
+ADAPT sh2 rp[P=8192 try=58258 kill=8016 14%] pd[P=167 try=2723878 kill=628228 23%]
+T3[t=6570s] shard2 r0 #139 cell=(152,221) sc=47493 nodes=1183203 r=0
+T3[t=6574s] shard1 r0 #116 cell=(156,250) sc=47491 nodes=1920115 r=0
+DEATH sh3 liveend=0 estate=18158089 reach=13364041 dyn=217672 flow=0 geom=3254998
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=309794 kill=62914 nodes=6291456
+ADAPT sh3 rp[P=7158 try=80654 kill=13136 16%] pd[P=338 try=1864413 kill=387095 21%]
+DEATH sh0 liveend=0 estate=18405147 reach=13575815 dyn=197651 flow=0 geom=3316415
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=313651 kill=63424 nodes=9437184
+ADAPT sh0 rp[P=8192 try=80271 kill=13068 16%] pd[P=124 try=1874569 kill=385349 21%]
+DEATH sh4 liveend=0 estate=20804601 reach=14705273 dyn=483240 flow=0 geom=3336945
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=363358 kill=76829 nodes=1048576
+ADAPT sh4 rp[P=8192 try=44659 kill=5381 12%] pd[P=222 try=2830435 kill=649738 23%]
+T3[t=6609s] shard4 r0 #127 cell=(138,207) sc=47489 nodes=1182201 r=0
+T3[t=6610s] shard1 r0 #117 cell=(140,227) sc=47489 nodes=796376 r=0
+T3[t=6615s] shard2 r0 #140 cell=(135,222) sc=47497 nodes=895221 r=0
+T3[t=6616s] shard1 r0 #118 cell=(32,47) sc=47492 nodes=91435 r=0
+T3[t=6618s] shard1 r0 #119 cell=(206,89) sc=47483 nodes=32447 r=0
+DEATH sh3 liveend=0 estate=18280708 reach=13457129 dyn=217672 flow=0 geom=3278236
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=311892 kill=63270 nodes=7340032
+ADAPT sh3 rp[P=3473 try=81274 kill=13242 16%] pd[P=130 try=1878652 kill=389930 21%]
+T3[t=6636s] shard1 r0 #120 cell=(155,242) sc=47489 nodes=404249 r=0
+T3[t=6642s] shard1 r0 #121 cell=(13,46) sc=47489 nodes=91628 r=0
+DEATH sh0 liveend=0 estate=18530422 reach=13667151 dyn=198830 flow=0 geom=3338968
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=315748 kill=63844 nodes=10485760
+ADAPT sh0 rp[P=5259 try=81182 kill=13228 16%] pd[P=137 try=1886753 kill=387794 21%]
+T3[t=6655s] shard1 r0 #122 cell=(18,49) sc=47489 nodes=195712 r=0
+T3[t=6656s] shard4 r0 #128 cell=(145,208) sc=47494 nodes=896424 r=0
+DEATH sh2 liveend=0 estate=20510108 reach=14444808 dyn=513698 flow=0 geom=3263942
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=358256 kill=74936 nodes=1048576
+ADAPT sh2 rp[P=483 try=62217 kill=8719 14%] pd[P=183 try=2755233 kill=635583 23%]
+DEATH sh3 liveend=0 estate=18403396 reach=13549483 dyn=217673 flow=0 geom=3301313
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=313989 kill=63680 nodes=8388608
+ADAPT sh3 rp[P=4663 try=81626 kill=13297 16%] pd[P=257 try=1891657 kill=392532 21%]
+T3[t=6662s] shard1 r0 #123 cell=(10,53) sc=47486 nodes=106546 r=0
+T3[t=6671s] shard2 r0 #141 cell=(153,222) sc=47491 nodes=1164669 r=0
+T3[t=6673s] shard4 r0 #129 cell=(144,209) sc=47485 nodes=388190 r=0
+T3[t=6674s] shard1 r0 #124 cell=(9,54) sc=47486 nodes=180256 r=0
+T3[t=6681s] shard1 r0 #125 cell=(28,55) sc=47494 nodes=95759 r=0
+T3[t=6687s] shard1 r0 #126 cell=(29,56) sc=47490 nodes=95756 r=0
+T3[t=6688s] shard2 r0 #142 cell=(136,223) sc=47500 nodes=401272 r=0
+DEATH sh0 liveend=0 estate=18653550 reach=13760191 dyn=198830 flow=0 geom=3362409
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=317845 kill=64288 nodes=11534336
+ADAPT sh0 rp[P=3863 try=81510 kill=13278 16%] pd[P=86 try=1899179 kill=390262 21%]
+T3[t=6695s] shard1 r0 #127 cell=(14,57) sc=47485 nodes=98318 r=0
+T3[t=6701s] shard1 r0 #128 cell=(32,57) sc=47479 nodes=93447 r=0
+DEATH sh3 liveend=0 estate=18527406 reach=13642653 dyn=218265 flow=0 geom=3324731
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=316086 kill=64099 nodes=9437184
+ADAPT sh3 rp[P=402 try=82237 kill=13404 16%] pd[P=3630 try=1903905 kill=394942 21%]
+T3[t=6714s] shard1 r0 #129 cell=(19,58) sc=47483 nodes=175403 r=0
+DEATH sh4 liveend=0 estate=21090413 reach=14905375 dyn=489109 flow=0 geom=3383270
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=368290 kill=77908 nodes=1048576
+ADAPT sh4 rp[P=8192 try=47107 kill=5798 12%] pd[P=222 try=2867977 kill=658704 23%]
+T3[t=6721s] shard1 r0 #130 cell=(14,59) sc=47491 nodes=81920 r=0
+T3[t=6723s] shard4 r0 #130 cell=(135,210) sc=47489 nodes=1182218 r=0
+T3[t=6726s] shard1 r0 #131 cell=(32,61) sc=47499 nodes=91716 r=0
+DEATH sh0 liveend=0 estate=18775924 reach=13852916 dyn=198832 flow=0 geom=3385525
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=319942 kill=64709 nodes=12582912
+ADAPT sh0 rp[P=4719 try=82183 kill=13393 16%] pd[P=205 try=1912155 kill=392844 21%]
+T3[t=6734s] shard1 r0 #132 cell=(21,74) sc=47487 nodes=98602 r=0
+DEATH sh2 liveend=0 estate=20691601 reach=14570469 dyn=519530 flow=0 geom=3292647
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=361387 kill=75649 nodes=1048576
+ADAPT sh2 rp[P=1614 try=63270 kill=8892 14%] pd[P=265 try=2776696 kill=640746 23%]
+T3[t=6737s] shard1 r0 #133 cell=(195,88) sc=47481 nodes=33179 r=0
+T3[t=6740s] shard1 r0 #134 cell=(199,90) sc=47498 nodes=33857 r=0
+T3[t=6743s] shard1 r0 #135 cell=(201,92) sc=47481 nodes=35519 r=0
+T3[t=6747s] shard1 r0 #136 cell=(190,95) sc=47490 nodes=48469 r=0
+T3[t=6751s] shard1 r0 #137 cell=(185,98) sc=47491 nodes=51029 r=0
+DEATH sh3 liveend=0 estate=18650979 reach=13734405 dyn=218651 flow=0 geom=3347491
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=318183 kill=64533 nodes=10485760
+ADAPT sh3 rp[P=8192 try=82817 kill=13493 16%] pd[P=303 try=1916088 kill=397382 21%]
+DEATH sh4 liveend=0 estate=21228044 reach=15002058 dyn=491288 flow=0 geom=3405894
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=370654 kill=78410 nodes=1048576
+ADAPT sh4 rp[P=8192 try=47922 kill=5933 12%] pd[P=222 try=2886685 kill=663124 23%]
+DEATH sh0 liveend=0 estate=18898313 reach=13945300 dyn=198832 flow=0 geom=3408523
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=322039 kill=65109 nodes=13631488
+ADAPT sh0 rp[P=8192 try=82447 kill=13427 16%] pd[P=209 try=1924256 kill=395092 21%]
+T3[t=6772s] shard4 r0 #131 cell=(136,211) sc=47499 nodes=1182208 r=0
+T3[t=6777s] shard4 r0 #132 cell=(154,221) sc=47493 nodes=70360 r=1
+STATS {"solved":1,"shard":4,"wall_s":6777,"nodes_total":185576683,"nodes_win":70360,"dth_liveend":0,"dth_estate":21252399,"dth_reach":15017811,"dth_dyn":493051,"dth_flow":0,"dth_geom":3409170,"maxrss_kb":110120,"start_x":154,"start_y":221}
+DEATH@WIN sh4 liveend=0 estate=21252399 reach=15017811 dyn=493051 flow=0 geom=3409170 nodes=70360

@@ -1,0 +1,1535 @@
+  分治：12 块 144 对，可行 40 对，整块淘汰掉 0 格
+有向预计算：走向已定 0/143162 (0.0%) | 无向判定率 0.0% -> 0.0% (0 -> 0 / 71581 边)
+有向预计算：走向已定 0/143162 (0.0%) | 无向判定率 0.0% -> 0.0% (0 -> 0 / 71581 边)
+全局阶段：固定 0 条边，起点候选 50288 / 50288 (100.0%)
+adaptive PROPDEPTH=2 (fixed 0 / 71581 edges; 第一层存活率>=SURVDEEP%再升深层)
+STARTORD: F 升序就位（113 起点，证伪剔除 0）
+FRANK shard7: F降序
+shard 7: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard4: F降序
+shard 4: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard8: F降序
+shard 8: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard1: F降序
+shard 1: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 7: 1.5 层深层重探后剩 9
+shard 7: 第一层存活 9/9 = 100%%, 第二层 开
+FRANK shard2: F降序
+shard 2: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard9: F降序
+shard 9: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard0: F降序
+shard 0: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 8: 1.5 层深层重探后剩 9
+shard 4: 1.5 层深层重探后剩 10
+shard 4: 第一层存活 10/10 = 100%%, 第二层 开
+shard 8: 第一层存活 9/9 = 100%%, 第二层 开
+shard 1: 1.5 层深层重探后剩 10
+shard 1: 第一层存活 10/10 = 100%%, 第二层 开
+FRANK shard3: F降序
+shard 3: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard10: F降序
+shard 10: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 0: 1.5 层深层重探后剩 10
+shard 0: 第一层存活 10/10 = 100%%, 第二层 开
+shard 9: 1.5 层深层重探后剩 9
+shard 9: 第一层存活 9/9 = 100%%, 第二层 开
+FRANK shard5: F降序
+shard 5: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard6: F降序
+shard 6: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 2: 1.5 层深层重探后剩 10
+shard 2: 第一层存活 10/10 = 100%%, 第二层 开
+shard 3: 1.5 层深层重探后剩 10
+shard 3: 第一层存活 10/10 = 100%%, 第二层 开
+shard 10: 1.5 层深层重探后剩 9
+shard 10: 第一层存活 9/9 = 100%%, 第二层 开
+FRANK shard11: F降序
+shard 11: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 5: 1.5 层深层重探后剩 9
+shard 5: 第一层存活 9/9 = 100%%, 第二层 开
+shard 6: 1.5 层深层重探后剩 9
+shard 6: 第一层存活 9/9 = 100%%, 第二层 开
+shard 11: 1.5 层深层重探后剩 9
+shard 11: 第一层存活 9/9 = 100%%, 第二层 开
+T2 sh5 cell=(66,40) PROBE0 nodes=6927
+T2 sh2 cell=(100,42) PROBE0 nodes=31312
+T2 sh7 cell=(14,50) PROBE0 nodes=563
+T2 sh5 cell=(20,46) PROBE0 nodes=659
+T2 sh8 cell=(254,43) PROBE0 nodes=10155
+T2 sh11 cell=(121,145) PROBE0 nodes=9411
+T2 sh2 cell=(123,151) PROBE0 nodes=14474
+T2 sh4 cell=(179,52) PROBE0 nodes=26273
+T2 sh4 cell=(219,70) PROBE0 nodes=7745
+T2 sh8 cell=(32,97) PROBE0 nodes=7116
+T2 sh5 cell=(158,63) PROBE0 nodes=28209
+T2 sh8 cell=(7,180) PROBE0 nodes=9110
+T2 sh1 cell=(220,183) PROBE0 nodes=6617
+T2 sh4 cell=(35,184) PROBE0 nodes=10248
+T2 sh10 cell=(72,23) PROBE0 nodes=17688
+T2 sh7 cell=(221,176) PROBE0 nodes=4635
+probe[t=27s]: 106/113 起点被证伪，剩 7
+DEATH liveend=0 estate=26990 reach=15308 dyn=5624 flow=0 geom=1777
+DYN shard7: 15062 calls, 5624 refuted (37%)
+T2 sh5 cell=(206,83) PROBE0 nodes=27849
+probe[t=28s]: 108/113 起点被证伪，剩 5
+DEATH liveend=0 estate=26702 reach=14644 dyn=5455 flow=0 geom=1759
+DYN shard5: 14682 calls, 5455 refuted (37%)
+T2 sh4 cell=(205,80) PROBE0 nodes=27849
+T2 sh4 cell=(76,43) PROBE0 nodes=615
+probe[t=28s]: 108/113 起点被证伪，剩 5
+DEATH liveend=0 estate=28869 reach=15809 dyn=5979 flow=0 geom=1742
+DYN shard4: 15605 calls, 5979 refuted (38%)
+probe[t=29s]: 107/113 起点被证伪，剩 6
+DEATH liveend=0 estate=26987 reach=14462 dyn=5324 flow=0 geom=2047
+DYN shard8: 14284 calls, 5324 refuted (37%)
+T2 sh1 cell=(20,93) PROBE0 nodes=25163
+T2 sh1 cell=(222,67) PROBE0 nodes=11273
+probe[t=33s]: 106/113 起点被证伪，剩 7
+DEATH liveend=0 estate=31506 reach=17207 dyn=6969 flow=0 geom=2020
+DYN shard1: 18237 calls, 6969 refuted (38%)
+T3[t=33s] shard4 r0 #0 cell=(106,86) sc=50276 nodes=40950 r=0
+probe[t=36s]: 104/113 起点被证伪，剩 9
+DEATH liveend=0 estate=36004 reach=22241 dyn=5635 flow=0 geom=3397
+DYN shard6: 18086 calls, 5635 refuted (31%)
+T2 sh11 cell=(224,25) PROBE0 nodes=22282
+probe[t=37s]: 106/113 起点被证伪，剩 7
+DEATH liveend=0 estate=30538 reach=16661 dyn=6347 flow=0 geom=2101
+DYN shard11: 16691 calls, 6347 refuted (38%)
+T2 sh2 cell=(215,184) PROBE0 nodes=6718
+probe[t=38s]: 104/113 起点被证伪，剩 9
+DEATH liveend=0 estate=35745 reach=23546 dyn=5605 flow=0 geom=3976
+DYN shard9: 18884 calls, 5605 refuted (30%)
+T2 sh10 cell=(7,128) PROBE0 nodes=29930
+T2 sh2 cell=(217,68) PROBE0 nodes=9894
+probe[t=38s]: 107/113 起点被证伪，剩 6
+DEATH liveend=0 estate=32471 reach=17845 dyn=6108 flow=0 geom=2582
+DYN shard2: 16163 calls, 6108 refuted (38%)
+T3[t=38s] shard4 r0 #1 cell=(213,39) sc=50271 nodes=47544 r=0
+T3[t=41s] shard5 r0 #0 cell=(21,55) sc=50268 nodes=124444 r=0
+T3[t=43s] shard7 r0 #0 cell=(205,43) sc=50264 nodes=141307 r=0
+T3[t=43s] shard4 r0 #2 cell=(201,35) sc=50270 nodes=48151 r=0
+T3[t=45s] shard9 r0 #0 cell=(211,63) sc=50267 nodes=64368 r=0
+probe[t=45s]: 106/113 起点被证伪，剩 7
+DEATH liveend=0 estate=32143 reach=17854 dyn=7377 flow=0 geom=2203
+DYN shard10: 19531 calls, 7377 refuted (38%)
+T3[t=48s] shard5 r0 #1 cell=(23,71) sc=50267 nodes=56092 r=0
+T3[t=50s] shard4 r0 #3 cell=(182,66) sc=50267 nodes=72506 r=0
+probe[t=51s]: 103/113 起点被证伪，剩 10
+DEATH liveend=0 estate=38912 reach=23010 dyn=6257 flow=0 geom=3739
+DYN shard3: 20041 calls, 6257 refuted (31%)
+T3[t=51s] shard9 r0 #1 cell=(216,16) sc=50274 nodes=40354 r=0
+T3[t=51s] shard6 r0 #0 cell=(200,40) sc=50274 nodes=126868 r=0
+T3[t=52s] shard10 r0 #0 cell=(202,44) sc=50266 nodes=68607 r=0
+T3[t=52s] shard5 r0 #2 cell=(205,89) sc=50269 nodes=37347 r=0
+probe[t=56s]: 103/113 起点被证伪，剩 10
+DEATH liveend=0 estate=40989 reach=25377 dyn=6353 flow=0 geom=4622
+DYN shard0: 22015 calls, 6353 refuted (29%)
+T3[t=57s] shard7 r0 #1 cell=(28,56) sc=50269 nodes=122149 r=0
+T3[t=58s] shard11 r0 #0 cell=(33,45) sc=50267 nodes=171971 r=0
+T3[t=59s] shard1 r0 #0 cell=(32,46) sc=50271 nodes=228504 r=0
+T3[t=59s] shard6 r0 #1 cell=(194,54) sc=50268 nodes=77377 r=0
+T3[t=60s] shard5 r0 #3 cell=(30,68) sc=50254 nodes=58594 r=0
+T3[t=63s] shard7 r0 #2 cell=(5,75) sc=50266 nodes=45285 r=0
+T3[t=66s] shard3 r0 #0 cell=(199,37) sc=50274 nodes=126840 r=0
+T3[t=68s] shard6 r0 #2 cell=(199,63) sc=50268 nodes=65900 r=0
+T3[t=73s] shard3 r0 #1 cell=(1,85) sc=50275 nodes=36061 r=0
+T3[t=74s] shard7 r0 #3 cell=(198,70) sc=50281 nodes=111496 r=0
+T3[t=74s] shard10 r0 #1 cell=(21,59) sc=50262 nodes=135648 r=0
+T3[t=76s] shard1 r0 #1 cell=(15,61) sc=50264 nodes=109148 r=0
+T3[t=78s] shard7 r0 #4 cell=(199,61) sc=50263 nodes=40614 r=0
+T3[t=79s] shard3 r0 #2 cell=(217,179) sc=50278 nodes=47504 r=0
+T3[t=82s] shard1 r0 #2 cell=(25,83) sc=50264 nodes=49196 r=0
+T3[t=87s] shard6 r0 #3 cell=(195,71) sc=50272 nodes=175672 r=0
+T3[t=89s] shard10 r0 #2 cell=(34,64) sc=50269 nodes=76599 r=0
+T3[t=91s] shard3 r0 #3 cell=(25,71) sc=50265 nodes=62347 r=0
+T3[t=94s] shard0 r0 #0 cell=(12,68) sc=50271 nodes=222980 r=0
+T3[t=94s] shard6 r0 #4 cell=(206,90) sc=50263 nodes=61870 r=0
+T3[t=94s] shard5 r0 #4 cell=(25,54) sc=50260 nodes=286389 r=0
+sweep shard5 round0 done (budget 3000000)
+sweep shard5 round1 done (budget 3000000)
+sweep shard5 round2 done (budget 6000000)
+sweep shard5 round3 done (budget 3000000)
+sweep shard5 round4 done (budget 3000000)
+sweep shard5 round5 done (budget 6000000)
+sweep shard5 round6 done (budget 12000000)
+sweep shard5 round7 done (budget 3000000)
+sweep shard5 round8 done (budget 3000000)
+sweep shard5 round9 done (budget 6000000)
+sweep shard5 round10 done (budget 3000000)
+sweep shard5 round11 done (budget 3000000)
+sweep shard5 round12 done (budget 6000000)
+sweep shard5 round13 done (budget 12000000)
+sweep shard5 round14 done (budget 24000000)
+sweep shard5 round15 done (budget 3000000)
+sweep shard5 round16 done (budget 3000000)
+sweep shard5 round17 done (budget 6000000)
+sweep shard5 round18 done (budget 3000000)
+sweep shard5 round19 done (budget 3000000)
+sweep shard5 round20 done (budget 6000000)
+sweep shard5 round21 done (budget 12000000)
+sweep shard5 round22 done (budget 3000000)
+sweep shard5 round23 done (budget 3000000)
+sweep shard5 round24 done (budget 6000000)
+sweep shard5 round25 done (budget 3000000)
+sweep shard5 round26 done (budget 3000000)
+sweep shard5 round27 done (budget 6000000)
+sweep shard5 round28 done (budget 12000000)
+sweep shard5 round29 done (budget 24000000)
+sweep shard5 round30 done (budget 48000000)
+sweep shard5 round31 done (budget 3000000)
+sweep shard5 round32 done (budget 3000000)
+sweep shard5 round33 done (budget 6000000)
+sweep shard5 round34 done (budget 3000000)
+sweep shard5 round35 done (budget 3000000)
+sweep shard5 round36 done (budget 6000000)
+sweep shard5 round37 done (budget 12000000)
+sweep shard5 round38 done (budget 3000000)
+sweep shard5 round39 done (budget 4611686018427387904)
+no solution found
+STATS {"solved":0,"shard":5,"wall_s":94,"nodes_total":786713,"nodes_win":-1,"dth_liveend":0,"dth_estate":92434,"dth_reach":49540,"dth_dyn":19846,"dth_flow":0,"dth_geom":5957,"maxrss_kb":23784,"start_x":-1,"start_y":-1}
+T3[t=95s] shard1 r0 #3 cell=(36,40) sc=50263 nodes=122896 r=0
+T3[t=100s] shard6 r0 #5 cell=(227,89) sc=50272 nodes=55038 r=0
+T3[t=112s] shard10 r0 #3 cell=(10,67) sc=50263 nodes=198649 r=0
+T3[t=113s] shard1 r0 #4 cell=(17,30) sc=50266 nodes=153893 r=0
+DEATH sh2 liveend=0 estate=172047 reach=111299 dyn=7139 flow=0 geom=24074
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=2603 kill=632 nodes=1048576
+ADAPT sh2 rp[P=8192 try=583 kill=76 13%] pd[P=30 try=30283 kill=8644 29%]
+DEATH sh8 liveend=0 estate=179521 reach=118692 dyn=5848 flow=0 geom=27511
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=2533 kill=552 nodes=1048576
+ADAPT sh8 rp[P=8192 try=368 kill=32 9%] pd[P=74 try=36470 kill=8953 25%]
+T3[t=115s] shard0 r0 #1 cell=(193,81) sc=50268 nodes=239841 r=0
+T3[t=116s] shard10 r0 #4 cell=(10,79) sc=50275 nodes=33406 r=0
+T3[t=120s] shard10 r0 #5 cell=(199,56) sc=50268 nodes=36894 r=0
+T3[t=121s] shard1 r0 #5 cell=(197,68) sc=50267 nodes=78214 r=0
+DEATH sh4 liveend=0 estate=193294 reach=123032 dyn=13429 flow=0 geom=24051
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=2977 kill=553 nodes=1048576
+ADAPT sh4 rp[P=8192 try=652 kill=84 13%] pd[P=66 try=28813 kill=8263 29%]
+T3[t=126s] shard0 r0 #2 cell=(103,177) sc=50268 nodes=36851 r=0
+T3[t=126s] shard3 r0 #4 cell=(218,51) sc=50268 nodes=160785 r=0
+T3[t=126s] shard10 r0 #6 cell=(30,75) sc=50276 nodes=48008 r=0
+sweep shard10 round0 done (budget 3000000)
+sweep shard10 round1 done (budget 3000000)
+sweep shard10 round2 done (budget 6000000)
+sweep shard10 round3 done (budget 3000000)
+sweep shard10 round4 done (budget 3000000)
+sweep shard10 round5 done (budget 6000000)
+sweep shard10 round6 done (budget 12000000)
+sweep shard10 round7 done (budget 3000000)
+sweep shard10 round8 done (budget 3000000)
+sweep shard10 round9 done (budget 6000000)
+sweep shard10 round10 done (budget 3000000)
+sweep shard10 round11 done (budget 3000000)
+sweep shard10 round12 done (budget 6000000)
+sweep shard10 round13 done (budget 12000000)
+sweep shard10 round14 done (budget 24000000)
+sweep shard10 round15 done (budget 3000000)
+sweep shard10 round16 done (budget 3000000)
+sweep shard10 round17 done (budget 6000000)
+sweep shard10 round18 done (budget 3000000)
+sweep shard10 round19 done (budget 3000000)
+sweep shard10 round20 done (budget 6000000)
+sweep shard10 round21 done (budget 12000000)
+sweep shard10 round22 done (budget 3000000)
+sweep shard10 round23 done (budget 3000000)
+sweep shard10 round24 done (budget 6000000)
+sweep shard10 round25 done (budget 3000000)
+sweep shard10 round26 done (budget 3000000)
+sweep shard10 round27 done (budget 6000000)
+sweep shard10 round28 done (budget 12000000)
+sweep shard10 round29 done (budget 24000000)
+sweep shard10 round30 done (budget 48000000)
+sweep shard10 round31 done (budget 3000000)
+sweep shard10 round32 done (budget 3000000)
+sweep shard10 round33 done (budget 6000000)
+sweep shard10 round34 done (budget 3000000)
+sweep shard10 round35 done (budget 3000000)
+sweep shard10 round36 done (budget 6000000)
+sweep shard10 round37 done (budget 12000000)
+sweep shard10 round38 done (budget 3000000)
+sweep shard10 round39 done (budget 4611686018427387904)
+no solution found
+STATS {"solved":0,"shard":10,"wall_s":126,"nodes_total":869634,"nodes_win":-1,"dth_liveend":0,"dth_estate":101617,"dth_reach":56601,"dth_dyn":22666,"dth_flow":0,"dth_geom":6892,"maxrss_kb":23792,"start_x":-1,"start_y":-1}
+T3[t=132s] shard1 r0 #6 cell=(188,63) sc=50259 nodes=112419 r=0
+sweep shard1 round0 done (budget 3000000)
+sweep shard1 round1 done (budget 3000000)
+sweep shard1 round2 done (budget 6000000)
+sweep shard1 round3 done (budget 3000000)
+sweep shard1 round4 done (budget 3000000)
+sweep shard1 round5 done (budget 6000000)
+sweep shard1 round6 done (budget 12000000)
+sweep shard1 round7 done (budget 3000000)
+sweep shard1 round8 done (budget 3000000)
+sweep shard1 round9 done (budget 6000000)
+sweep shard1 round10 done (budget 3000000)
+sweep shard1 round11 done (budget 3000000)
+sweep shard1 round12 done (budget 6000000)
+sweep shard1 round13 done (budget 12000000)
+sweep shard1 round14 done (budget 24000000)
+sweep shard1 round15 done (budget 3000000)
+sweep shard1 round16 done (budget 3000000)
+sweep shard1 round17 done (budget 6000000)
+sweep shard1 round18 done (budget 3000000)
+sweep shard1 round19 done (budget 3000000)
+sweep shard1 round20 done (budget 6000000)
+sweep shard1 round21 done (budget 12000000)
+sweep shard1 round22 done (budget 3000000)
+sweep shard1 round23 done (budget 3000000)
+sweep shard1 round24 done (budget 6000000)
+sweep shard1 round25 done (budget 3000000)
+sweep shard1 round26 done (budget 3000000)
+sweep shard1 round27 done (budget 6000000)
+sweep shard1 round28 done (budget 12000000)
+sweep shard1 round29 done (budget 24000000)
+sweep shard1 round30 done (budget 48000000)
+sweep shard1 round31 done (budget 3000000)
+sweep shard1 round32 done (budget 3000000)
+sweep shard1 round33 done (budget 6000000)
+sweep shard1 round34 done (budget 3000000)
+sweep shard1 round35 done (budget 3000000)
+sweep shard1 round36 done (budget 6000000)
+sweep shard1 round37 done (budget 12000000)
+sweep shard1 round38 done (budget 3000000)
+sweep shard1 round39 done (budget 4611686018427387904)
+no solution found
+STATS {"solved":0,"shard":1,"wall_s":132,"nodes_total":1121550,"nodes_win":-1,"dth_liveend":0,"dth_estate":131456,"dth_reach":72555,"dth_dyn":28794,"dth_flow":0,"dth_geom":9016,"maxrss_kb":24016,"start_x":-1,"start_y":-1}
+T3[t=135s] shard3 r0 #5 cell=(8,63) sc=50266 nodes=56794 r=0
+DEATH sh11 liveend=0 estate=202742 reach=131628 dyn=11244 flow=0 geom=28908
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=2950 kill=553 nodes=1048576
+ADAPT sh11 rp[P=8192 try=381 kill=31 8%] pd[P=74 try=36132 kill=8871 25%]
+T3[t=143s] shard0 r0 #3 cell=(221,26) sc=50263 nodes=160018 r=0
+T3[t=149s] shard9 r0 #2 cell=(34,44) sc=50272 nodes=797301 r=0
+T3[t=150s] shard0 r0 #4 cell=(90,45) sc=50268 nodes=38643 r=0
+DEATH sh7 liveend=0 estate=216376 reach=137713 dyn=21779 flow=0 geom=25574
+PDEV sh7 try=0 kill=0 (0.0%) BJ try=3474 kill=507 nodes=1048576
+ADAPT sh7 rp[P=7369 try=372 kill=25 7%] pd[P=166 try=26085 kill=7376 28%]
+DEATH sh8 liveend=0 estate=326277 reach=219461 dyn=5848 flow=0 geom=52130
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=4630 kill=1032 nodes=2097152
+ADAPT sh8 rp[P=8192 try=548 kill=46 8%] pd[P=61 try=70713 kill=17307 24%]
+T3[t=186s] shard9 r0 #3 cell=(198,66) sc=50269 nodes=402172 r=0
+DEATH sh11 liveend=0 estate=349500 reach=232421 dyn=11244 flow=0 geom=53511
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=5047 kill=1025 nodes=2097152
+ADAPT sh11 rp[P=8192 try=562 kill=45 8%] pd[P=61 try=70389 kill=17246 25%]
+DEATH sh2 liveend=0 estate=312754 reach=204549 dyn=10133 flow=0 geom=45043
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=4700 kill=1193 nodes=2097152
+ADAPT sh2 rp[P=8192 try=1032 kill=141 14%] pd[P=106 try=59323 kill=17094 29%]
+T3[t=193s] shard9 r0 #4 cell=(33,55) sc=50261 nodes=49552 r=0
+DEATH sh4 liveend=0 estate=333126 reach=216206 dyn=16493 flow=0 geom=44817
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=5074 kill=1072 nodes=2097152
+ADAPT sh4 rp[P=8192 try=846 kill=101 12%] pd[P=121 try=58520 kill=16832 29%]
+T3[t=207s] shard6 r0 #6 cell=(199,46) sc=50259 nodes=1012465 r=0
+T3[t=213s] shard8 r0 #0 cell=(48,58) sc=50268 nodes=3000001 r=-1
+T3[t=216s] shard9 r0 #5 cell=(117,73) sc=50276 nodes=130926 r=0
+T3[t=218s] shard6 r0 #7 cell=(234,69) sc=50260 nodes=88267 r=0
+DEATH sh7 liveend=0 estate=354104 reach=232845 dyn=24761 flow=0 geom=47230
+PDEV sh7 try=0 kill=0 (0.0%) BJ try=5571 kill=1045 nodes=2097152
+ADAPT sh7 rp[P=8192 try=546 kill=38 7%] pd[P=71 try=55526 kill=15767 28%]
+T3[t=226s] shard8 r0 #1 cell=(37,51) sc=50263 nodes=122487 r=0
+T3[t=228s] shard0 r0 #5 cell=(210,59) sc=50267 nodes=760741 r=0
+T3[t=234s] shard8 r0 #2 cell=(7,73) sc=50268 nodes=63777 r=0
+T3[t=237s] shard11 r0 #1 cell=(45,67) sc=50271 nodes=3000001 r=-1
+T3[t=241s] shard11 r0 #2 cell=(25,81) sc=50265 nodes=38588 r=0
+T3[t=245s] shard11 r0 #3 cell=(23,79) sc=50269 nodes=41026 r=0
+T3[t=248s] shard2 r0 #0 cell=(39,69) sc=50262 nodes=3000001 r=-1
+T3[t=250s] shard11 r0 #4 cell=(172,59) sc=50265 nodes=52678 r=0
+DEATH sh3 liveend=0 estate=225471 reach=137577 dyn=33995 flow=0 geom=23687
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=3715 kill=115 nodes=1048576
+ADAPT sh3 rp[P=5201 try=962 kill=142 15%] pd[P=8192 try=285 kill=6 2%]
+T3[t=253s] shard4 r0 #4 cell=(49,63) sc=50273 nodes=3000001 r=-1
+sweep shard4 round0 done (budget 3000000)
+T3[t=257s] shard11 r0 #5 cell=(22,61) sc=50267 nodes=56182 r=0
+T3[t=262s] shard11 r0 #6 cell=(47,66) sc=50272 nodes=48553 r=0
+sweep shard11 round0 done (budget 3000000)
+T3[t=276s] shard2 r0 #1 cell=(200,64) sc=50265 nodes=291015 r=0
+T3[t=285s] shard7 r0 #5 cell=(40,65) sc=50260 nodes=3000001 r=-1
+T3[t=288s] shard7 r0 #6 cell=(218,95) sc=50262 nodes=44419 r=0
+sweep shard7 round0 done (budget 3000000)
+T3[t=291s] shard8 r0 #3 cell=(35,66) sc=50266 nodes=521781 r=0
+T3[t=293s] shard2 r0 #2 cell=(18,35) sc=50277 nodes=153893 r=0
+T3[t=295s] shard9 r0 #6 cell=(209,58) sc=50265 nodes=701455 r=0
+T3[t=307s] shard3 r0 #6 cell=(55,70) sc=50267 nodes=1565301 r=0
+T3[t=310s] shard8 r0 #4 cell=(7,76) sc=50269 nodes=155277 r=0
+DEATH sh4 liveend=0 estate=591052 reach=388343 dyn=20186 flow=0 geom=83654
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=8977 kill=2047 nodes=1048576
+ADAPT sh4 rp[P=8192 try=1537 kill=198 13%] pd[P=66 try=112976 kill=32507 29%]
+T3[t=325s] shard2 r0 #3 cell=(29,50) sc=50271 nodes=286472 r=0
+DEATH sh6 liveend=0 estate=374891 reach=233537 dyn=49198 flow=0 geom=41480
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=5995 kill=269 nodes=1048576
+ADAPT sh6 rp[P=5201 try=1498 kill=216 14%] pd[P=161 try=4873 kill=943 19%]
+DEATH sh11 liveend=0 estate=657777 reach=439420 dyn=17769 flow=0 geom=102385
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=9423 kill=1982 nodes=1048576
+ADAPT sh11 rp[P=8192 try=958 kill=78 8%] pd[P=74 try=137426 kill=33735 25%]
+T3[t=343s] shard9 r0 #7 cell=(183,78) sc=50272 nodes=442401 r=0
+DEATH sh0 liveend=0 estate=354064 reach=220504 dyn=49928 flow=0 geom=40169
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=5652 kill=210 nodes=1048576
+ADAPT sh0 rp[P=4679 try=790 kill=93 12%] pd[P=8192 try=410 kill=9 2%]
+DEATH sh7 liveend=0 estate=613032 reach=408028 dyn=33770 flow=0 geom=86099
+PDEV sh7 try=0 kill=0 (0.0%) BJ try=9562 kill=1981 nodes=1048576
+ADAPT sh7 rp[P=7369 try=908 kill=72 8%] pd[P=166 try=106289 kill=30126 28%]
+T3[t=365s] shard9 r0 #8 cell=(11,116) sc=50267 nodes=191955 r=0
+sweep shard9 round0 done (budget 3000000)
+sweep shard9 round1 done (budget 3000000)
+sweep shard9 round2 done (budget 6000000)
+sweep shard9 round3 done (budget 3000000)
+sweep shard9 round4 done (budget 3000000)
+sweep shard9 round5 done (budget 6000000)
+sweep shard9 round6 done (budget 12000000)
+sweep shard9 round7 done (budget 3000000)
+sweep shard9 round8 done (budget 3000000)
+sweep shard9 round9 done (budget 6000000)
+sweep shard9 round10 done (budget 3000000)
+sweep shard9 round11 done (budget 3000000)
+sweep shard9 round12 done (budget 6000000)
+sweep shard9 round13 done (budget 12000000)
+sweep shard9 round14 done (budget 24000000)
+sweep shard9 round15 done (budget 3000000)
+sweep shard9 round16 done (budget 3000000)
+sweep shard9 round17 done (budget 6000000)
+sweep shard9 round18 done (budget 3000000)
+sweep shard9 round19 done (budget 3000000)
+sweep shard9 round20 done (budget 6000000)
+sweep shard9 round21 done (budget 12000000)
+sweep shard9 round22 done (budget 3000000)
+sweep shard9 round23 done (budget 3000000)
+sweep shard9 round24 done (budget 6000000)
+sweep shard9 round25 done (budget 3000000)
+sweep shard9 round26 done (budget 3000000)
+sweep shard9 round27 done (budget 6000000)
+sweep shard9 round28 done (budget 12000000)
+sweep shard9 round29 done (budget 24000000)
+sweep shard9 round30 done (budget 48000000)
+sweep shard9 round31 done (budget 3000000)
+sweep shard9 round32 done (budget 3000000)
+sweep shard9 round33 done (budget 6000000)
+sweep shard9 round34 done (budget 3000000)
+sweep shard9 round35 done (budget 3000000)
+sweep shard9 round36 done (budget 6000000)
+sweep shard9 round37 done (budget 12000000)
+sweep shard9 round38 done (budget 3000000)
+sweep shard9 round39 done (budget 4611686018427387904)
+no solution found
+STATS {"solved":0,"shard":9,"wall_s":365,"nodes_total":3108691,"nodes_win":-1,"dth_liveend":0,"dth_estate":390031,"dth_reach":249625,"dth_dyn":53210,"dth_flow":0,"dth_geom":45634,"maxrss_kb":23568,"start_x":-1,"start_y":-1}
+DEATH sh8 liveend=0 estate=698987 reach=463870 dyn=31698 flow=0 geom=105345
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=10257 kill=1995 nodes=1048576
+ADAPT sh8 rp[P=8192 try=1045 kill=91 9%] pd[P=98 try=131413 kill=32274 25%]
+DEATH sh2 liveend=0 estate=655962 reach=426520 dyn=32071 flow=0 geom=90407
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=10064 kill=2221 nodes=1048576
+ADAPT sh2 rp[P=8192 try=1444 kill=166 11%] pd[P=44 try=115888 kill=33160 29%]
+DEATH sh11 liveend=0 estate=804535 reach=540213 dyn=17769 flow=0 geom=126988
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=11520 kill=2454 nodes=2097152
+ADAPT sh11 rp[P=8192 try=1139 kill=92 8%] pd[P=61 try=171683 kill=42110 25%]
+DEATH sh4 liveend=0 estate=730884 reach=481517 dyn=23250 flow=0 geom=104420
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=11074 kill=2566 nodes=2097152
+ADAPT sh4 rp[P=8192 try=1731 kill=215 12%] pd[P=121 try=142683 kill=41076 29%]
+DEATH sh3 liveend=0 estate=415459 reach=254000 dyn=61770 flow=0 geom=44497
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=6845 kill=173 nodes=1048576
+ADAPT sh3 rp[P=8192 try=1423 kill=209 15%] pd[P=8192 try=473 kill=10 2%]
+T3[t=429s] shard0 r0 #6 cell=(17,62) sc=50276 nodes=1742362 r=0
+DEATH sh7 liveend=0 estate=750760 reach=503160 dyn=36752 flow=0 geom=107755
+PDEV sh7 try=0 kill=0 (0.0%) BJ try=11659 kill=2519 nodes=2097152
+ADAPT sh7 rp[P=8192 try=1082 kill=85 8%] pd[P=71 try=135730 kill=38517 28%]
+DEATH sh8 liveend=0 estate=840153 reach=569072 dyn=31698 flow=0 geom=131975
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=12354 kill=2494 nodes=2097152
+ADAPT sh8 rp[P=7830 try=1217 kill=103 8%] pd[P=26 try=161604 kill=39499 24%]
+DEATH sh6 liveend=0 estate=531723 reach=354534 dyn=49198 flow=0 geom=69064
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=8092 kill=684 nodes=2097152
+ADAPT sh6 rp[P=1860 try=6946 kill=1199 17%] pd[P=74 try=29238 kill=5592 19%]
+T3[t=440s] shard11 r1 #1 cell=(45,67) sc=50271 nodes=3000001 r=-1
+sweep shard11 round1 done (budget 3000000)
+T3[t=455s] shard4 r1 #4 cell=(49,63) sc=50273 nodes=3000001 r=-1
+sweep shard4 round1 done (budget 3000000)
+DEATH sh2 liveend=0 estate=792499 reach=520958 dyn=35323 flow=0 geom=111698
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=12161 kill=2730 nodes=2097152
+ADAPT sh2 rp[P=8192 try=1613 kill=178 11%] pd[P=52 try=144750 kill=41300 29%]
+T3[t=461s] shard8 r0 #5 cell=(49,62) sc=50273 nodes=3000001 r=-1
+sweep shard8 round0 done (budget 3000000)
+T3[t=495s] shard7 r1 #5 cell=(40,65) sc=50260 nodes=3000001 r=-1
+sweep shard7 round1 done (budget 3000000)
+DEATH sh11 liveend=0 estate=1085433 reach=732227 dyn=18373 flow=0 geom=174110
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=15423 kill=3406 nodes=1048576
+ADAPT sh11 rp[P=8192 try=1496 kill=122 8%] pd[P=74 try=238690 kill=58598 25%]
+T3[t=520s] shard6 r0 #8 cell=(46,59) sc=50269 nodes=3000001 r=-1
+sweep shard6 round0 done (budget 3000000)
+DEATH sh4 liveend=0 estate=988810 reach=653654 dyn=26943 flow=0 geom=143257
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=14977 kill=3541 nodes=1048576
+ADAPT sh4 rp[P=8192 try=2422 kill=312 13%] pd[P=66 try=197139 kill=56751 29%]
+T3[t=523s] shard2 r0 #4 cell=(37,62) sc=50269 nodes=3000001 r=-1
+T3[t=526s] shard2 r0 #5 cell=(217,84) sc=50266 nodes=35022 r=0
+sweep shard2 round0 done (budget 3000000)
+DEATH sh8 liveend=0 estate=1109951 reach=758692 dyn=32222 flow=0 geom=179383
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=16257 kill=3434 nodes=1048576
+ADAPT sh8 rp[P=8192 try=1551 kill=127 8%] pd[P=74 try=219119 kill=53258 24%]
+DEATH sh3 liveend=0 estate=543085 reach=331824 dyn=80547 flow=0 geom=58432
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=8942 kill=205 nodes=2097152
+ADAPT sh3 rp[P=6935 try=1645 kill=236 14%] pd[P=8192 try=592 kill=12 2%]
+DEATH sh0 liveend=0 estate=565618 reach=350009 dyn=80856 flow=0 geom=63152
+PDEV sh0 try=0 kill=0 (0.0%) BJ try=9136 kill=268 nodes=1048576
+ADAPT sh0 rp[P=8192 try=1268 kill=161 13%] pd[P=8192 try=623 kill=14 2%]
+T3[t=557s] shard0 r0 #7 cell=(6,85) sc=50275 nodes=1156377 r=0
+DEATH sh7 liveend=0 estate=1004730 reach=675734 dyn=44827 flow=0 geom=146427
+PDEV sh7 try=0 kill=0 (0.0%) BJ try=15562 kill=3469 nodes=1048576
+ADAPT sh7 rp[P=8192 try=1565 kill=142 9%] pd[P=34 try=186118 kill=52745 28%]
+DEATH sh11 liveend=0 estate=1232191 reach=833020 dyn=18373 flow=0 geom=198713
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=17520 kill=3878 nodes=2097152
+ADAPT sh11 rp[P=8192 try=1677 kill=136 8%] pd[P=61 try=272947 kill=66973 25%]
+T3[t=566s] shard3 r0 #7 cell=(17,28) sc=50258 nodes=2321228 r=0
+T3[t=586s] shard0 r0 #8 cell=(179,66) sc=50267 nodes=305630 r=0
+DEATH sh8 liveend=0 estate=1256707 reach=859461 dyn=32222 flow=0 geom=204002
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=18354 kill=3914 nodes=2097152
+ADAPT sh8 rp[P=8192 try=1731 kill=141 8%] pd[P=61 try=253362 kill=61612 24%]
+DEATH sh2 liveend=0 estate=1055514 reach=698878 dyn=40427 flow=0 geom=152057
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=16134 kill=3760 nodes=1048576
+ADAPT sh2 rp[P=8192 try=2055 kill=229 11%] pd[P=30 try=199406 kill=56923 29%]
+DEATH sh4 liveend=0 estate=1128642 reach=746828 dyn=30007 flow=0 geom=164023
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=17074 kill=4060 nodes=2097152
+ADAPT sh4 rp[P=8192 try=2616 kill=329 13%] pd[P=121 try=226846 kill=65320 29%]
+T3[t=602s] shard0 r0 #9 cell=(217,28) sc=50272 nodes=159849 r=0
+sweep shard0 round0 done (budget 3000000)
+sweep shard0 round1 done (budget 3000000)
+sweep shard0 round2 done (budget 6000000)
+sweep shard0 round3 done (budget 3000000)
+sweep shard0 round4 done (budget 3000000)
+sweep shard0 round5 done (budget 6000000)
+sweep shard0 round6 done (budget 12000000)
+sweep shard0 round7 done (budget 3000000)
+sweep shard0 round8 done (budget 3000000)
+sweep shard0 round9 done (budget 6000000)
+sweep shard0 round10 done (budget 3000000)
+sweep shard0 round11 done (budget 3000000)
+sweep shard0 round12 done (budget 6000000)
+sweep shard0 round13 done (budget 12000000)
+sweep shard0 round14 done (budget 24000000)
+sweep shard0 round15 done (budget 3000000)
+sweep shard0 round16 done (budget 3000000)
+sweep shard0 round17 done (budget 6000000)
+sweep shard0 round18 done (budget 3000000)
+sweep shard0 round19 done (budget 3000000)
+sweep shard0 round20 done (budget 6000000)
+sweep shard0 round21 done (budget 12000000)
+sweep shard0 round22 done (budget 3000000)
+sweep shard0 round23 done (budget 3000000)
+sweep shard0 round24 done (budget 6000000)
+sweep shard0 round25 done (budget 3000000)
+sweep shard0 round26 done (budget 3000000)
+sweep shard0 round27 done (budget 6000000)
+sweep shard0 round28 done (budget 12000000)
+sweep shard0 round29 done (budget 24000000)
+sweep shard0 round30 done (budget 48000000)
+sweep shard0 round31 done (budget 3000000)
+sweep shard0 round32 done (budget 3000000)
+sweep shard0 round33 done (budget 6000000)
+sweep shard0 round34 done (budget 3000000)
+sweep shard0 round35 done (budget 3000000)
+sweep shard0 round36 done (budget 6000000)
+sweep shard0 round37 done (budget 12000000)
+sweep shard0 round38 done (budget 3000000)
+sweep shard0 round39 done (budget 4611686018427387904)
+no solution found
+STATS {"solved":0,"shard":0,"wall_s":602,"nodes_total":5143522,"nodes_win":-1,"dth_liveend":0,"dth_estate":636180,"dth_reach":393838,"dth_dyn":90392,"dth_flow":0,"dth_geom":71121,"maxrss_kb":24276,"start_x":-1,"start_y":-1}
+DEATH sh11 liveend=0 estate=1381268 reach=935579 dyn=18373 flow=0 geom=224065
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=19617 kill=4372 nodes=3145728
+ADAPT sh11 rp[P=8192 try=1872 kill=155 8%] pd[P=66 try=308798 kill=75830 25%]
+DEATH sh6 liveend=0 estate=799587 reach=547888 dyn=63439 flow=0 geom=111559
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=11995 kill=1222 nodes=1048576
+ADAPT sh6 rp[P=610 try=15146 kill=2678 18%] pd[P=265 try=51526 kill=9900 19%]
+T3[t=632s] shard8 r1 #0 cell=(48,58) sc=50268 nodes=3000001 r=-1
+DEATH sh7 liveend=0 estate=1142623 reach=770893 dyn=47807 flow=0 geom=168040
+PDEV sh7 try=0 kill=0 (0.0%) BJ try=17659 kill=4009 nodes=2097152
+ADAPT sh7 rp[P=8192 try=1768 kill=159 9%] pd[P=30 try=215469 kill=61132 28%]
+DEATH sh3 liveend=0 estate=724571 reach=467104 dyn=85011 flow=0 geom=89165
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=11487 kill=663 nodes=1048576
+ADAPT sh3 rp[P=2947 try=7865 kill=1358 17%] pd[P=30 try=22227 kill=4225 19%]
+DEATH sh2 liveend=0 estate=1196221 reach=792128 dyn=43421 flow=0 geom=173026
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=18231 kill=4321 nodes=2097152
+ADAPT sh2 rp[P=8192 try=2504 kill=294 12%] pd[P=106 try=228446 kill=65373 29%]
+DEATH sh7 liveend=0 estate=1280345 reach=866095 dyn=50791 flow=0 geom=189622
+PDEV sh7 try=0 kill=0 (0.0%) BJ try=19756 kill=4572 nodes=3145728
+ADAPT sh7 rp[P=8192 try=2047 kill=192 9%] pd[P=207 try=244654 kill=69463 28%]
+DEATH sh8 liveend=0 estate=1525882 reach=1050879 dyn=34871 flow=0 geom=250500
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=22257 kill=4824 nodes=1048576
+ADAPT sh8 rp[P=8192 try=2550 kill=258 10%] pd[P=35 try=313680 kill=76481 24%]
+DEATH sh11 liveend=0 estate=1535436 reach=1040995 dyn=19799 flow=0 geom=249644
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=21714 kill=4851 nodes=4194304
+ADAPT sh11 rp[P=8082 try=2075 kill=176 8%] pd[P=56 try=346476 kill=84766 24%]
+DEATH sh4 liveend=0 estate=1406571 reach=933113 dyn=33108 flow=0 geom=206483
+PDEV sh4 try=0 kill=0 (0.0%) BJ try=21268 kill=5134 nodes=4194304
+ADAPT sh4 rp[P=5706 try=3277 kill=417 13%] pd[P=38 try=286122 kill=82332 29%]
+T3[t=719s] shard2 r1 #0 cell=(39,69) sc=50262 nodes=3000001 r=-1
+DEATH sh6 liveend=0 estate=955617 reach=669215 dyn=63439 flow=0 geom=139173
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=14092 kill=1664 nodes=2097152
+ADAPT sh6 rp[P=1004 try=23974 kill=4267 18%] pd[P=45 try=73006 kill=13997 19%]
+T3[t=743s] shard4 r2 #4 cell=(49,63) sc=50273 nodes=4519552 r=0
+sweep shard4 round2 done (budget 6000000)
+sweep shard4 round3 done (budget 3000000)
+sweep shard4 round4 done (budget 3000000)
+sweep shard4 round5 done (budget 6000000)
+sweep shard4 round6 done (budget 12000000)
+sweep shard4 round7 done (budget 3000000)
+sweep shard4 round8 done (budget 3000000)
+sweep shard4 round9 done (budget 6000000)
+sweep shard4 round10 done (budget 3000000)
+sweep shard4 round11 done (budget 3000000)
+sweep shard4 round12 done (budget 6000000)
+sweep shard4 round13 done (budget 12000000)
+sweep shard4 round14 done (budget 24000000)
+sweep shard4 round15 done (budget 3000000)
+sweep shard4 round16 done (budget 3000000)
+sweep shard4 round17 done (budget 6000000)
+sweep shard4 round18 done (budget 3000000)
+sweep shard4 round19 done (budget 3000000)
+sweep shard4 round20 done (budget 6000000)
+sweep shard4 round21 done (budget 12000000)
+sweep shard4 round22 done (budget 3000000)
+sweep shard4 round23 done (budget 3000000)
+sweep shard4 round24 done (budget 6000000)
+sweep shard4 round25 done (budget 3000000)
+sweep shard4 round26 done (budget 3000000)
+sweep shard4 round27 done (budget 6000000)
+sweep shard4 round28 done (budget 12000000)
+sweep shard4 round29 done (budget 24000000)
+sweep shard4 round30 done (budget 48000000)
+sweep shard4 round31 done (budget 3000000)
+sweep shard4 round32 done (budget 3000000)
+sweep shard4 round33 done (budget 6000000)
+sweep shard4 round34 done (budget 3000000)
+sweep shard4 round35 done (budget 3000000)
+sweep shard4 round36 done (budget 6000000)
+sweep shard4 round37 done (budget 12000000)
+sweep shard4 round38 done (budget 3000000)
+sweep shard4 round39 done (budget 4611686018427387904)
+no solution found
+STATS {"solved":0,"shard":4,"wall_s":743,"nodes_total":10961660,"nodes_win":-1,"dth_liveend":0,"dth_estate":1449598,"dth_reach":961419,"dth_dyn":35252,"dth_flow":0,"dth_geom":212453,"maxrss_kb":32080,"start_x":-1,"start_y":-1}
+DEATH sh8 liveend=0 estate=1667145 reach=1156015 dyn=34871 flow=0 geom=277109
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=24354 kill=5276 nodes=2097152
+ADAPT sh8 rp[P=8192 try=2725 kill=272 10%] pd[P=142 try=343921 kill=83674 24%]
+T3[t=753s] shard7 r2 #5 cell=(40,65) sc=50260 nodes=4080052 r=0
+sweep shard7 round2 done (budget 6000000)
+sweep shard7 round3 done (budget 3000000)
+sweep shard7 round4 done (budget 3000000)
+sweep shard7 round5 done (budget 6000000)
+sweep shard7 round6 done (budget 12000000)
+sweep shard7 round7 done (budget 3000000)
+sweep shard7 round8 done (budget 3000000)
+sweep shard7 round9 done (budget 6000000)
+sweep shard7 round10 done (budget 3000000)
+sweep shard7 round11 done (budget 3000000)
+sweep shard7 round12 done (budget 6000000)
+sweep shard7 round13 done (budget 12000000)
+sweep shard7 round14 done (budget 24000000)
+sweep shard7 round15 done (budget 3000000)
+sweep shard7 round16 done (budget 3000000)
+sweep shard7 round17 done (budget 6000000)
+sweep shard7 round18 done (budget 3000000)
+sweep shard7 round19 done (budget 3000000)
+sweep shard7 round20 done (budget 6000000)
+sweep shard7 round21 done (budget 12000000)
+sweep shard7 round22 done (budget 3000000)
+sweep shard7 round23 done (budget 3000000)
+sweep shard7 round24 done (budget 6000000)
+sweep shard7 round25 done (budget 3000000)
+sweep shard7 round26 done (budget 3000000)
+sweep shard7 round27 done (budget 6000000)
+sweep shard7 round28 done (budget 12000000)
+sweep shard7 round29 done (budget 24000000)
+sweep shard7 round30 done (budget 48000000)
+sweep shard7 round31 done (budget 3000000)
+sweep shard7 round32 done (budget 3000000)
+sweep shard7 round33 done (budget 6000000)
+sweep shard7 round34 done (budget 3000000)
+sweep shard7 round35 done (budget 3000000)
+sweep shard7 round36 done (budget 6000000)
+sweep shard7 round37 done (budget 12000000)
+sweep shard7 round38 done (budget 3000000)
+sweep shard7 round39 done (budget 4611686018427387904)
+no solution found
+STATS {"solved":0,"shard":7,"wall_s":753,"nodes_total":10814727,"nodes_win":-1,"dth_liveend":0,"dth_estate":1402171,"dth_reach":950367,"dth_dyn":52947,"dth_flow":0,"dth_geom":208908,"maxrss_kb":31800,"start_x":-1,"start_y":-1}
+DEATH sh3 liveend=0 estate=882082 reach=589640 dyn=85011 flow=0 geom=117412
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=13584 kill=1089 nodes=2097152
+ADAPT sh3 rp[P=946 try=12133 kill=2129 18%] pd[P=115 try=47198 kill=9009 19%]
+DEATH sh11 liveend=0 estate=1685322 reach=1143711 dyn=19799 flow=0 geom=274994
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=23811 kill=5340 nodes=5242880
+ADAPT sh11 rp[P=8192 try=2278 kill=198 9%] pd[P=44 try=382394 kill=93752 25%]
+T3[t=770s] shard8 r1 #5 cell=(49,62) sc=50273 nodes=3000001 r=-1
+sweep shard8 round1 done (budget 3000000)
+DEATH sh2 liveend=0 estate=1452896 reach=967776 dyn=46032 flow=0 geom=213446
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=22134 kill=5326 nodes=1048576
+ADAPT sh2 rp[P=8192 try=2808 kill=314 11%] pd[P=44 try=284912 kill=81435 29%]
+T3[t=789s] shard11 r2 #1 cell=(45,67) sc=50271 nodes=6000001 r=-1
+sweep shard11 round2 done (budget 6000000)
+T3[t=802s] shard6 r1 #8 cell=(46,59) sc=50269 nodes=3000001 r=-1
+sweep shard6 round1 done (budget 3000000)
+T3[t=836s] shard3 r0 #8 cell=(44,65) sc=50265 nodes=3000001 r=-1
+DEATH sh2 liveend=0 estate=1589433 reach=1062214 dyn=49284 flow=0 geom=234737
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=24231 kill=5835 nodes=2097152
+ADAPT sh2 rp[P=8192 try=2977 kill=326 11%] pd[P=52 try=313774 kill=89575 29%]
+DEATH sh8 liveend=0 estate=1937075 reach=1345964 dyn=35395 flow=0 geom=324629
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=28257 kill=6172 nodes=1048576
+ADAPT sh8 rp[P=8192 try=3084 kill=303 10%] pd[P=74 try=401600 kill=97489 24%]
+T3[t=848s] shard3 r0 #9 cell=(211,42) sc=50273 nodes=147081 r=0
+sweep shard3 round0 done (budget 3000000)
+DEATH sh11 liveend=0 estate=1942953 reach=1319558 dyn=20403 flow=0 geom=317793
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=27423 kill=6214 nodes=1048576
+ADAPT sh11 rp[P=8192 try=2605 kill=225 9%] pd[P=74 try=442966 kill=108649 25%]
+DEATH sh8 liveend=0 estate=2083831 reach=1446733 dyn=35395 flow=0 geom=349248
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=30354 kill=6652 nodes=2097152
+ADAPT sh8 rp[P=8192 try=3264 kill=317 10%] pd[P=61 try=435843 kill=105843 24%]
+T3[t=897s] shard2 r1 #4 cell=(37,62) sc=50269 nodes=3000001 r=-1
+sweep shard2 round1 done (budget 3000000)
+DEATH sh11 liveend=0 estate=2089711 reach=1420351 dyn=20403 flow=0 geom=342396
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=29520 kill=6686 nodes=2097152
+ADAPT sh11 rp[P=8192 try=2786 kill=239 9%] pd[P=61 try=477223 kill=117024 25%]
+DEATH sh6 liveend=0 estate=1223977 reach=861776 dyn=77685 flow=0 geom=181418
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=17995 kill=2210 nodes=1048576
+ADAPT sh6 rp[P=610 try=29234 kill=5208 18%] pd[P=265 try=98591 kill=18928 19%]
+DEATH sh8 liveend=0 estate=2232908 reach=1549292 dyn=35395 flow=0 geom=374600
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=32451 kill=7146 nodes=3145728
+ADAPT sh8 rp[P=8192 try=3459 kill=336 10%] pd[P=66 try=471694 kill=114700 24%]
+DEATH sh3 liveend=0 estate=1188263 reach=826169 dyn=87964 flow=0 geom=171654
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=17781 kill=1887 nodes=1048576
+ADAPT sh3 rp[P=2947 try=25528 kill=4542 18%] pd[P=30 try=88051 kill=16892 19%]
+T3[t=950s] shard11 r3 #1 cell=(45,67) sc=50271 nodes=3000001 r=-1
+sweep shard11 round3 done (budget 3000000)
+DEATH sh2 liveend=0 estate=1847710 reach=1237795 dyn=53532 flow=0 geom=274708
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=28134 kill=6834 nodes=1048576
+ADAPT sh2 rp[P=8192 try=3352 kill=362 11%] pd[P=71 try=369052 kill=105311 29%]
+DEATH sh6 liveend=0 estate=1380007 reach=983103 dyn=77685 flow=0 geom=209032
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=20092 kill=2652 nodes=2097152
+ADAPT sh6 rp[P=1004 try=38062 kill=6797 18%] pd[P=45 try=120071 kill=23025 19%]
+DEATH sh8 liveend=0 estate=2387080 reach=1654719 dyn=36817 flow=0 geom=400182
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=34548 kill=7626 nodes=4194304
+ADAPT sh8 rp[P=8082 try=3662 kill=357 10%] pd[P=56 try=509372 kill=123636 24%]
+DEATH sh11 liveend=0 estate=2370609 reach=1612365 dyn=21007 flow=0 geom=389518
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=33423 kill=7638 nodes=1048576
+ADAPT sh11 rp[P=8192 try=3143 kill=269 9%] pd[P=74 try=544230 kill=133512 25%]
+DEATH sh2 liveend=0 estate=1988450 reach=1331491 dyn=56520 flow=0 geom=295767
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=30231 kill=7382 nodes=2097152
+ADAPT sh2 rp[P=8192 try=3833 kill=436 11%] pd[P=122 try=398175 kill=113757 29%]
+DEATH sh3 liveend=0 estate=1345774 reach=948705 dyn=87964 flow=0 geom=199901
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=19878 kill=2313 nodes=2097152
+ADAPT sh3 rp[P=946 try=29796 kill=5313 18%] pd[P=115 try=113022 kill=21676 19%]
+DEATH sh11 liveend=0 estate=2517367 reach=1713158 dyn=21007 flow=0 geom=414121
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=35520 kill=8110 nodes=2097152
+ADAPT sh11 rp[P=8192 try=3324 kill=283 9%] pd[P=61 try=578487 kill=141887 25%]
+DEATH sh8 liveend=0 estate=2536966 reach=1757435 dyn=36817 flow=0 geom=425532
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=36645 kill=8115 nodes=5242880
+ADAPT sh8 rp[P=8192 try=3865 kill=379 10%] pd[P=44 try=545290 kill=132622 24%]
+DEATH sh6 liveend=0 estate=1536917 reach=1105852 dyn=77685 flow=0 geom=237341
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=22189 kill=3099 nodes=3145728
+ADAPT sh6 rp[P=112 try=43774 kill=7834 18%] pd[P=151 try=144030 kill=27614 19%]
+DEATH sh2 liveend=0 estate=2128150 reach=1424663 dyn=59595 flow=0 geom=316658
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=32328 kill=7959 nodes=3145728
+ADAPT sh2 rp[P=8192 try=4503 kill=543 12%] pd[P=61 try=425782 kill=121538 29%]
+T3[t=1101s] shard8 r2 #0 cell=(48,58) sc=50268 nodes=6000001 r=-1
+T3[t=1110s] shard11 r4 #1 cell=(45,67) sc=50271 nodes=3000001 r=-1
+sweep shard11 round4 done (budget 3000000)
+T3[t=1112s] shard3 r1 #8 cell=(44,65) sc=50265 nodes=3000001 r=-1
+sweep shard3 round1 done (budget 3000000)
+DEATH sh2 liveend=0 estate=2266797 reach=1518429 dyn=59649 flow=0 geom=338393
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=34425 kill=8532 nodes=4194304
+ADAPT sh2 rp[P=8192 try=4691 kill=559 12%] pd[P=54 try=457052 kill=130480 29%]
+DEATH sh8 liveend=0 estate=2783281 reach=1932236 dyn=39541 flow=0 geom=467697
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=40257 kill=8963 nodes=1048576
+ADAPT sh8 rp[P=8192 try=4146 kill=397 10%] pd[P=98 try=599275 kill=145929 24%]
+DEATH sh11 liveend=0 estate=2798265 reach=1905172 dyn=21611 flow=0 geom=461243
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=39423 kill=9062 nodes=1048576
+ADAPT sh11 rp[P=8192 try=3681 kill=313 9%] pd[P=74 try=645494 kill=158375 25%]
+DEATH sh3 liveend=0 estate=1634630 reach=1174603 dyn=88453 flow=0 geom=252510
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=23781 kill=3137 nodes=1048576
+ADAPT sh3 rp[P=1957 try=43432 kill=7773 18%] pd[P=99 try=153412 kill=29463 19%]
+T3[t=1208s] shard2 r2 #0 cell=(39,69) sc=50262 nodes=4849801 r=0
+DEATH sh8 liveend=0 estate=2924447 reach=2037438 dyn=39541 flow=0 geom=494327
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=42354 kill=9462 nodes=2097152
+ADAPT sh8 rp[P=7830 try=4318 kill=409 9%] pd[P=26 try=629466 kill=153154 24%]
+DEATH sh11 liveend=0 estate=2945023 reach=2005965 dyn=21611 flow=0 geom=485846
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=41520 kill=9534 nodes=2097152
+ADAPT sh11 rp[P=8192 try=3862 kill=327 8%] pd[P=61 try=679751 kill=166750 25%]
+DEATH sh8 liveend=0 estate=3061705 reach=2137395 dyn=39541 flow=0 geom=520014
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=44451 kill=9947 nodes=3145728
+ADAPT sh8 rp[P=8192 try=4469 kill=417 9%] pd[P=103 try=655199 kill=159078 24%]
+DEATH sh2 liveend=0 estate=2483093 reach=1660671 dyn=71749 flow=0 geom=368234
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=37833 kill=9242 nodes=1048576
+ADAPT sh2 rp[P=8192 try=4946 kill=573 12%] pd[P=44 try=495324 kill=141391 29%]
+DEATH sh6 liveend=0 estate=1848126 reach=1349614 dyn=77685 flow=0 geom=294246
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=26383 kill=3945 nodes=5242880
+ADAPT sh6 rp[P=3885 try=57421 kill=10283 18%] pd[P=50 try=189872 kill=36488 19%]
+DEATH sh11 liveend=0 estate=3094100 reach=2108524 dyn=21611 flow=0 geom=511198
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=43617 kill=10028 nodes=3145728
+ADAPT sh11 rp[P=8192 try=4057 kill=346 9%] pd[P=66 try=715602 kill=175607 25%]
+DEATH sh8 liveend=0 estate=3203929 reach=2243679 dyn=39541 flow=0 geom=547083
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=46548 kill=10438 nodes=4194304
+ADAPT sh8 rp[P=8192 try=4654 kill=432 9%] pd[P=80 try=685388 kill=166367 24%]
+DEATH sh3 liveend=0 estate=1790998 reach=1297529 dyn=88453 flow=0 geom=280703
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=25878 kill=3578 nodes=2097152
+ADAPT sh3 rp[P=1091 try=51618 kill=9251 18%] pd[P=107 try=175195 kill=33605 19%]
+DEATH sh2 liveend=0 estate=2619630 reach=1755109 dyn=75001 flow=0 geom=389525
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=39930 kill=9751 nodes=2097152
+ADAPT sh2 rp[P=8192 try=5115 kill=585 11%] pd[P=52 try=524186 kill=149531 29%]
+T3[t=1336s] shard6 r2 #8 cell=(46,59) sc=50269 nodes=6000001 r=-1
+sweep shard6 round2 done (budget 6000000)
+DEATH sh11 liveend=0 estate=3248268 reach=2213940 dyn=23037 flow=0 geom=536777
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=45714 kill=10507 nodes=4194304
+ADAPT sh11 rp[P=8082 try=4260 kill=367 9%] pd[P=56 try=753280 kill=184543 24%]
+DEATH sh8 liveend=0 estate=3344522 reach=2345806 dyn=41373 flow=0 geom=571423
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=48645 kill=10950 nodes=5242880
+ADAPT sh8 rp[P=8192 try=5026 kill=486 10%] pd[P=30 try=717224 kill=173932 24%]
+DEATH sh3 liveend=0 estate=1947704 reach=1421469 dyn=88453 flow=0 geom=309342
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=27975 kill=3985 nodes=3145728
+ADAPT sh3 rp[P=2948 try=57162 kill=10247 18%] pd[P=51 try=199444 kill=38285 19%]
+DEATH sh2 liveend=0 estate=2758066 reach=1850555 dyn=78296 flow=0 geom=411260
+PDEV sh2 try=0 kill=0 (0.0%) BJ try=42027 kill=10289 nodes=3145728
+ADAPT sh2 rp[P=8192 try=5315 kill=603 11%] pd[P=112 try=553173 kill=157833 29%]
+T3[t=1406s] shard8 r2 #5 cell=(49,62) sc=50273 nodes=6000001 r=-1
+sweep shard8 round2 done (budget 6000000)
+DEATH sh11 liveend=0 estate=3398154 reach=2316656 dyn=23037 flow=0 geom=562127
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=47811 kill=10996 nodes=5242880
+ADAPT sh11 rp[P=8192 try=4463 kill=389 9%] pd[P=44 try=789198 kill=193529 25%]
+T3[t=1433s] shard2 r2 #4 cell=(37,62) sc=50269 nodes=3892976 r=0
+sweep shard2 round2 done (budget 6000000)
+sweep shard2 round3 done (budget 3000000)
+sweep shard2 round4 done (budget 3000000)
+sweep shard2 round5 done (budget 6000000)
+sweep shard2 round6 done (budget 12000000)
+sweep shard2 round7 done (budget 3000000)
+sweep shard2 round8 done (budget 3000000)
+sweep shard2 round9 done (budget 6000000)
+sweep shard2 round10 done (budget 3000000)
+sweep shard2 round11 done (budget 3000000)
+sweep shard2 round12 done (budget 6000000)
+sweep shard2 round13 done (budget 12000000)
+sweep shard2 round14 done (budget 24000000)
+sweep shard2 round15 done (budget 3000000)
+sweep shard2 round16 done (budget 3000000)
+sweep shard2 round17 done (budget 6000000)
+sweep shard2 round18 done (budget 3000000)
+sweep shard2 round19 done (budget 3000000)
+sweep shard2 round20 done (budget 6000000)
+sweep shard2 round21 done (budget 12000000)
+sweep shard2 round22 done (budget 3000000)
+sweep shard2 round23 done (budget 3000000)
+sweep shard2 round24 done (budget 6000000)
+sweep shard2 round25 done (budget 3000000)
+sweep shard2 round26 done (budget 3000000)
+sweep shard2 round27 done (budget 6000000)
+sweep shard2 round28 done (budget 12000000)
+sweep shard2 round29 done (budget 24000000)
+sweep shard2 round30 done (budget 48000000)
+sweep shard2 round31 done (budget 3000000)
+sweep shard2 round32 done (budget 3000000)
+sweep shard2 round33 done (budget 6000000)
+sweep shard2 round34 done (budget 3000000)
+sweep shard2 round35 done (budget 3000000)
+sweep shard2 round36 done (budget 6000000)
+sweep shard2 round37 done (budget 12000000)
+sweep shard2 round38 done (budget 3000000)
+sweep shard2 round39 done (budget 4611686018427387904)
+no solution found
+STATS {"solved":0,"shard":2,"wall_s":1433,"nodes_total":21763807,"nodes_win":-1,"dth_liveend":0,"dth_estate":2855248,"dth_reach":1917795,"dth_dyn":80523,"dth_flow":0,"dth_geom":426448,"maxrss_kb":32304,"start_x":-1,"start_y":-1}
+DEATH sh6 liveend=0 estate=2093537 reach=1524968 dyn=91847 flow=0 geom=332300
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=29995 kill=4442 nodes=1048576
+ADAPT sh6 rp[P=5201 try=64654 kill=11586 18%] pd[P=161 try=209578 kill=40319 19%]
+T3[t=1446s] shard11 r5 #1 cell=(45,67) sc=50271 nodes=6000001 r=-1
+sweep shard11 round5 done (budget 6000000)
+DEATH sh8 liveend=0 estate=3599545 reach=2528316 dyn=41897 flow=0 geom=616375
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=52257 kill=11861 nodes=1048576
+ADAPT sh8 rp[P=8192 try=5356 kill=513 10%] pd[P=74 try=776397 kill=188624 24%]
+DEATH sh3 liveend=0 estate=2102944 reach=1536726 dyn=88453 flow=0 geom=336189
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=30072 kill=4428 nodes=4194304
+ADAPT sh3 rp[P=7830 try=63995 kill=11480 18%] pd[P=26 try=221285 kill=42512 19%]
+DEATH sh11 liveend=0 estate=3655785 reach=2492503 dyn=23641 flow=0 geom=604926
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=51423 kill=11870 nodes=1048576
+ADAPT sh11 rp[P=8192 try=4790 kill=416 9%] pd[P=74 try=849770 kill=208426 25%]
+DEATH sh8 liveend=0 estate=3746301 reach=2629085 dyn=41897 flow=0 geom=640994
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=54354 kill=12341 nodes=2097152
+ADAPT sh8 rp[P=8192 try=5536 kill=527 10%] pd[P=61 try=810640 kill=196978 24%]
+DEATH sh6 liveend=0 estate=2250369 reach=1645965 dyn=91847 flow=0 geom=359884
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=32092 kill=4857 nodes=2097152
+ADAPT sh6 rp[P=1860 try=70102 kill=12569 18%] pd[P=74 try=233943 kill=44968 19%]
+DEATH sh11 liveend=0 estate=3802543 reach=2593296 dyn=23641 flow=0 geom=629529
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=53520 kill=12342 nodes=2097152
+ADAPT sh11 rp[P=8192 try=4971 kill=430 9%] pd[P=61 try=884027 kill=216801 25%]
+T3[t=1562s] shard8 r3 #0 cell=(48,58) sc=50268 nodes=3000001 r=-1
+DEATH sh3 liveend=0 estate=2259213 reach=1662483 dyn=88453 flow=0 geom=365424
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=32169 kill=4861 nodes=5242880
+ADAPT sh3 rp[P=456 try=70616 kill=12683 18%] pd[P=41 try=244225 kill=46910 19%]
+DEATH sh11 liveend=0 estate=3951620 reach=2695855 dyn=23641 flow=0 geom=654881
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=55617 kill=12836 nodes=3145728
+ADAPT sh11 rp[P=8192 try=5166 kill=449 9%] pd[P=66 try=919878 kill=225658 25%]
+T3[t=1609s] shard6 r3 #8 cell=(46,59) sc=50269 nodes=3000001 r=-1
+sweep shard6 round3 done (budget 3000000)
+T3[t=1624s] shard3 r2 #8 cell=(44,65) sc=50265 nodes=6000001 r=-1
+sweep shard3 round2 done (budget 6000000)
+DEATH sh8 liveend=0 estate=4015476 reach=2820503 dyn=44546 flow=0 geom=687492
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=58257 kill=13251 nodes=1048576
+ADAPT sh8 rp[P=8192 try=6355 kill=644 10%] pd[P=35 try=870958 kill=211847 24%]
+DEATH sh8 liveend=0 estate=4156739 reach=2925639 dyn=44546 flow=0 geom=714101
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=60354 kill=13703 nodes=2097152
+ADAPT sh8 rp[P=8192 try=6530 kill=658 10%] pd[P=142 try=901199 kill=219040 24%]
+DEATH sh11 liveend=0 estate=4105788 reach=2801271 dyn=25067 flow=0 geom=680460
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=57714 kill=13315 nodes=4194304
+ADAPT sh11 rp[P=8082 try=5369 kill=470 9%] pd[P=56 try=957556 kill=234594 24%]
+T3[t=1693s] shard8 r3 #5 cell=(49,62) sc=50273 nodes=3000001 r=-1
+sweep shard8 round3 done (budget 3000000)
+DEATH sh6 liveend=0 estate=2518233 reach=1839319 dyn=106088 flow=0 geom=402379
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=35995 kill=5395 nodes=1048576
+ADAPT sh6 rp[P=610 try=78302 kill=14048 18%] pd[P=265 try=256231 kill=49276 19%]
+DEATH sh3 liveend=0 estate=2526333 reach=1871432 dyn=88931 flow=0 geom=414217
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=35781 kill=5632 nodes=1048576
+ADAPT sh3 rp[P=699 try=85355 kill=15346 18%] pd[P=44 try=277774 kill=53324 19%]
+DEATH sh11 liveend=0 estate=4255674 reach=2903987 dyn=25067 flow=0 geom=705810
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=59811 kill=13804 nodes=5242880
+ADAPT sh11 rp[P=8192 try=5572 kill=492 9%] pd[P=44 try=993474 kill=243580 25%]
+DEATH sh8 liveend=0 estate=4426669 reach=3115588 dyn=45070 flow=0 geom=761621
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=64257 kill=14599 nodes=1048576
+ADAPT sh8 rp[P=8192 try=6889 kill=689 10%] pd[P=74 try=958878 kill=232855 24%]
+DEATH sh11 liveend=0 estate=4401902 reach=3003975 dyn=25067 flow=0 geom=730164
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=61908 kill=14288 nodes=6291456
+ADAPT sh11 rp[P=8192 try=5746 kill=506 9%] pd[P=35 try=1027708 kill=252058 25%]
+DEATH sh3 liveend=0 estate=2682376 reach=1995535 dyn=88931 flow=0 geom=442785
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=37878 kill=6046 nodes=2097152
+ADAPT sh3 rp[P=182 try=94023 kill=16914 18%] pd[P=225 try=299498 kill=57461 19%]
+DEATH sh6 liveend=0 estate=2674263 reach=1960646 dyn=106088 flow=0 geom=429993
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=38092 kill=5837 nodes=2097152
+ADAPT sh6 rp[P=1004 try=87130 kill=15637 18%] pd[P=45 try=277711 kill=53373 19%]
+DEATH sh8 liveend=0 estate=4573425 reach=3216357 dyn=45070 flow=0 geom=786240
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=66354 kill=15079 nodes=2097152
+ADAPT sh8 rp[P=8192 try=7069 kill=703 10%] pd[P=61 try=993121 kill=241209 24%]
+T3[t=1855s] shard8 r4 #0 cell=(48,58) sc=50268 nodes=3000001 r=-1
+DEATH sh11 liveend=0 estate=4554865 reach=3108758 dyn=26471 flow=0 geom=755731
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=64006 kill=14791 nodes=7340032
+ADAPT sh11 rp[P=8192 try=5971 kill=532 9%] pd[P=65 try=1064519 kill=260909 25%]
+T3[t=1876s] shard3 r3 #8 cell=(44,65) sc=50265 nodes=3000001 r=-1
+sweep shard3 round3 done (budget 3000000)
+T3[t=1882s] shard6 r4 #8 cell=(46,59) sc=50269 nodes=3000001 r=-1
+sweep shard6 round4 done (budget 3000000)
+DEATH sh8 liveend=0 estate=4842600 reach=3407775 dyn=47719 flow=0 geom=832738
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=70257 kill=15989 nodes=1048576
+ADAPT sh8 rp[P=8192 try=7888 kill=820 10%] pd[P=35 try=1053439 kill=256078 24%]
+DEATH sh11 liveend=0 estate=4706400 reach=3212888 dyn=26473 flow=0 geom=781417
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=66103 kill=15267 nodes=8388608
+ADAPT sh11 rp[P=8192 try=6138 kill=542 9%] pd[P=66 try=1101689 kill=270090 25%]
+DEATH sh8 liveend=0 estate=4983863 reach=3512911 dyn=47719 flow=0 geom=859347
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=72354 kill=16441 nodes=2097152
+ADAPT sh8 rp[P=8192 try=8063 kill=834 10%] pd[P=142 try=1083680 kill=263271 24%]
+DEATH sh11 liveend=0 estate=4852725 reach=3312863 dyn=26473 flow=0 geom=805793
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=68200 kill=15740 nodes=9437184
+ADAPT sh11 rp[P=4145 try=6344 kill=565 9%] pd[P=52 try=1135379 kill=278393 25%]
+DEATH sh3 liveend=0 estate=2971172 reach=2220064 dyn=89408 flow=0 geom=494889
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=41781 kill=6865 nodes=1048576
+ADAPT sh3 rp[P=3207 try=108277 kill=19483 18%] pd[P=86 try=338237 kill=64925 19%]
+DEATH sh6 liveend=0 estate=2942623 reach=2153207 dyn=120334 flow=0 geom=472238
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=41995 kill=6383 nodes=1048576
+ADAPT sh6 rp[P=610 try=92390 kill=16578 18%] pd[P=265 try=303296 kill=58304 19%]
+T3[t=1992s] shard8 r4 #5 cell=(49,62) sc=50273 nodes=3000001 r=-1
+sweep shard8 round4 done (budget 3000000)
+DEATH sh11 liveend=0 estate=5003777 reach=3417492 dyn=26473 flow=0 geom=831712
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=70297 kill=16228 nodes=10485760
+ADAPT sh11 rp[P=8192 try=6557 kill=585 9%] pd[P=81 try=1171967 kill=287335 25%]
+DEATH sh3 liveend=0 estate=3127651 reach=2343878 dyn=89408 flow=0 geom=523466
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=43878 kill=7305 nodes=2097152
+ADAPT sh3 rp[P=359 try=117264 kill=21115 18%] pd[P=98 try=358207 kill=68715 19%]
+DEATH sh8 liveend=0 estate=5253793 reach=3702860 dyn=48243 flow=0 geom=906867
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=76257 kill=17337 nodes=1048576
+ADAPT sh8 rp[P=8192 try=8422 kill=865 10%] pd[P=74 try=1141359 kill=277086 24%]
+DEATH sh6 liveend=0 estate=3098653 reach=2274534 dyn=120334 flow=0 geom=499852
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=44092 kill=6825 nodes=2097152
+ADAPT sh6 rp[P=1004 try=101218 kill=18167 18%] pd[P=45 try=324776 kill=62401 19%]
+DEATH sh11 liveend=0 estate=5157041 reach=3521795 dyn=28088 flow=0 geom=857011
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=72394 kill=16684 nodes=11534336
+ADAPT sh11 rp[P=8192 try=6792 kill=612 9%] pd[P=66 try=1208581 kill=296173 25%]
+DEATH sh8 liveend=0 estate=5400549 reach=3803629 dyn=48243 flow=0 geom=931486
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=78354 kill=17817 nodes=2097152
+ADAPT sh8 rp[P=8192 try=8602 kill=879 10%] pd[P=61 try=1175602 kill=285440 24%]
+T3[t=2130s] shard11 r6 #1 cell=(45,67) sc=50271 nodes=12000001 r=-1
+sweep shard11 round6 done (budget 12000000)
+T3[t=2138s] shard3 r4 #8 cell=(44,65) sc=50265 nodes=3000001 r=-1
+sweep shard3 round4 done (budget 3000000)
+DEATH sh8 liveend=0 estate=5549626 reach=3906188 dyn=48243 flow=0 geom=956838
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=80451 kill=18311 nodes=3145728
+ADAPT sh8 rp[P=8192 try=8797 kill=898 10%] pd[P=66 try=1211453 kill=294297 24%]
+DEATH sh6 liveend=0 estate=3255563 reach=2397283 dyn=120334 flow=0 geom=528161
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=46189 kill=7272 nodes=3145728
+ADAPT sh6 rp[P=112 try=106930 kill=19204 18%] pd[P=151 try=348735 kill=66990 19%]
+DEATH sh11 liveend=0 estate=5375894 reach=3671265 dyn=28692 flow=0 geom=893586
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=75423 kill=17422 nodes=1048576
+ADAPT sh11 rp[P=8192 try=7073 kill=635 9%] pd[P=74 try=1260683 kill=309014 25%]
+DEATH sh3 liveend=0 estate=3416719 reach=2569153 dyn=89895 flow=0 geom=575895
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=47781 kill=8127 nodes=1048576
+ADAPT sh3 rp[P=6184 try=129915 kill=23388 18%] pd[P=130 try=398953 kill=76573 19%]
+DEATH sh8 liveend=0 estate=5703798 reach=4011615 dyn=49665 flow=0 geom=982420
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=82548 kill=18791 nodes=4194304
+ADAPT sh8 rp[P=8082 try=9000 kill=919 10%] pd[P=56 try=1249131 kill=303233 24%]
+DEATH sh11 liveend=0 estate=5522652 reach=3772058 dyn=28692 flow=0 geom=918189
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=77520 kill=17894 nodes=2097152
+ADAPT sh11 rp[P=8192 try=7254 kill=649 9%] pd[P=61 try=1294940 kill=317389 25%]
+T3[t=2292s] shard11 r7 #1 cell=(45,67) sc=50271 nodes=3000001 r=-1
+sweep shard11 round7 done (budget 3000000)
+DEATH sh8 liveend=0 estate=5853684 reach=4114331 dyn=49665 flow=0 geom=1007770
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=84645 kill=19280 nodes=5242880
+ADAPT sh8 rp[P=8192 try=9203 kill=941 10%] pd[P=44 try=1285049 kill=312219 24%]
+DEATH sh3 liveend=0 estate=3573284 reach=2691973 dyn=89895 flow=0 geom=603896
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=49878 kill=8589 nodes=2097152
+ADAPT sh3 rp[P=677 try=138155 kill=24881 18%] pd[P=83 try=421134 kill=80807 19%]
+T3[t=2325s] shard8 r5 #0 cell=(48,58) sc=50268 nodes=6000001 r=-1
+DEATH sh6 liveend=0 estate=3566772 reach=2641045 dyn=120334 flow=0 geom=585066
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=50383 kill=8118 nodes=5242880
+ADAPT sh6 rp[P=3885 try=120577 kill=21653 18%] pd[P=50 try=394577 kill=75864 19%]
+DEATH sh11 liveend=0 estate=5803550 reach=3964072 dyn=29296 flow=0 geom=965311
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=81423 kill=18846 nodes=1048576
+ADAPT sh11 rp[P=8192 try=7611 kill=679 9%] pd[P=74 try=1361947 kill=333877 25%]
+DEATH sh8 liveend=0 estate=6099999 reach=4289132 dyn=52389 flow=0 geom=1049935
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=88257 kill=20128 nodes=1048576
+ADAPT sh8 rp[P=8192 try=9484 kill=959 10%] pd[P=98 try=1339034 kill=325526 24%]
+DEATH sh11 liveend=0 estate=5950308 reach=4064865 dyn=29296 flow=0 geom=989914
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=83520 kill=19318 nodes=2097152
+ADAPT sh11 rp[P=8192 try=7792 kill=693 9%] pd[P=61 try=1396204 kill=342252 25%]
+DEATH sh3 liveend=0 estate=3729114 reach=2816902 dyn=89895 flow=0 geom=632633
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=51975 kill=9029 nodes=3145728
+ADAPT sh3 rp[P=2476 try=146671 kill=26417 18%] pd[P=66 try=443095 kill=85025 19%]
+T3[t=2416s] shard6 r5 #8 cell=(46,59) sc=50269 nodes=6000001 r=-1
+sweep shard6 round5 done (budget 6000000)
+DEATH sh8 liveend=0 estate=6241165 reach=4394334 dyn=52389 flow=0 geom=1076565
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=90354 kill=20627 nodes=2097152
+ADAPT sh8 rp[P=7830 try=9656 kill=971 10%] pd[P=26 try=1369225 kill=332751 24%]
+T3[t=2449s] shard11 r8 #1 cell=(45,67) sc=50271 nodes=3000001 r=-1
+sweep shard11 round8 done (budget 3000000)
+DEATH sh8 liveend=0 estate=6378423 reach=4494291 dyn=52389 flow=0 geom=1102252
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=92451 kill=21112 nodes=3145728
+ADAPT sh8 rp[P=8192 try=9807 kill=979 10%] pd[P=103 try=1394958 kill=338675 24%]
+DEATH sh8 liveend=0 estate=6520647 reach=4600575 dyn=52389 flow=0 geom=1129321
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=94548 kill=21603 nodes=4194304
+ADAPT sh8 rp[P=8192 try=9992 kill=994 10%] pd[P=80 try=1425147 kill=345964 24%]
+DEATH sh3 liveend=0 estate=3884753 reach=2931783 dyn=89895 flow=0 geom=659591
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=54072 kill=9471 nodes=4194304
+ADAPT sh3 rp[P=115 try=153714 kill=27697 18%] pd[P=361 try=464159 kill=89096 19%]
+DEATH sh6 liveend=0 estate=3812183 reach=2816399 dyn=134496 flow=0 geom=623120
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=53995 kill=8615 nodes=1048576
+ADAPT sh6 rp[P=5201 try=127810 kill=22956 18%] pd[P=161 try=414283 kill=79695 19%]
+DEATH sh11 liveend=0 estate=6231206 reach=4256879 dyn=29900 flow=0 geom=1037036
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=87423 kill=20270 nodes=1048576
+ADAPT sh11 rp[P=8192 try=8149 kill=723 9%] pd[P=74 try=1463211 kill=358740 25%]
+DEATH sh11 liveend=0 estate=6377964 reach=4357672 dyn=29900 flow=0 geom=1061639
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=89520 kill=20742 nodes=2097152
+ADAPT sh11 rp[P=8192 try=8330 kill=737 9%] pd[P=61 try=1497468 kill=367115 25%]
+DEATH sh3 liveend=0 estate=4040786 reach=3057466 dyn=89895 flow=0 geom=688722
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=56169 kill=9901 nodes=5242880
+ADAPT sh3 rp[P=1364 try=161263 kill=29054 18%] pd[P=56 try=486693 kill=93415 19%]
+DEATH sh8 liveend=0 estate=6661240 reach=4702702 dyn=54221 flow=0 geom=1153661
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=96645 kill=22115 nodes=5242880
+ADAPT sh8 rp[P=8192 try=10364 kill=1048 10%] pd[P=30 try=1456983 kill=353529 24%]
+DEATH sh6 liveend=0 estate=3969015 reach=2937396 dyn=134496 flow=0 geom=650704
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=56092 kill=9030 nodes=2097152
+ADAPT sh6 rp[P=1860 try=133258 kill=23939 18%] pd[P=74 try=438648 kill=84344 19%]
+DEATH sh11 liveend=0 estate=6527041 reach=4460231 dyn=29900 flow=0 geom=1086991
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=91617 kill=21236 nodes=3145728
+ADAPT sh11 rp[P=8192 try=8525 kill=756 9%] pd[P=66 try=1533319 kill=375972 25%]
+T3[t=2630s] shard8 r5 #5 cell=(49,62) sc=50273 nodes=6000001 r=-1
+sweep shard8 round5 done (budget 6000000)
+T3[t=2660s] shard3 r5 #8 cell=(44,65) sc=50265 nodes=6000001 r=-1
+sweep shard3 round5 done (budget 6000000)
+DEATH sh8 liveend=0 estate=6916263 reach=4885212 dyn=54745 flow=0 geom=1198613
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=100257 kill=23026 nodes=1048576
+ADAPT sh8 rp[P=8192 try=10694 kill=1075 10%] pd[P=74 try=1516156 kill=368221 24%]
+DEATH sh11 liveend=0 estate=6681209 reach=4565647 dyn=31326 flow=0 geom=1112570
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=93714 kill=21715 nodes=4194304
+ADAPT sh11 rp[P=8082 try=8728 kill=777 9%] pd[P=56 try=1570997 kill=384908 25%]
+DEATH sh6 liveend=0 estate=4125476 reach=3060860 dyn=134496 flow=0 geom=679238
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=58189 kill=9477 nodes=3145728
+ADAPT sh6 rp[P=39 try=141978 kill=25530 18%] pd[P=534 try=459282 kill=88303 19%]
+DEATH sh8 liveend=0 estate=7063019 reach=4985981 dyn=54745 flow=0 geom=1223232
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=102354 kill=23506 nodes=2097152
+ADAPT sh8 rp[P=8192 try=10874 kill=1089 10%] pd[P=61 try=1550399 kill=376575 24%]
+DEATH sh3 liveend=0 estate=4308453 reach=3265187 dyn=90388 flow=0 geom=737256
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=59781 kill=10654 nodes=1048576
+ADAPT sh3 rp[P=2018 try=173869 kill=31327 18%] pd[P=61 try=522210 kill=100273 19%]
+DEATH sh11 liveend=0 estate=6831095 reach=4668363 dyn=31326 flow=0 geom=1137920
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=95811 kill=22204 nodes=5242880
+ADAPT sh11 rp[P=8192 try=8931 kill=799 9%] pd[P=44 try=1606915 kill=393894 25%]
+T3[t=2786s] shard11 r9 #1 cell=(45,67) sc=50271 nodes=6000001 r=-1
+sweep shard11 round9 done (budget 6000000)
+DEATH sh8 liveend=0 estate=7212096 reach=5088540 dyn=54745 flow=0 geom=1248584
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=104451 kill=24000 nodes=3145728
+ADAPT sh8 rp[P=8192 try=11069 kill=1108 10%] pd[P=66 try=1586250 kill=385432 24%]
+DEATH sh6 liveend=0 estate=4281481 reach=3186349 dyn=134496 flow=0 geom=708237
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=60286 kill=9868 nodes=4194304
+ADAPT sh6 rp[P=196 try=150077 kill=26990 18%] pd[P=58 try=481859 kill=92636 19%]
+DEATH sh3 liveend=0 estate=4464854 reach=3388588 dyn=90388 flow=0 geom=765566
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=61878 kill=11087 nodes=2097152
+ADAPT sh3 rp[P=3439 try=182373 kill=32862 18%] pd[P=86 try=543303 kill=104305 19%]
+DEATH sh11 liveend=0 estate=7088726 reach=4844210 dyn=31930 flow=0 geom=1180719
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=99423 kill=23078 nodes=1048576
+ADAPT sh11 rp[P=8192 try=9258 kill=826 9%] pd[P=74 try=1667487 kill=408791 25%]
+DEATH sh8 liveend=0 estate=7366268 reach=5193967 dyn=56167 flow=0 geom=1274166
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=106548 kill=24480 nodes=4194304
+ADAPT sh8 rp[P=8082 try=11272 kill=1129 10%] pd[P=56 try=1623928 kill=394368 24%]
+DEATH sh6 liveend=0 estate=4436823 reach=3302086 dyn=134496 flow=0 geom=735606
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=62383 kill=10451 nodes=5242880
+ADAPT sh6 rp[P=79 try=159388 kill=28684 18%] pd[P=138 try=501210 kill=96400 19%]
+DEATH sh11 liveend=0 estate=7235484 reach=4945003 dyn=31930 flow=0 geom=1205322
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=101520 kill=23550 nodes=2097152
+ADAPT sh11 rp[P=8192 try=9439 kill=840 9%] pd[P=61 try=1701744 kill=417166 25%]
+DEATH sh8 liveend=0 estate=7516154 reach=5296683 dyn=56167 flow=0 geom=1299516
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=108645 kill=24969 nodes=5242880
+ADAPT sh8 rp[P=8192 try=11475 kill=1151 10%] pd[P=44 try=1659846 kill=403354 24%]
+DEATH sh3 liveend=0 estate=4621641 reach=3512635 dyn=90388 flow=0 geom=794209
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=63975 kill=11511 nodes=3145728
+ADAPT sh3 rp[P=1934 try=188135 kill=33900 18%] pd[P=70 try=567158 kill=108866 19%]
+T3[t=2946s] shard11 r10 #1 cell=(45,67) sc=50271 nodes=3000001 r=-1
+sweep shard11 round10 done (budget 3000000)
+DEATH sh8 liveend=0 estate=7662530 reach=5396748 dyn=56167 flow=0 geom=1323964
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=110742 kill=25439 nodes=6291456
+ADAPT sh8 rp[P=8192 try=11630 kill=1159 10%] pd[P=35 try=1693891 kill=411763 24%]
+DEATH sh6 liveend=0 estate=4593214 reach=3426125 dyn=134496 flow=0 geom=764186
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=64480 kill=10866 nodes=6291456
+ADAPT sh6 rp[P=315 try=167036 kill=30058 18%] pd[P=354 try=523791 kill=100705 19%]
+DEATH sh11 liveend=0 estate=7516382 reach=5137017 dyn=32534 flow=0 geom=1252444
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=105423 kill=24502 nodes=1048576
+ADAPT sh11 rp[P=8192 try=9796 kill=870 9%] pd[P=74 try=1768751 kill=433654 25%]
+DEATH sh3 liveend=0 estate=4777512 reach=3627384 dyn=90388 flow=0 geom=821018
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=66072 kill=11934 nodes=4194304
+ADAPT sh3 rp[P=8192 try=192521 kill=34681 18%] pd[P=166 try=591929 kill=113693 19%]
+DEATH sh8 liveend=0 estate=7815495 reach=5501536 dyn=57569 flow=0 geom=1349533
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=112840 kill=25942 nodes=7340032
+ADAPT sh8 rp[P=8192 try=11855 kill=1185 10%] pd[P=65 try=1730702 kill=420614 24%]
+DEATH sh11 liveend=0 estate=7663140 reach=5237810 dyn=32534 flow=0 geom=1277047
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=107520 kill=24974 nodes=2097152
+ADAPT sh11 rp[P=8192 try=9977 kill=884 9%] pd[P=61 try=1803008 kill=442029 25%]
+DEATH sh6 liveend=0 estate=4749450 reach=3551893 dyn=134496 flow=0 geom=793320
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=66578 kill=11337 nodes=7340032
+ADAPT sh6 rp[P=768 try=174777 kill=31450 18%] pd[P=93 try=545387 kill=104825 19%]
+T3[t=3107s] shard11 r11 #1 cell=(45,67) sc=50271 nodes=3000001 r=-1
+sweep shard11 round11 done (budget 3000000)
+DEATH sh3 liveend=0 estate=4932962 reach=3753763 dyn=90388 flow=0 geom=850338
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=68169 kill=12374 nodes=5242880
+ADAPT sh3 rp[P=4208 try=202434 kill=36481 18%] pd[P=62 try=611627 kill=117440 19%]
+DEATH sh8 liveend=0 estate=7967030 reach=5605666 dyn=57571 flow=0 geom=1375219
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=114937 kill=26418 nodes=8388608
+ADAPT sh8 rp[P=8192 try=12022 kill=1195 10%] pd[P=66 try=1767872 kill=429795 24%]
+DEATH sh8 liveend=0 estate=8113390 reach=5705620 dyn=57571 flow=0 geom=1399596
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=117034 kill=26891 nodes=9437184
+ADAPT sh8 rp[P=4145 try=12228 kill=1218 10%] pd[P=52 try=1801568 kill=438095 24%]
+DEATH sh6 liveend=0 estate=4904385 reach=3669010 dyn=134496 flow=0 geom=820932
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=68675 kill=11745 nodes=8388608
+ADAPT sh6 rp[P=1924 try=181263 kill=32614 18%] pd[P=117 try=567323 kill=109083 19%]
+DEATH sh11 liveend=0 estate=7944038 reach=5429824 dyn=33138 flow=0 geom=1324169
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=111423 kill=25926 nodes=1048576
+ADAPT sh11 rp[P=8192 try=10334 kill=914 9%] pd[P=74 try=1870015 kill=458517 25%]
+DEATH sh3 liveend=0 estate=5089040 reach=3879289 dyn=90388 flow=0 geom=879392
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=70266 kill=12804 nodes=6291456
+ADAPT sh3 rp[P=3046 try=211097 kill=38051 18%] pd[P=42 try=632974 kill=121516 19%]
+DEATH sh8 liveend=0 estate=8264442 reach=5810249 dyn=57571 flow=0 geom=1425515
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=119131 kill=27379 nodes=10485760
+ADAPT sh8 rp[P=8192 try=12441 kill=1238 10%] pd[P=81 try=1838156 kill=447037 24%]
+DEATH sh11 liveend=0 estate=8090796 reach=5530617 dyn=33138 flow=0 geom=1348772
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=113520 kill=26398 nodes=2097152
+ADAPT sh11 rp[P=8192 try=10515 kill=928 9%] pd[P=61 try=1904272 kill=466892 25%]
+DEATH sh6 liveend=0 estate=5060944 reach=3792276 dyn=134496 flow=0 geom=849215
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=70772 kill=12189 nodes=9437184
+ADAPT sh6 rp[P=5641 try=187656 kill=33764 18%] pd[P=50 try=590922 kill=113599 19%]
+DEATH sh11 liveend=0 estate=8239873 reach=5633176 dyn=33138 flow=0 geom=1374124
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=115617 kill=26892 nodes=3145728
+ADAPT sh11 rp[P=8192 try=10710 kill=947 9%] pd[P=66 try=1940123 kill=475749 25%]
+DEATH sh8 liveend=0 estate=8417614 reach=5914750 dyn=59100 flow=0 geom=1450820
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=121228 kill=27853 nodes=11534336
+ADAPT sh8 rp[P=8192 try=12659 kill=1261 10%] pd[P=58 try=1874716 kill=455888 24%]
+DEATH sh3 liveend=0 estate=5244633 reach=3990342 dyn=90388 flow=0 geom=904849
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=72364 kill=13247 nodes=7340032
+ADAPT sh3 rp[P=295 try=219052 kill=39496 18%] pd[P=282 try=654285 kill=125648 19%]
+T3[t=3319s] shard8 r6 #0 cell=(48,58) sc=50268 nodes=12000001 r=-1
+DEATH sh6 liveend=0 estate=5216564 reach=3916820 dyn=134496 flow=0 geom=877802
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=72869 kill=12610 nodes=10485760
+ADAPT sh6 rp[P=2316 try=197884 kill=35617 18%] pd[P=169 try=610853 kill=117400 19%]
+DEATH sh11 liveend=0 estate=8394041 reach=5738592 dyn=34564 flow=0 geom=1399703
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=117714 kill=27371 nodes=4194304
+ADAPT sh11 rp[P=8082 try=10913 kill=968 9%] pd[P=56 try=1977801 kill=484685 25%]
+DEATH sh3 liveend=0 estate=5400859 reach=4115872 dyn=90388 flow=0 geom=933876
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=74461 kill=13670 nodes=8388608
+ADAPT sh3 rp[P=2400 try=226074 kill=40757 18%] pd[P=74 try=677545 kill=130121 19%]
+DEATH sh8 liveend=0 estate=8624746 reach=6063862 dyn=61749 flow=0 geom=1486834
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=124257 kill=28539 nodes=1048576
+ADAPT sh8 rp[P=8192 try=13394 kill=1370 10%] pd[P=35 try=1920344 kill=467119 24%]
+DEATH sh11 liveend=0 estate=8543927 reach=5841308 dyn=34564 flow=0 geom=1425053
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=119811 kill=27860 nodes=5242880
+ADAPT sh11 rp[P=8192 try=11116 kill=990 9%] pd[P=44 try=2013719 kill=493671 25%]
+DEATH sh6 liveend=0 estate=5371290 reach=4042104 dyn=134496 flow=0 geom=908225
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=74966 kill=13069 nodes=11534336
+ADAPT sh6 rp[P=8192 try=201037 kill=36177 18%] pd[P=80 try=634133 kill=121920 19%]
+DEATH sh8 liveend=0 estate=8766009 reach=6168998 dyn=61749 flow=0 geom=1513443
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=126354 kill=28991 nodes=2097152
+ADAPT sh8 rp[P=8192 try=13569 kill=1384 10%] pd[P=142 try=1950585 kill=474312 24%]
+T3[t=3431s] shard6 r6 #8 cell=(46,59) sc=50269 nodes=12000001 r=-1
+sweep shard6 round6 done (budget 12000000)
+T3[t=3438s] shard11 r12 #1 cell=(45,67) sc=50271 nodes=6000001 r=-1
+sweep shard11 round12 done (budget 6000000)
+DEATH sh8 liveend=0 estate=8903353 reach=6269260 dyn=61749 flow=0 geom=1539249
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=128451 kill=29438 nodes=3145728
+ADAPT sh8 rp[P=8192 try=13744 kill=1398 10%] pd[P=28 try=1976426 kill=480282 24%]
+DEATH sh3 liveend=0 estate=5557392 reach=4241759 dyn=90388 flow=0 geom=963161
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=76558 kill=14128 nodes=9437184
+ADAPT sh3 rp[P=418 try=233500 kill=42102 18%] pd[P=62 try=699680 kill=134361 19%]
+DEATH sh8 liveend=0 estate=9045472 reach=6375687 dyn=61749 flow=0 geom=1566169
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=130548 kill=29924 nodes=4194304
+ADAPT sh8 rp[P=8192 try=13918 kill=1411 10%] pd[P=54 try=2006805 kill=487650 24%]
+DEATH sh11 liveend=0 estate=8801558 reach=6017155 dyn=35168 flow=0 geom=1467852
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=123423 kill=28734 nodes=1048576
+ADAPT sh11 rp[P=8192 try=11443 kill=1017 9%] pd[P=74 try=2074291 kill=508568 25%]
+DEATH sh6 liveend=0 estate=5571035 reach=4192960 dyn=148649 flow=0 geom=942797
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=77995 kill=13433 nodes=1048576
+ADAPT sh6 rp[P=5201 try=202315 kill=36399 18%] pd[P=161 try=648601 kill=124775 19%]
+DEATH sh11 liveend=0 estate=8948316 reach=6117948 dyn=35168 flow=0 geom=1492455
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=125520 kill=29206 nodes=2097152
+ADAPT sh11 rp[P=8192 try=11624 kill=1031 9%] pd[P=61 try=2108548 kill=516943 25%]
+DEATH sh3 liveend=0 estate=5712314 reach=4362885 dyn=90388 flow=0 geom=991432
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=78655 kill=14526 nodes=10485760
+ADAPT sh3 rp[P=3900 try=241190 kill=43483 18%] pd[P=167 try=720727 kill=138394 19%]
+DEATH sh8 liveend=0 estate=9185879 reach=6477617 dyn=63548 flow=0 geom=1590384
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=132645 kill=30386 nodes=5242880
+ADAPT sh8 rp[P=8192 try=14291 kill=1469 10%] pd[P=103 try=2039129 kill=495399 24%]
+DEATH sh3 liveend=0 estate=5862762 reach=4509919 dyn=90388 flow=0 geom=1030336
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=80752 kill=14959 nodes=11534336
+ADAPT sh3 rp[P=6935 try=241429 kill=43510 18%] pd[P=45 try=743102 kill=142768 19%]
+DEATH sh11 liveend=0 estate=9097393 reach=6220507 dyn=35168 flow=0 geom=1517807
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=127617 kill=29700 nodes=3145728
+ADAPT sh11 rp[P=8192 try=11819 kill=1050 9%] pd[P=66 try=2144399 kill=525800 25%]
+T3[t=3619s] shard3 r6 #8 cell=(44,65) sc=50265 nodes=12000001 r=-1
+sweep shard3 round6 done (budget 12000000)
+DEATH sh6 liveend=0 estate=5727867 reach=4313957 dyn=148649 flow=0 geom=970381
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=80092 kill=13848 nodes=2097152
+ADAPT sh6 rp[P=1860 try=207763 kill=37382 18%] pd[P=74 try=672966 kill=129424 19%]
+DEATH sh8 liveend=0 estate=9328213 reach=6585532 dyn=63548 flow=0 geom=1617370
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=134742 kill=30885 nodes=6291456
+ADAPT sh8 rp[P=7955 try=14490 kill=1490 10%] pd[P=120 try=2070532 kill=503224 24%]
+DEATH sh8 liveend=0 estate=9465629 reach=6687133 dyn=63548 flow=0 geom=1643098
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=136840 kill=31332 nodes=7340032
+ADAPT sh8 rp[P=8192 try=14655 kill=1501 10%] pd[P=60 try=2097695 kill=509541 24%]
+DEATH sh11 liveend=0 estate=9251561 reach=6325923 dyn=36594 flow=0 geom=1543386
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=129714 kill=30179 nodes=4194304
+ADAPT sh11 rp[P=8082 try=12022 kill=1071 9%] pd[P=56 try=2182077 kill=534736 25%]
+T3[t=3709s] shard6 r7 #8 cell=(46,59) sc=50269 nodes=3000001 r=-1
+sweep shard6 round7 done (budget 3000000)
+DEATH sh3 liveend=0 estate=6084182 reach=4691779 dyn=90941 flow=0 geom=1075030
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=83781 kill=15572 nodes=1048576
+ADAPT sh3 rp[P=274 try=247512 kill=44613 18%] pd[P=98 try=773962 kill=148780 19%]
+DEATH sh8 liveend=0 estate=9606780 reach=6791047 dyn=63548 flow=0 geom=1669843
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=138937 kill=31813 nodes=8388608
+ADAPT sh8 rp[P=8192 try=14820 kill=1512 10%] pd[P=24 try=2126484 kill=516407 24%]
+DEATH sh11 liveend=0 estate=9401447 reach=6428639 dyn=36594 flow=0 geom=1568736
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=131811 kill=30668 nodes=5242880
+ADAPT sh11 rp[P=8192 try=12225 kill=1093 9%] pd[P=44 try=2217995 kill=543722 25%]
+DEATH sh8 liveend=0 estate=9748583 reach=6897349 dyn=63551 flow=0 geom=1696396
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=141034 kill=32320 nodes=9437184
+ADAPT sh8 rp[P=5527 try=15040 kill=1537 10%] pd[P=26 try=2157838 kill=524039 24%]
+DEATH sh11 liveend=0 estate=9547675 reach=6528627 dyn=36594 flow=0 geom=1593090
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=133908 kill=31152 nodes=6291456
+ADAPT sh11 rp[P=8192 try=12399 kill=1107 9%] pd[P=35 try=2252229 kill=552200 25%]
+DEATH sh3 liveend=0 estate=6240187 reach=4815122 dyn=90941 flow=0 geom=1103398
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=85878 kill=16009 nodes=2097152
+ADAPT sh3 rp[P=2371 try=258162 kill=46538 18%] pd[P=156 try=792819 kill=152350 19%]
+DEATH sh6 liveend=0 estate=5995731 reach=4507311 dyn=162890 flow=0 geom=1012876
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=83995 kill=14386 nodes=1048576
+ADAPT sh6 rp[P=610 try=215963 kill=38861 18%] pd[P=265 try=695254 kill=133732 19%]
+DEATH sh8 liveend=0 estate=9889979 reach=7000878 dyn=65300 flow=0 geom=1721276
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=143131 kill=32811 nodes=10485760
+ADAPT sh8 rp[P=8192 try=15451 kill=1596 10%] pd[P=54 try=2189751 kill=531730 24%]
+DEATH sh11 liveend=0 estate=9700638 reach=6633410 dyn=37998 flow=0 geom=1618657
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=136006 kill=31655 nodes=7340032
+ADAPT sh11 rp[P=8192 try=12624 kill=1133 9%] pd[P=65 try=2289040 kill=561051 25%]
+T3[t=3883s] shard3 r7 #8 cell=(44,65) sc=50265 nodes=3000001 r=-1
+sweep shard3 round7 done (budget 3000000)
+DEATH sh6 liveend=0 estate=6151761 reach=4628638 dyn=162890 flow=0 geom=1040490
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=86092 kill=14828 nodes=2097152
+ADAPT sh6 rp[P=1004 try=224791 kill=40450 18%] pd[P=45 try=716734 kill=137829 19%]
+T3[t=3912s] shard8 r6 #5 cell=(49,62) sc=50273 nodes=12000001 r=-1
+sweep shard8 round6 done (budget 12000000)
+DEATH sh11 liveend=0 estate=9852173 reach=6737540 dyn=38000 flow=0 geom=1644343
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=138103 kill=32131 nodes=8388608
+ADAPT sh11 rp[P=8192 try=12791 kill=1143 9%] pd[P=66 try=2326210 kill=570232 25%]
+DEATH sh11 liveend=0 estate=9998498 reach=6837515 dyn=38000 flow=0 geom=1668719
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=140200 kill=32604 nodes=9437184
+ADAPT sh11 rp[P=4145 try=12997 kill=1166 9%] pd[P=52 try=2359900 kill=578535 25%]
+DEATH sh3 liveend=0 estate=6529125 reach=5040412 dyn=91425 flow=0 geom=1155648
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=89781 kill=16825 nodes=1048576
+ADAPT sh3 rp[P=2905 try=271350 kill=48917 18%] pd[P=131 try=833399 kill=160152 19%]
+DEATH sh8 liveend=0 estate=10244034 reach=7255237 dyn=65786 flow=0 geom=1784644
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=148257 kill=34056 nodes=1048576
+ADAPT sh8 rp[P=6739 try=16256 kill=1702 10%] pd[P=26 try=2267707 kill=550499 24%]
+T3[t=3984s] shard6 r8 #8 cell=(46,59) sc=50269 nodes=3000001 r=-1
+sweep shard6 round8 done (budget 3000000)
+DEATH sh8 liveend=0 estate=10390706 reach=7355548 dyn=65786 flow=0 geom=1809133
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=150354 kill=34545 nodes=2097152
+ADAPT sh8 rp[P=6632 try=16465 kill=1724 10%] pd[P=71 try=2301957 kill=558939 24%]
+DEATH sh11 liveend=0 estate=10149550 reach=6942144 dyn=38000 flow=0 geom=1694638
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=142297 kill=33092 nodes=10485760
+ADAPT sh11 rp[P=8192 try=13210 kill=1186 9%] pd[P=81 try=2396488 kill=587477 25%]
+DEATH sh3 liveend=0 estate=6685783 reach=5163913 dyn=91425 flow=0 geom=1184075
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=91878 kill=17235 nodes=2097152
+ADAPT sh3 rp[P=2480 try=276894 kill=49918 18%] pd[P=54 try=857987 kill=164886 19%]
+T3[t=4071s] shard8 r7 #0 cell=(48,58) sc=50268 nodes=3000001 r=-1
+DEATH sh6 liveend=0 estate=6420121 reach=4821199 dyn=177136 flow=0 geom=1082735
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=89995 kill=15374 nodes=1048576
+ADAPT sh6 rp[P=610 try=230051 kill=41391 18%] pd[P=265 try=742319 kill=142760 19%]
+DEATH sh11 liveend=0 estate=10302814 reach=7046447 dyn=39615 flow=0 geom=1719937
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=144394 kill=33548 nodes=11534336
+ADAPT sh11 rp[P=8192 try=13445 kill=1213 9%] pd[P=66 try=2433102 kill=596315 25%]
+T3[t=4136s] shard11 r13 #1 cell=(45,67) sc=50271 nodes=12000001 r=-1
+sweep shard11 round13 done (budget 12000000)
+DEATH sh8 liveend=0 estate=10659910 reach=7546870 dyn=68435 flow=0 geom=1855604
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=154257 kill=35460 nodes=1048576
+ADAPT sh8 rp[P=8192 try=17286 kill=1841 11%] pd[P=35 try=2362170 kill=573783 24%]
+T3[t=4152s] shard3 r8 #8 cell=(44,65) sc=50265 nodes=3000001 r=-1
+sweep shard3 round8 done (budget 3000000)
+DEATH sh8 liveend=0 estate=10801173 reach=7652006 dyn=68435 flow=0 geom=1882213
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=156354 kill=35912 nodes=2097152
+ADAPT sh8 rp[P=8192 try=17461 kill=1855 11%] pd[P=142 try=2392411 kill=580976 24%]
+DEATH sh6 liveend=0 estate=6576151 reach=4942526 dyn=177136 flow=0 geom=1110349
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=92092 kill=15816 nodes=2097152
+ADAPT sh6 rp[P=1004 try=238879 kill=42980 18%] pd[P=45 try=763799 kill=146857 19%]
+DEATH sh11 liveend=0 estate=10521667 reach=7195917 dyn=40219 flow=0 geom=1756512
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=147423 kill=34286 nodes=1048576
+ADAPT sh11 rp[P=8192 try=13726 kill=1236 9%] pd[P=74 try=2485204 kill=609156 25%]
+T3[t=4209s] shard8 r7 #5 cell=(49,62) sc=50273 nodes=3000001 r=-1
+sweep shard8 round7 done (budget 3000000)
+DEATH sh3 liveend=0 estate=6975523 reach=5388160 dyn=91906 flow=0 geom=1236292
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=95781 kill=18081 nodes=1048576
+ADAPT sh3 rp[P=3829 try=290216 kill=52321 18%] pd[P=61 try=898086 kill=172627 19%]
+DEATH sh11 liveend=0 estate=10668425 reach=7296710 dyn=40219 flow=0 geom=1781115
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=149520 kill=34758 nodes=2097152
+ADAPT sh11 rp[P=8192 try=13907 kill=1250 9%] pd[P=61 try=2519461 kill=617531 25%]
+DEATH sh6 liveend=0 estate=6733061 reach=5065275 dyn=177136 flow=0 geom=1138658
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=94189 kill=16263 nodes=3145728
+ADAPT sh6 rp[P=112 try=244591 kill=44017 18%] pd[P=151 try=787758 kill=151446 19%]
+DEATH sh8 liveend=0 estate=11071103 reach=7841955 dyn=68959 flow=0 geom=1929733
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=160257 kill=36808 nodes=1048576
+ADAPT sh8 rp[P=8192 try=17820 kill=1886 11%] pd[P=74 try=2450090 kill=594791 24%]
+DEATH sh11 liveend=0 estate=10817502 reach=7399269 dyn=40219 flow=0 geom=1806467
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=151617 kill=35252 nodes=3145728
+ADAPT sh11 rp[P=8192 try=14102 kill=1269 9%] pd[P=66 try=2555312 kill=626388 25%]
+DEATH sh8 liveend=0 estate=11217859 reach=7942724 dyn=68959 flow=0 geom=1954352
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=162354 kill=37288 nodes=2097152
+ADAPT sh8 rp[P=8192 try=18000 kill=1900 11%] pd[P=61 try=2484333 kill=603145 24%]
+DEATH sh3 liveend=0 estate=7132081 reach=5510827 dyn=91906 flow=0 geom=1264525
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=97878 kill=18481 nodes=2097152
+ADAPT sh3 rp[P=1250 try=298845 kill=53886 18%] pd[P=299 try=919123 kill=176636 19%]
+T3[t=4374s] shard8 r8 #0 cell=(48,58) sc=50268 nodes=3000001 r=-1
+DEATH sh11 liveend=0 estate=10971670 reach=7504685 dyn=41645 flow=0 geom=1832046
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=153714 kill=35731 nodes=4194304
+ADAPT sh11 rp[P=8082 try=14305 kill=1290 9%] pd[P=56 try=2592990 kill=635324 25%]
+DEATH sh3 liveend=0 estate=7288141 reach=5635814 dyn=91906 flow=0 geom=1293399
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=99975 kill=18881 nodes=3145728
+ADAPT sh3 rp[P=654 try=307105 kill=55378 18%] pd[P=161 try=940431 kill=180725 19%]
+DEATH sh8 liveend=0 estate=11487034 reach=8134142 dyn=71608 flow=0 geom=2000850
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=166257 kill=38198 nodes=1048576
+ADAPT sh8 rp[P=8192 try=18819 kill=2017 11%] pd[P=35 try=2544651 kill=618014 24%]
+DEATH sh11 liveend=0 estate=11121556 reach=7607401 dyn=41645 flow=0 geom=1857396
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=155811 kill=36220 nodes=5242880
+ADAPT sh11 rp[P=8192 try=14508 kill=1312 9%] pd[P=44 try=2628908 kill=644310 25%]
+DEATH sh6 liveend=0 estate=7044270 reach=5309037 dyn=177136 flow=0 geom=1195563
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=98383 kill=17109 nodes=5242880
+ADAPT sh6 rp[P=3885 try=258238 kill=46466 18%] pd[P=50 try=833600 kill=160320 19%]
+DEATH sh8 liveend=0 estate=11628297 reach=8239278 dyn=71608 flow=0 geom=2027459
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=168354 kill=38650 nodes=2097152
+ADAPT sh8 rp[P=8192 try=18994 kill=2031 11%] pd[P=142 try=2574892 kill=625207 24%]
+DEATH sh11 liveend=0 estate=11267784 reach=7707389 dyn=41645 flow=0 geom=1881750
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=157908 kill=36704 nodes=6291456
+ADAPT sh11 rp[P=8192 try=14682 kill=1326 9%] pd[P=35 try=2663142 kill=652788 25%]
+T3[t=4512s] shard8 r8 #5 cell=(49,62) sc=50273 nodes=3000001 r=-1
+sweep shard8 round8 done (budget 3000000)
+T3[t=4533s] shard6 r9 #8 cell=(46,59) sc=50269 nodes=6000001 r=-1
+sweep shard6 round9 done (budget 6000000)
+DEATH sh3 liveend=0 estate=7443155 reach=5751333 dyn=91906 flow=0 geom=1320314
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=102072 kill=19302 nodes=4194304
+ADAPT sh3 rp[P=523 try=316294 kill=57041 18%] pd[P=130 try=960828 kill=184653 19%]
+DEATH sh11 liveend=0 estate=11420747 reach=7812172 dyn=43049 flow=0 geom=1907317
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=160006 kill=37207 nodes=7340032
+ADAPT sh11 rp[P=8192 try=14907 kill=1352 9%] pd[P=65 try=2699953 kill=661639 25%]
+DEATH sh8 liveend=0 estate=11898227 reach=8429227 dyn=72132 flow=0 geom=2074979
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=172257 kill=39546 nodes=1048576
+ADAPT sh8 rp[P=8192 try=19353 kill=2062 11%] pd[P=74 try=2632571 kill=639022 24%]
+DEATH sh3 liveend=0 estate=7599178 reach=5877602 dyn=91906 flow=0 geom=1349631
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=104169 kill=19725 nodes=5242880
+ADAPT sh3 rp[P=3182 try=323862 kill=58402 18%] pd[P=67 try=982550 kill=188823 19%]
+DEATH sh8 liveend=0 estate=12044983 reach=8529996 dyn=72132 flow=0 geom=2099598
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=174354 kill=40026 nodes=2097152
+ADAPT sh8 rp[P=8192 try=19533 kill=2076 11%] pd[P=61 try=2666814 kill=647376 24%]
+DEATH sh11 liveend=0 estate=11572282 reach=7916302 dyn=43051 flow=0 geom=1933003
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=162103 kill=37683 nodes=8388608
+ADAPT sh11 rp[P=8192 try=15074 kill=1362 9%] pd[P=66 try=2737123 kill=670820 25%]
+DEATH sh6 liveend=0 estate=7289681 reach=5484391 dyn=191298 flow=0 geom=1233617
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=101995 kill=17606 nodes=1048576
+ADAPT sh6 rp[P=5201 try=265471 kill=47769 18%] pd[P=161 try=853306 kill=164151 19%]
+DEATH sh11 liveend=0 estate=11718607 reach=8016277 dyn=43051 flow=0 geom=1957379
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=164200 kill=38156 nodes=9437184
+ADAPT sh11 rp[P=4145 try=15280 kill=1385 9%] pd[P=52 try=2770813 kill=679123 25%]
+T3[t=4685s] shard3 r9 #8 cell=(44,65) sc=50265 nodes=6000001 r=-1
+sweep shard3 round9 done (budget 6000000)
+DEATH sh8 liveend=0 estate=12194060 reach=8632555 dyn=72132 flow=0 geom=2124950
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=176451 kill=40520 nodes=3145728
+ADAPT sh8 rp[P=8192 try=19728 kill=2095 11%] pd[P=66 try=2702665 kill=656233 24%]
+DEATH sh6 liveend=0 estate=7446513 reach=5605388 dyn=191298 flow=0 geom=1261201
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=104092 kill=18021 nodes=2097152
+ADAPT sh6 rp[P=1860 try=270919 kill=48752 18%] pd[P=74 try=877671 kill=168800 19%]
+DEATH sh11 liveend=0 estate=11869659 reach=8120906 dyn=43051 flow=0 geom=1983298
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=166297 kill=38644 nodes=10485760
+ADAPT sh11 rp[P=8192 try=15493 kill=1405 9%] pd[P=81 try=2807401 kill=688065 25%]
+DEATH sh8 liveend=0 estate=12348232 reach=8737982 dyn=73554 flow=0 geom=2150532
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=178548 kill=41000 nodes=4194304
+ADAPT sh8 rp[P=8082 try=19931 kill=2116 11%] pd[P=56 try=2740343 kill=665169 24%]
+DEATH sh3 liveend=0 estate=7867128 reach=6085345 dyn=92395 flow=0 geom=1397957
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=107781 kill=20492 nodes=1048576
+ADAPT sh3 rp[P=2532 try=334162 kill=60259 18%] pd[P=66 try=1021505 kill=196326 19%]
+T3[t=4824s] shard6 r10 #8 cell=(46,59) sc=50269 nodes=3000001 r=-1
+sweep shard6 round10 done (budget 3000000)
+DEATH sh8 liveend=0 estate=12498118 reach=8840698 dyn=73554 flow=0 geom=2175882
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=180645 kill=41489 nodes=5242880
+ADAPT sh8 rp[P=8192 try=20134 kill=2138 11%] pd[P=44 try=2776261 kill=674155 24%]
+DEATH sh11 liveend=0 estate=12022923 reach=8225209 dyn=44666 flow=0 geom=2008597
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=168394 kill=39100 nodes=11534336
+ADAPT sh11 rp[P=8192 try=15728 kill=1432 9%] pd[P=66 try=2844015 kill=696903 25%]
+T3[t=4861s] shard8 r9 #0 cell=(48,58) sc=50268 nodes=6000001 r=-1
+DEATH sh3 liveend=0 estate=8024178 reach=6207913 dyn=92395 flow=0 geom=1426128
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=109878 kill=20945 nodes=2097152
+ADAPT sh3 rp[P=462 try=342031 kill=61689 18%] pd[P=296 try=1042815 kill=200397 19%]
+DEATH sh11 liveend=0 estate=12172084 reach=8327007 dyn=44666 flow=0 geom=2033633
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=170491 kill=39597 nodes=12582912
+ADAPT sh11 rp[P=8192 try=15900 kill=1443 9%] pd[P=26 try=2879615 kill=705767 25%]
+DEATH sh6 liveend=0 estate=7714377 reach=5798742 dyn=205539 flow=0 geom=1303696
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=107995 kill=18559 nodes=1048576
+ADAPT sh6 rp[P=610 try=279119 kill=50231 18%] pd[P=265 try=899959 kill=173108 19%]
+DEATH sh8 liveend=0 estate=12744433 reach=9015499 dyn=76278 flow=0 geom=2218047
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=184257 kill=42337 nodes=1048576
+ADAPT sh8 rp[P=8192 try=20415 kill=2156 11%] pd[P=98 try=2830246 kill=687462 24%]
+DEATH sh11 liveend=0 estate=12319347 reach=8427937 dyn=44666 flow=0 geom=2058339
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=172588 kill=40054 nodes=13631488
+ADAPT sh11 rp[P=5133 try=16087 kill=1461 9%] pd[P=71 try=2914172 kill=714317 25%]
+T3[t=4967s] shard3 r10 #8 cell=(44,65) sc=50265 nodes=3000001 r=-1
+sweep shard3 round10 done (budget 3000000)
+DEATH sh8 liveend=0 estate=12885599 reach=9120701 dyn=76278 flow=0 geom=2244677
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=186354 kill=42836 nodes=2097152
+ADAPT sh8 rp[P=7830 try=20587 kill=2168 11%] pd[P=26 try=2860437 kill=694687 24%]
+DEATH sh8 liveend=0 estate=13022857 reach=9220658 dyn=76278 flow=0 geom=2270364
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=188451 kill=43321 nodes=3145728
+ADAPT sh8 rp[P=8192 try=20738 kill=2176 10%] pd[P=103 try=2886170 kill=700611 24%]
+DEATH sh11 liveend=0 estate=12473829 reach=8533631 dyn=46084 flow=0 geom=2084082
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=174686 kill=40521 nodes=14680064
+ADAPT sh11 rp[P=8192 try=16289 kill=1479 9%] pd[P=44 try=2952098 kill=723414 25%]
+DEATH sh6 liveend=0 estate=7870407 reach=5920069 dyn=205539 flow=0 geom=1331310
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=110092 kill=19001 nodes=2097152
+ADAPT sh6 rp[P=1004 try=287947 kill=51820 18%] pd[P=45 try=921439 kill=177205 19%]
+DEATH sh8 liveend=0 estate=13165081 reach=9326942 dyn=76278 flow=0 geom=2297433
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=190548 kill=43812 nodes=4194304
+ADAPT sh8 rp[P=8192 try=20923 kill=2191 10%] pd[P=80 try=2916359 kill=707900 24%]
+DEATH sh3 liveend=0 estate=8313341 reach=6434080 dyn=92893 flow=0 geom=1478886
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=113781 kill=21818 nodes=1048576
+ADAPT sh3 rp[P=2395 try=355416 kill=64101 18%] pd[P=89 try=1082483 kill=208028 19%]
+DEATH sh11 liveend=0 estate=12623703 reach=8636603 dyn=46084 flow=0 geom=2109426
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=176783 kill=41019 nodes=15728640
+ADAPT sh11 rp[P=8192 try=16480 kill=1497 9%] pd[P=29 try=2988086 kill=732371 25%]
+T3[t=5107s] shard6 r11 #8 cell=(46,59) sc=50269 nodes=3000001 r=-1
+sweep shard6 round11 done (budget 3000000)
+DEATH sh11 liveend=0 estate=12770079 reach=8736674 dyn=46084 flow=0 geom=2133826
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=178880 kill=41502 nodes=16777216
+ADAPT sh11 rp[P=8192 try=16656 kill=1510 9%] pd[P=112 try=3022108 kill=740759 25%]
+DEATH sh8 liveend=0 estate=13305674 reach=9429069 dyn=78110 flow=0 geom=2321773
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=192645 kill=44324 nodes=5242880
+ADAPT sh8 rp[P=8192 try=21295 kill=2245 11%] pd[P=30 try=2948195 kill=715465 24%]
+DEATH sh3 liveend=0 estate=8470030 reach=6556737 dyn=92893 flow=0 geom=1506970
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=115878 kill=22225 nodes=2097152
+ADAPT sh3 rp[P=249 try=363273 kill=65525 18%] pd[P=323 try=1104535 kill=212253 19%]
+T3[t=5180s] shard8 r9 #5 cell=(49,62) sc=50273 nodes=6000001 r=-1
+sweep shard8 round9 done (budget 6000000)
+DEATH sh11 liveend=0 estate=12922670 reach=8841410 dyn=46835 flow=0 geom=2159574
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=180977 kill=41957 nodes=17825792
+ADAPT sh11 rp[P=8192 try=16865 kill=1532 9%] pd[P=2026 try=3059410 kill=749869 25%]
+DEATH sh6 liveend=0 estate=8138767 reach=6112630 dyn=219785 flow=0 geom=1373555
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=113995 kill=19547 nodes=1048576
+ADAPT sh6 rp[P=610 try=293207 kill=52761 18%] pd[P=265 try=947024 kill=182136 19%]
+T3[t=5238s] shard3 r11 #8 cell=(44,65) sc=50265 nodes=3000001 r=-1
+sweep shard3 round11 done (budget 3000000)
+DEATH sh8 liveend=0 estate=13560697 reach=9611579 dyn=78634 flow=0 geom=2366725
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=196257 kill=45235 nodes=1048576
+ADAPT sh8 rp[P=8192 try=21625 kill=2272 11%] pd[P=74 try=3007368 kill=730157 24%]
+DEATH sh11 liveend=0 estate=13074468 reach=8945852 dyn=47498 flow=0 geom=2185037
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=183074 kill=42433 nodes=18874368
+ADAPT sh11 rp[P=8192 try=17022 kill=1540 9%] pd[P=59 try=3096467 kill=758853 25%]
+DEATH sh8 liveend=0 estate=13707453 reach=9712348 dyn=78634 flow=0 geom=2391344
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=198354 kill=45715 nodes=2097152
+ADAPT sh8 rp[P=8192 try=21805 kill=2286 10%] pd[P=61 try=3041611 kill=738511 24%]
+DEATH sh6 liveend=0 estate=8294797 reach=6233957 dyn=219785 flow=0 geom=1401169
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=116092 kill=19989 nodes=2097152
+ADAPT sh6 rp[P=1004 try=302035 kill=54350 18%] pd[P=45 try=968504 kill=186233 19%]
+DEATH sh11 liveend=0 estate=13220985 reach=9046416 dyn=47498 flow=0 geom=2209520
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=185171 kill=42934 nodes=19922944
+ADAPT sh11 rp[P=6935 try=17175 kill=1548 9%] pd[P=35 try=3130758 kill=767302 25%]
+DEATH sh3 liveend=0 estate=8758821 reach=6782738 dyn=93367 flow=0 geom=1559519
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=119781 kill=23068 nodes=1048576
+ADAPT sh3 rp[P=3991 try=376194 kill=67846 18%] pd[P=137 try=1145643 kill=220165 19%]
+T3[t=5342s] shard8 r10 #0 cell=(48,58) sc=50268 nodes=3000001 r=-1
+DEATH sh11 liveend=0 estate=13370379 reach=9149135 dyn=47498 flow=0 geom=2234921
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=187269 kill=43392 nodes=20971520
+ADAPT sh11 rp[P=8192 try=17347 kill=1559 9%] pd[P=113 try=3166976 kill=776300 25%]
+DEATH sh6 liveend=0 estate=8451707 reach=6356706 dyn=219785 flow=0 geom=1429478
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=118189 kill=20436 nodes=3145728
+ADAPT sh6 rp[P=112 try=307747 kill=55387 18%] pd[P=151 try=992463 kill=190822 19%]
+DEATH sh8 liveend=0 estate=13976628 reach=9903766 dyn=81283 flow=0 geom=2437842
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=202257 kill=46625 nodes=1048576
+ADAPT sh8 rp[P=8192 try=22624 kill=2403 11%] pd[P=35 try=3101929 kill=753380 24%]
+DEATH sh3 liveend=0 estate=8915715 reach=6904973 dyn=93367 flow=0 geom=1587512
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=121878 kill=23485 nodes=2097152
+ADAPT sh3 rp[P=166 try=384558 kill=69366 18%] pd[P=313 try=1167536 kill=224348 19%]
+DEATH sh11 liveend=0 estate=13524861 reach=9254006 dyn=49207 flow=0 geom=2260304
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=189366 kill=43852 nodes=22020096
+ADAPT sh11 rp[P=8192 try=17543 kill=1577 9%] pd[P=47 try=3204331 kill=785229 25%]
+DEATH sh8 liveend=0 estate=14117891 reach=10008902 dyn=81283 flow=0 geom=2464451
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=204354 kill=47077 nodes=2097152
+ADAPT sh8 rp[P=8192 try=22799 kill=2417 11%] pd[P=142 try=3132170 kill=760573 24%]
+T3[t=5478s] shard8 r10 #5 cell=(49,62) sc=50273 nodes=3000001 r=-1
+sweep shard8 round10 done (budget 3000000)
+DEATH sh11 liveend=0 estate=13674633 reach=9357270 dyn=49207 flow=0 geom=2285858
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=191463 kill=44320 nodes=23068672
+ADAPT sh11 rp[P=8192 try=17701 kill=1586 9%] pd[P=189 try=3240210 kill=794136 25%]
+DEATH sh3 liveend=0 estate=9072879 reach=7028903 dyn=93367 flow=0 geom=1616135
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=123975 kill=23938 nodes=3145728
+ADAPT sh3 rp[P=678 try=389391 kill=70235 18%] pd[P=157 try=1192499 kill=229172 19%]
+T3[t=5551s] shard11 r14 #1 cell=(45,67) sc=50271 nodes=24000001 r=-1
+sweep shard11 round14 done (budget 24000000)
+DEATH sh8 liveend=0 estate=14387821 reach=10198851 dyn=81807 flow=0 geom=2511971
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=208257 kill=47973 nodes=1048576
+ADAPT sh8 rp[P=8192 try=23158 kill=2448 11%] pd[P=74 try=3189849 kill=774388 24%]
+DEATH sh6 liveend=0 estate=8762916 reach=6600468 dyn=219785 flow=0 geom=1486383
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=122383 kill=21282 nodes=5242880
+ADAPT sh6 rp[P=3885 try=321394 kill=57836 18%] pd[P=50 try=1038305 kill=199696 19%]
+DEATH sh8 liveend=0 estate=14534577 reach=10299620 dyn=81807 flow=0 geom=2536590
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=210354 kill=48453 nodes=2097152
+ADAPT sh8 rp[P=8192 try=23338 kill=2462 11%] pd[P=61 try=3224092 kill=782742 24%]
+DEATH sh11 liveend=0 estate=13956906 reach=9550921 dyn=49787 flow=0 geom=2333066
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=195423 kill=45216 nodes=1048576
+ADAPT sh11 rp[P=7369 try=18071 kill=1623 9%] pd[P=44 try=3307111 kill=810498 25%]
+DEATH sh3 liveend=0 estate=9227825 reach=7145016 dyn=93367 flow=0 geom=1643263
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=126072 kill=24388 nodes=4194304
+ADAPT sh3 rp[P=101 try=396752 kill=71570 18%] pd[P=90 try=1214111 kill=233388 19%]
+T3[t=5650s] shard8 r11 #0 cell=(48,58) sc=50268 nodes=3000001 r=-1
+T3[t=5656s] shard6 r12 #8 cell=(46,59) sc=50269 nodes=6000001 r=-1
+sweep shard6 round12 done (budget 6000000)
+DEATH sh11 liveend=0 estate=14103360 reach=9651311 dyn=49787 flow=0 geom=2357515
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=197520 kill=45721 nodes=2097152
+ADAPT sh11 rp[P=8192 try=18225 kill=1631 9%] pd[P=201 try=3341156 kill=818841 25%]
+DEATH sh3 liveend=0 estate=9383476 reach=7270967 dyn=93367 flow=0 geom=1672404
+PDEV sh3 try=0 kill=0 (0.0%) BJ try=128169 kill=24799 nodes=5242880
+ADAPT sh3 rp[P=4507 try=404062 kill=72877 18%] pd[P=169 try=1236774 kill=237721 19%]
+DEATH sh8 liveend=0 estate=14803752 reach=10491038 dyn=84456 flow=0 geom=2583088
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=214257 kill=49363 nodes=1048576
+ADAPT sh8 rp[P=8192 try=24157 kill=2579 11%] pd[P=35 try=3284410 kill=797611 24%]
+T3[t=5717s] shard11 r15 #1 cell=(45,67) sc=50271 nodes=3000001 r=-1
+sweep shard11 round15 done (budget 3000000)
+DEATH sh8 liveend=0 estate=14945015 reach=10596174 dyn=84456 flow=0 geom=2609697
+PDEV sh8 try=0 kill=0 (0.0%) BJ try=216354 kill=49815 nodes=2097152
+ADAPT sh8 rp[P=8192 try=24332 kill=2593 11%] pd[P=142 try=3314651 kill=804804 24%]
+DEATH sh6 liveend=0 estate=9008327 reach=6775822 dyn=233947 flow=0 geom=1524437
+PDEV sh6 try=0 kill=0 (0.0%) BJ try=125995 kill=21779 nodes=1048576
+ADAPT sh6 rp[P=5201 try=328627 kill=59139 18%] pd[P=161 try=1058011 kill=203527 19%]
+T3[t=5779s] shard3 r12 #8 cell=(44,65) sc=50265 nodes=6000001 r=-1
+sweep shard3 round12 done (budget 6000000)
+T3[t=5786s] shard8 r11 #5 cell=(49,62) sc=50273 nodes=3000001 r=-1
+sweep shard8 round11 done (budget 3000000)
+DEATH sh11 liveend=0 estate=14384173 reach=9843967 dyn=50386 flow=0 geom=2404867
+PDEV sh11 try=0 kill=0 (0.0%) BJ try=201423 kill=46639 nodes=1048576
+ADAPT sh11 rp[P=7369 try=18617 kill=1674 9%] pd[P=44 try=3408684 kill=835437 25%]

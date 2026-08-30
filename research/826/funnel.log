@@ -1,0 +1,108 @@
+有向预计算：走向已定 66619/146090 (45.6%) | 无向判定率 47.2% -> 60.4% (34472 -> 44135 / 73045 边)
+有向预计算：走向已定 67205/146090 (46.0%) | 无向判定率 60.4% -> 60.7% (44135 -> 44346 / 73045 边)
+有向预计算：走向已定 67224/146090 (46.0%) | 无向判定率 60.7% -> 60.7% (44346 -> 44362 / 73045 边)
+有向预计算：走向已定 67224/146090 (46.0%) | 无向判定率 60.7% -> 60.7% (44362 -> 44362 / 73045 边)
+全局阶段：固定 44362 条边，起点候选 82 / 51528 (0.2%)
+adaptive PROPDEPTH=999999 (fixed 44362 / 73045 edges; 第一层存活率>=SURVDEEP%再升深层)
+shard 0: swarm 模式（82 个候选全员上，随机顺序）
+shard 2: swarm 模式（82 个候选全员上，随机顺序）
+shard 1: swarm 模式（82 个候选全员上，随机顺序）
+shard 7: swarm 模式（82 个候选全员上，随机顺序）
+shard 3: swarm 模式（82 个候选全员上，随机顺序）
+shard 4: swarm 模式（82 个候选全员上，随机顺序）
+shard 11: swarm 模式（82 个候选全员上，随机顺序）
+shard 5: swarm 模式（82 个候选全员上，随机顺序）
+shard 6: swarm 模式（82 个候选全员上，随机顺序）
+shard 8: swarm 模式（82 个候选全员上，随机顺序）
+shard 9: swarm 模式（82 个候选全员上，随机顺序）
+shard 10: swarm 模式（82 个候选全员上，随机顺序）
+shard 12: swarm 模式（82 个候选全员上，随机顺序）
+shard 13: swarm 模式（82 个候选全员上，随机顺序）
+shard 14: swarm 模式（82 个候选全员上，随机顺序）
+shard 15: swarm 模式（82 个候选全员上，随机顺序）
+shard 16: swarm 模式（82 个候选全员上，随机顺序）
+shard 17: swarm 模式（82 个候选全员上，随机顺序）
+shard 18: swarm 模式（82 个候选全员上，随机顺序）
+shard 19: swarm 模式（82 个候选全员上，随机顺序）
+FRANK shard1: F降序
+shard 1: 第一层存活 12/5 = 240%%, 第二层 开
+FRANK shard10: F降序
+shard 10: 第一层存活 11/4 = 275%%, 第二层 开
+FRANK shard4: F降序
+shard 4: 第一层存活 11/4 = 275%%, 第二层 开
+FRANK shard13: F降序
+shard 13: 第一层存活 11/4 = 275%%, 第二层 开
+FRANK shard19: F降序
+shard 19: 第一层存活 12/4 = 300%%, 第二层 开
+FRANK shard7: F降序
+shard 7: 第一层存活 12/4 = 300%%, 第二层 开
+FRANK shard16: F降序
+shard 16: 第一层存活 11/4 = 275%%, 第二层 开
+FRANK shard5: F降序
+shard 5: 第一层存活 10/4 = 250%%, 第二层 开
+FRANK shard14: F降序
+shard 14: 第一层存活 10/4 = 250%%, 第二层 开
+FRANK shard2: F降序
+shard 2: 第一层存活 10/4 = 250%%, 第二层 开
+FRANK shard17: F降序
+shard 17: 第一层存活 10/4 = 250%%, 第二层 开
+FRANK shard6: F降序
+shard 6: 第一层存活 10/4 = 250%%, 第二层 开
+FRANK shard11: F降序
+shard 11: 第一层存活 10/4 = 250%%, 第二层 开
+FRANK shard18: F降序
+shard 18: 第一层存活 10/4 = 250%%, 第二层 开
+FRANK shard3: F降序
+shard 3: 第一层存活 10/4 = 250%%, 第二层 开
+FRANK shard15: F降序
+shard 15: 第一层存活 10/4 = 250%%, 第二层 开
+FRANK shard9: F降序
+shard 9: 第一层存活 10/4 = 250%%, 第二层 开
+FRANK shard12: F降序
+shard 12: 第一层存活 10/4 = 250%%, 第二层 开
+FRANK shard8: F降序
+shard 8: 第一层存活 10/4 = 250%%, 第二层 开
+FRANK shard0: F降序
+shard 0: 第一层存活 10/5 = 200%%, 第二层 开
+probe[t=19s]: 72/82 起点被证伪，剩 10
+DYN shard1: 16142 calls, 3381 refuted (21%)
+probe[t=21s]: 72/82 起点被证伪，剩 10
+DYN shard10: 16654 calls, 3626 refuted (22%)
+probe[t=22s]: 72/82 起点被证伪，剩 10
+DYN shard13: 16301 calls, 3470 refuted (21%)
+probe[t=23s]: 72/82 起点被证伪，剩 10
+DYN shard7: 16418 calls, 3546 refuted (22%)
+probe[t=24s]: 72/82 起点被证伪，剩 10
+DYN shard16: 16414 calls, 3647 refuted (22%)
+probe[t=24s]: 72/82 起点被证伪，剩 10
+DYN shard4: 16033 calls, 3305 refuted (21%)
+probe[t=27s]: 72/82 起点被证伪，剩 10
+DYN shard5: 15419 calls, 5542 refuted (36%)
+probe[t=27s]: 72/82 起点被证伪，剩 10
+DYN shard17: 15245 calls, 5489 refuted (36%)
+probe[t=27s]: 72/82 起点被证伪，剩 10
+DYN shard8: 15469 calls, 5662 refuted (37%)
+probe[t=27s]: 72/82 起点被证伪，剩 10
+DYN shard11: 15301 calls, 5571 refuted (36%)
+probe[t=27s]: 72/82 起点被证伪，剩 10
+DYN shard19: 16384 calls, 3667 refuted (22%)
+probe[t=27s]: 72/82 起点被证伪，剩 10
+DYN shard2: 15553 calls, 5504 refuted (35%)
+probe[t=28s]: 72/82 起点被证伪，剩 10
+DYN shard14: 15527 calls, 5579 refuted (36%)
+probe[t=29s]: 72/82 起点被证伪，剩 10
+DYN shard3: 15363 calls, 4551 refuted (30%)
+probe[t=29s]: 72/82 起点被证伪，剩 10
+DYN shard12: 15391 calls, 4564 refuted (30%)
+probe[t=29s]: 72/82 起点被证伪，剩 10
+DYN shard6: 15203 calls, 4361 refuted (29%)
+probe[t=29s]: 72/82 起点被证伪，剩 10
+DYN shard15: 15731 calls, 4428 refuted (28%)
+probe[t=29s]: 72/82 起点被证伪，剩 10
+DYN shard0: 15573 calls, 4122 refuted (26%)
+probe[t=30s]: 72/82 起点被证伪，剩 10
+DYN shard9: 15337 calls, 3895 refuted (25%)
+probe[t=30s]: 72/82 起点被证伪，剩 10
+DYN shard18: 15533 calls, 4596 refuted (30%)
+STATS {"solved":1,"shard":1,"wall_s":35,"nodes_total":645600,"nodes_win":297138,"dth_liveend":0,"dth_estate":88408,"dth_reach":38512,"dth_dyn":6433,"dth_flow":0,"dth_geom":6557,"maxrss_kb":33352,"start_x":190,"start_y":192}
+WINNER shard 1 tier 1 nodes 297138

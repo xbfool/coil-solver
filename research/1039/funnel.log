@@ -1,0 +1,27 @@
+有向预计算：走向已定 73158/176022 (41.6%) | 无向判定率 52.3% -> 63.9% (46018 -> 56207 / 88011 边)
+有向预计算：走向已定 74344/176022 (42.2%) | 无向判定率 63.9% -> 64.2% (56207 -> 56468 / 88011 边)
+有向预计算：走向已定 74343/176022 (42.2%) | 无向判定率 64.2% -> 64.2% (56468 -> 56468 / 88011 边)
+全局阶段：固定 56468 条边，起点候选 76 / 64000 (0.1%)
+adaptive PROPDEPTH=999999 (fixed 56468 / 88011 edges; 第一层存活率>=SURVDEEP%再升深层)
+FRANK shard1: F降序
+shard 1: 第一层存活 1/19 = 5%%, 第二层 跳过
+probe[t=1s]: 75/76 起点被证伪，剩 1
+DYN shard1: 408 calls, 121 refuted (30%)
+FRANK shard2: F降序
+shard 2: 第一层存活 0/19 = 0%%, 第二层 跳过
+probe[t=2s]: 76/76 起点被证伪，剩 0
+DYN shard2: 443 calls, 188 refuted (42%)
+no solution found
+STATS {"solved":0,"shard":2,"wall_s":2,"nodes_total":4186,"nodes_win":-1,"dth_liveend":0,"dth_estate":634,"dth_reach":308,"dth_dyn":188,"dth_flow":0,"dth_geom":52,"maxrss_kb":22920,"start_x":-1,"start_y":-1}
+FRANK shard3: F降序
+shard 3: 第一层存活 4/19 = 21%%, 第二层 跳过
+probe[t=2s]: 72/76 起点被证伪，剩 4
+DYN shard3: 581 calls, 176 refuted (30%)
+FRANK shard0: F降序
+shard 0: 第一层存活 3/19 = 15%%, 第二层 跳过
+probe[t=2s]: 73/76 起点被证伪，剩 3
+DYN shard0: 403 calls, 112 refuted (28%)
+no solution found
+STATS {"solved":0,"shard":0,"wall_s":6,"nodes_total":39103,"nodes_win":-1,"dth_liveend":0,"dth_estate":4852,"dth_reach":2122,"dth_dyn":482,"dth_flow":0,"dth_geom":368,"maxrss_kb":24040,"start_x":-1,"start_y":-1}
+no solution found
+STATS {"solved":0,"shard":1,"wall_s":18,"nodes_total":177400,"nodes_win":-1,"dth_liveend":0,"dth_estate":24450,"dth_reach":11153,"dth_dyn":4193,"dth_flow":0,"dth_geom":1462,"maxrss_kb":26504,"start_x":-1,"start_y":-1}

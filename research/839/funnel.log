@@ -1,0 +1,119 @@
+有向预计算：走向已定 66334/149698 (44.3%) | 无向判定率 47.5% -> 60.3% (35583 -> 45148 / 74849 边)
+有向预计算：走向已定 66954/149698 (44.7%) | 无向判定率 60.3% -> 60.6% (45148 -> 45327 / 74849 边)
+有向预计算：走向已定 66953/149698 (44.7%) | 无向判定率 60.6% -> 60.6% (45327 -> 45335 / 74849 边)
+有向预计算：走向已定 66953/149698 (44.7%) | 无向判定率 60.6% -> 60.6% (45335 -> 45335 / 74849 边)
+全局阶段：固定 45335 条边，起点候选 157 / 52899 (0.3%)
+adaptive PROPDEPTH=999999 (fixed 45335 / 74849 edges; 第一层存活率>=SURVDEEP%再升深层)
+FRANK shard1: F降序
+shard 1: 第一层存活 0/8 = 0%%, 第二层 跳过
+probe[t=0s]: 157/157 起点被证伪，剩 0
+no solution found
+STATS {"solved":0,"shard":1,"wall_s":0,"nodes_total":134,"nodes_win":-1,"dth_liveend":0,"dth_estate":35,"dth_reach":21,"dth_dyn":2,"dth_flow":0,"dth_geom":12,"maxrss_kb":15344,"start_x":-1,"start_y":-1}
+FRANK shard7: F降序
+shard 7: 第一层存活 0/8 = 0%%, 第二层 跳过
+probe[t=0s]: 157/157 起点被证伪，剩 0
+no solution found
+STATS {"solved":0,"shard":7,"wall_s":0,"nodes_total":349,"nodes_win":-1,"dth_liveend":0,"dth_estate":70,"dth_reach":30,"dth_dyn":3,"dth_flow":0,"dth_geom":11,"maxrss_kb":18480,"start_x":-1,"start_y":-1}
+FRANK shard13: F降序
+shard 13: 第一层存活 0/8 = 0%%, 第二层 跳过
+probe[t=0s]: 157/157 起点被证伪，剩 0
+no solution found
+STATS {"solved":0,"shard":13,"wall_s":0,"nodes_total":229,"nodes_win":-1,"dth_liveend":0,"dth_estate":39,"dth_reach":29,"dth_dyn":2,"dth_flow":0,"dth_geom":9,"maxrss_kb":18480,"start_x":-1,"start_y":-1}
+FRANK shard17: F降序
+shard 17: 第一层存活 0/7 = 0%%, 第二层 跳过
+probe[t=0s]: 157/157 起点被证伪，剩 0
+no solution found
+STATS {"solved":0,"shard":17,"wall_s":0,"nodes_total":109,"nodes_win":-1,"dth_liveend":0,"dth_estate":25,"dth_reach":24,"dth_dynFRANK shard16: F降序
+shard 16: 第一层存活 0/8 = 0%%, 第二层 跳过
+":11,"dth_flow":0,"dth_geom":14,"maxrss_kb":15792,"start_x":-1,"start_y":-1}
+probe[t=0s]: 157/157 起点被证伪，剩 0
+no solution found
+STATS {"solved":0,"shard":16,"wall_s":0,"nodes_total":174,"nodes_win":-1,"dth_liveend":0,"dth_estate":50,"dth_reach":32,"dth_dyn":3,"dth_flow":0,"dth_geom":19,"maxrss_kb":15344,"start_x":-1,"start_y":-1}
+FRANK shard11: F降序
+shard 11: 第一层存活 0/8 = 0%%, 第二层 跳过
+probe[t=0s]: 157/157 起点被证伪，剩 0
+no solution found
+STATS {"solved":0,"shard":11,"wall_s":0,"nodes_total":409,"nodes_win":-1,"dth_liveend":0,"dth_estate":73,"dth_reach":38,"dth_dyn":8,"dth_flow":0,"dth_geom":12,"maxrss_kb":18256,"start_x":-1,"start_y":-1}
+FRANK shard19: F降序
+shard 19: 第一层存活 0/7 = 0%%, 第二层 跳过
+probe[t=0s]: 157/157 起点被证伪，剩 0
+DYN shard19: 94 calls, 10 refuted (11%)
+no solution found
+STATS {"solved":0,"shard":19,"wall_s":0,"nodes_total":675,"nodes_win":-1,"dth_liveend":0,"dth_estate":133,"dth_reach":82,"dth_dyn":10,"dth_flow":0,"dth_geom":37,"maxrss_kb":18480,"start_x":-1,"start_y":-1}
+FRANK shard5: F降序
+shard 5: 第一层存活 0/8 = 0%%, 第二层 跳过
+probe[t=0s]: 157/157 起点被证伪，剩 0
+DYN shard5: 57 calls, 19 refuted (33%)
+no solution found
+FRANK shard10: F降序
+shard 10: 第一层存活 0/8 = 0%%, 第二层 跳过
+STATS {"solved":0,"shard":5,"wall_s":0,"nodes_total":305,"nodes_win":-1,"dth_liveend":0,"dth_estate":77,"dth_reach":40,"dth_dyn":19,"dth_flow":0,"dth_geom":18,"maxrss_kb":18472,"start_x":-1,"start_y":-1}
+probe[t=0s]: 157/157 起点被证伪，剩 0
+DYN shard10: 65 calls, 8 refuted (12%)
+no solution found
+STATS {"solved":0,"shard":10,"wall_s":0,"nodes_total":634,"nodes_win":-1,"dth_liveend":0,"dth_estate":127,"dth_reach":67,"dth_dyn":8,"dth_flow":0,"dth_geom":28,"maxrss_kb":18480,"start_x":-1,"start_y":-1}
+FRANK shard4: F降序
+shard 4: 第一层存活 0/8 = 0%%, 第二层 跳过
+probe[t=0s]: 157/157 起点被证伪，剩 0
+DYN shard4: 108 calls, 19 refuted (18%)
+no solution found
+STATS {"solved":0,"shard":4,"wall_s":0,"nodes_total":1179,"nodes_win":-1,"dth_liveend":0,"dth_estate":200,"dth_reach":105,"dth_dyn":19,"dth_flow":0,"dth_geom":38,"maxrss_kb":18480,"start_x":-1,"start_y":-1}
+FRANK shard18: F降序
+shard 18: 第一层存活 0/7 = 0%%, 第二层 跳过
+probe[t=0s]: 157/157 起点被证伪，剩 0
+DYN shard18: 54 calls, 7 refuted (13%)
+no solution found
+STATS {"solved":0,"shard":18,"wall_s":0,"nodes_total":289,"nodes_win":-1,"dth_liveend":0,"dth_estate":64,"dth_reach":57,"dth_dyn":7,"dth_flow":0,"dth_geom":29,"maxrss_kb":15568,"start_x":-1,"start_y":-1}
+FRANK shard8: F降序
+shard 8: 第一层存活 0/8 = 0%%, 第二层 跳过
+probe[t=0s]: 157/157 起点被证伪，剩 0
+DYN shard8: 56 calls, 15 refuted (27%)
+no solution found
+STATS {"solved":0,"shard":8,"wall_s":0,"nodes_total":365,"nodes_win":-1,"dth_liveend":0,"dth_estate":88,"dth_reach":51,"dth_dyn":15,"dth_flow":0,"dth_geom":21,"maxrss_kb":18480,"start_x":-1,"start_y":-1}
+FRANK shard3: F降序
+shard 3: 第一层存活 0/8 = 0%%, 第二层 跳过
+probe[t=0s]: 157/157 起点被证伪，剩 0
+DYN shard3: 53 calls, 12 refuted (23%)
+no solution found
+STATS {"solved":0,"shard":3,"wall_s":0,"nodes_total":437,"nodes_win":-1,"dth_liveend":0,"dth_estate":88,"dth_reach":46,"dth_dyn":12,"dth_flow":0,"dth_geom":22,"maxrss_kb":18256,"start_x":-1,"start_y":-1}
+FRANK shard0: F降序
+shard 0: 第一层存活 0/8 = 0%%, 第二层 跳过
+probe[t=0s]: 157/157 起点被证伪，剩 0
+DYN shard0: 71 calls, 15 refuted (21%)
+no solution found
+STATS {"solved":0,"shard":0,"wall_s":0,"nodes_total":511,"nodes_win":-1,"dth_liveend":0,"dth_estate":101,"dth_reach":60,"dth_dyn":15,"dth_flow":0,"dth_geom":27,"maxrss_kb":18256,"start_x":-1,"start_y":-1}
+FRANK shard9: F降序
+shard 9: 第一层存活 0/8 = 0%%, 第二层 跳过
+probe[t=0s]: 157/157 起点被证伪，剩 0
+DYN shard9: 79 calls, 18 refuted (23%)
+no solution found
+STATS {"solved":0,"shard":9,"wall_s":0,"nodes_total":756,"nodes_win":-1,"dth_liveend":0,"dth_estate":144,"dth_reach":91,"dth_dyn":18,"dth_flow":0,"dth_geom":29,"maxrss_kb":18256,"start_x":-1,"start_y":-1}
+FRANK shard14: F降序
+shard 14: 第一层存活 0/8 = 0%%, 第二层 跳过
+probe[t=0s]: 157/157 起点被证伪，剩 0
+DYN shard14: 115 calls, 32 refuted (28%)
+no solution found
+STATS {"solved":0,"shard":14,"wall_s":0,"nodes_total":891,"nodes_win":-1,"dth_liveend":0,"dth_estate":156,"dth_reach":104,"dth_dyn":32,"dth_flow":0,"dth_geom":36,"maxrss_kb":18480,"start_x":-1,"start_y":-1}
+FRANK shard12: F降序
+shard 12: 第一层存活 0/8 = 0%%, 第二层 跳过
+probe[t=0s]: 157/157 起点被证伪，剩 0
+DYN shard12: 102 calls, 17 refuted (17%)
+no solution found
+STATS {"solved":0,"shard":12,"wall_s":0,"nodes_total":760,"nodes_win":-1,"dth_liveend":0,"dth_estate":140,"dth_reach":107,"dth_dyn":17,"dth_flow":0,"dth_geom":42,"maxrss_kb":18256,"start_x":-1,"start_y":-1}
+FRANK shard2: F降序
+shard 2: 第一层存活 0/8 = 0%%, 第二层 跳过
+probe[t=0s]: 157/157 起点被证伪，剩 0
+DYN shard2: 80 calls, 22 refuted (28%)
+no solution found
+STATS {"solved":0,"shard":2,"wall_s":0,"nodes_total":643,"nodes_win":-1,"dth_liveend":0,"dth_estate":108,"dth_reach":69,"dth_dyn":22,"dth_flow":0,"dth_geom":24,"maxrss_kb":18480,"start_x":-1,"start_y":-1}
+FRANK shard15: F降序
+shard 15: 第一层存活 0/8 = 0%%, 第二层 跳过
+probe[t=0s]: 157/157 起点被证伪，剩 0
+DYN shard15: 143 calls, 32 refuted (22%)
+no solution found
+STATS {"solved":0,"shard":15,"wall_s":0,"nodes_total":877,"nodes_win":-1,"dth_liveend":0,"dth_estate":160,"dth_reach":123,"dth_dyn":32,"dth_flow":0,"dth_geom":49,"maxrss_kb":18248,"start_x":-1,"start_y":-1}
+FRANK shard6: F降序
+shard 6: 第一层存活 1/8 = 12%%, 第二层 跳过
+probe[t=0s]: 156/157 起点被证伪，剩 1
+DYN shard6: 126 calls, 42 refuted (33%)
+STATS {"solved":1,"shard":6,"wall_s":2,"nodes_total":47212,"nodes_win":44843,"dth_liveend":0,"dth_estate":5543,"dth_reach":2266,"dth_dyn":746,"dth_flow":0,"dth_geom":142,"maxrss_kb":29680,"start_x":257,"start_y":117}

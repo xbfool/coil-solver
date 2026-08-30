@@ -1,0 +1,18 @@
+  分治：12 块 144 对，可行 40 对，整块淘汰掉 0 格
+有向预计算：走向已定 0/143162 (0.0%) | 无向判定率 0.0% -> 0.0% (0 -> 0 / 71581 边)
+有向预计算：走向已定 0/143162 (0.0%) | 无向判定率 0.0% -> 0.0% (0 -> 0 / 71581 边)
+全局阶段：固定 0 条边，起点候选 50288 / 50288 (100.0%)
+adaptive PROPDEPTH=2 (fixed 0 / 71581 edges; 第一层存活率>=SURVDEEP%再升深层)
+PINSTART=(36,56) -> 命中，只跑这一个起点
+FRANK shard0: F降序
+shard 0: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 0: 1.5 层深层重探后剩 1
+shard 0: 第一层存活 1/1 = 100%%, 第二层 开
+probe[t=4s]: 0/1 起点被证伪，剩 1
+DYN shard0: 993 calls, 340 refuted (34%)
+sweep shard0 round0 done (budget 3000000)
+sweep shard0 round1 done (budget 3000000)
+sweep shard0 round2 done (budget 6000000)
+sweep shard0 round3 done (budget 3000000)
+sweep shard0 round4 done (budget 3000000)
+sweep shard0 round5 done (budget 6000000)

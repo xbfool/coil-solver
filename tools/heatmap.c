@@ -57,11 +57,53 @@ int main(int argc, char **argv) {
     pos = malloc(sizeof(int) * (size_t)(w * h));
     long long *heat = calloc((size_t)(w * h), sizeof(long long));
     for (int i = 0; i < w * h; ++i) pos[i] = -1;
-    int s0 = -1;
-    for (int i = 0; i < w * h; ++i) if (cells[i] == '.') { s0 = i; break; }
-    head = tail = cap / 2; buf[head] = s0; pos[s0] = head;
-    int len = 1;
+    // ---- 生长期改 Warnsdorff 贪心蛇填 + 卡死重启（backbite 生长有走廊钉扎, 见 dead_ends）----
+    int *freelist = malloc(sizeof(int) * (size_t)nfree);
+    int nf2 = 0;
+    for (int i = 0; i < w * h; ++i) if (cells[i] == '.') freelist[nf2++] = i;
     time_t t0 = time(0);
+    int len = 0, attempts = 0, bestlen = 0;
+    while (time(0) - t0 <= (argc > 3 ? atoi(argv[3]) : 600)) {
+        ++attempts;
+        for (int i = 0; i < w * h; ++i) pos[i] = -1;
+        int s0 = freelist[(xr() >> 32) % (unsigned)nfree];
+        head = tail = cap / 2; buf[head] = s0; pos[s0] = head; len = 1;
+        long long stuck_rescues = 0;
+        while (len < nfree) {
+            int at_head = (int)((xr() >> 33) & 1);
+            int tip = at_head ? buf[head] : buf[tail];
+            int adj2 = (len > 1) ? (at_head ? buf[head + 1] : buf[tail - 1]) : -1;
+            // Warnsdorff: 未访问邻居里选"自身未访问邻居数最少"者
+            int bestc = -1, bestd = 9;
+            for (int k = 0; k < 4; ++k) {
+                int c = nbr(tip, k);
+                if (c < 0 || pos[c] >= 0) continue;
+                int d = 0;
+                for (int k2 = 0; k2 < 4; ++k2) { int c2 = nbr(c, k2); if (c2 >= 0 && pos[c2] < 0) ++d; }
+                if (d < bestd || (d == bestd && ((xr() >> 32) & 1))) { bestd = d; bestc = c; }
+            }
+            if (bestc >= 0) {
+                if (at_head) { if (head == 0) recenter(); buf[--head] = bestc; pos[bestc] = head; }
+                else { if (tail == cap - 1) recenter(); buf[++tail] = bestc; pos[bestc] = tail; }
+                ++len; continue;
+            }
+            // 本端卡死: 试 backbite 抢救(换向后可能开出新延伸口), 限额防死循环
+            if (++stuck_rescues > (long long)nfree * 8) break;
+            int vis2[4], nv2 = 0;
+            for (int k = 0; k < 4; ++k) {
+                int c = nbr(tip, k);
+                if (c >= 0 && c != adj2 && pos[c] >= 0) vis2[nv2++] = c;
+            }
+            if (!nv2) { if (len >= nfree) break; else { /* 此端完全死, 换端 */ continue; } }
+            int c = vis2[(xr() >> 32) % (unsigned)nv2], j = pos[c];
+            if (at_head) rev(head, j - 1); else rev(j + 1, tail);
+        }
+        if (len > bestlen) bestlen = len;
+        if (len == nfree) break;
+    }
+    fprintf(stderr, "生长: %d 次尝试, 最佳覆盖 %d/%d (%.1f%%)%s\n", attempts, bestlen, nfree,
+            100.0 * bestlen / nfree, len == nfree ? " ✅铺满" : "");
+    if (len < nfree) { fprintf(stderr, "种子未长成, 退出\n"); return 1; }
     long long moves = 0, acc = 0, samples = 0;
     int full_at_move = -1;
     while (1) {

@@ -1,0 +1,481 @@
+  分治：12 块 144 对，可行 40 对，整块淘汰掉 0 格
+有向预计算：走向已定 0/170990 (0.0%) | 无向判定率 0.0% -> 0.0% (0 -> 0 / 85495 边)
+有向预计算：走向已定 0/170990 (0.0%) | 无向判定率 0.0% -> 0.0% (0 -> 0 / 85495 边)
+全局阶段：固定 0 条边，起点候选 59996 / 59996 (100.0%)
+adaptive PROPDEPTH=2 (fixed 0 / 85495 edges; 第一层存活率>=SURVDEEP%再升深层)
+STARTORD: F 升序就位（4533 起点，证伪剔除 0）
+FRANK shard1: F降序
+shard 1: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard22: F降序
+shard 22: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard4: F降序
+shard 4: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard7: F降序
+shard 7: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard16: F降序
+shard 16: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard19: F降序
+shard 19: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard13: F降序
+shard 13: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard10: F降序
+shard 10: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard23: F降序
+shard 23: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard2: F降序
+shard 2: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard17: F降序
+shard 17: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard12: F降序
+shard 12: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard11: F降序
+shard 11: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard0: F降序
+shard 0: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard5: F降序
+shard 5: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard3: F降序
+shard 3: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard20: F降序
+shard 20: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard14: F降序
+shard 14: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard8: F降序
+shard 8: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard21: F降序
+shard 21: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard6: F降序
+shard 6: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard15: F降序
+shard 15: 第一层存活 100% >= 38%，升深度传播(PD=64)
+FRANK shard18: F降序
+shard 18: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 1: 1.5 层深层重探后剩 189
+shard 1: 第一层存活 189/189 = 100%%, 第二层 开
+FRANK shard9: F降序
+shard 9: 第一层存活 100% >= 38%，升深度传播(PD=64)
+shard 22: 1.5 层深层重探后剩 188
+shard 22: 第一层存活 188/188 = 100%%, 第二层 开
+shard 4: 1.5 层深层重探后剩 189
+shard 4: 第一层存活 189/189 = 100%%, 第二层 开
+shard 7: 1.5 层深层重探后剩 189
+shard 7: 第一层存活 189/189 = 100%%, 第二层 开
+shard 16: 1.5 层深层重探后剩 189
+shard 16: 第一层存活 189/189 = 100%%, 第二层 开
+shard 19: 1.5 层深层重探后剩 189
+shard 19: 第一层存活 189/189 = 100%%, 第二层 开
+shard 10: 1.5 层深层重探后剩 189
+shard 10: 第一层存活 189/189 = 100%%, 第二层 开
+shard 13: 1.5 层深层重探后剩 189
+shard 13: 第一层存活 189/189 = 100%%, 第二层 开
+shard 17: 1.5 层深层重探后剩 189
+shard 17: 第一层存活 189/189 = 100%%, 第二层 开
+shard 23: 1.5 层深层重探后剩 188
+shard 23: 第一层存活 188/188 = 100%%, 第二层 开
+shard 2: 1.5 层深层重探后剩 189
+shard 2: 第一层存活 189/189 = 100%%, 第二层 开
+shard 11: 1.5 层深层重探后剩 189
+shard 11: 第一层存活 189/189 = 100%%, 第二层 开
+shard 12: 1.5 层深层重探后剩 189
+shard 12: 第一层存活 189/189 = 100%%, 第二层 开
+shard 5: 1.5 层深层重探后剩 189
+shard 5: 第一层存活 189/189 = 100%%, 第二层 开
+shard 20: 1.5 层深层重探后剩 189
+shard 20: 第一层存活 189/189 = 100%%, 第二层 开
+shard 3: 1.5 层深层重探后剩 189
+shard 3: 第一层存活 189/189 = 100%%, 第二层 开
+shard 0: 1.5 层深层重探后剩 189
+shard 0: 第一层存活 189/189 = 100%%, 第二层 开
+shard 14: 1.5 层深层重探后剩 189
+shard 14: 第一层存活 189/189 = 100%%, 第二层 开
+shard 8: 1.5 层深层重探后剩 189
+shard 8: 第一层存活 189/189 = 100%%, 第二层 开
+shard 18: 1.5 层深层重探后剩 189
+shard 18: 第一层存活 189/189 = 100%%, 第二层 开
+shard 21: 1.5 层深层重探后剩 188
+shard 21: 第一层存活 188/188 = 100%%, 第二层 开
+shard 15: 1.5 层深层重探后剩 189
+shard 15: 第一层存活 189/189 = 100%%, 第二层 开
+shard 6: 1.5 层深层重探后剩 189
+shard 6: 第一层存活 189/189 = 100%%, 第二层 开
+shard 9: 1.5 层深层重探后剩 189
+shard 9: 第一层存活 189/189 = 100%%, 第二层 开
+T2 sh7 cell=(245,86) PROBE0 nodes=43
+T2 sh7 cell=(293,16) PROBE0 nodes=6809
+T2 sh13 cell=(292,27) PROBE0 nodes=6742
+T2 sh1 cell=(286,7) PROBE0 nodes=7287
+T2 sh2 cell=(286,11) PROBE0 nodes=6806
+T2 sh4 cell=(285,12) PROBE0 nodes=7378
+T2 sh20 cell=(262,65) PROBE0 nodes=185
+T2 sh8 cell=(278,17) PROBE0 nodes=7610
+T2 sh4 cell=(291,44) PROBE0 nodes=12101
+T2 sh8 cell=(294,35) PROBE0 nodes=55
+T2 sh22 cell=(46,49) PROBE0 nodes=26785
+T2 sh5 cell=(291,32) PROBE0 nodes=3726
+T2 sh23 cell=(265,42) PROBE0 nodes=26
+T2 sh8 cell=(290,47) PROBE0 nodes=15508
+T2 sh23 cell=(48,49) PROBE0 nodes=26928
+T2 sh13 cell=(16,55) PROBE0 nodes=565
+T2 sh1 cell=(38,63) PROBE0 nodes=15116
+T2 sh23 cell=(286,51) PROBE0 nodes=155
+T2 sh22 cell=(60,61) PROBE0 nodes=22377
+T2 sh8 cell=(65,56) PROBE0 nodes=27846
+T2 sh11 cell=(298,49) PROBE0 nodes=11388
+T2 sh23 cell=(261,60) PROBE0 nodes=344
+T2 sh5 cell=(48,51) PROBE0 nodes=26400
+T2 sh23 cell=(41,68) PROBE0 nodes=14430
+T2 sh20 cell=(291,48) PROBE0 nodes=15503
+T2 sh17 cell=(261,58) PROBE0 nodes=312
+T2 sh8 cell=(254,71) PROBE0 nodes=238
+T2 sh14 cell=(53,66) PROBE0 nodes=14928
+T2 sh19 cell=(252,69) PROBE0 nodes=242
+T2 sh8 cell=(257,78) PROBE0 nodes=230
+T2 sh5 cell=(56,69) PROBE0 nodes=24355
+T2 sh19 cell=(243,88) PROBE0 nodes=49
+T2 sh23 cell=(243,90) PROBE0 nodes=62
+T2 sh4 cell=(36,99) PROBE0 nodes=586
+T2 sh11 cell=(259,102) PROBE0 nodes=87
+T2 sh20 cell=(247,88) PROBE0 nodes=41
+T2 sh8 cell=(75,108) PROBE0 nodes=23111
+T2 sh1 cell=(67,114) PROBE0 nodes=16104
+T2 sh5 cell=(87,104) PROBE0 nodes=105
+T2 sh11 cell=(161,132) PROBE0 nodes=328
+T2 sh1 cell=(94,131) PROBE0 nodes=555
+T2 sh10 cell=(268,189) PROBE0 nodes=29055
+T2 sh16 cell=(293,36) PROBE0 nodes=17
+T2 sh10 cell=(49,48) PROBE0 nodes=13585
+T2 sh7 cell=(296,55) PROBE0 nodes=3973
+T2 sh13 cell=(163,130) PROBE0 nodes=3200
+T2 sh1 cell=(295,152) PROBE0 nodes=21055
+T2 sh11 cell=(286,181) PROBE0 nodes=24627
+T2 sh7 cell=(260,73) PROBE0 nodes=235
+T2 sh7 cell=(256,79) PROBE0 nodes=219
+T2 sh8 cell=(254,181) PROBE0 nodes=16481
+T2 sh4 cell=(283,180) PROBE0 nodes=12586
+T2 sh10 cell=(255,102) PROBE0 nodes=102
+T2 sh16 cell=(100,125) PROBE0 nodes=2112
+T2 sh19 cell=(269,192) PROBE0 nodes=25081
+T2 sh20 cell=(160,135) PROBE0 nodes=176
+T2 sh4 cell=(291,50) PROBE0 nodes=15623
+T2 sh2 cell=(51,54) PROBE0 nodes=12691
+T2 sh20 cell=(281,178) PROBE0 nodes=12515
+T2 sh2 cell=(256,81) PROBE0 nodes=458
+T2 sh20 cell=(260,87) PROBE0 nodes=225
+T2 sh18 cell=(165,144) PROBE0 nodes=2742
+T2 sh3 cell=(164,131) PROBE0 nodes=2707
+T2 sh4 cell=(28,115) PROBE0 nodes=658
+T2 sh1 cell=(71,113) PROBE0 nodes=3601
+T2 sh19 cell=(259,72) PROBE0 nodes=205
+T2 sh23 cell=(290,46) PROBE0 nodes=4563
+T2 sh2 cell=(292,212) PROBE0 nodes=7478
+T2 sh14 cell=(76,146) PROBE0 nodes=7684
+T2 sh13 cell=(268,144) PROBE0 nodes=19246
+T2 sh2 cell=(119,89) PROBE0 nodes=18085
+T2 sh21 cell=(161,126) PROBE0 nodes=2675
+T2 sh17 cell=(287,229) PROBE0 nodes=2101
+T2 sh19 cell=(295,41) PROBE0 nodes=7354
+T2 sh10 cell=(289,49) PROBE0 nodes=4427
+T2 sh19 cell=(293,43) PROBE0 nodes=3707
+T2 sh7 cell=(263,67) PROBE0 nodes=378
+T2 sh19 cell=(288,48) PROBE0 nodes=4424
+T2 sh5 cell=(289,14) PROBE0 nodes=10370
+T2 sh14 cell=(263,63) PROBE0 nodes=184
+T2 sh5 cell=(102,122) PROBE0 nodes=9057
+T2 sh13 cell=(263,61) PROBE0 nodes=331
+T2 sh8 cell=(257,79) PROBE0 nodes=225
+T2 sh4 cell=(256,70) PROBE0 nodes=195
+T2 sh1 cell=(262,66) PROBE0 nodes=186
+T2 sh11 cell=(243,87) PROBE0 nodes=49
+T2 sh16 cell=(112,94) PROBE0 nodes=4803
+T2 sh23 cell=(99,101) PROBE0 nodes=2518
+T2 sh8 cell=(103,99) PROBE0 nodes=2531
+T2 sh15 cell=(163,128) PROBE0 nodes=5415
+T2 sh5 cell=(249,63) PROBE0 nodes=348
+T2 sh23 cell=(106,106) PROBE0 nodes=6282
+T2 sh4 cell=(110,100) PROBE0 nodes=4558
+T2 sh16 cell=(108,102) PROBE0 nodes=9100
+T2 sh8 cell=(77,111) PROBE0 nodes=13275
+T2 sh11 cell=(96,108) PROBE0 nodes=2511
+T2 sh7 cell=(108,104) PROBE0 nodes=9112
+T2 sh23 cell=(64,116) PROBE0 nodes=14093
+T2 sh19 cell=(259,87) PROBE0 nodes=232
+T2 sh14 cell=(84,110) PROBE0 nodes=3325
+T2 sh8 cell=(108,118) PROBE0 nodes=2358
+T2 sh8 cell=(59,119) PROBE0 nodes=7390
+T2 sh10 cell=(90,108) PROBE0 nodes=2764
+T2 sh1 cell=(113,101) PROBE0 nodes=4666
+T2 sh4 cell=(92,122) PROBE0 nodes=3350
+T2 sh17 cell=(89,107) PROBE0 nodes=2524
+T2 sh2 cell=(95,109) PROBE0 nodes=5041
+T2 sh11 cell=(234,134) PROBE0 nodes=9982
+T2 sh1 cell=(98,116) PROBE0 nodes=9083
+T2 sh23 cell=(235,133) PROBE0 nodes=10000
+T2 sh23 cell=(297,137) PROBE0 nodes=229
+T2 sh4 cell=(297,133) PROBE0 nodes=211
+T2 sh1 cell=(67,117) PROBE0 nodes=7594
+T2 sh13 cell=(80,110) PROBE0 nodes=9891
+T2 sh8 cell=(293,129) PROBE0 nodes=398
+T2 sh16 cell=(282,130) PROBE0 nodes=45
+T2 sh2 cell=(85,113) PROBE0 nodes=3342
+T2 sh2 cell=(77,117) PROBE0 nodes=7228
+T2 sh4 cell=(295,139) PROBE0 nodes=157
+T2 sh16 cell=(83,135) PROBE0 nodes=16006
+T2 sh20 cell=(296,136) PROBE0 nodes=103
+T2 sh14 cell=(77,123) PROBE0 nodes=2654
+T2 sh11 cell=(296,172) PROBE0 nodes=11232
+T2 sh11 cell=(287,189) PROBE0 nodes=7708
+T2 sh14 cell=(94,126) PROBE0 nodes=3055
+T2 sh20 cell=(293,147) PROBE0 nodes=68
+T2 sh10 cell=(89,127) PROBE0 nodes=17320
+T2 sh11 cell=(263,149) PROBE0 nodes=15687
+T2 sh8 cell=(260,156) PROBE0 nodes=25126
+T2 sh7 cell=(284,140) PROBE0 nodes=14
+T2 sh17 cell=(106,126) PROBE0 nodes=3100
+T2 sh1 cell=(97,129) PROBE0 nodes=10028
+T2 sh4 cell=(70,154) PROBE0 nodes=14630
+T2 sh14 cell=(296,132) PROBE0 nodes=109
+T2 sh8 cell=(295,169) PROBE0 nodes=15370
+T2 sh4 cell=(269,187) PROBE0 nodes=12322
+T2 sh2 cell=(97,131) PROBE0 nodes=10596
+T2 sh8 cell=(272,188) PROBE0 nodes=12450
+T2 sh8 cell=(285,201) PROBE0 nodes=6413
+T2 sh20 cell=(262,162) PROBE0 nodes=20701
+T2 sh20 cell=(254,210) PROBE0 nodes=7015
+T2 sh20 cell=(40,276) PROBE0 nodes=1925
+T2 sh8 cell=(288,220) PROBE0 nodes=13024
+T2 sh1 cell=(293,133) PROBE0 nodes=161
+T2 sh1 cell=(292,138) PROBE0 nodes=268
+T2 sh13 cell=(296,134) PROBE0 nodes=213
+T2 sh23 cell=(283,193) PROBE0 nodes=10803
+T2 sh17 cell=(81,133) PROBE0 nodes=4434
+T2 sh2 cell=(296,138) PROBE0 nodes=156
+T2 sh23 cell=(285,211) PROBE0 nodes=6429
+T2 sh19 cell=(108,126) PROBE0 nodes=6165
+T2 sh7 cell=(295,155) PROBE0 nodes=30576
+T2 sh17 cell=(291,135) PROBE0 nodes=266
+T2 sh1 cell=(260,148) PROBE0 nodes=19130
+T2 sh1 cell=(280,164) PROBE0 nodes=4326
+T2 sh1 cell=(295,179) PROBE0 nodes=4481
+T2 sh1 cell=(299,195) PROBE0 nodes=2212
+T2 sh7 cell=(289,169) PROBE0 nodes=11629
+T2 sh16 cell=(257,161) PROBE0 nodes=28543
+T2 sh1 cell=(286,212) PROBE0 nodes=6434
+T2 sh7 cell=(296,180) PROBE0 nodes=8931
+T2 sh10 cell=(82,140) PROBE0 nodes=16011
+T2 sh10 cell=(292,140) PROBE0 nodes=93
+T2 sh7 cell=(288,200) PROBE0 nodes=8568
+T2 sh16 cell=(290,174) PROBE0 nodes=12078
+T2 sh1 cell=(98,112) PROBE0 nodes=2515
+T2 sh16 cell=(292,182) PROBE0 nodes=6015
+T2 sh17 cell=(68,144) PROBE0 nodes=9586
+T2 sh7 cell=(291,219) PROBE0 nodes=10987
+T2 sh16 cell=(247,205) PROBE0 nodes=7892
+T2 sh16 cell=(99,97) PROBE0 nodes=2561
+T2 sh17 cell=(265,161) PROBE0 nodes=7259
+T2 sh8 cell=(293,59) PROBE0 nodes=3674
+T2 sh13 cell=(297,173) PROBE0 nodes=4475
+T2 sh20 cell=(255,69) PROBE0 nodes=434
+T2 sh10 cell=(59,157) PROBE0 nodes=11482
+T2 sh17 cell=(289,177) PROBE0 nodes=28417
+T2 sh13 cell=(268,182) PROBE0 nodes=21732
+T2 sh2 cell=(298,164) PROBE0 nodes=8353
+T2 sh13 cell=(254,204) PROBE0 nodes=3971
+T2 sh5 cell=(105,113) PROBE0 nodes=5168
+T2 sh2 cell=(297,179) PROBE0 nodes=4467
+T2 sh13 cell=(271,225) PROBE0 nodes=4172
+T2 sh17 cell=(295,191) PROBE0 nodes=15509
+T2 sh13 cell=(88,128) PROBE0 nodes=1667
+T2 sh14 cell=(284,182) PROBE0 nodes=16959
+T2 sh10 cell=(295,201) PROBE0 nodes=2218
+T2 sh2 cell=(267,187) PROBE0 nodes=18903
+T2 sh22 cell=(293,151) PROBE0 nodes=5856
+T2 sh22 cell=(290,162) PROBE0 nodes=10975
+T2 sh14 cell=(277,191) PROBE0 nodes=26332
+T2 sh14 cell=(286,204) PROBE0 nodes=10903
+T2 sh14 cell=(275,227) PROBE0 nodes=2078
+T2 sh13 cell=(261,63) PROBE0 nodes=183
+T2 sh13 cell=(258,68) PROBE0 nodes=193
+T2 sh22 cell=(280,186) PROBE0 nodes=7432
+T2 sh19 cell=(273,147) PROBE0 nodes=15634
+T2 sh22 cell=(267,193) PROBE0 nodes=5409
+T2 sh5 cell=(60,118) PROBE0 nodes=7686
+T2 sh22 cell=(251,211) PROBE0 nodes=6948
+T2 sh19 cell=(260,162) PROBE0 nodes=10456
+T2 sh19 cell=(294,184) PROBE0 nodes=11885
+T2 sh19 cell=(293,207) PROBE0 nodes=2202
+T2 sh13 cell=(100,102) PROBE0 nodes=2548
+T2 sh14 cell=(264,64) PROBE0 nodes=200
+T2 sh6 cell=(89,95) PROBE0 nodes=24635
+T2 sh23 cell=(282,186) PROBE0 nodes=10663
+T2 sh5 cell=(293,141) PROBE0 nodes=62
+T2 sh16 cell=(77,133) PROBE0 nodes=1383
+T2 sh0 cell=(82,112) PROBE0 nodes=20950
+T2 sh20 cell=(280,192) PROBE0 nodes=12051
+T2 sh16 cell=(289,191) PROBE0 nodes=4390
+T2 sh16 cell=(281,229) PROBE0 nodes=2077
+T2 sh11 cell=(296,202) PROBE0 nodes=2192
+T2 sh2 cell=(89,93) PROBE0 nodes=6199
+T2 sh22 cell=(62,116) PROBE0 nodes=22532
+T2 sh11 cell=(258,222) PROBE0 nodes=8770
+T2 sh9 cell=(104,98) PROBE0 nodes=17800
+T2 sh5 cell=(268,148) PROBE0 nodes=19234
+T2 sh16 cell=(119,91) PROBE0 nodes=4865
+T2 sh17 cell=(285,183) PROBE0 nodes=27747
+T2 sh1 cell=(294,186) PROBE0 nodes=5254
+T2 sh17 cell=(251,205) PROBE0 nodes=7915
+T2 sh7 cell=(100,98) PROBE0 nodes=4125
+T2 sh4 cell=(290,168) PROBE0 nodes=5733
+T2 sh7 cell=(75,111) PROBE0 nodes=10345
+T2 sh15 cell=(88,96) PROBE0 nodes=24634
+T2 sh22 cell=(233,133) PROBE0 nodes=10257
+T2 sh4 cell=(290,214) PROBE0 nodes=12630
+probe[t=554s]: 4364/4533 起点被证伪，剩 169
+DYN shard8: 275561 calls, 108652 refuted (39%)
+T2 sh5 cell=(281,187) PROBE0 nodes=10633
+T2 sh5 cell=(299,197) PROBE0 nodes=2209
+T2 sh23 cell=(118,90) PROBE0 nodes=7845
+T2 sh11 cell=(295,157) PROBE0 nodes=30576
+T2 sh10 cell=(78,142) PROBE0 nodes=1112
+probe[t=556s]: 4359/4533 起点被证伪，剩 174
+DYN shard7: 275565 calls, 108620 refuted (39%)
+T2 sh5 cell=(288,216) PROBE0 nodes=9661
+T2 sh10 cell=(289,221) PROBE0 nodes=5485
+probe[t=559s]: 4364/4533 起点被证伪，剩 169
+DYN shard1: 275318 calls, 109097 refuted (40%)
+T2 sh19 cell=(288,136) PROBE0 nodes=162
+T2 sh13 cell=(296,190) PROBE0 nodes=5546
+T2 sh2 cell=(292,196) PROBE0 nodes=2189
+probe[t=563s]: 4361/4533 起点被证伪，剩 172
+DYN shard23: 275803 calls, 108834 refuted (39%)
+T2 sh4 cell=(77,139) PROBE0 nodes=1114
+T2 sh4 cell=(291,197) PROBE0 nodes=2190
+T2 sh16 cell=(91,123) PROBE0 nodes=2084
+T2 sh9 cell=(84,108) PROBE0 nodes=19138
+probe[t=569s]: 4357/4533 起点被证伪，剩 176
+DYN shard11: 279611 calls, 110368 refuted (39%)
+probe[t=571s]: 4356/4533 起点被证伪，剩 177
+DYN shard17: 283488 calls, 111802 refuted (39%)
+probe[t=573s]: 4361/4533 起点被证伪，剩 172
+DYN shard4: 277162 calls, 109103 refuted (39%)
+probe[t=573s]: 4354/4533 起点被证伪，剩 179
+DYN shard22: 284434 calls, 112364 refuted (40%)
+probe[t=574s]: 4357/4533 起点被证伪，剩 176
+DYN shard20: 274522 calls, 108402 refuted (39%)
+T2 sh14 cell=(272,174) PROBE0 nodes=10500
+T2 sh19 cell=(36,276) PROBE0 nodes=3130
+T2 sh5 cell=(91,121) PROBE0 nodes=2523
+probe[t=580s]: 4360/4533 起点被证伪，剩 173
+DYN shard16: 282975 calls, 112703 refuted (40%)
+T2 sh10 cell=(282,172) PROBE0 nodes=9408
+probe[t=581s]: 4360/4533 起点被证伪，剩 173
+DYN shard13: 276932 calls, 109410 refuted (40%)
+probe[t=582s]: 4359/4533 起点被证伪，剩 174
+DYN shard2: 282668 calls, 111885 refuted (40%)
+T2 sh5 cell=(83,139) PROBE0 nodes=19271
+probe[t=586s]: 4359/4533 起点被证伪，剩 174
+DYN shard19: 279847 calls, 111264 refuted (40%)
+probe[t=586s]: 4357/4533 起点被证伪，剩 176
+DYN shard14: 275547 calls, 108532 refuted (39%)
+T2 sh5 cell=(292,168) PROBE0 nodes=16106
+probe[t=591s]: 4357/4533 起点被证伪，剩 176
+DYN shard10: 280374 calls, 110894 refuted (40%)
+probe[t=602s]: 4361/4533 起点被证伪，剩 172
+DYN shard5: 286936 calls, 113668 refuted (40%)
+T3[t=614s] shard11 r0 #0 cell=(279,90) sc=59978 nodes=529276 r=0
+T3[t=615s] shard17 r0 #0 cell=(281,89) sc=59978 nodes=531403 r=0
+T2 sh12 cell=(257,159) PROBE0 nodes=29395
+T2 sh0 cell=(70,164) PROBE0 nodes=29771
+T3[t=627s] shard2 r0 #0 cell=(221,94) sc=59972 nodes=552370 r=0
+T2 sh15 cell=(274,160) PROBE0 nodes=27288
+T3[t=644s] shard23 r0 #0 cell=(256,32) sc=59975 nodes=810275 r=0
+T3[t=645s] shard22 r0 #0 cell=(242,59) sc=59976 nodes=872122 r=0
+T3[t=646s] shard4 r0 #0 cell=(246,63) sc=59976 nodes=863683 r=0
+T3[t=646s] shard20 r0 #0 cell=(240,75) sc=59971 nodes=862056 r=0
+T3[t=655s] shard19 r0 #0 cell=(254,39) sc=59968 nodes=885673 r=0
+T3[t=660s] shard16 r0 #0 cell=(233,53) sc=59976 nodes=818839 r=0
+T3[t=661s] shard10 r0 #0 cell=(256,31) sc=59975 nodes=885715 r=0
+T2 sh18 cell=(97,107) PROBE0 nodes=19022
+T2 sh15 cell=(292,204) PROBE0 nodes=31003
+T2 sh9 cell=(114,104) PROBE0 nodes=17498
+T3[t=688s] shard11 r0 #1 cell=(236,51) sc=59979 nodes=885599 r=0
+T2 sh6 cell=(94,104) PROBE0 nodes=17767
+T3[t=705s] shard5 r0 #0 cell=(266,128) sc=59973 nodes=1010469 r=0
+T3[t=706s] shard19 r0 #1 cell=(280,105) sc=59968 nodes=537419 r=0
+T3[t=707s] shard7 r0 #0 cell=(261,46) sc=59970 nodes=1994178 r=0
+T3[t=712s] shard8 r0 #0 cell=(264,53) sc=59972 nodes=2063396 r=0
+T2 sh18 cell=(291,177) PROBE0 nodes=24019
+T2 sh12 cell=(275,173) PROBE0 nodes=28105
+T3[t=736s] shard20 r0 #1 cell=(240,76) sc=59978 nodes=799134 r=0
+T3[t=736s] shard23 r0 #1 cell=(266,84) sc=59968 nodes=833698 r=0
+T3[t=737s] shard2 r0 #1 cell=(262,135) sc=59979 nodes=1096269 r=0
+T2 sh3 cell=(97,113) PROBE0 nodes=17779
+T2 sh21 cell=(80,136) PROBE0 nodes=16432
+T2 sh0 cell=(96,116) PROBE0 nodes=17781
+T3[t=741s] shard16 r0 #1 cell=(268,75) sc=59974 nodes=874889 r=0
+T3[t=747s] shard1 r0 #0 cell=(277,122) sc=59978 nodes=1998533 r=0
+probe[t=747s]: 4347/4533 起点被证伪，剩 186
+DYN shard0: 275181 calls, 92622 refuted (34%)
+probe[t=748s]: 4347/4533 起点被证伪，剩 186
+DYN shard21: 272303 calls, 95415 refuted (35%)
+T3[t=748s] shard10 r0 #1 cell=(284,58) sc=59970 nodes=827934 r=0
+probe[t=751s]: 4346/4533 起点被证伪，剩 187
+DYN shard3: 275985 calls, 95941 refuted (35%)
+probe[t=751s]: 4346/4533 起点被证伪，剩 187
+DYN shard12: 271825 calls, 91875 refuted (34%)
+probe[t=761s]: 4348/4533 起点被证伪，剩 185
+DYN shard15: 269998 calls, 92311 refuted (34%)
+probe[t=764s]: 4347/4533 起点被证伪，剩 186
+DYN shard18: 273662 calls, 93501 refuted (34%)
+T2 sh9 cell=(99,111) PROBE0 nodes=19336
+T2 sh6 cell=(92,98) PROBE0 nodes=17757
+T3[t=774s] shard11 r0 #2 cell=(224,78) sc=59975 nodes=813128 r=0
+probe[t=781s]: 4347/4533 起点被证伪，剩 186
+DYN shard6: 276621 calls, 91999 refuted (33%)
+probe[t=783s]: 4348/4533 起点被证伪，剩 185
+DYN shard9: 281704 calls, 96082 refuted (34%)
+T3[t=789s] shard17 r0 #1 cell=(234,90) sc=59978 nodes=1631998 r=0
+T3[t=791s] shard21 r0 #0 cell=(75,148) sc=59969 nodes=500317 r=0
+T3[t=792s] shard23 r0 #2 cell=(237,93) sc=59974 nodes=552562 r=0
+T3[t=802s] shard8 r0 #1 cell=(291,122) sc=59975 nodes=919008 r=0
+T3[t=803s] shard22 r0 #1 cell=(275,78) sc=59980 nodes=1989953 r=0
+T3[t=806s] shard19 r0 #2 cell=(239,112) sc=59980 nodes=1057931 r=0
+T3[t=809s] shard5 r0 #1 cell=(260,136) sc=59977 nodes=1010522 r=0
+T3[t=819s] shard13 r0 #0 cell=(250,37) sc=59973 nodes=2954890 r=0
+T3[t=819s] shard3 r0 #0 cell=(219,129) sc=59975 nodes=566992 r=0
+T3[t=820s] shard20 r0 #2 cell=(265,85) sc=59976 nodes=819800 r=0
+T3[t=823s] shard4 r0 #1 cell=(266,115) sc=59977 nodes=1791335 r=0
+T3[t=837s] shard16 r0 #2 cell=(268,125) sc=59973 nodes=1026141 r=0
+T3[t=839s] shard23 r0 #3 cell=(284,125) sc=59973 nodes=529091 r=0
+T3[t=857s] shard11 r0 #3 cell=(281,69) sc=59978 nodes=846187 r=0
+T3[t=865s] shard20 r0 #3 cell=(286,123) sc=59977 nodes=558133 r=0
+T3[t=866s] shard15 r0 #0 cell=(233,50) sc=59979 nodes=1058063 r=0
+T3[t=875s] shard18 r0 #0 cell=(235,90) sc=59976 nodes=1062040 r=0
+T3[t=887s] shard17 r0 #2 cell=(284,121) sc=59974 nodes=1119760 r=0
+T3[t=891s] shard17 r0 #3 cell=(98,123) sc=59972 nodes=61789 r=0
+T3[t=894s] shard12 r0 #0 cell=(252,140) sc=59974 nodes=1139880 r=0
+T3[t=895s] shard10 r0 #2 cell=(276,21) sc=59976 nodes=1903964 r=0
+T3[t=899s] shard8 r0 #2 cell=(262,119) sc=59976 nodes=1052024 r=0
+T3[t=904s] shard7 r0 #1 cell=(208,33) sc=59978 nodes=2316985 r=0
+T3[t=915s] shard14 r0 #0 cell=(268,55) sc=59972 nodes=3993833 r=0
+T3[t=917s] shard6 r0 #0 cell=(262,93) sc=59975 nodes=1186161 r=0
+T3[t=925s] shard9 r0 #0 cell=(272,100) sc=59979 nodes=1155893 r=0
+T3[t=926s] shard3 r0 #1 cell=(220,81) sc=59982 nodes=1063365 r=0
+T3[t=927s] shard16 r0 #3 cell=(219,128) sc=59974 nodes=905403 r=0
+T3[t=944s] shard20 r0 #4 cell=(237,90) sc=59974 nodes=883204 r=0
+T3[t=958s] shard19 r0 #3 cell=(283,30) sc=59973 nodes=1993541 r=0
+T3[t=961s] shard5 r0 #2 cell=(250,73) sc=59972 nodes=1978764 r=0
+T3[t=964s] shard0 r0 #0 cell=(278,71) sc=59975 nodes=2064520 r=0
+T3[t=966s] shard5 r0 #3 cell=(75,134) sc=59972 nodes=68169 r=0
+T3[t=968s] shard13 r0 #1 cell=(280,31) sc=59977 nodes=1903904 r=0
+T3[t=974s] shard1 r0 #1 cell=(248,43) sc=59975 nodes=2829287 r=0
+T3[t=985s] shard2 r0 #2 cell=(255,26) sc=59975 nodes=3184107 r=0
+T3[t=991s] shard23 r0 #4 cell=(252,51) sc=59974 nodes=1985515 r=0
+T3[t=994s] shard3 r0 #2 cell=(292,131) sc=59972 nodes=616332 r=0
+T3[t=995s] shard9 r0 #1 cell=(295,124) sc=59975 nodes=597302 r=0
+T3[t=1004s] shard15 r0 #1 cell=(267,110) sc=59975 nodes=1188696 r=0
+T3[t=1007s] shard11 r0 #4 cell=(277,22) sc=59982 nodes=1993906 r=0
+T3[t=1017s] shard18 r0 #1 cell=(266,131) sc=59978 nodes=1159933 r=0
+T3[t=1020s] shard20 r0 #5 cell=(265,86) sc=59977 nodes=895830 r=0
+T3[t=1029s] shard6 r0 #1 cell=(212,78) sc=59980 nodes=982794 r=0
+T3[t=1030s] shard14 r0 #1 cell=(210,87) sc=59968 nodes=1239954 r=0
+T3[t=1039s] shard17 r0 #4 cell=(237,112) sc=59979 nodes=1634495 r=0

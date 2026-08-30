@@ -1,0 +1,108 @@
+有向预计算：走向已定 60618/144998 (41.8%) | 无向判定率 46.8% -> 58.8% (33896 -> 42596 / 72499 边)
+有向预计算：走向已定 61312/144998 (42.3%) | 无向判定率 58.8% -> 59.1% (42596 -> 42818 / 72499 边)
+有向预计算：走向已定 61312/144998 (42.3%) | 无向判定率 59.1% -> 59.1% (42818 -> 42820 / 72499 边)
+有向预计算：走向已定 61312/144998 (42.3%) | 无向判定率 59.1% -> 59.1% (42820 -> 42820 / 72499 边)
+全局阶段：固定 42820 条边，起点候选 91 / 50983 (0.2%)
+adaptive PROPDEPTH=999999 (fixed 42820 / 72499 edges; 第一层存活率>=SURVDEEP%再升深层)
+shard 0: swarm 模式（91 个候选全员上，随机顺序）
+shard 1: swarm 模式（91 个候选全员上，随机顺序）
+shard 2: swarm 模式（91 个候选全员上，随机顺序）
+shard 3: swarm 模式（91 个候选全员上，随机顺序）
+shard 10: swarm 模式（91 个候选全员上，随机顺序）
+shard 4: swarm 模式（91 个候选全员上，随机顺序）
+shard 5: swarm 模式（91 个候选全员上，随机顺序）
+shard 6: swarm 模式（91 个候选全员上，随机顺序）
+shard 7: swarm 模式（91 个候选全员上，随机顺序）
+shard 8: swarm 模式（91 个候选全员上，随机顺序）
+shard 9: swarm 模式（91 个候选全员上，随机顺序）
+shard 11: swarm 模式（91 个候选全员上，随机顺序）
+shard 12: swarm 模式（91 个候选全员上，随机顺序）
+shard 13: swarm 模式（91 个候选全员上，随机顺序）
+shard 14: swarm 模式（91 个候选全员上，随机顺序）
+shard 15: swarm 模式（91 个候选全员上，随机顺序）
+shard 16: swarm 模式（91 个候选全员上，随机顺序）
+shard 17: swarm 模式（91 个候选全员上，随机顺序）
+shard 19: swarm 模式（91 个候选全员上，随机顺序）
+shard 18: swarm 模式（91 个候选全员上，随机顺序）
+FRANK shard7: F降序
+shard 7: 第一层存活 9/5 = 180%%, 第二层 开
+FRANK shard16: F降序
+shard 16: 第一层存活 9/4 = 225%%, 第二层 开
+FRANK shard10: F降序
+shard 10: 第一层存活 9/5 = 180%%, 第二层 开
+FRANK shard4: F降序
+shard 4: 第一层存活 9/5 = 180%%, 第二层 开
+FRANK shard13: F降序
+shard 13: 第一层存活 9/4 = 225%%, 第二层 开
+FRANK shard11: F降序
+shard 11: 第一层存活 9/4 = 225%%, 第二层 开
+FRANK shard17: F降序
+shard 17: 第一层存活 9/4 = 225%%, 第二层 开
+FRANK shard5: F降序
+shard 5: 第一层存活 9/5 = 180%%, 第二层 开
+FRANK shard2: F降序
+shard 2: 第一层存活 9/5 = 180%%, 第二层 开
+FRANK shard12: F降序
+shard 12: 第一层存活 9/4 = 225%%, 第二层 开
+FRANK shard1: F降序
+shard 1: 第一层存活 9/5 = 180%%, 第二层 开
+FRANK shard6: F降序
+shard 6: 第一层存活 9/5 = 180%%, 第二层 开
+FRANK shard3: F降序
+shard 3: 第一层存活 9/5 = 180%%, 第二层 开
+FRANK shard8: F降序
+shard 8: 第一层存活 9/5 = 180%%, 第二层 开
+FRANK shard14: F降序
+shard 14: 第一层存活 9/4 = 225%%, 第二层 开
+FRANK shard18: F降序
+shard 18: 第一层存活 9/4 = 225%%, 第二层 开
+FRANK shard19: F降序
+shard 19: 第一层存活 9/4 = 225%%, 第二层 开
+FRANK shard9: F降序
+shard 9: 第一层存活 9/5 = 180%%, 第二层 开
+FRANK shard0: F降序
+shard 0: 第一层存活 9/5 = 180%%, 第二层 开
+FRANK shard15: F降序
+shard 15: 第一层存活 9/4 = 225%%, 第二层 开
+probe[t=22s]: 82/91 起点被证伪，剩 9
+DYN shard16: 19847 calls, 4447 refuted (22%)
+probe[t=23s]: 82/91 起点被证伪，剩 9
+DYN shard11: 15977 calls, 5569 refuted (35%)
+probe[t=23s]: 82/91 起点被证伪，剩 9
+DYN shard5: 16067 calls, 5717 refuted (36%)
+probe[t=24s]: 82/91 起点被证伪，剩 9
+DYN shard2: 16359 calls, 5703 refuted (35%)
+probe[t=25s]: 82/91 起点被证伪，剩 9
+DYN shard12: 15681 calls, 4193 refuted (27%)
+probe[t=25s]: 82/91 起点被证伪，剩 9
+DYN shard4: 18671 calls, 4201 refuted (23%)
+probe[t=25s]: 82/91 起点被证伪，剩 9
+DYN shard19: 18527 calls, 4401 refuted (24%)
+probe[t=25s]: 82/91 起点被证伪，剩 9
+DYN shard17: 15901 calls, 5589 refuted (35%)
+probe[t=27s]: 82/91 起点被证伪，剩 9
+DYN shard14: 16219 calls, 5665 refuted (35%)
+probe[t=27s]: 82/91 起点被证伪，剩 9
+DYN shard9: 16189 calls, 4418 refuted (27%)
+probe[t=27s]: 82/91 起点被证伪，剩 9
+DYN shard8: 16135 calls, 5609 refuted (35%)
+probe[t=27s]: 82/91 起点被证伪，剩 9
+DYN shard6: 16251 calls, 4405 refuted (27%)
+probe[t=28s]: 82/91 起点被证伪，剩 9
+DYN shard3: 15747 calls, 4241 refuted (27%)
+probe[t=29s]: 82/91 起点被证伪，剩 9
+DYN shard18: 15769 calls, 4337 refuted (28%)
+probe[t=30s]: 82/91 起点被证伪，剩 9
+DYN shard13: 17999 calls, 3950 refuted (22%)
+probe[t=31s]: 82/91 起点被证伪，剩 9
+DYN shard0: 16125 calls, 4460 refuted (28%)
+probe[t=32s]: 82/91 起点被证伪，剩 9
+DYN shard15: 16137 calls, 4477 refuted (28%)
+probe[t=33s]: 82/91 起点被证伪，剩 9
+DYN shard7: 18843 calls, 4085 refuted (22%)
+probe[t=34s]: 82/91 起点被证伪，剩 9
+DYN shard1: 18297 calls, 4124 refuted (23%)
+probe[t=34s]: 82/91 起点被证伪，剩 9
+DYN shard10: 18027 calls, 3911 refuted (22%)
+STATS {"solved":1,"shard":4,"wall_s":57,"nodes_total":1499704,"nodes_win":1173923,"dth_liveend":0,"dth_estate":186817,"dth_reach":99780,"dth_dyn":17406,"dth_flow":0,"dth_geom":15360,"maxrss_kb":31472,"start_x":136,"start_y":52}
+WINNER shard 4 tier 0 nodes 1173923

@@ -1,0 +1,108 @@
+有向预计算：走向已定 82193/196734 (41.8%) | 无向判定率 46.7% -> 58.4% (45906 -> 57458 / 98367 边)
+有向预计算：走向已定 82484/196734 (41.9%) | 无向判定率 58.4% -> 58.6% (57458 -> 57625 / 98367 边)
+有向预计算：走向已定 82484/196734 (41.9%) | 无向判定率 58.6% -> 58.6% (57625 -> 57626 / 98367 边)
+有向预计算：走向已定 82484/196734 (41.9%) | 无向判定率 58.6% -> 58.6% (57626 -> 57626 / 98367 边)
+全局阶段：固定 57626 条边，起点候选 82 / 69170 (0.1%)
+adaptive PROPDEPTH=999999 (fixed 57626 / 98367 edges; 第一层存活率>=SURVDEEP%再升深层)
+shard 0: swarm 模式（82 个候选全员上，随机顺序）
+shard 1: swarm 模式（82 个候选全员上，随机顺序）
+shard 2: swarm 模式（82 个候选全员上，随机顺序）
+shard 3: swarm 模式（82 个候选全员上，随机顺序）
+shard 4: swarm 模式（82 个候选全员上，随机顺序）
+shard 5: swarm 模式（82 个候选全员上，随机顺序）
+shard 12: swarm 模式（82 个候选全员上，随机顺序）
+shard 6: swarm 模式（82 个候选全员上，随机顺序）
+shard 7: swarm 模式（82 个候选全员上，随机顺序）
+shard 8: swarm 模式（82 个候选全员上，随机顺序）
+shard 9: swarm 模式（82 个候选全员上，随机顺序）
+shard 10: swarm 模式（82 个候选全员上，随机顺序）
+shard 11: swarm 模式（82 个候选全员上，随机顺序）
+shard 13: swarm 模式（82 个候选全员上，随机顺序）
+shard 14: swarm 模式（82 个候选全员上，随机顺序）
+shard 15: swarm 模式（82 个候选全员上，随机顺序）
+shard 16: swarm 模式（82 个候选全员上，随机顺序）
+shard 17: swarm 模式（82 个候选全员上，随机顺序）
+shard 18: swarm 模式（82 个候选全员上，随机顺序）
+shard 19: swarm 模式（82 个候选全员上，随机顺序）
+FRANK shard7: F降序
+shard 7: 第一层存活 13/4 = 325%%, 第二层 开
+FRANK shard1: F降序
+shard 1: 第一层存活 13/5 = 260%%, 第二层 开
+FRANK shard10: F降序
+shard 10: 第一层存活 13/4 = 325%%, 第二层 开
+FRANK shard4: F降序
+shard 4: 第一层存活 12/4 = 300%%, 第二层 开
+FRANK shard13: F降序
+shard 13: 第一层存活 12/4 = 300%%, 第二层 开
+FRANK shard16: F降序
+shard 16: 第一层存活 12/4 = 300%%, 第二层 开
+FRANK shard19: F降序
+shard 19: 第一层存活 12/4 = 300%%, 第二层 开
+FRANK shard8: F降序
+shard 8: 第一层存活 12/4 = 300%%, 第二层 开
+FRANK shard5: F降序
+shard 5: 第一层存活 12/4 = 300%%, 第二层 开
+FRANK shard15: F降序
+shard 15: 第一层存活 13/4 = 325%%, 第二层 开
+FRANK shard11: F降序
+shard 11: 第一层存活 12/4 = 300%%, 第二层 开
+FRANK shard3: F降序
+shard 3: 第一层存活 13/4 = 325%%, 第二层 开
+FRANK shard17: F降序
+shard 17: 第一层存活 12/4 = 300%%, 第二层 开
+FRANK shard14: F降序
+shard 14: 第一层存活 12/4 = 300%%, 第二层 开
+FRANK shard0: F降序
+shard 0: 第一层存活 13/5 = 260%%, 第二层 开
+FRANK shard9: F降序
+shard 9: 第一层存活 13/4 = 325%%, 第二层 开
+FRANK shard2: F降序
+shard 2: 第一层存活 12/4 = 300%%, 第二层 开
+FRANK shard12: F降序
+shard 12: 第一层存活 13/4 = 325%%, 第二层 开
+FRANK shard6: F降序
+shard 6: 第一层存活 13/4 = 325%%, 第二层 开
+FRANK shard18: F降序
+shard 18: 第一层存活 13/4 = 325%%, 第二层 开
+probe[t=14s]: 75/82 起点被证伪，剩 7
+DYN shard1: 14783 calls, 4351 refuted (29%)
+probe[t=14s]: 75/82 起点被证伪，剩 7
+DYN shard7: 14963 calls, 4303 refuted (29%)
+probe[t=16s]: 75/82 起点被证伪，剩 7
+DYN shard4: 14596 calls, 4227 refuted (29%)
+probe[t=16s]: 75/82 起点被证伪，剩 7
+DYN shard10: 14749 calls, 4302 refuted (29%)
+probe[t=17s]: 75/82 起点被证伪，剩 7
+DYN shard19: 14602 calls, 4260 refuted (29%)
+probe[t=18s]: 75/82 起点被证伪，剩 7
+DYN shard13: 14142 calls, 4118 refuted (29%)
+probe[t=20s]: 75/82 起点被证伪，剩 7
+DYN shard16: 14214 calls, 4142 refuted (29%)
+probe[t=27s]: 75/82 起点被证伪，剩 7
+DYN shard8: 13298 calls, 5185 refuted (39%)
+probe[t=28s]: 75/82 起点被证伪，剩 7
+DYN shard14: 13340 calls, 5182 refuted (39%)
+probe[t=28s]: 75/82 起点被证伪，剩 7
+DYN shard5: 13032 calls, 5071 refuted (39%)
+probe[t=28s]: 75/82 起点被证伪，剩 7
+DYN shard11: 13028 calls, 5033 refuted (39%)
+probe[t=28s]: 75/82 起点被证伪，剩 7
+DYN shard17: 12966 calls, 5026 refuted (39%)
+probe[t=29s]: 75/82 起点被证伪，剩 7
+DYN shard2: 13456 calls, 5226 refuted (39%)
+probe[t=37s]: 73/82 起点被证伪，剩 9
+DYN shard15: 16763 calls, 4319 refuted (26%)
+probe[t=37s]: 73/82 起点被证伪，剩 9
+DYN shard9: 15261 calls, 3936 refuted (26%)
+probe[t=37s]: 73/82 起点被证伪，剩 9
+DYN shard3: 16053 calls, 4199 refuted (26%)
+probe[t=38s]: 73/82 起点被证伪，剩 9
+DYN shard18: 15919 calls, 4118 refuted (26%)
+probe[t=38s]: 73/82 起点被证伪，剩 9
+DYN shard12: 15005 calls, 4080 refuted (27%)
+probe[t=38s]: 73/82 起点被证伪，剩 9
+DYN shard6: 16525 calls, 4418 refuted (27%)
+probe[t=39s]: 73/82 起点被证伪，剩 9
+DYN shard0: 16835 calls, 4621 refuted (27%)
+STATS {"solved":1,"shard":7,"wall_s":78,"nodes_total":1796558,"nodes_win":1520862,"dth_liveend":0,"dth_estate":241345,"dth_reach":117850,"dth_dyn":28267,"dth_flow":0,"dth_geom":17054,"maxrss_kb":43052,"start_x":146,"start_y":283}
+WINNER shard 7 tier 3 nodes 1520862

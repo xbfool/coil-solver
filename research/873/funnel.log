@@ -1,0 +1,52 @@
+有向预计算：走向已定 66530/164752 (40.4%) | 无向判定率 45.8% -> 57.4% (37729 -> 47319 / 82376 边)
+有向预计算：走向已定 67025/164752 (40.7%) | 无向判定率 57.4% -> 57.6% (47319 -> 47484 / 82376 边)
+有向预计算：走向已定 67026/164752 (40.7%) | 无向判定率 57.6% -> 57.6% (47484 -> 47484 / 82376 边)
+全局阶段：固定 47484 条边，起点候选 9 / 57784 (0.0%)
+adaptive PROPDEPTH=999999 (fixed 47484 / 82376 edges; 第一层存活率>=SURVDEEP%再升深层)
+shard 0: swarm 模式（9 个候选全员上，随机顺序）
+shard 1: swarm 模式（9 个候选全员上，随机顺序）
+shard 2: swarm 模式（9 个候选全员上，随机顺序）
+shard 3: swarm 模式（9 个候选全员上，随机顺序）
+shard 4: swarm 模式（9 个候选全员上，随机顺序）
+shard 5: swarm 模式（9 个候选全员上，随机顺序）
+shard 6: swarm 模式（9 个候选全员上，随机顺序）
+shard 7: swarm 模式（9 个候选全员上，随机顺序）
+shard 8: swarm 模式（9 个候选全员上，随机顺序）
+FRANK shard4: F降序
+shard 4: 第一层存活 3/1 = 300%%, 第二层 开
+FRANK shard5: F降序
+shard 5: 第一层存活 3/1 = 300%%, 第二层 开
+FRANK shard8: F降序
+shard 8: 第一层存活 3/1 = 300%%, 第二层 开
+FRANK shard6: F降序
+shard 6: 第一层存活 3/1 = 300%%, 第二层 开
+FRANK shard2: F降序
+shard 2: 第一层存活 3/1 = 300%%, 第二层 开
+FRANK shard0: F降序
+shard 0: 第一层存活 3/1 = 300%%, 第二层 开
+FRANK shard3: F降序
+shard 3: 第一层存活 3/1 = 300%%, 第二层 开
+FRANK shard7: F降序
+shard 7: 第一层存活 3/1 = 300%%, 第二层 开
+FRANK shard1: F降序
+shard 1: 第一层存活 3/1 = 300%%, 第二层 开
+probe[t=8s]: 6/9 起点被证伪，剩 3
+DYN shard4: 5648 calls, 1503 refuted (27%)
+probe[t=10s]: 6/9 起点被证伪，剩 3
+DYN shard2: 5526 calls, 2102 refuted (38%)
+probe[t=10s]: 6/9 起点被证伪，剩 3
+DYN shard8: 5546 calls, 2133 refuted (38%)
+probe[t=10s]: 6/9 起点被证伪，剩 3
+DYN shard6: 5700 calls, 1464 refuted (26%)
+probe[t=11s]: 6/9 起点被证伪，剩 3
+DYN shard1: 5728 calls, 1601 refuted (28%)
+probe[t=13s]: 6/9 起点被证伪，剩 3
+DYN shard5: 5410 calls, 2034 refuted (38%)
+probe[t=15s]: 6/9 起点被证伪，剩 3
+DYN shard0: 6230 calls, 1537 refuted (25%)
+probe[t=16s]: 6/9 起点被证伪，剩 3
+DYN shard3: 5608 calls, 1312 refuted (23%)
+probe[t=17s]: 6/9 起点被证伪，剩 3
+DYN shard7: 5832 calls, 1535 refuted (26%)
+STATS {"solved":1,"shard":8,"wall_s":61,"nodes_total":790752,"nodes_win":253382,"dth_liveend":0,"dth_estate":96025,"dth_reach":47391,"dth_dyn":16329,"dth_flow":0,"dth_geom":4434,"maxrss_kb":33740,"start_x":223,"start_y":83}
+WINNER shard 8 tier 0 nodes 253382

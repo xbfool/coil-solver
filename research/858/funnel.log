@@ -1,0 +1,115 @@
+有向预计算：走向已定 68865/158282 (43.5%) | 无向判定率 46.4% -> 59.2% (36724 -> 46863 / 79141 边)
+有向预计算：走向已定 69090/158282 (43.6%) | 无向判定率 59.2% -> 59.4% (46863 -> 47030 / 79141 边)
+有向预计算：走向已定 69090/158282 (43.6%) | 无向判定率 59.4% -> 59.4% (47030 -> 47030 / 79141 边)
+全局阶段：固定 47030 条边，起点候选 193 / 55688 (0.3%)
+adaptive PROPDEPTH=999999 (fixed 47030 / 79141 edges; 第一层存活率>=SURVDEEP%再升深层)
+FRANK shard1: F降序
+shard 1: 第一层存活 0/10 = 0%%, 第二层 跳过
+probe[t=0s]: 193/193 起点被证伪，剩 0
+no solution found
+STATS {"solved":0,"shard":1,"wall_s":0,"nodes_total":16,"nodes_win":-1,"dth_liveend":0,"dth_estate":9,"dth_reach":2,"dth_dyn":0,"dth_flow":0,"dth_geom":3,"maxrss_kb":16540,"start_x":-1,"start_y":-1}
+FRANK shard16: F降序
+shard 16: 第一层存活 1/9 = 11%%, 第二层 跳过
+probe[t=0s]: 192/193 起点被证伪，剩 1
+DYN shard16: 159 calls, 39 refuted (25%)
+FRANK shard18: F降序
+shard 18: 第一层存活 1/9 = 11%%, 第二层 跳过
+probe[t=0s]: 192/193 起点被证伪，剩 1
+DYN shard18: 117 calls, 25 refuted (21%)
+FRANK shard8: F降序
+shard 8: 第一层存活 1/10 = 10%%, 第二层 跳过
+probe[t=0s]: 192/193 起点被证伪，剩 1
+DYN shard8: 121 calls, 38 refuted (31%)
+FRANK shard13: F降序
+shard 13: 第一层存活 2/9 = 22%%, 第二层 跳过
+probe[t=0s]: 191/193 起点被证伪，剩 2
+DYN shard13: 231 calls, 65 refuted (28%)
+FRANK shard6: F降序
+shard 6: 第一层存活 1/10 = 10%%, 第二层 跳过
+probe[t=1s]: 192/193 起点被证伪，剩 1
+DYN shard6: 135 calls, 21 refuted (16%)
+FRANK shard10: F降序
+shard 10: 第一层存活 2/10 = 20%%, 第二层 跳过
+probe[t=1s]: 191/193 起点被证伪，剩 2
+DYN shard10: 300 calls, 65 refuted (22%)
+FRANK shard19: F降序
+shard 19: 第一层存活 2/9 = 22%%, 第二层 跳过
+probe[t=1s]: 191/193 起点被证伪，剩 2
+DYN shard19: 270 calls, 64 refuted (24%)
+FRANK shard7: F降序
+shard 7: 第一层存活 3/10 = 30%%, 第二层 跳过
+probe[t=1s]: 190/193 起点被证伪，剩 3
+DYN shard7: 344 calls, 54 refuted (16%)
+FRANK shard0: F降序
+shard 0: 第一层存活 1/10 = 10%%, 第二层 跳过
+probe[t=1s]: 192/193 起点被证伪，剩 1
+DYN shard0: 161 calls, 48 refuted (30%)
+FRANK shard11: F降序
+shard 11: 第一层存活 2/10 = 20%%, 第二层 跳过
+probe[t=1s]: 191/193 起点被证伪，剩 2
+DYN shard11: 279 calls, 88 refuted (32%)
+FRANK shard2: F降序
+shard 2: 第一层存活 2/10 = 20%%, 第二层 跳过
+probe[t=1s]: 191/193 起点被证伪，剩 2
+DYN shard2: 295 calls, 98 refuted (33%)
+FRANK shard14: F降序
+shard 14: 第一层存活 2/9 = 22%%, 第二层 跳过
+probe[t=1s]: 191/193 起点被证伪，剩 2
+DYN shard14: 261 calls, 81 refuted (31%)
+FRANK shard5: F降序
+shard 5: 第一层存活 2/10 = 20%%, 第二层 跳过
+probe[t=1s]: 191/193 起点被证伪，剩 2
+DYN shard5: 253 calls, 82 refuted (32%)
+FRANK shard9: F降序
+shard 9: 第一层存活 2/10 = 20%%, 第二层 跳过
+probe[t=1s]: 191/193 起点被证伪，剩 2
+DYN shard9: 303 calls, 83 refuted (27%)
+FRANK shard17: F降序
+shard 17: 第一层存活 2/9 = 22%%, 第二层 跳过
+probe[t=1s]: 191/193 起点被证伪，剩 2
+DYN shard17: 258 calls, 90 refuted (35%)
+FRANK shard15: F降序
+shard 15: 第一层存活 3/9 = 33%%, 第二层 开
+FRANK shard4: F降序
+shard 4: 第一层存活 4/10 = 40%%, 第二层 开
+FRANK shard12: F降序
+shard 12: 第一层存活 1/10 = 10%%, 第二层 跳过
+probe[t=1s]: 192/193 起点被证伪，剩 1
+DYN shard12: 251 calls, 70 refuted (28%)
+FRANK shard3: F降序
+shard 3: 第一层存活 5/10 = 50%%, 第二层 开
+probe[t=10s]: 189/193 起点被证伪，剩 4
+DYN shard4: 8018 calls, 1983 refuted (25%)
+probe[t=12s]: 190/193 起点被证伪，剩 3
+DYN shard15: 5818 calls, 1537 refuted (26%)
+probe[t=24s]: 188/193 起点被证伪，剩 5
+DYN shard3: 9682 calls, 2319 refuted (24%)
+no solution found
+STATS {"solved":0,"shard":16,"wall_s":117,"nodes_total":2381214,"nodes_win":-1,"dth_liveend":0,"dth_estate":329023,"dth_reach":164506,"dth_dyn":33345,"dth_flow":0,"dth_geom":33088,"maxrss_kb":23260,"start_x":-1,"start_y":-1}
+no solution found
+STATS {"solved":0,"shard":13,"wall_s":137,"nodes_total":2615452,"nodes_win":-1,"dth_liveend":0,"dth_estate":362612,"dth_reach":179966,"dth_dyn":37239,"dth_flow":0,"dth_geom":36268,"maxrss_kb":23484,"start_x":-1,"start_y":-1}
+no solution found
+STATS {"solved":0,"shard":6,"wall_s":150,"nodes_total":1494295,"nodes_win":-1,"dth_liveend":0,"dth_estate":218778,"dth_reach":96743,"dth_dyn":20638,"dth_flow":0,"dth_geom":24099,"maxrss_kb":22580,"start_x":-1,"start_y":-1}
+no solution found
+STATS {"solved":0,"shard":2,"wall_s":208,"nodes_total":2485406,"nodes_win":-1,"dth_liveend":0,"dth_estate":336317,"dth_reach":155726,"dth_dyn":44640,"dth_flow":0,"dth_geom":24723,"maxrss_kb":23484,"start_x":-1,"start_y":-1}
+no solution found
+STATS {"solved":0,"shard":17,"wall_s":253,"nodes_total":2886397,"nodes_win":-1,"dth_liveend":0,"dth_estate":389193,"dth_reach":178043,"dth_dyn":52785,"dth_flow":0,"dth_geom":27495,"maxrss_kb":23484,"start_x":-1,"start_y":-1}
+no solution found
+STATS {"solved":0,"shard":4,"wall_s":290,"nodes_total":5324307,"nodes_win":-1,"dth_liveend":0,"dth_estate":732306,"dth_reach":367536,"dth_dyn":74256,"dth_flow":0,"dth_geom":73369,"maxrss_kb":24376,"start_x":-1,"start_y":-1}
+no solution found
+STATS {"solved":0,"shard":0,"wall_s":340,"nodes_total":3465608,"nodes_win":-1,"dth_liveend":0,"dth_estate":479591,"dth_reach":233298,"dth_dyn":44367,"dth_flow":0,"dth_geom":48685,"maxrss_kb":22812,"start_x":-1,"start_y":-1}
+no solution found
+STATS {"solved":0,"shard":9,"wall_s":581,"nodes_total":6433170,"nodes_win":-1,"dth_liveend":0,"dth_estate":892866,"dth_reach":439506,"dth_dyn":78416,"dth_flow":0,"dth_geom":93853,"maxrss_kb":23260,"start_x":-1,"start_y":-1}
+no solution found
+STATS {"solved":0,"shard":8,"wall_s":743,"nodes_total":12146593,"nodes_win":-1,"dth_liveend":0,"dth_estate":1607407,"dth_reach":701650,"dth_dyn":224547,"dth_flow":0,"dth_geom":85725,"maxrss_kb":29980,"start_x":-1,"start_y":-1}
+no solution found
+STATS {"solved":0,"shard":11,"wall_s":854,"nodes_total":13597673,"nodes_win":-1,"dth_liveend":0,"dth_estate":1803180,"dth_reach":791120,"dth_dyn":251068,"dth_flow":0,"dth_geom":99524,"maxrss_kb":30428,"start_x":-1,"start_y":-1}
+no solution found
+STATS {"solved":0,"shard":14,"wall_s":867,"nodes_total":13482862,"nodes_win":-1,"dth_liveend":0,"dth_estate":1785998,"dth_reach":780407,"dth_dyn":250180,"dth_flow":0,"dth_geom":96848,"maxrss_kb":30420,"start_x":-1,"start_y":-1}
+no solution found
+STATS {"solved":0,"shard":10,"wall_s":983,"nodes_total":16338822,"nodes_win":-1,"dth_liveend":0,"dth_estate":2244068,"dth_reach":1073647,"dth_dyn":221502,"dth_flow":0,"dth_geom":177865,"maxrss_kb":32444,"start_x":-1,"start_y":-1}
+no solution found
+STATS {"solved":0,"shard":5,"wall_s":1002,"nodes_total":15440231,"nodes_win":-1,"dth_liveend":0,"dth_estate":2050466,"dth_reach":902397,"dth_dyn":285557,"dth_flow":0,"dth_geom":116036,"maxrss_kb":30428,"start_x":-1,"start_y":-1}
+no solution found
+STATS {"solved":0,"shard":3,"wall_s":1137,"nodes_total":13055729,"nodes_win":-1,"dth_liveend":0,"dth_estate":1834299,"dth_reach":877288,"dth_dyn":166324,"dth_flow":0,"dth_geom":193036,"maxrss_kb":24376,"start_x":-1,"start_y":-1}
+STATS {"solved":1,"shard":19,"wall_s":1578,"nodes_total":26702150,"nodes_win":12152519,"dth_liveend":0,"dth_estate":3667414,"dth_reach":1755065,"dth_dyn":361010,"dth_flow":0,"dth_geom":286526,"maxrss_kb":32220,"start_x":242,"start_y":275}

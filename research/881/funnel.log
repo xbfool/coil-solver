@@ -1,0 +1,33 @@
+有向预计算：走向已定 70852/166908 (42.4%) | 无向判定率 46.5% -> 58.8% (38833 -> 49051 / 83454 边)
+有向预计算：走向已定 71607/166908 (42.9%) | 无向判定率 58.8% -> 59.1% (49051 -> 49291 / 83454 边)
+有向预计算：走向已定 71633/166908 (42.9%) | 无向判定率 59.1% -> 59.1% (49291 -> 49300 / 83454 边)
+有向预计算：走向已定 71633/166908 (42.9%) | 无向判定率 59.1% -> 59.1% (49300 -> 49300 / 83454 边)
+全局阶段：固定 49300 条边，起点候选 5 / 58732 (0.0%)
+adaptive PROPDEPTH=999999 (fixed 49300 / 83454 edges; 第一层存活率>=SURVDEEP%再升深层)
+shard 0: swarm 模式（5 个候选全员上，随机顺序）
+shard 1: swarm 模式（5 个候选全员上，随机顺序）
+shard 2: swarm 模式（5 个候选全员上，随机顺序）
+shard 3: swarm 模式（5 个候选全员上，随机顺序）
+shard 4: swarm 模式（5 个候选全员上，随机顺序）
+FRANK shard1: F降序
+shard 1: 第一层存活 1/1 = 100%%, 第二层 开
+FRANK shard4: F降序
+shard 4: 第一层存活 1/1 = 100%%, 第二层 开
+FRANK shard2: F降序
+shard 2: 第一层存活 1/1 = 100%%, 第二层 开
+FRANK shard3: F降序
+shard 3: 第一层存活 1/1 = 100%%, 第二层 开
+FRANK shard0: F降序
+shard 0: 第一层存活 1/1 = 100%%, 第二层 开
+probe[t=2s]: 4/5 起点被证伪，剩 1
+DYN shard4: 1744 calls, 447 refuted (26%)
+probe[t=3s]: 4/5 起点被证伪，剩 1
+DYN shard1: 1686 calls, 429 refuted (25%)
+probe[t=4s]: 4/5 起点被证伪，剩 1
+DYN shard2: 1638 calls, 619 refuted (38%)
+probe[t=5s]: 4/5 起点被证伪，剩 1
+DYN shard3: 1592 calls, 583 refuted (37%)
+probe[t=5s]: 4/5 起点被证伪，剩 1
+DYN shard0: 1610 calls, 595 refuted (37%)
+STATS {"solved":1,"shard":2,"wall_s":8,"nodes_total":104156,"nodes_win":69883,"dth_liveend":0,"dth_estate":12690,"dth_reach":5595,"dth_dyn":1864,"dth_flow":0,"dth_geom":450,"maxrss_kb":33300,"start_x":231,"start_y":100}
+WINNER shard 2 tier 2 nodes 69883

@@ -1,0 +1,58 @@
+有向预计算：走向已定 62217/158420 (39.3%) | 无向判定率 45.7% -> 57.0% (36189 -> 45146 / 79210 边)
+有向预计算：走向已定 62663/158420 (39.6%) | 无向判定率 57.0% -> 57.2% (45146 -> 45309 / 79210 边)
+有向预计算：走向已定 62663/158420 (39.6%) | 无向判定率 57.2% -> 57.2% (45309 -> 45315 / 79210 边)
+有向预计算：走向已定 62663/158420 (39.6%) | 无向判定率 57.2% -> 57.2% (45315 -> 45315 / 79210 边)
+全局阶段：固定 45315 条边，起点候选 10 / 55568 (0.0%)
+adaptive PROPDEPTH=999999 (fixed 45315 / 79210 edges; 第一层存活率>=SURVDEEP%再升深层)
+shard 0: swarm 模式（10 个候选全员上，随机顺序）
+shard 1: swarm 模式（10 个候选全员上，随机顺序）
+shard 2: swarm 模式（10 个候选全员上，随机顺序）
+shard 3: swarm 模式（10 个候选全员上，随机顺序）
+shard 4: swarm 模式（10 个候选全员上，随机顺序）
+shard 5: swarm 模式（10 个候选全员上，随机顺序）
+shard 6: swarm 模式（10 个候选全员上，随机顺序）
+shard 7: swarm 模式（10 个候选全员上，随机顺序）
+shard 8: swarm 模式（10 个候选全员上，随机顺序）
+shard 9: swarm 模式（10 个候选全员上，随机顺序）
+FRANK shard7: F降序
+shard 7: 第一层存活 3/1 = 300%%, 第二层 开
+FRANK shard1: F降序
+shard 1: 第一层存活 3/1 = 300%%, 第二层 开
+FRANK shard4: F降序
+shard 4: 第一层存活 3/1 = 300%%, 第二层 开
+FRANK shard5: F降序
+shard 5: 第一层存活 3/1 = 300%%, 第二层 开
+FRANK shard2: F降序
+shard 2: 第一层存活 3/1 = 300%%, 第二层 开
+FRANK shard9: F降序
+shard 9: 第一层存活 3/1 = 300%%, 第二层 开
+FRANK shard6: F降序
+shard 6: 第一层存活 3/1 = 300%%, 第二层 开
+FRANK shard8: F降序
+shard 8: 第一层存活 3/1 = 300%%, 第二层 开
+FRANK shard3: F降序
+shard 3: 第一层存活 3/1 = 300%%, 第二层 开
+FRANK shard0: F降序
+shard 0: 第一层存活 3/1 = 300%%, 第二层 开
+probe[t=5s]: 7/10 起点被证伪，剩 3
+DYN shard1: 4304 calls, 1322 refuted (31%)
+probe[t=5s]: 7/10 起点被证伪，剩 3
+DYN shard8: 4282 calls, 1717 refuted (40%)
+probe[t=5s]: 7/10 起点被证伪，剩 3
+DYN shard5: 4438 calls, 1781 refuted (40%)
+probe[t=5s]: 7/10 起点被证伪，剩 3
+DYN shard4: 4508 calls, 1370 refuted (30%)
+probe[t=6s]: 7/10 起点被证伪，剩 3
+DYN shard2: 4508 calls, 1795 refuted (40%)
+probe[t=6s]: 7/10 起点被证伪，剩 3
+DYN shard3: 4148 calls, 933 refuted (22%)
+probe[t=6s]: 7/10 起点被证伪，剩 3
+DYN shard6: 4302 calls, 1013 refuted (24%)
+probe[t=7s]: 7/10 起点被证伪，剩 3
+DYN shard9: 4044 calls, 850 refuted (21%)
+probe[t=7s]: 7/10 起点被证伪，剩 3
+DYN shard7: 4336 calls, 1304 refuted (30%)
+probe[t=24s]: 7/10 起点被证伪，剩 3
+DYN shard0: 4036 calls, 939 refuted (23%)
+STATS {"solved":1,"shard":1,"wall_s":46,"nodes_total":2570970,"nodes_win":2289470,"dth_liveend":0,"dth_estate":364339,"dth_reach":160052,"dth_dyn":34971,"dth_flow":0,"dth_geom":23563,"maxrss_kb":32852,"start_x":280,"start_y":216}
+WINNER shard 1 tier 1 nodes 2289470
