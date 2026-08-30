@@ -3526,7 +3526,8 @@ int main(int argc, char **argv) {
     }
     free(drop2);
     }
-    fprintf(stderr, "probe[t=%llds]: %d/%d 起点被证伪，剩 %d\n", (long long)(time(0) - wall_t0), ns - keep, ns, keep);
+    fprintf(stderr, "probe[t=%llds] shard%d本片视角: 名单%d 存活%d (⚠分母为全名单,证伪数含'不归本片'——跨片汇总请并集dump)\n",
+            (long long)(time(0) - wall_t0), shard, ns, keep);
     if (getenv("DEATHSTAT")) fprintf(stderr, "DEATH liveend=%lld estate=%lld reach=%lld dyn=%lld flow=%lld geom=%lld\n",
         dth_liveend, dth_estate, dth_reach, dth_dyn, dth_flow, dth_geom);
     if (dyn_calls > 50) {
